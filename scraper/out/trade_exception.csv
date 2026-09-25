@@ -1,0 +1,479 @@
+id,amount,exceptionType,expiration,fromTeamId,isActive,playerId,player_firstName,player_fullName,player_headshotURL,player_lastName,_source_team_ids
+638bf3c8-932a-4fc0-90fd-abd6fc5316bf,1782621,trade,2022-07-07T00:00:00.000Z,2,False,1628981,Bruno,Bruno Fernando,https://cdn.nba.com/headshots/nba/latest/260x190/1628981.png,Fernando,1
+21b90964-604f-439f-b4b3-0f4b572ab08e,105660,trade,2023-01-13T00:00:00.000Z,20,False,203524,Solomon,Solomon Hill,https://cdn.nba.com/headshots/nba/latest/260x190/203524.png,Hill,1
+58032ca0-30cc-4c93-8c5c-170eecf6c54d,46120,trade,2023-07-06T00:00:00.000Z,24,False,1629111,Jock,Jock Landale,https://cdn.nba.com/headshots/nba/latest/260x190/1629111.png,Landale,1
+910b6e70-d5b5-4d4b-858c-f5dc065980a2,692429,trade,2023-07-06T00:00:00.000Z,26,False,1628989,Kevin,Kevin Huerter,https://cdn.nba.com/headshots/nba/latest/260x190/1628989.png,Huerter,1
+8f537146-1d8e-4b25-a1bb-ef5319d508f6,2564980,trade,2023-09-27T00:00:00.000Z,21,False,203090,Maurice,Maurice Harkless,https://cdn.nba.com/headshots/nba/latest/260x190/203090.png,Harkless,1
+9aab3fc8-7984-493f-93cb-0bcc466a432a,6292440,trade,2024-02-09T00:00:00.000Z,11,False,203200,Justin,Justin Holiday,https://cdn.nba.com/headshots/nba/latest/260x190/203200.png,Holiday,1
+5fa25eae-d19c-4cae-8303-5413f0ef68da,134347,trade,2024-07-08T00:00:00.000Z,29,False,1628381,John,John Collins,https://cdn.nba.com/headshots/nba/latest/260x190/1628381.png,Collins,1
+7b441164-16a0-43f0-bc2a-a75283d837b0,2588400,trade,2024-07-12T00:00:00.000Z,21,False,1630586,Usman,Usman Garuba,https://cdn.nba.com/headshots/nba/latest/260x190/1630586.png,Garuba,1
+59bacdd2-7c7c-40b2-9430-43c984c00903,2320440,trade,2024-07-12T00:00:00.000Z,21,False,1631102,TyTy,TyTy Washington Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1631102.png,Washington Jr.,1
+bd363d1b-2061-4894-8d48-87b70444c750,3712920,trade,2025-06-27T00:00:00.000Z,11,False,1631100,AJ,AJ Griffin,https://cdn.nba.com/headshots/nba/latest/260x190/1631100.png,Griffin,1
+5d598d32-29fd-45ee-b79b-31b0b524965c,5134000,bi-annual,2025-06-30T00:00:00.000Z,1,True,0,Unknown,Unknown,,,1
+d0a1d146-bd73-46f6-9fbf-e4ed41e636f0,3104000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,1,True,0,Unknown,Unknown,,,1
+cebd3a6b-c192-4a50-8b0f-53b20d982036,25266266,trade,2025-07-07T00:00:00.000Z,19,False,1627749,Dejounte,Dejounte Murray,https://cdn.nba.com/headshots/nba/latest/260x190/1627749.png,Murray,1
+bc20aac7-4558-432c-9e4c-d7ca1b20fbca,3500000,trade,2026-02-06T00:00:00.000Z,11,False,203469,Cody,Cody Zeller,https://cdn.nba.com/headshots/nba/latest/260x190/203469.png,Zeller,1
+d03040d1-48d0-45dc-b9de-20c67b8d1913,6700000,trade,2026-07-06T00:00:00.000Z,11,False,203991,Clint,Clint Capela,https://cdn.nba.com/headshots/nba/latest/260x190/203991.png,Capela,1
+91e43d4a-ceb3-4185-9b66-868231609616,4503720,trade,2026-09-16T00:00:00.000Z,2,True,1641723,Kobe,Kobe Bufkin,https://cdn.nba.com/headshots/nba/latest/260x190/1641723.png,Bufkin,1
+d99478ec-fcec-4d9e-adc5-eb1e0a14595e,1357993,trade,2027-01-08T00:00:00.000Z,30,True,1629027,Trae,Trae Young,https://cdn.nba.com/headshots/nba/latest/260x190/1629027.png,Young,1
+a3d06d60-9abb-4172-9f5f-2d670f364c14,127901,trade,2027-02-01T00:00:00.000Z,25,True,0,Unknown,Unknown,,,1
+fdbe6552-bba0-4ec5-8a9d-28784820a1d2,11000000,trade,2027-02-05T00:00:00.000Z,14,True,1628379,Luke,Luke Kennard,https://cdn.nba.com/headshots/nba/latest/260x190/1628379.png,Kennard,1
+a1ac4802-de2c-46c8-9beb-ddc2249f96dd,343873,trade,2021-07-31T00:00:00.000Z,21,False,1629738,Vincent,Vincent Poirier,https://cdn.nba.com/headshots/nba/latest/260x190/1629738.png,Poirier,2
+937734b9-34c0-4a22-941b-816705830a8e,184048,trade,2021-08-16T00:00:00.000Z,4,False,202330,Gordon,Gordon Hayward,https://cdn.nba.com/headshots/nba/latest/260x190/202330.png,Hayward,2
+b189b033-043e-42f5-8ced-563636b3b0b6,370564,trade,2022-02-11T00:00:00.000Z,22,False,201952,Jeff,Jeff Teague,https://cdn.nba.com/headshots/nba/latest/260x190/201952.png,Teague,2
+2230f74e-7928-4aa7-b713-3ea3729a56be,5000000,trade,2022-02-11T00:00:00.000Z,5,False,1628464,Daniel,Daniel Theis,https://cdn.nba.com/headshots/nba/latest/260x190/1628464.png,Theis,2
+e07f7626-ee43-4d7c-840d-9f7acea6f1c5,1024467,trade,2022-05-17T00:00:00.000Z,21,False,202689,Kemba,Kemba Walker,https://cdn.nba.com/headshots/nba/latest/260x190/202689.png,Walker,2
+750e8a88-ba24-48b5-ad61-d4283945910a,500000,trade,2022-06-27T00:00:00.000Z,7,False,1629650,Moses,Moses Brown,https://cdn.nba.com/headshots/nba/latest/260x190/1629650.png,Brown,2
+539ffab2-b90c-46b0-83c9-a577e1a722c4,1440549,trade,2022-07-07T00:00:00.000Z,26,False,202684,Tristan,Tristan Thompson,https://cdn.nba.com/headshots/nba/latest/260x190/202684.png,Thompson,2
+5d9b717a-6409-4322-ae2c-b2f18c9776fe,17142857,trade,2022-07-18T00:00:00.000Z,20,False,203095,Evan,Evan Fournier,https://cdn.nba.com/headshots/nba/latest/260x190/203095.png,Fournier,2
+7ad08d65-35df-4f77-9019-106309e48104,6907815,trade,2023-01-19T00:00:00.000Z,27,False,1627823,Juancho,Juancho Hernangomez,https://cdn.nba.com/headshots/nba/latest/260x190/1627823.png,Hernangomez,2
+031215b0-25f3-4578-9b7b-e87b900be41d,11615328,trade,2023-02-10T00:00:00.000Z,27,False,1626196,Josh,Josh Richardson,https://cdn.nba.com/headshots/nba/latest/260x190/1626196.png,Richardson,2
+d390484d-de50-4dee-8ade-cd69d3abe06e,1782621,trade,2023-02-10T00:00:00.000Z,11,False,1628981,Bruno,Bruno Fernando,https://cdn.nba.com/headshots/nba/latest/260x190/1628981.png,Fernando,2
+bb129e69-d351-4eb6-9037-7f7dfffbebb4,2161152,trade,2023-02-10T00:00:00.000Z,22,False,1629626,Bol,Bol Bol,https://cdn.nba.com/headshots/nba/latest/260x190/1629626.png,Bol,2
+a724cfd1-1d61-4945-9c09-212d96a556fb,3804360,trade,2023-02-10T00:00:00.000Z,27,False,1629641,Romeo,Romeo Langford,https://cdn.nba.com/headshots/nba/latest/260x190/1629641.png,Langford,2
+1c4ecdaa-3c95-472f-98cb-444ceb20d969,2390000,trade,2023-02-10T00:00:00.000Z,11,False,203471,Dennis,Dennis Schröder,https://cdn.nba.com/headshots/nba/latest/260x190/203471.png,Schröder,2
+f5ffc3b5-63c5-45b0-bc2e-1d37a03be696,1669178,trade,2023-02-10T00:00:00.000Z,11,False,202683,Enes,Enes Freedom,https://cdn.nba.com/headshots/nba/latest/260x190/202683.png,Freedom,2
+c0778591-f81c-418a-91ee-9ceb1b9e36a2,1910860,trade,2023-02-10T00:00:00.000Z,22,False,1628408,PJ,PJ Dozier,https://cdn.nba.com/headshots/nba/latest/260x190/1628408.png,Dozier,2
+3385a738-3ebd-447e-a1f3-eeffa6783d9f,1160955,trade,2024-01-05T00:00:00.000Z,27,False,203943,Noah,Noah Vonleh,https://cdn.nba.com/headshots/nba/latest/260x190/203943.png,Vonleh,2
+44c3849d-720c-419c-b9e9-d9f210ad933c,1836090,trade,2024-02-09T00:00:00.000Z,21,False,1628382,Justin,Justin Jackson,https://cdn.nba.com/headshots/nba/latest/260x190/1628382.png,Jackson,2
+e4520cac-7de8-4a25-9bac-5ff1846a4672,3976260,trade,2024-07-12T00:00:00.000Z,7,False,1629684,Grant,Grant Williams,https://cdn.nba.com/headshots/nba/latest/260x190/1629684.png,Williams,2
+b1d35a2a-b522-45ff-b000-2cc13000eafc,89025,trade,2025-02-07T00:00:00.000Z,15,False,1630205,Lamar,Lamar Stevens,https://cdn.nba.com/headshots/nba/latest/260x190/1630205.png,Stevens,2
+7c9416cb-9771-49c6-b0dd-f14585e6a677,2019706,trade,2025-02-10T00:00:00.000Z,25,False,1630625,Dalano,Dalano Banton,https://cdn.nba.com/headshots/nba/latest/260x190/1630625.png,Banton,2
+ec63ab6b-6f34-4998-9419-73fe189d26c2,5134000,bi-annual,2025-06-30T00:00:00.000Z,2,True,0,Unknown,Unknown,,,2
+b998cdd1-dd44-47aa-966e-c651391173fd,14104000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,2,True,0,Unknown,Unknown,,,2
+2222bcce-3feb-4ff9-99df-e0688f59d3ba,4018363,trade,2026-02-06T00:00:00.000Z,29,False,1630531,Jaden,Jaden Springer,https://cdn.nba.com/headshots/nba/latest/260x190/1630531.png,Springer,2
+a18b997a-e0af-48f8-8960-6a5fa967ecee,4721429,trade,2026-07-07T00:00:00.000Z,25,False,201950,Jrue,Jrue Holiday,https://cdn.nba.com/headshots/nba/latest/260x190/201950.png,Holiday,2
+5c2770ab-592b-4da8-94a1-7cea7914e0b0,8200000,trade,2026-08-06T00:00:00.000Z,29,True,1627777,Georges,Georges Niang,https://cdn.nba.com/headshots/nba/latest/260x190/1627777.png,Niang,2
+6a312d93-34ae-4978-978c-cd21b67f54a3,2546675,trade,2027-02-05T00:00:00.000Z,4,True,0,Unknown,Unknown,,,2
+9dc5f2b8-bf39-4ebf-8493-205fa2c45623,27678571,trade,2027-02-05T00:00:00.000Z,5,True,1629014,Anfernee,Anfernee Simons,https://cdn.nba.com/headshots/nba/latest/260x190/1629014.png,Simons,2
+11fd8ceb-505e-48b6-bf02-e585f21ac1a3,2296274,trade,2027-02-05T00:00:00.000Z,29,True,1628449,Chris,Chris Boucher,https://cdn.nba.com/headshots/nba/latest/260x190/1628449.png,Boucher,2
+fb094bc9-4f62-4137-87fd-23bf2f162785,2378870,trade,2027-02-05T00:00:00.000Z,2,True,1631169,Josh,Josh Minott,https://cdn.nba.com/headshots/nba/latest/260x190/1631169.png,Minott,2
+3f9dffa9-29d8-40b4-9581-ed1dc9b963fc,2952348,trade,2027-07-06T00:00:00.000Z,23,True,1627759,Jaylen,Jaylen Brown,https://cdn.nba.com/headshots/nba/latest/260x190/1627759.png,Brown,2
+e8f62f0d-2923-4cb4-b0be-b47a1f5a9177,118342,trade,2022-07-06T00:00:00.000Z,24,False,1629013,Landry,Landry Shamet,https://cdn.nba.com/headshots/nba/latest/260x190/1629013.png,Shamet,3
+82546c6f-cd72-43eb-9eff-92729de6421a,6267918,trade,2022-08-19T00:00:00.000Z,9,False,201599,DeAndre,DeAndre Jordan,https://cdn.nba.com/headshots/nba/latest/260x190/201599.png,Jordan,3
+ae8bf6f1-ee01-462b-9eab-730a0e9e7f1b,1293680,trade,2022-10-06T00:00:00.000Z,11,False,1629635,Sekou,Sekou Doumbouya,https://cdn.nba.com/headshots/nba/latest/260x190/1629635.png,Doumbouya,3
+dd7dc267-7287-49d9-906e-fd0326ea1e61,2506904,trade,2023-02-10T00:00:00.000Z,23,False,201935,James,James Harden,https://cdn.nba.com/headshots/nba/latest/260x190/201935.png,Harden,3
+c8b80da5-2b78-4691-a5f2-1f04c302581a,1669178,trade,2023-02-10T00:00:00.000Z,23,False,200794,Paul,Paul Millsap,https://cdn.nba.com/headshots/nba/latest/260x190/200794.png,Millsap,3
+2bffb978-b45b-4901-b1ea-d32fb54eb910,4494702,trade,2024-02-06T00:00:00.000Z,7,False,202681,Kyrie,Kyrie Irving,https://cdn.nba.com/headshots/nba/latest/260x190/202681.png,Irving,3
+c9dacb85-6ee1-4912-a4e6-b6ccf4be2939,1836090,trade,2024-02-06T00:00:00.000Z,7,False,202693,Markieff,Markieff Morris,https://cdn.nba.com/headshots/nba/latest/260x190/202693.png,Morris,3
+6b104bbd-4f55-46a2-a403-852b92462236,1637966,trade,2024-02-07T00:00:00.000Z,26,False,1630556,Kessler,Kessler Edwards,https://cdn.nba.com/headshots/nba/latest/260x190/1630556.png,Edwards,3
+9e05baae-f094-45a4-bb7f-4f8641ad9581,1836090,trade,2024-02-09T00:00:00.000Z,24,False,203933,T.J.,T.J. Warren,https://cdn.nba.com/headshots/nba/latest/260x190/203933.png,Warren,3
+7a3e0074-65d8-4677-bb7c-de48b4e5c5dd,5726946,trade,2024-02-09T00:00:00.000Z,24,False,201142,Kevin,Kevin Durant,https://cdn.nba.com/headshots/nba/latest/260x190/201142.png,Durant,3
+382d83c8-e2d9-4967-bdbc-d498bf6b80f5,3927950,trade,2024-07-08T00:00:00.000Z,11,False,201988,Patty,Patty Mills,https://cdn.nba.com/headshots/nba/latest/260x190/201988.png,Mills,3
+ae104358-9480-492b-96c0-9449265cdcad,11928571,trade,2024-07-08T00:00:00.000Z,9,False,203925,Joe,Joe Harris,https://cdn.nba.com/headshots/nba/latest/260x190/203925.png,Harris,3
+1b87e0b9-89fb-4a1f-8d60-3eed62b0ea56,3366995,trade,2025-02-10T00:00:00.000Z,24,False,1626220,Royce,Royce O'Neale,https://cdn.nba.com/headshots/nba/latest/260x190/1626220.png,O'Neale,3
+bc024011-9f2d-4c4f-8b57-50958126f63a,1324293,trade,2025-02-10T00:00:00.000Z,28,False,203915,Spencer,Spencer Dinwiddie,https://cdn.nba.com/headshots/nba/latest/260x190/203915.png,Dinwiddie,3
+cd408729-a49a-45d5-b49d-70973aeebdf5,4668000,bi-annual,2025-06-30T00:00:00.000Z,3,False,0,Unknown,Unknown,,,3
+98bf5acb-c9da-4efd-b2b8-5f00cfe431aa,8781000,room,2025-06-30T00:00:00.000Z,3,True,0,Unknown,Unknown,,,3
+f8898ec8-1619-4b70-bf81-0147d0cca665,12186147,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,3,False,0,Unknown,Unknown,,,3
+2307472c-f9cc-4841-8c74-e31302de008b,23300000,trade,2025-07-07T00:00:00.000Z,20,False,1628969,Mikal,Mikal Bridges,https://cdn.nba.com/headshots/nba/latest/260x190/1628969.png,Bridges,3
+3fb638c0-9f6d-41c8-af17-6601bdb2c2af,2654644,trade,2025-07-07T00:00:00.000Z,20,False,1628966,Keita,Keita Bates-Diop,https://cdn.nba.com/headshots/nba/latest/260x190/1628966.png,Bates-Diop,3
+832d62f0-dd55-431b-a4ec-8309e9dab22a,1392150,trade,2025-07-19T00:00:00.000Z,24,False,1629603,Mamadi,Mamadi Diakite,https://cdn.nba.com/headshots/nba/latest/260x190/1629603.png,Diakite,3
+0848e422-2117-4624-8220-3015366274f9,203250,trade,2025-12-15T00:00:00.000Z,10,False,203471,Dennis,Dennis Schröder,https://cdn.nba.com/headshots/nba/latest/260x190/203471.png,Schröder,3
+058b8bbd-6b9e-4ea2-a7e1-98a030c14799,2875000,trade,2025-12-29T00:00:00.000Z,14,False,1629003,Shake,Shake Milton,https://cdn.nba.com/headshots/nba/latest/260x190/1629003.png,Milton,3
+6f5faa73-dcdf-4eaa-8752-2897a10a8f0e,1930681,trade,2024-02-09T00:00:00.000Z,23,False,1629667,Jalen,Jalen McDaniels,https://cdn.nba.com/headshots/nba/latest/260x190/1629667.png,McDaniels,4
+ba2f4de0-146d-41ad-868f-fd6bc6cb9cda,3585600,trade,2025-02-10T00:00:00.000Z,21,False,202330,Gordon,Gordon Hayward,https://cdn.nba.com/headshots/nba/latest/260x190/202330.png,Hayward,4
+9ad4da1a-4db2-4aaf-b1cf-997a682bf06a,442826,trade,2025-02-10T00:00:00.000Z,7,False,1629023,P.J.,P.J. Washington,https://cdn.nba.com/headshots/nba/latest/260x190/1629023.png,Washington,4
+b08ad801-e805-49bc-a69e-f51c23900232,6512625,disabled-player,2025-03-10T00:00:00.000Z,4,False,0,Unknown,Unknown,,,4
+5274c486-9ab0-4c17-99c0-b706c96eb91a,199534,room,2025-06-30T00:00:00.000Z,4,False,0,Unknown,Unknown,,,4
+09171ab0-a74f-4fa0-b05c-7bcfbbbfef05,433118,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,4,True,0,Unknown,Unknown,,,4
+043d6085-44eb-475c-a6e9-8e5fcbded572,171967,bi-annual,2025-06-30T00:00:00.000Z,4,True,0,Unknown,Unknown,,,4
+d44f42bc-8241-4e3d-b85c-86edacd5610e,2296274,trade,2027-02-04T00:00:00.000Z,21,True,203486,Mason,Mason Plumlee,https://cdn.nba.com/headshots/nba/latest/260x190/203486.png,Plumlee,4
+d89615e3-862c-4af5-a0d5-627861e9aafb,8200962,trade,2027-02-04T00:00:00.000Z,5,True,1629012,Collin,Collin Sexton,https://cdn.nba.com/headshots/nba/latest/260x190/1629012.png,Sexton,4
+1ac5cfd7-a4dd-4f73-ab4a-6a059f8553fa,7000000,trade,2027-02-05T00:00:00.000Z,7,True,1626145,Tyus,Tyus Jones,https://cdn.nba.com/headshots/nba/latest/260x190/1626145.png,Jones,4
+6ff6d3b3-e9c4-4b58-abc6-5455eeb7f134,40770520,trade,2027-07-10T00:00:00.000Z,18,True,1630163,LaMelo,LaMelo Ball,https://cdn.nba.com/headshots/nba/latest/260x190/1630163.png,Ball,4
+bb9dfeba-1d0d-44ac-8fef-5f36119d24a2,2489239,trade,2022-02-11T00:00:00.000Z,22,False,203490,Otto,Otto Porter Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/203490.png,Porter Jr.,5
+e0fdbea6-5f20-49f7-b085-1efe340e5e57,5000000,trade,2022-07-07T00:00:00.000Z,11,False,1628464,Daniel,Daniel Theis,https://cdn.nba.com/headshots/nba/latest/260x190/1628464.png,Theis,5
+28615aae-2d93-427b-a538-0ec5f32fbf3b,2872960,trade,2025-06-23T00:00:00.000Z,21,False,1627936,Alex,Alex Caruso,https://cdn.nba.com/headshots/nba/latest/260x190/1627936.png,Caruso,5
+ba57b271-d0f7-4017-a17f-7e1efba50fcf,3996837,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,5,True,0,Unknown,Unknown,,,5
+f354a5e1-93f1-437a-8d19-b0a7e6bbc9a9,5134000,bi-annual,2025-06-30T00:00:00.000Z,5,True,0,Unknown,Unknown,,,5
+ae2f49f2-967f-4203-8aa9-1ba64ab9704a,675875,trade,2025-07-08T00:00:00.000Z,26,False,201942,DeMar,DeMar DeRozan,https://cdn.nba.com/headshots/nba/latest/260x190/201942.png,DeRozan,5
+839b1cd1-05f4-4049-a584-a6f574e95183,760173,trade,2026-02-03T00:00:00.000Z,26,False,203897,Zach,Zach LaVine,https://cdn.nba.com/headshots/nba/latest/260x190/203897.png,LaVine,5
+daeaa176-5008-4f43-9f41-c5cb90905ed2,17991071,trade,2027-02-03T00:00:00.000Z,9,False,1628989,Kevin,Kevin Huerter,https://cdn.nba.com/headshots/nba/latest/260x190/1628989.png,Huerter,5
+72add0be-7f76-495c-9d49-1e22f6ff94fd,1218007,trade,2027-02-04T00:00:00.000Z,4,False,1629632,Coby,Coby White,https://cdn.nba.com/headshots/nba/latest/260x190/1629632.png,White,5
+aeb204ca-df16-42f7-a947-632f93b0cf5e,2221677,trade,2027-02-05T00:00:00.000Z,18,False,1641763,Julian,Julian Phillips,https://cdn.nba.com/headshots/nba/latest/260x190/1641763.png,Phillips,5
+89aa2136-6173-41a7-8a34-2b9379902c42,6670882,trade,2027-02-05T00:00:00.000Z,17,False,1631172,Ousmane,Ousmane Dieng,https://cdn.nba.com/headshots/nba/latest/260x190/1631172.png,Dieng,5
+16c567f6-7437-4a2e-b6d4-d3b31130ff5a,3837500,trade,2021-02-12T00:00:00.000Z,29,False,203903,Jordan,Jordan Clarkson,https://cdn.nba.com/headshots/nba/latest/260x190/203903.png,Clarkson,6
+c4b052a9-0bf7-46e0-85fb-a4650f51812b,1717981,trade,2021-11-27T00:00:00.000Z,11,False,1629645,Kevin,Kevin Porter Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1629645.png,Porter Jr.,6
+244e9a94-f972-4441-95f1-8dddfbea55a7,4200000,trade,2022-02-11T00:00:00.000Z,8,False,201580,JaVale,JaVale McGee,https://cdn.nba.com/headshots/nba/latest/260x190/201580.png,McGee,6
+c5036714-b8c6-46d9-ba75-aed79ebd4f76,858218,trade,2023-01-03T00:00:00.000Z,20,False,1627756,Denzel,Denzel Valentine,https://cdn.nba.com/headshots/nba/latest/260x190/1627756.png,Valentine,6
+2107bcec-2f1a-4eab-83f4-c4954de53807,300000,trade,2023-02-07T00:00:00.000Z,12,False,201937,Ricky,Ricky Rubio,https://cdn.nba.com/headshots/nba/latest/260x190/201937.png,Rubio,6
+490c7c25-67b6-4ec6-bec9-c49d3f60147e,3918360,trade,2023-09-04T00:00:00.000Z,29,False,1630534,Ochai,Ochai Agbaji,https://cdn.nba.com/headshots/nba/latest/260x190/1630534.png,Agbaji,6
+d5e37903-87da-4693-a76f-85c724116bfc,12822000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,6,False,0,Unknown,Unknown,,,6
+7d7c95d6-7241-4f9b-b410-f7138a2892c8,8500000,trade,2026-02-06T00:00:00.000Z,1,False,1627777,Georges,Georges Niang,https://cdn.nba.com/headshots/nba/latest/260x190/1627777.png,Niang,6
+20d9c8d4-fb07-4d0e-9541-e17eb4afe855,1000000,trade,2026-07-06T00:00:00.000Z,5,False,1630171,Isaac,Isaac Okoro,https://cdn.nba.com/headshots/nba/latest/260x190/1630171.png,Okoro,6
+e91a3f92-cb1f-437f-b1bd-f4342d7bdfc3,6897984,trade,2027-02-01T00:00:00.000Z,26,True,0,Unknown,Unknown,,,6
+267c576c-a6de-4bed-bfd2-89b90eaa632a,263397,trade,2027-02-04T00:00:00.000Z,13,True,1629636,Darius,Darius Garland,https://cdn.nba.com/headshots/nba/latest/260x190/1629636.png,Garland,6
+6d555b56-f04d-4f3f-8780-d26328aa0bb4,10000000,trade,2027-02-05T00:00:00.000Z,29,True,1628366,Lonzo,Lonzo Ball,https://cdn.nba.com/headshots/nba/latest/260x190/1628366.png,Ball,6
+b839bd15-65ee-4de5-a66a-0eb80130e63a,428854,trade,2022-02-11T00:00:00.000Z,19,False,1628411,Wes,Wes Iwundu,https://cdn.nba.com/headshots/nba/latest/260x190/1628411.png,Iwundu,7
+f3730766-0348-4fe6-b653-af7ca8f40cf4,10865952,trade,2022-06-27T00:00:00.000Z,2,False,1626196,Josh,Josh Richardson,https://cdn.nba.com/headshots/nba/latest/260x190/1626196.png,Richardson,7
+3e3902d3-a31d-4b23-8168-d40d4fac62b6,958529,trade,2023-06-26T00:00:00.000Z,11,False,1627737,Marquese,Marquese Chriss,https://cdn.nba.com/headshots/nba/latest/260x190/1627737.png,Chriss,7
+b458c61f-1bc8-4360-9b00-2b1a57dc5d39,657298,trade,2024-07-08T00:00:00.000Z,21,False,202722,Davis,Davis Bertans,https://cdn.nba.com/headshots/nba/latest/260x190/202722.png,Bertans,7
+015ed5f7-a462-4f81-ad51-1bd76928773b,4000000,trade,2025-02-10T00:00:00.000Z,4,False,203552,Seth,Seth Curry,https://cdn.nba.com/headshots/nba/latest/260x190/203552.png,Curry,7
+2de0e255-c738-47f3-b2d0-42b0d40823f8,5134000,bi-annual,2025-06-30T00:00:00.000Z,7,True,0,Unknown,Unknown,,,7
+1f0d3195-455d-4edc-8773-4d54a2e2342c,8419000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,7,True,0,Unknown,Unknown,,,7
+c58f89c8-3894-4bea-9fd8-db837e07711c,7006589,trade,2025-07-06T00:00:00.000Z,9,False,203501,Tim,Tim Hardaway Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/203501.png,Hardaway Jr.,7
+13a1dc64-c1eb-4f70-8552-7e7f915249e2,11000000,trade,2026-02-02T00:00:00.000Z,14,False,1628467,Maxi,Maxi Kleber,https://cdn.nba.com/headshots/nba/latest/260x190/1628467.png,Kleber,7
+b0d71df7-4d6e-4b31-ae6b-eb51bde41786,2087519,trade,2026-02-02T00:00:00.000Z,14,False,202693,Markieff,Markieff Morris,https://cdn.nba.com/headshots/nba/latest/260x190/202693.png,Morris,7
+166076f5-6c1e-4e8e-bc4a-1a8c15517224,4296682,trade,2026-02-04T00:00:00.000Z,23,False,1629656,Quentin,Quentin Grimes,https://cdn.nba.com/headshots/nba/latest/260x190/1629656.png,Grimes,7
+e4cc7730-2a89-44af-9854-9c077195d6db,1148137,disabled-player,2026-03-10T00:00:00.000Z,7,False,0,Unknown,Unknown,,,7
+292e9403-b37a-428e-9a1b-d41f2b183881,20830154,trade,2027-02-05T00:00:00.000Z,30,True,203076,Anthony,Anthony Davis,https://cdn.nba.com/headshots/nba/latest/260x190/203076.png,Davis,7
+5e7776b2-9a0b-482e-82b8-caaa4423d104,0,trade,2027-02-05T00:00:00.000Z,30,True,0,Unknown,Unknown,,,7
+6f81f021-6fe8-4434-9e2b-7a3a0051030d,2909520,trade,2027-02-05T00:00:00.000Z,30,True,1630702,Jaden,Jaden Hardy,https://cdn.nba.com/headshots/nba/latest/260x190/1630702.png,Hardy,7
+56668d42-07dd-4c7e-9868-6c3ede45ab85,3321030,trade,2021-03-19T00:00:00.000Z,18,False,1627823,Juancho,Juancho Hernangomez,https://cdn.nba.com/headshots/nba/latest/260x190/1627823.png,Hernangomez,8
+cc7705b6-2ab1-4928-84ec-d3ec8d48a523,1845301,trade,2021-03-22T00:00:00.000Z,30,False,203894,Shabazz,Shabazz Napier,https://cdn.nba.com/headshots/nba/latest/260x190/203894.png,Napier,8
+17b11746-141c-4993-822b-1a41039a991a,5325000,trade,2021-08-06T00:00:00.000Z,9,False,203924,Jerami,Jerami Grant,https://cdn.nba.com/headshots/nba/latest/260x190/203924.png,Grant,8
+59d8ecab-d497-4160-9ca7-b681123b3c9f,1620564,trade,2022-02-11T00:00:00.000Z,6,False,1628392,Isaiah,Isaiah Hartenstein,https://cdn.nba.com/headshots/nba/latest/260x190/1628392.png,Hartenstein,8
+a8060462-038e-4162-b215-afd759e8c0a0,2193480,trade,2022-02-11T00:00:00.000Z,22,False,1630181,R.J.,R.J. Hampton,https://cdn.nba.com/headshots/nba/latest/260x190/1630181.png,Hampton,8
+69522a51-cc3c-487d-9bfd-1c4769c57051,2161152,trade,2023-01-10T00:00:00.000Z,9,False,1629626,Bol,Bol Bol,https://cdn.nba.com/headshots/nba/latest/260x190/1629626.png,Bol,8
+064d8148-6726-4833-ad63-9138410513a0,3475000,trade,2023-06-23T00:00:00.000Z,21,False,203210,JaMychal,JaMychal Green,https://cdn.nba.com/headshots/nba/latest/260x190/203210.png,Green,8
+b5f0175a-0ec3-445d-9491-0477235cc072,9125000,trade,2023-07-06T00:00:00.000Z,30,False,1628420,Monté,Monté Morris,https://cdn.nba.com/headshots/nba/latest/260x190/1628420.png,Morris,8
+4dbb0667-656c-4e80-8325-2f98c376805f,370297,trade,2023-07-06T00:00:00.000Z,30,False,203115,Will,Will Barton,https://cdn.nba.com/headshots/nba/latest/260x190/203115.png,Barton,8
+89dcd042-e3b8-4ee6-b286-7a1ce0cad7b5,2201520,trade,2024-02-09T00:00:00.000Z,13,False,1630538,Bones,Bones Hyland,https://cdn.nba.com/headshots/nba/latest/260x190/1630538.png,Hyland,8
+662603fb-8231-4300-8d66-c935957a27ce,1902133,trade,2024-02-09T00:00:00.000Z,14,False,1628432,Davon,Davon Reed,https://cdn.nba.com/headshots/nba/latest/260x190/1628432.png,Reed,8
+337b11d5-7ee1-4b2f-be43-b5fd61719306,1532820,disabled-player,2025-03-10T00:00:00.000Z,8,False,0,Unknown,Unknown,,,8
+d61d691a-db23-42d4-b93a-254e75a3e9e8,5135000,bi-annual,2025-06-30T00:00:00.000Z,8,True,0,Unknown,Unknown,,,8
+2528726e-b3c6-4ca1-a4ab-9ff54bc7f9fa,14104000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,8,True,0,Unknown,Unknown,,,8
+f01d1f4a-858c-4c90-a522-26165cad61e6,5250000,trade,2025-07-06T00:00:00.000Z,4,False,202704,Reggie,Reggie Jackson,https://cdn.nba.com/headshots/nba/latest/260x190/202704.png,Jackson,8
+cb7746b4-27cf-4ea8-b440-1f1c6d54ba88,6880985,trade,2026-07-08T00:00:00.000Z,2,False,1629008,Michael,Michael Porter Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1629008.png,Porter Jr.,8
+fba4cd9b-dcb5-4c19-bce8-674328955cf5,5426400,trade,2026-07-13T00:00:00.000Z,26,False,0,Unknown,Unknown,,,8
+6b420e56-78c8-4bf0-8b29-403723a1cf8c,2221677,trade,2027-02-05T00:00:00.000Z,2,True,1641816,Hunter,Hunter Tyson,https://cdn.nba.com/headshots/nba/latest/260x190/1641816.png,Tyson,8
+b94015f7-3044-410e-961e-a6ebae1110f6,1716873,trade,2021-02-08T00:00:00.000Z,6,False,203083,Andre,Andre Drummond,https://cdn.nba.com/headshots/nba/latest/260x190/203083.png,Drummond,9
+d0ea0db3-14f0-4be9-895e-3afeb4753cdd,1996249,trade,2021-12-18T00:00:00.000Z,20,False,201565,Derrick,Derrick Rose,https://cdn.nba.com/headshots/nba/latest/260x190/201565.png,Rose,9
+afbbe203-be44-43c2-9cd0-34ae0c07a70d,11789529,trade,2023-07-06T00:00:00.000Z,25,False,203924,Jerami,Jerami Grant,https://cdn.nba.com/headshots/nba/latest/260x190/203924.png,Grant,9
+cb5e3003-ae5d-428c-bc7f-155451be7126,1386800,trade,2025-01-14T00:00:00.000Z,30,False,1628963,Marvin,Marvin Bagley III,https://cdn.nba.com/headshots/nba/latest/260x190/1628963.png,Bagley III,9
+42119af1-fab5-4553-bfca-6133076b103d,10489600,trade,2025-02-10T00:00:00.000Z,20,False,202692,Alec,Alec Burks,https://cdn.nba.com/headshots/nba/latest/260x190/202692.png,Burks,9
+5e6003f0-b3ea-4b64-bfbc-1ff6ad3eea51,800926,trade,2025-02-10T00:00:00.000Z,18,False,1628420,Monté,Monté Morris,https://cdn.nba.com/headshots/nba/latest/260x190/1628420.png,Morris,9
+8e3b84aa-b712-4762-a58b-0c4b2197c335,1324476,bi-annual,2025-06-30T00:00:00.000Z,9,True,0,Unknown,Unknown,,,9
+0862dad9-69b2-4deb-9aa4-0402142ff5b6,12822000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,9,False,0,Unknown,Unknown,,,9
+ed51af45-52c5-4d5e-b9cb-7d6da70175bd,7983000,room,2025-06-30T00:00:00.000Z,9,False,0,Unknown,Unknown,,,9
+91a4cfbf-1281-43d8-a53c-dfca8d54147d,8677600,trade,2026-07-07T00:00:00.000Z,26,False,203471,Dennis,Dennis Schröder,https://cdn.nba.com/headshots/nba/latest/260x190/203471.png,Schröder,9
+fde3e36e-a7ca-48e1-8cce-2415ff74a694,5198983,trade,2027-07-08T00:00:00.000Z,7,True,1631204,Marcus,Marcus Sasser,https://cdn.nba.com/headshots/nba/latest/260x190/1631204.png,Sasser,9
+098ee7d1-f213-4e34-9547-665d76ffad0c,15000000,trade,2027-07-08T00:00:00.000Z,15,True,1630191,Isaiah,Isaiah Stewart,https://cdn.nba.com/headshots/nba/latest/260x190/1630191.png,Stewart,9
+2c4e89d1-4fea-4b82-8b5e-8dc93233e547,869699,trade,2020-11-23T00:00:00.000Z,3,False,201142,Kevin,Kevin Durant,https://cdn.nba.com/headshots/nba/latest/260x190/201142.png,Durant,10
+676b9701-f31d-4b3a-a953-362ac4535a5f,17185185,trade,2020-11-23T00:00:00.000Z,15,False,2738,Andre,Andre Iguodala,https://cdn.nba.com/headshots/nba/latest/260x190/2738.png,Iguodala,10
+b9601ca4-ab96-4308-bf1d-27a4c404a1e4,1597100,trade,2020-11-24T00:00:00.000Z,18,False,1626203,Treveon,Treveon Graham,https://cdn.nba.com/headshots/nba/latest/260x190/1626203.png,Graham,10
+002666df-2543-4370-b660-1cb83afaf711,407257,trade,2020-11-24T00:00:00.000Z,1,False,1627745,Damian,Damian Jones,https://cdn.nba.com/headshots/nba/latest/260x190/1627745.png,Jones,10
+7a6a203d-473a-40c9-aa7a-43e955055d73,1597100,trade,2020-11-24T00:00:00.000Z,18,False,203894,Shabazz,Shabazz Napier,https://cdn.nba.com/headshots/nba/latest/260x190/203894.png,Napier,10
+822937a8-9388-4e78-8088-517b4d63c72f,2177483,trade,2021-03-11T00:00:00.000Z,7,False,1626161,Willie,Willie Cauley-Stein,https://cdn.nba.com/headshots/nba/latest/260x190/1626161.png,Cauley-Stein,10
+82f5d230-fe70-41e2-a826-a6eee24cb31b,1925880,trade,2021-03-22T00:00:00.000Z,18,False,1628980,Jacob,Jacob Evans,https://cdn.nba.com/headshots/nba/latest/260x190/1628980.png,Evans,10
+88f20943-c036-43d2-80b4-dc2953943d89,1620564,trade,2021-03-22T00:00:00.000Z,23,False,203922,Glenn,Glenn Robinson III,https://cdn.nba.com/headshots/nba/latest/260x190/203922.png,Robinson III,10
+5b41696c-6bbc-4e2c-8dc0-81de5acd6c84,1897800,trade,2021-03-22T00:00:00.000Z,18,False,1629016,Omari,Omari Spellman,https://cdn.nba.com/headshots/nba/latest/260x190/1629016.png,Spellman,10
+ac27812f-6e7b-4f19-8303-5a235ddccb4d,1620564,trade,2021-03-22T00:00:00.000Z,23,False,202692,Alec,Alec Burks,https://cdn.nba.com/headshots/nba/latest/260x190/202692.png,Burks,10
+b218772b-9350-4295-8353-acd8420a9e70,2250000,trade,2022-02-11T00:00:00.000Z,4,False,202954,Brad,Brad Wanamaker,https://cdn.nba.com/headshots/nba/latest/260x190/202954.png,Wanamaker,10
+2037eedb-7632-49fb-afbd-4f09523147db,1824003,trade,2022-02-11T00:00:00.000Z,27,False,1627737,Marquese,Marquese Chriss,https://cdn.nba.com/headshots/nba/latest/260x190/1627737.png,Chriss,10
+25d21060-b85f-4c31-b686-4dd92f37aafa,1782621,trade,2022-07-07T00:00:00.000Z,29,False,1629672,Eric,Eric Paschall,https://cdn.nba.com/headshots/nba/latest/260x190/1629672.png,Paschall,10
+7a3e6beb-0b4a-432a-b204-e73304344f5f,1303360,trade,2024-02-09T00:00:00.000Z,9,False,1630164,James,James Wiseman,https://cdn.nba.com/headshots/nba/latest/260x190/1630164.png,Wiseman,10
+9b6cd581-07a5-4ee9-8a4c-3600b6a1a41a,2337720,trade,2024-07-08T00:00:00.000Z,30,False,1631116,Patrick,Patrick Baldwin Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1631116.png,Baldwin Jr.,10
+ce2c5375-8c95-46bd-b8b1-7bcd93e2c169,2019706,trade,2025-02-10T00:00:00.000Z,12,False,202709,Cory,Cory Joseph,https://cdn.nba.com/headshots/nba/latest/260x190/202709.png,Joseph,10
+7366c9d0-f338-410a-ae18-282750d6138f,4668000,bi-annual,2025-06-30T00:00:00.000Z,10,False,0,Unknown,Unknown,,,10
+f0b17241-d50d-427c-9ea6-6f929b949630,8780488,trade,2026-02-06T00:00:00.000Z,16,False,203937,Kyle,Kyle Anderson,https://cdn.nba.com/headshots/nba/latest/260x190/203937.png,Anderson,10
+1302cc30-c265-4eee-940d-edebc5aa6409,2196970,trade,2026-02-06T00:00:00.000Z,9,False,1630322,Lindy,Lindy Waters III,https://cdn.nba.com/headshots/nba/latest/260x190/1630322.png,Waters III,10
+1ba4435a-725b-45bf-bba6-0ee3128189e4,2221677,trade,2027-02-05T00:00:00.000Z,28,True,1631218,Trayce,Trayce Jackson-Davis,https://cdn.nba.com/headshots/nba/latest/260x190/1631218.png,Jackson-Davis,10
+f8fd3784-e7b3-4a99-bee5-b46a81ad5723,784601,trade,2021-03-19T00:00:00.000Z,1,False,2403,,Nene,https://cdn.nba.com/headshots/nba/latest/260x190/2403.png,Nene,11
+2aab31a3-f50a-4057-901d-dc6d312157e6,1620564,trade,2021-03-19T00:00:00.000Z,8,False,101123,Gerald,Gerald Green,https://cdn.nba.com/headshots/nba/latest/260x190/101123.png,Green,11
+81232150-f254-44d0-b126-d9a1d8a3f86b,3595333,trade,2021-03-19T00:00:00.000Z,1,False,203991,Clint,Clint Capela,https://cdn.nba.com/headshots/nba/latest/260x190/203991.png,Capela,11
+8649e887-f39e-4397-bb37-21f72084a595,1620564,trade,2021-03-22T00:00:00.000Z,15,False,1628395,Jordan,Jordan Bell,https://cdn.nba.com/headshots/nba/latest/260x190/1628395.png,Bell,11
+e0e77eff-926f-418a-8020-3a9280714588,2174318,trade,2021-08-11T00:00:00.000Z,20,False,203085,Austin,Austin Rivers,https://cdn.nba.com/headshots/nba/latest/260x190/203085.png,Rivers,11
+93ef09c6-601b-440e-a721-2eeb29e06102,103894,trade,2021-08-31T00:00:00.000Z,30,False,201566,Russell,Russell Westbrook,https://cdn.nba.com/headshots/nba/latest/260x190/201566.png,Westbrook,11
+9a96d019-9fd7-4abf-abd0-945269e2ed33,1406240,trade,2021-11-20T00:00:00.000Z,3,False,201935,James,James Harden,https://cdn.nba.com/headshots/nba/latest/260x190/201935.png,Harden,11
+c7770dcb-aa0c-4c60-88c0-9a6bb64f8bb1,1780152,trade,2022-02-07T00:00:00.000Z,17,False,1629066,Rodions,Rodions Kurucs,https://cdn.nba.com/headshots/nba/latest/260x190/1629066.png,Kurucs,11
+84506ea5-bba5-4aca-a735-4cd45dab1e56,8180351,trade,2022-02-11T00:00:00.000Z,16,False,203506,Victor,Victor Oladipo,https://cdn.nba.com/headshots/nba/latest/260x190/203506.png,Oladipo,11
+58ac32b8-192e-486e-81c6-51ac347f97eb,607730,trade,2023-02-10T00:00:00.000Z,2,False,1628464,Daniel,Daniel Theis,https://cdn.nba.com/headshots/nba/latest/260x190/1628464.png,Theis,11
+d89b3855-bbca-4337-bfc3-7b45d3cfd5f6,3892917,trade,2023-06-26T00:00:00.000Z,7,False,1626174,Christian,Christian Wood,https://cdn.nba.com/headshots/nba/latest/260x190/1626174.png,Wood,11
+7ac562d1-cdc8-4b88-bc72-87c674677402,293920,trade,2023-10-02T00:00:00.000Z,21,False,1627737,Marquese,Marquese Chriss,https://cdn.nba.com/headshots/nba/latest/260x190/1627737.png,Chriss,11
+4e75b1c3-aef1-4878-ba69-021bb3671bb8,3089360,trade,2024-02-09T00:00:00.000Z,13,False,201569,Eric,Eric Gordon,https://cdn.nba.com/headshots/nba/latest/260x190/201569.png,Gordon,11
+0d53eae0-fb36-4a24-8fab-f6cc709c269e,797080,trade,2024-10-17T00:00:00.000Z,21,False,1629645,Kevin,Kevin Porter Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1629645.png,Porter Jr.,11
+9694f73c-2857-4386-bf16-65b13e008bf7,1404000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,11,True,0,Unknown,Unknown,,,11
+34497077-3e3f-474b-8dca-24559db773cb,12500000,disabled-player,2026-03-10T00:00:00.000Z,11,False,0,Unknown,Unknown,,,11
+f0ad2447-b751-4902-bdac-4844a776ed8b,3539760,trade,2026-07-06T00:00:00.000Z,30,False,1641715,Cam,Cam Whitmore,https://cdn.nba.com/headshots/nba/latest/260x190/1641715.png,Whitmore,11
+8b514b56-bd14-44ea-9d37-d194b1711941,13335000,trade,2027-07-06T00:00:00.000Z,1,True,1627827,Dorian,Dorian Finney-Smith,https://cdn.nba.com/headshots/nba/latest/260x190/1627827.png,Finney-Smith,11
+5f63879e-9dad-41c5-a271-42f20ddb1280,2808844,trade,2021-08-09T00:00:00.000Z,21,False,1628388,T.J.,T.J. Leaf,https://cdn.nba.com/headshots/nba/latest/260x190/1628388.png,Leaf,12
+9e8e2a90-a629-4451-92bb-8655d7158051,4796296,trade,2021-11-22T00:00:00.000Z,11,False,203506,Victor,Victor Oladipo,https://cdn.nba.com/headshots/nba/latest/260x190/203506.png,Oladipo,12
+b21d03a8-4c48-46d6-8c16-6bdc191e8a0c,3980551,trade,2022-07-06T00:00:00.000Z,30,False,1628988,Aaron,Aaron Holiday,https://cdn.nba.com/headshots/nba/latest/260x190/1628988.png,Holiday,12
+0b7009c6-cc1b-40ff-bce7-a4d24d5cb0f0,7333333,trade,2022-07-07T00:00:00.000Z,27,False,203926,Doug,Doug McDermott,https://cdn.nba.com/headshots/nba/latest/260x190/203926.png,McDermott,12
+0a3693b2-1a66-4f69-ac7a-ec6c5c2cd818,2320000,trade,2022-10-06T00:00:00.000Z,3,False,1628410,Edmond,Edmond Sumner,https://cdn.nba.com/headshots/nba/latest/260x190/1628410.png,Sumner,12
+cdd22c39-a40c-48ff-a5d3-ff235af72021,1805631,trade,2023-02-08T00:00:00.000Z,26,False,203087,Jeremy,Jeremy Lamb,https://cdn.nba.com/headshots/nba/latest/260x190/203087.png,Lamb,12
+6fda985c-ebe4-4f13-a4ae-bbbdb61b17b0,420049,trade,2023-02-10T00:00:00.000Z,24,False,1628470,Torrey,Torrey Craig,https://cdn.nba.com/headshots/nba/latest/260x190/1628470.png,Craig,12
+c0e68fa5-37f5-4eee-b077-f609b2ff7659,18795640,trade,2023-07-10T00:00:00.000Z,2,False,1627763,Malcolm,Malcolm Brogdon,https://cdn.nba.com/headshots/nba/latest/260x190/1627763.png,Brogdon,12
+94c2e36b-9185-463b-baae-f3197a32a00d,159471,trade,2025-02-10T00:00:00.000Z,23,False,1627741,Buddy,Buddy Hield,https://cdn.nba.com/headshots/nba/latest/260x190/1627741.png,Hield,12
+553eb541-2f41-4777-a77e-cc3484327e86,5134000,bi-annual,2025-06-30T00:00:00.000Z,12,True,0,Unknown,Unknown,,,12
+00c69398-f3a4-4f88-93dd-6c3877b5d877,11449120,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,12,True,0,Unknown,Unknown,,,12
+63323cdf-83bd-4c8a-b414-8d40da0eb778,0,trade,2026-02-06T00:00:00.000Z,28,False,1630164,James,James Wiseman,https://cdn.nba.com/headshots/nba/latest/260x190/1630164.png,Wiseman,12
+174b9fd2-d874-433a-8679-b0be1d4f1d61,14104000,disabled-player,2026-03-10T00:00:00.000Z,12,False,0,Unknown,Unknown,,,12
+3a1a8c39-73c6-4693-8a2e-f2911022064a,1075459,trade,2027-06-24T00:00:00.000Z,5,True,1642880,Kam,Kam Jones,https://cdn.nba.com/headshots/nba/latest/260x190/1642880.png,Jones,12
+375da5f6-3dbf-47e2-a8d3-5ec30ce3c700,1445697,trade,2021-03-22T00:00:00.000Z,1,False,1628476,Derrick,Derrick Walton Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1628476.png,Walton Jr.,13
+5328214a-bf1a-4a94-a00f-dbab03e8b959,3567720,trade,2021-03-22T00:00:00.000Z,30,False,1629010,Jerome,Jerome Robinson,https://cdn.nba.com/headshots/nba/latest/260x190/1629010.png,Robinson,13
+c2c18699-4e14-4869-afa9-1daa015a81d1,497418,trade,2021-07-30T00:00:00.000Z,9,False,203585,Rodney,Rodney McGruder,https://cdn.nba.com/headshots/nba/latest/260x190/203585.png,McGruder,13
+e85542b9-78d1-4842-aa5b-ac21a3284cc1,1995120,trade,2021-07-30T00:00:00.000Z,3,False,1629013,Landry,Landry Shamet,https://cdn.nba.com/headshots/nba/latest/260x190/1629013.png,Shamet,13
+a9a4f267-acbd-4ff6-82c0-bb32009e48af,2075880,trade,2022-02-08T00:00:00.000Z,26,False,1629662,Mfiondu,Mfiondu Kabengele,https://cdn.nba.com/headshots/nba/latest/260x190/1629662.png,Kabengele,13
+3e2699dc-239b-46af-9711-8bc89a255662,8250000,trade,2022-07-18T00:00:00.000Z,15,False,200765,Rajon,Rajon Rondo,https://cdn.nba.com/headshots/nba/latest/260x190/200765.png,Rondo,13
+e5822d93-4d7a-4554-a060-bb1cd5609798,7519380,trade,2023-02-10T00:00:00.000Z,17,False,201586,Serge,Serge Ibaka,https://cdn.nba.com/headshots/nba/latest/260x190/201586.png,Ibaka,13
+1961e588-9d63-4833-8547-802fe902ea64,204162,trade,2024-02-09T00:00:00.000Z,4,False,202704,Reggie,Reggie Jackson,https://cdn.nba.com/headshots/nba/latest/260x190/202704.png,Jackson,13
+1c46f16d-6d73-4091-b0ba-9e820c94661f,559782,trade,2024-11-01T00:00:00.000Z,26,False,1630196,Filip,Filip Petrusev,https://cdn.nba.com/headshots/nba/latest/260x190/1630196.png,Petrusev,13
+9d80458e-4aed-4c5f-af42-0011dea5f9f2,2248190,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,13,False,0,Unknown,Unknown,,,13
+5e9c9410-e918-4817-8430-5d9d4d7ede58,2087519,trade,2026-02-02T00:00:00.000Z,29,False,1628964,Mo,Mo Bamba,https://cdn.nba.com/headshots/nba/latest/260x190/1628964.png,Bamba,13
+e8dbceae-5dce-4d3a-9a5d-e5a228ab57ef,6539000,trade,2026-02-02T00:00:00.000Z,29,False,200782,P.J.,P.J. Tucker,https://cdn.nba.com/headshots/nba/latest/260x190/200782.png,Tucker,13
+4db8162d-ba1c-443f-8a1b-130dc7aa3ea4,4158439,trade,2026-02-06T00:00:00.000Z,18,False,1630538,Bones,Bones Hyland,https://cdn.nba.com/headshots/nba/latest/260x190/1630538.png,Hyland,13
+9253dada-999e-4d51-8d7c-043ccbb50832,2677000,disabled-player,2026-03-10T00:00:00.000Z,13,False,0,Unknown,Unknown,,,13
+34bc1b17-ef7b-483c-8c47-134d217e36ca,2654880,trade,2027-02-05T00:00:00.000Z,12,True,1641738,Kobe,Kobe Brown,https://cdn.nba.com/headshots/nba/latest/260x190/1641738.png,Brown,13
+2922731c-9cb4-41bd-baa1-eeffc44bc56b,2296274,trade,2027-02-05T00:00:00.000Z,28,True,101108,Chris,Chris Paul,https://cdn.nba.com/headshots/nba/latest/260x190/101108.png,Paul,13
+f4a05179-8830-44de-8b0d-bfb8f6982b5a,1314427,trade,2027-02-05T00:00:00.000Z,12,True,1627826,Ivica,Ivica Zubac,https://cdn.nba.com/headshots/nba/latest/260x190/1627826.png,Zubac,13
+05bbfd81-0e7a-415c-837d-09a02b6a7b27,17000000,trade,2027-07-08T00:00:00.000Z,9,True,1628381,John,John Collins,https://cdn.nba.com/headshots/nba/latest/260x190/1628381.png,Collins,13
+cedafda7-fe30-433c-a25f-bae18d902972,674408,trade,2021-08-07T00:00:00.000Z,6,False,201580,JaVale,JaVale McGee,https://cdn.nba.com/headshots/nba/latest/260x190/201580.png,McGee,14
+b6096b6f-f93d-4e81-b7a3-a8d6eff50d9b,2692991,trade,2022-08-29T00:00:00.000Z,15,False,201188,Marc,Marc Gasol,https://cdn.nba.com/headshots/nba/latest/260x190/201188.png,Gasol,14
+f3fc8beb-349f-40b3-bcc2-aedc1ab36feb,1669178,trade,2023-01-03T00:00:00.000Z,6,False,200765,Rajon,Rajon Rondo,https://cdn.nba.com/headshots/nba/latest/260x190/200765.png,Rondo,14
+90f595d8-2412-4121-b796-5ec9e22dbde9,1836090,trade,2024-02-09T00:00:00.000Z,8,False,1628418,Thomas,Thomas Bryant,https://cdn.nba.com/headshots/nba/latest/260x190/1628418.png,Bryant,14
+357e3d5e-8aa9-40c0-8fdb-b5831cd9154e,2700000,trade,2024-02-09T00:00:00.000Z,22,False,201976,Patrick,Patrick Beverley,https://cdn.nba.com/headshots/nba/latest/260x190/201976.png,Beverley,14
+89cc6a06-5ce4-4764-9a37-d659f32667a0,1836090,trade,2024-02-09T00:00:00.000Z,29,False,1629308,Juan,Juan Toscano-Anderson,https://cdn.nba.com/headshots/nba/latest/260x190/1629308.png,Toscano-Anderson,14
+e4008346-2972-4513-938e-bad5ac7eb3ef,2298385,trade,2024-02-09T00:00:00.000Z,29,False,1627745,Damian,Damian Jones,https://cdn.nba.com/headshots/nba/latest/260x190/1627745.png,Jones,14
+be52dba9-507d-4242-894a-6d44f3e08133,12822000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,14,False,0,Unknown,Unknown,,,14
+6bb375ad-d85a-4c06-b959-2d13d691e7a5,1891857,trade,2025-12-29T00:00:00.000Z,2,False,1641721,Maxwell,Maxwell Lewis,https://cdn.nba.com/headshots/nba/latest/260x190/1641721.png,Lewis,14
+a9f252de-8d04-4d5f-bae0-bee9da52ed6e,893140,trade,2025-12-29T00:00:00.000Z,2,False,1626156,D'Angelo,D'Angelo Russell,https://cdn.nba.com/headshots/nba/latest/260x190/1626156.png,Russell,14
+568049f7-6e5b-4794-982b-cdc5e8241061,187500,trade,2026-02-02T00:00:00.000Z,7,False,203076,Anthony,Anthony Davis,https://cdn.nba.com/headshots/nba/latest/260x190/203076.png,Davis,14
+079a7a86-2357-48c6-af3f-c7e3e6b7078a,500000,trade,2027-02-05T00:00:00.000Z,1,True,1629216,Gabe,Gabe Vincent,https://cdn.nba.com/headshots/nba/latest/260x190/1629216.png,Vincent,14
+8ce2a05c-5dd9-4a8d-8068-e595c49abc03,3126308,trade,2020-11-22T00:00:00.000Z,30,False,101139,CJ,CJ Miles,https://cdn.nba.com/headshots/nba/latest/260x190/101139.png,Miles,15
+e81161dc-caa1-4c1b-9841-0082599313b5,766959,trade,2020-11-22T00:00:00.000Z,29,False,201144,Mike,Mike Conley,https://cdn.nba.com/headshots/nba/latest/260x190/201144.png,Conley,15
+74db6568-e6bf-4054-8dd5-1b5758095c9e,3440000,trade,2020-11-23T00:00:00.000Z,24,False,2594,Kyle,Kyle Korver,https://cdn.nba.com/headshots/nba/latest/260x190/2594.png,Korver,15
+c1c45f3d-315b-45a9-a5aa-fced55db11e8,1416852,trade,2020-11-23T00:00:00.000Z,24,False,1628975,Jevon,Jevon Carter,https://cdn.nba.com/headshots/nba/latest/260x190/1628975.png,Carter,15
+67843a3d-ec5f-4461-be60-fce45324aa3a,4736842,trade,2020-11-24T00:00:00.000Z,7,False,1626153,Delon,Delon Wright,https://cdn.nba.com/headshots/nba/latest/260x190/1626153.png,Wright,15
+012cce45-5ffb-4486-8620-92003297ae90,1845301,trade,2021-03-22T00:00:00.000Z,11,False,203998,Bruno,Bruno Caboclo,https://cdn.nba.com/headshots/nba/latest/260x190/203998.png,Caboclo,15
+440e4920-373d-46d8-ac88-a5c7d00f944a,4185185,trade,2021-03-22T00:00:00.000Z,16,False,2738,Andre,Andre Iguodala,https://cdn.nba.com/headshots/nba/latest/260x190/2738.png,Iguodala,15
+aeeb7ba6-8d2b-4d68-ba7c-2b91c856a26b,4054695,trade,2022-07-07T00:00:00.000Z,17,False,1628960,Grayson,Grayson Allen,https://cdn.nba.com/headshots/nba/latest/260x190/1628960.png,Allen,15
+6d22ba3d-fc89-493d-81c8-aa4b0d51e6f7,1018012,trade,2022-08-01T00:00:00.000Z,18,False,201976,Patrick,Patrick Beverley,https://cdn.nba.com/headshots/nba/latest/260x190/201976.png,Beverley,15
+750be89c-2ef6-4e2a-9e24-9d5907a86e4b,119844,trade,2022-09-07T00:00:00.000Z,2,False,1627823,Juancho,Juancho Hernangomez,https://cdn.nba.com/headshots/nba/latest/260x190/1627823.png,Hernangomez,15
+e55c6352-3964-43f9-ab08-d6eff78f5df7,7492540,trade,2024-07-08T00:00:00.000Z,11,False,1628415,Dillon,Dillon Brooks,https://cdn.nba.com/headshots/nba/latest/260x190/1628415.png,Brooks,15
+7adc29bb-451d-4c7a-8227-e69b57409b04,12600000,trade,2025-02-02T00:00:00.000Z,11,False,203500,Steven,Steven Adams,https://cdn.nba.com/headshots/nba/latest/260x190/203500.png,Adams,15
+f4759f0a-bf14-4b8e-b8b8-e6f99fd08cae,1930681,trade,2025-02-10T00:00:00.000Z,3,False,1630214,Xavier,Xavier Tillman,https://cdn.nba.com/headshots/nba/latest/260x190/1630214.png,Tillman,15
+24535331-d735-49d8-a11d-95768d1f7721,2718240,trade,2025-02-10T00:00:00.000Z,24,False,1631223,David,David Roddy,https://cdn.nba.com/headshots/nba/latest/260x190/1631223.png,Roddy,15
+c0b50586-5b95-4b56-af10-8ca61a293612,4668000,bi-annual,2025-06-30T00:00:00.000Z,15,False,0,Unknown,Unknown,,,15
+4b89fca8-3d3d-42bb-904e-ab94912cf476,8646448,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,15,False,0,Unknown,Unknown,,,15
+e60b06ae-fb4d-4671-b0bd-76c6f72290c8,8781000,room,2025-06-30T00:00:00.000Z,15,False,0,Unknown,Unknown,,,15
+c4585cf0-56f1-45c6-8b94-dd20553db0d6,6133005,trade,2025-07-19T00:00:00.000Z,2,False,1630533,Ziaire,Ziaire Williams,https://cdn.nba.com/headshots/nba/latest/260x190/1630533.png,Williams,15
+58daaf10-c09f-42d8-ac20-94f1d2e8fc83,7710285,trade,2026-02-06T00:00:00.000Z,30,False,203935,Marcus,Marcus Smart,https://cdn.nba.com/headshots/nba/latest/260x190/203935.png,Smart,15
+0aa906c2-b05e-4e91-ae78-828c35e242be,28872920,trade,2027-02-03T00:00:00.000Z,29,True,0,Unknown,Unknown,,,15
+30e9dd15-0e2d-4fe4-a0bc-79f6bfd92505,2644608,trade,2027-06-29T00:00:00.000Z,25,True,1629630,Ja,Ja Morant,https://cdn.nba.com/headshots/nba/latest/260x190/1629630.png,Morant,15
+ceb6c301-3c68-41d5-bf5d-ffe741eff852,7533867,trade,2021-02-08T00:00:00.000Z,18,False,1628575,Jaylen,Jaylen Johnson,https://cdn.nba.com/headshots/nba/latest/260x190/1628575.png,Johnson,16
+9a6f841c-6034-4cdf-a268-de464c358219,7533867,trade,2021-03-22T00:00:00.000Z,18,False,201949,James,James Johnson,https://cdn.nba.com/headshots/nba/latest/260x190/201949.png,Johnson,16
+a595aca0-eaa9-4565-8175-80261136a3d0,1782621,trade,2023-02-09T00:00:00.000Z,21,False,1629644,KZ,KZ Okpala,https://cdn.nba.com/headshots/nba/latest/260x190/1629644.png,Okpala,16
+a966a5fe-484a-4e32-948a-e53b9753bb24,4700000,trade,2024-02-07T00:00:00.000Z,27,False,203473,Dewayne,Dewayne Dedmon,https://cdn.nba.com/headshots/nba/latest/260x190/203473.png,Dedmon,16
+c0593d83-f02f-4070-a037-d2d861d14f9d,9450000,trade,2024-07-08T00:00:00.000Z,21,False,203506,Victor,Victor Oladipo,https://cdn.nba.com/headshots/nba/latest/260x190/203506.png,Oladipo,16
+cfac584e-1ae4-444c-ae99-e9bff0afee2e,7243842,trade,2024-07-08T00:00:00.000Z,6,False,1629622,Max,Max Strus,https://cdn.nba.com/headshots/nba/latest/260x190/1629622.png,Strus,16
+ca00bee9-679c-46b5-8867-50b9864d543a,6477319,trade,2025-01-23T00:00:00.000Z,4,False,200768,Kyle,Kyle Lowry,https://cdn.nba.com/headshots/nba/latest/260x190/200768.png,Lowry,16
+a013e43a-b538-4660-8cd3-3a7bd6bfa5e6,14104000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,16,True,0,Unknown,Unknown,,,16
+e11e25c1-8212-4254-8e57-b50374a1f4e0,5134000,bi-annual,2025-06-30T00:00:00.000Z,16,True,0,Unknown,Unknown,,,16
+0a44c187-d1b2-49fe-aec7-cc8c15777f1a,2087519,trade,2025-12-15T00:00:00.000Z,12,False,1628418,Thomas,Thomas Bryant,https://cdn.nba.com/headshots/nba/latest/260x190/1628418.png,Bryant,16
+fcab6d0f-86e7-4def-9966-6b8558a11e51,3051153,trade,2026-02-06T00:00:00.000Z,29,False,1626196,Josh,Josh Richardson,https://cdn.nba.com/headshots/nba/latest/260x190/1626196.png,Richardson,16
+574b43cc-dfef-4ce8-b4e2-9fe877c56192,7763122,trade,2026-02-06T00:00:00.000Z,10,False,202710,Jimmy,Jimmy Butler,https://cdn.nba.com/headshots/nba/latest/260x190/202710.png,Butler,16
+e55d20b6-2864-49b1-bc72-658c2ad6c5a4,16834692,trade,2026-07-07T00:00:00.000Z,9,False,1629130,Duncan,Duncan Robinson,https://cdn.nba.com/headshots/nba/latest/260x190/1629130.png,Robinson,16
+0394eaab-a308-47ce-a388-7139929d37dc,5616000,trade,2026-08-15T00:00:00.000Z,2,True,1629312,Haywood,Haywood Highsmith,https://cdn.nba.com/headshots/nba/latest/260x190/1629312.png,Highsmith,16
+601f3235-4799-467c-975a-8aaaf630604c,1620564,trade,2022-02-04T00:00:00.000Z,24,False,1628470,Torrey,Torrey Craig,https://cdn.nba.com/headshots/nba/latest/260x190/1628470.png,Craig,17
+901a5bd2-98e3-4e6c-b1c9-74fa9b332ffb,831820,trade,2022-02-07T00:00:00.000Z,11,False,201571,D.J.,D.J. Augustin,https://cdn.nba.com/headshots/nba/latest/260x190/201571.png,Augustin,17
+c97f091f-c230-4794-9ada-253f863c6220,1517981,trade,2022-07-07T00:00:00.000Z,15,False,1630241,Sam,Sam Merrill,https://cdn.nba.com/headshots/nba/latest/260x190/1630241.png,Merrill,17
+312a1f5a-7e8b-40fb-b763-da7edd0dbb38,2019706,trade,2025-02-10T00:00:00.000Z,23,False,1626166,Cameron,Cameron Payne,https://cdn.nba.com/headshots/nba/latest/260x190/1626166.png,Payne,17
+4486a050-07a7-4a35-a783-7830c3eb9536,2019706,trade,2025-02-10T00:00:00.000Z,26,False,201577,Robin,Robin Lopez,https://cdn.nba.com/headshots/nba/latest/260x190/201577.png,Lopez,17
+e82c44e0-d98a-43ca-813f-4072a2d31b9d,3647000,room,2025-06-30T00:00:00.000Z,17,True,0,Unknown,Unknown,,,17
+f6ea283d-8db1-4123-8326-3c70a4472b82,366783,trade,2026-02-06T00:00:00.000Z,20,False,1630699,MarJon,MarJon Beauchamp,https://cdn.nba.com/headshots/nba/latest/260x190/1630699.png,Beauchamp,17
+c1121712-f331-4a27-935c-77366bf056f6,2087519,trade,2026-02-06T00:00:00.000Z,20,False,1626153,Delon,Delon Wright,https://cdn.nba.com/headshots/nba/latest/260x190/1626153.png,Wright,17
+6c27de11-e1b2-4ab5-b508-d946f8cc0d41,702950,trade,2026-02-06T00:00:00.000Z,30,False,1642358,AJ,AJ Johnson,https://cdn.nba.com/headshots/nba/latest/260x190/1642358.png,Johnson,17
+04a236ea-3d55-4681-8bbc-ed08dd3356ad,7210606,trade,2026-02-06T00:00:00.000Z,30,False,203114,Khris,Khris Middleton,https://cdn.nba.com/headshots/nba/latest/260x190/203114.png,Middleton,17
+c912bbe7-0854-4ac5-b890-da59e5e191dc,25456566,trade,2027-07-06T00:00:00.000Z,16,True,203507,Giannis,Giannis Antetokounmpo,https://cdn.nba.com/headshots/nba/latest/260x190/203507.png,Antetokounmpo,17
+333767da-b648-4ada-8f7a-a0370524a932,85763,trade,2027-07-06T00:00:00.000Z,16,True,1626171,Bobby,Bobby Portis,https://cdn.nba.com/headshots/nba/latest/260x190/1626171.png,Portis,17
+8e271720-afa7-4dcc-b2c5-892072312eb8,500000,trade,2021-03-08T00:00:00.000Z,1,False,201952,Jeff,Jeff Teague,https://cdn.nba.com/headshots/nba/latest/260x190/201952.png,Teague,18
+b91da818-a224-4e6d-aee8-11fe29275f8d,228505,trade,2021-03-08T00:00:00.000Z,1,False,1626203,Treveon,Treveon Graham,https://cdn.nba.com/headshots/nba/latest/260x190/1626203.png,Graham,18
+afcd7243-3ad5-494d-95d0-26bffae7f0c2,879813,trade,2021-03-22T00:00:00.000Z,15,False,203476,Gorgui,Gorgui Dieng,https://cdn.nba.com/headshots/nba/latest/260x190/203476.png,Dieng,18
+35390158-16f7-4ef9-9249-9e326d584546,4750000,trade,2022-06-30T00:00:00.000Z,6,False,201937,Ricky,Ricky Rubio,https://cdn.nba.com/headshots/nba/latest/260x190/201937.png,Rubio,18
+52f5c43f-f759-4ed5-a507-7cf991cdcb11,4374000,trade,2023-07-06T00:00:00.000Z,29,False,1629020,Jarred,Jarred Vanderbilt,https://cdn.nba.com/headshots/nba/latest/260x190/1629020.png,Vanderbilt,18
+3f7caf95-3359-47b3-942c-678ca7edd865,3688117,trade,2024-02-09T00:00:00.000Z,14,False,1626156,D'Angelo,D'Angelo Russell,https://cdn.nba.com/headshots/nba/latest/260x190/1626156.png,Russell,18
+662ac5bc-f78e-4e7c-ab01-0107942c8f21,4000000,trade,2025-02-10T00:00:00.000Z,9,False,1628972,Troy,Troy Brown Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1628972.png,Brown Jr.,18
+2105cc02-015a-48ab-a6fd-1af1e999126f,14104000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,18,True,0,Unknown,Unknown,,,18
+b6f3fc90-cfe9-452a-b3e8-189859932172,5135000,bi-annual,2025-06-30T00:00:00.000Z,18,True,0,Unknown,Unknown,,,18
+29cbe55c-4750-40ba-817d-1b5e4d8e2130,8780488,trade,2025-07-06T00:00:00.000Z,10,False,203937,Kyle,Kyle Anderson,https://cdn.nba.com/headshots/nba/latest/260x190/203937.png,Anderson,18
+556a618b-0c38-40ef-819d-fada406bc987,2537040,trade,2025-07-06T00:00:00.000Z,9,False,1631111,Wendell,Wendell Moore Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1631111.png,Moore Jr.,18
+0fb8b626-376d-486a-a769-d20ca809f4f9,4686880,trade,2025-10-02T00:00:00.000Z,20,False,1626157,Karl-Anthony,Karl-Anthony Towns,https://cdn.nba.com/headshots/nba/latest/260x190/1626157.png,Towns,18
+d066a5de-c5ea-4588-9ec5-01b3225ec2fd,62382,trade,2026-07-06T00:00:00.000Z,1,False,1629638,Nickeil,Nickeil Alexander-Walker,https://cdn.nba.com/headshots/nba/latest/260x190/1629638.png,Alexander-Walker,18
+b3a57b31-b3e8-49e2-b577-e913a9ceee75,10774038,trade,2027-02-03T00:00:00.000Z,5,True,201144,Mike,Mike Conley,https://cdn.nba.com/headshots/nba/latest/260x190/201144.png,Conley,18
+5ef5fc82-4836-4df4-afd9-2f9880c12a5c,6576120,trade,2027-02-05T00:00:00.000Z,5,True,1642265,Rob,Rob Dillingham,https://cdn.nba.com/headshots/nba/latest/260x190/1642265.png,Dillingham,18
+1f0111f4-36af-40c0-9238-73c162573b8f,3897436,trade,2022-02-11T00:00:00.000Z,7,False,1629740,Nicolo,Nicolo Melli,https://cdn.nba.com/headshots/nba/latest/260x190/1629740.png,Melli,19
+8b9837da-408b-4471-813d-65ac6cf918d4,6382262,trade,2022-07-07T00:00:00.000Z,15,False,203500,Steven,Steven Adams,https://cdn.nba.com/headshots/nba/latest/260x190/203500.png,Adams,19
+65406f62-4c9b-4322-88a1-3a3c556a750f,1786878,trade,2023-02-08T00:00:00.000Z,25,False,1629712,Didi,Didi Louzada,https://cdn.nba.com/headshots/nba/latest/260x190/1629712.png,Louzada,19
+2c60615b-d4fd-4d06-ab9f-99344be8f36b,5722116,trade,2025-01-17T00:00:00.000Z,12,False,1630184,Kira,Kira Lewis Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1630184.png,Lewis Jr.,19
+5f0b37f7-646e-4393-aa67-ab3773cd7d46,5134000,bi-annual,2025-06-30T00:00:00.000Z,19,True,0,Unknown,Unknown,,,19
+cf40fe04-d1fb-4e5c-839f-44979eb2259b,6104000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,19,True,0,Unknown,Unknown,,,19
+bd38b5c5-19c8-4942-b71d-416dd67b650d,9900000,trade,2025-07-07T00:00:00.000Z,30,False,202685,Jonas,Jonas Valančiūnas,https://cdn.nba.com/headshots/nba/latest/260x190/202685.png,Valančiūnas,19
+5b92653d-67d8-4cd1-aac2-847237362ac8,2087519,trade,2026-02-05T00:00:00.000Z,21,False,1628464,Daniel,Daniel Theis,https://cdn.nba.com/headshots/nba/latest/260x190/1628464.png,Theis,19
+2f8a7fe8-4e78-4549-bbc9-a01662507c3d,13016200,trade,2026-02-06T00:00:00.000Z,28,False,1627742,Brandon,Brandon Ingram,https://cdn.nba.com/headshots/nba/latest/260x190/1627742.png,Ingram,19
+81e0a186-3612-4dd8-8cfc-6cff957b118b,13445122,trade,2026-07-06T00:00:00.000Z,30,False,0,Unknown,Unknown,,,19
+1fc82b97-28fb-4b0e-a67d-bd3f2042137c,4500000,trade,2027-02-05T00:00:00.000Z,20,True,1630631,Jose,Jose Alvarado,https://cdn.nba.com/headshots/nba/latest/260x190/1630631.png,Alvarado,19
+665a4547-0f30-4f68-b5f8-aa4e5d033fc6,3988766,trade,2021-02-08T00:00:00.000Z,13,False,202694,Marcus,Marcus Morris Sr.,https://cdn.nba.com/headshots/nba/latest/260x190/202694.png,Morris Sr.,20
+a3259670-8392-4e12-b369-ed85e627b5c6,1175818,trade,2023-01-13T00:00:00.000Z,1,False,1628995,Kevin,Kevin Knox II,https://cdn.nba.com/headshots/nba/latest/260x190/1628995.png,Knox II,20
+373ecdf5-bfea-413e-aec4-45d7ad9a62c4,9165471,trade,2023-07-06T00:00:00.000Z,9,False,202689,Kemba,Kemba Walker,https://cdn.nba.com/headshots/nba/latest/260x190/202689.png,Walker,20
+8e0abf72-3467-4921-9f15-799414eea816,6803012,trade,2024-07-08T00:00:00.000Z,12,False,1630167,Obi,Obi Toppin,https://cdn.nba.com/headshots/nba/latest/260x190/1630167.png,Toppin,20
+99ffc905-6d1a-462c-b22d-6806a3c429cb,4171548,trade,2024-12-30T00:00:00.000Z,28,False,1630193,Immanuel,Immanuel Quickley,https://cdn.nba.com/headshots/nba/latest/260x190/1630193.png,Quickley,20
+8aa44065-ddf8-40b7-943d-4ed0cd4cb4c6,5241072,trade,2024-12-30T00:00:00.000Z,28,False,1629628,RJ,RJ Barrett,https://cdn.nba.com/headshots/nba/latest/260x190/1629628.png,Barrett,20
+60462027-bb16-4541-a8df-da03a34082dd,3873025,trade,2025-02-10T00:00:00.000Z,9,False,1630201,Malachi,Malachi Flynn,https://cdn.nba.com/headshots/nba/latest/260x190/1630201.png,Flynn,20
+e6e0bac0-0d5c-4a5b-9c6a-7bc9d48fc1bf,4668000,bi-annual,2025-06-30T00:00:00.000Z,20,False,0,Unknown,Unknown,,,20
+00812419-9aaf-4a28-963c-408ecf6064c8,12822000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,20,False,0,Unknown,Unknown,,,20
+0e15e684-efb8-4d11-ad2a-1cee1b3f8aa5,2092344,trade,2026-02-06T00:00:00.000Z,17,False,1630579,Jericho,Jericho Sims,https://cdn.nba.com/headshots/nba/latest/260x190/1630579.png,Sims,20
+92cb85a7-db17-426e-b2f4-9eeb916e9717,899118,trade,2027-02-05T00:00:00.000Z,19,True,1631207,Dalen,Dalen Terry,https://cdn.nba.com/headshots/nba/latest/260x190/1631207.png,Terry,20
+026917f8-edf2-4861-8759-7212a6a9d4d1,100882,trade,2027-02-05T00:00:00.000Z,5,True,1627824,Guerschon,Guerschon Yabusele,https://cdn.nba.com/headshots/nba/latest/260x190/1627824.png,Yabusele,20
+9fb13d2e-e0f9-4971-a44f-3a0102239e61,3646880,trade,2020-11-24T00:00:00.000Z,8,False,203924,Jerami,Jerami Grant,https://cdn.nba.com/headshots/nba/latest/260x190/203924.png,Grant,21
+e51e1c02-f61d-4242-a6ee-d2acb7b001d6,10389997,trade,2020-11-26T00:00:00.000Z,13,False,202331,Paul,Paul George,https://cdn.nba.com/headshots/nba/latest/260x190/202331.png,George,21
+b5b0da38-4252-4d0b-aadc-86bbaa8ba6b8,722254,trade,2021-03-11T00:00:00.000Z,7,False,1628383,Justin,Justin Patton,https://cdn.nba.com/headshots/nba/latest/260x190/1628383.png,Patton,21
+b723aad8-de0b-4516-b72c-0483ccc6391e,865853,trade,2021-07-30T00:00:00.000Z,14,False,203471,Dennis,Dennis Schröder,https://cdn.nba.com/headshots/nba/latest/260x190/203471.png,Schröder,21
+2bb00583-22ae-4092-b138-674ece3dbe65,850600,trade,2021-08-02T00:00:00.000Z,18,False,201937,Ricky,Ricky Rubio,https://cdn.nba.com/headshots/nba/latest/260x190/201937.png,Rubio,21
+cf665514-9839-4a5f-9fdf-2fb9a4d2dec4,332940,trade,2021-08-06T00:00:00.000Z,10,False,1626162,Kelly,Kelly Oubre Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1626162.png,Oubre Jr.,21
+1e92ede6-ffb5-4f5d-96a6-33431625e4af,1517981,trade,2021-08-09T00:00:00.000Z,12,False,1629665,Jalen,Jalen Lecque,https://cdn.nba.com/headshots/nba/latest/260x190/1629665.png,Lecque,21
+d59b99b3-e0fb-4557-a47d-01a37cf2ef00,27528088,trade,2021-08-09T00:00:00.000Z,19,False,203500,Steven,Steven Adams,https://cdn.nba.com/headshots/nba/latest/260x190/203500.png,Adams,21
+2c1af253-9d15-41f9-bfc4-1ad7745f7efa,842000,trade,2021-08-09T00:00:00.000Z,1,False,201568,Danilo,Danilo Gallinari,https://cdn.nba.com/headshots/nba/latest/260x190/201568.png,Gallinari,21
+115ecd4f-4147-4096-8190-da377289aa15,908960,trade,2021-11-16T00:00:00.000Z,24,False,101108,Chris,Chris Paul,https://cdn.nba.com/headshots/nba/latest/260x190/101108.png,Paul,21
+73e63883-d755-434d-92af-daec142c8393,11017379,trade,2022-02-03T00:00:00.000Z,16,False,2772,Trevor,Trevor Ariza,https://cdn.nba.com/headshots/nba/latest/260x190/2772.png,Ariza,21
+162e22a7-3aa8-4a3b-976a-43361a0f2dec,8072621,trade,2022-02-11T00:00:00.000Z,23,False,201588,George,George Hill,https://cdn.nba.com/headshots/nba/latest/260x190/201588.png,Hill,21
+29c8250a-34f1-4b1c-bc42-8dd02059380b,781759,trade,2023-09-27T00:00:00.000Z,1,False,1630249,Vít,Vít Krejčí,https://cdn.nba.com/headshots/nba/latest/260x190/1630249.png,Krejčí,21
+afdf1a87-957a-4864-b3c6-b804a41d5e56,943000,trade,2023-10-02T00:00:00.000Z,11,False,202324,Derrick,Derrick Favors,https://cdn.nba.com/headshots/nba/latest/260x190/202324.png,Favors,21
+0f715205-3325-42ea-8eff-ae76a2289d79,4220057,trade,2023-10-02T00:00:00.000Z,11,False,1629660,Ty,Ty Jerome,https://cdn.nba.com/headshots/nba/latest/260x190/1629660.png,Jerome,21
+82d748b9-dc31-47df-9e7c-d27a9b8bddd0,3500000,trade,2024-02-09T00:00:00.000Z,2,False,203488,Mike,Mike Muscala,https://cdn.nba.com/headshots/nba/latest/260x190/203488.png,Muscala,21
+c2ef5bb2-9315-44af-bfb1-082cbb88c687,4264629,trade,2024-02-09T00:00:00.000Z,24,False,1629647,Darius,Darius Bazley,https://cdn.nba.com/headshots/nba/latest/260x190/1629647.png,Bazley,21
+b859661d-7045-4ee0-bfca-471ecdef9582,1900000,trade,2024-10-17T00:00:00.000Z,11,False,1630526,Jeremiah,Jeremiah Robinson-Earl,https://cdn.nba.com/headshots/nba/latest/260x190/1630526.png,Robinson-Earl,21
+d339fa7c-e816-4128-884c-d94976ddaa72,5134000,bi-annual,2025-06-30T00:00:00.000Z,21,True,0,Unknown,Unknown,,,21
+99111aeb-8f0d-4b88-8139-bbf95e2afb5c,14104000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,21,True,0,Unknown,Unknown,,,21
+9c530f65-ebe2-452a-b6af-28dda8e3e40f,7983000,room,2025-06-30T00:00:00.000Z,21,False,0,Unknown,Unknown,,,21
+7d56fb5d-d181-46a5-b306-e5f59cb60bbb,2327520,disabled-player,2026-03-10T00:00:00.000Z,21,False,0,Unknown,Unknown,,,21
+54b4f5c6-4eb8-4e61-8c92-d32608044927,501667,trade,2026-06-28T00:00:00.000Z,30,False,1641794,Dillon,Dillon Jones,https://cdn.nba.com/headshots/nba/latest/260x190/1641794.png,Jones,21
+8d95279f-5d09-413f-90c4-cbc0bbc1d397,2449522,trade,2027-02-04T00:00:00.000Z,4,True,1631172,Ousmane,Ousmane Dieng,https://cdn.nba.com/headshots/nba/latest/260x190/1631172.png,Dieng,21
+b39f6122-eea6-4937-aefc-ea52af2c7462,9028038,trade,2027-07-06T00:00:00.000Z,1,True,1630598,Aaron,Aaron Wiggins,https://cdn.nba.com/headshots/nba/latest/260x190/1630598.png,Wiggins,21
+4cafda27-5d14-40c0-9574-c9a6a284976e,11323006,trade,2027-07-06T00:00:00.000Z,9,True,1630198,Isaiah,Isaiah Joe,https://cdn.nba.com/headshots/nba/latest/260x190/1630198.png,Joe,21
+ff8dbb2a-3eb2-4a1b-a5e8-414330936d54,17150000,trade,2022-02-11T00:00:00.000Z,2,False,203095,Evan,Evan Fournier,https://cdn.nba.com/headshots/nba/latest/260x190/203095.png,Fournier,22
+4a31ebb3-63f8-45a5-927b-d70f95cb33b9,2000000,trade,2022-02-11T00:00:00.000Z,8,False,1629109,Gary,Gary Clark,https://cdn.nba.com/headshots/nba/latest/260x190/1629109.png,Clark,22
+0feae6e9-21fa-4c97-84c2-cb5581ed1110,4272060,trade,2022-02-11T00:00:00.000Z,5,False,202329,Al-Farouq,Al-Farouq Aminu,https://cdn.nba.com/headshots/nba/latest/260x190/202329.png,Aminu,22
+40050aad-cd9b-4be5-bdf9-7c44976e2b8d,7104000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,22,True,0,Unknown,Unknown,,,22
+4e7c7e0d-4d54-4b3b-a936-763a794c78af,7983000,room,2025-06-30T00:00:00.000Z,22,False,0,Unknown,Unknown,,,22
+a763675f-054a-4441-b236-a05f466ffaec,5134000,bi-annual,2025-06-30T00:00:00.000Z,22,True,0,Unknown,Unknown,,,22
+be5e389c-cecf-4dcc-9188-05227766d70f,7000000,trade,2027-02-04T00:00:00.000Z,7,True,1626145,Tyus,Tyus Jones,https://cdn.nba.com/headshots/nba/latest/260x190/1626145.png,Jones,22
+9fdeeaff-ddbd-4305-8bb3-13a9acbe59e2,1882867,trade,2021-03-22T00:00:00.000Z,22,False,203516,James,James Ennis III,https://cdn.nba.com/headshots/nba/latest/260x190/203516.png,Ennis III,23
+ce96f305-7640-4ae2-88fc-97394c755f89,8190134,trade,2021-09-07T00:00:00.000Z,21,False,201143,Al,Al Horford,https://cdn.nba.com/headshots/nba/latest/260x190/201143.png,Horford,23
+2b87f5d6-8eb2-49b0-bfae-eb035340e59d,35989,trade,2021-11-18T00:00:00.000Z,7,False,1626196,Josh,Josh Richardson,https://cdn.nba.com/headshots/nba/latest/260x190/1626196.png,Richardson,23
+6bfa1a7e-296b-49ef-a646-316d0a1a7a9e,1669178,trade,2023-02-10T00:00:00.000Z,3,False,203083,Andre,Andre Drummond,https://cdn.nba.com/headshots/nba/latest/260x190/203083.png,Drummond,23
+fd268f40-77d2-4848-8d48-c97af6c2b8d3,518165,trade,2024-02-09T00:00:00.000Z,25,False,1629680,Matisse,Matisse Thybulle,https://cdn.nba.com/headshots/nba/latest/260x190/1629680.png,Thybulle,23
+a886747d-cc04-4cb2-9179-b2bafa81ea5c,559782,trade,2024-11-01T00:00:00.000Z,13,False,1630196,Filip,Filip Petrusev,https://cdn.nba.com/headshots/nba/latest/260x190/1630196.png,Petrusev,23
+bf4d5564-f8c4-406d-a878-e56874d5df0c,6831413,trade,2024-11-01T00:00:00.000Z,13,False,201935,James,James Harden,https://cdn.nba.com/headshots/nba/latest/260x190/201935.png,Harden,23
+4989ee51-4daf-40a0-b733-f64e9c96f4d2,2226240,trade,2025-02-10T00:00:00.000Z,2,False,1630531,Jaden,Jaden Springer,https://cdn.nba.com/headshots/nba/latest/260x190/1630531.png,Springer,23
+1eeee8b9-fb9a-4fd9-9276-799a7c806dbe,5370370,trade,2025-02-10T00:00:00.000Z,12,False,1627788,Furkan,Furkan Korkmaz,https://cdn.nba.com/headshots/nba/latest/260x190/1627788.png,Korkmaz,23
+67fed09e-f2ba-4277-9091-582efb38d084,4310250,trade,2025-02-10T00:00:00.000Z,9,False,1627863,Danuel,Danuel House Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1627863.png,House Jr.,23
+9fb6c712-bcdb-43a5-9ea5-deb19cf47499,2019706,trade,2025-02-10T00:00:00.000Z,17,False,201976,Patrick,Patrick Beverley,https://cdn.nba.com/headshots/nba/latest/260x190/201976.png,Beverley,23
+96a3718b-8c46-4a32-b37c-a59de51eb216,10689000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,23,True,0,Unknown,Unknown,,,23
+0181b842-3177-4799-aae7-e2ff30ccc1ca,5134000,bi-annual,2025-06-30T00:00:00.000Z,23,True,0,Unknown,Unknown,,,23
+f52ad643-5120-4724-a532-250eb3577d46,3852319,trade,2026-02-04T00:00:00.000Z,7,False,1628997,Caleb,Caleb Martin,https://cdn.nba.com/headshots/nba/latest/260x190/1628997.png,Martin,23
+c34ec52f-27f6-4cfb-a7f2-2e6fafca4cc0,2087519,trade,2026-02-06T00:00:00.000Z,30,False,202704,Reggie,Reggie Jackson,https://cdn.nba.com/headshots/nba/latest/260x190/202704.png,Jackson,23
+18cc1dc7-1151-48ea-a2f2-f95311d888f5,7975000,trade,2026-02-06T00:00:00.000Z,29,False,0,Unknown,Unknown,,,23
+bbf8af18-e95a-4678-8c77-6794a87b4aa4,4221360,trade,2027-02-04T00:00:00.000Z,21,True,1642272,Jared,Jared McCain,https://cdn.nba.com/headshots/nba/latest/260x190/1642272.png,McCain,23
+9c8e4f2c-e0cf-4d89-a277-0333fd29b2f1,2296274,trade,2027-02-05T00:00:00.000Z,15,True,201569,Eric,Eric Gordon,https://cdn.nba.com/headshots/nba/latest/260x190/201569.png,Gordon,23
+5e28ee25-1c53-46b1-8589-60ec050405d0,2193480,trade,2021-11-16T00:00:00.000Z,21,False,1629660,Ty,Ty Jerome,https://cdn.nba.com/headshots/nba/latest/260x190/1629660.png,Jerome,24
+642d303d-a52b-4258-a229-0a456deb14ed,898310,trade,2021-11-16T00:00:00.000Z,21,False,1629665,Jalen,Jalen Lecque,https://cdn.nba.com/headshots/nba/latest/260x190/1629665.png,Lecque,24
+2e6af65a-38e4-414d-a526-8f71fd7ec4f8,2257131,trade,2024-02-09T00:00:00.000Z,21,False,203967,Dario,Dario Šarić,https://cdn.nba.com/headshots/nba/latest/260x190/203967.png,Šarić,24
+3ee50e07-a1e1-4045-ab9e-76044f107b24,1836096,trade,2024-07-11T00:00:00.000Z,15,False,1630225,Isaiah,Isaiah Todd,https://cdn.nba.com/headshots/nba/latest/260x190/1630225.png,Todd,24
+dea9dd45-5e7e-40e5-9eb8-8ee1dff16885,6500000,trade,2024-07-17T00:00:00.000Z,27,False,1626166,Cameron,Cameron Payne,https://cdn.nba.com/headshots/nba/latest/260x190/1626166.png,Payne,24
+cdeb0707-bdc5-4b01-9bf0-d9f10332ff59,1119563,trade,2024-09-27T00:00:00.000Z,25,False,1641739,Toumani,Toumani Camara,https://cdn.nba.com/headshots/nba/latest/260x190/1641739.png,Camara,24
+11a48116-74b1-49d8-be60-3a14ba942e32,5134000,bi-annual,2025-06-30T00:00:00.000Z,24,True,0,Unknown,Unknown,,,24
+06dfc792-b2b8-47b7-880c-67eb70d2df5e,726547,trade,2025-07-29T00:00:00.000Z,1,False,1631223,David,David Roddy,https://cdn.nba.com/headshots/nba/latest/260x190/1631223.png,Roddy,24
+c0db6183-7602-42de-bc93-1d7b815422ad,3250000,trade,2026-01-15T00:00:00.000Z,4,False,1629006,Josh,Josh Okogie,https://cdn.nba.com/headshots/nba/latest/260x190/1629006.png,Okogie,24
+c52dc635-cd9f-4178-a32e-9050aa08978a,251166,trade,2026-07-06T00:00:00.000Z,11,False,201142,Kevin,Kevin Durant,https://cdn.nba.com/headshots/nba/latest/260x190/201142.png,Durant,24
+e60ea13f-a6f3-4932-bfb0-23af012d7f5b,5000000,trade,2027-02-05T00:00:00.000Z,5,True,1630208,Nick,Nick Richards,https://cdn.nba.com/headshots/nba/latest/260x190/1630208.png,Richards,24
+0e95409e-44b6-4740-8e28-9fa1905605b2,2048494,trade,2027-02-05T00:00:00.000Z,17,True,0,Unknown,Unknown,,,24
+6c16c4b9-5634-4bca-9f74-b521022a389a,1790993,trade,2020-10-25T00:00:00.000Z,18,False,1627774,Jake,Jake Layman,https://cdn.nba.com/headshots/nba/latest/260x190/1627774.png,Layman,25
+31c1ee7f-6f7e-42ab-a9ce-4d7f4c54e37d,2302662,trade,2021-03-08T00:00:00.000Z,26,False,203145,Kent,Kent Bazemore,https://cdn.nba.com/headshots/nba/latest/260x190/203145.png,Bazemore,25
+b7772159-f4e9-44d8-b93a-624508b112ea,2338847,trade,2021-03-22T00:00:00.000Z,1,False,1627746,Skal,Skal Labissiere,https://cdn.nba.com/headshots/nba/latest/260x190/1627746.png,Labissiere,25
+de46bc61-82d5-4681-b467-9bea8bd73286,1737145,trade,2021-08-02T00:00:00.000Z,15,False,1626209,Mario,Mario Hezonja,https://cdn.nba.com/headshots/nba/latest/260x190/1626209.png,Hezonja,25
+3f9c0d25-816c-4ab4-bb1a-fbfae036e23d,661655,trade,2021-08-06T00:00:00.000Z,11,False,2772,Trevor,Trevor Ariza,https://cdn.nba.com/headshots/nba/latest/260x190/2772.png,Ariza,25
+1449ed05-46c5-4992-b9d4-d3f97f42d7af,1663861,trade,2022-02-11T00:00:00.000Z,28,False,1629018,Gary,Gary Trent Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1629018.png,Trent Jr.,25
+e463949e-6c0b-44c1-9d1b-d25b1454e2e7,6519792,trade,2023-02-06T00:00:00.000Z,13,False,203496,Robert,Robert Covington,https://cdn.nba.com/headshots/nba/latest/260x190/203496.png,Covington,25
+d1872557-5141-4be5-b8f4-9013fbcf53f9,20864198,trade,2023-02-08T00:00:00.000Z,19,False,203468,CJ,CJ McCollum,https://cdn.nba.com/headshots/nba/latest/260x190/203468.png,McCollum,25
+17886975-6a0a-4fd8-86c7-f492e83f9710,261480,trade,2023-02-09T00:00:00.000Z,29,False,1629638,Nickeil,Nickeil Alexander-Walker,https://cdn.nba.com/headshots/nba/latest/260x190/1629638.png,Alexander-Walker,25
+cb88a1ab-ea36-4881-9efe-87ddaa9f8dfc,8300000,trade,2024-02-09T00:00:00.000Z,10,False,1627780,Gary,Gary Payton II,https://cdn.nba.com/headshots/nba/latest/260x190/1627780.png,Payton II,25
+8a94daff-3ac9-43bf-8e88-3c738a74f4e4,1506456,trade,2024-02-09T00:00:00.000Z,20,False,1628404,Josh,Josh Hart,https://cdn.nba.com/headshots/nba/latest/260x190/1628404.png,Hart,25
+bf5ed0bd-aac2-4e2d-8a42-dae5e70e64ed,8778377,trade,2024-09-27T00:00:00.000Z,17,False,203081,Damian,Damian Lillard,https://cdn.nba.com/headshots/nba/latest/260x190/203081.png,Lillard,25
+7d5f7925-cb6e-46ef-9068-f72b054b5681,862382,trade,2024-10-01T00:00:00.000Z,2,False,201950,Jrue,Jrue Holiday,https://cdn.nba.com/headshots/nba/latest/260x190/201950.png,Holiday,25
+b0c37f2b-bf9d-40f5-9fec-d35f468ea25f,5134000,bi-annual,2025-06-30T00:00:00.000Z,25,True,0,Unknown,Unknown,,,25
+b8f90ec3-660a-4c38-aefb-b43308b01c3b,12860000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,25,False,0,Unknown,Unknown,,,25
+af130534-07c7-4241-a2cf-0c2ef1af78b9,6875000,trade,2025-07-06T00:00:00.000Z,30,False,1627763,Malcolm,Malcolm Brogdon,https://cdn.nba.com/headshots/nba/latest/260x190/1627763.png,Brogdon,25
+523ae3ae-d6a4-424b-adbd-cd76f77747b2,2673334,trade,2021-03-22T00:00:00.000Z,1,False,203473,Dewayne,Dewayne Dedmon,https://cdn.nba.com/headshots/nba/latest/260x190/203473.png,Dedmon,26
+694a9245-992a-4963-a3fa-086a03d2e6bd,3600000,trade,2022-02-11T00:00:00.000Z,9,False,202709,Cory,Cory Joseph,https://cdn.nba.com/headshots/nba/latest/260x190/202709.png,Joseph,26
+39a3857d-0165-42de-99d8-50245d67844f,2009019,trade,2022-02-11T00:00:00.000Z,16,False,202357,Nemanja,Nemanja Bjelica,https://cdn.nba.com/headshots/nba/latest/260x190/202357.png,Bjelica,26
+ea0fe76b-d23f-49ff-9aff-3be3619997bd,4023600,trade,2023-02-08T00:00:00.000Z,12,False,1630169,Tyrese,Tyrese Haliburton,https://cdn.nba.com/headshots/nba/latest/260x190/1630169.png,Haliburton,26
+eec3794c-7643-4d86-a7c3-1bd63e5a1096,1630934,trade,2023-02-10T00:00:00.000Z,9,False,1628963,Marvin,Marvin Bagley III,https://cdn.nba.com/headshots/nba/latest/260x190/1628963.png,Bagley III,26
+801ee8f4-459b-4efe-9d8b-53a820f32a84,4449607,trade,2025-06-28T00:00:00.000Z,28,False,1628426,Sasha,Sasha Vezenkov,https://cdn.nba.com/headshots/nba/latest/260x190/1628426.png,Vezenkov,26
+9906a1ac-1530-434b-9dbb-89c0df680713,547640,trade,2025-06-28T00:00:00.000Z,28,False,1630558,Davion,Davion Mitchell,https://cdn.nba.com/headshots/nba/latest/260x190/1630558.png,Mitchell,26
+407d07cb-a209-47e4-a76d-cefec2e410af,5134000,bi-annual,2025-06-30T00:00:00.000Z,26,True,0,Unknown,Unknown,,,26
+f7d98fad-88a8-4175-821b-b1b75309d75f,13233000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,26,True,0,Unknown,Unknown,,,26
+a7ae16ac-078e-47ab-9c91-11fce25334f6,5893768,trade,2025-07-08T00:00:00.000Z,5,False,1630537,Chris,Chris Duarte,https://cdn.nba.com/headshots/nba/latest/260x190/1630537.png,Duarte,26
+9cffc9f5-c75f-4f2e-bc41-9243deef5261,4741800,trade,2025-10-15T00:00:00.000Z,27,False,1629667,Jalen,Jalen McDaniels,https://cdn.nba.com/headshots/nba/latest/260x190/1629667.png,McDaniels,26
+1d1a9949-76ba-4136-9697-15ef65404717,2726357,trade,2026-02-03T00:00:00.000Z,5,False,1628989,Kevin,Kevin Huerter,https://cdn.nba.com/headshots/nba/latest/260x190/1628989.png,Huerter,26
+0b55b15d-3b0e-486c-b0c5-2e058bb1b38d,1891857,trade,2026-02-05T00:00:00.000Z,25,False,1631321,Sidy,Sidy Cissoko,https://cdn.nba.com/headshots/nba/latest/260x190/1631321.png,Cissoko,26
+4c0b7f38-fe06-4f26-b297-e33a6acb7bec,2120693,trade,2026-02-06T00:00:00.000Z,30,False,1641732,Colby,Colby Jones,https://cdn.nba.com/headshots/nba/latest/260x190/1641732.png,Jones,26
+95c4872f-04c4-4ffe-8c0d-dbeefadd3496,4968600,trade,2026-07-13T00:00:00.000Z,8,False,202685,Jonas,Jonas Valančiūnas,https://cdn.nba.com/headshots/nba/latest/260x190/202685.png,Valančiūnas,26
+4557ba57-efa4-4cb3-98f9-38d54d0789ac,5426400,trade,2027-02-01T00:00:00.000Z,5,True,0,Unknown,Unknown,,,26
+c023f605-d2c5-45a8-8aca-357c1e189356,5158080,trade,2027-06-30T00:00:00.000Z,1,True,1642269,Devin,Devin Carter,https://cdn.nba.com/headshots/nba/latest/260x190/1642269.png,Carter,26
+2c1f10d8-b0f8-46fa-9ade-fb8c9871e354,5134000,bi-annual,2025-06-30T00:00:00.000Z,27,True,0,Unknown,Unknown,,,27
+89e4cc73-b86b-45f4-a67b-01a5bbdc2355,3104000,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,27,True,0,Unknown,Unknown,,,27
+d7c80815-cf63-451d-97d5-1d4d5195a38c,3241200,room,2025-06-30T00:00:00.000Z,27,False,0,Unknown,Unknown,,,27
+1b0fb0d9-893b-49b9-a6f6-94a7f1b2aec7,1517981,trade,2022-02-11T00:00:00.000Z,29,False,1629744,Matt,Matt Thomas,https://cdn.nba.com/headshots/nba/latest/260x190/1629744.png,Thomas,28
+bd73a5f3-1885-4a8b-8252-78f5c7605a4f,1517981,trade,2022-02-11T00:00:00.000Z,26,False,1629056,Terence,Terence Davis,https://cdn.nba.com/headshots/nba/latest/260x190/1629056.png,Davis,28
+2735d7c9-5497-4290-a9ae-15cee5022123,3070052,trade,2022-07-06T00:00:00.000Z,16,False,200768,Kyle,Kyle Lowry,https://cdn.nba.com/headshots/nba/latest/260x190/200768.png,Lowry,28
+4abb5860-a676-419d-a9c1-8f324bd9259d,5250000,trade,2023-02-10T00:00:00.000Z,27,False,201609,Goran,Goran Dragic,https://cdn.nba.com/headshots/nba/latest/260x190/201609.png,Dragic,28
+a8a00dcf-e9fa-4589-a438-8029a0cafa36,1379527,trade,2024-12-30T00:00:00.000Z,20,False,1630173,Precious,Precious Achiuwa,https://cdn.nba.com/headshots/nba/latest/260x190/1630173.png,Achiuwa,28
+f9d911d5-0e35-4900-b025-7721b7adfe1d,5107652,trade,2025-01-17T00:00:00.000Z,12,False,1627783,Pascal,Pascal Siakam,https://cdn.nba.com/headshots/nba/latest/260x190/1627783.png,Siakam,28
+d72aefdc-f92e-4e8e-afed-e9ddbc99baef,1607916,trade,2025-02-10T00:00:00.000Z,29,False,1630184,Kira,Kira Lewis Jr.,https://cdn.nba.com/headshots/nba/latest/260x190/1630184.png,Lewis Jr.,28
+15c2223a-dae6-4161-b917-2d68bd6e84a6,5134000,bi-annual,2025-06-30T00:00:00.000Z,28,True,0,Unknown,Unknown,,,28
+a709269c-dbc5-4730-806a-273b38b73d00,11882323,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,28,True,0,Unknown,Unknown,,,28
+59fb9e25-3f00-482a-b1b1-c047946ffb0b,6383525,trade,2027-02-05T00:00:00.000Z,2,True,1630534,Ochai,Ochai Agbaji,https://cdn.nba.com/headshots/nba/latest/260x190/1630534.png,Agbaji,28
+24547bcd-2600-4a57-bace-823bdeafdef4,2024079,trade,2021-08-06T00:00:00.000Z,9,False,1628396,Tony,Tony Bradley,https://cdn.nba.com/headshots/nba/latest/260x190/1628396.png,Bradley,29
+8bec5519-698e-4042-b2c3-ebfd49d805fc,5005350,trade,2021-08-06T00:00:00.000Z,20,False,202334,Ed,Ed Davis,https://cdn.nba.com/headshots/nba/latest/260x190/202334.png,Davis,29
+258fdf31-9556-4772-bfde-e0b1bdab000d,340000,trade,2021-08-11T00:00:00.000Z,6,False,1629730,Rayjon,Rayjon Tucker,https://cdn.nba.com/headshots/nba/latest/260x190/1629730.png,Tucker,29
+8a3faaeb-89ce-4f51-91ef-a989aa99664d,567564,trade,2022-06-27T00:00:00.000Z,21,False,202324,Derrick,Derrick Favors,https://cdn.nba.com/headshots/nba/latest/260x190/202324.png,Favors,29
+454b3779-7647-41a5-88da-82c37d6a3947,799106,trade,2023-01-04T00:00:00.000Z,21,False,1629671,Miye,Miye Oni,https://cdn.nba.com/headshots/nba/latest/260x190/1629671.png,Oni,29
+cae60453-117c-4a2c-88eb-3131d5e02a83,9774884,trade,2023-02-09T00:00:00.000Z,25,False,204060,Joe,Joe Ingles,https://cdn.nba.com/headshots/nba/latest/260x190/204060.png,Ingles,29
+809d8f55-f1fd-4e8b-8e1a-9eec4588c6e8,1517981,trade,2023-02-09T00:00:00.000Z,25,False,1630190,Elijah,Elijah Hughes,https://cdn.nba.com/headshots/nba/latest/260x190/1630190.png,Hughes,29
+f20a5f82-c469-433d-805a-b65ea2472163,202202,trade,2023-06-30T00:00:00.000Z,3,False,1626220,Royce,Royce O'Neale,https://cdn.nba.com/headshots/nba/latest/260x190/1626220.png,O'Neale,29
+7f2bea5c-0445-4cee-a6ac-f638589da79f,9614379,trade,2023-07-06T00:00:00.000Z,18,False,203497,Rudy,Rudy Gobert,https://cdn.nba.com/headshots/nba/latest/260x190/203497.png,Gobert,29
+82704baf-4626-4fb2-ad1b-b021c73e2c88,2740000,trade,2023-08-25T00:00:00.000Z,14,False,201976,Patrick,Patrick Beverley,https://cdn.nba.com/headshots/nba/latest/260x190/201976.png,Beverley,29
+ff021b52-cc8b-40fd-b4e8-043e9d4ac117,6745122,trade,2023-09-22T00:00:00.000Z,9,False,202711,Bojan,Bojan Bogdanović,https://cdn.nba.com/headshots/nba/latest/260x190/202711.png,Bogdanović,29
+d10ea060-016b-49d7-9ced-bd3369ba82d4,4374000,trade,2024-02-09T00:00:00.000Z,14,False,1629020,Jarred,Jarred Vanderbilt,https://cdn.nba.com/headshots/nba/latest/260x190/1629020.png,Vanderbilt,29
+7731c327-4b2e-46a0-95c6-4027b7983440,5009633,trade,2024-02-09T00:00:00.000Z,18,False,1629638,Nickeil,Nickeil Alexander-Walker,https://cdn.nba.com/headshots/nba/latest/260x190/1629638.png,Alexander-Walker,29
+2fc3d599-d968-4dc3-87d6-94e7302c5d5e,6473006,trade,2025-02-10T00:00:00.000Z,28,False,203482,Kelly,Kelly Olynyk,https://cdn.nba.com/headshots/nba/latest/260x190/203482.png,Olynyk,29
+449ab851-6a62-43ad-90b7-c1b061a04023,3044872,trade,2025-02-10T00:00:00.000Z,9,False,1631323,Simone,Simone Fontecchio,https://cdn.nba.com/headshots/nba/latest/260x190/1631323.png,Fontecchio,29
+eee2a359-cdf7-4c9f-b2e0-f9a48be7b8bc,2924340,disabled-player,2025-03-10T00:00:00.000Z,29,False,0,Unknown,Unknown,,,29
+21e003bc-5bf7-4e7b-b452-e82d34318df3,5315056,room,2025-06-30T00:00:00.000Z,29,False,0,Unknown,Unknown,,,29
+adc91194-8c13-43a6-b220-7419ce0f1c98,4884488,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,29,True,0,Unknown,Unknown,,,29
+a48f98b5-ff9d-4387-b98d-2622423c3ce0,984000,bi-annual,2025-06-30T00:00:00.000Z,29,True,0,Unknown,Unknown,,,29
+45e7b683-398d-4fe4-b439-d66f28980611,3564000,trade,2026-02-06T00:00:00.000Z,13,False,200782,P.J.,P.J. Tucker,https://cdn.nba.com/headshots/nba/latest/260x190/200782.png,Tucker,29
+e11648d3-9eb9-4410-8e1c-4e7ac4583b2e,0,trade,2026-02-06T00:00:00.000Z,13,False,201988,Patty,Patty Mills,https://cdn.nba.com/headshots/nba/latest/260x190/201988.png,Mills,29
+cb4257d8-a2f2-4ba7-9aaa-36d9103c8f07,25000,trade,2026-06-29T00:00:00.000Z,4,False,1629012,Collin,Collin Sexton,https://cdn.nba.com/headshots/nba/latest/260x190/1629012.png,Sexton,29
+5b17d11e-075e-4daf-bc0d-349446c0f386,2215000,trade,2026-07-07T00:00:00.000Z,13,False,1628381,John,John Collins,https://cdn.nba.com/headshots/nba/latest/260x190/1628381.png,Collins,29
+838581b0-df80-4275-9d0a-08887d6e3d28,2296274,trade,2027-02-05T00:00:00.000Z,15,True,1629111,Jock,Jock Landale,https://cdn.nba.com/headshots/nba/latest/260x190/1629111.png,Landale,29
+fbdecf27-d4bd-4a07-9127-070d264af06c,15054411,trade,2027-07-08T00:00:00.000Z,14,True,1631117,Walker,Walker Kessler,https://cdn.nba.com/headshots/nba/latest/260x190/1631117.png,Kessler,29
+d03481c9-fd34-4b52-883e-1ad210eb03c1,1432280,trade,2020-11-23T00:00:00.000Z,5,False,203107,Tomas,Tomas Satoransky,https://cdn.nba.com/headshots/nba/latest/260x190/203107.png,Satoransky,30
+e51838bc-4374-4ec3-ab7c-f4ec7a5527bb,1620564,trade,2021-03-22T00:00:00.000Z,13,False,202738,Isaiah,Isaiah Thomas,https://cdn.nba.com/headshots/nba/latest/260x190/202738.png,Thomas,30
+5be1b6a8-10f8-4f08-a4c8-84b0ffc54ffe,1645357,trade,2021-03-22T00:00:00.000Z,8,False,203895,Jordan,Jordan McRae,https://cdn.nba.com/headshots/nba/latest/260x190/203895.png,McRae,30
+cbc677d9-39a0-4b20-804c-e81d478ed562,1000000,trade,2021-07-30T00:00:00.000Z,21,False,1629678,Admiral,Admiral Schofield,https://cdn.nba.com/headshots/nba/latest/260x190/1629678.png,Schofield,30
+ae11297e-80d9-462f-a27e-0cfa1daf2e8c,2161920,trade,2022-02-11T00:00:00.000Z,2,False,1629021,Moritz,Moritz Wagner,https://cdn.nba.com/headshots/nba/latest/260x190/1629021.png,Wagner,30
+2e38103f-691e-4519-9a46-8f84accec52d,3980551,trade,2023-02-10T00:00:00.000Z,24,False,1628988,Aaron,Aaron Holiday,https://cdn.nba.com/headshots/nba/latest/260x190/1628988.png,Holiday,30
+0f6ae360-fcfc-47f7-90de-3f2bb4ec642a,5220900,trade,2023-02-10T00:00:00.000Z,4,False,1626149,Montrezl,Montrezl Harrell,https://cdn.nba.com/headshots/nba/latest/260x190/1626149.png,Harrell,30
+acfb50ab-a138-4152-86fc-5c44943508b1,425468,trade,2024-01-23T00:00:00.000Z,14,False,1629060,Rui,Rui Hachimura,https://cdn.nba.com/headshots/nba/latest/260x190/1629060.png,Hachimura,30
+be021165-e76b-437f-a557-86f3e366d7fd,5379250,trade,2024-06-24T00:00:00.000Z,24,False,203078,Bradley,Bradley Beal,https://cdn.nba.com/headshots/nba/latest/260x190/203078.png,Beal,30
+91ce0fc3-40b9-429f-aa45-5671c2ba1ae1,308380,trade,2024-06-24T00:00:00.000Z,2,False,204001,Kristaps,Kristaps Porziņģis,https://cdn.nba.com/headshots/nba/latest/260x190/204001.png,Porziņģis,30
+f6ee5c17-dbde-418e-84eb-2cce70332d34,1575000,trade,2024-06-24T00:00:00.000Z,24,False,1630225,Isaiah,Isaiah Todd,https://cdn.nba.com/headshots/nba/latest/260x190/1630225.png,Todd,30
+3dd4a644-c8df-45ad-a23f-98e39898ac18,300000,trade,2024-06-24T00:00:00.000Z,24,False,1630692,Jordan,Jordan Goodwin,https://cdn.nba.com/headshots/nba/latest/260x190/1630692.png,Goodwin,30
+8275c0b3-5d63-4fe0-a5b6-bc8b9b27da3d,1508547,trade,2024-07-08T00:00:00.000Z,10,False,101108,Chris,Chris Paul,https://cdn.nba.com/headshots/nba/latest/260x190/101108.png,Paul,30
+0dec210e-715e-4213-9e04-35e99c704c70,9800926,trade,2024-07-08T00:00:00.000Z,9,False,1628420,Monté,Monté Morris,https://cdn.nba.com/headshots/nba/latest/260x190/1628420.png,Morris,30
+a18b4209-87a2-4e46-8ca9-5a86b0f415dc,3500000,trade,2025-01-14T00:00:00.000Z,9,False,203488,Mike,Mike Muscala,https://cdn.nba.com/headshots/nba/latest/260x190/203488.png,Muscala,30
+6cf784db-9f4c-4590-88ae-2a19454d6f06,6802950,trade,2025-01-14T00:00:00.000Z,9,False,201568,Danilo,Danilo Gallinari,https://cdn.nba.com/headshots/nba/latest/260x190/201568.png,Gallinari,30
+f53faa6b-e333-42d0-a325-ee14f16c1799,12402000,trade,2025-02-10T00:00:00.000Z,7,False,1629655,Daniel,Daniel Gafford,https://cdn.nba.com/headshots/nba/latest/260x190/1629655.png,Gafford,30
+6e961766-35ee-43d3-9dd9-0fd8d792e39a,407672,bi-annual,2025-06-30T00:00:00.000Z,30,True,0,Unknown,Unknown,,,30
+d1e352fe-7c6e-4643-8ac4-595fc61b5089,5561857,non-taxpayer-mid-level,2025-06-30T00:00:00.000Z,30,True,0,Unknown,Unknown,,,30
+a2641242-8b8e-4ff5-ac2a-203cd7f9f52f,9900000,trade,2026-02-05T00:00:00.000Z,26,False,202685,Jonas,Jonas Valančiūnas,https://cdn.nba.com/headshots/nba/latest/260x190/202685.png,Valančiūnas,30
+e4718c48-550b-411d-b9de-438da8b448e7,329127,trade,2026-02-06T00:00:00.000Z,15,False,76526,Johnny,Johnny Davis,,Davis,30
+baf0cd11-b99b-4476-b26b-e0136f7db914,0,trade,2026-02-06T00:00:00.000Z,13,False,0,Unknown,Unknown,,,30
+72e99869-d2c7-4905-b0c1-47bcf0951a4b,1769880,disabled-player,2026-03-10T00:00:00.000Z,30,False,0,Unknown,Unknown,,,30
+2d0b1eba-6ac0-4802-8fc7-b6b3e7ecfacd,13445122,trade,2026-07-09T00:00:00.000Z,27,False,203482,Kelly,Kelly Olynyk,https://cdn.nba.com/headshots/nba/latest/260x190/203482.png,Olynyk,30
+a751fc00-f83b-43c0-8dde-6ac7d31d71a7,6000000,trade,2027-07-07T00:00:00.000Z,14,True,1630702,Jaden,Jaden Hardy,https://cdn.nba.com/headshots/nba/latest/260x190/1630702.png,Hardy,30
+3a8ac49c-4a99-47b6-b5d8-bdad72eb9b52,5969250,trade,2027-07-08T00:00:00.000Z,15,True,1626156,D'Angelo,D'Angelo Russell,https://cdn.nba.com/headshots/nba/latest/260x190/1626156.png,Russell,30

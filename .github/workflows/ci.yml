@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+      - run: uv python install 3.12
+      - run: uv sync --all-packages --dev
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Format check
+        run: uv run ruff format --check .
+
+      # The engine must stay free of LLM dependencies (ADR-001). This is the
+      # cheapest possible enforcement and it fails loudly.
+      - name: Engine imports no LLM client
+        run: |
+          if grep -rEn "import (anthropic|openai)|from (anthropic|openai)" packages/engine/src; then
+            echo "::error::packages/engine must not import an LLM client (ADR-001)"
+            exit 1
+          fi
+          echo "ok: engine is LLM-free"
+
+      - name: Typecheck
+        run: uv run mypy packages/engine/src packages/data/src packages/rag/src
+
+      - name: Tests
+        run: uv run pytest
+
+  # Promoted to blocking once Phase 3 reports a pass rate (see docs/build-plan.md 3.7)
+  evals:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv python install 3.12
+      - run: uv sync --all-packages --dev
+      - name: Eval suite
+        run: uv run pytest -m eval || echo "eval suite not yet implemented"

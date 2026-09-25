@@ -1,0 +1,47 @@
+[project]
+name = "nbacbaanalyzer"
+version = "0.1.0"
+description = "Ask questions about the NBA CBA and get answers a rules engine can defend."
+requires-python = ">=3.12"
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "hypothesis>=6.100",
+    "ruff>=0.6",
+    "mypy>=1.11",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["packages/engine/src", "packages/data/src", "packages/rag/src", "apps/api/src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "RUF"]
+
+# The scrapers are standalone stdlib operational scripts, not library code.
+# They are held to correctness (E, F, B) but not to library ergonomics:
+# short-lived file handles and compact one-liners are fine there. The engine,
+# data and rag packages get the full ruleset.
+[tool.ruff.lint.per-file-ignores]
+"scraper/*.py" = ["SIM115", "E702", "E501", "B023", "RUF005"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_unused_configs = true
+ignore_missing_imports = true
+
+# The engine is the part that must be provably correct. Hold it higher than app code.
+[[tool.mypy.overrides]]
+module = "engine.*"
+strict = true
+disallow_any_explicit = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "packages"]
+addopts = "-q"

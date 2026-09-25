@@ -1,0 +1,617 @@
+id,createdAt,details,from,isActive,positionNumber,round,teamId,to,updatedAt,year,_source_team_ids
+7YqpOuc5rimTKw,2025-01-25T16:12:49.443Z,"NOP will receive the more favorable of its 2027 1st round pick and MIL's 2027 1st round pick and ATL will receive the less favorable of the two protected for selections 1-4; if this pick falls within its protected range and is therefore not conveyable, then NOP' commitment to ATL will be lifted and NOP will instead receive both picks (via NOP) [DEN-MIL-NOP-OKC, 11/23/2020; ATL-NOP, 7/6/2024]",NOP or MIL,True,,1,1,NOP  holds rights to swap,2026-08-31T08:18:45.034Z,2027,1
+ilIF7bn5Jw,2020-11-21T16:46:04.443Z,,,True,,2,1,,2026-08-31T08:18:45.034Z,2027,1
+07y0k9KKs1_x3g,2022-07-01T06:09:24.034Z,No protections,,True,,1,1,SAS,2026-08-31T08:18:45.034Z,2027,1
+Z0co_6gnZTDzXz,2025-04-10T02:48:58.036Z,"UTA will receive the most favorable of its 2028 1st round pick, CLE's 2028 1st round pick and the LAL' 2028 1st round pick; the LAL will receive the less favorable of (1) its pick and (2) the more favorable of the UTA pick and the CLE pick; ATL will receive the more favorable of (1) its 2028 1st round pick and (2) the less favorable of the UTA pick and the CLE pick and CLE will receive the least favorable of the three (via UTA's right to swap for CLE; via UTA's right to swap UTA or CLE for LAL; via ATL's right to swap for UTA or CLE) [CLE-UTA, 9/3/2022; ATL-CLE, 2/6/2025; LAL-UTA, pending]",UTA or CLE,True,,1,1,UTA  holds rights to swap,2026-08-31T08:18:45.034Z,2028,1
+6IozknPE8ZcOFQ,2021-06-21T10:08:45.886Z,,,True,,1,1,,2026-08-31T08:18:45.034Z,2028,1
+2VA3nDHWMyoh8q,2025-01-25T16:12:49.443Z,No protections,,True,,2,1,BKN,2026-08-31T08:18:45.034Z,2028,1
+Q3T2DYCDrTw8Xh,2026-07-08T06:21:47.731Z,No protections,,True,,2,1,CHA or OKC,2026-08-31T08:18:45.034Z,2029,1
+bVgKHIR1XM8xUN,2022-06-24T14:50:00.459Z,,,True,,1,1,,2026-08-31T08:18:45.034Z,2029,1
+39VTt52PgCm6dM,2025-04-10T02:48:58.036Z,No protections,CLE,True,,2,1,,2026-08-31T08:18:45.034Z,2029,1
+szUPFtNDBfhAxg,2026-02-03T15:41:13.755Z,No protections,NYK,True,,2,1,,2026-08-31T08:18:45.034Z,2030,1
+0HS4sDmmDM2EBW,2023-06-27T03:57:46.352Z,,,True,,1,1,,2026-08-31T08:18:45.034Z,2030,1
+tjm9O4n2FVGCu_,2026-07-08T06:21:47.731Z,No protections,,True,,2,1,OKC,2026-08-31T08:18:45.034Z,2030,1
+fFpzEqXuVoiMhv,2025-07-08T01:09:45.446Z,"ATL has the right to swap its 2031 2nd round pick for HOU's 2031 2nd round pick protected for selections 56-60 (if this pick falls within its protected range and is therefore not conveyable, then HOU's commitment to ATL will be lifted) [ATL-BKN-GSW-HOU-LAL-MIN-PHX, 7/6/2025]",HOU,True,,2,1,ATL  holds rights to swap,2026-08-31T08:18:45.034Z,2031,1
+9uT1gJvyuRoGUj,2024-06-26T17:07:21.129Z,,,True,,2,1,,2026-08-31T08:18:45.034Z,2031,1
+wVPbpw15G07scz,2024-06-26T17:07:21.129Z,,,True,,1,1,,2026-08-31T08:18:45.034Z,2031,1
+wtZoYOmhQ6A3dO,2025-06-27T18:30:43.808Z,,,True,,1,1,,2026-08-31T08:18:45.034Z,2032,1
+jIuUdrcyQXN4tX,2026-07-08T06:21:47.731Z,No protections,LAL swap rights,True,,2,1,,2026-08-31T08:18:45.034Z,2032,1
+Ey9_8NUAkdB2Cy,2025-06-27T18:30:43.808Z,,,True,,2,1,,2026-08-31T08:18:45.034Z,2032,1
+SjcS7cw0CiehO9,2026-07-08T06:21:47.731Z,No protections,SAC,True,,2,1,,2026-08-31T08:18:45.034Z,2033,1
+SQ-MenFycpfodT,2026-07-08T06:21:47.731Z,,,True,,2,1,,2026-08-31T08:18:45.034Z,2033,1
+VH_8KblB_hGA7h,2026-07-08T06:21:47.731Z,,,True,,1,1,,2026-08-31T08:18:45.034Z,2033,1
+kueiqt_T9RR,2020-11-21T16:46:04.443Z,,,True,,1,2,,2026-08-31T08:18:45.034Z,2027,2
+g3jJfWn17LlKqC,2026-07-08T06:21:47.731Z,No protections,,True,,2,2,UTA or PHX,2026-08-31T08:18:45.034Z,2027,2
+x9kl9ZRfKOT7Zw,2026-07-08T06:21:47.731Z,"LAC' 2028 1st round pick to BOS protected for selections 1-16; if this pick falls within its protected range, then BOS will instead have the right to swap the less favorable of the BOS pick and the SAS pick for the more favorable of the LAC' pick and PHI's 2028 1st round pick protected for selections 9-30; if the PHI pick falls within its protected range and is therefore not conveyable, then BOS will instead have the right to swap the less favorable of the BOS pick and the SAS pick for the LAC' pick (via LAC unprotected to PHI; via SAS swap for BOS) [BOS-SAS, 2/10/2022; LAC-OKC-PHI, 11/1/2023; BOS-PHI, 7/6/2026]",LAC or PHI,True,,1,2,,2026-08-31T08:18:45.034Z,2028,2
+-FR5llwnNfLcX8,2026-07-08T06:21:47.731Z,No protections,"GSW, MIL or OKC",True,,2,2,,2026-08-31T08:18:45.034Z,2028,2
+V4tMI1I56K0-lQ,2024-07-26T10:29:30.688Z,"BOS's 2028 2nd round pick to NYK protected for selections 31-45 (if this pick falls within its protected range and is therefore not conveyed, then BOS's commitment to NYK will be lifted) (via ORL to PHX) [BOS-ORL, 2/10/2022; ORL-PHX, 7/17/2023; NYK-PHX, 6/27/2024]",,True,,2,2,NYK,2026-08-31T08:18:45.034Z,2028,2
+6mWHF1jQMMN3ac,2026-07-08T06:21:47.731Z,"SAS has the right to swap its 2028 1st round pick for BOS's 2028 1st round pick protected for selection 1; if this pick falls on its protected selection and is therefore not conveyable, then BOS will instead convey its 2028 2nd round pick to SAS protected for selections 46-60 (if this pick falls within its protected range and is therefore not conveyed, then BOS's commitment to SAS will be lifted); BOS may convey the SAS 1st round pick to PHI (see BOS incoming) [BOS-SAS, 2/10/2022]",,True,,1,2,SAS  holds rights to swap,2026-08-31T08:18:45.034Z,2028,2
+1ZnvVNhQNXsQ3R,2023-02-19T06:13:09.366Z,No protections,,True,,2,2,OKC,2026-08-31T08:18:45.034Z,2029,2
+n4L-Nwp0wTxgNg,2025-01-25T16:12:49.443Z,No protections,,True,,1,2,POR or WAS,2026-08-31T08:18:45.034Z,2029,2
+lCPNzJrtjnxdU2,2026-07-08T06:21:47.731Z,No protections,"PHX, POR or WAS",True,,2,2,,2026-08-31T08:18:45.034Z,2030,2
+NWRu_zVocL2Zn5,2023-06-27T03:57:46.352Z,,,True,,1,2,,2026-08-31T08:18:45.034Z,2030,2
+mS1nxtYKXRL_Rk,2025-07-08T01:09:45.446Z,No protections,,True,,2,2,BKN,2026-08-31T08:18:45.034Z,2030,2
+-UPjtXk9Yv5KrH,2026-07-08T06:21:47.731Z,Protected 31-55,CHA,True,,2,2,,2026-08-31T08:18:45.034Z,2030,2
+i3KzSaXp08yYVg,2025-08-08T08:02:45.219Z,No protections,,True,,2,2,UTA holds rights to swap,2026-08-31T08:18:45.034Z,2031,2
+ULbSikLAhHXLBw,2024-06-26T17:07:21.129Z,,,True,,1,2,,2026-08-31T08:18:45.034Z,2031,2
+rvkkkr__AxY-xx,2025-04-10T02:48:58.036Z,Protected 31-55,HOU,True,,2,2,,2026-08-31T08:18:45.034Z,2031,2
+jXbmCjpwY1d73a,2026-07-08T06:21:47.731Z,No protections,PHI,True,,1,2,,2026-08-31T08:18:45.034Z,2031,2
+uv2pcPA1tI-Kvc,2025-06-27T18:30:43.808Z,,,True,,2,2,,2026-08-31T08:18:45.034Z,2032,2
+UtZg0bbX_qGM_w,2025-06-27T18:30:43.808Z,,,True,,1,2,,2026-08-31T08:18:45.034Z,2032,2
+DtVDoT6caXCe4c,2026-07-08T06:21:47.731Z,,,True,,1,2,,2026-08-31T08:18:45.034Z,2033,2
+4z2mP8y0I0OTC8,2026-07-08T06:21:47.731Z,,,True,,2,2,,2026-08-31T08:18:45.034Z,2033,2
+q_CahpmznbMKOc,2024-07-26T10:29:30.688Z,No protections,NYK,True,,1,3,,2026-08-31T08:18:45.034Z,2027,3
+wkvOM02Pe4o-3Q,2025-01-25T16:12:49.443Z,No protections,LAL,True,,2,3,,2026-08-31T08:18:45.034Z,2027,3
+qB0Z6HgQmXn,2021-01-16T00:11:07.743Z,"HOU has the right to swap its 2027 1st round pick for BKN's 2027 1st round pick [BKN-CLE-HOU-IND, 1/16/2021]",,True,,1,3,HOU  holds rights to swap,2026-08-31T08:18:45.034Z,2027,3
+T8zho4OG2swzF6,2023-07-21T06:12:47.737Z,No protections,,True,,2,3,WAS or DET,2026-08-31T08:18:45.034Z,2027,3
+PFdUcIuG6T7WzZ,2021-06-21T10:08:45.886Z,,,True,,1,3,,2026-08-31T08:18:45.034Z,2028,3
+U_Ofstz1i8enrk,2021-06-21T10:08:45.886Z,,,True,,2,3,,2026-08-31T08:18:45.034Z,2028,3
+WX78P2jp64LKPn,2026-07-08T06:21:47.731Z,Protected 1-8,PHI,True,,1,3,,2026-08-31T08:18:45.034Z,2028,3
+SWnFLtWBiHmCk3,2025-01-25T16:12:49.443Z,No protections,ATL,True,,2,3,,2026-08-31T08:18:45.034Z,2028,3
+47WLoIypYRKNOK,2024-02-23T06:13:51.050Z,No protections,MEM,True,,2,3,,2026-08-31T08:18:45.034Z,2028,3
+qzKWEAioMGfacM,2024-07-05T11:32:48.478Z,"HOU will receive the two most favorable of its 2029 1st round pick, DAL' 2029 1st round pick and PHX's 2029 1st round pick and BKN will receive the least favorable of the three (via DAL and PHX to BKN; via DAL or PHX to HOU; via HOU's right to swap for DAL or PHX) [BKN-DAL, 2/6/2023; BKN-IND-MIL-PHX, 2/9/2023; BKN-HOU, 6/26/2024]","HOU, DAL or PHX",True,,1,3,HOU  holds rights to swap,2026-08-31T08:18:45.034Z,2029,3
+Ifotrwe6kcZiP4,2022-06-24T14:50:00.459Z,,,True,,2,3,,2026-08-31T08:18:45.034Z,2029,3
+FXNcBWzY203jmZ,2022-06-24T14:50:00.459Z,,,True,,1,3,,2026-08-31T08:18:45.034Z,2029,3
+8jKueS01FneWTq,2024-02-23T06:13:51.050Z,No protections,MEM,True,,2,3,,2026-08-31T08:18:45.034Z,2029,3
+iPz5PKaE_LJ7L8,2025-01-25T16:12:49.443Z,No protections,GSW,True,,2,3,,2026-08-31T08:18:45.034Z,2029,3
+VxhP6OWQ6StsQn,2023-02-06T05:30:34.479Z,No protections,DAL,True,,2,3,,2026-08-31T08:18:45.034Z,2029,3
+TsgmIji08M5vKW,2024-07-26T10:29:30.688Z,No protections,NYK,True,,1,3,,2026-08-31T08:18:45.034Z,2029,3
+ylnh3sMo85MFr1,2023-06-27T03:57:46.352Z,,,True,,1,3,,2026-08-31T08:18:45.034Z,2030,3
+2cme_PtNN54yvT,2025-07-08T01:09:45.446Z,No protections,BOS,True,,2,3,,2026-08-31T08:18:45.034Z,2030,3
+bBce5lxEJYaKHv,2024-07-26T10:29:30.688Z,No protections,DAL,True,,2,3,,2026-08-31T08:18:45.034Z,2030,3
+8CT0fmn8kn81Ua,2025-01-25T16:12:49.443Z,No protections,LAL,True,,2,3,,2026-08-31T08:18:45.034Z,2030,3
+pKyXzrh3fDjxl4,2023-06-27T03:57:46.352Z,,,True,,2,3,,2026-08-31T08:18:45.034Z,2030,3
+AInQQki53Ai8rD,2024-07-26T10:29:30.688Z,No protections,NYK,True,,1,3,,2026-08-31T08:18:45.034Z,2031,3
+vytXFTbsz1qL4K,2025-01-25T16:12:49.443Z,No protections,LAL,True,,2,3,,2026-08-31T08:18:45.034Z,2031,3
+t3kc1dThFMauAg,2024-06-26T17:07:21.129Z,,,True,,2,3,,2026-08-31T08:18:45.034Z,2031,3
+Fp0klD0VIo4Ku8,2024-06-26T17:07:21.129Z,,,True,,1,3,,2026-08-31T08:18:45.034Z,2031,3
+vLfJTpnAb2ueFM,2025-06-27T18:30:43.808Z,,,True,,1,3,,2026-08-31T08:18:45.034Z,2032,3
+4a_BRL6NK_yLYx,2025-08-16T08:02:53.157Z,No protections,MIA,True,,2,3,,2026-08-31T08:18:45.034Z,2032,3
+4qKrt7WUFxS1eu,2025-07-08T01:09:45.446Z,No protections,DEN,True,,1,3,,2026-08-31T08:18:45.034Z,2032,3
+xYjmSk8ehinbft,2026-07-08T06:21:47.731Z,No protections,DEN,True,,2,3,,2026-08-31T08:18:45.034Z,2032,3
+Nvlcl1fgW0PtKS,2025-06-27T18:30:43.808Z,,,True,,2,3,,2026-08-31T08:18:45.034Z,2032,3
+fMk6kMfcS75oKf,2026-07-08T06:21:47.731Z,No protections,TOR,True,,2,3,,2026-08-31T08:18:45.034Z,2032,3
+z7ILPRbCS88I_u,2026-07-08T06:21:47.731Z,,,True,,2,3,,2026-08-31T08:18:45.034Z,2033,3
+zdrUIDQMxJi9Ba,2026-07-08T06:21:47.731Z,,,True,,1,3,,2026-08-31T08:18:45.034Z,2033,3
+NIaSvQ6C5ZMp1a,2025-04-19T08:15:16.941Z,No protections,,True,,2,4,SAC,2026-08-31T08:18:45.034Z,2027,4
+D3gf2rGm3r5,2020-11-21T16:46:04.443Z,,,True,,1,4,,2026-08-31T08:18:45.034Z,2027,4
+TidrAvTvcw0li7,2026-07-08T06:21:47.731Z,No protections,MEM,True,,2,4,,2026-08-31T08:18:45.034Z,2027,4
+esHklFLi7Ph9SA,2024-02-23T06:13:51.050Z,Protected 1-2,DAL,True,,1,4,,2026-08-31T08:18:45.034Z,2027,4
+4_F-ZIk_biiGeE,2024-01-24T06:15:19.650Z,Protected 1-14,MIA,True,,1,4,,2026-08-31T08:18:45.034Z,2027,4
+bJ4-8nZp69n55s,2025-07-30T08:02:47.085Z,No protections,NOP or POR,True,,2,4,,2026-08-31T08:18:45.034Z,2027,4
+XC_JevSvQfiiQu,2025-01-25T16:12:49.443Z,No protections,LAC swap rights,True,,2,4,,2026-08-31T08:18:45.034Z,2028,4
+kQ_YX3XlBWaFQ6,2026-07-08T06:21:47.731Z,No protections,HOU,True,,2,4,,2026-08-31T08:18:45.034Z,2028,4
+21gqUUbqWGV4tU,2026-07-08T06:21:47.731Z,"CHA has the right to swap its 2028 1st round pick for MIN's 2028 1st round pick [CHA-MIN, pending]",MIN swap rights,True,,1,4,CHA  holds rights to swap,2026-08-31T08:18:45.034Z,2028,4
+3pE89y28KiaFCJ,2021-06-21T10:08:45.886Z,,,True,,1,4,,2026-08-31T08:18:45.034Z,2028,4
+R7IzcIYw4Ifbug,2021-06-21T10:08:45.886Z,,,True,,2,4,,2026-08-31T08:18:45.034Z,2028,4
+x1Us1tvfYb3NwY,2026-07-08T06:21:47.731Z,No protections,ORL,True,,2,4,,2026-08-31T08:18:45.034Z,2028,4
+2D7zKHCGaq0-os,2022-06-24T14:50:00.459Z,,,True,,1,4,,2026-08-31T08:18:45.034Z,2029,4
+5iSrgaCBKGe3TC,2024-07-26T10:29:30.688Z,No protections,DEN,True,,2,4,,2026-08-31T08:18:45.034Z,2029,4
+BFjoZXDqQHh1Hv,2026-07-08T06:21:47.731Z,"CHA has the right to swap the least favorable of its 2029 1st round pick, UTA's 2029 1st round pick and CLE's 2029 1st round pick for MIN's 2029 1st round pick protected for selections 6-30 (if the MIN pick falls within its protected range of 6-30 and is therefore not conveyable to CHA as part of this conveyance, then this commitment of MIN's to CHA and this swap right of CHA's will be lifted); CHA may convey the pick it receives to PHX [MIN-UTA, 7/6/2022; CLE-UTA, 9/3/2022; PHX-UTA, 1/21/2025; CHA-PHX, 6/30/2025; CHA-MIN, pending; CHA-PHX, pending]",MIN swap posibility,True,,1,4,CHA  holds rights to swap,2026-08-31T08:18:45.034Z,2029,4
+ESSuwdX-6zlP7Q,2026-07-08T06:21:47.731Z,No protections,ATL or MIA,True,,2,4,,2026-08-31T08:18:45.034Z,2029,4
+uYd6OXrwdByByh,2026-07-08T06:21:47.731Z,No protections,MIN,True,,2,4,,2026-08-31T08:18:45.034Z,2029,4
+XsCSPobszkMQtc,2026-07-08T06:21:47.731Z,"UTA will receive the most / two most favorable of its 2029 1st round pick, CLE's 2029 1st round pick and MIN's 2029 1st round pick protected for selections 1-5 and CHA will receive the least / less favorable of these; if the MIN pick falls within its protected range and is therefore not conveyable as part of this conveyance, then MIN will instead convey its 2029 2nd round pick to UTA (via UTA to PHX); CHA may convey the pick it receives to MIN or PHX (see CHA incoming) [MIN-UTA, 7/6/2022; CLE-UTA, 9/3/2022; PHX-UTA, 1/21/2025; CHA-PHX, 6/30/2025]","UTA, CLE or MIN",True,,1,4,,2026-08-31T08:18:45.034Z,2029,4
+O4XnulXnqfX-6X,2022-06-24T14:50:00.459Z,,,True,,2,4,,2026-08-31T08:18:45.034Z,2029,4
+KUYQKfoI16bjUR,2026-07-08T06:21:47.731Z,"CHA's 2030 2nd round pick to BOS protected for selections 31-55 (if this pick falls within its protected range and is therefore not conveyed, then CHA's commitment to BOS will be lifted) [BOS-CHA, 2/5/2026]",,True,,2,4,BOS,2026-08-31T08:18:45.034Z,2030,4
+3qFD58ifu7Io1Y,2023-06-27T03:57:46.352Z,,,True,,1,4,,2026-08-31T08:18:45.034Z,2030,4
+lTLCSWi2pVeDgb,2025-07-30T08:02:47.085Z,No protections,LAC or UTA,True,,2,4,,2026-08-31T08:18:45.034Z,2030,4
+4IcQo15cxDa2MP,2025-07-08T01:09:45.446Z,No protections,MIL,True,,2,4,,2026-08-31T08:18:45.034Z,2031,4
+cizH5xQ1pUD7Do,2025-01-25T16:12:49.443Z,No protections,PHX,True,,2,4,,2026-08-31T08:18:45.034Z,2031,4
+Ceu8QQQag4RJjW,2024-06-26T17:07:21.129Z,,,True,,2,4,,2026-08-31T08:18:45.034Z,2031,4
+LpwzAIDr0z61IA,2024-06-26T17:07:21.129Z,,,True,,1,4,,2026-08-31T08:18:45.034Z,2031,4
+pzOudhQr-v2vvK,2025-06-27T18:30:43.808Z,,,True,,2,4,,2026-08-31T08:18:45.034Z,2032,4
+TiB7W-wWml-pZv,2025-06-27T18:30:43.808Z,,,True,,1,4,,2026-08-31T08:18:45.034Z,2032,4
+eCkC5dRr7WGbPC,2025-07-08T01:09:45.446Z,No protections,MIL,True,,2,4,,2026-08-31T08:18:45.034Z,2032,4
+nOPC1C41C_hNIr,2026-07-08T06:21:47.731Z,No protections,MIN,True,,2,4,,2026-08-31T08:18:45.034Z,2032,4
+wzdDn9UUAROFc7,2026-07-08T06:21:47.731Z,No protections,MIN,True,,1,4,,2026-08-31T08:18:45.034Z,2033,4
+2QDwdRbDK-YZ4P,2026-07-08T06:21:47.731Z,No protections,PHX,True,,1,4,,2026-08-31T08:18:45.034Z,2033,4
+CqiBcX-ihkL-zL,2026-07-08T06:21:47.731Z,No protections,HOU,True,,2,4,,2026-08-31T08:18:45.034Z,2033,4
+fHV-JIAsOsViBl,2026-07-08T06:21:47.731Z,No protections,MIN,True,,2,4,,2026-08-31T08:18:45.034Z,2033,4
+rZ13gKD7F75ays,2026-07-08T06:21:47.731Z,,,True,,1,4,,2026-08-31T08:18:45.034Z,2033,4
+b_nKhlR2AfJ10q,2026-07-08T06:21:47.731Z,,,True,,2,4,,2026-08-31T08:18:45.034Z,2033,4
+yMpBilodfrhNru,2026-07-08T06:21:47.731Z,No protections,CLE,True,,2,5,,2026-08-31T08:18:45.034Z,2027,5
+P7eR3PGXfOkkmY,2026-07-08T06:21:47.731Z,No protections,,True,,2,5,DAL,2026-08-31T08:18:45.034Z,2027,5
+iZEM7KevGje,2020-11-21T16:46:04.443Z,,,True,,1,5,,2026-08-31T08:18:45.034Z,2027,5
+L6Y6ScnfNQAb2z,2021-06-21T10:08:45.886Z,,,True,,1,5,,2026-08-31T08:18:45.034Z,2028,5
+sKRMFbSXzigVJl,2026-07-08T06:21:47.731Z,"CHI will receive the most favorable of its 2028 2nd round pick, IND's 2028 2nd round pick and PHX's 2028 2nd round pick; IND will receive the less favorable of (1) the more favorable of its pick and and the PHX pick and (2) the CHI pick; NYK will receive the less favorable of the IND pick and the PHX pick (via PHX to IND; via CHI's right to swap for IND or PHX) [IND-PHX-WAS, 6/23/2023; IND-NYK, 7/7/2023; CHI-IND, 6/24/2026]",IND or PHX,True,,2,5,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2028,5
+0rSLkZb0xuHJ9u,2021-06-21T10:08:45.886Z,,,True,,2,5,,2026-08-31T08:18:45.034Z,2028,5
+RwUiTLCUZX5Sa_,2026-02-03T15:41:13.755Z,No protections,"DET, MIL or NYK",True,,2,5,,2026-08-31T08:18:45.034Z,2029,5
+-ORrnBGjnn4IgH,2022-06-24T14:50:00.459Z,,,True,,1,5,,2026-08-31T08:18:45.034Z,2029,5
+KA6dvUQMXCJrkF,2022-06-24T14:50:00.459Z,,,True,,2,5,,2026-08-31T08:18:45.034Z,2029,5
+p-TAooZ8ulTz6T,2023-06-27T03:57:46.352Z,,,True,,2,5,,2026-08-31T08:18:45.034Z,2030,5
+-QA0ufHOYpbsDA,2026-07-08T06:21:47.731Z,"CHI has the right to swap its 2030 2nd round pick for IND's 2030 2nd round pick [CHI-IND, 6/24/2026]",IND swap rights,True,,2,5,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2030,5
+0916gNCwCnGwi8,2023-06-27T03:57:46.352Z,,,True,,1,5,,2026-08-31T08:18:45.034Z,2030,5
+5Hdz2AEFQEiHTo,2024-06-26T17:07:21.129Z,,,True,,1,5,,2026-08-31T08:18:45.034Z,2031,5
+lB6perdW83IzKq,2024-06-26T17:07:21.129Z,,,True,,2,5,,2026-08-31T08:18:45.034Z,2031,5
+YJLEvCOSDV8xDy,2026-07-08T06:21:47.731Z,No protections,DEN,True,,2,5,,2026-08-31T08:18:45.034Z,2031,5
+INL0kAitZbLWoZ,2026-07-08T06:21:47.731Z,"CHI will receive the more favorable of MIN's 2031 2nd round pick and GSW's 2031 2nd round pick and DET will receive the less favorable of the two (via MIN's right to swap for GSW) [CHA-DAL-DEN-GSW-MIN-PHI, 7/6/2024; DET-GSW-MIA-UTA, 2/6/2025; CHI-MIN, 2/5/2026]",MIN or GSW,True,,2,5,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2031,5
+fiEgz033sWeQV-,2026-07-08T06:21:47.731Z,No protections,NYK,True,,2,5,,2026-08-31T08:18:45.034Z,2031,5
+YcBvU18FXjdC6S,2025-06-27T18:30:43.808Z,,,True,,2,5,,2026-08-31T08:18:45.034Z,2032,5
+g6Vgc0XeDrWKKW,2026-07-08T06:21:47.731Z,No protections,HOU or PHX,True,,2,5,,2026-08-31T08:18:45.034Z,2032,5
+M2ygLSyDELDgJB,2025-06-27T18:30:43.808Z,,,True,,1,5,,2026-08-31T08:18:45.034Z,2032,5
+NDzhIsD6tT0JZG,2026-07-08T06:21:47.731Z,,,True,,2,5,,2026-08-31T08:18:45.034Z,2033,5
+a1ud5STYx70sVb,2026-07-08T06:21:47.731Z,,,True,,1,5,,2026-08-31T08:18:45.034Z,2033,5
+Wj5uXIjxNMJxYq,2026-07-08T06:21:47.731Z,No protections,,True,,2,6,CHI,2026-08-31T08:18:45.034Z,2027,6
+ciWWIkxCZZaJGX,2026-07-08T06:21:47.731Z,No protections,,True,,1,6,"MEM, UTA or PHX",2026-08-31T08:18:45.034Z,2027,6
+mISOh9ssikFX9Q,2026-07-08T06:21:47.731Z,"UTA will receive the most favorable of its 2028 1st round pick, CLE's 2028 1st round pick and the LAL' 2028 1st round pick; the LAL will receive the less favorable of (1) its pick and (2) the more favorable of the UTA pick and the CLE pick; ATL will receive the more favorable of (1) its 2028 1st round pick and (2) the less favorable of the UTA pick and the CLE pick and CLE will receive the least favorable of the three (via UTA's right to swap for CLE; via UTA's right to swap UTA or CLE for LAL; via ATL's right to swap for UTA or CLE) [CLE-UTA, 9/3/2022; ATL-CLE, 2/6/2025; LAL-UTA, pending]",,True,,1,6,UTA  holds rights to swap,2026-08-31T08:18:45.034Z,2028,6
+RkhX1NbKttusFq,2026-07-08T06:21:47.731Z,No protections,,True,,2,6,UTA,2026-08-31T08:18:45.034Z,2028,6
+hqfPRLUZ_YQ582,2025-06-27T18:30:43.808Z,"UTA will receive the most / two most favorable of its 2029 1st round pick, CLE's 2029 1st round pick and MIN's 2029 1st round pick protected for selections 1-5 and CHA will receive the least / less favorable of these; if the MIN pick falls within its protected range and is therefore not conveyable as part of this conveyance, then MIN will instead convey its 2029 2nd round pick to UTA (via UTA to PHX); CHA may convey the pick it receives to MIN or PHX (see CHA incoming) [MIN-UTA, 7/6/2022; CLE-UTA, 9/3/2022; PHX-UTA, 1/21/2025; CHA-PHX, 6/30/2025]",,True,,1,6,UTA or CHA,2026-08-31T08:18:45.034Z,2029,6
+VGfXnzeiviI-1U,2025-04-10T02:48:58.036Z,No protections,,True,,2,6,ATL,2026-08-31T08:18:45.034Z,2029,6
+yWe8srdTLWl9DI,2023-07-21T06:12:47.737Z,No protections,,True,,2,6,SAS,2026-08-31T08:18:45.034Z,2030,6
+E_3CRJFiltT0ug,2023-06-27T03:57:46.352Z,,,True,,1,6,,2026-08-31T08:18:45.034Z,2030,6
+hHOylaiQT5bos5,2025-08-08T08:02:45.219Z,No protections,,True,,2,6,UTA or BOS,2026-08-31T08:18:45.034Z,2031,6
+uXOe2OKd4kKK4j,2024-06-26T17:07:21.129Z,,,True,,1,6,,2026-08-31T08:18:45.034Z,2031,6
+0uxeT564VSOdK3,2026-07-08T06:21:47.731Z,No protections,SAC,True,,2,6,,2026-08-31T08:18:45.034Z,2032,6
+D6ajjB3kwHRpBv,2025-06-27T18:30:43.808Z,,,True,,1,6,,2026-08-31T08:18:45.034Z,2032,6
+enGyjwEDv6aKG3,2026-07-08T06:21:47.731Z,No protections,,True,,2,6,UTA,2026-08-31T08:18:45.034Z,2032,6
+a_W1Za7AJ3pPIB,2026-07-08T06:21:47.731Z,,,True,,2,6,,2026-08-31T08:18:45.034Z,2033,6
+tSF7xq5r0Og5oR,2026-07-08T06:21:47.731Z,,,True,,1,6,,2026-08-31T08:18:45.034Z,2033,6
+GM2olW68lvSxnR,2026-07-08T06:21:47.731Z,No protections,CHI,True,,2,7,,2026-08-31T08:18:45.034Z,2027,7
+Ha6tjTmUlU-sKK,2023-07-21T06:12:47.737Z,No protections,,True,,2,7,WAS or DET,2026-08-31T08:18:45.034Z,2027,7
+SGBPCNEG79le2v,2024-02-23T06:13:51.050Z,"DAL' 2027 1st round pick to CHA protected for selections 1-2; if this pick falls within its protected range and is therefore not conveyed, then DAL will instead convey MIA's 2028 2nd round pick to CHA [CHA-DAL, 2/8/2024]",,True,,1,7,CHA,2026-08-31T08:18:45.034Z,2027,7
+K6E2ahX52Vy1MJ,2021-06-21T10:08:45.886Z,,,True,,1,7,,2026-08-31T08:18:45.034Z,2028,7
+MIwBtCf-62aV5i,2026-07-08T06:21:47.731Z,No protections,,True,,2,7,LAC,2026-08-31T08:18:45.034Z,2028,7
+1fRpUeCs5nF6in,2024-07-05T11:32:48.478Z,"HOU will receive the two most favorable of its 2029 1st round pick, DAL' 2029 1st round pick and PHX's 2029 1st round pick and BKN will receive the least favorable of the three (via DAL and PHX to BKN; via DAL or PHX to HOU; via HOU's right to swap for DAL or PHX) [BKN-DAL, 2/6/2023; BKN-IND-MIL-PHX, 2/9/2023; BKN-HOU, 6/26/2024]",,True,,1,7,HOU  holds rights to swap,2026-08-31T08:18:45.034Z,2029,7
+hDrqyBN5VvOniD,2023-02-06T05:30:34.479Z,No protections,,True,,2,7,BKN,2026-08-31T08:18:45.034Z,2029,7
+Y01NuUJ65teFkl,2026-07-08T06:21:47.731Z,No protections,HOU,True,,2,7,,2026-08-31T08:18:45.034Z,2029,7
+DBhJUJp__bXN1v,2025-02-02T20:48:15.496Z,No protections,LAL,True,,1,7,,2026-08-31T08:18:45.034Z,2029,7
+a8u_ZGgYOEn4wT,2024-07-26T10:29:30.688Z,No protections,,True,,2,7,BKN,2026-08-31T08:18:45.034Z,2030,7
+mSyly9OoC02YNs,2026-07-08T06:21:47.731Z,"SAS will receive the most / more favorable of its 2030 1st round pick, DAL' 2030 1st round pick and MIN's 2030 1st round pick protected for selection 1; DAL will receive the less favorable of its pick and the SAS pick; MIN will receive the less favorable of (1) its pick and (2) the more favorable of the SAS pick and the DAL pick [or its pick if not conveyable]; if the MIN pick falls on its protected selection and is therefore not conveyable, then MIN's commitment to SAS will be lifted and SAS will instead have the right to swap its pick for the DAL pick (via SAS's right to swap for DAL; via SAS's right to swap SAS or DAL for MIN); MIN may convey the pick it receives to CHA via a complex swap right [BOS-DAL-SAS, 7/12/2023; MIN-SAS, 6/26/2024; CHA-MIN, pending]",,True,,1,7,SAS  holds rights to swap,2026-08-31T08:18:45.034Z,2030,7
+pUbJy4URT8aPbO,2025-02-06T04:35:37.853Z,No protections,,True,,2,7,DET,2026-08-31T08:18:45.034Z,2031,7
+7VkuGQq3l6uCBI,2024-06-26T17:07:21.129Z,,,True,,1,7,,2026-08-31T08:18:45.034Z,2031,7
+-DD-tZy-WI5-Wd,2026-07-08T06:21:47.731Z,No protections,,True,,2,7,NYK,2026-08-31T08:18:45.034Z,2032,7
+U91QDkCjpKulG4,2025-06-27T18:30:43.808Z,,,True,,1,7,,2026-08-31T08:18:45.034Z,2032,7
+9fJTVuhGsz_kwi,2026-07-08T06:21:47.731Z,,,True,,2,7,,2026-08-31T08:18:45.034Z,2033,7
+unNhRE175wdsv9,2026-07-08T06:21:47.731Z,,,True,,1,7,,2026-08-31T08:18:45.034Z,2033,7
+-1XTyYjPmrwhKL,2022-06-24T14:50:00.459Z,"DEN's 1st round pick to OKC protected for selections 1-5 in 2027, 1-5 in 2028 and 1-5 in 2029; if DEN has not conveyed this first potential 1st round pick to OKC by 2029, then DEN will instead convey its 2029 2nd round pick to OKC; OKC may convey the 2027 pick to the LAC (see OKC incoming) which may then convey this pick to TOR (see LAC incoming) [DEN-OKC, 6/23/2022]",,True,,1,8,OKC,2026-08-31T08:18:45.034Z,2027,8
+1kTfKYp09jILud,2026-07-08T06:21:47.731Z,No protections,,True,,2,8,UTA,2026-08-31T08:18:45.034Z,2027,8
+EFQ4FwOyG-bA04,2026-07-08T06:21:47.731Z,No protections,MIN,True,,2,8,,2026-08-31T08:18:45.034Z,2028,8
+HU0Dl26c4Cbp_h,2025-02-06T10:52:57.965Z,"DEN's 2028 2nd round pick to WAS protected for selections 31-33 (if this pick falls within its protected range and is therefore not conveyed, then DEN's commitment to WAS will be lifted) (via SAS to SAC) [BOS-DEN-SAS, 1/19/2022; CHI-SAC-SAS, 2/3/2025; SAC-WAS, 2/5/2025]",,True,,2,8,WAS,2026-08-31T08:18:45.034Z,2028,8
+olnoSj6jtDRFWh,2021-06-21T10:08:45.886Z,,,True,,1,8,,2026-08-31T08:18:45.034Z,2028,8
+yVgcZ4X7yM0zAL,2024-07-26T10:29:30.688Z,No protections,,True,,2,8,CHA,2026-08-31T08:18:45.034Z,2029,8
+Cj6xNiK2Ba6XQe,2023-07-21T06:12:47.737Z,"only if and at least two years after DEN conveys a first potential 1st round pick to OKC, then DEN's next potential 1st round pick to OKC protected for selections 1-5 in 2029 and 1-5 in 2030; if DEN has not conveyed this next potential 1st round pick to OKC by 2030, then DEN will instead convey its 2030 2nd round pick to OKC (if the 1st round pick is conveyed, then OKC will still receive the 2nd round pick via CHA); OKC may convey the 2nd round pick to MEM (see OKC incoming) [DEN-IND-LAL-OKC, 6/23/2023]",,True,,1,8,OKC,2026-08-31T08:18:45.034Z,2029,8
+xPdANOwq_2Hqve,2026-07-08T06:21:47.731Z,No protections,,True,,2,8,MEM or OKC,2026-08-31T08:18:45.034Z,2030,8
+Pxq6-az-q65XHu,2023-06-27T03:57:46.352Z,,,True,,1,8,,2026-08-31T08:18:45.034Z,2030,8
+qAuDjuyzC0gi4Y,2026-07-08T06:21:47.731Z,No protections,SAC,True,,2,8,,2026-08-31T08:18:45.034Z,2031,8
+aGwQDTnQvsCc2S,2026-07-08T06:21:47.731Z,No protections,,True,,2,8,CHI,2026-08-31T08:18:45.034Z,2031,8
+Q2d5wSV43lTEc-,2024-06-26T17:07:21.129Z,,,True,,1,8,,2026-08-31T08:18:45.034Z,2031,8
+BAnm29mkNHv6Jz,2026-07-08T06:21:47.731Z,No protections,,True,,2,8,BKN,2026-08-31T08:18:45.034Z,2032,8
+OtJy90Y9mY5-fN,2025-07-08T01:09:45.446Z,No protections,,True,,1,8,BKN,2026-08-31T08:18:45.034Z,2032,8
+urIIvpDK7JfvGf,2026-07-08T06:21:47.731Z,,,True,,1,8,,2026-08-31T08:18:45.034Z,2033,8
+dU4sKqvkOY7CAt,2026-07-08T06:21:47.731Z,,,True,,2,8,,2026-08-31T08:18:45.034Z,2033,8
+QvhUfbOLXtm,2020-11-21T16:46:04.443Z,,,True,,1,9,,2026-08-31T08:18:45.034Z,2027,9
+j24jA2qPvD7,2020-11-21T16:46:04.443Z,,,True,,2,9,,2026-08-31T08:18:45.034Z,2027,9
+FchrSfwQe-PtlF,2025-02-06T04:35:37.853Z,No protections,MIL,True,,2,9,,2026-08-31T08:18:45.034Z,2027,9
+OgV1z9n4GUfUH5,2023-07-21T06:12:47.737Z,No protections,BKN or DAL,True,,2,9,,2026-08-31T08:18:45.034Z,2027,9
+R4FlbP7p8TzLci,2026-07-08T06:21:47.731Z,No protections,CHA or LAC,True,,2,9,,2026-08-31T08:18:45.034Z,2028,9
+r9tVuJ78E8RkXk,2026-07-08T06:21:47.731Z,No protections,MIA,True,,2,9,,2026-08-31T08:18:45.034Z,2028,9
+-XMew64uuG8hSL,2026-07-08T06:21:47.731Z,"UTA will receive the least favorable of (1) DET's 2028 2nd round pick protected for selections 56-60, (2) the less favorable of CHA's 2028 2nd round pick and the LAC' 2028 2nd round pick, (3) MIA's 2028 2nd round pick round pick, conveyable if DAL conveys a 1st round pick to CHA in 2027, and (iv) NYK's 2028 2nd round pick (via CHA to DAL to DET; via MIA to SAS to DAL to DET; via NYK to DET) [MIA-SAS, 2/7/2023; CHA-LAC, 2/9/2023; BOS-DAL-SAS, 7/12/2023; CHA-DAL, 2/8/2024; DET-NYK, 2/8/2024; DAL-DET, 7/6/2024; DET-GSW-MIA-TOR-UTA, 2/6/2025]",,True,,2,9,UTA  holds rights to swap,2026-08-31T08:18:45.034Z,2028,9
+oLynb8qlpoNiuj,2021-06-21T10:08:45.886Z,,,True,,1,9,,2026-08-31T08:18:45.034Z,2028,9
+xX8PWYJcFHjbJE,2024-02-23T06:13:51.050Z,"DET's 2028 2nd round pick to PHI protected for selections 31-55 (if this pick falls within its protected range and is therefore not conveyed, then DET's commitment to PHI will be lifted) [DET-PHI, 2/8/2024]",,True,,2,9,PHI,2026-08-31T08:18:45.034Z,2028,9
+EBdG9-tYWbz16t,2026-07-08T06:21:47.731Z,No protections,NYK,True,,2,9,,2026-08-31T08:18:45.034Z,2028,9
+PjWOLrg7AXHBHM,2022-06-24T14:50:00.459Z,,,True,,1,9,,2026-08-31T08:18:45.034Z,2029,9
+MhOw50iNVJ2ISO,2022-06-24T14:50:00.459Z,,,True,,2,9,,2026-08-31T08:18:45.034Z,2029,9
+uuP6JfEFCewn-N,2023-06-27T03:57:46.352Z,,,True,,2,9,,2026-08-31T08:18:45.034Z,2030,9
+iwFKFgW1lWUQha,2023-06-27T03:57:46.352Z,,,True,,1,9,,2026-08-31T08:18:45.034Z,2030,9
+Se6TPpbYSnDecs,2026-07-08T06:21:47.731Z,No protections,,True,,2,9,OKC,2026-08-31T08:18:45.034Z,2031,9
+oYQaFawgamQu01,2024-06-26T17:07:21.129Z,,,True,,1,9,,2026-08-31T08:18:45.034Z,2031,9
+ghqpXrc7zeXU9I,2025-02-06T04:35:37.853Z,No protections,DAL,True,,2,9,,2026-08-31T08:18:45.034Z,2031,9
+j8X4-lr6QOj87U,2025-07-30T08:02:47.085Z,"CHI will receive the more favorable of MIN's 2031 2nd round pick and GSW's 2031 2nd round pick and DET will receive the less favorable of the two (via MIN's right to swap for GSW) [CHA-DAL-DEN-GSW-MIN-PHI, 7/6/2024; DET-GSW-MIA-UTA, 2/6/2025; CHI-MIN, 2/5/2026]",MIN or GSW,True,,2,9,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2031,9
+kU9Fzi8rCBzzms,2025-06-27T18:30:43.808Z,,,True,,1,9,,2026-08-31T08:18:45.034Z,2032,9
+Hqlizq8KYFg53C,2025-06-27T18:30:43.808Z,,,True,,2,9,,2026-08-31T08:18:45.034Z,2032,9
+t2hHNzxsyG7Txu,2026-07-08T06:21:47.731Z,,,True,,1,9,,2026-08-31T08:18:45.034Z,2033,9
+AwJJDpQTM3mNOn,2026-07-08T06:21:47.731Z,,,True,,2,9,,2026-08-31T08:18:45.034Z,2033,9
+7aR0KGRnfQp,2020-11-21T16:46:04.443Z,,,True,,1,10,,2026-08-31T08:18:45.034Z,2027,10
+eerBPO8A-6n7R8,2025-04-10T02:48:58.036Z,No protections,,True,,2,10,PHI or WAS,2026-08-31T08:18:45.034Z,2027,10
+Oozhh2RJf8HNcC,2026-07-08T06:21:47.731Z,No protections,,True,,2,10,BOS or PHI,2026-08-31T08:18:45.034Z,2028,10
+OXqFEf9XB9Rb1o,2021-06-21T10:08:45.886Z,,,True,,1,10,,2026-08-31T08:18:45.034Z,2028,10
+sw9lWX3Zv7bSyL,2025-01-25T16:12:49.443Z,No protections,,True,,2,10,BKN,2026-08-31T08:18:45.034Z,2029,10
+zSAHSmL7UdyJCj,2022-06-24T14:50:00.459Z,,,True,,1,10,,2026-08-31T08:18:45.034Z,2029,10
+uy5pdEBeoTebbC,2026-07-08T06:21:47.731Z,"GSW's 2030 1st round pick to MEM protected for selections 1-20; if this pick falls within its protected range and is therefore not conveyed, then GSW will instead convey its 2030 2nd round pick to MEM (via WAS to DAL) [GSW-WAS, 7/6/2023; DAL-WAS, 2/5/2026; DAL-MEM, pending]",,True,,1,10,MEM,2026-08-31T08:18:45.034Z,2030,10
+m-qmRgj1quvSk_,2023-06-27T03:57:46.352Z,,,True,,2,10,,2026-08-31T08:18:45.034Z,2030,10
+buULH4Jx7cTqBR,2024-06-26T17:07:21.129Z,,,True,,1,10,,2026-08-31T08:18:45.034Z,2031,10
+hyeyMyIcC-p82T,2026-07-08T06:21:47.731Z,"CHI will receive the more favorable of MIN's 2031 2nd round pick and GSW's 2031 2nd round pick and DET will receive the less favorable of the two (via MIN's right to swap for GSW) [CHA-DAL-DEN-GSW-MIN-PHI, 7/6/2024; DET-GSW-MIA-UTA, 2/6/2025; CHI-MIN, 2/5/2026]",,True,,2,10,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2031,10
+xVWiwjbWcD1y2A,2025-07-08T01:09:45.446Z,"GSW's 2032 2nd round pick to MEM protected for selections 31-50 (if this pick falls within its protected range and is therefore not conveyed, then GSW's commitment to MEM will be lifted) [GSW-MEM, 7/6/2025]",,True,,2,10,MEM,2026-08-31T08:18:45.034Z,2032,10
+h0k9C18XxCmhkj,2025-06-27T18:30:43.808Z,,,True,,1,10,,2026-08-31T08:18:45.034Z,2032,10
+ZOsl60NPIBaN7V,2026-07-08T06:21:47.731Z,,,True,,2,10,,2026-08-31T08:18:45.034Z,2033,10
+v0QgW3tLhepf3z,2026-07-08T06:21:47.731Z,,,True,,1,10,,2026-08-31T08:18:45.034Z,2033,10
+HcWLLosDtnV,2020-11-21T16:46:04.443Z,,,True,,1,11,,2026-08-31T08:18:45.034Z,2027,11
+mGsK8KxvOb5,2021-01-16T00:11:07.743Z,"HOU has the right to swap its 2027 1st round pick for BKN's 2027 1st round pick [BKN-CLE-HOU-IND, 1/16/2021]",BKN swap rights,True,,1,11,HOU  holds rights to swap,2026-08-31T08:18:45.034Z,2027,11
+IEXkD5xGZlon9E,2024-07-05T11:32:48.478Z,No protections,PHX,True,,1,11,,2026-08-31T08:18:45.034Z,2027,11
+v1r1fp7YYQLLV2,2025-04-10T02:48:58.036Z,"HOU will receive the less favorable of POR's 2027 2nd round pick and NOP' 2027 2nd round pick if this pick falls outside its protected range of 31-55 (if this pick falls within its protected range and is therefore not conveyed, then POR's commitment to HOU will be lifted) (via POR to BOS) [NOP-POR, 2/8/2022; CHA-PHI-POR-NYK, 2/9/2023; BOS-POR, 2/8/2024; BOS-HOU, 2/6/2025]",POR or NOP,True,,2,11,HOU  holds rights to swap,2026-08-31T08:18:45.034Z,2027,11
+lneDtXA2kbK0iM,2026-07-08T06:21:47.731Z,No protections,,True,,2,11,"PHI, NOP, NYK, SAS or MIA",2026-08-31T08:18:45.034Z,2027,11
+KZ5UrZZdyv6iGB,2021-06-21T10:08:45.886Z,,,True,,1,11,,2026-08-31T08:18:45.034Z,2028,11
+Gk75mO32Mr4dP-,2026-07-08T06:21:47.731Z,No protections,,True,,2,11,CHA,2026-08-31T08:18:45.034Z,2028,11
+Q6LzHUY-AVD3FM,2024-07-05T11:32:48.478Z,"HOU will receive the two most favorable of its 2029 1st round pick, DAL' 2029 1st round pick and PHX's 2029 1st round pick and BKN will receive the least favorable of the three (via DAL and PHX to BKN; via DAL or PHX to HOU; via HOU's right to swap for DAL or PHX) [BKN-DAL, 2/6/2023; BKN-IND-MIL-PHX, 2/9/2023; BKN-HOU, 6/26/2024]",DAL and / or PHX,True,,1,11,HOU  holds rights to swap,2026-08-31T08:18:45.034Z,2029,11
+ZIvwnKnY_zTIE0,2026-07-08T06:21:47.731Z,No protections,,True,,2,11,DAL,2026-08-31T08:18:45.034Z,2029,11
+mz7AvhwuiaS3sd,2022-06-24T14:50:00.459Z,,,True,,1,11,,2026-08-31T08:18:45.034Z,2029,11
+Scm5RmJvgKjWyk,2023-06-27T03:57:46.352Z,,,True,,1,11,,2026-08-31T08:18:45.034Z,2030,11
+Z6OA7aDsT7pgas,2026-07-08T06:21:47.731Z,No protections,,True,,2,11,MEM or OKC,2026-08-31T08:18:45.034Z,2030,11
+_uWYXU9zX2yvHt,2024-06-26T17:07:21.129Z,,,True,,1,11,,2026-08-31T08:18:45.034Z,2031,11
+Ki3yGpsPjaB8fI,2026-07-08T06:21:47.731Z,"ATL has the right to swap its 2031 2nd round pick for HOU's 2031 2nd round pick protected for selections 56-60 (if this pick falls within its protected range and is therefore not conveyable, then HOU's commitment to ATL will be lifted) [ATL-BKN-GSW-HOU-LAL-MIN-PHX, 7/6/2025]",,True,,2,11,ATL  holds rights to swap,2026-08-31T08:18:45.034Z,2031,11
+d2ozfj-dbOWzoV,2026-07-08T06:21:47.731Z,"HOU's 2031 2nd round pick to BOS protected for selections 31-55 (if this pick falls within its protected range and is therefore not conveyed, then HOU's commitment to BOS will be lifted) [BOS-HOU, 2/6/2025]",,True,,2,11,BOS,2026-08-31T08:18:45.034Z,2031,11
+SofPOUg1lWrffd,2025-07-08T01:09:45.446Z,No protections,,True,,2,11,MIN or PHX,2026-08-31T08:18:45.034Z,2032,11
+m9SVV5ATJJJvQu,2025-06-27T18:30:43.808Z,,,True,,1,11,,2026-08-31T08:18:45.034Z,2032,11
+dyZ2rnCf3rxugy,2026-07-08T06:21:47.731Z,No protections,,True,,2,11,CHA,2026-08-31T08:18:45.034Z,2033,11
+lGiDZBk8W1QznC,2026-07-08T06:21:47.731Z,,,True,,1,11,,2026-08-31T08:18:45.034Z,2033,11
+XjV98gKfuGDIWJ,2022-02-08T06:10:49.826Z,No protections,UTA,True,,2,12,,2026-08-31T08:18:45.034Z,2027,12
+BApqSGTWw3u,2020-11-21T16:46:04.443Z,,,True,,1,12,,2026-08-31T08:18:45.034Z,2027,12
+Eo0Xp6V8zKS3bt,2026-07-08T06:21:47.731Z,No protections,,True,,2,12,"PHI, NOP, NYK, SAS or MIA",2026-08-31T08:18:45.034Z,2027,12
+mw_sclvPSEhBQ4,2021-06-21T10:08:45.886Z,,,True,,1,12,,2026-08-31T08:18:45.034Z,2028,12
+ODdDU8Deqwrnly,2021-06-21T10:08:45.886Z,,,True,,2,12,,2026-08-31T08:18:45.034Z,2028,12
+OMYUxY8EW-Qw0-,2026-07-08T06:21:47.731Z,"CHI will receive the most favorable of its 2028 2nd round pick, IND's 2028 2nd round pick and PHX's 2028 2nd round pick; IND will receive the less favorable of (1) the more favorable of its pick and and the PHX pick and (2) the CHI pick; NYK will receive the less favorable of the IND pick and the PHX pick (via PHX to IND; via CHI's right to swap for IND or PHX) [IND-PHX-WAS, 6/23/2023; IND-NYK, 7/7/2023; CHI-IND, 6/24/2026]",PHX or CHI,True,,2,12,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2028,12
+gbY9wmYXVMg56z,2022-06-24T14:50:00.459Z,,,True,,2,12,,2026-08-31T08:18:45.034Z,2029,12
+QtfBOUV559kzv9,2026-07-08T06:21:47.731Z,No protections,,True,,1,12,LAC,2026-08-31T08:18:45.034Z,2029,12
+7CDrDWaNrPeuOr,2025-01-25T16:12:49.443Z,No protections,WAS swap rights,True,,2,12,,2026-08-31T08:18:45.034Z,2029,12
+II2dXZgD2xXZvm,2026-07-08T06:21:47.731Z,"CHI has the right to swap its 2030 2nd round pick for IND's 2030 2nd round pick [CHI-IND, 6/24/2026]",,True,,2,12,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2030,12
+tRD6fj1Xq1F5fi,2023-06-27T03:57:46.352Z,,,True,,1,12,,2026-08-31T08:18:45.034Z,2030,12
+usq69TsLxZR1bA,2025-07-30T08:02:47.085Z,"WAS will receive the more favorable of IND's 2031 2nd round pick and MIA's 2031 2nd round pick; MEM will receive the more favorable of (1) its 2031 2nd round pick and (2) the less favorable of the IND pick and the MIA pick and IND will receive the least favorable of the three (via MIA's right to swap for IND; via UTA to WAS; via MEM' right to swap for MIA or IND) [IND-MIA, 12/15/2024; DET-GSW-MIA-UTA, 2/6/2025; UTA-WAS, 6/25/2025; IND-MEM, 7/6/2025]",,True,,2,12,WAS  holds rights to swap,2026-08-31T08:18:45.034Z,2031,12
+QYeZR8jBu-FhVk,2024-06-26T17:07:21.129Z,,,True,,1,12,,2026-08-31T08:18:45.034Z,2031,12
+dLNsQbisV3YKsH,2025-06-27T18:30:43.808Z,,,True,,2,12,,2026-08-31T08:18:45.034Z,2032,12
+k4isUZvOM2ZN6R,2025-06-27T18:30:43.808Z,,,True,,1,12,,2026-08-31T08:18:45.034Z,2032,12
+Tp-kD5w8M_XKwk,2026-07-08T06:21:47.731Z,,,True,,2,12,,2026-08-31T08:18:45.034Z,2033,12
+RpcmBGDHlUWgLq,2026-07-08T06:21:47.731Z,,,True,,1,12,,2026-08-31T08:18:45.034Z,2033,12
+ePn_dpVadLHq9W,2026-07-08T06:21:47.731Z,"OKC has the right to swap the less favorable of its 2027 1st round pick and DEN's 2027 1st round pick protected for selections 1-5 for the LAC' 2027 1st round pick; the LAC then have the right to swap the OKC pick or the DEN pick for TOR's 2027 1st round pick [DEN-OKC, 6/23/2022; LAC-OKC-PHI, 11/1/2023; LAC-TOR, pending]","OKC, DEN or TOR",True,,1,13,OKC  holds rights to swap,2026-08-31T08:18:45.034Z,2027,13
+E2ARZoGojsX,2020-11-21T16:46:04.443Z,,,True,,1,13,,2026-08-31T08:18:45.034Z,2027,13
+w-RoZtHpDPePg0,2025-07-08T01:09:45.446Z,No protections,,True,,2,13,UTA,2026-08-31T08:18:45.034Z,2027,13
+SZkaf3FckEomhC,2026-07-08T06:21:47.731Z,No protections,DAL,True,,2,13,,2026-08-31T08:18:45.034Z,2028,13
+chXDRhJTSRAI7e,2024-07-26T10:29:30.688Z,No protections,,True,,2,13,CHA or DET,2026-08-31T08:18:45.034Z,2028,13
+X9dvwF6k9R2N12,2026-07-08T06:21:47.731Z,No protections,,True,,1,13,PHI,2026-08-31T08:18:45.034Z,2028,13
+TnIcpsVdWqF62v,2026-07-08T06:21:47.731Z,"LAC' 2028 1st round pick to BOS protected for selections 1-16; if this pick falls within its protected range, then BOS will instead have the right to swap the less favorable of the BOS pick and the SAS pick for the more favorable of the LAC' pick and PHI's 2028 1st round pick protected for selections 9-30; if the PHI pick falls within its protected range and is therefore not conveyable, then BOS will instead have the right to swap the less favorable of the BOS pick and the SAS pick for the LAC' pick (via LAC unprotected to PHI; via SAS swap for BOS) [BOS-SAS, 2/10/2022; LAC-OKC-PHI, 11/1/2023; BOS-PHI, 7/6/2026]",,True,,1,13,BOS,2026-08-31T08:18:45.034Z,2028,13
+i3kcHTdL78FDWB,2023-11-04T06:14:05.141Z,"PHI has the right to swap its 2029 1st round pick for the LAC' 2029 1st round pick protected for selections 1-3 (if this pick falls within its protected range and is therefore not conveyable, then the LAC' commitment to PHI will be lifted) [LAC-OKC-PHI, 11/1/2023]",,True,,1,13,PHI  holds rights to swap,2026-08-31T08:18:45.034Z,2029,13
+xlHAYdOliKQwwm,2026-07-08T06:21:47.731Z,No protections,IND,True,,1,13,,2026-08-31T08:18:45.034Z,2029,13
+qx-LtSRf7I3jID,2024-02-23T06:13:51.050Z,No protections,,True,,2,13,SAS,2026-08-31T08:18:45.034Z,2029,13
+rwM01Ki49D5VIN,2025-08-08T08:02:45.219Z,No protections,,True,,2,13,CHA or UTA,2026-08-31T08:18:45.034Z,2030,13
+uz5Upccz5J0v_w,2023-06-27T03:57:46.352Z,,,True,,1,13,,2026-08-31T08:18:45.034Z,2030,13
+lwyAwh-Alur8Q5,2026-07-08T06:21:47.731Z,No protections,TOR,True,,2,13,,2026-08-31T08:18:45.034Z,2030,13
+yH6wN5ISLlgJTD,2024-06-26T17:07:21.129Z,,,True,,2,13,,2026-08-31T08:18:45.034Z,2031,13
+kOso9ZpSmrAVmM,2024-06-26T17:07:21.129Z,,,True,,1,13,,2026-08-31T08:18:45.034Z,2031,13
+_oFHfDQ2oVq-TN,2026-07-08T06:21:47.731Z,No protections,TOR,True,,1,13,,2026-08-31T08:18:45.034Z,2031,13
+j9BzX9iUqlFrIX,2025-06-27T18:30:43.808Z,,,True,,2,13,,2026-08-31T08:18:45.034Z,2032,13
+v7ssDCrwfJrfF9,2025-06-27T18:30:43.808Z,,,True,,1,13,,2026-08-31T08:18:45.034Z,2032,13
+KRBMUyYT6qlFuo,2026-07-08T06:21:47.731Z,,,True,,1,13,,2026-08-31T08:18:45.034Z,2033,13
+aRTyqbV2acHtmQ,2026-07-08T06:21:47.731Z,No protections,TOR,True,,2,13,,2026-08-31T08:18:45.034Z,2033,13
+rmjaFYiWTlFoG8,2026-07-08T06:21:47.731Z,,,True,,2,13,,2026-08-31T08:18:45.034Z,2033,13
+MiSZSqz1zCwTcv,2026-07-08T06:21:47.731Z,No protections,TOR,True,,1,13,,2026-08-31T08:18:45.034Z,2033,13
+5N-xtzyiJWqfmU,2026-07-08T06:21:47.731Z,"LAL' 2027 1st round pick to MEM protected for selections 1-4; if this pick falls within its protected range and is therefore not conveyed, then the LAL will instead convey their 2027 2nd round pick to MEM (via UTA) [LAL-MIN-UTA, 2/9/2023; MEM-UTA, 2/3/2026]",,True,,1,14,MEM,2026-08-31T08:18:45.034Z,2027,14
+fneY6pfRfGqLhi,2025-01-25T16:12:49.443Z,No protections,,True,,2,14,BKN,2026-08-31T08:18:45.034Z,2027,14
+_ACH9A2Za1yW70,2026-07-08T06:21:47.731Z,"UTA will receive the most favorable of its 2028 1st round pick, CLE's 2028 1st round pick and the LAL' 2028 1st round pick; the LAL will receive the less favorable of (1) its pick and (2) the more favorable of the UTA pick and the CLE pick; ATL will receive the more favorable of (1) its 2028 1st round pick and (2) the less favorable of the UTA pick and the CLE pick and CLE will receive the least favorable of the three (via UTA's right to swap for CLE; via UTA's right to swap UTA or CLE for LAL; via ATL's right to swap for UTA or CLE) [CLE-UTA, 9/3/2022; ATL-CLE, 2/6/2025; LAL-UTA, pending]",,True,,1,14,UTA  holds rights to swap,2026-08-31T08:18:45.034Z,2028,14
+7VEFhLwRGIFBW4,2023-01-24T06:12:18.705Z,No protections,,True,,2,14,ORL or WAS,2026-08-31T08:18:45.034Z,2028,14
+8CPDTdSydr2SWF,2023-01-24T06:12:18.705Z,No protections,,True,,2,14,WAS,2026-08-31T08:18:45.034Z,2029,14
+No-16b5Ykqn9e-,2025-02-02T20:48:15.496Z,No protections,,True,,1,14,DAL,2026-08-31T08:18:45.034Z,2029,14
+-9fJxhikJB9kNc,2026-07-08T06:21:47.731Z,"UTA has the right to swap its 2030 1st round pick for the LAL' 2030 1st round pick [LAL-UTA, pending]",,True,,1,14,UTA  holds rights to swap,2026-08-31T08:18:45.034Z,2030,14
+6H5knxr6u6IhHk,2025-01-25T16:12:49.443Z,No protections,,True,,2,14,BKN,2026-08-31T08:18:45.034Z,2030,14
+Y3quL4iQ9err13,2026-07-08T06:21:47.731Z,No protections,WAS,True,,2,14,,2026-08-31T08:18:45.034Z,2031,14
+G0kXs4EjLILa64,2026-07-08T06:21:47.731Z,No protections,,True,,1,14,UTA,2026-08-31T08:18:45.034Z,2031,14
+4FhTC_4F3VO2uT,2025-01-25T16:12:49.443Z,No protections,,True,,2,14,BKN,2026-08-31T08:18:45.034Z,2031,14
+sZVKQGQEIkj4-D,2025-06-27T18:30:43.808Z,,,True,,1,14,,2026-08-31T08:18:45.034Z,2032,14
+w-IKa_859L4Ef2,2026-07-08T06:21:47.731Z,No protections,WAS,True,,2,14,,2026-08-31T08:18:45.034Z,2032,14
+5kGeZVqNOtglhZ,2026-07-08T06:21:47.731Z,No protections,,True,,2,14,ATL or OKC,2026-08-31T08:18:45.034Z,2032,14
+lkm2mOB72o5oqJ,2026-07-08T06:21:47.731Z,No protections,,True,,1,14,UTA,2026-08-31T08:18:45.034Z,2033,14
+lLg6dL7Tvwf1PZ,2026-07-08T06:21:47.731Z,,,True,,2,14,,2026-08-31T08:18:45.034Z,2033,14
+IWh5SX_Z4K794y,2026-07-08T06:21:47.731Z,No protections,"UTA, CLE or MIN",True,,1,15,,2026-08-31T08:18:45.034Z,2027,15
+XZxE7D2MsnQ4dm,2026-07-08T06:21:47.731Z,No protections,,True,,2,15,CHA,2026-08-31T08:18:45.034Z,2027,15
+AwNVFX3gQYQkXP,2026-07-08T06:21:47.731Z,Protected 1-4,LAL,True,,1,15,,2026-08-31T08:18:45.034Z,2027,15
+JdglqRU9JdH,2020-11-21T16:46:04.443Z,,,True,,1,15,,2026-08-31T08:18:45.034Z,2027,15
+s2P26nH8svLVkM,2024-02-23T06:13:51.050Z,No protections,,True,,2,15,BKN,2026-08-31T08:18:45.034Z,2028,15
+06J78L-7XXX7TM,2021-06-21T10:08:45.886Z,,,True,,1,15,,2026-08-31T08:18:45.034Z,2028,15
+syfu6t7Co_aVS3,2025-07-08T01:09:45.446Z,No protections,POR,True,,2,15,,2026-08-31T08:18:45.034Z,2029,15
+TEJnfWNeMskkoL,2022-06-24T14:50:00.459Z,,,True,,1,15,,2026-08-31T08:18:45.034Z,2029,15
+vApUxRTIcpnVOc,2024-02-23T06:13:51.050Z,No protections,,True,,2,15,BKN,2026-08-31T08:18:45.034Z,2029,15
+9SPNDidhQ8JzV5,2025-06-27T18:30:43.808Z,"MEM has the right to swap its 2029 1st round pick for ORL's 2029 1st round pick protected for selections 1-2; if this pick falls within its protected range and is therefore not conveyable, then ORL will instead convey its 2029 2nd round pick to MEM [MEM-ORL, 6/15/2025]",ORL,True,,1,15,MEM  holds rights to swap,2026-08-31T08:18:45.034Z,2029,15
+Ojj5IkodZelwfJ,2025-01-25T16:12:49.443Z,"MEM' 2030 2nd round pick to MIN protected for selections 31-50 (if this pick falls within its protected range and is therefore not conveyed, then MEM' commitment to MIN will be lifted) [DET-MEM-MIN-TOR, 7/6/2024]",,True,,2,15,MIN,2026-08-31T08:18:45.034Z,2030,15
+UKs7e6y16YTkUX,2025-06-27T18:30:43.808Z,No protections,ORL,True,,1,15,,2026-08-31T08:18:45.034Z,2030,15
+8UMDCkA925ti_W,2023-06-27T03:57:46.352Z,,,True,,1,15,,2026-08-31T08:18:45.034Z,2030,15
+WxFGShfbB6U8VB,2025-07-30T08:02:47.085Z,"WAS will receive the more favorable of its 2030 1st round pick and PHX's 2030 1st round pick; MEM will receive the more favorable of (1) its 2030 1st round pick and (2) the less favorable of the WAS pick and the PHX pick and PHX will receive the least favorable of the three (via WAS's right swap for PHX; via MEM' right to swap for WAS or PHX) [IND-PHX-WAS, 6/23/2023; MEM-PHX, 7/11/2023]",WAS or PHX,True,,1,15,WAS  holds rights to swap,2026-08-31T08:18:45.034Z,2030,15
+368q0OcHEeQTnU,2026-07-08T06:21:47.731Z,No protections,"DEN, HOU or MIA",True,,2,15,,2026-08-31T08:18:45.034Z,2030,15
+AKCI6ba5ADzb_n,2026-07-08T06:21:47.731Z,Protected 1-20,GSW,True,,1,15,,2026-08-31T08:18:45.034Z,2030,15
+k58bP0NhkG0lmn,2024-06-26T17:07:21.129Z,,,True,,1,15,,2026-08-31T08:18:45.034Z,2031,15
+s_vx1v2At2Zpe0,2026-07-08T06:21:47.731Z,No protections,PHX,True,,1,15,,2026-08-31T08:18:45.034Z,2031,15
+ScWIToOMhognkp,2024-06-26T17:07:21.129Z,,,True,,2,15,,2026-08-31T08:18:45.034Z,2031,15
+fDbmxLEed49b-_,2025-07-08T01:09:45.446Z,"WAS will receive the more favorable of IND's 2031 2nd round pick and MIA's 2031 2nd round pick; MEM will receive the more favorable of (1) its 2031 2nd round pick and (2) the less favorable of the IND pick and the MIA pick and IND will receive the least favorable of the three (via MIA's right to swap for IND; via UTA to WAS; via MEM' right to swap for MIA or IND) [IND-MIA, 12/15/2024; DET-GSW-MIA-UTA, 2/6/2025; UTA-WAS, 6/25/2025; IND-MEM, 7/6/2025]",IND or MIA,True,,2,15,WAS  holds rights to swap,2026-08-31T08:18:45.034Z,2031,15
+TLShw6g9N2kA5-,2025-06-27T18:30:43.808Z,,,True,,2,15,,2026-08-31T08:18:45.034Z,2032,15
+BM2FTSKFmB8piU,2025-07-08T01:09:45.446Z,Protected 31-50,GSW,True,,2,15,,2026-08-31T08:18:45.034Z,2032,15
+nNVQ21KZPBs8Gp,2026-07-08T06:21:47.731Z,"MEM has the right to swap its 2032 2nd round pick for PHI's 2032 2nd round pick [MEM-PHI, 2/5/2026]",PHI swap rights,True,,2,15,MEM  holds rights to swap,2026-08-31T08:18:45.034Z,2032,15
+yAcSpvr3uUAP2A,2025-06-27T18:30:43.808Z,,,True,,1,15,,2026-08-31T08:18:45.034Z,2032,15
+CRkMIOIzsUJR5f,2026-07-08T06:21:47.731Z,,,True,,2,15,,2026-08-31T08:18:45.034Z,2033,15
+aiP4GgNd4zqqlV,2026-07-08T06:21:47.731Z,,,True,,1,15,,2026-08-31T08:18:45.034Z,2033,15
+6O-qt3EGJBbrca,2026-07-08T06:21:47.731Z,No protections,OKC,True,,2,15,,2026-08-31T08:18:45.034Z,2033,15
+XjoCO-tgQXV3S-,2026-07-08T06:21:47.731Z,No protections,,True,,2,16,"PHI, NOP, NYK or SAS holds rights to swap",2026-08-31T08:18:45.034Z,2027,16
+tTMYHX6rB5RxpC,2024-01-24T06:15:19.650Z,"MIA's 1st round pick to CHA protected for selections 1-14 in 2027 and unprotected in 2028 [CHA-MIA, 1/23/2024]",,True,,1,16,CHA,2026-08-31T08:18:45.034Z,2027,16
+vkV0mmDYMNobmj,2021-06-21T10:08:45.886Z,,,True,,1,16,,2026-08-31T08:18:45.034Z,2028,16
+D4j3O3bZl6Z0L8,2024-07-26T10:29:30.688Z,No protections,,True,,2,16,DET,2026-08-31T08:18:45.034Z,2028,16
+UBlUv433TMzoAe,2026-07-08T06:21:47.731Z,No protections,,True,,2,16,CHA or OKC,2026-08-31T08:18:45.034Z,2029,16
+DbxCW4rTrw8cSK,2022-06-24T14:50:00.459Z,,,True,,1,16,,2026-08-31T08:18:45.034Z,2029,16
+GlEUjJBrL7Ej2l,2026-07-08T06:21:47.731Z,"POR has the right to swap its 2030 1st round pick for MIL's 2030 1st round pick; MIL then has the right to swap the less favorable of its pick and the POR pick for MIA's 2030 1st round pick [MIL-PHX-POR, 9/27/2023; MIA-MIL, 7/6/2026]",,True,,1,16,POR  holds rights to swap,2026-08-31T08:18:45.034Z,2030,16
+H8Zug93BvOIVQD,2026-07-08T06:21:47.731Z,No protections,,True,,2,16,MEM or OKC,2026-08-31T08:18:45.034Z,2030,16
+PEo7zZJuk6Wr9X,2026-07-08T06:21:47.731Z,No protections,,True,,1,16,MIL,2026-08-31T08:18:45.034Z,2031,16
+eASVF3T0UQ_jXS,2025-07-08T01:09:45.446Z,"WAS will receive the more favorable of IND's 2031 2nd round pick and MIA's 2031 2nd round pick; MEM will receive the more favorable of (1) its 2031 2nd round pick and (2) the less favorable of the IND pick and the MIA pick and IND will receive the least favorable of the three (via MIA's right to swap for IND; via UTA to WAS; via MEM' right to swap for MIA or IND) [IND-MIA, 12/15/2024; DET-GSW-MIA-UTA, 2/6/2025; UTA-WAS, 6/25/2025; IND-MEM, 7/6/2025]",,True,,2,16,WAS  holds rights to swap,2026-08-31T08:18:45.034Z,2031,16
+Y1wUHixnYwpAZy,2025-08-16T08:02:53.157Z,No protections,,True,,2,16,BKN,2026-08-31T08:18:45.034Z,2032,16
+JUeNKBun85HppK,2025-06-27T18:30:43.808Z,,,True,,1,16,,2026-08-31T08:18:45.034Z,2032,16
+rpYrIj0O86IRDu,2026-07-08T06:21:47.731Z,No protections,,True,,2,16,MIL,2026-08-31T08:18:45.034Z,2033,16
+UmVA13-j-VW2ky,2026-07-08T06:21:47.731Z,No protections,,True,,1,16,MIL,2026-08-31T08:18:45.034Z,2033,16
+GxILRt2NxJcCGx,2025-02-06T04:35:37.853Z,No protections,,True,,2,17,DET,2026-08-31T08:18:45.034Z,2027,17
+3_xPBOcUfZ5-qR,2025-01-25T16:12:49.443Z,"NOP will receive the more favorable of its 2027 1st round pick and MIL's 2027 1st round pick and ATL will receive the less favorable of the two protected for selections 1-4; if this pick falls within its protected range and is therefore not conveyable, then NOP' commitment to ATL will be lifted and NOP will instead receive both picks (via NOP) [DEN-MIL-NOP-OKC, 11/23/2020; ATL-NOP, 7/6/2024]",,True,,1,17,NOP  holds rights to swap,2026-08-31T08:18:45.034Z,2027,17
+8qH57LXP3YgjId,2026-07-08T06:21:47.731Z,No protections,,True,,2,17,BOS or PHI,2026-08-31T08:18:45.034Z,2028,17
+M_Am3L_r_khBQi,2025-04-10T02:48:58.036Z,"POR will receive the more favorable of its 2028 1st round pick and MIL's 2028 1st round pick; WAS will receive the more favorable of (1) the more favorable of (a) its 2028 1st round pick and (b) the least / less favorable of BKN's 2028 1st round pick, PHI's 2028 1st round pick protected for selections 1-8 and PHX's 2028 1st round pick and (2) the less favorable of the MIL pick and the POR pick and MIL will receive the less favorable of (1) and (2) (via POR's right to swap for MIL; via WAS's right to swap WAS, BKN, PHI or PHX for MIL or POR) [MIL-PHX-POR, 9/27/2023; MIL-NYK-WAS, 2/6/2025]",,True,,1,17,POR  holds rights to swap,2026-08-31T08:18:45.034Z,2028,17
+NxBvha_2viA4lS,2025-01-25T16:12:49.443Z,No protections,,True,,1,17,POR or WAS,2026-08-31T08:18:45.034Z,2029,17
+PKxUEzLcX_Uruj,2026-02-03T15:41:13.755Z,No protections,,True,,2,17,DET or CHI,2026-08-31T08:18:45.034Z,2029,17
+r0MHS8y8BBAky0,2023-06-27T03:57:46.352Z,,,True,,1,17,,2026-08-31T08:18:45.034Z,2030,17
+qlKDJcqQywGzkT,2026-07-08T06:21:47.731Z,"POR has the right to swap its 2030 1st round pick for MIL's 2030 1st round pick; MIL then has the right to swap the less favorable of its pick and the POR pick for MIA's 2030 1st round pick [MIL-PHX-POR, 9/27/2023; MIA-MIL, 7/6/2026]",POR or MIA,True,,1,17,POR  holds rights to swap,2026-08-31T08:18:45.034Z,2030,17
+G2cIsks2aBEifn,2023-07-21T06:12:47.737Z,No protections,,True,,2,17,ORL,2026-08-31T08:18:45.034Z,2030,17
+6_Lrw6ybKjvOOb,2024-06-26T17:07:21.129Z,,,True,,1,17,,2026-08-31T08:18:45.034Z,2031,17
+84E-_UO-uXvcY1,2025-07-08T01:09:45.446Z,No protections,,True,,2,17,CHA,2026-08-31T08:18:45.034Z,2031,17
+3ZmW6gHqR3wipo,2026-07-08T06:21:47.731Z,No protections,MIA,True,,1,17,,2026-08-31T08:18:45.034Z,2031,17
+4lYoooJjpjZesd,2025-07-08T01:09:45.446Z,No protections,,True,,2,17,CHA,2026-08-31T08:18:45.034Z,2032,17
+GEQTtdxz1GDKKY,2025-06-27T18:30:43.808Z,,,True,,1,17,,2026-08-31T08:18:45.034Z,2032,17
+fYRcIK3P0gxnqG,2026-07-08T06:21:47.731Z,No protections,MIA,True,,2,17,,2026-08-31T08:18:45.034Z,2033,17
+DiYyoXtCt3XwXl,2026-07-08T06:21:47.731Z,,,True,,2,17,,2026-08-31T08:18:45.034Z,2033,17
+HSh2PQnlNG3Pzw,2026-07-08T06:21:47.731Z,,,True,,1,17,,2026-08-31T08:18:45.034Z,2033,17
+WwGtFjtillxeVN,2026-07-08T06:21:47.731Z,No protections,MIA,True,,1,17,,2026-08-31T08:18:45.034Z,2033,17
+FNHsFdBRejpTiX,2026-07-08T06:21:47.731Z,No protections,,True,,1,18,"MEM, UTA or PHX",2026-08-31T08:18:45.034Z,2027,18
+SvFI2h4bzbBc8S,2025-01-25T16:12:49.443Z,No protections,,True,,2,18,POR,2026-08-31T08:18:45.034Z,2027,18
+OaUHb7F4-fc1r9,2026-07-08T06:21:47.731Z,No protections,,True,,2,18,DEN,2026-08-31T08:18:45.034Z,2028,18
+VeT0RAUL10U_WG,2026-07-08T06:21:47.731Z,"CHA has the right to swap its 2028 1st round pick for MIN's 2028 1st round pick [CHA-MIN, pending]",,True,,1,18,CHA  holds rights to swap,2026-08-31T08:18:45.034Z,2028,18
+viWmu7oO12r_qH,2026-07-08T06:21:47.731Z,No protections,,True,,2,18,CHA,2026-08-31T08:18:45.034Z,2029,18
+3mfwWilnFw59Rq,2026-07-08T06:21:47.731Z,"UTA will receive the most / two most favorable of its 2029 1st round pick, CLE's 2029 1st round pick and MIN's 2029 1st round pick protected for selections 1-5 and CHA will receive the least / less favorable of these; if the MIN pick falls within its protected range and is therefore not conveyable as part of this conveyance, then MIN will instead convey its 2029 2nd round pick to UTA (via UTA to PHX); CHA may convey the pick it receives to MIN or PHX (see CHA incoming) [MIN-UTA, 7/6/2022; CLE-UTA, 9/3/2022; PHX-UTA, 1/21/2025; CHA-PHX, 6/30/2025]",,True,,1,18,UTA or CHA,2026-08-31T08:18:45.034Z,2029,18
+8NVBjphhiUn6v_,2026-07-08T06:21:47.731Z,"CHA has the right to swap the least favorable of its 2029 1st round pick, UTA's 2029 1st round pick and CLE's 2029 1st round pick for MIN's 2029 1st round pick protected for selections 6-30 (if the MIN pick falls within its protected range of 6-30 and is therefore not conveyable to CHA as part of this conveyance, then this commitment of MIN's to CHA and this swap right of CHA's will be lifted); CHA may convey the pick it receives to PHX [MIN-UTA, 7/6/2022; CLE-UTA, 9/3/2022; PHX-UTA, 1/21/2025; CHA-PHX, 6/30/2025; CHA-MIN, pending; CHA-PHX, pending]",,True,,1,18,CHA  holds rights to swap,2026-08-31T08:18:45.034Z,2029,18
+h9Aa-thlnLImwR,2023-06-27T03:57:46.352Z,,,True,,1,18,,2026-08-31T08:18:45.034Z,2030,18
+rn8q6dqR5DH-yF,2025-01-25T16:12:49.443Z,Protected 31-50,MEM,True,,2,18,,2026-08-31T08:18:45.034Z,2030,18
+x0wKQreSScQHEe,2024-02-23T06:13:51.050Z,No protections,,True,,2,18,DET,2026-08-31T08:18:45.034Z,2030,18
+Ky5AwNwLz0vZjT,2025-02-04T03:24:57.896Z,No protections,,True,,1,18,SAC,2026-08-31T08:18:45.034Z,2031,18
+EYuHFBaeAVswrp,2026-07-08T06:21:47.731Z,"CHI will receive the more favorable of MIN's 2031 2nd round pick and GSW's 2031 2nd round pick and DET will receive the less favorable of the two (via MIN's right to swap for GSW) [CHA-DAL-DEN-GSW-MIN-PHI, 7/6/2024; DET-GSW-MIA-UTA, 2/6/2025; CHI-MIN, 2/5/2026]",,True,,2,18,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2031,18
+cysmqeIy6ktvUI,2026-07-08T06:21:47.731Z,No protections,,True,,2,18,CHA,2026-08-31T08:18:45.034Z,2032,18
+iwL8DT7YKKWeq2,2025-06-27T18:30:43.808Z,,,True,,1,18,,2026-08-31T08:18:45.034Z,2032,18
+D7aHgKiTeLGbnN,2026-07-08T06:21:47.731Z,No protections,,True,,2,18,CHA,2026-08-31T08:18:45.034Z,2033,18
+k8eewhscGUuWvF,2026-07-08T06:21:47.731Z,No protections,,True,,1,18,CHA,2026-08-31T08:18:45.034Z,2033,18
+H-QpkH45VqUvQ-,2026-07-08T06:21:47.731Z,No protections,"OKC, HOU, IND or MIA",True,,2,19,,2026-08-31T08:18:45.034Z,2027,19
+xNVbjGWq-_-pJN,2025-01-25T16:12:49.443Z,"NOP will receive the more favorable of its 2027 1st round pick and MIL's 2027 1st round pick and ATL will receive the less favorable of the two protected for selections 1-4; if this pick falls within its protected range and is therefore not conveyable, then NOP' commitment to ATL will be lifted and NOP will instead receive both picks (via NOP) [DEN-MIL-NOP-OKC, 11/23/2020; ATL-NOP, 7/6/2024]",MIL,True,,1,19,NOP  holds rights to swap,2026-08-31T08:18:45.034Z,2027,19
+qWPHS1e1Pijl,2020-11-21T16:46:04.443Z,,,True,,1,19,,2026-08-31T08:18:45.034Z,2027,19
+ufF4cB4HLrh-Zz,2023-03-05T06:11:46.754Z,No protections,,True,,2,19,CHA or POR,2026-08-31T08:18:45.034Z,2027,19
+8XTFPkNU3A716U,2023-02-19T06:13:09.366Z,No protections,,True,,2,19,SAS,2026-08-31T08:18:45.034Z,2028,19
+YiaBbik-pzzMur,2021-06-21T10:08:45.886Z,,,True,,1,19,,2026-08-31T08:18:45.034Z,2028,19
+YTQcb4ZgkRpuZy,2023-02-19T06:13:09.366Z,No protections,,True,,2,19,SAS,2026-08-31T08:18:45.034Z,2029,19
+QJTdL_ZtUg1sfv,2022-06-24T14:50:00.459Z,,,True,,1,19,,2026-08-31T08:18:45.034Z,2029,19
+cqNJc_wnZIEs9i,2023-06-27T03:57:46.352Z,,,True,,1,19,,2026-08-31T08:18:45.034Z,2030,19
+lM6W5OWWM2Mjqp,2023-06-27T03:57:46.352Z,,,True,,2,19,,2026-08-31T08:18:45.034Z,2030,19
+yErxmfIzIZ1ioe,2025-02-06T04:35:37.853Z,"ORL will receive the more favorable of its 2031 2nd round pick and NOP' 2031 2nd round pick and OKC will receive the less favorable of the two (via ORL's right to swap for NOP) [NOP-ORL, 6/27/2024; NOP-OKC, 2/5/2025]",,True,,2,19,ORL  holds rights to swap,2026-08-31T08:18:45.034Z,2031,19
+IMnhDtuwXKTgpE,2024-06-26T17:07:21.129Z,,,True,,1,19,,2026-08-31T08:18:45.034Z,2031,19
+MzAWQwzNKfn2JF,2025-02-06T12:32:27.207Z,No protections,TOR,True,,2,19,,2026-08-31T08:18:45.034Z,2031,19
+SbIwJtgn0ndph_,2025-06-27T18:30:43.808Z,,,True,,1,19,,2026-08-31T08:18:45.034Z,2032,19
+rWY_Egs25w80fs,2025-06-27T18:30:43.808Z,,,True,,2,19,,2026-08-31T08:18:45.034Z,2032,19
+ZeUtax8_uyIG7a,2026-07-08T06:21:47.731Z,,,True,,1,19,,2026-08-31T08:18:45.034Z,2033,19
+03wy7YR3rjmBpQ,2026-07-08T06:21:47.731Z,,,True,,2,19,,2026-08-31T08:18:45.034Z,2033,19
+ZhtpRKBEvxrL,2020-11-21T16:46:04.443Z,,,True,,2,20,,2026-08-31T08:18:45.034Z,2027,20
+KMLo4eWVCYo4Ze,2026-07-08T06:21:47.731Z,No protections,WAS,True,,2,20,,2026-08-31T08:18:45.034Z,2027,20
+ktwnNGoUepFlBQ,2024-07-26T10:29:30.688Z,No protections,,True,,1,20,BKN,2026-08-31T08:18:45.034Z,2027,20
+FsfClEHkgv6MIp,2026-07-08T06:21:47.731Z,No protections,"OKC, HOU, IND or MIA",True,,2,20,,2026-08-31T08:18:45.034Z,2027,20
+rmUQwT5AheScI9,2024-07-26T10:29:30.688Z,Protected 31-45,BOS,True,,2,20,,2026-08-31T08:18:45.034Z,2028,20
+flxuP92vEOx1cy,2024-02-24T06:14:11.856Z,No protections,,True,,2,20,DET,2026-08-31T08:18:45.034Z,2028,20
+D1Mc7u-p6eq44J,2025-01-25T16:12:49.443Z,"if (1) PHI's 2028 1st round pick protected for selections 1-8 is conveyed to BKN and is the third most favorable of PHI, BKN's 2028 1st round pick, PHX's 2028 1st round pick and NYK's 2028 1st round pick and (2) NYK is the most or second most favorable of the four, then BKN will receive the most and third most favorable of the four; in all other scenarios, BKN will receive the most / two most favorable of these; if PHI if conveyed and / or NYK is less favorable than BKN and PHX, then NYK will receive the least favorable of NYK, BKN and PHX; in all other scenarios, NYK will receive the second most favorable of the three; WAS will receive the more favorable of (1) its 2028 1st round pick and (2) the least / less favorable of PHI if conveyed, BKN and PHX and PHX will receive the less favorable of (1) and (2); WAS may swap the pick it receives for MIL or POR (see WAS incoming) (via BKN's right to swap BKN or PHI for PHX; via BKN's right to swap BKN or PHX for NYK; via WAS's right to swap for PHX, BKN or PHI) [BKN-PHI, 2/10/2022; BKN-IND-MIL-PHX, 2/9/2023; IND-PHX-WAS, 6/23/2023; BKN-NYK, 7/6/2024]",,True,,1,20,BKN holds rights to swap,2026-08-31T08:18:45.034Z,2028,20
+2KVavRutrbpOpe,2023-07-21T06:12:47.737Z,"CHI will receive the most favorable of its 2028 2nd round pick, IND's 2028 2nd round pick and PHX's 2028 2nd round pick; IND will receive the less favorable of (1) the more favorable of its pick and and the PHX pick and (2) the CHI pick; NYK will receive the less favorable of the IND pick and the PHX pick (via PHX to IND; via CHI's right to swap for IND or PHX) [IND-PHX-WAS, 6/23/2023; IND-NYK, 7/7/2023; CHI-IND, 6/24/2026]",IND or PHX,True,,2,20,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2028,20
+_s8lOxoEGG-odC,2026-07-08T06:21:47.731Z,No protections,PHX,True,,2,20,,2026-08-31T08:18:45.034Z,2029,20
+GkUtBWke6YqezL,2026-07-08T06:21:47.731Z,No protections,SAC,True,,2,20,,2026-08-31T08:18:45.034Z,2029,20
+KGW7NM5oFjlFKs,2024-07-26T10:29:30.688Z,No protections,,True,,1,20,BKN,2026-08-31T08:18:45.034Z,2029,20
+r9JAQ0Za8hVuII,2026-02-03T15:41:13.755Z,No protections,,True,,2,20,DET or CHI,2026-08-31T08:18:45.034Z,2029,20
+cncwvjlyoaCF-9,2026-02-03T15:41:13.755Z,No protections,,True,,2,20,ATL,2026-08-31T08:18:45.034Z,2030,20
+P4kGYfK2PvecbA,2026-07-08T06:21:47.731Z,No protections,PHI,True,,2,20,,2026-08-31T08:18:45.034Z,2030,20
+_koXKpfuow_vHu,2023-06-27T03:57:46.352Z,,,True,,1,20,,2026-08-31T08:18:45.034Z,2030,20
+5EsudM6z4UNPBD,2024-07-26T10:29:30.688Z,No protections,,True,,1,20,BKN,2026-08-31T08:18:45.034Z,2031,20
+hQMBnv8l5mYsXb,2026-07-08T06:21:47.731Z,No protections,,True,,2,20,CHI,2026-08-31T08:18:45.034Z,2031,20
+z-fugixWzXd8hI,2025-06-27T18:30:43.808Z,,,True,,2,20,,2026-08-31T08:18:45.034Z,2032,20
+Mg8mDe2ub5ktnc,2026-07-08T06:21:47.731Z,No protections,DAL,True,,2,20,,2026-08-31T08:18:45.034Z,2032,20
+0Jt-YjqS_LBDte,2025-06-27T18:30:43.808Z,,,True,,1,20,,2026-08-31T08:18:45.034Z,2032,20
+qrb0EDbtcSVg9E,2026-07-08T06:21:47.731Z,,,True,,2,20,,2026-08-31T08:18:45.034Z,2033,20
+6Hv36ZUyHR1vLF,2026-07-08T06:21:47.731Z,,,True,,1,20,,2026-08-31T08:18:45.034Z,2033,20
+zA1o7P46V7Gst7,2026-07-08T06:21:47.731Z,No protections,PHX,True,,2,20,,2026-08-31T08:18:45.034Z,2033,20
+1Uhf-WJFZ_uggh,2026-07-08T06:21:47.731Z,"OKC has the right to swap the less favorable of its 2027 1st round pick and DEN's 2027 1st round pick protected for selections 1-5 for the LAC' 2027 1st round pick; the LAC then have the right to swap the OKC pick or the DEN pick for TOR's 2027 1st round pick [DEN-OKC, 6/23/2022; LAC-OKC-PHI, 11/1/2023; LAC-TOR, pending]",LAC,True,,1,21,OKC  holds rights to swap,2026-08-31T08:18:45.034Z,2027,21
+-nRtnc5QWO2K5Z,2025-06-27T18:30:43.808Z,Protected 1-16,SAS,True,,1,21,,2026-08-31T08:18:45.034Z,2027,21
+Gr63S_wN8Ngahy,2026-07-08T06:21:47.731Z,Protected 1-5,DEN,True,,1,21,,2026-08-31T08:18:45.034Z,2027,21
+rsYFahC0Z-2M,2020-11-21T16:46:04.443Z,,,True,,1,21,,2026-08-31T08:18:45.034Z,2027,21
+jfv_TLSZhbicGx,2026-07-08T06:21:47.731Z,No protections,,True,,2,21,"PHI, NOP, NYK, SAS or MIA",2026-08-31T08:18:45.034Z,2027,21
+RhJuECjsN5yWcc,2026-07-08T06:21:47.731Z,No protections,,True,,2,21,BOS or PHI,2026-08-31T08:18:45.034Z,2028,21
+ZlgxhDteoxrGUt,2026-07-08T06:21:47.731Z,"OKC has the right to swap its 2028 1st round pick for DAL' 2028 1st round pick [DAL-OKC, 2/8/2024]",DAL swap rights,True,,1,21,OKC  holds rights to swap,2026-08-31T08:18:45.034Z,2028,21
+oAHZehneL__25C,2021-06-21T10:08:45.886Z,,,True,,1,21,,2026-08-31T08:18:45.034Z,2028,21
+nQE0WVoON9vfxt,2022-01-09T00:07:29.634Z,No protections,UTA,True,,2,21,,2026-08-31T08:18:45.034Z,2028,21
+skwKItsVMBu4Sd,2022-06-24T14:50:00.459Z,,,True,,1,21,,2026-08-31T08:18:45.034Z,2029,21
+FD1TkbvMqY72qh,2023-02-19T06:13:09.366Z,No protections,BOS,True,,2,21,,2026-08-31T08:18:45.034Z,2029,21
+5q-Pjjk0TiHOfc,2022-06-24T14:50:00.459Z,,,True,,2,21,,2026-08-31T08:18:45.034Z,2029,21
+2h6ZmxXdcA9WSB,2023-07-21T06:12:47.737Z,"only if and at least two years after DEN conveys a first potential 1st round pick to OKC, then DEN's next potential 1st round pick to OKC protected for selections 1-5 in 2029 and 1-5 in 2030; if DEN has not conveyed this next potential 1st round pick to OKC by 2030, then DEN will instead convey its 2030 2nd round pick to OKC (if the 1st round pick is conveyed, then OKC will still receive the 2nd round pick via CHA); OKC may convey the 2nd round pick to MEM (see OKC incoming) [DEN-IND-LAL-OKC, 6/23/2023]",DEN,True,,1,21,,2026-08-31T08:18:45.034Z,2029,21
+RvgfKpcxueW5bJ,2026-07-08T06:21:47.731Z,No protections,ATL or MIA,True,,2,21,,2026-08-31T08:18:45.034Z,2029,21
+K2F8w1n8E4M7kV,2023-06-27T03:57:46.352Z,,,True,,2,21,,2026-08-31T08:18:45.034Z,2030,21
+nImqipTKtZ7TJ4,2026-07-08T06:21:47.731Z,No protections,ATL,True,,2,21,,2026-08-31T08:18:45.034Z,2030,21
+wXFrOBuWpFEvJf,2026-07-08T06:21:47.731Z,No protections,MIN,True,,2,21,,2026-08-31T08:18:45.034Z,2030,21
+ZDqhqWYir5Ik-r,2023-06-27T03:57:46.352Z,,,True,,1,21,,2026-08-31T08:18:45.034Z,2030,21
+sQ816Oap3gwfL9,2026-07-08T06:21:47.731Z,No protections,DET,True,,2,21,,2026-08-31T08:18:45.034Z,2031,21
+RL7ojqDaJEwcQn,2024-06-26T17:07:21.129Z,,,True,,2,21,,2026-08-31T08:18:45.034Z,2031,21
+rTlSLW3BdjrQ_P,2024-06-26T17:07:21.129Z,,,True,,1,21,,2026-08-31T08:18:45.034Z,2031,21
+gBov6U1H7vkO9H,2025-02-06T04:35:37.853Z,"ORL will receive the more favorable of its 2031 2nd round pick and NOP' 2031 2nd round pick and OKC will receive the less favorable of the two (via ORL's right to swap for NOP) [NOP-ORL, 6/27/2024; NOP-OKC, 2/5/2025]",ORL or NOP,True,,2,21,ORL  holds rights to swap,2026-08-31T08:18:45.034Z,2031,21
+un9GjOmlidJW7g,2025-06-27T18:30:43.808Z,,,True,,2,21,,2026-08-31T08:18:45.034Z,2032,21
+qbJwF81cmBwkjp,2026-07-08T06:21:47.731Z,No protections,ATL or LAL,True,,2,21,,2026-08-31T08:18:45.034Z,2032,21
+1fFxQNWrbGQ35m,2025-06-27T18:30:43.808Z,,,True,,1,21,,2026-08-31T08:18:45.034Z,2032,21
+0hkJlusj8XuxS8,2026-07-08T06:21:47.731Z,,,True,,1,21,,2026-08-31T08:18:45.034Z,2033,21
+I93EznnCZWwI7U,2026-07-08T06:21:47.731Z,No protections,,True,,2,21,MEM,2026-08-31T08:18:45.034Z,2033,21
+c5lR7sV_xzKK-Z,2026-07-08T06:21:47.731Z,No protections,,True,,2,22,UTA or PHX,2026-08-31T08:18:45.034Z,2027,22
+oiELWvJyFTdB,2020-11-21T16:46:04.443Z,,,True,,1,22,,2026-08-31T08:18:45.034Z,2027,22
+Tloz6IU4uEOp4c,2026-07-08T06:21:47.731Z,No protections,,True,,2,22,CHA,2026-08-31T08:18:45.034Z,2028,22
+Rh3m69MsAginGk,2022-06-24T14:50:00.459Z,No protections,LAL or WAS,True,,2,22,,2026-08-31T08:18:45.034Z,2028,22
+C8fWuGTfhlMclx,2025-06-27T18:30:43.808Z,No protections,,True,,1,22,POR,2026-08-31T08:18:45.034Z,2028,22
+NVAUmMT4F5R2Ax,2022-06-24T14:50:00.459Z,,,True,,2,22,,2026-08-31T08:18:45.034Z,2029,22
+MfQHkGR-ITr_Ac,2025-06-27T18:30:43.808Z,"MEM has the right to swap its 2029 1st round pick for ORL's 2029 1st round pick protected for selections 1-2; if this pick falls within its protected range and is therefore not conveyable, then ORL will instead convey its 2029 2nd round pick to MEM [MEM-ORL, 6/15/2025]",,True,,1,22,MEM  holds rights to swap,2026-08-31T08:18:45.034Z,2029,22
+tEIctOfcPU2flu,2023-07-21T06:12:47.737Z,No protections,MIL,True,,2,22,,2026-08-31T08:18:45.034Z,2030,22
+FPg6B2c4R7a-Tt,2025-01-25T16:12:49.443Z,"ORL has the right to swap its 2030 2nd round pick for NOP' 2030 2nd round pick [NOP-ORL, 6/27/2024]",NOP swap rights,True,,2,22,ORL  holds rights to swap,2026-08-31T08:18:45.034Z,2030,22
+Yb3v976rcuXIb5,2023-06-27T03:57:46.352Z,,,True,,2,22,,2026-08-31T08:18:45.034Z,2030,22
+hylE94qrTvscQJ,2025-06-27T18:30:43.808Z,No protections,,True,,1,22,MEM,2026-08-31T08:18:45.034Z,2030,22
+2x3Jldg10CbDF5,2024-06-26T17:07:21.129Z,,,True,,1,22,,2026-08-31T08:18:45.034Z,2031,22
+cClCjSfvEgF0RQ,2024-06-26T17:07:21.129Z,,,True,,2,22,,2026-08-31T08:18:45.034Z,2031,22
+eELIswJlaULZ6D,2025-02-06T04:35:37.853Z,"ORL will receive the more favorable of its 2031 2nd round pick and NOP' 2031 2nd round pick and OKC will receive the less favorable of the two (via ORL's right to swap for NOP) [NOP-ORL, 6/27/2024; NOP-OKC, 2/5/2025]",NOP swap rights,True,,2,22,ORL  holds rights to swap,2026-08-31T08:18:45.034Z,2031,22
+PO5nKvt4eG6JtN,2025-06-27T18:30:43.808Z,,,True,,1,22,,2026-08-31T08:18:45.034Z,2032,22
+DXmgjWgZ1FV9_U,2025-06-27T18:30:43.808Z,,,True,,2,22,,2026-08-31T08:18:45.034Z,2032,22
+Jxc5bljXRCJGDr,2026-07-08T06:21:47.731Z,,,True,,1,22,,2026-08-31T08:18:45.034Z,2033,22
+UBC69w-ImpmhQO,2026-07-08T06:21:47.731Z,,,True,,2,22,,2026-08-31T08:18:45.034Z,2033,22
+RuquJHcWVdWE,2020-11-21T16:46:04.443Z,,,True,,1,23,,2026-08-31T08:18:45.034Z,2027,23
+pqYGhHYNWpKL,2020-11-21T16:46:04.443Z,,,True,,2,23,,2026-08-31T08:18:45.034Z,2027,23
+x0pZiGCEX4cd-b,2025-04-10T02:48:58.036Z,No protections,GSW or PHX,True,,2,23,,2026-08-31T08:18:45.034Z,2027,23
+hRMFCnIbx4P5n7,2026-07-08T06:21:47.731Z,No protections,"OKC, HOU, IND or MIA",True,,2,23,,2026-08-31T08:18:45.034Z,2027,23
+XF_rPyCQILNhbO,2026-07-08T06:21:47.731Z,No protections,LAC,True,,1,23,,2026-08-31T08:18:45.034Z,2028,23
+o3rENy0vlg2dcj,2021-06-21T10:08:45.886Z,,,True,,2,23,,2026-08-31T08:18:45.034Z,2028,23
+PO8uKEjbPagSze,2025-07-16T08:02:37.662Z,"PHI's 2028 1st round pick to BKN protected for selections 1-8; if this pick falls within its protected range and is therefore not conveyed, then PHI will instead convey its 2028 2nd round pick to BKN; BKN may convey the 2028 1st round pick to PHX (see BKN incoming) which may then convey this pick to WAS (see PHX outgoing) [BKN-PHI, 2/10/2022]",,True,,1,23,BKN,2026-08-31T08:18:45.034Z,2028,23
+XAjg9o7WIsA2Vi,2026-07-08T06:21:47.731Z,"LAC' 2028 1st round pick to BOS protected for selections 1-16; if this pick falls within its protected range, then BOS will instead have the right to swap the less favorable of the BOS pick and the SAS pick for the more favorable of the LAC' pick and PHI's 2028 1st round pick protected for selections 9-30; if the PHI pick falls within its protected range and is therefore not conveyable, then BOS will instead have the right to swap the less favorable of the BOS pick and the SAS pick for the LAC' pick (via LAC unprotected to PHI; via SAS swap for BOS) [BOS-SAS, 2/10/2022; LAC-OKC-PHI, 11/1/2023; BOS-PHI, 7/6/2026]",,True,,1,23,BOS,2026-08-31T08:18:45.034Z,2028,23
+0JvjeCmymEbfYB,2024-02-23T06:13:51.050Z,Protected 31-55,DET,True,,2,23,,2026-08-31T08:18:45.034Z,2028,23
+Q9QTqE8JvfiQn9,2022-06-24T14:50:00.459Z,,,True,,1,23,,2026-08-31T08:18:45.034Z,2029,23
+zdeoRDKGwk0uK-,2023-11-04T06:14:05.141Z,"PHI has the right to swap its 2029 1st round pick for the LAC' 2029 1st round pick protected for selections 1-3 (if this pick falls within its protected range and is therefore not conveyable, then the LAC' commitment to PHI will be lifted) [LAC-OKC-PHI, 11/1/2023]",LAC,True,,1,23,PHI  holds rights to swap,2026-08-31T08:18:45.034Z,2029,23
+Qr8P2cVCOtBF6a,2022-06-24T14:50:00.459Z,,,True,,2,23,,2026-08-31T08:18:45.034Z,2029,23
+SgyAcQsQsYoKbE,2026-07-08T06:21:47.731Z,No protections,,True,,2,23,NYK,2026-08-31T08:18:45.034Z,2030,23
+0BzhpL1UjXJSF6,2023-06-27T03:57:46.352Z,,,True,,1,23,,2026-08-31T08:18:45.034Z,2030,23
+BlDvlKwvEzM3Ct,2026-07-08T06:21:47.731Z,No protections,"PHX, POR or WAS",True,,2,23,,2026-08-31T08:18:45.034Z,2030,23
+15iY5ZXxP7nTj0,2026-07-08T06:21:47.731Z,No protections,WAS,True,,2,23,,2026-08-31T08:18:45.034Z,2030,23
+X6oEhmscCNpp19,2024-06-26T17:07:21.129Z,,,True,,2,23,,2026-08-31T08:18:45.034Z,2031,23
+8t4ExFmQu6_Xpy,2026-07-08T06:21:47.731Z,No protections,,True,,1,23,BOS,2026-08-31T08:18:45.034Z,2031,23
+Il1qkq3xjwWTqA,2026-07-08T06:21:47.731Z,"MEM has the right to swap its 2032 2nd round pick for PHI's 2032 2nd round pick [MEM-PHI, 2/5/2026]",,True,,2,23,MEM  holds rights to swap,2026-08-31T08:18:45.034Z,2032,23
+hL3PglgTBafWPz,2025-06-27T18:30:43.808Z,,,True,,1,23,,2026-08-31T08:18:45.034Z,2032,23
+__ALkTX7zcbZQA,2026-07-08T06:21:47.731Z,,,True,,1,23,,2026-08-31T08:18:45.034Z,2033,23
+huZkIGhuIob2As,2026-07-08T06:21:47.731Z,,,True,,2,23,,2026-08-31T08:18:45.034Z,2033,23
+6DYOBCgVpTdU7k,2026-07-08T06:21:47.731Z,No protections,BOS or ORL,True,,2,24,,2026-08-31T08:18:45.034Z,2027,24
+ks91VQAMp4iei8,2025-04-10T02:48:58.036Z,No protections,,True,,2,24,PHI or WAS,2026-08-31T08:18:45.034Z,2027,24
+qz39QkMuhwTuhO,2024-07-05T11:32:48.478Z,No protections,,True,,1,24,HOU,2026-08-31T08:18:45.034Z,2027,24
+3N1Qh6h-iCR8Ph,2025-01-25T16:12:49.443Z,No protections,"UTA, CLE or MIN",True,,1,24,,2026-08-31T08:18:45.034Z,2027,24
+iB-WDM0OLurAJB,2025-01-25T16:12:49.443Z,"if (1) PHI's 2028 1st round pick protected for selections 1-8 is conveyed to BKN and is the third most favorable of PHI, BKN's 2028 1st round pick, PHX's 2028 1st round pick and NYK's 2028 1st round pick and (2) NYK is the most or second most favorable of the four, then BKN will receive the most and third most favorable of the four; in all other scenarios, BKN will receive the most / two most favorable of these; if PHI if conveyed and / or NYK is less favorable than BKN and PHX, then NYK will receive the least favorable of NYK, BKN and PHX; in all other scenarios, NYK will receive the second most favorable of the three; WAS will receive the more favorable of (1) its 2028 1st round pick and (2) the least / less favorable of PHI if conveyed, BKN and PHX and PHX will receive the less favorable of (1) and (2); WAS may swap the pick it receives for MIL or POR (see WAS incoming) (via BKN's right to swap BKN or PHI for PHX; via BKN's right to swap BKN or PHX for NYK; via WAS's right to swap for PHX, BKN or PHI) [BKN-PHI, 2/10/2022; BKN-IND-MIL-PHX, 2/9/2023; IND-PHX-WAS, 6/23/2023; BKN-NYK, 7/6/2024]",,True,,1,24,"BKN, NYK or WAS holds rights to swap",2026-08-31T08:18:45.034Z,2028,24
+YFybfUEYSPBOy0,2026-07-08T06:21:47.731Z,"CHI will receive the most favorable of its 2028 2nd round pick, IND's 2028 2nd round pick and PHX's 2028 2nd round pick; IND will receive the less favorable of (1) the more favorable of its pick and and the PHX pick and (2) the CHI pick; NYK will receive the less favorable of the IND pick and the PHX pick (via PHX to IND; via CHI's right to swap for IND or PHX) [IND-PHX-WAS, 6/23/2023; IND-NYK, 7/7/2023; CHI-IND, 6/24/2026]",,True,,2,24,CHI  holds rights to swap,2026-08-31T08:18:45.034Z,2028,24
+one4ZWopG86D4K,2024-07-05T11:32:48.478Z,"HOU will receive the two most favorable of its 2029 1st round pick, DAL' 2029 1st round pick and PHX's 2029 1st round pick and BKN will receive the least favorable of the three (via DAL and PHX to BKN; via DAL or PHX to HOU; via HOU's right to swap for DAL or PHX) [BKN-DAL, 2/6/2023; BKN-IND-MIL-PHX, 2/9/2023; BKN-HOU, 6/26/2024]",,True,,1,24,HOU  holds rights to swap,2026-08-31T08:18:45.034Z,2029,24
+D4bCf1JKI_VaSV,2026-07-08T06:21:47.731Z,No protections,,True,,2,24,NYK,2026-08-31T08:18:45.034Z,2029,24
+jJbaCkzwappdL9,2026-07-08T06:21:47.731Z,"CHA has the right to swap the least favorable of its 2029 1st round pick, UTA's 2029 1st round pick and CLE's 2029 1st round pick for MIN's 2029 1st round pick protected for selections 6-30 (if the MIN pick falls within its protected range of 6-30 and is therefore not conveyable to CHA as part of this conveyance, then this commitment of MIN's to CHA and this swap right of CHA's will be lifted); CHA may convey the pick it receives to PHX [MIN-UTA, 7/6/2022; CLE-UTA, 9/3/2022; PHX-UTA, 1/21/2025; CHA-PHX, 6/30/2025; CHA-MIN, pending; CHA-PHX, pending]",CHA or MIN,True,,1,24,CHA  holds rights to swap,2026-08-31T08:18:45.034Z,2029,24
+2TeEGun4L2gUzm,2026-07-08T06:21:47.731Z,No protections,,True,,2,24,"BOS, PHI or WAS",2026-08-31T08:18:45.034Z,2030,24
+H26ExpybBRxXuZ,2025-07-29T08:02:48.730Z,"WAS will receive the more favorable of its 2030 1st round pick and PHX's 2030 1st round pick; MEM will receive the more favorable of (1) its 2030 1st round pick and (2) the less favorable of the WAS pick and the PHX pick and PHX will receive the least favorable of the three (via WAS's right swap for PHX; via MEM' right to swap for WAS or PHX) [IND-PHX-WAS, 6/23/2023; MEM-PHX, 7/11/2023]",,True,,1,24,WAS  holds rights to swap,2026-08-31T08:18:45.034Z,2030,24
+zHOl_gq4qAcI9C,2025-01-25T16:12:49.443Z,No protections,,True,,2,24,CHA,2026-08-31T08:18:45.034Z,2031,24
+mgC29n09M0qGts,2026-07-08T06:21:47.731Z,No protections,,True,,1,24,MEM,2026-08-31T08:18:45.034Z,2031,24
+Klgv11UKn67q3e,2025-06-27T18:30:43.808Z,,,True,,1,24,,2026-08-31T08:18:45.034Z,2032,24
+jfs3r3NyA9V853,2025-07-08T01:09:45.446Z,No protections,,True,,2,24,MIN holds rights to swap,2026-08-31T08:18:45.034Z,2032,24
+5FEYyYfyMuoPep,2026-07-08T06:21:47.731Z,No protections,,True,,1,24,CHA,2026-08-31T08:18:45.034Z,2033,24
+0Wg4Y7a-mm1nWx,2026-07-08T06:21:47.731Z,No protections,,True,,2,24,NYK,2026-08-31T08:18:45.034Z,2033,24
+c1ABrN-ItRs4R2,2025-01-25T16:12:49.443Z,No protections,MIN,True,,2,25,,2026-08-31T08:18:45.034Z,2027,25
+dz2Kdey_mHhr,2020-11-21T16:46:04.443Z,,,True,,1,25,,2026-08-31T08:18:45.034Z,2027,25
+LhxWBShpoMa0BL,2026-07-08T06:21:47.731Z,No protections,,True,,2,25,CHA holds rights to swap,2026-08-31T08:18:45.034Z,2027,25
+jlNTfVR3qNrr05,2026-07-08T06:21:47.731Z,"HOU will receive the less favorable of POR's 2027 2nd round pick and NOP' 2027 2nd round pick if this pick falls outside its protected range of 31-55 (if this pick falls within its protected range and is therefore not conveyed, then POR's commitment to HOU will be lifted) (via POR to BOS) [NOP-POR, 2/8/2022; CHA-PHI-POR-NYK, 2/9/2023; BOS-POR, 2/8/2024; BOS-HOU, 2/6/2025]",,True,,2,25,HOU  holds rights to swap,2026-08-31T08:18:45.034Z,2027,25
+prixXZNW2Hi4g8,2026-07-08T06:21:47.731Z,"POR will receive the more favorable of its 2028 1st round pick and MIL's 2028 1st round pick; WAS will receive the more favorable of (1) the more favorable of (a) its 2028 1st round pick and (b) the least / less favorable of BKN's 2028 1st round pick, PHI's 2028 1st round pick protected for selections 1-8 and PHX's 2028 1st round pick and (2) the less favorable of the MIL pick and the POR pick and MIL will receive the less favorable of (1) and (2) (via POR's right to swap for MIL; via WAS's right to swap WAS, BKN, PHI or PHX for MIL or POR) [MIL-PHX-POR, 9/27/2023; MIL-NYK-WAS, 2/6/2025]",MIL swap posibility,True,,1,25,POR  holds rights to swap,2026-08-31T08:18:45.034Z,2028,25
+9GjBxIEaXXFH9-,2025-06-27T18:30:43.808Z,No protections,ORL,True,,1,25,,2026-08-31T08:18:45.034Z,2028,25
+rqu-VRUm-wJHSw,2021-06-21T10:08:45.886Z,,,True,,2,25,,2026-08-31T08:18:45.034Z,2028,25
+JAF2I6LIqS9GTr,2021-06-21T10:08:45.886Z,,,True,,1,25,,2026-08-31T08:18:45.034Z,2028,25
+pkSO4tMtp3dFxT,2025-06-27T18:30:43.808Z,No protections,SAC,True,,2,25,,2026-08-31T08:18:45.034Z,2028,25
+dq357QpCIW0jRO,2024-07-26T10:29:30.688Z,No protections,IND or WAS,True,,2,25,,2026-08-31T08:18:45.034Z,2029,25
+DOzlvP4J-wGc-y,2022-06-24T14:50:00.459Z,,,True,,1,25,,2026-08-31T08:18:45.034Z,2029,25
+5PeH1SmKWKyix4,2025-07-08T01:09:45.446Z,No protections,,True,,2,25,MEM,2026-08-31T08:18:45.034Z,2029,25
+g4Y0DBvJ3xdf0_,2026-07-08T06:21:47.731Z,No protections,,True,,2,25,"BOS, PHI or WAS",2026-08-31T08:18:45.034Z,2030,25
+5FroRIK0deex-S,2023-06-27T03:57:46.352Z,,,True,,1,25,,2026-08-31T08:18:45.034Z,2030,25
+kBRK97C2RPNQ_p,2026-07-08T06:21:47.731Z,"POR has the right to swap its 2030 1st round pick for MIL's 2030 1st round pick; MIL then has the right to swap the less favorable of its pick and the POR pick for MIA's 2030 1st round pick [MIL-PHX-POR, 9/27/2023; MIA-MIL, 7/6/2026]",MIL swap rights,True,,1,25,POR  holds rights to swap,2026-08-31T08:18:45.034Z,2030,25
+vB0gA2U5oct_zg,2024-06-26T17:07:21.129Z,,,True,,1,25,,2026-08-31T08:18:45.034Z,2031,25
+LKbhtAT04rCrxS,2024-06-26T17:07:21.129Z,,,True,,2,25,,2026-08-31T08:18:45.034Z,2031,25
+EEXk90gJdkT5C1,2025-06-27T18:30:43.808Z,,,True,,2,25,,2026-08-31T08:18:45.034Z,2032,25
+kzbf-PJx1f81x_,2025-06-27T18:30:43.808Z,,,True,,1,25,,2026-08-31T08:18:45.034Z,2032,25
+BPtRQ9TJpoTWbo,2026-07-08T06:21:47.731Z,,,True,,1,25,,2026-08-31T08:18:45.034Z,2033,25
+5nUKlWDhidasP0,2026-07-08T06:21:47.731Z,,,True,,2,25,,2026-08-31T08:18:45.034Z,2033,25
+ZYzujPesNFvepJ,2025-02-04T03:24:57.896Z,Protected 17-30,SAS,True,,1,26,,2026-08-31T08:18:45.034Z,2027,26
+h-uI0Of07JtQ,2020-11-21T16:46:04.443Z,,,True,,1,26,,2026-08-31T08:18:45.034Z,2027,26
+hB6Yn8ZlQgi3,2020-11-21T16:46:04.443Z,,,True,,2,26,,2026-08-31T08:18:45.034Z,2027,26
+EozxCB5e_o-3tn,2025-04-19T08:15:16.941Z,No protections,CHA,True,,2,26,,2026-08-31T08:18:45.034Z,2027,26
+joOGZdZWrmwM5c,2025-06-27T18:30:43.808Z,No protections,,True,,2,26,POR,2026-08-31T08:18:45.034Z,2028,26
+b2iRiYDU6JjIf_,2021-06-21T10:08:45.886Z,,,True,,1,26,,2026-08-31T08:18:45.034Z,2028,26
+Xl-GiUyw3ssBa3,2022-06-24T14:50:00.459Z,,,True,,1,26,,2026-08-31T08:18:45.034Z,2029,26
+V7rGG2O6nTBD6P,2026-07-08T06:21:47.731Z,No protections,,True,,2,26,NYK,2026-08-31T08:18:45.034Z,2029,26
+Vr6RXYi8RmNlDV,2023-06-27T03:57:46.352Z,,,True,,1,26,,2026-08-31T08:18:45.034Z,2030,26
+xVIxl4B-G71iEJ,2025-06-27T18:30:43.808Z,No protections,,True,,2,26,SAS,2026-08-31T08:18:45.034Z,2030,26
+OmAfkpmp-CLJID,2024-07-26T10:29:30.688Z,"SAS has the right to swap its 2031 1st round pick for SAC's 2031 1st round pick [CHI-SAC-SAS, 7/8/2024]",,True,,1,26,SAS  holds rights to swap,2026-08-31T08:18:45.034Z,2031,26
+s_TGh8kfIC5_IY,2026-07-08T06:21:47.731Z,No protections,,True,,2,26,DEN,2026-08-31T08:18:45.034Z,2031,26
+npUh9QjMbuVBsI,2025-02-04T03:24:57.896Z,No protections,MIN,True,,1,26,,2026-08-31T08:18:45.034Z,2031,26
+Y4EjKBeCZ3mLEm,2026-07-08T06:21:47.731Z,No protections,,True,,2,26,CLE,2026-08-31T08:18:45.034Z,2032,26
+P5iZRKyDYZKnOq,2025-06-27T18:30:43.808Z,,,True,,1,26,,2026-08-31T08:18:45.034Z,2032,26
+5P1efZlUMvwf88,2026-07-08T06:21:47.731Z,,,True,,1,26,,2026-08-31T08:18:45.034Z,2033,26
+tDO6a2DRxKscLT,2026-07-08T06:21:47.731Z,No protections,,True,,2,26,ATL,2026-08-31T08:18:45.034Z,2033,26
+ZbcELPcN7AbG,2020-11-21T16:46:04.443Z,,,True,,2,27,,2026-08-31T08:18:45.034Z,2027,27
+zoOIzpBvv_MFCI,2022-07-01T06:09:24.034Z,No protections,ATL,True,,1,27,,2026-08-31T08:18:45.034Z,2027,27
+mdeaT9m-4eRmBS,2023-08-09T06:12:59.359Z,No protections,"OKC, HOU, IND or MIA swap rights",True,,2,27,,2026-08-31T08:18:45.034Z,2027,27
+j4dxjryw2jOhWX,2025-06-27T18:30:43.808Z,"SAS's 2027 1st round pick to SAC protected for selections 17-30 or to OKC protected for selections 1-16; if this pick falls within its protected range of 1-16, then SAC will instead convey its 2027 2nd round pick and CHA's 2027 2nd round pick to OKC (SAS's commitment to OKC or SAC will thereafter be lifted) (via SAS unprotected to SAC) [CHI-SAC-SAS, 2/3/2025; OKC-SAC, 6/25/2025]",,True,,1,27,SAC or OKC,2026-08-31T08:18:45.034Z,2027,27
+klDJOy6nGa0FC3,2026-07-08T06:21:47.731Z,"SAS has the right to swap its 2028 1st round pick for BOS's 2028 1st round pick protected for selection 1; if this pick falls on its protected selection and is therefore not conveyable, then BOS will instead convey its 2028 2nd round pick to SAS protected for selections 46-60 (if this pick falls within its protected range and is therefore not conveyed, then BOS's commitment to SAS will be lifted); BOS may convey the SAS 1st round pick to PHI (see BOS incoming) [BOS-SAS, 2/10/2022]",BOS,True,,1,27,SAS  holds rights to swap,2026-08-31T08:18:45.034Z,2028,27
+AGHeHtfYH06KyF,2021-06-21T10:08:45.886Z,,,True,,2,27,,2026-08-31T08:18:45.034Z,2028,27
+1ja6BSSsR8XOc7,2021-06-21T10:08:45.886Z,,,True,,1,27,,2026-08-31T08:18:45.034Z,2028,27
+32_qrdA8jRCuD6,2023-02-19T06:13:09.366Z,No protections,NOP,True,,2,27,,2026-08-31T08:18:45.034Z,2028,27
+NWUbMxnF1RTjoX,2022-06-24T14:50:00.459Z,,,True,,2,27,,2026-08-31T08:18:45.034Z,2029,27
+r3gnywQhrUYS7V,2024-02-23T06:13:51.050Z,No protections,LAC,True,,2,27,,2026-08-31T08:18:45.034Z,2029,27
+gJdxhBRqwaxb8o,2023-02-19T06:13:09.366Z,No protections,NOP,True,,2,27,,2026-08-31T08:18:45.034Z,2029,27
+AP_7XWEua0GMo2,2022-06-24T14:50:00.459Z,,,True,,1,27,,2026-08-31T08:18:45.034Z,2029,27
+CoLoVGHd4JKVFp,2023-07-21T06:12:47.737Z,No protections,CLE,True,,2,27,,2026-08-31T08:18:45.034Z,2030,27
+jUgiAglcpAs0rI,2025-06-27T18:30:43.808Z,No protections,SAC,True,,2,27,,2026-08-31T08:18:45.034Z,2030,27
+U445F_fPByPTHA,2023-06-27T03:57:46.352Z,,,True,,2,27,,2026-08-31T08:18:45.034Z,2030,27
+TzliXsvzJn-Tys,2023-06-27T03:57:46.352Z,,,True,,1,27,,2026-08-31T08:18:45.034Z,2030,27
+FciTXOmRxySe1R,2026-07-08T06:21:47.731Z,"SAS will receive the most / more favorable of its 2030 1st round pick, DAL' 2030 1st round pick and MIN's 2030 1st round pick protected for selection 1; DAL will receive the less favorable of its pick and the SAS pick; MIN will receive the less favorable of (1) its pick and (2) the more favorable of the SAS pick and the DAL pick [or its pick if not conveyable]; if the MIN pick falls on its protected selection and is therefore not conveyable, then MIN's commitment to SAS will be lifted and SAS will instead have the right to swap its pick for the DAL pick (via SAS's right to swap for DAL; via SAS's right to swap SAS or DAL for MIN); MIN may convey the pick it receives to CHA via a complex swap right [BOS-DAL-SAS, 7/12/2023; MIN-SAS, 6/26/2024; CHA-MIN, pending]",DAL or MIN,True,,1,27,SAS  holds rights to swap,2026-08-31T08:18:45.034Z,2030,27
+0Jg8heRAqN-bhq,2024-07-26T10:29:30.688Z,"SAS has the right to swap its 2031 1st round pick for SAC's 2031 1st round pick [CHI-SAC-SAS, 7/8/2024]",SAC swap rights,True,,1,27,SAS  holds rights to swap,2026-08-31T08:18:45.034Z,2031,27
+PbbEcEswPgFd1L,2024-06-26T17:07:21.129Z,,,True,,2,27,,2026-08-31T08:18:45.034Z,2031,27
+tXN7RRIDcoEzF1,2024-06-26T17:07:21.129Z,,,True,,1,27,,2026-08-31T08:18:45.034Z,2031,27
+LyeLP4v5BAUe_5,2025-06-27T18:30:43.808Z,,,True,,1,27,,2026-08-31T08:18:45.034Z,2032,27
+ou6NRdvid2HmfW,2025-06-27T18:30:43.808Z,,,True,,2,27,,2026-08-31T08:18:45.034Z,2032,27
+PiIIscLmF4iyAa,2026-07-08T06:21:47.731Z,,,True,,1,27,,2026-08-31T08:18:45.034Z,2033,27
+lOqgm95e1Bmbaw,2026-07-08T06:21:47.731Z,,,True,,2,27,,2026-08-31T08:18:45.034Z,2033,27
+EL7McPdwH0o2,2020-11-21T16:46:04.443Z,,,True,,2,28,,2026-08-31T08:18:45.034Z,2027,28
+tulwa__-lIpBoM,2026-07-08T06:21:47.731Z,"OKC has the right to swap the less favorable of its 2027 1st round pick and DEN's 2027 1st round pick protected for selections 1-5 for the LAC' 2027 1st round pick; the LAC then have the right to swap the OKC pick or the DEN pick for TOR's 2027 1st round pick [DEN-OKC, 6/23/2022; LAC-OKC-PHI, 11/1/2023; LAC-TOR, pending]",,True,,1,28,OKC  holds rights to swap,2026-08-31T08:18:45.034Z,2027,28
+SRWWt--HfaNlAY,2021-06-21T10:08:45.886Z,,,True,,1,28,,2026-08-31T08:18:45.034Z,2028,28
+ayubps3lQHbIOo,2021-06-21T10:08:45.886Z,,,True,,2,28,,2026-08-31T08:18:45.034Z,2028,28
+cnaD2vze1Or6_l,2022-06-24T14:50:00.459Z,,,True,,2,28,,2026-08-31T08:18:45.034Z,2029,28
+H-UhuG6HsbzRJX,2022-06-24T14:50:00.459Z,,,True,,1,28,,2026-08-31T08:18:45.034Z,2029,28
+k0VvuTr3ZvSGJR,2026-07-08T06:21:47.731Z,No protections,,True,,2,28,LAC,2026-08-31T08:18:45.034Z,2030,28
+T-fZtBLP268YTI,2023-06-27T03:57:46.352Z,,,True,,1,28,,2026-08-31T08:18:45.034Z,2030,28
+PrOV6LJnrH30mw,2026-07-08T06:21:47.731Z,No protections,,True,,1,28,LAC,2026-08-31T08:18:45.034Z,2031,28
+riXqUHjD2CXHRf,2025-04-10T02:48:58.036Z,No protections,,True,,2,28,NOP,2026-08-31T08:18:45.034Z,2031,28
+w9Cd7TPfC-A3z3,2026-07-08T06:21:47.731Z,No protections,,True,,2,28,BKN,2026-08-31T08:18:45.034Z,2032,28
+bf6YDOaEKempxm,2025-06-27T18:30:43.808Z,,,True,,1,28,,2026-08-31T08:18:45.034Z,2032,28
+FCYiHbTjStlfbL,2026-07-08T06:21:47.731Z,No protections,,True,,2,28,LAC,2026-08-31T08:18:45.034Z,2033,28
+9F5t-HDyM9fzxf,2026-07-08T06:21:47.731Z,No protections,,True,,1,28,LAC,2026-08-31T08:18:45.034Z,2033,28
+CHqbkems91CA,2020-11-21T16:46:04.443Z,,,True,,1,29,,2026-08-31T08:18:45.034Z,2027,29
+seXrLr5QuBNRVx,2026-07-08T06:21:47.731Z,No protections,CLE or MIN,True,,1,29,,2026-08-31T08:18:45.034Z,2027,29
+BrMJFOILwAlvum,2026-07-08T06:21:47.731Z,No protections,DEN,True,,2,29,,2026-08-31T08:18:45.034Z,2027,29
+d-Vgj1-kSvn6ts,2025-07-08T01:09:45.446Z,No protections,LAC,True,,2,29,,2026-08-31T08:18:45.034Z,2027,29
+iqAq23rVqV2DRN,2025-08-08T08:02:45.219Z,No protections,BOS or ORL,True,,2,29,,2026-08-31T08:18:45.034Z,2027,29
+0B4SPUCC5UZx3i,2022-02-08T06:10:49.826Z,No protections,,True,,2,29,IND,2026-08-31T08:18:45.034Z,2027,29
+2g48lZmjy87jdv,2025-04-10T02:48:58.036Z,"UTA will receive the least favorable of (1) DET's 2028 2nd round pick protected for selections 56-60, (2) the less favorable of CHA's 2028 2nd round pick and the LAC' 2028 2nd round pick, (3) MIA's 2028 2nd round pick round pick, conveyable if DAL conveys a 1st round pick to CHA in 2027, and (iv) NYK's 2028 2nd round pick (via CHA to DAL to DET; via MIA to SAS to DAL to DET; via NYK to DET) [MIA-SAS, 2/7/2023; CHA-LAC, 2/9/2023; BOS-DAL-SAS, 7/12/2023; CHA-DAL, 2/8/2024; DET-NYK, 2/8/2024; DAL-DET, 7/6/2024; DET-GSW-MIA-TOR-UTA, 2/6/2025]","DET, CHA, LAC, MIA or NYK",True,,2,29,UTA  holds rights to swap,2026-08-31T08:18:45.034Z,2028,29
+4Oow5d5iurNvJz,2021-06-21T10:08:45.886Z,,,True,,1,29,,2026-08-31T08:18:45.034Z,2028,29
+r8PZelvQixr3Qj,2022-01-09T00:07:29.634Z,No protections,,True,,2,29,OKC,2026-08-31T08:18:45.034Z,2028,29
+F5VBG6iFIJIlYO,2026-07-08T06:21:47.731Z,"UTA will receive the most favorable of its 2028 1st round pick, CLE's 2028 1st round pick and the LAL' 2028 1st round pick; the LAL will receive the less favorable of (1) its pick and (2) the more favorable of the UTA pick and the CLE pick; ATL will receive the more favorable of (1) its 2028 1st round pick and (2) the less favorable of the UTA pick and the CLE pick and CLE will receive the least favorable of the three (via UTA's right to swap for CLE; via UTA's right to swap UTA or CLE for LAL; via ATL's right to swap for UTA or CLE) [CLE-UTA, 9/3/2022; ATL-CLE, 2/6/2025; LAL-UTA, pending]",CLE or LAL,True,,1,29,UTA  holds rights to swap,2026-08-31T08:18:45.034Z,2028,29
+9sV86WXgfUuqxz,2026-07-08T06:21:47.731Z,No protections,CLE,True,,2,29,,2026-08-31T08:18:45.034Z,2028,29
+44OoYLdWFesUOH,2022-06-24T14:50:00.459Z,,,True,,2,29,,2026-08-31T08:18:45.034Z,2029,29
+Mnu8y3kxpK_NZ5,2022-06-24T14:50:00.459Z,,,True,,1,29,,2026-08-31T08:18:45.034Z,2029,29
+dRibo0Sdh8iE8V,2026-07-08T06:21:47.731Z,"UTA has the right to swap its 2030 1st round pick for the LAL' 2030 1st round pick [LAL-UTA, pending]",LAL swap rights,True,,1,29,UTA  holds rights to swap,2026-08-31T08:18:45.034Z,2030,29
+c5xLXLWlY0PSGQ,2023-06-27T03:57:46.352Z,,,True,,1,29,,2026-08-31T08:18:45.034Z,2030,29
+coAxDQSbHjpBuh,2025-07-08T01:09:45.446Z,No protections,,True,,2,29,CHA holds rights to swap,2026-08-31T08:18:45.034Z,2030,29
+9L2XtbYALOqd1L,2024-06-26T17:07:21.129Z,,,True,,1,29,,2026-08-31T08:18:45.034Z,2031,29
+PwXPbkhv4RDUPM,2026-07-08T06:21:47.731Z,No protections,LAL,True,,1,29,,2026-08-31T08:18:45.034Z,2031,29
+tzRMBiTQ5ZEuZi,2025-08-08T08:02:45.219Z,No protections,BOS or CLE,True,,2,29,,2026-08-31T08:18:45.034Z,2031,29
+-LFOyuE5Bdihgi,2024-06-26T17:07:21.129Z,,,True,,2,29,,2026-08-31T08:18:45.034Z,2031,29
+T4wWOXGtFPzTWi,2026-07-08T06:21:47.731Z,No protections,CLE,True,,2,29,,2026-08-31T08:18:45.034Z,2032,29
+_6Gq4dz-QrCl1L,2025-06-27T18:30:43.808Z,No protections,,True,,2,29,WAS,2026-08-31T08:18:45.034Z,2032,29
+adqk8bJCzfwuIl,2025-06-27T18:30:43.808Z,,,True,,1,29,,2026-08-31T08:18:45.034Z,2032,29
+3e0MYscuSPtwdM,2026-07-08T06:21:47.731Z,No protections,LAL,True,,1,29,,2026-08-31T08:18:45.034Z,2033,29
+7b04jibhy-GqpZ,2026-07-08T06:21:47.731Z,,,True,,2,29,,2026-08-31T08:18:45.034Z,2033,29
+voNTn-_J5oszJk,2026-07-08T06:21:47.731Z,,,True,,1,29,,2026-08-31T08:18:45.034Z,2033,29
+aedcm9zFIKTKr5,2025-04-10T02:48:58.036Z,No protections,GSW or PHX,True,,2,30,,2026-08-31T08:18:45.034Z,2027,30
+4r9SUXAOfOt5p1,2023-07-21T06:12:47.737Z,No protections,BKN or DAL,True,,2,30,,2026-08-31T08:18:45.034Z,2027,30
+u4FQUWe_IrMX,2020-11-21T16:46:04.443Z,,,True,,1,30,,2026-08-31T08:18:45.034Z,2027,30
+ItGo6QEG_KDZtW,2026-07-08T06:21:47.731Z,No protections,,True,,2,30,NYK,2026-08-31T08:18:45.034Z,2027,30
+DX5hjGOCplrQf3,2025-02-06T10:52:57.965Z,Protected 31-33,DEN,True,,2,30,,2026-08-31T08:18:45.034Z,2028,30
+FRVJIODh0V9-jY,2023-01-24T06:12:18.705Z,No protections,,True,,2,30,ORL holds rights to swap,2026-08-31T08:18:45.034Z,2028,30
+wdQCBDAkII9hhR,2021-06-21T10:08:45.886Z,,,True,,1,30,,2026-08-31T08:18:45.034Z,2028,30
+apbq27Y4anXs-C,2026-07-08T06:21:47.731Z,"POR will receive the more favorable of its 2028 1st round pick and MIL's 2028 1st round pick; WAS will receive the more favorable of (1) the more favorable of (a) its 2028 1st round pick and (b) the least / less favorable of BKN's 2028 1st round pick, PHI's 2028 1st round pick protected for selections 1-8 and PHX's 2028 1st round pick and (2) the less favorable of the MIL pick and the POR pick and MIL will receive the less favorable of (1) and (2) (via POR's right to swap for MIL; via WAS's right to swap WAS, BKN, PHI or PHX for MIL or POR) [MIL-PHX-POR, 9/27/2023; MIL-NYK-WAS, 2/6/2025]",MIL or POR,True,,1,30,POR  holds rights to swap,2026-08-31T08:18:45.034Z,2028,30
+5F_G5W3IhN8o6L,2026-07-08T06:21:47.731Z,"if (1) PHI's 2028 1st round pick protected for selections 1-8 is conveyed to BKN and is the third most favorable of PHI, BKN's 2028 1st round pick, PHX's 2028 1st round pick and NYK's 2028 1st round pick and (2) NYK is the most or second most favorable of the four, then BKN will receive the most and third most favorable of the four; in all other scenarios, BKN will receive the most / two most favorable of these; if PHI if conveyed and / or NYK is less favorable than BKN and PHX, then NYK will receive the least favorable of NYK, BKN and PHX; in all other scenarios, NYK will receive the second most favorable of the three; WAS will receive the more favorable of (1) its 2028 1st round pick and (2) the least / less favorable of PHI if conveyed, BKN and PHX and PHX will receive the less favorable of (1) and (2); WAS may swap the pick it receives for MIL or POR (see WAS incoming) (via BKN's right to swap BKN or PHI for PHX; via BKN's right to swap BKN or PHX for NYK; via WAS's right to swap for PHX, BKN or PHI) [BKN-PHI, 2/10/2022; BKN-IND-MIL-PHX, 2/9/2023; IND-PHX-WAS, 6/23/2023; BKN-NYK, 7/6/2024]","PHI, BKN or PHX",True,,1,30, holds rights to swap,2026-08-31T08:18:45.034Z,2028,30
+-FAadMijsaHSxp,2022-06-24T14:50:00.459Z,,,True,,1,30,,2026-08-31T08:18:45.034Z,2029,30
+g8W3EfdRP4NT0X,2023-01-24T06:12:18.705Z,No protections,LAL,True,,2,30,,2026-08-31T08:18:45.034Z,2029,30
+XrWCDoyWJmD0Jo,2025-01-25T16:12:49.443Z,No protections,,True,,2,30,IND or POR,2026-08-31T08:18:45.034Z,2029,30
+HcuvTWOo8PNh2Z,2025-01-25T16:12:49.443Z,No protections,"BOS, MIL or POR",True,,1,30,,2026-08-31T08:18:45.034Z,2029,30
+lcVyDLQtUERC7I,2023-06-27T03:57:46.352Z,,,True,,1,30,,2026-08-31T08:18:45.034Z,2030,30
+lxWNpvaeLZN0Vx,2025-07-30T08:02:47.085Z,"WAS will receive the more favorable of its 2030 1st round pick and PHX's 2030 1st round pick; MEM will receive the more favorable of (1) its 2030 1st round pick and (2) the less favorable of the WAS pick and the PHX pick and PHX will receive the least favorable of the three (via WAS's right swap for PHX; via MEM' right to swap for WAS or PHX) [IND-PHX-WAS, 6/23/2023; MEM-PHX, 7/11/2023]",PHX swap rights,True,,1,30,WAS  holds rights to swap,2026-08-31T08:18:45.034Z,2030,30
+ei-614AyxBlvi2,2025-04-10T02:48:58.036Z,No protections,PHX or POR,True,,2,30,,2026-08-31T08:18:45.034Z,2030,30
+E3CZON9HTLUdse,2025-04-10T02:48:58.036Z,No protections,,True,,2,30,PHI,2026-08-31T08:18:45.034Z,2030,30
+A3GIDGinjsrK_O,2026-07-08T06:21:47.731Z,No protections,,True,,2,30,LAL,2026-08-31T08:18:45.034Z,2031,30
+1-fMKomfD9h_PA,2024-06-26T17:07:21.129Z,,,True,,1,30,,2026-08-31T08:18:45.034Z,2031,30
+fhmsySxeiHT1oh,2025-07-08T01:09:45.446Z,"WAS will receive the more favorable of IND's 2031 2nd round pick and MIA's 2031 2nd round pick; MEM will receive the more favorable of (1) its 2031 2nd round pick and (2) the less favorable of the IND pick and the MIA pick and IND will receive the least favorable of the three (via MIA's right to swap for IND; via UTA to WAS; via MEM' right to swap for MIA or IND) [IND-MIA, 12/15/2024; DET-GSW-MIA-UTA, 2/6/2025; UTA-WAS, 6/25/2025; IND-MEM, 7/6/2025]",IND or MIA,True,,2,30,WAS  holds rights to swap,2026-08-31T08:18:45.034Z,2031,30
+a18OtOz6v921Np,2025-06-27T18:30:43.808Z,,,True,,1,30,,2026-08-31T08:18:45.034Z,2032,30
+IoArPnbghTlZNf,2026-07-08T06:21:47.731Z,No protections,,True,,2,30,LAL,2026-08-31T08:18:45.034Z,2032,30
+OOMWomGVVZLTEv,2025-06-27T18:30:43.808Z,No protections,UTA,True,,2,30,,2026-08-31T08:18:45.034Z,2032,30
+UbqLy7m6rXoujb,2026-07-08T06:21:47.731Z,,,True,,2,30,,2026-08-31T08:18:45.034Z,2033,30
+wPXRlDwrXm5To5,2026-07-08T06:21:47.731Z,,,True,,1,30,,2026-08-31T08:18:45.034Z,2033,30

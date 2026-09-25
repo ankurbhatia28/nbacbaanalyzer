@@ -1,0 +1,9 @@
+{
+  "scraped_at": "2026-09-23T22:53:19.939596+00:00",
+  "source": "basketball-reference.com/teams/",
+  "season": "2025-26",
+  "convention": "years_experience = seasons COMPLETED BEFORE this season; rookies are 0. Adjust before using for a later season.",
+  "teams_ok": 30,
+  "failures": [],
+  "rows": 661
+}

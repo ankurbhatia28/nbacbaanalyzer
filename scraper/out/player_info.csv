@@ -1,0 +1,462 @@
+id,birthDate,birthPlace,collegeName,draftPickNum,draftRoundNum,draftTeamId,draftTeamName,draftYear,heightFeet,heightInches,highSchoolName,nbaDebut,positions,shootingHand,weightPounds,_source_team_ids
+6ce605f3-7883-41ba-a704-a859a3f1c3ff,1999-03-03T00:00:00Z,"Edmonds, Wash",Gonzaga,15,1,30,Washington Wizards,2021,6,6,King's in Shoreline Washington,2021-10-22T00:00:00Z,Small Forward,Right,224,1
+60dc612e-0bb5-4b68-b28e-eaeac0b5ebb8,1991-09-19T00:00:00Z,"Canton, Ohio",Lehigh,10,1,25,Portland Trail Blazers,2013,6,3,Glen Oak in Canton Ohio,2014-01-08T00:00:00Z,Shooting Guard|Point Guard,Right,190,1
+cac24db0-1913-41a8-a64d-58a4d109a137,2002-10-06T00:00:00Z,"Goma, Democratic Republic of the Congo",,7,1,10,Golden State Warriors,2021,6,7,,2021-10-30T00:00:00Z,Power Forward|Small Forward,Right,225,1
+39825547-0be8-45e5-ae39-9b37d7970d44,1998-09-02T00:00:00Z,"Toronto, Ontario",Virginia Tech,17,1,3,Brooklyn Nets,2019,6,5,Hamilton Heights Christian in Chattanooga Tennessee,2019-10-22T00:00:00Z,Shooting Guard,Right,205,1
+c365e05f-2c43-45f4-982f-7fc8bf703969,2003-06-30T00:00:00Z,"St. Louis, Missouri",Iowa State,0,0,,,0,6,4,,2026-02-07T00:00:00Z,Point Guard|Shooting Guard,Right,200,1
+104a3ef6-0023-466a-aa67-a6a2b06e9051,2002-03-18T00:00:00Z,"West Palm Beach, Florida",Providence,13,1,26,Sacramento Kings,2024,6,2,,2025-01-03T00:00:00Z,Point Guard,Right,195,1
+e1f31c8f-7423-4724-a1f7-fa910aa684b6,2004-04-20T00:00:00Z,"Dallas, Texas",St. John's,23,1,1,Atlanta Hawks,2026,6,9,Garland in Garland Texas,,Power Forward,Right,245,1
+8666de9b-fb04-450d-94d3-b41939d5003d,2000-12-11T00:00:00Z,"Los Angeles, California",USC,6,1,1,Atlanta Hawks,2020,6,10,Chino Hills in Chino Hills California,2021-01-15T00:00:00Z,Center,Right,240,1
+b1429258-7e91-4516-91ba-d1bf9828d7f3,2001-03-30T00:00:00Z,Pla,Baylor,0,0,,,0,6,1,,2025-01-10T00:00:00Z,Point Guard,Right,180,1
+c35faaa5-e411-4bee-a10b-6575ee84941a,2002-11-09T00:00:00Z,"Dakar, Senegal",Washington State,39,2,4,Charlotte Hornets,2023,6,11,Prolific Prep in Napa California,2023-10-29T00:00:00Z,Power Forward,Right,210,1
+35c103c8-4d0a-4f4f-a356-c6adb8a1c059,2005-10-05T00:00:00Z,"Atlanta, Georgia",Georgia,23,1,12,Indiana Pacers,2025,6,10,,2025-10-24T00:00:00Z,Power Forward,Left,220,1
+015040a6-c221-463e-ac37-b41518c7f14a,1995-10-25T00:00:00Z,"E Malvern, Australia",Saint Mary's,0,0,,,0,6,11,Geelong Grammar School in Corio Australia,2021-10-20T00:00:00Z,Center,Right,255,1
+1f777bb2-8ab6-4e07-b08f-bd047380a420,2001-12-18T00:00:00Z,"Wausau, Wiscons",Duke,20,1,1,Atlanta Hawks,2021,6,8,,2021-10-21T00:00:00Z,Small Forward|Power Forward,Right,219,1
+26b38800-8a9e-4ef3-a658-ff9d99ce906a,2003-03-17T00:00:00Z,"Bendigo, Australia",,8,1,19,New Orleans Pelicans,2022,6,7,Australian Institute of Sport in Canberra Australia,2022-10-19T00:00:00Z,Point Guard|Shooting Guard,Right,199,1
+ecb70f31-89ab-4cd5-8207-d7290ea1476c,1999-01-02T00:00:00Z,"Greensboro, North Carol",Maryland,55,2,21,Oklahoma City Thunder,2021,6,5,,2021-11-14T00:00:00Z,Shooting Guard,Right,190,1
+25582618-0b10-4b31-bcab-04590ff88624,2005-04-08T00:00:00Z,"Malaga, Spa",,1,1,1,Atlanta Hawks,2024,6,8,,2024-10-23T00:00:00Z,Small Forward,Right,200,1
+e521ead5-a6f8-4935-b09b-4236cd822453,1992-12-17T00:00:00Z,"Freeport, Bahamas",Oklahoma,6,1,19,New Orleans Pelicans,2016,6,4,Sunrise Christian Academy in Bel Aire Kansas,2016-10-26T00:00:00Z,Shooting Guard|Small Forward,Right,220,1
+499ae655-d863-4f3e-8cb4-c474e393ea36,2007-01-03T00:00:00Z,"Newport News, Virg",Houston,8,1,1,Atlanta Hawks,2026,6,4,Brennan in San Antonio Texas,,Point Guard,Right,183,1
+170c3147-6446-4c44-8895-aac6d927a2e1,1997-12-08T00:00:00Z,"Green Bay, Wiscons",Virginia,0,0,,,0,6,7,Stevens Point Area in Stevens Point Wisconsin,2021-11-20T00:00:00Z,Small Forward|Power Forward,Right,217,2
+6ab1d010-d2c0-4b83-b2d4-330c917cb7b6,1999-07-13T00:00:00Z,"Lisbon, Portugal",Utah State University,39,2,26,Sacramento Kings,2021,7,0,,2021-12-17T00:00:00Z,Center,Right,248,2
+6a2523c3-8437-4860-9d20-85aeda10df8d,1998-01-28T00:00:00Z,Tualat,Oregon,26,1,2,Boston Celtics,2020,6,1,West Linn in West Linn Oregon,2020-12-23T00:00:00Z,Point Guard|Shooting Guard,Right,195,2
+8394dc38-59c5-4dc4-9cf4-837a949d9a50,1998-03-03T00:00:00Z,"St. Louis, Missouri",Duke,3,1,2,Boston Celtics,2017,6,8,Chaminade College Prep in St. Louis Missouri,2017-10-17T00:00:00Z,Small Forward|Power Forward,Right,210,2
+2155bfc4-c28c-47e5-836d-57109c7ea399,2006-02-05T00:00:00Z,"Madrid, Spa",,28,1,2,Boston Celtics,2025,6,6,,2025-10-24T00:00:00Z,Small Forward|Shooting Guard,Right,200,2
+49aa37ce-e77d-41da-8a48-0efe0578ee8d,1998-04-01T00:00:00Z,"Pensacola, Florida",Western Kentucky,36,2,20,New York Knicks,2018,7,0,Chalmette in Chalmette Louisiana,2018-10-17T00:00:00Z,Center,Right,240,2
+cd9289ce-402d-4110-99d3-9d35b235aafa,1998-12-27T00:00:00Z,Wash,Iowa,52,2,9,Detroit Pistons,2021,6,10,Maret in Washington District of Columbia,2021-10-23T00:00:00Z,Center,Right,243,2
+2a25bf5e-efd8-4da4-a6ae-f7f4d445eefb,2002-01-28T00:00:00Z,Nott,Kentucky,46,2,22,Orlando Magic,2025,6,11,,2025-10-24T00:00:00Z,Power Forward|Center,Left,250,2
+64c32759-64d1-4cb1-a8b0-743e9ec862d7,2007-02-01T00:00:00Z,"New Orleans, Louisiana",Houston,27,1,2,Boston Celtics,2026,6,11,,,Power Forward,Right,240,2
+b4c5399d-e8cb-4c20-8585-0f92bbe4bc7f,1990-05-02T00:00:00Z,"Palmdale, California",Fresno State,10,1,12,Indiana Pacers,2010,6,8,Knight in Palmdale California,2010-10-27T00:00:00Z,Small Forward|Power Forward|Shooting Guard,Right,220,2
+d9f240e2-59fe-4ff2-8ca0-a96458bd8c24,2000-09-26T00:00:00Z,Hast,Creighton,30,1,2,Boston Celtics,2024,6,6,Aurora in Aurora Nebraska,2024-10-24T00:00:00Z,Shooting Guard,Left,205,2
+45e8e99c-2c91-4081-b3c8-4a5e91656c24,2000-04-12T00:00:00Z,"Paterson, New Jersey",Rutgers University,0,0,,,0,6,6,Don Bosco Preparatory HS in Ramsey New Jersey,2022-10-31T00:00:00Z,Small Forward|Power Forward,Right,245,2
+535b5233-e329-4af8-a132-2b24270bcdf7,1987-10-11T00:00:00Z,"Fayetteville, Arkansas",Ohio State,4,1,15,Memphis Grizzlies,2007,6,1,Lawrence North in Indianapolis Indiana,2007-11-07T00:00:00Z,Point Guard,Left,175,2
+dd68db6e-ab6a-4773-9473-a9d9a541a39b,2004-03-03T00:00:00Z,"DeSoto, Texas",Arkansas,38,2,26,Sacramento Kings,2023,6,6,,2024-01-17T00:00:00Z,Power Forward|Small Forward,Right,205,2
+1f83c74a-b10a-4fa1-889b-ee34b342aad5,1994-07-02T00:00:00Z,"Parker, Colorado",Colorado,29,1,27,San Antonio Spurs,2017,6,4,Legend in Parker Colorado,2017-10-18T00:00:00Z,Shooting Guard|Point Guard,Right,190,2
+3b8a4f6c-2641-4dd0-9c55-b87af6c6c448,2006-04-03T00:00:00Z,"Orlando, Florida",Louisville,6,1,3,Brooklyn Nets,2026,6,5,,,Point Guard,Right,190,3
+3bc8fdbc-9d0f-4e08-bfea-5d51579fed21,2006-05-28T00:00:00Z,"CrÃ©teil, France",,19,1,3,Brooklyn Nets,2025,6,3,,2025-10-22T00:00:00Z,Point Guard,Right,185,3
+f1a3ef9d-3ae0-4855-ad04-e6a16ec69faf,2004-07-14T00:00:00Z,"Spartanburg, South Carol",Alabama,21,1,3,Brooklyn Nets,2023,6,10,Dorman in Roebuck South Carolina,2023-11-25T00:00:00Z,Power Forward,Right,210,3
+408b7ca0-46b7-48c6-843a-2b96dcd5a1c7,2006-03-03T00:00:00Z,"Moscow, Russia",BYU,8,1,3,Brooklyn Nets,2025,6,8,,2025-10-22T00:00:00Z,Point Guard,Right,200,3
+cb07f903-5ec2-49f5-bf71-7330aa748ce7,2002-06-20T00:00:00Z,"Alabaster, Alabama",Auburn,0,0,,,0,6,7,Thompson in Alabaster Alabama,2026-03-09T00:00:00Z,Small Forward,Right,220,3
+12e91c27-93f7-4646-abe0-613e9aff4e19,1996-10-18T00:00:00Z,"Brooklyn, New York",Florida State,48,2,13,Los Angeles Clippers,2019,6,6,Tilton School in Tilton New Hampshire,2019-10-24T00:00:00Z,Shooting Guard|Small Forward,Right,215,3
+09d0f0fc-38d1-4f51-bf30-143231e056ca,2001-11-06T00:00:00Z,"Greenville, North Carol",UNC,29,1,24,Phoenix Suns,2021,6,10,,2021-10-24T00:00:00Z,Center|Power Forward,Right,265,3
+7a03c527-6ae1-4516-87b2-98823ab1ca4e,2002-11-25T00:00:00Z,"Boca Raton, Florida",Memphis,45,2,4,Charlotte Hornets,2022,6,8,St. Andrews in Boca Raton Florida,2022-11-28T00:00:00Z,Small Forward|Power Forward,Right,205,3
+7bb8b36b-d1f1-42d1-a0a2-4a09a9b4520f,1998-06-29T00:00:00Z,"Indianapolis, Indiana",Missouri,14,1,8,Denver Nuggets,2018,6,10,Nathan Hale in Seattle Washington,2019-10-31T00:00:00Z,Small Forward,Right,218,3
+7e78803e-c1d7-4fa1-8a6b-438536a8370d,1994-11-29T00:00:00Z,"Dallas, Texas",Kentucky,7,1,14,Los Angeles Lakers,2014,6,9,Prestonwood Christian in Plano Texas,2014-10-28T00:00:00Z,Power Forward|Center,Left,250,3
+09429f9d-dd89-4fb7-8305-7c8d7c2daa0f,2006-04-14T00:00:00Z,"Johannesburg, South Africa",,26,1,3,Brooklyn Nets,2025,6,6,,2025-10-22T00:00:00Z,Shooting Guard,Left,200,3
+f285dbf0-995e-4a5c-85cb-d1efe44b9a16,2000-01-08T00:00:00Z,"Eustis, Florida",Alabama,0,0,,,0,6,4,,2022-11-17T00:00:00Z,Shooting Guard,Right,175,3
+7ab1459b-8391-4291-bde3-43e840caf99e,2005-09-08T00:00:00Z,"Durham, North Carol",UNC,22,1,1,Atlanta Hawks,2025,6,5,Northwood in Pittsboro North Carolina,2025-10-22T00:00:00Z,Shooting Guard,Right,195,3
+0710848d-0579-472c-a32f-95eb3f35b971,2003-11-21T00:00:00Z,"Las Vegas, Nevada",Iowa State,28,1,18,Minnesota Timberwolves,2026,6,9,Liberty in Henderson Nevada,,Power Forward,Right,246,3
+571f876f-6c4b-427b-b171-d8360c4ec59e,2004-05-05T00:00:00Z,"Glencoe, Ill",Michigan,27,1,3,Brooklyn Nets,2025,6,11,,2025-11-03T00:00:00Z,Power Forward,Right,250,3
+bdc135e0-e301-42f4-8643-bdc0b8a1987f,1995-10-08T00:00:00Z,"Jacksonville, Florida",Duke,21,1,29,Utah Jazz,2018,6,3,Providence School in Jacksonville Florida,2018-10-22T00:00:00Z,Shooting Guard,Right,198,4
+648206e0-444a-426c-b8e1-eb9359d6bccd,2005-08-10T00:00:00Z,"Paris, France",,6,1,4,Charlotte Hornets,2024,6,10,,2024-10-26T00:00:00Z,Power Forward,Right,207,4
+e4f30726-76c8-4d3f-b2df-bc09fdb234d8,2000-02-16T00:00:00Z,"Goldsboro, North Carol",UNC,7,1,5,Chicago Bulls,2019,6,4,Greenfield School in Wilson North Carolina,2019-10-23T00:00:00Z,Shooting Guard|Point Guard,Right,195,4
+d5fcdf4a-c6ae-4c08-aa77-90f8be6f1509,1993-05-04T00:00:00Z,"Portsmouth, Virg",Florida,0,0,,,0,6,7,I.C. Norcom in Portsmouth Virginia,2016-10-26T00:00:00Z,Power Forward|Small Forward,Right,220,4
+84158ec2-ad9f-480a-bfbe-258dc68d86a9,1993-01-06T00:00:00Z,Arl,Notre Dame,41,2,3,Brooklyn Nets,2015,6,5,St. John's Prep in Danvers Massachusetts,2015-10-30T00:00:00Z,Shooting Guard|Small Forward,Right,209,4
+ef069abd-cad3-4a43-8c1b-4f77436f3967,2005-08-03T00:00:00Z,"Milwaukee, Wiscons",Duke,4,1,4,Charlotte Hornets,2025,6,6,Wisconsin Lutheran in Milwaukee Wisconsin,2025-10-22T00:00:00Z,Small Forward,Right,215,4
+b3e83e8b-a64a-44a4-b51c-ea52aff62be9,2002-12-04T00:00:00Z,"Sugar Hill, Georgia",Duke,33,2,4,Charlotte Hornets,2025,6,5,Lanier HS in Sugar Hill Georgia,2025-10-22T00:00:00Z,Shooting Guard,Right,220,4
+e318a723-572a-46fd-a427-98fc6c3951e7,2002-01-21T00:00:00Z,"Paris, France",Michigan,43,2,13,Los Angeles Clippers,2022,6,10,,2022-10-27T00:00:00Z,Center,Right,210,4
+67adfc14-2cc5-42ff-9819-9ee84445545e,2002-11-22T00:00:00Z,"Antioch, Tennessee",Alabama,2,1,4,Charlotte Hornets,2023,6,7,Cane Ridge in Antioch Tennessee,2023-10-25T00:00:00Z,Small Forward,Right,200,4
+0f9648dd-1665-4409-a461-194caa0edbb8,2001-02-03T00:00:00Z,Ga,Florida,18,1,21,Oklahoma City Thunder,2021,6,4,The Villages Charter Schools in The Villages Florida,2021-10-20T00:00:00Z,Point Guard,Right,178,4
+3725eb0c-6e8e-4044-b5f0-78edd9d72449,1998-11-30T00:00:00Z,"Houston, Texas",Tennessee,22,1,2,Boston Celtics,2019,6,7,Providence Day School in Charlotte North Carolina,2019-10-23T00:00:00Z,Power Forward,Right,236,4
+dbd7912d-1bc6-4748-8262-1d8e88fec523,2002-01-17T00:00:00Z,"St. Louis, Missouri",Creighton,34,2,4,Charlotte Hornets,2025,7,1,Trinity Catholic in Spanish Lake Missouri,2025-10-22T00:00:00Z,Center,Right,256,4
+31583484-5447-4b7e-a458-3745ac0934bc,1993-06-05T00:00:00Z,"Killeen, Texas",Baylor,0,0,,,0,6,6,Harker Heights in Harker Heights Texas,2017-10-21T00:00:00Z,Small Forward,Right,226,4
+a451597f-045c-4981-932b-426cafe6bfa0,1998-07-06T00:00:00Z,"Staten Island, New York",Pitt,0,0,,,0,6,9,Curtis in Staten Island New York,2024-02-12T00:00:00Z,Power Forward|Small Forward,Right,210,4
+f56f1b7e-2837-4b29-9ba2-092d7cc1af7f,1999-08-26T00:00:00Z,"Asbury Park, New Jersey",LSU,0,0,,,0,6,9,Roselle Catholic in Roselle New Jersey,2019-12-08T00:00:00Z,Center|Power Forward,Right,264,4
+785f6895-abf7-46b5-a4c3-fc0c730edd00,2002-02-21T00:00:00Z,"Spartanburg, South Carol",Clemson,0,0,,,0,6,8,Dorman in Roebuck South Carolina,2024-11-17T00:00:00Z,Center,Right,245,4
+03317a5f-ac35-4686-95e8-8ac1880f3ded,2006-05-01T00:00:00Z,"WÃ¼rzburg, Germany",Washington,14,1,,,2026,6,11,,,Power Forward,Right,248,4
+99d306c5-432c-4acb-992e-6507c9e372cf,2006-04-02T00:00:00Z,"Atlanta, Georgia",Texas Tech,18,1,,,2026,6,3,,,Point Guard,Right,180,4
+08a969d1-f9b5-45e3-b5b9-108bce92bc8c,2005-10-10T00:00:00Z,"Richardson, Texas",UConn,29,1,24,Phoenix Suns,2025,6,7,,2025-10-26T00:00:00Z,Small Forward,Right,210,4
+85544fa1-d786-464c-99f6-49e35622c77f,2005-07-15T00:00:00Z,"Columbus, Ohio",Texas,15,1,5,Chicago Bulls,2026,6,8,Columbus Africentric Early College in Columbus Ohio,,Shooting Guard,Right,211,5
+c0a46687-71a4-4999-8315-dae4ef809906,1993-05-25T00:00:00Z,"San Diego, California",UCLA,46,2,17,Milwaukee Bucks,2015,6,3,Lincoln in San Diego California,2015-11-01T00:00:00Z,Shooting Guard|Small Forward,Right,215,5
+1f7e07e6-f44f-45fc-a4d5-09e2849fcfa7,1997-11-19T00:00:00Z,"Las Vegas, Nevada",Gonzaga,10,1,26,Sacramento Kings,2017,6,9,Bishop Gorman in Las Vegas Nevada,2017-10-20T00:00:00Z,Center|Power Forward,Right,250,5
+09b3e2fa-3d37-4bef-9992-d3b13e18a3f8,2004-10-13T00:00:00Z,"Chicago, Ill",,11,1,5,Chicago Bulls,2024,6,8,,2024-10-23T00:00:00Z,Small Forward|Power Forward,Right,209,5
+ebd4f250-cad8-4472-b6a8-4af95af2359f,2006-07-18T00:00:00Z,"Atlanta, Georgia",UNC,4,1,5,Chicago Bulls,2026,6,10,Holy Innocents' Episcopal School in Atlanta Georgia,,Power Forward,Right,211,5
+40a20228-bcd6-4714-b16d-0d4067f488db,2001-08-26T00:00:00Z,"Charlotte, North Carol",Florida State,4,1,5,Chicago Bulls,2020,6,6,West Charlotte in Charlotte North Carolina,2020-12-23T00:00:00Z,Power Forward,Right,215,5
+12abe689-4995-47b1-9709-b65aec72878a,1999-04-17T00:00:00Z,"Greenville, South Carol",Georgia,31,2,3,Brooklyn Nets,2019,6,11,Legacy Charter School  in Greenville South Carolina,2019-11-08T00:00:00Z,Center,Left,215,5
+c5c9acdf-bbdd-4aab-992e-b2e613c9724d,2006-12-18T00:00:00Z,"OrlÃ©ans, France",,12,1,5,Chicago Bulls,2025,6,8,,2025-11-22T00:00:00Z,Power Forward,Right,200,5
+0af642af-a9e5-4d5a-9db5-89ab42fb6c39,2005-01-04T00:00:00Z,"Hickory, North Carol",Kentucky,8,1,27,San Antonio Spurs,2024,6,2,,2024-11-02T00:00:00Z,Point Guard,Right,175,5
+3d13e5f6-c28b-423f-ac96-45e440b19fd6,2001-01-26T00:00:00Z,"Atlanta, Georgia",Auburn,5,1,6,Cleveland Cavaliers,2020,6,4,McEachern in Powder Springs Georgia,2020-12-23T00:00:00Z,Shooting Guard|Small Forward,Right,225,5
+266bf211-4b37-4372-add2-97fcdba456c8,2000-03-16T00:00:00Z,"Portsmouth, Virg",Maryland,10,1,24,Phoenix Suns,2020,6,8,Mount St. Joseph in Baltimore Maryland,2020-12-23T00:00:00Z,Center|Power Forward,Right,215,5
+b781ad4f-7edb-4624-9563-b5e58478f8da,2000-01-08T00:00:00Z,"Apple Valley, M",Duke,41,2,27,San Antonio Spurs,2020,6,1,Apple Valley in Apple Valley Minnesota,2020-12-30T00:00:00Z,Point Guard,Right,185,5
+20919ded-2f8d-4578-b843-f2eb899baa4b,2003-11-26T00:00:00Z,"Scarborough, Ontario",,33,2,27,San Antonio Spurs,2023,6,10,,2023-10-28T00:00:00Z,Small Forward,Left,220,5
+d33b235e-6361-443e-aad8-48f3e1be1527,2002-10-10T00:00:00Z,"Melbourne, Australia",,6,1,21,Oklahoma City Thunder,2021,6,7,,2021-10-20T00:00:00Z,Point Guard|Shooting Guard|Power Forward|Small Forward,Right,216,5
+ddf96a23-1611-43c7-b563-81157870ef19,2001-06-26T00:00:00Z,"Almere, Netherlands",Cleveland State University,0,0,,,0,6,7,Wasatch Academy in Mount Pleasant Utah,2026-02-01T00:00:00Z,Small Forward,Right,220,6
+cdb353ab-2077-4534-9533-87d6e86d2585,1996-09-07T00:00:00Z,"Elmsford, New York",Louisville,13,1,8,Denver Nuggets,2017,6,2,Brewster Academy in Wolfeboro New Hampshire,2017-10-18T00:00:00Z,Shooting Guard|Point Guard,Right,215,6
+49563e59-ae9e-47aa-91fb-20bc236c5b0e,1997-07-31T00:00:00Z,"Rochester, New York",Indiana,42,2,29,Utah Jazz,2017,6,9,Huntington Prep in Huntington West Virginia,2017-12-23T00:00:00Z,Center,Right,248,6
+ab318dd9-43e0-466d-aa75-585acf65a60a,2000-09-22T00:00:00Z,"Vero Beach, Florida",Morehead State University,0,0,,,0,6,7,Vero Beach in Vero Beach Florida,2024-11-06T00:00:00Z,Small Forward,Right,230,6
+2477127b-3b78-412f-a1c6-9b2f66d8c1e6,2000-02-26T00:00:00Z,"Terre Haute, Indiana",Wichita State,0,0,,,0,6,1,South in Terre Haute Indiana,2023-10-28T00:00:00Z,Point Guard,Right,180,6
+3c9e4d33-f5ee-4202-9d16-91151bfd86ff,2004-04-01T00:00:00Z,"Sydney, Australia",Duke,49,2,6,Cleveland Cavaliers,2025,6,4,Australian Institute of Sport in Canberra Australia,2025-10-22T00:00:00Z,Point Guard,Right,185,6
+9b4100d9-e486-4994-8f42-be67871d712d,1996-05-15T00:00:00Z,"Salt Lake City, Utah",Utah State University,60,2,19,New Orleans Pelicans,2020,6,4,Bountiful in Bountiful Utah,2020-12-23T00:00:00Z,Shooting Guard,Right,205,6
+9746a8c5-dde4-4a6e-b7ea-cd7c6285a16f,2001-06-18T00:00:00Z,"San Diego, California",USC,3,1,6,Cleveland Cavaliers,2021,6,11,Rancho Christian School in Temecula California,2021-10-20T00:00:00Z,Power Forward,Right,215,6
+3665b977-cd01-4cf6-8974-7edfc370b2d3,1993-09-15T00:00:00Z,"Braunschweig, Germany",,17,1,1,Atlanta Hawks,2013,6,1,,2013-10-30T00:00:00Z,Point Guard|Shooting Guard,Right,175,6
+0f83557a-6ee4-4a05-8f5a-af8dacef99ad,1996-03-28T00:00:00Z,"Hickory Hills, Ill",DePaul,0,0,,,0,6,5,Amos Alonzo Stagg in Hickory Hills Illinois,2019-11-22T00:00:00Z,Small Forward,Right,215,6
+2fe745c7-7cd7-4da2-86f1-e7517c5083ce,1998-04-21T00:00:00Z,"San Diego, California",Texas,22,1,3,Brooklyn Nets,2017,6,9,St. Stephen's Episcopal School in Austin Texas,2017-10-20T00:00:00Z,Center,Right,243,6
+fa05bf38-d959-4ae4-8359-062ee296bf31,1989-08-26T00:00:00Z,"Los Angeles, California",Arizona State,3,1,21,Oklahoma City Thunder,2009,6,5,Artesia in Lakewood California,2009-10-28T00:00:00Z,Point Guard|Shooting Guard,Left,220,6
+296ddfd0-f9b9-46c4-8491-ff483ad94b21,2000-12-10T00:00:00Z,"Harlem, New York",Memphis,0,0,,,0,6,8,Urban Assembly in New York New York - attended but did not play,2025-02-20T00:00:00Z,Power Forward,Right,210,6
+432f9ad6-4bd3-4ced-817d-63536043a101,2002-12-02T00:00:00Z,"Allen, Texas",California,20,1,6,Cleveland Cavaliers,2024,6,6,John Paul II in Plano Texas,2024-10-23T00:00:00Z,Shooting Guard,Right,215,6
+c1d5f393-9222-4c39-87a6-08601bb0569c,2004-02-12T00:00:00Z,"Philadelphia, Pennsylvania",Duke,12,1,21,Oklahoma City Thunder,2023,7,1,Westtown School in West Chester Pennsylvania,2023-10-25T00:00:00Z,Center,Right,230,7
+e165920a-2500-4708-9a67-e1327dc18f1b,2004-11-02T00:00:00Z,"New Orleans, Louisiana",,33,2,17,Milwaukee Bucks,2024,6,9,,2024-10-23T00:00:00Z,Power Forward,Left,224,7
+8019a748-d4ef-4820-9954-6e6878aea96c,1998-10-01T00:00:00Z,"El Dorado, Arkansas",Arkansas,38,2,5,Chicago Bulls,2019,6,10,El Dorado in El Dorado Arkansas,2019-10-26T00:00:00Z,Center|Power Forward,Right,265,7
+8c2ac6d0-a53d-4330-8da4-00aa2e81eda1,2005-12-04T00:00:00Z,"Valladolid, Spa",,25,1,14,Los Angeles Lakers,2026,6,5,,,Point Guard,Right,204,7
+979f7976-36d9-4d84-a634-67f0187f8b65,1998-08-23T00:00:00Z,"Louisville, Kentucky",Kentucky,12,1,4,Charlotte Hornets,2019,6,7,Findlay Prep in Henderson Nevada,2019-10-23T00:00:00Z,Power Forward|Center,Right,230,7
+cdf3c19d-2465-4a46-8dbc-2d60dc2d0679,1998-01-24T00:00:00Z,"Atlantic City, New Jersey",Xavier,0,0,,,0,6,6,,2021-01-15T00:00:00Z,Small Forward,Right,220,7
+bf0802d3-fc76-4b5e-acc7-f49a039866ff,2000-09-21T00:00:00Z,"Dallas, Texas",Houston,25,1,15,Memphis Grizzlies,2023,6,1,Red Oak in Red Oak Texas,2023-10-25T00:00:00Z,Point Guard,Right,195,7
+bee797dc-7f0b-4278-a803-890bac5a743a,2001-01-28T00:00:00Z,"Zenica, Bosnia and Herzegov",,56,2,15,Memphis Grizzlies,2023,6,7,,,Small Forward,Right,218,7
+a43ab2bd-1b44-48e5-8eaf-44fbf2e6785b,2003-02-10T00:00:00Z,Arl,Michigan State,35,2,14,Los Angeles Lakers,2022,6,5,Rolling Meadows in Rolling Meadows Illinois,2022-10-18T00:00:00Z,Shooting Guard,Right,190,7
+e8823431-f558-48a4-ae16-c29b130cdd49,2006-12-21T00:00:00Z,"Newport, Ma",Duke,1,1,7,Dallas Mavericks,2025,6,9,,2025-10-22T00:00:00Z,Small Forward,Right,205,7
+651c95dc-08d4-404e-8398-5b8a88652b83,2001-01-10T00:00:00Z,"Las Palmas, Spa",Loyola (MD),30,1,29,Utah Jazz,2021,7,0,Canterbury Academy in Las Palmas Spain,2021-10-27T00:00:00Z,Power Forward,Right,215,7
+4c91fc0b-048d-464e-a3c3-c7f1dd6ca849,1990-02-08T00:00:00Z,"Los Angeles, California",Washington State,11,1,10,Golden State Warriors,2011,6,5,Santa Margarita in Rancho Santa Margarita California,2011-12-25T00:00:00Z,Shooting Guard|Small Forward,Right,220,7
+4b4846b7-2ca8-4231-8ad6-9efe71b4981f,2006-01-25T00:00:00Z,"Riverdale, Ill",Michigan,9,1,7,Dallas Mavericks,2026,6,9,Thornton Township in Harvey Illinois,,Power Forward,Right,251,7
+52a38a2b-11cd-485b-adcb-31a10babd45b,1992-03-23T00:00:00Z,"Melbourne, Australia",Duke,1,1,6,Cleveland Cavaliers,2011,6,2,Saint Patrick in Elizabeth New Jersey,2011-12-26T00:00:00Z,Point Guard|Shooting Guard,Right,195,7
+0d611de0-e3a2-4c47-9d67-7b5a24b0d08c,1995-09-28T00:00:00Z,W,Nevada,0,0,,,0,6,5,,2019-10-25T00:00:00Z,Small Forward,Right,205,7
+c3f07142-952c-436b-b2ea-3c6dcccf35cf,2003-03-10T00:00:00Z,"Aurora, Ontario",Gonzaga,0,0,,,0,5,11,Montverde Academy in Montverde Florida,2025-10-22T00:00:00Z,Point Guard,Right,180,7
+8b2f5f0f-8451-466a-bb00-df566b38e493,2002-08-08T00:00:00Z,"Panorama City, California",Colorado,42,2,4,Charlotte Hornets,2024,6,2,Chaminade College Prep in West Hills California,2024-11-04T00:00:00Z,Point Guard,Right,189,8
+90488a51-4c0a-4406-be1d-5a42d431423c,1995-02-19T00:00:00Z,"Sombor, Serbia",,41,2,8,Denver Nuggets,2014,6,11,,2015-10-28T00:00:00Z,Center,Right,284,8
+c46a73cd-84c6-497e-b76a-8719bdb6c5e8,1997-02-23T00:00:00Z,"Kitchener, Ontario",Kentucky,7,1,8,Denver Nuggets,2016,6,4,Orangeville Prep in Mono Canada,2016-10-26T00:00:00Z,Point Guard|Shooting Guard,Right,215,8
+152528b3-4c3b-4684-8db7-c95712505381,1996-03-03T00:00:00Z,"Moon Township, Pennsylvania",UNC,11,1,18,Minnesota Timberwolves,2019,6,8,Our Lady of the Sacred Heart in Coraopolis Pennsylvania,2019-10-26T00:00:00Z,Power Forward|Small Forward,Right,210,8
+7eaeb6dd-f6d0-4ae5-b8c9-d122ae9a79f9,1995-09-16T00:00:00Z,"San Jose, California",Arizona,4,1,22,Orlando Magic,2014,6,8,Archbishop Mitty in San Jose California,2014-10-28T00:00:00Z,Power Forward|Small Forward,Right,235,8
+fee4baa1-5233-4bdd-8b2c-6177ed93e704,2001-04-17T00:00:00Z,Burl,Kansas,21,1,8,Denver Nuggets,2022,6,6,Blue Valley Northwest HS in Overland Park Kansas,2022-10-19T00:00:00Z,Shooting Guard,Right,220,8
+c3a2d818-e715-4386-aa3c-fd050f967d9f,2001-01-09T00:00:00Z,Hopk,Arizona,22,1,8,Denver Nuggets,2020,6,10,,2020-12-28T00:00:00Z,Power Forward,Right,240,8
+5e328db1-6514-4835-9e39-c28a486c0f02,2002-08-15T00:00:00Z,"Overland Park, Kansas",Dayton,22,1,24,Phoenix Suns,2024,6,9,,2025-10-25T00:00:00Z,Power Forward,Right,225,8
+aec05a37-940e-44dc-afb0-918a71bacaa6,2002-04-18T00:00:00Z,"Las Vegas, Nevada",Gonzaga,29,1,12,Indiana Pacers,2023,6,6,Liberty in Henderson Nevada,2023-10-27T00:00:00Z,Shooting Guard|Small Forward,Right,205,8
+df321d01-de15-4e06-ad2d-b841219cfb4a,1994-09-14T00:00:00Z,"Fishers, Indiana",Michigan State,19,1,5,Chicago Bulls,2014,6,4,Hamilton Southeastern in Fishers Indiana,2014-11-14T00:00:00Z,Shooting Guard,Right,210,9
+80f729fe-a709-4acc-bbf7-0a69719a6832,1994-04-22T00:00:00Z,"York, Ma",Michigan,0,0,,,0,6,7,Phillips Exeter Academy in Exeter New Hampshire,2018-10-24T00:00:00Z,Small Forward|Shooting Guard,Right,215,9
+ef509f36-80aa-42f3-99db-845596891b6b,1994-03-22T00:00:00Z,"San Marcos, Texas",Baylor,12,1,29,Utah Jazz,2016,6,6,Warren in San Antonio Texas,2016-10-27T00:00:00Z,Power Forward|Small Forward,Right,218,9
+bdc6d6e3-ed41-44e4-88b5-ae5dcb05cb98,1997-09-23T00:00:00Z,"Layton, Utah",Wake Forest,19,1,1,Atlanta Hawks,2017,6,9,Cardinal Newman in West Palm Beach Florida,2017-10-18T00:00:00Z,Power Forward,Right,226,9
+62357270-0c37-45a4-b75b-75066e062987,2000-07-26T00:00:00Z,"Bay St. Louis, Mississippi",Mississippi State,0,0,,,0,6,11,,2025-04-13T00:00:00Z,Power Forward,Right,254,9
+b28ac812-714a-459a-a28b-2cf4c8a222c2,2001-12-19T00:00:00Z,"Nashville, Tennessee",Tennessee,37,2,9,Detroit Pistons,2025,6,3,The Ensworth School  in Nashville Tennessee,2025-10-24T00:00:00Z,Shooting Guard,Right,206,9
+b42c9f58-c96d-43b8-a982-564353adbd81,1999-07-02T00:00:00Z,"Fort Smith, Arkansas",Arkansas,49,2,23,Philadelphia 76ers,2020,6,4,Northside in Fort Smith Arkansas,2020-12-27T00:00:00Z,Shooting Guard,Right,165,9
+26f5fece-43bb-4a6b-b2c2-f94b051a9aa7,2005-07-07T00:00:00Z,"Duncanville, Texas",,5,1,9,Detroit Pistons,2024,6,8,Duncanville in Duncanville Texas,2024-10-23T00:00:00Z,Small Forward,Right,206,9
+bac3091e-bc91-4ab5-8ddc-387beab1d2b5,1998-08-27T00:00:00Z,"Albany, New York",Maryland,19,1,1,Atlanta Hawks,2018,6,6,Shenendehowa Central in Clifton Park New York,2018-10-17T00:00:00Z,Shooting Guard|Small Forward,Right,198,9
+7593faf7-7a88-4142-bb3d-aed5585c32c8,1993-07-23T00:00:00Z,"Petersburg, Virg",Radford,0,0,,,0,6,5,Brunswick in Lawrenceville Virginia,2019-10-25T00:00:00Z,Shooting Guard|Small Forward,Right,205,9
+bd268e80-eeca-470b-9865-7c351bb2fdc0,2007-04-10T00:00:00Z,"Nashua, New Hampshire",Stanford,17,1,21,Oklahoma City Thunder,2026,6,2,Brewster Academy in Wolfeboro New Hampshire,,Point Guard,Right,186,9
+5af35cbc-d9e2-42d2-8d69-d6af690371a1,2001-08-17T00:00:00Z,"Dallas, Texas",St. John's,0,0,,,0,6,4,Hillcrest in Dallas Texas,2024-10-25T00:00:00Z,Point Guard,Right,165,9
+0291ffea-c29e-4fb4-88cd-a4bc6817de08,1999-06-14T00:00:00Z,"Orlando, Florida",DePaul,58,2,23,Philadelphia 76ers,2020,6,9,Wekiva in Apopka Florida,2021-01-04T00:00:00Z,Center|Power Forward,Right,210,9
+3eeb82ba-0af5-40a2-ae68-7186370b408a,2001-09-25T00:00:00Z,Arl,Oklahoma State,1,1,9,Detroit Pistons,2021,6,6,,2021-10-30T00:00:00Z,Point Guard|Shooting Guard,Right,220,9
+b5a511a9-0fd5-40a5-aca2-0714e30fccaf,2003-01-30T00:00:00Z,"San Leandro, California",,5,1,9,Detroit Pistons,2023,6,7,,2023-10-25T00:00:00Z,Small Forward,Right,205,9
+f0deaac8-708d-458d-8b6f-a73a037f4935,2000-07-11T00:00:00Z,"Spanaway, Wash",Washington State,0,0,,,0,6,8,Orting in Orting Washington,2024-10-28T00:00:00Z,Power Forward,Right,245,9
+03e52267-45a0-470e-b4c9-cd879321b7a9,2000-02-03T00:00:00Z,San Bernard,UNLV,0,0,,,0,6,3,Etiwanda in Rancho Cucamonga California,2025-01-11T00:00:00Z,Shooting Guard,Right,195,9
+bd53dabe-bcf6-4cf6-90c3-9dee4597a359,1995-08-02T00:00:00Z,"Liepaja, Latvia",,4,1,20,New York Knicks,2015,7,2,,2015-10-28T00:00:00Z,Center|Power Forward,Right,240,10
+d473390e-44b0-4989-85d5-ee09e0da92e7,1986-06-03T00:00:00Z,"Puerto Plata, Dom",Florida,3,1,1,Atlanta Hawks,2007,6,8,Grand Ledge in Grand Ledge Michigan,2007-11-02T00:00:00Z,Center,Right,240,10
+299688f5-1d13-4e70-94eb-904664e36c59,2000-10-28T00:00:00Z,"Lagos, Nigeria",Western Kentucky,53,2,23,Philadelphia 76ers,2021,6,10,,2021-10-20T00:00:00Z,Center,Right,230,10
+4247cc5a-eac4-45d5-86f5-01d3321c4959,1999-09-23T00:00:00Z,"IJmuiden, Netherlands",Bradley,0,0,,,0,6,9,,2024-11-01T00:00:00Z,Small Forward,Right,210,10
+641a8148-a24b-4c99-91b9-e6c35e979a5d,2002-09-30T00:00:00Z,Puerto Rico,Michigan,11,1,10,Golden State Warriors,2026,6,9,Pennsauken HS in Pennsauken New Jersey,,Small Forward,Right,241,10
+ccb1b99e-b913-4e21-911b-ea3b183a74f8,1990-03-04T00:00:00Z,Sag,Michigan State,35,2,10,Golden State Warriors,2012,6,6,Saginaw in Saginaw Michigan,2012-10-31T00:00:00Z,Power Forward|Small Forward,Right,230,10
+2bb89d0f-0cdb-4323-8c11-1a4bfbcfc52c,2003-02-25T00:00:00Z,"Greenfield, Wiscons",Santa Clara,19,1,10,Golden State Warriors,2023,6,4,St. John's Northwestern Military Academy in Delafield Wisconsin,2023-10-30T00:00:00Z,Shooting Guard,Left,205,10
+b8642480-fcc9-4cab-b4a0-c86502dfc613,1988-03-14T00:00:00Z,"Akron, Ohio",Davidson,7,1,10,Golden State Warriors,2009,6,2,Charlotte Christian in Charlotte North Carolina,2009-10-28T00:00:00Z,Point Guard,Right,185,10
+ff35f3aa-7c02-4bab-a83d-95617ef27d13,2002-06-22T00:00:00Z,"Brasilia, Brazil",,55,2,10,Golden State Warriors,2022,6,7,,2023-11-16T00:00:00Z,Power Forward,Right,185,10
+f2602819-128c-4cd9-aa6b-c03517a4eba2,2001-10-09T00:00:00Z,"New Orleans, Louisiana",Houston,0,0,,,0,6,1,Morton Ranch in Katy Texas,2026-01-19T00:00:00Z,Point Guard,Right,202,10
+37bf14a8-7224-434f-9d34-fc9aa7adb65e,1989-09-14T00:00:00Z,"Houston, Texas",Marquette,30,1,5,Chicago Bulls,2011,6,6,Tomball in Tomball Texas,2012-01-01T00:00:00Z,Small Forward|Shooting Guard|Power Forward,Right,230,10
+4adaf5f5-cb3a-467e-ab07-c876badeee05,2002-05-31T00:00:00Z,"Little Rock, Arkansas",Arkansas,14,1,10,Golden State Warriors,2021,6,5,,2021-10-19T00:00:00Z,Shooting Guard,Right,211,10
+d53cfdb5-925a-416e-b33e-52e25366447a,2002-12-24T00:00:00Z,"Fairburn, Georgia",Florida,56,2,15,Memphis Grizzlies,2025,6,3,Woodward Academy in College Park Georgia,2025-10-21T00:00:00Z,Shooting Guard,Right,206,10
+9831813a-ac8a-4b32-a143-47a3c34778ca,2002-07-25T00:00:00Z,"Giresun, Turkey",,16,1,21,Oklahoma City Thunder,2021,6,11,,2021-10-20T00:00:00Z,Center,Right,243,11
+6c683da3-c2d0-400e-8011-fde5c59437b1,2002-10-03T00:00:00Z,"Montgomery, Alabama",Alabama,53,2,2,Boston Celtics,2022,6,1,Calhoun in Letohatchee Alabama,2022-11-11T00:00:00Z,Point Guard|Shooting Guard,Right,195,11
+afe9aa0f-51e8-44a7-9aac-e66f3c1d2cdd,1992-08-18T00:00:00Z,"Belgrade, Serbia",,27,1,24,Phoenix Suns,2014,6,5,,2017-10-23T00:00:00Z,Shooting Guard,Right,225,11
+66e9b12e-458a-4c7d-bb0f-ae51624b80c1,1994-03-06T00:00:00Z,"Flower Mound, Texas",Oklahoma State,6,1,2,Boston Celtics,2014,6,3,Edward S. Marcus in Flower Mound Texas,2014-10-29T00:00:00Z,Point Guard|Shooting Guard,Right,220,11
+6995f635-5f0c-430c-9748-7c1727c3ff57,2001-04-26T00:00:00Z,"Pensacola, Florida",UConn,49,2,12,Indiana Pacers,2024,6,5,Burges in El Paso Texas,2024-11-18T00:00:00Z,Shooting Guard,Right,190,11
+54f2a09a-7720-4b1e-8663-8ea59b77d39b,2003-05-13T00:00:00Z,"Fayetteville, Georgia",Auburn,3,1,11,Houston Rockets,2022,6,11,Sandy Creek in Tyrone Georgia,2022-10-19T00:00:00Z,Power Forward,Right,220,11
+330f81bb-4cbf-472a-a47b-1a9ae8c42dd0,2001-05-10T00:00:00Z,"Portsmouth, Virg",LSU,17,1,11,Houston Rockets,2022,6,8,,2022-10-19T00:00:00Z,Power Forward,Right,215,11
+c571031d-8cf2-4cca-9391-4f32714c028c,2004-06-24T00:00:00Z,"London, Kentucky",Kentucky,3,1,11,Houston Rockets,2024,6,2,North Laurel in London Kentucky,2024-10-23T00:00:00Z,Shooting Guard|Point Guard,Right,185,11
+41a12a7c-b654-48ae-a87f-46ce8907b81f,1994-05-18T00:00:00Z,"Geneva, Switzerland",,25,1,11,Houston Rockets,2014,6,10,,2014-11-06T00:00:00Z,Center,Right,256,11
+e2b62004-ff4a-4a75-87ad-40ee7ebd5936,1994-02-25T00:00:00Z,"Rockford, Ill",Wichita State,0,0,,,0,6,0,Auburn in Rockford Illinois,2016-11-09T00:00:00Z,Point Guard|Shooting Guard,Right,197,11
+d65fdfe9-578a-4cac-81b6-33997c6cc757,1993-07-20T00:00:00Z,"Rotorua, New Zealand",Pitt,12,1,21,Oklahoma City Thunder,2013,6,11,Notre Dame Prep in Fitchburg Massachusetts,2013-10-30T00:00:00Z,Center,Right,265,11
+fc665cd6-590f-4b31-9544-740f6b50b5dd,1988-09-29T00:00:00Z,Wash,Texas,2,1,21,Seattle SuperSonics,2007,6,11,,2007-10-31T00:00:00Z,Small Forward|Power Forward|Shooting Guard,Right,240,11
+4a4466cf-6f87-4ea4-bf8a-d0c3af845eec,2003-01-30T00:00:00Z,"San Leandro, California",,4,1,11,Houston Rockets,2023,6,7,,2023-10-25T00:00:00Z,Small Forward|Point Guard,Right,200,11
+a757c6c1-a2cc-4c6e-9975-b1336d26f8a6,1995-12-09T00:00:00Z,"New Orleans, Louisiana",Kansas,15,1,1,Atlanta Hawks,2015,6,8,Findlay Prep in Henderson Nevada,2015-10-30T00:00:00Z,Small Forward,Left,203,12
+03883ed7-87c1-45cd-8162-0fe9e951bfae,1999-05-04T00:00:00Z,"Harbor City, California",Oregon State,0,0,,,0,6,4,Bishop Montgomery in Torrance California,2025-12-01T00:00:00Z,Shooting Guard,Right,195,12
+daaee94e-9e6b-4ab4-a331-7cd8f6417565,2000-01-16T00:00:00Z,"Aurora, Ontario",Gonzaga,31,2,12,Indiana Pacers,2022,6,4,,2022-10-21T00:00:00Z,Point Guard|Shooting Guard,Right,191,12
+06ec9775-3793-4860-8dd8-bc14e101a9d7,1998-09-15T00:00:00Z,"Los Angeles, California",Texas A&M,0,0,,,0,6,4,Mira Costa in Manhattan Beach California,2023-02-11T00:00:00Z,Point Guard,Right,173,12
+1f87f81a-cf79-46d2-8b95-b994d0f2a9a2,1994-04-02T00:00:00Z,"Douala, Cameroon",New Mexico State,27,1,28,Toronto Raptors,2016,6,8,God's Academy in Lewisville Texas,2016-10-26T00:00:00Z,Power Forward,Right,245,12
+6af33c41-4865-4b52-8196-a3d525c3c330,2000-01-01T00:00:00Z,"Huntsville, Alabama",Missouri,30,1,13,Los Angeles Clippers,2023,6,7,Lee in Huntsville Alabama,2023-10-25T00:00:00Z,Power Forward,Right,250,12
+4c33f350-50f5-4464-ada4-c593931b5c76,1998-08-25T00:00:00Z,"Durham, North Carol",Virginia,0,0,,,0,7,1,Voyager Academy in Durham North Carolina,2021-11-06T00:00:00Z,Center,Right,240,12
+673f731c-9d59-4e76-9ab3-dab22eeb865a,1992-03-25T00:00:00Z,"Pittsburgh, Pennsylvania",Arizona,0,0,,,0,6,1,Chartiers Valley in Bridgeville Pennsylvania,2015-10-28T00:00:00Z,Point Guard,Right,190,12
+21200a44-942c-43f1-bd0c-517164ec63a6,1997-03-18T00:00:00Z,"Mostar, Bosnia and Herzegov",,32,2,14,Los Angeles Lakers,2016,7,0,,2016-11-02T00:00:00Z,Center,Right,240,12
+c35946a7-9131-47a9-b1eb-0c9ffb7cbe81,2004-12-08T00:00:00Z,"Melbourne, Australia",Kansas,35,2,27,San Antonio Spurs,2024,6,8,Australian Institute of Sport in Canberra Australia,2024-10-25T00:00:00Z,Shooting Guard,Right,200,12
+cd526736-0f1c-4235-a3d0-7bcb231a613b,2002-02-27T00:00:00Z,"Russellville, Arkansas",Liberty,54,2,12,Indiana Pacers,2025,6,3,Russellville in Russellville Arkansas,2025-10-23T00:00:00Z,Shooting Guard,Right,185,12
+3a58b9d7-6e3b-4021-8b31-7f6ed1e7a706,2000-02-29T00:00:00Z,"Oshkosh, Wiscons",Iowa State,12,1,26,Sacramento Kings,2020,6,5,Oshkosh North in Oshkosh Wisconsin,2020-12-23T00:00:00Z,Point Guard|Shooting Guard,Right,185,12
+e68b678e-c3e4-4f3f-b705-c49adfab5402,1999-10-16T00:00:00Z,"Charleston, South Carol",Vanderbilt,14,1,2,Boston Celtics,2020,6,5,Porter-Gaud School in Charleston South Carolina,2020-12-25T00:00:00Z,Small Forward,Right,215,12
+c5e3929d-970c-4f2c-97eb-4ec0e011e626,1998-03-04T00:00:00Z,"Brooklyn, New York",Dayton,8,1,20,New York Knicks,2020,6,9,,2020-12-23T00:00:00Z,Power Forward,Right,220,12
+ff2f33e2-962c-4b96-9e86-c60fa15cdf57,2003-09-04T00:00:00Z,"New Freedom, Pennsylvania",Houston,8,1,30,Washington Wizards,2023,6,7,,2023-10-25T00:00:00Z,Power Forward,Right,235,12
+dc4b73eb-4ff0-44f8-ad09-7100f1ff60ef,1993-01-01T00:00:00Z,"Akron, Ohio",Wyoming,27,1,14,Los Angeles Lakers,2015,6,6,Revere in Richfield Ohio,2015-11-06T00:00:00Z,Power Forward|Center,Right,245,12
+87c13c3a-199f-475e-a59f-2d598cc9314b,2001-07-16T00:00:00Z,"Atlanta, Georgia",Belmont,26,1,12,Indiana Pacers,2023,6,6,Greater Atlanta Christian in Norcross Georgia,2023-10-25T00:00:00Z,Shooting Guard,Right,190,12
+0cd563b3-7f9c-4479-bc1d-001d86b48510,2000-01-26T00:00:00Z,"Gary, Indiana",Vanderbilt,5,1,6,Cleveland Cavaliers,2019,6,1,Brentwood Academy in Brentwood Tennessee,2019-10-23T00:00:00Z,Point Guard|Shooting Guard,Right,192,13
+274ddde4-9988-418c-977f-45831f76998e,1993-06-28T00:00:00Z,"St. Louis, Missouri",Florida,3,1,30,Washington Wizards,2012,6,4,Chaminade College Prep in St. Louis Missouri,2012-10-30T00:00:00Z,Shooting Guard,Right,207,13
+de8b3c84-76fd-4731-859d-d3feeb743eb5,2002-05-30T00:00:00Z,Spr,Nevada,50,2,20,New York Knicks,2025,6,8,,2025-10-22T00:00:00Z,Shooting Guard,Right,207,13
+d3f19bac-5217-40e5-9e84-44030d4d2cee,2007-02-03T00:00:00Z,"Shawnee, Kansas",Illinois,5,1,13,Los Angeles Clippers,2026,6,6,Shawnee Mission Northwest in Shawnee Kansas,,Shooting Guard,Right,188,13
+5ad121a1-4795-47f2-acc5-195632887581,1991-06-29T00:00:00Z,"Los Angeles, California",San Diego State,15,1,12,Indiana Pacers,2011,6,6,King in Riverside California,2011-12-26T00:00:00Z,Small Forward,Right,225,13
+6a9096ca-a563-4f42-8e40-b56009583348,2002-10-10T00:00:00Z,"Edmond, Oklahoma",Ole Miss,0,0,,,0,6,1,Edmond Memorial in Edmond Oklahoma,2026-03-11T00:00:00Z,Point Guard,Right,195,13
+cde0be9e-db17-48f6-ba0a-138d38b17208,1998-02-08T00:00:00Z,"Toyama, Japan",Gonzaga,9,1,30,Washington Wizards,2019,6,8,Meisei in Sendai Japan,2019-10-23T00:00:00Z,Power Forward,Right,230,13
+549c5b61-b33f-4767-9856-8fb5f1d93523,1997-02-15T00:00:00Z,"Chester, Pennsylvania",UNLV,0,0,,,0,6,6,Archbishop Carroll in Radnor Pennsylvania,2016-11-19T00:00:00Z,Small Forward|Power Forward,Left,210,13
+75fcab3f-1d55-45bc-8f5d-e0b2257dc6c2,1988-04-01T00:00:00Z,"North Hollywood, California",Stanford,10,1,3,New Jersey Nets,2008,7,1,San Joaquin Memorial in Fresno California,2008-10-29T00:00:00Z,Center,Right,282,13
+ac67c0ae-0000-457f-b541-ef054ddb7a45,2003-03-14T00:00:00Z,"Fraschels, Switzerland",Penn State,30,1,13,Los Angeles Clippers,2025,6,11,,2025-10-22T00:00:00Z,Center,Right,242,13
+9d07bad7-b62e-4464-851b-5edb0a8c0923,2000-01-23T00:00:00Z,"Anaheim, California",Miami (FL),48,2,13,Los Angeles Clippers,2023,6,5,Loudoun Valley HS in Purcellville Virginia,2023-10-25T00:00:00Z,Small Forward,Left,194,13
+d4336bd2-f0d1-4acf-abdb-3db5c98dc97d,2002-01-10T00:00:00Z,"Pontiac, Michigan",Kentucky,22,1,14,Los Angeles Lakers,2021,6,8,,2021-10-23T00:00:00Z,Center,Right,205,13
+caf73c33-df15-485e-a7f7-21aaea051ae6,1994-03-18T00:00:00Z,"New London, Connecticut",Providence,5,1,18,Minnesota Timberwolves,2016,6,3,New London in New London Connecticut,2016-10-26T00:00:00Z,Point Guard,Right,205,13
+c3c7d1a4-9cc1-4e18-a3b5-2929890f3a79,2005-07-24T00:00:00Z,Arl,Minnesota,46,2,13,Los Angeles Clippers,2024,6,5,Rolling Meadows in Rolling Meadows Illinois,2024-12-04T00:00:00Z,Shooting Guard,Right,190,13
+8dee8e3b-7936-4c79-b5bd-735da5321328,2000-05-08T00:00:00Z,"Houston, Texas",Houston,25,1,13,Los Angeles Clippers,2021,6,4,The Woodlands College Park in The Woodlands Texas,2021-10-20T00:00:00Z,Shooting Guard,Right,210,14
+88f28822-2ea1-4eb2-8fb0-a436dcead5e0,1999-02-28T00:00:00Z,"Ljubljana, Slovenia",,3,1,1,Atlanta Hawks,2018,6,8,,2018-10-17T00:00:00Z,Point Guard|Shooting Guard,Right,230,14
+70cd2bff-2e58-4a4d-ba94-7c0364d2e324,2004-11-21T00:00:00Z,"Eden Prairie, M",Baylor,24,1,20,New York Knicks,2026,6,5,,,Shooting Guard,Right,184,14
+c0adeb91-ec4e-44c9-9912-91764a074ea7,2002-07-05T00:00:00Z,"Detroit, Michigan",,37,2,26,Sacramento Kings,2022,6,3,Coronado in Henderson Nevada,2022-10-22T00:00:00Z,Shooting Guard,Right,198,14
+a0ff60a5-8459-499b-8da7-b17f3603c39e,2001-12-09T00:00:00Z,"New Milford, New Jersey",Vanderbilt,0,0,,,0,6,4,,2025-10-26T00:00:00Z,Shooting Guard,Right,209,14
+c0664b84-0c3c-4f4b-81f6-85d670e28c87,2001-04-19T00:00:00Z,"Fargo, North Dakota",Tennessee,17,1,14,Los Angeles Lakers,2024,6,6,Prairie View in Henderson Colorado,2024-10-22T00:00:00Z,Small Forward,Right,215,14
+fe283b5f-d145-481f-9d1e-6cf33c5e9602,1999-05-23T00:00:00Z,"New York, New York",Seton Hall,54,2,12,Indiana Pacers,2021,6,9,Montverde Academy in Montverde Florida,2021-10-19T00:00:00Z,Center|Power Forward,Left,240,14
+725c7247-efee-4ee6-8d93-2ec2e9c297dd,1998-05-29T00:00:00Z,"Newark, Arkansas",Oklahoma,0,0,,,0,6,5,Cedar Ridge in Newark Arkansas,2021-10-22T00:00:00Z,Shooting Guard,Right,197,14
+48ad9b48-00df-4c8e-a91f-085e731f3839,1996-02-06T00:00:00Z,"Milwaukee, Wiscons",UCLA,30,1,10,Golden State Warriors,2015,6,9,Hamilton in Milwaukee Wisconsin,2016-01-27T00:00:00Z,Center|Power Forward,Right,222,14
+6447dcae-17fc-4e70-b125-bf3d300864f2,2001-11-03T00:00:00Z,"Pasadena, California",Wake Forest,19,1,18,Minnesota Timberwolves,2022,6,7,Lawrence Central in Indianapolis Indiana,2022-10-19T00:00:00Z,Power Forward,Right,235,14
+6d4364f0-2186-4f00-ae77-bdf00c5fee7f,1999-04-03T00:00:00Z,"Houston, Texas",Kentucky,41,2,22,Orlando Magic,2018,6,8,Victory Prep Academy in Houston Texas,2019-01-25T00:00:00Z,Power Forward,Left,214,14
+2e85d7ac-2aa5-4de6-b01e-7a1b093149b1,1999-01-04T00:00:00Z,"Marietta, Georgia",Alabama,8,1,6,Cleveland Cavaliers,2018,6,3,Pebblebrook in Mableton Georgia,2018-10-17T00:00:00Z,Shooting Guard|Point Guard,Right,190,14
+37dc093a-035c-409f-8139-b0b03105dda5,2001-07-26T00:00:00Z,"Atlanta, Georgia",Auburn,22,1,15,Memphis Grizzlies,2022,7,2,Woodward Academy in College Park Georgia,2022-10-19T00:00:00Z,Center,Right,245,14
+475135c8-e914-4861-b03b-dd2fad5f696a,2004-05-08T00:00:00Z,"Salt Lake City, Utah",Arkansas,36,2,3,Brooklyn Nets,2025,6,7,Quaker Valley in Leetsdale Pennsylvania,2025-11-15T00:00:00Z,Small Forward|Power Forward,Right,220,14
+a2abd379-01b4-4285-8f38-f454491ea507,2004-10-06T00:00:00Z,"Akron, Ohio",USC,55,2,14,Los Angeles Lakers,2024,6,2,Sierra Canyon in Chatsworth California,2024-10-22T00:00:00Z,Shooting Guard,Right,210,14
+6d7d692f-6fca-4718-9dae-823648e8a5d3,2000-08-19T00:00:00Z,"Cedar Rapids, Iowa",Iowa,23,1,25,Portland Trail Blazers,2023,6,8,,2023-10-25T00:00:00Z,Small Forward,Left,218,15
+f8e9562a-4398-4954-a01e-c28040e4a971,2007-07-18T00:00:00Z,"Salt Lake City, Utah",Duke,3,1,15,Memphis Grizzlies,2026,6,9,Christopher Columbus in Miami Florida,,Power Forward,Right,253,15
+588cefb4-75c0-42f0-a5cc-4f2a2a2c3647,2003-03-06T00:00:00Z,Sebr,Florida,18,1,30,Washington Wizards,2025,6,4,,2025-10-22T00:00:00Z,Point Guard,Right,195,15
+2b6e96cb-4faa-4956-b056-bde60c93ecc1,2002-11-10T00:00:00Z,"Riverside, California",Tennessee,59,2,11,Houston Rockets,2025,6,4,Etiwanda in Rancho Cucamonga California,2025-11-20T00:00:00Z,Shooting Guard,Right,203,15
+ce9b38f5-2d80-4d8f-aeb4-3bbc2e5fa42b,2003-08-26T00:00:00Z,"Sacramento, California",Washington State,39,2,15,Memphis Grizzlies,2024,6,7,Folsom in Folsom California,2024-10-23T00:00:00Z,Shooting Guard|Small Forward,Right,206,15
+a398541d-d7b0-4c43-b239-410022d2af79,2004-12-17T00:00:00Z,"Columbia, South Carol",South Carolina,45,2,15,Memphis Grizzlies,2023,6,9,Ridge View in Columbia South Carolina,2023-10-30T00:00:00Z,Power Forward,Right,210,15
+e24b492d-1d6d-4c05-aac8-a2b54d5b197a,2003-11-22T00:00:00Z,"Fort Lauderdale, Florida",Central Florida,9,1,29,Utah Jazz,2023,6,9,,2023-10-25T00:00:00Z,Power Forward,Right,215,15
+fdd06200-e2ce-4694-aba9-294b9852de9f,2001-05-22T00:00:00Z,"Rochester, New York",Washington,16,1,25,Portland Trail Blazers,2020,6,8,,2020-12-28T00:00:00Z,Center|Power Forward,Right,250,15
+0a649ec6-3e66-487f-a08f-45b4fad2bdb2,1997-07-08T00:00:00Z,"New York, New York",Virginia,24,1,23,Philadelphia 76ers,2019,6,5,Iona Prep in New Rochelle New York,2019-12-02T00:00:00Z,Shooting Guard,Right,195,15
+7f2ceb06-1322-475d-a35a-3193f0a1690a,2004-12-01T00:00:00Z,"Fresno, California",,23,1,17,Milwaukee Bucks,2024,6,5,,2024-10-23T00:00:00Z,Shooting Guard,Right,160,15
+70d868d9-754c-493f-bfdd-e50713aa22a6,2000-04-06T00:00:00Z,"Davidsonville, Maryland",UConn,53,2,9,Detroit Pistons,2024,6,3,Boy's Latin School of Maryland in Baltimore Maryland,2024-11-20T00:00:00Z,Shooting Guard,Right,205,15
+3019f5a3-7ec4-4c6f-b161-9ec1a4f12c6f,1996-02-23T00:00:00Z,"Louisville, Kentucky",Ohio State,2,1,14,Los Angeles Lakers,2015,6,3,Montverde Academy in Montverde Florida,2015-10-28T00:00:00Z,Point Guard,Left,193,15
+7a3cdf13-0f2a-44b2-a099-a3d78b5feacf,2002-12-19T00:00:00Z,"South Bend, Indiana",West Virginia,48,2,15,Memphis Grizzlies,2025,6,1,,2025-10-22T00:00:00Z,Point Guard,Right,190,15
+5a182f88-005b-48ca-99f3-b1b58d562ae0,2003-09-11T00:00:00Z,"Fresno, California",Washington State,11,1,25,Portland Trail Blazers,2025,6,5,Fresno Central in Fresno California,2025-10-22T00:00:00Z,Shooting Guard,Right,206,15
+464d1c3a-2f22-4787-9048-fc144c018297,1994-03-12T00:00:00Z,"Portland, Oregon",Syracuse,39,2,23,Philadelphia 76ers,2014,6,7,DeMatha Catholic in Hyattsville Maryland,2014-11-29T00:00:00Z,Power Forward|Small Forward,Right,213,15
+eac9a9d9-a347-40f2-8d91-711509e63545,2002-05-14T00:00:00Z,"Toronto, Ontario",Purdue,9,1,15,Memphis Grizzlies,2024,7,3,,2024-10-23T00:00:00Z,Center,Right,305,15
+6c180416-abf5-4a13-94c2-9942597c86e3,1993-02-18T00:00:00Z,"Thomaston, Georgia",Georgia,8,1,9,Detroit Pistons,2013,6,5,Greenville in Greenville Georgia,2013-10-30T00:00:00Z,Shooting Guard,Right,204,15
+a2a1afae-f934-4d97-addd-5e09aebb7da1,2000-11-10T00:00:00Z,"Portland, Oregon",Vanderbilt,0,0,,,0,6,2,,2022-10-18T00:00:00Z,Point Guard,Right,170,15
+ca72509b-1d9e-48ab-bde7-b040aa0623d3,2002-07-03T00:00:00Z,"Montreal, Quebec",Marquette,24,1,26,Sacramento Kings,2023,6,7,,2023-11-03T00:00:00Z,Power Forward,Right,230,15
+0eb5f4a1-c40d-42b0-a63f-401ce81abff0,2000-03-21T00:00:00Z,"Amsterdam, Netherlands",Boston College,52,2,10,Golden State Warriors,2024,7,0,,2024-12-27T00:00:00Z,Power Forward,Right,238,15
+abc0f736-333d-4263-bccb-a74749fd9064,1985-06-24T00:00:00Z,"Brooklyn, New York",USC,26,1,5,Chicago Bulls,2009,6,9,Calvary Christian in San Fernando California,2009-10-29T00:00:00Z,Power Forward|Center,Right,232,15
+42db18b1-3262-4328-b641-b75ee2654652,1992-03-16T00:00:00Z,Or,Michigan,24,1,20,New York Knicks,2013,6,5,Miami Palmetto in Pinecrest Florida,2013-10-30T00:00:00Z,Shooting Guard|Small Forward,Right,205,16
+8de7f548-dfba-4edc-a94c-6b164bc3d7f6,1995-12-09T00:00:00Z,"Pescara, Italy",,0,0,,,0,6,7,,2022-10-19T00:00:00Z,Small Forward,Right,209,16
+355c7668-6dd5-4cd4-9d3b-377aeca144cf,1994-12-06T00:00:00Z,"Athens, Greece",,15,1,17,Milwaukee Bucks,2013,6,11,,2013-10-30T00:00:00Z,Power Forward|Small Forward|Point Guard|Shooting Guard,Right,243,16
+62b55914-7058-408c-954f-1f25df8929b1,1995-02-23T00:00:00Z,"Toronto, Ontario",Kansas,1,1,6,Cleveland Cavaliers,2014,6,6,Huntington Prep in Huntington West Virginia,2014-10-29T00:00:00Z,Small Forward|Power Forward,Right,197,16
+36b47b45-db00-4ab5-aa73-7fe4e13af21c,1997-07-18T00:00:00Z,"Newark, New Jersey",Kentucky,14,1,16,Miami Heat,2017,6,9,,2017-10-18T00:00:00Z,Center|Power Forward,Right,255,16
+f5abcd49-1d7a-47fa-bfc8-f0cc4a8aab15,1995-02-10T00:00:00Z,"Little Rock, Arkansas",Arkansas,22,1,5,Chicago Bulls,2015,6,9,Hall in Little Rock Arkansas,2015-11-03T00:00:00Z,Power Forward|Center,Right,250,16
+c8a1d099-ad68-40c6-884f-c33f0d1a76ce,2001-02-23T00:00:00Z,"Stockholm, Sweden",Arizona,44,2,11,Houston Rockets,2024,6,5,,2024-10-23T00:00:00Z,Shooting Guard,Right,215,16
+740d0188-d628-44ff-a274-80791b304e53,1998-09-05T00:00:00Z,H,Baylor,9,1,26,Sacramento Kings,2021,6,0,Liberty County in Hinesville Georgia,2021-10-20T00:00:00Z,Point Guard,Right,202,16
+00e4b2a0-edfd-4156-9d2a-c6945fad7826,2001-05-21T00:00:00Z,"Detroit, Michigan",Little Rock,0,0,,,0,6,5,,2025-10-28T00:00:00Z,Small Forward,Right,220,16
+906d94b5-7781-47cf-82a8-33b6c1ce664f,2003-06-09T00:00:00Z,"Leicester, United K",,27,1,16,Miami Heat,2022,6,10,,2022-10-26T00:00:00Z,Power Forward,Right,205,16
+a3666025-1326-4524-9831-1321bf9d3dd5,1997-12-30T00:00:00Z,"Evansville, Indiana",Missouri,0,0,,,0,6,2,Memorial in Evansville Indiana,2022-10-26T00:00:00Z,Shooting Guard,Right,203,16
+47e73c32-59d0-4377-bd3a-c962d5d3df57,2000-01-20T00:00:00Z,"Milwaukee, Wiscons",Kentucky,13,1,16,Miami Heat,2019,6,5,Whitnall in Greenfield Wisconsin,2019-10-23T00:00:00Z,Shooting Guard,Right,195,17
+a463f40f-df11-464d-8ff6-f3a2b18fda0c,1995-07-24T00:00:00Z,Fl,Utah,27,1,3,Brooklyn Nets,2017,6,8,Rise Academy in Philadelphia Pennsylvania,2017-10-19T00:00:00Z,Power Forward|Small Forward,Right,221,17
+0e681e72-bcbe-4163-89ef-2e8c178c859f,1996-03-24T00:00:00Z,"Bedford, Texas",Texas,11,1,12,Indiana Pacers,2015,6,11,Trinity in Euless Texas,2015-10-29T00:00:00Z,Center,Right,250,17
+a74c2a5b-d7e9-43ed-9990-0a933994cf23,2003-05-21T00:00:00Z,"Villeneuve-sur-Lot, France",,11,1,20,New York Knicks,2022,6,9,INSEP in Paris France,2022-10-19T00:00:00Z,Center|Power Forward,Right,185,17
+b61d8540-c165-4bb9-85c4-8680bf93db01,2002-02-25T00:00:00Z,Colorado Spr,Marquette,38,2,27,San Antonio Spurs,2025,6,4,Evangelical Christian School in Cordova Tennessee,2025-12-22T00:00:00Z,Shooting Guard,Left,200,17
+8c678f09-0ae1-4866-9dbe-3a77ca20f628,2005-07-12T00:00:00Z,"Uzice, Serbia",,47,2,17,Milwaukee Bucks,2025,6,11,,,Power Forward,Right,190,17
+c39ac90c-8fc3-49e1-a90a-2e717bdc2cea,2004-04-20T00:00:00Z,"North Little Rock, Arkansas",Indiana,15,1,16,Miami Heat,2024,7,0,North Little Rock in North Little Rock Arkansas,2024-10-23T00:00:00Z,Center,Right,230,17
+65ee9abd-466a-438b-bdb3-e263db21be83,1999-09-27T00:00:00Z,"Cedar Falls, Iowa",University of Northern Iowa,0,0,,,0,6,4,Cedar Falls HS in Cedar Falls Iowa,2022-10-22T00:00:00Z,Shooting Guard,Right,190,17
+a997581a-39af-48d5-b834-bbd11823d225,2006-05-29T00:00:00Z,"Vilnius, Lithuania",Illinois,20,1,16,Miami Heat,2025,6,5,,2025-12-01T00:00:00Z,Shooting Guard|Point Guard,Right,200,17
+b203c500-fcd1-41e2-88a4-c1af2cebede2,2005-09-18T00:00:00Z,San Bernard,Arizona,10,1,17,Milwaukee Bucks,2026,6,4,,,Shooting Guard,Right,215,17
+ef9ee0e3-07a7-4194-b20f-27b30d2d102e,2000-02-19T00:00:00Z,"Akron, Ohio",UNC,0,0,,,0,6,9,Revere in Richfield Ohio,2024-01-20T00:00:00Z,Power Forward|Center,Right,225,17
+bda2980b-0ebe-4a99-802a-2bd519565523,1998-10-20T00:00:00Z,M,Texas,58,2,20,New York Knicks,2021,6,10,Cristo Rey Jesuit in Minneapolis Minnesota,2021-10-20T00:00:00Z,Center|Power Forward,Right,250,17
+ead5f387-aecf-43bf-859c-0c4cc61a2c2d,2000-05-04T00:00:00Z,"Seattle, Wash",USC,30,1,17,Milwaukee Bucks,2019,6,5,Rainier Beach in Seattle Washington,2019-10-23T00:00:00Z,Shooting Guard|Point Guard|Small Forward,Left,203,17
+6a6343a9-9e04-403c-89dd-a100dd6654f3,2002-07-03T00:00:00Z,"Detroit, Michigan",Toledo,44,2,1,Atlanta Hawks,2022,6,3,Dakota HS in Macomb Michigan,2022-10-18T00:00:00Z,Point Guard,Right,180,17
+6b83c28a-0d77-4b83-b5a0-26745e691611,2006-12-10T00:00:00Z,"Woodbridge, Virg",Tennessee,13,1,16,Miami Heat,2026,6,10,,,Small Forward,Right,211,17
+981793ac-5628-44a0-a345-bd4288fd4290,1994-08-25T00:00:00Z,"Columbus, Ohio",Michigan,20,1,12,Indiana Pacers,2016,6,7,Central in Pickerington Ohio,2016-12-07T00:00:00Z,Shooting Guard|Small Forward,Right,205,17
+8466d94c-3d9a-4b44-9b61-0af11756e72d,1998-10-26T00:00:00Z,"New York, New York",UNC,0,0,,,0,6,5,,2026-03-19T00:00:00Z,Shooting Guard,Right,195,17
+51724413-a58f-4c04-ac02-fc8cc2810828,1999-01-18T00:00:00Z,"Columbus, Ohio",Duke,37,2,26,Sacramento Kings,2018,6,5,,2018-11-04T00:00:00Z,Shooting Guard|Small Forward,Right,204,17
+df337c1a-f1bc-4cd3-afc4-a704753a6dff,2001-02-18T00:00:00Z,Irv,UCLA,18,1,16,Miami Heat,2023,6,6,Adolfo Camarillo in Camarillo California,2023-10-25T00:00:00Z,Small Forward,Right,225,17
+fe85ddbd-d57a-4178-8a47-b08101a785a0,2000-09-14T00:00:00Z,Wilm,VCU,26,1,8,Denver Nuggets,2021,6,2,St. Georges Tech in Middletown Delaware,2021-10-25T00:00:00Z,Point Guard|Shooting Guard,Right,169,18
+f19e68cf-3d79-4ac5-894e-fe5b7109654e,2001-08-22T00:00:00Z,"Anaheim, California",,3,1,4,Charlotte Hornets,2020,6,7,Chino Hills in Chino Hills California,2020-12-23T00:00:00Z,Point Guard,Right,180,18
+674b678c-183f-4eb3-856f-c6b55fb212d2,2001-03-03T00:00:00Z,"Pleasant Hill, California",Florida,0,0,,,0,6,4,College Park in Pleasant Hill California,2025-02-03T00:00:00Z,Shooting Guard,Right,206,18
+b4aa8ad6-4049-4b70-80b4-b997872b321c,1997-01-31T00:00:00Z,"Newark, Delaware",Villanova,17,1,17,Milwaukee Bucks,2018,6,4,Salesianum School in Wilmington Delaware,2018-10-17T00:00:00Z,Shooting Guard,Right,203,18
+3c6b6662-9cf1-4377-892e-012be736ddbf,2000-11-16T00:00:00Z,"Sydney, Australia",Arizona,18,1,7,Dallas Mavericks,2020,6,6,,2020-12-23T00:00:00Z,Shooting Guard,Right,200,18
+35a2c4f7-936d-4472-ab8c-67e2b8c5acfb,2006-07-11T00:00:00Z,"Queensland, Australia",,45,2,5,Chicago Bulls,2025,7,3,Australian Institute of Sport in Canberra Australia,2026-02-22T00:00:00Z,Center,Left,227,18
+b2be1016-4930-47f6-85a5-d8514a416333,2001-08-05T00:00:00Z,"Atlanta, Georgia",Georgia,1,1,18,Minnesota Timberwolves,2020,6,4,,2020-12-23T00:00:00Z,Shooting Guard,Right,225,18
+4e322157-10c9-402e-89af-08391156f48b,2001-10-13T00:00:00Z,"Riverside, California",UCLA,53,2,18,Minnesota Timberwolves,2023,6,5,,2025-01-09T00:00:00Z,Shooting Guard,Right,205,18
+4fec1c4d-7786-4fce-b337-2dcb4aaf29e2,1995-11-05T00:00:00Z,"Saskatoon, Saskatchewan",Kentucky,12,1,29,Utah Jazz,2015,6,9,Arsenal Tech in Indianapolis Indiana,2015-10-28T00:00:00Z,Power Forward,Right,234,18
+53c47b87-8edb-40c4-a312-ec72bf2bb59d,2000-07-29T00:00:00Z,"Cleveland, Ohio",University of Akron,50,2,12,Indiana Pacers,2024,6,9,Saint Martin de Porres in Cleveland Ohio,2024-10-23T00:00:00Z,Power Forward,Right,220,18
+6b799362-308c-486f-a328-147b81c6ce75,2006-11-11T00:00:00Z,"SÃ©lestat, France",,17,1,18,Minnesota Timberwolves,2025,6,11,,2025-10-24T00:00:00Z,Power Forward|Center,Right,230,18
+14ceaa28-d130-46c1-b98c-9d5c771a2307,2000-09-29T00:00:00Z,"Federal Way, Wash",Washington,28,1,14,Los Angeles Lakers,2020,6,9,Federal Way in Federal Way Washington,2020-12-27T00:00:00Z,Power Forward|Small Forward,Right,185,18
+75aaa2f9-6e90-4439-b416-4cc9886eb6d8,1992-06-26T00:00:00Z,Sa,,27,1,8,Denver Nuggets,2013,7,1,,2013-10-30T00:00:00Z,Center,Right,258,18
+7587c53b-85e4-484e-bafa-ac4681e55b55,2000-07-30T00:00:00Z,"Chicago , Ill",Illinois,27,1,18,Minnesota Timberwolves,2024,6,6,,2024-11-02T00:00:00Z,Shooting Guard,Left,215,18
+78a8b2c0-005f-4228-a3ee-c42853d27e0e,2000-01-17T00:00:00Z,"Chicago, Ill",Illinois,38,2,5,Chicago Bulls,2021,6,4,,2021-10-20T00:00:00Z,Shooting Guard,Right,200,18
+280f0398-827f-4eb0-bf51-8f33d1b83e57,2002-11-08T00:00:00Z,"Pendleton, South Carol",Nebraska,40,2,18,Minnesota Timberwolves,2022,6,6,,2022-10-19T00:00:00Z,Shooting Guard,Right,190,19
+5ef514da-6b2f-4c83-90ac-8c1744e54c00,2001-07-16T00:00:00Z,"Cibolo, Texas",Georgetown,40,2,30,Washington Wizards,2025,6,7,Duncanville in Duncanville Texas,2025-10-27T00:00:00Z,Shooting Guard,Right,215,19
+fa2c073c-de18-4f2e-aa1d-42fc94857b04,2001-03-30T00:00:00Z,"Livno, Bosnia and Herzegov",,52,2,19,New Orleans Pelicans,2022,6,10,,2024-10-23T00:00:00Z,Power Forward,Right,231,19
+7e57937e-7888-48cc-8cbd-d1fd5bcb93ab,1996-09-19T00:00:00Z,"Seattle, Wash",Washington,29,1,27,San Antonio Spurs,2016,6,4,Rainier Beach in Seattle Washington,2016-10-29T00:00:00Z,Point Guard|Shooting Guard,Right,180,19
+f85b81cd-e8f6-47c3-88f2-7b109126fb33,2002-04-29T00:00:00Z,"Gaithersburg, Maryland",UConn,14,1,19,New Orleans Pelicans,2023,6,5,,2023-10-25T00:00:00Z,Shooting Guard,Right,190,19
+290d85d9-19fb-421f-ad6b-c8f1c8a9273d,1988-07-21T00:00:00Z,"Houston, Texas",Texas A&M,35,2,13,Los Angeles Clippers,2008,6,11,Christian Life Center Academy in Humble Texas,2008-11-01T00:00:00Z,Center,Left,265,19
+1fd16a8e-ab4e-4c5b-a48e-2a9948f45a4b,1999-04-09T00:00:00Z,"Charlotte, North Carol",Villanova,19,1,3,Brooklyn Nets,2020,6,8,,2020-12-26T00:00:00Z,Small Forward,Right,215,19
+e5794f03-da8a-44f4-94bf-dff4503f0c5b,2006-10-14T00:00:00Z,"Chicago, Ill",Oklahoma,7,1,19,New Orleans Pelicans,2025,6,3,AZ Compass Prep in Chandler Arizona,2025-10-22T00:00:00Z,Point Guard,Right,190,19
+ad0a1ef1-a153-4fbb-8330-f9d1b5140ae5,2000-11-25T00:00:00Z,"Alexandria, Virg",Kansas,0,0,,,0,7,1,DeMatha Catholic in Hyattsville Maryland,2025-10-22T00:00:00Z,Center,Left,255,19
+4797b64a-8096-4478-9959-01e9f20918e6,2004-12-27T00:00:00Z,"Baltimore, Maryland",Maryland,13,1,1,Atlanta Hawks,2025,6,9,,2025-10-22T00:00:00Z,Center,Right,250,19
+4d5e3720-850e-4d4c-9d27-d8eba8a7a565,1998-10-06T00:00:00Z,"Tuscaloosa, Alabama",Alabama,35,2,19,New Orleans Pelicans,2021,6,7,,2021-10-20T00:00:00Z,Small Forward|Power Forward,Left,206,19
+1552950a-29a0-4c6f-8e95-107326aa812e,2000-06-18T00:00:00Z,"Durham, North Carol",Virginia,17,1,15,Memphis Grizzlies,2021,6,8,Cary Academy in Cary North Carolina,2021-10-20T00:00:00Z,Small Forward,Right,206,19
+d1e2b9f3-ff9b-4a0e-8142-57817b9fd664,2000-07-06T00:00:00Z,"Salisbury, North Carol",Duke,1,1,19,New Orleans Pelicans,2019,6,6,Spartanburg Day School in Spartanburg South Carolina,2020-01-22T00:00:00Z,Power Forward,Left,284,19
+986e362d-3459-4e4b-b5af-d820e18159c7,2004-05-14T00:00:00Z,"Brussels, Belgium",Baylor,21,1,19,New Orleans Pelicans,2024,6,11,,2024-10-23T00:00:00Z,Center,Right,235,19
+a4dea213-e14a-4165-be92-6cec284b10e4,1999-06-19T00:00:00Z,"Milwaukee, Wiscons",Michigan,28,1,10,Golden State Warriors,2019,6,4,La Lumiere School in La Porte Indiana,2019-10-24T00:00:00Z,Shooting Guard|Point Guard,Right,194,19
+4b4cfaa2-51f4-47e5-9b9e-8ab668307347,1997-03-13T00:00:00Z,"Kansas City, Missouri",Wichita State,26,1,23,Philadelphia 76ers,2018,6,5,Park Hill in Kansas City Missouri,2018-10-16T00:00:00Z,Shooting Guard,Right,190,20
+e9d6a388-7474-46f7-a438-639e6d5144c3,2000-09-08T00:00:00Z,C,West Virginia,36,2,21,Oklahoma City Thunder,2021,6,2,Archbishop Moeller in Cincinnati Ohio,2021-10-22T00:00:00Z,Point Guard|Shooting Guard,Right,195,20
+1023dba5-de61-4eff-9de9-e4c3312778e8,2001-03-27T00:00:00Z,"Providence, Rhode Island",Marquette,34,2,25,Portland Trail Blazers,2024,6,2,St. George's School in Middletown Rhode Island,2024-10-22T00:00:00Z,Point Guard,Left,195,20
+1717884c-1f08-4e4e-af36-6610714bec95,1996-08-31T00:00:00Z,"New Brunswick, New Jersey",Villanova,33,2,7,Dallas Mavericks,2018,6,2,Adlai Stevenson in Lincolnshire Illinois,2018-10-17T00:00:00Z,Point Guard|Shooting Guard,Left,190,20
+ab8bf5c5-3936-418f-9f71-17ef99812213,1997-07-17T00:00:00Z,"London, United K",Indiana,23,1,28,Toronto Raptors,2017,6,7,Jefferson City in Jefferson City Missouri,2017-10-19T00:00:00Z,Small Forward|Power Forward,Right,240,20
+30eff783-8c69-4360-ae52-d01f76e1ae5f,1996-08-30T00:00:00Z,"Philadelphia, Pennsylvania",Villanova,10,1,23,Philadelphia 76ers,2018,6,6,Great Valley in Malvern Pennsylvania,2018-10-17T00:00:00Z,Small Forward|Shooting Guard,Right,209,20
+77d2afbf-ffdb-447f-8822-c12842024114,2005-07-27T00:00:00Z,"Aubagne, France",,25,1,20,New York Knicks,2024,6,9,,2024-10-22T00:00:00Z,Shooting Guard,Right,210,20
+cec430b2-56a4-4f86-8704-718a8e4a6b3b,1995-03-06T00:00:00Z,Silver Spr,Villanova,30,1,29,Utah Jazz,2017,6,5,Sidwell Friends in Washington District of Columbia,2017-10-20T00:00:00Z,Small Forward|Shooting Guard,Right,215,20
+ca5570af-ae6f-4743-b6c8-0ca394c61761,1993-08-10T00:00:00Z,"Mount Vernon, New York",UConn,9,1,9,Detroit Pistons,2012,6,11,St. Thomas More School in Oakdale Connecticut,2012-10-31T00:00:00Z,Center,Right,279,20
+eefda3ee-b9b6-4456-928c-817232238d42,1995-11-15T00:00:00Z,"Edison, New Jersey",Kentucky,1,1,18,Minnesota Timberwolves,2015,7,0,St. Joseph in Metuchen New Jersey,2015-10-28T00:00:00Z,Center|Power Forward,Right,248,20
+78ac0a06-a3c0-4893-8ced-88a9d0e27ef3,1992-06-07T00:00:00Z,"Tampa, Florida",Missouri,46,2,30,Washington Wizards,2014,6,5,Wagner in San Antonio Texas,2014-10-28T00:00:00Z,Shooting Guard|Point Guard,Right,194,20
+5e8068ee-6f8a-4e94-bba7-870055757a52,2005-04-29T00:00:00Z,"Paris, France",,51,2,13,Los Angeles Clippers,2025,6,9,,2025-10-28T00:00:00Z,Small Forward,Right,225,20
+2c2e937a-6098-4de8-98fc-ccf91b49e3f8,1998-04-12T00:00:00Z,"Brooklyn, New York",Georgia Tech,0,0,,,0,6,0,Christ the King in Queens New York,2021-11-03T00:00:00Z,Point Guard,Right,179,20
+8dcf95eb-e8ff-43e7-8bff-9f1a3378468d,1998-05-05T00:00:00Z,"Eugene, Oregon",,43,2,11,Houston Rockets,2017,7,0,,2018-10-17T00:00:00Z,Center|Power Forward,Left,250,21
+4aab24b8-2e9e-43e5-990b-7a016b2c574f,2001-04-14T00:00:00Z,"Denver, Colorado",Santa Clara,12,1,21,Oklahoma City Thunder,2022,6,5,Perry in Gilbert Arizona,2022-10-19T00:00:00Z,Shooting Guard|Power Forward,Right,211,21
+a455cf29-734e-4e23-85d2-e808f249bd33,2004-02-20T00:00:00Z,"Sacramento, California",Duke,16,1,23,Philadelphia 76ers,2024,6,3,Centennial in Corona California,2024-10-23T00:00:00Z,Shooting Guard|Point Guard,Right,195,21
+605fe676-2357-4145-a7af-751f6fa0a3ba,2005-12-25T00:00:00Z,"Trenton, New Jersey",Georgetown,15,1,21,Oklahoma City Thunder,2025,6,9,,,Center|Power Forward,Right,250,21
+aee0dcb7-eaa7-4ba4-b784-d591d730599e,2002-06-25T00:00:00Z,"Namur, Belgium",UC Santa Barbara,38,2,20,New York Knicks,2024,6,4,,2024-10-24T00:00:00Z,Shooting Guard,Left,190,21
+bcbd5ad3-c4b9-42dc-8dfb-e7c3c05226f8,2003-11-07T00:00:00Z,"Dallas, Texas",Kentucky,10,1,7,Dallas Mavericks,2023,6,3,Richardson in Richardson Texas,2023-10-25T00:00:00Z,Shooting Guard,Right,195,21
+1bfe1986-d340-47b5-a461-b150a861bba6,1998-07-12T00:00:00Z,"Toronto, Ontario",Kentucky,11,1,4,Charlotte Hornets,2018,6,6,Hamilton Heights Christian in Chattanooga Tennessee,2018-10-17T00:00:00Z,Point Guard|Shooting Guard,Right,195,21
+3f35fb98-68e7-4583-b805-4ecf213bc802,1994-12-02T00:00:00Z,"Waco, Texas",TCU,0,0,,,0,6,7,Waco University in Waco Texas,2018-10-17T00:00:00Z,Power Forward|Small Forward,Right,210,21
+bb3e96cd-fdd2-4676-9c27-000440799577,2005-04-07T00:00:00Z,"Zaragoza, Spa",Michigan,12,1,21,Oklahoma City Thunder,2026,7,3,IES El Picarral in Zaragoza Spain,,Center,Right,260,21
+b993a6aa-13c4-4e8d-896c-a235bbbce143,2005-08-10T00:00:00Z,"Novi Sad, Serbia",,12,1,21,Oklahoma City Thunder,2024,6,6,,2026-02-12T00:00:00Z,Point Guard,Right,200,21
+2e738c37-73c5-4bef-b1be-39c56a392661,1994-02-28T00:00:00Z,"College Station, Texas",Texas A&M,0,0,,,0,6,5,A&M Consolidated in College Station Texas,2017-10-19T00:00:00Z,Point Guard|Shooting Guard,Right,186,21
+71678427-039d-4cab-9cc1-9b9c69850764,2002-06-29T00:00:00Z,"Fort Smith, Arkansas",Arkansas,34,2,21,Oklahoma City Thunder,2022,6,9,Northside in Fort Smith Arkansas,2022-10-23T00:00:00Z,Power Forward|Center,Right,240,21
+9a7e899e-48ef-4978-ab35-81e874441f2c,2002-03-02T00:00:00Z,"Lafayette, Indiana",Northwestern,44,2,21,Oklahoma City Thunder,2025,6,5,,2025-10-21T00:00:00Z,Shooting Guard,Right,230,21
+ab8aefb9-1d5b-46c9-9ae4-8e81966a551c,1999-04-19T00:00:00Z,"Montreal, Quebec",Arizona State,0,0,,,0,6,4,Athlete Institute in Mono Canada,2019-12-06T00:00:00Z,Small Forward|Shooting Guard,Right,220,21
+450dbb3b-64c7-4b81-a2fb-43aa4bdbb3b0,2003-10-03T00:00:00Z,"Liberty, Missouri",Iowa,16,1,15,Memphis Grizzlies,2026,6,4,Liberty HS in Liberty Missouri,,Point Guard,Right,186,21
+3756bc67-61a4-4542-a9fe-7261c995aa35,2002-05-01T00:00:00Z,M,Gonzaga,2,1,21,Oklahoma City Thunder,2022,7,1,Minnehaha Academy in Minneapolis Minnesota,2023-10-25T00:00:00Z,Center|Power Forward,Right,208,21
+37f0a151-12f7-4f15-9b4b-f203cffc6abe,2000-05-25T00:00:00Z,Pembroke P,Florida,0,0,,,0,6,10,Father Lopez in Daytona Beach Florida,2023-11-04T00:00:00Z,Center|Power Forward,Right,250,22
+830d16e0-eccf-476e-b17c-7501894d8ade,2003-09-14T00:00:00Z,"Chicago, Ill",Michigan,11,1,22,Orlando Magic,2023,6,8,,2023-10-25T00:00:00Z,Small Forward,Right,215,22
+fb729e80-edca-49e8-8ee2-42a09426c75c,2005-10-16T00:00:00Z,"Berkeley, California",Michigan State,25,1,22,Orlando Magic,2025,6,1,,2025-10-25T00:00:00Z,Shooting Guard,Left,180,22
+54e33002-b9ea-4eb9-bad7-89a14d05205c,1990-10-24T00:00:00Z,"Morges, Switzerland",USC,16,1,23,Philadelphia 76ers,2011,6,9,Stoneridge Prep in Simi Valley California,2011-12-28T00:00:00Z,Center,Right,260,22
+e09116ff-c870-4df6-924d-ed53cb706e7e,1998-06-25T00:00:00Z,"Richmond, Indiana",TCU,30,1,2,Boston Celtics,2020,6,6,Seton Catholic in Richmond Indiana,2020-12-23T00:00:00Z,Shooting Guard,Right,215,22
+a154557a-398a-4d85-ac88-7402df0d3ad3,1997-10-03T00:00:00Z,"The Bronx, New York",Florida State,6,1,22,Orlando Magic,2017,6,10,IMG Academy in Bradenton Florida,2017-10-18T00:00:00Z,Power Forward,Right,230,22
+278a2014-268e-4b01-9e97-d7d610668211,2001-08-27T00:00:00Z,Berl,Michigan,8,1,22,Orlando Magic,2021,6,10,,2021-10-20T00:00:00Z,Small Forward,Right,220,22
+e24ee859-63ef-4aff-b7bb-4af9083fd15f,1997-11-21T00:00:00Z,"Paterson, New Jersey",Wagner College,0,0,,,0,6,6,Manchester Regional in Haledon New Jersey,2026-03-19T00:00:00Z,Point Guard,Right,180,22
+26aff130-d575-4dbb-8091-f500e058e18a,2001-05-15T00:00:00Z,"Munich, Germany",Colorado,18,1,22,Orlando Magic,2024,6,8,,2024-10-23T00:00:00Z,Small Forward,Right,217,22
+ad62f965-1183-4442-be7f-9e2cabe617d6,1995-09-14T00:00:00Z,"Maywood, Ill",West Virginia,32,2,15,Memphis Grizzlies,2018,6,0,Proviso East in Maywood Illinois,2018-12-15T00:00:00Z,Point Guard,Right,200,22
+d11455e4-45ca-43e2-9eef-aa1f5692008e,2002-11-12T00:00:00Z,"Seattle, Wash",Duke,1,1,22,Orlando Magic,2022,6,10,O'Dea in Seattle Washington,2022-10-19T00:00:00Z,Power Forward,Right,250,22
+af2af139-c02e-40c2-8c58-69cfe72f001a,2004-01-20T00:00:00Z,"Duncanville, Texas",Arkansas,6,1,22,Orlando Magic,2023,6,7,Duncanville in Duncanville Texas,2023-10-25T00:00:00Z,Point Guard,Right,200,22
+67ed09a2-c685-4e88-b8ba-15e20ded5527,1999-04-16T00:00:00Z,"Atlanta, Georgia",Duke,7,1,5,Chicago Bulls,2018,6,10,Pace Academy in Atlanta Georgia,2018-10-18T00:00:00Z,Center|Power Forward,Right,270,22
+52d35976-7e8f-469a-86d8-51671db89f1d,1999-03-20T00:00:00Z,"Pontiac, Michigan",Oakland,0,0,,,0,6,7,,2022-11-12T00:00:00Z,Small Forward|Power Forward,Right,191,22
+8e6d4ef8-e765-470a-b8e4-e6cf5f3453a1,1999-07-20T00:00:00Z,"Sagarejo, Georgia",,18,1,12,Indiana Pacers,2019,6,11,,2019-10-26T00:00:00Z,Center,Right,250,22
+344c9385-3ff3-4739-b1d2-815ac99019bc,2001-06-03T00:00:00Z,"St. Paul, M",Gonzaga,5,1,22,Orlando Magic,2021,6,5,Minnehaha Academy in Minneapolis Minnesota,2021-10-20T00:00:00Z,Point Guard|Shooting Guard,Right,205,22
+64b31165-39af-485e-affd-72a550276a2a,2005-01-07T00:00:00Z,"Paris, France",,32,2,2,Boston Celtics,2025,6,7,,2025-10-27T00:00:00Z,Small Forward,Right,215,22
+564e98da-7848-4be0-97c5-46496f62f4bb,2000-11-04T00:00:00Z,"Dallas, Texas",Kentucky,21,1,23,Philadelphia 76ers,2020,6,2,South Garland in Garland Texas,2020-12-23T00:00:00Z,Point Guard|Shooting Guard,Right,200,23
+c299f390-2be8-45f3-86c4-f18ef7ef78e6,2000-11-09T00:00:00Z,Birm,LSU,0,0,,,0,6,8,Mountain Brook in Mountain Brook Alabama,2021-11-14T00:00:00Z,Power Forward|Small Forward,Right,237,23
+64a228f7-2628-424e-b185-0921bcf6511f,2002-07-19T00:00:00Z,"Plant City, Florida",Auburn,35,2,23,Philadelphia 76ers,2025,6,10,,2025-11-02T00:00:00Z,Center|Power Forward,Left,235,23
+7d096743-55f0-481d-977c-31a6b9855de2,2003-05-26T00:00:00Z,"Hackensack, New Jersey",,0,0,,,0,6,9,,2022-11-02T00:00:00Z,Power Forward|Small Forward,Right,215,23
+e571c176-592d-465b-ad2c-e2438fcbfa51,2002-04-12T00:00:00Z,"Stralsund, Germany",,58,2,7,Dallas Mavericks,2024,7,0,,2024-10-22T00:00:00Z,Center,Left,246,23
+f3043e04-b246-4c9b-8aee-11fce95a4e74,1996-11-20T00:00:00Z,"Wichita, Kansas",Kansas State,0,0,,,0,6,9,St. John in St. John Kansas,2019-11-18T00:00:00Z,Power Forward,Right,228,23
+25916066-ca30-42c4-b91b-a3c28c10491c,2005-11-24T00:00:00Z,"Mobile, Alabama",Alabama,22,1,23,Philadelphia 76ers,2026,6,4,,,Point Guard,Right,176,23
+6e9290fd-c1f8-412b-97da-ae4b9a09b2fa,2003-12-16T00:00:00Z,"Philadelphia, Pennsylvania",Kentucky,0,0,,,0,6,7,Imhotep Institute Charter in Philadelphia Pennsylvania,2024-11-24T00:00:00Z,Small Forward,Left,203,23
+60a69b51-e738-494f-a27c-e8ad6c14d96a,2002-07-12T00:00:00Z,"Tempe, Arizona",Arizona,18,1,5,Chicago Bulls,2022,6,6,,2022-10-22T00:00:00Z,Shooting Guard,Right,195,23
+7e065193-63f3-49b9-b501-79454224929d,1999-06-08T00:00:00Z,"Longwood, Florida",,24,1,25,Portland Trail Blazers,2018,6,3,IMG Academy in Bradenton Florida,2018-10-30T00:00:00Z,Shooting Guard,Right,200,23
+33f2c243-102e-43c8-83cc-ae6044fa605c,2003-03-28T00:00:00Z,"Lagos, Nigeria",UCLA,41,2,23,Philadelphia 76ers,2024,6,10,Prolific Prep in Napa California,2024-10-23T00:00:00Z,Center|Power Forward,Right,235,23
+9cb2cb07-29b4-4c00-bf91-7ac4a374db7d,2001-09-27T00:00:00Z,"St. Louis, Missouri",Arizona,0,0,,,0,6,3,Christian Brothers College in Town and Country Missouri,2025-10-27T00:00:00Z,Shooting Guard,Right,212,23
+7c0c9654-557a-4257-aa46-28b03feb80ba,2005-07-30T00:00:00Z,Bim,Baylor,3,1,23,Philadelphia 76ers,2025,6,4,,2025-10-22T00:00:00Z,Shooting Guard,Right,180,23
+607adcc7-ffd1-44ac-a810-599faf4b3bb3,1996-10-24T00:00:00Z,"Marietta, Georgia",California,3,1,2,Boston Celtics,2016,6,6,Wheeler in Marietta Georgia,2016-10-26T00:00:00Z,Small Forward|Shooting Guard,Right,223,23
+f0d08d71-54e6-40d4-8dbb-95c37ac3f69c,2002-07-30T00:00:00Z,"Wichita, Kansas",Colorado,57,2,25,Portland Trail Blazers,2022,6,7,,2022-10-24T00:00:00Z,Power Forward,Right,237,23
+9602ea01-e68f-4530-89f2-5cc1511d99f6,2004-05-31T00:00:00Z,"Strasbourg, France",,43,2,25,Portland Trail Blazers,2023,6,7,,2023-10-25T00:00:00Z,Shooting Guard,Right,205,23
+cf7b882e-20f0-40ea-ae74-ef5627fd8aba,1994-03-16T00:00:00Z,"Yaounde, Cameroon",Kansas,3,1,23,Philadelphia 76ers,2014,7,0,,2016-10-26T00:00:00Z,Center,Right,280,23
+02f030c7-460b-4c72-8e2b-d1b788b21a9a,2002-02-09T00:00:00Z,"Merced, California",,2,1,11,Houston Rockets,2021,6,4,,2021-10-20T00:00:00Z,Shooting Guard,Right,186,24
+3514e040-e691-4f45-8a8b-c8cba41b6dae,1996-07-04T00:00:00Z,"Davidsonville, Maryland",Northwestern,0,0,,,0,6,2,Boy's Latin School of Maryland in Baltimore Maryland,2024-02-25T00:00:00Z,Point Guard,Right,205,24
+29135440-0bd8-4a67-b4b0-d2d8e6449a3a,1998-03-21T00:00:00Z,Fl,Michigan State,12,1,13,Los Angeles Clippers,2018,6,7,Huntington Prep in Huntington West Virginia,2018-10-17T00:00:00Z,Small Forward|Power Forward,Left,225,24
+61a57174-b69c-4701-a52d-ef6b8a96594d,2001-12-16T00:00:00Z,"Norfolk, Virg",Duke,15,1,4,Charlotte Hornets,2022,7,1,,2022-10-19T00:00:00Z,Center,Right,240,24
+669a1987-1ee2-4ab5-a7b1-001ceaaff543,2002-11-06T00:00:00Z,"New York, New York",Kentucky,41,2,10,Golden State Warriors,2025,6,5,Monsignor Scanlan in Bronx New York,2025-11-02T00:00:00Z,Shooting Guard,Right,215,24
+94e874f8-ef00-406a-a93c-078e4eb9a16c,1998-10-23T00:00:00Z,"Centreville, Ill",Saint Louis,0,0,,,0,6,3,Althoff Catholic in Belleville Illinois,2021-12-28T00:00:00Z,Point Guard|Shooting Guard,Right,200,24
+222259f3-790e-4723-af2b-1d4411230dd1,2002-01-06T00:00:00Z,"Huntersville, North Carol",Appalachian State University,0,0,,,0,6,9,Davidson Day School in Davidson North Carolina,2026-03-22T00:00:00Z,Small Forward,Right,190,24
+c5fc9fd5-d021-4d36-a780-448310a264f1,1996-12-09T00:00:00Z,"Baltimore, Maryland",Wheeling University,0,0,,,0,6,5,Archbishop Curley in Baltimore Maryland,2019-01-08T00:00:00Z,Small Forward|Power Forward,Right,220,24
+57a4cacf-8645-44a8-80ee-c632b85dd307,1996-01-22T00:00:00Z,"Mississauga, Ontario",Oregon,45,2,11,Houston Rockets,2017,6,7,Findlay Prep in Henderson Nevada,2017-10-18T00:00:00Z,Small Forward|Shooting Guard,Right,225,24
+947a4278-ff61-4b19-b8af-1a0ba679a258,1999-06-27T00:00:00Z,"Seaside, California",San Francisco,0,0,,,0,6,2,Palma in Salinas California,2023-02-10T00:00:00Z,Point Guard,Right,180,24
+514fdeaa-ae75-4c17-8260-9550a302b5a7,2007-01-20T00:00:00Z,"Gilbert, Arizona",Arizona,30,1,7,Dallas Mavericks,2026,6,8,Perry in Gilbert Arizona,,Power Forward,Right,245,24
+85ddbc1c-3aba-4f45-8b05-d5016e1c0c6d,2003-01-07T00:00:00Z,"New Hyde Park, New York",Virginia,28,1,8,Denver Nuggets,2024,6,7,The Perkiomen School in Pennsburg Pennsylvania,2024-10-23T00:00:00Z,Small Forward,Right,216,24
+a2e34e4f-f614-44f1-a104-f5d871aa824f,2006-09-14T00:00:00Z,"Rumbek, South Sudan",Duke,10,1,11,Houston Rockets,2025,7,1,NBA Academy Africa in Thies Senegal,2025-10-24T00:00:00Z,Center,Right,250,24
+331dcdff-4f7a-4339-a7f3-f1517977b5d3,1999-06-25T00:00:00Z,Hunt,Villanova,0,0,,,0,6,1,Archbishop Wood in Warminster Pennsylvania,2023-10-24T00:00:00Z,Point Guard,Right,195,24
+dc7e5d16-eb98-4f9b-b0e0-c4090e0390a5,1996-10-30T00:00:00Z,"Grand Rapids, Michigan",Kentucky,13,1,24,Phoenix Suns,2015,6,5,Moss Point in Moss Point Mississippi,2015-10-28T00:00:00Z,Shooting Guard|Point Guard,Right,206,24
+b9590205-a786-4d8a-91a4-3b1c62dedc9a,2004-07-10T00:00:00Z,"Camden, New Jersey",Saint Joseph's,31,2,18,Minnesota Timberwolves,2025,6,9,Camden in Camden New Jersey,2025-10-24T00:00:00Z,Power Forward,Right,240,24
+8b1b0102-d21c-4012-9b66-f3cc402ec576,2002-07-14T00:00:00Z,"Mesa, Arizona",Marquette,40,2,25,Portland Trail Blazers,2024,6,11,Desert Vista in Phoenix Arizona,2024-10-23T00:00:00Z,Power Forward,Right,235,24
+9e0bccb1-21d8-44ff-adb3-099236c8dc4d,2004-02-03T00:00:00Z,"Marietta, Georgia",,3,1,25,Portland Trail Blazers,2023,6,3,Carlton J. Kell in Marietta Georgia,2023-10-25T00:00:00Z,Point Guard,Right,207,25
+b4f079e0-daf5-454c-81b1-47a11d3cfcba,1998-04-06T00:00:00Z,"Mentor, Ohio",Wisconsin,0,0,,,0,6,9,,2022-01-01T00:00:00Z,Center|Power Forward,Right,248,25
+1a99aa7b-fb1f-448e-a5c4-66a201f9b033,2004-02-23T00:00:00Z,"Bristol, Connecticut",UConn,7,1,25,Portland Trail Blazers,2024,7,2,Central in Bristol Connecticut,2024-10-23T00:00:00Z,Center,Right,280,25
+8bea4361-ac0d-4239-9938-d42bf1c77963,1999-08-10T00:00:00Z,"Dalzell, South Carol",Murray State,2,1,15,Memphis Grizzlies,2019,6,2,Crestwood in Sumter South Carolina,2019-10-23T00:00:00Z,Point Guard,Right,174,25
+f834f26a-24c3-498d-9c93-7cd00d1450de,2000-05-08T00:00:00Z,"Brussels, Belgium",Dayton,52,2,24,Phoenix Suns,2023,6,7,Chaminade-Madonna College Preparatory School in Hollywood Florida,2023-10-25T00:00:00Z,Power Forward,Left,230,25
+bf75669d-cea6-45ec-a988-d2a2ff5fc96e,1990-06-12T00:00:00Z,"Chatsworth, California",UCLA,17,1,23,Philadelphia 76ers,2009,6,4,Campbell Hall in North Hollywood California,2009-10-30T00:00:00Z,Point Guard|Shooting Guard,Right,220,25
+a48bd4e1-4117-4a6b-9876-60f8ac43484a,2003-05-30T00:00:00Z,"London, Ontario",Kentucky - attended but did not play,7,1,25,Portland Trail Blazers,2022,6,5,,2022-10-19T00:00:00Z,Shooting Guard,Right,210,25
+6d53ba49-7937-4b6c-9bb4-327844c6925f,1990-07-15T00:00:00Z,"Oakland, California",Weber State,6,1,25,Portland Trail Blazers,2012,6,2,Oakland in Oakland California,2012-10-31T00:00:00Z,Point Guard,Right,200,25
+136291f4-cc33-4918-878b-08f5af29da8b,2002-02-09T00:00:00Z,"Tuscaloosa, Alabama",Alabama,0,0,,,0,6,4,East Coweta in Sharpsburg Georgia,2025-10-21T00:00:00Z,Shooting Guard,Right,221,25
+5dff0725-d0b5-4cbd-be20-46aaa1e8301f,2001-01-03T00:00:00Z,"Beit Zera, Israel",,9,1,30,Washington Wizards,2020,6,8,,2020-12-23T00:00:00Z,Small Forward,Right,228,25
+fabce799-d4cc-4730-ae12-f84eefc57f0c,1999-06-14T00:00:00Z,"South Jordan, Utah",Utah,0,0,,,0,7,0,Bingham in South Jordan Utah,2024-11-25T00:00:00Z,Center,Right,220,25
+c1caf5e8-1a84-49ac-9b6d-6189f97bb06d,1997-10-17T00:00:00Z,"Shreveport, Louisiana",Texas A&M,27,1,2,Boston Celtics,2018,6,9,North Caddo in Vivian Louisiana,2018-10-22T00:00:00Z,Center,Right,249,25
+45f691b9-c20a-4d14-805a-fc1c442a212a,2000-06-19T00:00:00Z,"Strakonice, Czechia",,37,2,30,Washington Wizards,2020,6,8,,2021-10-20T00:00:00Z,Point Guard|Shooting Guard,Right,195,25
+90517848-013c-479e-8c2a-74f7ed8e482e,2004-04-02T00:00:00Z,Sa,,44,2,27,San Antonio Spurs,2023,6,6,,2023-11-20T00:00:00Z,Small Forward,Right,220,25
+eba83eb9-882f-4bc4-a175-5e7a367747da,2005-06-26T00:00:00Z,"Zibo, Ch",,16,1,15,Memphis Grizzlies,2025,7,1,,2025-10-22T00:00:00Z,Center,Right,270,25
+0acc3dc0-fe42-447e-9056-dff41c6d351d,2006-11-16T00:00:00Z,"Detroit, Michigan",Arkansas,7,1,26,Sacramento Kings,2026,6,3,,,Point Guard,Right,186,26
+4a484f0d-60ca-4e9a-a0ad-ef9939d21f61,1999-09-19T00:00:00Z,"Port Harcourt, Nigeria",Memphis,20,1,16,Miami Heat,2020,6,8,,2020-12-23T00:00:00Z,Center|Power Forward,Right,243,26
+ac01d14f-3e9f-4376-9f8f-7a01f45f6ebd,2002-11-11T00:00:00Z,Fram,UConn,29,1,6,Cleveland Cavaliers,2026,6,8,,,Small Forward,Right,225,26
+0713b98c-48bb-4611-931c-d75547795319,1995-03-10T00:00:00Z,"Renton, Wash",UCLA,13,1,18,Minnesota Timberwolves,2014,6,5,Bothell in Bothell Washington,2014-10-30T00:00:00Z,Shooting Guard|Small Forward|Point Guard,Right,200,26
+b43bc8e7-9ccf-4544-981a-d44a01a83b2a,1998-08-29T00:00:00Z,"Philadelphia, Pennsylvania",Bowling Green,0,0,,,0,6,4,Mastery Charter North in Philadelphia Pennsylvania,2025-01-15T00:00:00Z,Shooting Guard,Right,216,26
+c9f968a6-94b4-4561-945e-5e4c8420891b,1996-05-03T00:00:00Z,"Portland, Oregon",Gonzaga,11,1,22,Orlando Magic,2016,6,10,,2016-10-26T00:00:00Z,Center|Power Forward,Left,240,26
+7a634ccd-78bb-4ab5-af17-91d81a3b4c77,2003-04-07T00:00:00Z,"Paris, France",Stanford,42,2,26,Sacramento Kings,2025,7,1,LycÃ©e Henri-IV in Paris France,2025-10-22T00:00:00Z,Center|Power Forward,Right,250,26
+18832c5d-d4a4-49a8-87b5-a6a8a535f9d8,1998-02-04T00:00:00Z,"Jonesboro, Arkansas",Kentucky,11,1,4,Charlotte Hornets,2017,6,3,Bentonville in Bentonville Arkansas,2017-10-18T00:00:00Z,Shooting Guard,Right,200,26
+8da3098b-054a-4a5e-aae3-80e8e60b87ee,2000-08-19T00:00:00Z,"Cedar Rapids, Iowa",Iowa,4,1,26,Sacramento Kings,2022,6,8,,2022-10-22T00:00:00Z,Power Forward|Small Forward,Right,225,26
+daa7671e-24d4-4204-96cc-a981a0d1f7b7,2002-02-09T00:00:00Z,Colorado Spr,Colorado State,24,1,21,Oklahoma City Thunder,2025,6,5,The Vanguard School in Colorado Springs Colorado,2025-10-22T00:00:00Z,Shooting Guard,Right,175,26
+bfca735a-b2fa-4f55-bd9e-e641c9d0810c,1997-12-02T00:00:00Z,"Philadelphia, Pennsylvania",Virginia,4,1,14,Los Angeles Lakers,2019,6,7,Friends' Central in Wynnewood Pennsylvania,2019-10-24T00:00:00Z,Small Forward,Right,221,26
+df3f96f7-9ae6-40ff-95b7-84863c316001,1999-12-01T00:00:00Z,"Duluth, Georgia",Baylor,0,0,,,0,6,1,Duluth in Duluth Georgia,2024-02-23T00:00:00Z,Shooting Guard,Right,180,26
+ed49ef98-9cf2-4d14-9260-55779b946ded,2001-12-16T00:00:00Z,"Augusta, Georgia",Auburn,0,0,,,0,6,10,,2025-10-22T00:00:00Z,Center,Right,255,26
+f55dd1b6-ead2-4c09-b37b-56059edf3005,2001-10-29T00:00:00Z,"West Palm Beach, Florida",San Francisco,31,2,28,Toronto Raptors,2024,6,9,Forest Hill in West Palm Beach Florida,2024-10-23T00:00:00Z,Power Forward,Right,225,26
+909343b2-9164-442c-b7d8-758d222ce6c4,2004-01-04T00:00:00Z,"Le Chesnay, France",,1,1,27,San Antonio Spurs,2023,7,4,,2023-10-25T00:00:00Z,Center|Power Forward,Right,235,27
+91fae6e9-1de8-4b07-a63f-de8a8fd7aa51,1997-12-20T00:00:00Z,"New Orleans, Louisiana",Kentucky,5,1,26,Sacramento Kings,2017,6,3,Cypress Lakes in Katy Texas,2017-10-18T00:00:00Z,Point Guard,Left,185,27
+55f52118-847e-4e34-8bd2-341ba1f86369,2000-08-23T00:00:00Z,"Lawrenceville, Georgia",Florida State,11,1,27,San Antonio Spurs,2020,6,5,Peachtree Ridge in Suwanee Georgia,2020-12-23T00:00:00Z,Shooting Guard|Small Forward,Right,200,27
+a33ac5be-0e55-4a13-8a41-2de21c461596,1999-10-11T00:00:00Z,"Chesterfield, Virg",Kentucky,29,1,27,San Antonio Spurs,2019,6,6,,2019-11-22T00:00:00Z,Small Forward,Right,220,27
+c0151607-81d6-44ce-8509-f5cce1daa3d5,1992-07-15T00:00:00Z,"Islip, New York",Tennessee,19,1,4,Charlotte Bobcats,2011,6,8,Half Hollow Hills West in Dix Hills New York,2012-01-07T00:00:00Z,Power Forward|Small Forward,Right,226,27
+34fcd9e9-b7b1-4762-a942-786e9fdf9955,1992-05-30T00:00:00Z,"Ames, Iowa",UNC,7,1,10,Golden State Warriors,2012,6,7,Ames in Ames Iowa,2012-10-31T00:00:00Z,Power Forward|Small Forward,Right,225,27
+5e2a3344-eb81-4b97-9290-f4b2b4cdf997,2001-06-29T00:00:00Z,"Brooklyn, New York",St. John's,0,0,,,0,6,7,Bishop Loughlin Memorial in Brooklyn New York,2022-11-22T00:00:00Z,Small Forward,Right,217,27
+81235c50-92ed-4d9a-af0e-6cdaf90a4522,2006-03-02T00:00:00Z,Frankl,Rutgers University,2,1,27,San Antonio Spurs,2025,6,5,Don Bosco Preparatory HS in Ramsey New Jersey,2025-10-22T00:00:00Z,Shooting Guard,Left,215,27
+a9c17c49-8f41-4bb9-8300-7c1c298b4dfc,2003-08-05T00:00:00Z,"St. Louis, Missouri",UConn,26,1,8,Denver Nuggets,2026,6,11,,,Center,Right,263,27
+c06b212f-2b86-4230-8cb8-a75f2d86ce2a,1995-07-15T00:00:00Z,"Lantana, Texas",Vanderbilt,0,0,,,0,7,1,Liberty Christian in Argyle Texas,2018-02-08T00:00:00Z,Center,Right,250,27
+40158960-f8a5-46f2-922f-79960f018533,2000-06-19T00:00:00Z,"Scarborough, Ontario",TCU,0,0,,,0,6,5,,2025-03-04T00:00:00Z,Power Forward,Right,215,27
+171577d9-31c3-4fc8-8586-02350daa0d75,2005-11-26T00:00:00Z,"Riverside, California",Arizona,14,1,27,San Antonio Spurs,2025,6,6,,2025-10-22T00:00:00Z,Power Forward,Right,220,27
+dfde05fe-2164-4fbd-8e9d-2cc7bc7db61c,2007-07-11T00:00:00Z,"Cleveland, Ohio",Kentucky,20,1,27,San Antonio Spurs,2026,6,10,Word of God Academy in Raleigh North Carolina,,Power Forward,Right,253,27
+75d57dfc-32e1-4b0e-8910-e27eae05a4ce,2004-11-01T00:00:00Z,Cov,UConn,4,1,27,San Antonio Spurs,2024,6,6,Newton in Covington Georgia,2024-10-24T00:00:00Z,Point Guard|Shooting Guard,Right,215,27
+8fad436e-9173-4faf-b5fb-ff3f7f81de0e,2003-11-20T00:00:00Z,"Wichita, Kansas",Kansas,13,1,28,Toronto Raptors,2023,6,7,,2023-10-25T00:00:00Z,Shooting Guard,Right,200,28
+9a7ba149-fbad-4cce-a2d8-b1a64496ab69,2004-09-04T00:00:00Z,"Dallas, Texas",Baylor,19,1,28,Toronto Raptors,2024,6,4,,2024-11-01T00:00:00Z,Shooting Guard,Right,180,28
+7b8e7c8b-49ab-4b9e-b7a2-1263a9a92888,2000-06-14T00:00:00Z,"Toronto, Ontario",Duke,3,1,20,New York Knicks,2019,6,6,Montverde Academy in Montverde Florida,2019-10-23T00:00:00Z,Shooting Guard|Small Forward,Left,214,28
+e1e698bd-28b1-4316-aa3b-5da40c65ada2,1995-10-15T00:00:00Z,"Vienna, Austria",Utah,9,1,28,Toronto Raptors,2016,7,0,,2016-10-26T00:00:00Z,Center,Right,253,28
+1b35e05a-fd2c-48c4-8cdf-443622b16c53,2001-05-10T00:00:00Z,Robb,Ohio State,0,0,,,0,6,7,DeLaSalle in Minneapolis Minnesota,2024-10-23T00:00:00Z,Small Forward,Left,220,28
+3c3c28c7-6842-43a7-80c3-ecd9cf33ce8e,1999-06-17T00:00:00Z,"Havre de Grace, Maryland",Kentucky,25,1,21,Oklahoma City Thunder,2020,6,2,The John Carroll School in Bel Air Maryland,2020-12-23T00:00:00Z,Point Guard|Shooting Guard,Right,190,28
+a113ff3f-9bba-4de9-9537-c4005c86288a,2005-06-10T00:00:00Z,"Columbia, South Carol",South Carolina,9,1,28,Toronto Raptors,2025,6,7,,2025-10-26T00:00:00Z,Power Forward,Left,245,28
+f4f9cfc4-eac6-442b-b349-c9432911fda1,2002-06-24T00:00:00Z,Aust,Houston,45,2,26,Sacramento Kings,2024,6,1,Manor in Austin Texas,2024-10-23T00:00:00Z,Point Guard,Right,200,28
+3844ca4b-b541-4293-a4bc-08de148670a8,2006-07-28T00:00:00Z,"Ponchatoula, Louisiana",Santa Clara,19,1,28,Toronto Raptors,2026,6,9,Ponchatoula HS in Ponchatoula Louisiana,,Power Forward,Right,226,28
+118e94c2-162b-4f2a-8fc8-e24b83899130,2003-02-09T00:00:00Z,"Omaha, Nebraska",Louisville,0,0,,,0,6,0,West in Bellevue Nebraska,2025-11-30T00:00:00Z,Point Guard,Right,190,28
+d9b20f5a-17b2-4876-98a0-ac567e5f1d9c,2001-12-26T00:00:00Z,"Summit, Mississippi",Florida,39,2,28,Toronto Raptors,2025,6,2,North Pike in Summit Mississippi,2025-12-07T00:00:00Z,Shooting Guard,Right,210,28
+ed3d472f-8137-4ede-97d4-f4763b36988e,2000-02-22T00:00:00Z,"Greenwood, Indiana",Indiana,57,2,30,Washington Wizards,2023,6,9,Center Grove in Greenwood Indiana,2023-10-27T00:00:00Z,Center|Power Forward,Left,245,28
+5791f65e-146d-4f0b-afec-a530b2dd56fc,1993-09-20T00:00:00Z,"New York, New York",UCLA,30,1,27,San Antonio Spurs,2014,6,8,St. Anthony in Jersey City New Jersey,2014-11-06T00:00:00Z,Small Forward|Power Forward,Right,230,28
+638b3220-8f99-4b12-8d88-3b55f1359702,1997-09-02T00:00:00Z,K,Duke,2,1,14,Los Angeles Lakers,2016,6,8,Kinston in Kinston North Carolina,2016-10-26T00:00:00Z,Small Forward|Power Forward,Right,190,28
+ce89caeb-f8f4-4edd-b62b-646322cc32d9,2001-08-01T00:00:00Z,"West Palm Beach, Florida",Florida State,4,1,28,Toronto Raptors,2021,6,8,,2021-10-20T00:00:00Z,Power Forward|Shooting Guard|Small Forward,Right,237,28
+a3c13796-05f5-4887-974d-19d39ad5e4f8,1997-05-22T00:00:00Z,"Vantaa, F",Arizona,7,1,18,Minnesota Timberwolves,2017,7,1,Helsinki Academy in Helsinki Finland,2017-10-19T00:00:00Z,Power Forward|Small Forward,Right,240,29
+00e7bbf0-cf0b-42c8-b9fe-05d35e7662de,1996-03-22T00:00:00Z,"Chicago, Ill",Purdue-Fort Wayne,0,0,,,0,6,5,West Chicago in West Chicago Illinois,2019-11-09T00:00:00Z,Shooting Guard|Small Forward,Right,210,29
+9fd81783-b3db-4a9c-91d1-fcac154729a6,2003-02-21T00:00:00Z,"Kansas City, Kansas",Missouri,0,0,,,0,6,4,,,Shooting Guard,Left,195,29
+f29716fc-d715-402b-959a-78b8b4d96a13,2004-10-08T00:00:00Z,"Atlanta, Georgia",USC,29,1,29,Utah Jazz,2024,6,4,Wheeler in Marietta Georgia,2024-11-07T00:00:00Z,Point Guard,Right,210,29
+bdc1acf7-7548-4048-8197-3191d3be4a10,1998-05-12T00:00:00Z,"Harlem, New York",Texas,6,1,22,Orlando Magic,2018,7,0,Westtown School in West Chester Pennsylvania,2018-10-17T00:00:00Z,Center,Right,231,29
+8665b46e-1d50-4008-bed6-0b0042a887c9,1999-12-26T00:00:00Z,"Deltona, Florida",Pitt,0,0,,,0,6,8,,2026-02-12T00:00:00Z,Small Forward,Right,240,29
+004eec3d-81e2-49a0-8088-06eb44ff35aa,2003-11-08T00:00:00Z,"Lewisville, Texas",Baylor,16,1,29,Utah Jazz,2023,6,4,,2023-10-25T00:00:00Z,Point Guard|Shooting Guard,Right,185,29
+7d863b43-8035-47ad-84ff-985b1b943100,1998-09-01T00:00:00Z,"Lagos, Nigeria",Georgia Tech,20,1,18,Minnesota Timberwolves,2018,6,4,Shiloh in Snellville Georgia,2018-10-20T00:00:00Z,Shooting Guard,Right,213,29
+bd0a61a9-9dc6-4d1e-bf57-4f7e58e46385,1997-06-10T00:00:00Z,"Cherkasy, Ukra",Kansas,47,2,14,Los Angeles Lakers,2018,6,7,Cherkasy First City Gymnasia in Cherkasy Ukraine,2018-10-22T00:00:00Z,Small Forward,Right,205,29
+1569f4a4-92ac-4504-bcc6-78f7ec917c88,1999-09-15T00:00:00Z,Pla,Michigan State,4,1,15,Memphis Grizzlies,2018,6,10,La Lumiere School in La Porte Indiana,2018-10-17T00:00:00Z,Center|Power Forward,Right,242,29
+d84f05a0-09b5-4dd1-b288-7d488524f7f6,2007-01-17T00:00:00Z,"Canton, Ohio",Kansas,2,1,29,Utah Jazz,2026,6,5,,,Shooting Guard,Right,199,29
+1d7643d5-f667-40af-8959-c5a63f358d11,2003-05-02T00:00:00Z,"Oklahoma City, Oklahoma",Creighton,0,0,,,0,6,5,Heritage Hall School in Oklahoma City Oklahoma,2024-10-24T00:00:00Z,Shooting Guard,Right,185,29
+14024d96-b049-42f1-accd-db2e9fb44f2f,1994-08-23T00:00:00Z,"Tuzla, Bosnia and Herzegov",,16,1,5,Chicago Bulls,2014,6,11,,2014-10-29T00:00:00Z,Center,Right,290,29
+5534d146-625e-48cb-afd9-6b17a0fbefef,2000-05-23T00:00:00Z,"Norman, Oklahoma",Texas,8,1,1,Atlanta Hawks,2019,7,0,Archbishop Moeller in Cincinnati Ohio,2019-10-28T00:00:00Z,Center,Right,220,29
+f51d3d45-2251-4d01-9164-288931624a5b,2004-11-20T00:00:00Z,"San Luis Obispo, California",Colorado,10,1,29,Utah Jazz,2024,6,8,Perry in Gilbert Arizona,2024-10-23T00:00:00Z,Shooting Guard,Right,190,29
+6492df90-9472-4823-9f46-896f0f2a18de,2003-10-30T00:00:00Z,"Orlando, Florida",Ohio State,28,1,29,Utah Jazz,2023,6,6,Lake Highland Preparatory in Orlando Florida,2023-10-25T00:00:00Z,Small Forward,Right,235,29
+df80e4cd-acf0-47e7-bb14-8ed9db565b72,2003-11-07T00:00:00Z,"Middletown, New York",Duke,32,2,29,Utah Jazz,2024,6,11,,2024-10-25T00:00:00Z,Center,Right,250,29
+747f58d8-e083-4581-a566-f6e918f14cb3,2006-08-13T00:00:00Z,"Chattanooga, Tennessee",Rutgers University,5,1,29,Utah Jazz,2025,6,9,McEachern in Powder Springs Georgia,2025-10-22T00:00:00Z,Small Forward,Right,200,29
+969b9244-bb3b-4089-9b24-51093ba446f5,2003-12-12T00:00:00Z,"Aigle, Switzerland",Miami (FL),24,1,20,New York Knicks,2024,6,8,,2024-10-24T00:00:00Z,Shooting Guard|Small Forward,Right,200,30
+c35eafd5-7fd8-47a8-acc8-19cf9a672146,2004-07-26T00:00:00Z,Sa,,7,1,12,Indiana Pacers,2023,6,7,,2023-10-25T00:00:00Z,Small Forward|Shooting Guard,Right,195,30
+64bd957f-2df7-4872-9c2b-3243cabf2282,2006-03-07T00:00:00Z,"Dallas, Texas",Texas,6,1,30,Washington Wizards,2025,6,5,,2025-10-22T00:00:00Z,Shooting Guard,Right,190,30
+6b45356f-5ac5-4ba4-a756-a1426d2bd409,1991-08-12T00:00:00Z,"Charleston, South Carol",Texas A&M,39,2,9,Detroit Pistons,2012,6,7,Porter-Gaud School in Charleston South Carolina,2012-11-10T00:00:00Z,Small Forward|Shooting Guard,Right,222,30
+c84cf4e0-f912-4701-ac16-fd1a6c2d8f0b,2004-07-08T00:00:00Z,"Odenton, Maryland",Villanova,20,1,11,Houston Rockets,2023,6,6,Archbishop Spalding in Severn Maryland,2023-10-25T00:00:00Z,Small Forward,Right,230,30
+70d1c0a1-a380-4be8-9ae4-47b44f4243fb,2005-04-26T00:00:00Z,"Bordeaux, France",,2,1,30,Washington Wizards,2024,7,0,Overtime Elite Academy in Atlanta Georgia,2024-10-24T00:00:00Z,Center|Power Forward,Right,205,30
+34d5e467-53da-4fde-97f1-1e8d81d4f141,2001-06-29T00:00:00Z,"Brooklyn, New York",Pitt,0,0,,,0,6,6,Bishop Loughlin Memorial in Brooklyn New York,2021-10-22T00:00:00Z,Small Forward,Right,206,30
+31bef7d8-aadc-42dd-99ec-dd2ed58cc8d3,2006-02-10T00:00:00Z,"Cambridge, Ontario",Illinois,21,1,29,Utah Jazz,2025,6,9,The Phelps School in Malvern Pennsylvania,2025-10-22T00:00:00Z,Small Forward,Right,180,30
+d0391330-4b58-4b2f-ad26-2c5021e479c1,1998-09-19T00:00:00Z,"Lubbock, Texas",Oklahoma,5,1,7,Dallas Mavericks,2018,6,2,Norman North in Norman Oklahoma,2018-10-17T00:00:00Z,Point Guard,Right,164,30
+585c4663-b462-4a2e-a0c2-44fde85da9ca,1998-07-23T00:00:00Z,"Nassau, Bahamas",Arizona,1,1,24,Phoenix Suns,2018,7,0,Hillcrest Prep in Phoenix Arizona,2018-10-17T00:00:00Z,Center,Right,252,30
+b8292ce2-c257-4e92-8dd0-d37ef096c1e0,2001-07-06T00:00:00Z,"Trenton, New Jersey",Florida State,43,2,29,Utah Jazz,2025,6,6,Trenton Catholic in Trenton New Jersey,2025-10-28T00:00:00Z,Shooting Guard,Right,210,30
+3e9c05da-a777-4334-a733-0713d5f00138,2007-01-29T00:00:00Z,"Boston, Massachusetts",BYU,1,1,30,Washington Wizards,2026,6,9,,,Small Forward,Right,217,30
+cd5cc092-ca78-4e1e-a18e-f269777ec6d2,2003-03-11T00:00:00Z,"Siena, Italy",,42,2,30,Washington Wizards,2023,7,0,,2024-03-23T00:00:00Z,Center,Right,220,30
+1daf6662-c486-49f8-85f5-15ee8e5241e6,1993-03-11T00:00:00Z,"Chicago, Ill",Kentucky,1,1,19,New Orleans Hornets,2012,6,10,Perspectives Charter School in Chicago Illinois,2012-10-31T00:00:00Z,Power Forward|Center,Right,253,30
+f324f2ce-1ab6-479c-876d-9315a2ebb8a2,2005-07-21T00:00:00Z,"Baltimore, Maryland",Pitt,14,1,25,Portland Trail Blazers,2024,6,4,Saint Frances Academy in Baltimore Maryland,2024-10-24T00:00:00Z,Point Guard,Right,190,30

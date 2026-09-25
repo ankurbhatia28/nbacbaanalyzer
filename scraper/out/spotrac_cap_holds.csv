@@ -1,0 +1,263 @@
+team,snapshot_date,player_name,position,age,contract_type,cap_hit,qualifying_offer,bird_rights
+atlanta-hawks,2026-02-24,C.J. McCollum,SG,35,VET-EXT,45999999,,Bird
+atlanta-hawks,2026-02-24,Gabe Vincent,PG,30,FA,21850000,,Bird
+atlanta-hawks,2026-02-24,Keaton Wallace,G,27,,3409966,3409966,
+atlanta-hawks,2026-02-24,Trent Forrest,PG,28,ROS,2464849,,Early Bird
+atlanta-hawks,2026-02-24,Caleb Houstan,SF,24,ROS,2464849,,Non-Bird
+atlanta-hawks,2026-02-24,Jock Landale,C,31,FA,2464849,,Non-Bird
+atlanta-hawks,2026-02-24,Wesley Matthews,SG,40,FA,2464849,,Non-Bird
+atlanta-hawks,2026-02-24,Christian Koloko,C,26,2W,2198879,2198879,
+atlanta-hawks,2026-02-24,Dylan Windler,SF,30,2W,2198879,,
+atlanta-hawks,2026-02-24,Incomplete Roster Charge,,,,2732628,,
+boston-celtics,2026-01-16,Anfernee Simons,SG,27,FA,41517857,,Bird
+boston-celtics,2026-01-16,Chris Boucher,PF,34,FA,2464849,,Non-Bird
+boston-celtics,2026-01-16,Torrey Craig,SF,36,ROS,2464849,,Non-Bird
+boston-celtics,2026-01-16,Blake Griffin,C,37,FA,2464849,,Non-Bird
+boston-celtics,2026-01-16,Xavier Tillman,C,28,FA,2464849,,Bird
+boston-celtics,2026-01-16,Ron Harper Jr.,SG,26,2W,2198879,2198879,
+boston-celtics,2026-01-16,Max Shulga,G,24,2W,2198879,2198879,
+boston-celtics,2026-01-16,Amari Williams,C,25,2W,2198879,2198879,
+boston-celtics,2026-01-16,Mfiondu Kabengele,PF,29,2W,2198879,,
+boston-celtics,2026-01-16,Incomplete Roster Charge,,,,1366314,,
+brooklyn-nets,2026-02-26,Ochai Agbaji,SF,26,RK-1ST,19150575,8879483,
+brooklyn-nets,2026-02-26,Nikola Milutinov,C,32,,3173040,,
+brooklyn-nets,2026-02-26,Jalen Wilson,PF,26,ROS,2999264,2999264,
+brooklyn-nets,2026-02-26,Tyson Etienne,G,27,2W,2198879,2198879,
+brooklyn-nets,2026-02-26,Chaney Johnson,F,24,2W,2198879,2198879,
+brooklyn-nets,2026-02-26,E.J. Liddell,PF,26,2W,2198879,2198879,
+charlotte-hornets,2026-03-11,Coby White,PG,26,FA,24488889,,Bird
+charlotte-hornets,2026-03-11,Xavier Tillman,C,28,FA,2464849,,Bird
+charlotte-hornets,2026-03-11,Antonio Reeves,SG,26,2W,2198879,2198879,
+chicago-bulls,2025-09-10,Nikola Vucevic,C,36,VET-EXT,30000000,,Bird
+chicago-bulls,2025-09-10,Zach Collins,C,29,VET-EXT,27120744,,Bird
+chicago-bulls,2025-09-10,Kevin Huerter,SG,28,RK-EXT,26986607,,Bird
+chicago-bulls,2025-09-10,Coby White,PG,26,FA,24488889,,Bird
+chicago-bulls,2025-09-10,Dalen Terry,SG,24,RK-1ST,16197354,7661348,
+chicago-bulls,2025-09-10,Ayo Dosunmu,PG,27,FA,14285184,,Bird
+chicago-bulls,2025-09-10,Jevon Carter,PG,31,FA,12938096,,Bird
+chicago-bulls,2025-09-10,Talen Horton-Tucker,SG,26,FA,2457009,,Non-Bird
+chicago-bulls,2025-09-10,Matt Thomas,SG,32,,2457009,,Non-Bird
+chicago-bulls,2025-09-10,Caleb Grill,G,26,E10,2391885,2391885,
+chicago-bulls,2025-09-10,Wooga Poplar,G,24,E10,2391885,2391885,
+chicago-bulls,2025-09-10,Emanuel Miller,SF,26,2W,2253346,2253346,
+chicago-bulls,2025-09-10,Lachlan Olbrich,C,23,2W,2253346,2253346,
+chicago-bulls,2025-09-10,Yuki Kawamura,G,25,2W,2191885,2191885,
+chicago-bulls,2025-09-10,Incomplete Roster Charge,,,,5447876,,
+cleveland-cavaliers,2025-11-16,Lonzo Ball,PG,29,EXT,19000000,,
+cleveland-cavaliers,2025-11-16,Dean Wade,PF,30,VET-EXT,12584566,,Bird
+cleveland-cavaliers,2025-11-16,Thomas Bryant,C,29,FA,2464849,,
+cleveland-cavaliers,2025-11-16,Ed Davis,C,37,,2464849,,Non-Bird
+cleveland-cavaliers,2025-11-16,Damian Jones,C,31,FA,2464849,,Early Bird
+cleveland-cavaliers,2025-11-16,Larry Nance Jr.,PF,34,FA,2464849,,Non-Bird
+cleveland-cavaliers,2025-11-16,Raul Neto,PG,34,FA,2464849,,Non-Bird
+cleveland-cavaliers,2025-11-16,Chuma Okeke,PF,28,ROS,2464849,,Non-Bird
+cleveland-cavaliers,2025-11-16,Rajon Rondo,PG,40,FA,2464849,,Non-Bird
+cleveland-cavaliers,2025-11-16,Tristan Thompson,C,35,FA,2464849,,Early Bird
+cleveland-cavaliers,2025-11-16,Chris Livingston,SF,23,2W,2198879,2198879,
+cleveland-cavaliers,2025-11-16,Nae'qwan Tomlin,F,26,2W,2198879,2198879,
+cleveland-cavaliers,2025-11-16,Luke Travers,SG,25,2W,2198879,2198879,
+cleveland-cavaliers,2025-11-16,Incomplete Roster Charge,,,,1366314,,
+dallas-mavericks,2026-07-18,Dwight Powell,C,35,FA,7600000,,Bird
+dallas-mavericks,2026-07-18,Nicolo Melli,PF,36,FA,5066667,,Early Bird
+dallas-mavericks,2026-07-18,Kai Jones,PF,26,2W,2449421,,
+dallas-mavericks,2026-07-18,Theo Pinson,SG,31,FA,2449421,,Early Bird
+dallas-mavericks,2026-07-18,Brandon Williams,PG,27,ROS,2449421,,Bird
+dallas-mavericks,2026-07-18,Moussa Cisse,F,24,2W,2185116,2185116,
+dallas-mavericks,2026-07-18,Greg Brown III,PF,25,2W,2185116,,
+dallas-mavericks,2026-07-18,Moses Wright,F,28,2W,2185116,,
+dallas-mavericks,2026-07-18,McKinley Wright IV,PG,28,2W,2185116,,
+denver-nuggets,2025-10-21,Peyton Watson,SG,24,RK-1ST,13069428,6534714,
+denver-nuggets,2025-10-21,Bruce Brown Jr.,SG,30,FA,2464849,,Non-Bird
+denver-nuggets,2025-10-21,Vlatko Cancar,PF,29,FA,2464849,,Bird
+denver-nuggets,2025-10-21,DeMarcus Cousins,C,36,ROS,2464849,,Non-Bird
+denver-nuggets,2025-10-21,Troy Daniels,SG,35,ROS,2464849,,Non-Bird
+denver-nuggets,2025-10-21,Tim Hardaway Jr.,SG,34,FA,2464849,,Non-Bird
+denver-nuggets,2025-10-21,Justin Holiday,SG,37,FA,2464849,,Non-Bird
+denver-nuggets,2025-10-21,Richard Jefferson,SF,46,,2464849,,Non-Bird
+denver-nuggets,2025-10-21,DeAndre Jordan,C,38,FA,2464849,,Bird
+denver-nuggets,2025-10-21,Russell Westbrook,PG,38,FA,2464849,,
+denver-nuggets,2025-10-21,Tamar Bates,G,23,2W,2198879,2198879,
+denver-nuggets,2025-10-21,Spencer Jones,SF,25,2W,2198879,2198879,
+denver-nuggets,2025-10-21,Curtis Jones,G,25,2W,2198879,2198879,
+denver-nuggets,2025-10-21,Markus Howard,PG,27,2W,2198879,,
+denver-nuggets,2025-10-21,Incomplete Roster Charge,,,,1366314,,
+detroit-pistons,2026-03-11,Malik Beasley,SG,29,FA,7200000,,Non-Bird
+golden-state-warriors,2026-07-11,Draymond Green,PF,36,FA,38839286,,Bird
+golden-state-warriors,2026-07-11,Kevin Knox,SF,27,ROS,2457009,,Non-Bird
+golden-state-warriors,2026-07-11,De'Anthony Melton,SG,28,FA,2450000,,Non-Bird
+golden-state-warriors,2026-07-11,Matt Barnes,SF,46,,2449421,,Non-Bird
+golden-state-warriors,2026-07-11,Nemanja Bjelica,PF,38,FA,2449421,,Non-Bird
+golden-state-warriors,2026-07-11,Andrew Bogut,C,42,,2449421,,Non-Bird
+golden-state-warriors,2026-07-11,Seth Curry,SG,36,ROS,2449421,,
+golden-state-warriors,2026-07-11,Usman Garuba,PF,24,ROS,2449421,,Non-Bird
+golden-state-warriors,2026-07-11,JaMychal Green,PF,36,FA,2449421,,Non-Bird
+golden-state-warriors,2026-07-11,Andre Iguodala,SF,43,FA,2449421,,Early Bird
+golden-state-warriors,2026-07-11,Jonas Jerebko,PF,39,,2449421,,Non-Bird
+golden-state-warriors,2026-07-11,Anthony Lamb,SF,29,ROS,2449421,,Non-Bird
+golden-state-warriors,2026-07-11,Gary Payton II,PG,34,FA,2449421,,Bird
+golden-state-warriors,2026-07-11,Pat Spencer,G,30,ROS,2449421,,Early Bird
+golden-state-warriors,2026-07-11,David West,PF,46,,2449421,,Early Bird
+golden-state-warriors,2026-07-11,Jeenathan Williams,SG,27,2W,2449421,,Non-Bird
+golden-state-warriors,2026-07-11,Nico Mannion,PG,25,2W,2185116,2185116,
+golden-state-warriors,2026-07-11,Taran Armstrong,G,25,2W,2185116,,
+golden-state-warriors,2026-07-11,Jerome Robinson,SG,29,2W,2185116,,
+golden-state-warriors,2026-07-11,Incomplete Roster Charge,,,,2715526,,
+golden-state-warriors,2026-07-11,"Round 2, Pick #54",,,,,,
+houston-rockets,2025-06-23,Fred VanVleet,PG,32,maximum,63365050,,Bird
+houston-rockets,2025-06-23,Kevin Durant,SF,38,Maximum Veteran Extension,59713500,,Bird
+houston-rockets,2025-06-23,Jabari Smith Jr.,PF,23,RK-1ST,30875980,16203714,
+houston-rockets,2025-06-23,Tari Eason,PF,25,RK-1ST,17027298,8014182,
+houston-rockets,2025-06-23,Aaron Holiday,PG,30,FA,6371820,,Bird
+houston-rockets,2025-06-23,Reggie Bullock,SF,35,FA,2525905,,Non-Bird
+houston-rockets,2025-06-23,Boban Marjanovic,C,38,FA,2525905,,Bird
+houston-rockets,2025-06-23,Incomplete Roster Charge,,,,7000780,,
+indiana-pacers,2026-07-12,James Johnson,PF,39,FA,2449421,,Bird
+indiana-pacers,2026-07-12,Jalen Slawson,PF,27,2W,2185116,2185116,
+indiana-pacers,2026-07-12,Gabe York,PG,33,2W,2185116,,
+los-angeles-clippers,2026-04-16,John Collins,PF,29,FA,39870000,,Bird
+los-angeles-clippers,2026-04-16,Bennedict Mathurin,SG,24,RK-1ST,27562719,12256222,
+los-angeles-clippers,2026-04-16,Rodney Hood,SF,34,FA,2450000,,Non-Bird
+los-angeles-clippers,2026-04-16,Patty Mills,PG,38,FA,2450000,,Non-Bird
+los-angeles-clippers,2026-04-16,Ben Simmons,PG,30,ROS,2450000,,Non-Bird
+los-angeles-clippers,2026-04-16,Norchad Omier,F,25,2W,2185633,2185633,
+los-angeles-clippers,2026-04-16,Sean Pedulla,G,24,2W,2185633,2185633,
+los-angeles-clippers,2026-04-16,TyTy Washington Jr.,PG,25,2W,2185633,2185633,
+los-angeles-clippers,2026-04-16,Xavier Moon,SG,32,2W,2185633,,
+los-angeles-lakers,2026-07-12,Austin Reaves,SG,28,FA,20906361,,Bird
+los-angeles-lakers,2026-07-12,Incomplete Roster Charge,,,,1357763,,
+memphis-grizzlies,2026-07-11,Cameron Boozer,PF,19,,11852520,,
+memphis-grizzlies,2026-07-11,Karim Lopez,PF,19,,3747720,,
+memphis-grizzlies,2026-07-11,"Round 1, Pick #3",,,,11849760,,
+memphis-grizzlies,2026-07-11,"Round 2, Pick #32",,,,,,
+miami-heat,2025-10-02,Terry Rozier,PG,32,VET-EXT,39964547,,Bird
+miami-heat,2025-10-02,Norman Powell,SG,33,FA,30724137,,Bird
+miami-heat,2025-10-02,Simone Fontecchio,SF,31,FA,15784615,,Bird
+miami-heat,2025-10-02,Trevor Keels,SG,23,E10,2765467,2765467,
+miami-heat,2025-10-02,Ethan Thompson,SG,27,E10,2765467,2765467,
+miami-heat,2025-10-02,Jahmir Young,PG,26,E10,2765467,2765467,
+miami-heat,2025-10-02,Keshad Johnson,PF,25,ROS,2725905,2725905,
+miami-heat,2025-10-02,Precious Achiuwa,PF,27,E9,2457009,,Non-Bird
+miami-heat,2025-10-02,Alec Burks,SG,35,FA,2457009,,Non-Bird
+miami-heat,2025-10-02,Josh Christopher,SG,25,2W,2457009,,
+miami-heat,2025-10-02,Udonis Haslem,PF,46,FA,2457009,,Bird
+miami-heat,2025-10-02,Jordan Mickey,PF,32,,2457009,,Non-Bird
+miami-heat,2025-10-02,Dwyane Wade,SG,45,,2457009,,Early Bird
+miami-heat,2025-10-02,Dain Dainja,F,24,E10,2391885,2391885,
+miami-heat,2025-10-02,Vladislav Goldin,C,25,2W,2253346,2253346,
+miami-heat,2025-10-02,Incomplete Roster Charge,,,,2723938,,
+milwaukee-bucks,2026-07-12,Ousmane Dieng,SF,23,RK-1ST,20012646,,Bird
+milwaukee-bucks,2026-07-12,Gary Trent Jr.,SG,28,FA,4436526,,Early Bird
+milwaukee-bucks,2026-07-12,Thanasis Antetokounmpo,SF,34,FA,2449421,,Non-Bird
+milwaukee-bucks,2026-07-12,Andre Jackson Jr.,SG,25,RK-2ND,2449421,,Bird
+milwaukee-bucks,2026-07-12,Cameron Thomas,SG,25,ROS,2449421,,Non-Bird
+milwaukee-bucks,2026-07-12,Alex Antetokounmpo,SF,25,2W,2185116,,Non-Bird
+minnesota-timberwolves,2023-11-14,Evan Turner,SF,38,,27909834,,Bird
+minnesota-timberwolves,2023-11-14,Ayo Dosunmu,PG,27,FA,14285184,,Bird
+minnesota-timberwolves,2023-11-14,Julian Phillips,SF,23,RK-2ND,2450000,,Bird
+minnesota-timberwolves,2023-11-14,Aaron Brooks,PG,42,,2449421,,Non-Bird
+minnesota-timberwolves,2023-11-14,Joe Ingles,SF,39,FA,2449421,,Early Bird
+minnesota-timberwolves,2023-11-14,Greg Monroe,C,36,ROS,2449421,,Non-Bird
+minnesota-timberwolves,2023-11-14,Austin Rivers,SG,34,FA,2449421,,Non-Bird
+minnesota-timberwolves,2023-11-14,Enrique Freeman,PF,26,2W,2185116,2185116,
+minnesota-timberwolves,2023-11-14,"Round 2, Pick #59",,,,,,
+new-orleans-pelicans,2026-02-25,Willy Hernangomez,C,32,FA,4642804,,Bird
+new-orleans-pelicans,2026-02-25,Brandon Boston Jr,SG,25,ROS,2464849,,Early Bird
+new-orleans-pelicans,2026-02-25,DeAndre Jordan,C,38,ROS,2464849,,Non-Bird
+new-orleans-pelicans,2026-02-25,Elfrid Payton,PG,32,ROS,2464849,,Early Bird
+new-orleans-pelicans,2026-02-25,Tony Snell,SG,35,FA,2464849,,Non-Bird
+new-orleans-pelicans,2026-02-25,Trey Alexander,SG,23,2W,2198879,2198879,
+new-orleans-pelicans,2026-02-25,Hunter Dickinson,C,26,2W,2198879,2198879,
+new-orleans-pelicans,2026-02-25,Keion Brooks Jr.,SF,,2W,2198879,,
+new-orleans-pelicans,2026-02-25,Gary Clark,PF,32,2W,2198879,,Non-Bird
+new-orleans-pelicans,2026-02-25,Jared Harper,PG,29,2W,2198879,,
+new-orleans-pelicans,2026-02-25,James Nunnally,SF,36,2W,2198879,,
+new-york-knicks,2026-03-25,Mitchell Robinson,C,28,FA,24613637,,Bird
+new-york-knicks,2026-03-25,Petteri Koponen,G,38,RK,3173040,,
+new-york-knicks,2026-03-25,Ariel Hukporti,C,24,ROS,2725905,2725905,
+new-york-knicks,2026-03-25,Jordan Clarkson,SG,34,FA,2450000,,Non-Bird
+new-york-knicks,2026-03-25,Landry Shamet,SG,29,FA,2450000,,
+new-york-knicks,2026-03-25,Jeremy Sochan,PF,23,ROS,2450000,,Non-Bird
+new-york-knicks,2026-03-25,P.J. Tucker,PF,41,ROS,2450000,,Non-Bird
+new-york-knicks,2026-03-25,Mohamed Diawara,PF,21,FA,2385633,2385633,
+new-york-knicks,2026-03-25,Trey Jemison,PF,27,2W,2185633,2185633,
+new-york-knicks,2026-03-25,Dillon Jones,SF,25,2W,2185633,2185633,
+new-york-knicks,2026-03-25,Kevin McCullar Jr.,SG,25,2W,2185633,2185633,
+new-york-knicks,2026-03-25,Incomplete Roster Charge,,,,4074252,,
+oklahoma-city-thunder,2025-07-30,Ousmane Dieng,SF,23,RK-1ST,20012646,9132437,
+oklahoma-city-thunder,2025-07-30,Brooks Barnhizer,SF,24,2W,2253346,2253346,
+oklahoma-city-thunder,2025-07-30,Branden Carlson,C,27,2W,2191885,2191885,
+orlando-magic,2025-08-02,Moritz Wagner,C,29,FA,9500000,,Bird
+orlando-magic,2025-08-02,Tyus Jones,PG,30,FA,8400000,,Non-Bird
+orlando-magic,2025-08-02,Caleb Houstan,SF,24,RK,2578870,,Bird
+orlando-magic,2025-08-02,Orlando Robinson,C,26,2W,2457009,,
+orlando-magic,2025-08-02,Jamal Cain,SF,27,2W,2191885,2191885,
+orlando-magic,2025-08-02,Mac McClung,PG,28,2W,2191885,,
+orlando-magic,2025-08-02,Trevelin Queen,SG,29,2W,2191885,,
+philadelphia-76ers,2026-03-26,Quentin Grimes,SG,26,FA,16608297,,Bird
+philadelphia-76ers,2026-03-26,Kelly Oubre Jr.,SF,31,FA,15926085,,Bird
+philadelphia-76ers,2026-03-26,Andre Drummond,C,33,FA,6500000,,Early Bird
+philadelphia-76ers,2026-03-26,Kyle Lowry,PG,40,FA,2450000,,Early Bird
+philadelphia-76ers,2026-03-26,Cameron Payne,PG,32,ROS,2450000,,Non-Bird
+philadelphia-76ers,2026-03-26,Lonnie Walker IV,SG,28,ROS,2450000,,Non-Bird
+philadelphia-76ers,2026-03-26,MarJon Beauchamp,SG,26,2W,2185633,2185633,
+philadelphia-76ers,2026-03-26,Tyrese Martin,SF,27,2W,2185633,2185633,
+philadelphia-76ers,2026-03-26,Dalen Terry,SG,24,2W,2185633,2185633,
+philadelphia-76ers,2026-03-26,Jeff Dowtin,PG,29,2W,2185633,,
+philadelphia-76ers,2026-03-26,Jalen Hood-Schifino,PG,23,2W,2185633,,
+philadelphia-76ers,2026-03-26,Incomplete Roster Charge,,,,2716168,,
+phoenix-suns,2026-07-12,Bol Bol,PF,27,FA,2449421,,
+phoenix-suns,2026-07-12,Amir Coffey,SG,29,FA,2449421,,Non-Bird
+phoenix-suns,2026-07-12,Damion Lee,SG,34,FA,2449421,,Early Bird
+phoenix-suns,2026-07-12,Saben Lee,PG,27,2W,2449421,,
+phoenix-suns,2026-07-12,Isaiah Livers,SF,28,2W,2449421,,Non-Bird
+phoenix-suns,2026-07-12,Terrence Ross,SF,35,ROS,2449421,,Non-Bird
+phoenix-suns,2026-07-12,Isaiah Thomas,PG,37,ROS,2449421,,Non-Bird
+phoenix-suns,2026-07-12,Thaddeus Young,PF,38,ROS,2449421,,Non-Bird
+phoenix-suns,2026-07-12,Udoka Azubuike,C,27,2W,2185116,,
+phoenix-suns,2026-07-12,Gabriel Lundberg,G,32,2W,2185116,,
+phoenix-suns,2026-07-12,Ishmail Wainright,SF,32,2W,2185116,,
+phoenix-suns,2026-07-12,"Round 2, Pick #47",,,,,,
+portland-trail-blazers,2025-07-22,Dalano Banton,PG,26,FA,2443854,,Early Bird
+portland-trail-blazers,2025-07-22,Rondae Hollis-Jefferson,SF,31,ROS,2296271,,Non-Bird
+portland-trail-blazers,2025-07-22,Ben McLemore,SF,32,FA,2296271,,Non-Bird
+portland-trail-blazers,2025-07-22,Ashton Hagans,PG,26,2W,2048494,,
+portland-trail-blazers,2025-07-22,Bryce McGowens,SG,23,2W,2048494,,
+portland-trail-blazers,2025-07-22,Keljin Blevins,G,30,2W,2048491,,
+portland-trail-blazers,2025-07-22,TJ Leaf,PF,28,2W,2048491,,
+portland-trail-blazers,2025-07-22,Justin Minaya,F,26,2W,1862265,1862265,
+sacramento-kings,2026-03-11,Trey Lyles,PF,30,FA,15200000,,Bird
+sacramento-kings,2026-03-11,Jae Crowder,SF,35,ROS,2296274,,Non-Bird
+sacramento-kings,2026-03-11,Markelle Fultz,PG,27,ROS,2296274,,Non-Bird
+sacramento-kings,2026-03-11,JaVale McGee,C,38,FA,2296274,,Non-Bird
+sacramento-kings,2026-03-11,Jordan Ford,PG,27,2W,2048494,,
+sacramento-kings,2026-03-11,Mason Jones,SG,27,2W,2048494,,
+toronto-raptors,2025-11-25,Jordan Nwora,SF,27,FA,5700000,,Bird
+toronto-raptors,2025-11-25,Will Barton,SG,35,ROS,2296274,,Non-Bird
+utah-jazz,2026-02-11,Jusuf Nurkic,C,32,FA,29062500,,Bird
+utah-jazz,2026-02-11,Walker Kessler,C,25,RK-1ST,14636814,7064702,
+utah-jazz,2026-02-11,Kevin Love,C,38,FA,7885000,,Bird
+utah-jazz,2026-02-11,Elijah Harkless,PG,26,2W,2198879,2198879,
+utah-jazz,2026-02-11,Oscar Tshiebwe,PF,27,2W,2198879,2198879,
+utah-jazz,2026-02-11,Incomplete Roster Charge,,,,1366314,,
+washington-wizards,2025-10-15,Khris Middleton,SF,35,FA,51018518,,Bird
+washington-wizards,2025-10-15,C.J. McCollum,SG,35,VET-EXT,45999999,,Bird
+washington-wizards,2025-10-15,Ian Mahinmi,C,40,,23175077,,Bird
+washington-wizards,2025-10-15,Malaki Branham,SG,23,RK-1ST,14886099,7110593,
+washington-wizards,2025-10-15,Kendrick Nunn,PG,31,FA,6825000,,Early Bird
+washington-wizards,2025-10-15,Alondes Williams,G,27,E10,3409966,3409966,
+washington-wizards,2025-10-15,Leaky Black,SF,27,E10,2903738,2903738,
+washington-wizards,2025-10-15,Marvin Bagley III,PF,27,FA,2464849,,Non-Bird
+washington-wizards,2025-10-15,Anthony Gill,PF,34,FA,2464849,,Bird
+washington-wizards,2025-10-15,Skal Labissiere,PF,30,E10,2464849,,Non-Bird
+washington-wizards,2025-10-15,Ty Lawson,PG,39,,2464849,,Non-Bird
+washington-wizards,2025-10-15,Shabazz Napier,PG,35,,2464849,,Early Bird
+washington-wizards,2025-10-15,Tomas Satoransky,SG,35,ROS,2464849,,Non-Bird
+washington-wizards,2025-10-15,Ramon Sessions,PG,40,,2464849,,Non-Bird
+washington-wizards,2025-10-15,Kadary Washington,SG,25,E10,2398879,2398879,
+washington-wizards,2025-10-15,Sharife Cooper,PG,25,2W,2198879,2198879,
+washington-wizards,2025-10-15,Tristan Vukcevic,C,23,2W,2198879,2198879,
+washington-wizards,2025-10-15,Jamir Watkins,G,25,2W,2198879,2198879,
+washington-wizards,2025-10-15,JT Thor,PF,24,2W,2198879,,
+washington-wizards,2025-10-15,Johnathan Williams,PF,31,2W,2198879,,
+washington-wizards,2025-10-15,Cassius Winston,PG,28,2W,2198879,,
+washington-wizards,2025-10-15,Incomplete Roster Charge,,,,1366314,,

@@ -1,0 +1,45 @@
+# Scraper caches — raw HTML, ~64MB, regenerable by re-running the scrapers
+scraper/out/raw/
+
+# The CBA PDF is a public document; see data/cba/README.md for where to get it
+data/cba/*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.coverage
+htmlcov/
+
+# Local database + derived artifacts
+*.db
+*.sqlite
+*.sqlite3
+packages/rag/index/
+
+# Node — scope these to the web app so they don't shadow scraper/out/
+node_modules/
+apps/web/.next/
+apps/web/out/
+.turbo/
+
+# Secrets
+.env
+.env.local
+!.env.example
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Unsplit Fanspo dump — duplicates every CSV beside it and churns on re-scrape.
+# Regenerate with: python3 scraper/fanspo_scrape.py
+scraper/out/all.json

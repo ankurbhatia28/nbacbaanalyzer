@@ -1,0 +1,774 @@
+team,snapshot_date,deadline_date,player_name,kind,holder,season,value,note,raw_type
+atlanta-hawks,2026-02-24,6/26/2026,Buddy Hield,guarantee,,2026-27,9658536,one day after 2026 NBA Draft,GUARANTEED 2026-27 Guaranteed — one day after 2026 NBA Draft
+atlanta-hawks,2026-02-24,6/29/2026,Dyson Daniels,qualifying_offer,,2026-27,10389992,,RFA / QO 2026-27 Qualifying Offer
+atlanta-hawks,2026-02-24,6/29/2026,Christian Koloko,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+atlanta-hawks,2026-02-24,6/29/2026,Keaton Wallace,qualifying_offer,,2026-27,,,RFA / QO 2026-27 Qualifying Offer
+atlanta-hawks,2026-02-24,6/29/2026,Trae Young,option,player,2026-27,,,PLAYER 2026-27 Player Option
+atlanta-hawks,2026-02-24,6/29/2026,Mouhamed Gueye,option,club,2026-27,,non-guaranteed,CLUB 2026-27 Club Option — non-guaranteed
+atlanta-hawks,2026-02-24,10/31/2026,Zaccharie Risacher,option,club,2027-28,17434637,,CLUB 2027-28 Club Option
+atlanta-hawks,2026-02-24,10/31/2026,Asa Newell,option,club,2027-28,3560880,,CLUB 2027-28 Club Option
+atlanta-hawks,2026-02-24,1/10/2027,Mouhamed Gueye,guarantee,,2026-27,2406205,,GUARANTEED 2026-27 Guaranteed
+atlanta-hawks,2026-02-24,6/25/2027,Buddy Hield,guarantee,,2027-28,10097560,,GUARANTEED 2027-28 Guaranteed
+atlanta-hawks,2026-02-24,6/29/2027,RayJ Dennis,qualifying_offer,,2027-28,,Two-Way,RFA / QO 2027-28 Qualifying Offer — Two-Way
+atlanta-hawks,2026-02-24,6/29/2027,Buddy Hield,option,player,2027-28,3136364,,PLAYER 2027-28 Player Option
+atlanta-hawks,2026-02-24,7/1/2027,Zaccharie Risacher,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+atlanta-hawks,2026-02-24,7/6/2027,Nickeil Alexander-Walker,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+atlanta-hawks,2026-02-24,10/1/2027,Jalen Johnson,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+atlanta-hawks,2026-02-24,10/1/2027,Corey Kispert,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+atlanta-hawks,2026-02-24,10/31/2027,Asa Newell,option,club,2028-29,6042814,,CLUB 2028-29 Club Option
+atlanta-hawks,2026-02-24,6/29/2028,Zaccharie Risacher,qualifying_offer,,2028-29,24408492,,RFA / QO 2028-29 Qualifying Offer
+atlanta-hawks,2026-02-24,6/29/2028,Corey Kispert,option,club,2028-29,13025000,,CLUB 2028-29 Club Option
+atlanta-hawks,2026-02-24,6/29/2028,Nickeil Alexander-Walker,option,player,2028-29,15919890,,PLAYER 2028-29 Player Option
+atlanta-hawks,2026-02-24,7/1/2028,Asa Newell,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+atlanta-hawks,2026-02-24,10/1/2028,Dyson Daniels,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+atlanta-hawks,2026-02-24,6/29/2029,Asa Newell,qualifying_offer,,2029-30,9396576,,RFA / QO 2029-30 Qualifying Offer
+boston-celtics,2026-01-16,6/29/2026,Jordan Walsh,option,club,2026-27,,non-guaranteed,CLUB 2026-27 Club Option — non-guaranteed
+boston-celtics,2026-01-16,6/29/2026,Ron Harper Jr.,qualifying_offer,,2026-27,,,RFA / QO 2026-27 Qualifying Offer
+boston-celtics,2026-01-16,6/29/2026,Neemias Queta,option,club,2026-27,1333972,partially guaranteed,CLUB 2026-27 Club Option — partially guaranteed
+boston-celtics,2026-01-16,6/29/2026,Amari Williams,qualifying_offer,,2026-27,2191885,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+boston-celtics,2026-01-16,6/29/2026,Max Shulga,qualifying_offer,,2026-27,2191885,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+boston-celtics,2026-01-16,7/6/2026,Derrick White,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+boston-celtics,2026-01-16,7/20/2026,Jordan Walsh,guarantee,,2026-27,2406205,,GUARANTEED 2026-27 Guaranteed
+boston-celtics,2026-01-16,7/26/2026,Jaylen Brown,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+boston-celtics,2026-01-16,10/10/2026,Payton Pritchard,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+boston-celtics,2026-01-16,10/20/2026,Neemias Queta,guarantee,,2026-27,2667944,Opening Night TBD,GUARANTEED 2026-27 Guaranteed — Opening Night TBD
+boston-celtics,2026-01-16,10/31/2026,Hugo Gonzalez,option,club,2027-28,3062640,,CLUB 2027-28 Club Option
+boston-celtics,2026-01-16,10/31/2026,Baylor Scheierman,option,club,2027-28,4952993,,CLUB 2027-28 Club Option
+boston-celtics,2026-01-16,7/6/2027,Jayson Tatum,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+boston-celtics,2026-01-16,7/23/2027,Sam Hauser,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+boston-celtics,2026-01-16,10/31/2027,Hugo Gonzalez,option,club,2028-29,5528065,,CLUB 2028-29 Club Option
+boston-celtics,2026-01-16,6/29/2028,Baylor Scheierman,qualifying_offer,,2028-29,7924789,,RFA / QO 2028-29 Qualifying Offer
+boston-celtics,2026-01-16,7/1/2028,Hugo Gonzalez,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+boston-celtics,2026-01-16,6/29/2029,Hugo Gonzalez,qualifying_offer,,2029-30,8789624,,RFA / QO 2029-30 Qualifying Offer
+boston-celtics,2026-01-16,6/29/2029,Jayson Tatum,option,player,2029-30,71446914,,PLAYER 2029-30 Player Option
+brooklyn-nets,2026-02-26,6/29/2026,Ochai Agbaji,qualifying_offer,,2026-27,8879483,,RFA / QO 2026-27 Qualifying Offer
+brooklyn-nets,2026-02-26,6/29/2026,Trendon Watford,option,club,2026-27,2801346,,CLUB 2026-27 Club Option
+brooklyn-nets,2026-02-26,6/29/2026,Josh Minott,option,club,2026-27,,,CLUB 2026-27 Club Option
+brooklyn-nets,2026-02-26,6/29/2026,E.J. Liddell,qualifying_offer,,2026-27,2191885,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+brooklyn-nets,2026-02-26,6/29/2026,Day'Ron Sharpe,option,club,2026-27,6250000,,CLUB 2026-27 Club Option
+brooklyn-nets,2026-02-26,6/29/2026,Tyson Etienne,qualifying_offer,,2026-27,2253346,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+brooklyn-nets,2026-02-26,6/29/2026,Ziaire Williams,option,club,2026-27,6250000,,CLUB 2026-27 Club Option
+brooklyn-nets,2026-02-26,6/29/2026,Jalen Wilson,qualifying_offer,,2026-27,2999264,,RFA / QO 2026-27 Qualifying Offer
+brooklyn-nets,2026-02-26,6/29/2026,Chaney Johnson,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+brooklyn-nets,2026-02-26,7/6/2026,Nicolas Claxton,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+brooklyn-nets,2026-02-26,7/15/2026,Josh Minott,guarantee,,2026-27,2584539,,GUARANTEED 2026-27 Guaranteed
+brooklyn-nets,2026-02-26,9/27/2026,Terance Mann,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+brooklyn-nets,2026-02-26,10/31/2026,Drake Powell,option,club,2027-28,3709320,,CLUB 2027-28 Club Option
+brooklyn-nets,2026-02-26,10/31/2026,Nolan Traore,option,club,2027-28,4193040,,CLUB 2027-28 Club Option
+brooklyn-nets,2026-02-26,10/31/2026,Danny Wolf,option,club,2027-28,3081840,,CLUB 2027-28 Club Option
+brooklyn-nets,2026-02-26,10/31/2026,Ben Saraf,option,club,2027-28,3172920,,CLUB 2027-28 Club Option
+brooklyn-nets,2026-02-26,10/31/2026,Egor Demin,option,club,2027-28,7578240,,CLUB 2027-28 Club Option
+brooklyn-nets,2026-02-26,6/29/2027,Noah Clowney,qualifying_offer,,2027-28,8343027,,RFA / QO 2027-28 Qualifying Offer
+brooklyn-nets,2026-02-26,10/31/2027,Danny Wolf,option,club,2028-29,5559640,,CLUB 2028-29 Club Option
+brooklyn-nets,2026-02-26,10/31/2027,Egor Demin,option,club,2028-29,9639522,,CLUB 2028-29 Club Option
+brooklyn-nets,2026-02-26,10/31/2027,Ben Saraf,option,club,2028-29,5720776,,CLUB 2028-29 Club Option
+brooklyn-nets,2026-02-26,10/31/2027,Drake Powell,option,club,2028-29,6101832,,CLUB 2028-29 Club Option
+brooklyn-nets,2026-02-26,10/31/2027,Nolan Traore,option,club,2028-29,6457282,,CLUB 2028-29 Club Option
+brooklyn-nets,2026-02-26,7/1/2028,Danny Wolf,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+brooklyn-nets,2026-02-26,7/1/2028,Ben Saraf,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+brooklyn-nets,2026-02-26,7/1/2028,Nolan Traore,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+brooklyn-nets,2026-02-26,7/1/2028,Egor Demin,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+brooklyn-nets,2026-02-26,7/1/2028,Drake Powell,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+brooklyn-nets,2026-02-26,6/29/2029,Danny Wolf,qualifying_offer,,2029-30,8800910,,RFA / QO 2029-30 Qualifying Offer
+brooklyn-nets,2026-02-26,6/29/2029,Ben Saraf,qualifying_offer,,2029-30,9015943,,RFA / QO 2029-30 Qualifying Offer
+brooklyn-nets,2026-02-26,6/29/2029,Egor Demin,qualifying_offer,,2029-30,13958028,,RFA / QO 2029-30 Qualifying Offer
+brooklyn-nets,2026-02-26,6/29/2029,Nolan Traore,qualifying_offer,,2029-30,9853812,,RFA / QO 2029-30 Qualifying Offer
+brooklyn-nets,2026-02-26,6/29/2029,Drake Powell,qualifying_offer,,2029-30,9445637,,RFA / QO 2029-30 Qualifying Offer
+charlotte-hornets,2026-03-11,6/29/2026,Pat Connaughton,option,club,2026-27,,non-guaranteed,CLUB 2026-27 Club Option — non-guaranteed
+charlotte-hornets,2026-03-11,6/29/2026,Antonio Reeves,qualifying_offer,,2026-27,2191885,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+charlotte-hornets,2026-03-11,7/1/2026,Brandon Miller,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+charlotte-hornets,2026-03-11,7/6/2026,LaMelo Ball,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+charlotte-hornets,2026-03-11,7/14/2026,Miles Bridges,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+charlotte-hornets,2026-03-11,10/19/2026,Moussa Diabate,guarantee,,2026-27,250000,Opening Night - TBD,GUARANTEED 2026-27 Guaranteed — Opening Night - TBD
+charlotte-hornets,2026-03-11,10/31/2026,Kon Knueppel,option,club,2027-28,11017560,,CLUB 2027-28 Club Option
+charlotte-hornets,2026-03-11,10/31/2026,Liam McNeeley,option,club,2027-28,3040320,,CLUB 2027-28 Club Option
+charlotte-hornets,2026-03-11,10/31/2026,Tidjane Salaun,option,club,2027-28,10445633,,CLUB 2027-28 Club Option
+charlotte-hornets,2026-03-11,1/10/2027,Pat Connaughton,guarantee,,2026-27,3815861,,GUARANTEED 2026-27 Guaranteed
+charlotte-hornets,2026-03-11,1/10/2027,Moussa Diabate,guarantee,,2026-27,2461462,,GUARANTEED 2026-27 Guaranteed
+charlotte-hornets,2026-03-11,6/29/2027,Brandon Miller,qualifying_offer,,2027-28,21222000,,RFA / QO 2027-28 Qualifying Offer
+charlotte-hornets,2026-03-11,6/29/2027,Tosan Evbuomwan,qualifying_offer,,2027-28,,,RFA / QO 2027-28 Qualifying Offer
+charlotte-hornets,2026-03-11,6/29/2027,P.J. Hall,qualifying_offer,,2027-28,,Two-Way,RFA / QO 2027-28 Qualifying Offer — Two-Way
+charlotte-hornets,2026-03-11,6/29/2027,Ryan Kalkbrenner,guarantee,,2027-28,2525901,,GUARANTEED 2027-28 Guaranteed
+charlotte-hornets,2026-03-11,6/29/2027,Tre Mann,option,club,2027-28,8000000,,CLUB 2027-28 Club Option
+charlotte-hornets,2026-03-11,7/1/2027,Tidjane Salaun,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+charlotte-hornets,2026-03-11,7/3/2027,Ryan Kalkbrenner,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+charlotte-hornets,2026-03-11,7/3/2027,Sion James,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+charlotte-hornets,2026-03-11,7/15/2027,Sion James,guarantee,,2027-28,2525901,,GUARANTEED 2027-28 Guaranteed
+charlotte-hornets,2026-03-11,10/31/2027,Liam McNeeley,option,club,2028-29,5487778,,CLUB 2028-29 Club Option
+charlotte-hornets,2026-03-11,10/31/2027,Kon Knueppel,option,club,2028-29,13937214,,CLUB 2028-29 Club Option
+charlotte-hornets,2026-03-11,6/29/2028,Tidjane Salaun,qualifying_offer,,2028-29,14979038,,RFA / QO 2028-29 Qualifying Offer
+charlotte-hornets,2026-03-11,6/29/2028,Sion James,option,club,2028-29,,non-guaranteed,CLUB 2028-29 Club Option — non-guaranteed
+charlotte-hornets,2026-03-11,7/1/2028,Liam McNeeley,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+charlotte-hornets,2026-03-11,7/1/2028,Kon Knueppel,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+charlotte-hornets,2026-03-11,1/10/2029,Sion James,guarantee,,2028-29,2735698,,GUARANTEED 2028-29 Guaranteed
+charlotte-hornets,2026-03-11,6/29/2029,Kon Knueppel,qualifying_offer,,2029-30,19776907,,RFA / QO 2029-30 Qualifying Offer
+charlotte-hornets,2026-03-11,6/29/2029,Liam McNeeley,qualifying_offer,,2029-30,8780444,,RFA / QO 2029-30 Qualifying Offer
+charlotte-hornets,2026-03-11,6/29/2029,Ryan Kalkbrenner,option,club,2028-29,,non-guaranteed,CLUB 2028-29 Club Option — non-guaranteed
+chicago-bulls,2025-09-10,10/31/2025,Matas Buzelis,option,club,2026-27,5715360,,CLUB 2026-27 Club Option
+chicago-bulls,2025-09-10,6/29/2026,Emanuel Miller,qualifying_offer,,2026-27,2253346,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+chicago-bulls,2025-09-10,6/29/2026,Yuki Kawamura,qualifying_offer,,2026-27,2191885,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+chicago-bulls,2025-09-10,6/29/2026,Caleb Grill,qualifying_offer,,2026-27,2391885,,RFA / QO 2026-27 Qualifying Offer
+chicago-bulls,2025-09-10,6/29/2026,Wooga Poplar,qualifying_offer,,2026-27,2391885,,RFA / QO 2026-27 Qualifying Offer
+chicago-bulls,2025-09-10,6/29/2026,Lachlan Olbrich,qualifying_offer,,2026-27,2253346,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+chicago-bulls,2025-09-10,6/29/2026,Dalen Terry,qualifying_offer,,2026-27,7661348,,RFA / QO 2026-27 Qualifying Offer
+chicago-bulls,2025-09-10,6/29/2026,Julian Phillips,option,club,2026-27,2406205,,CLUB 2026-27 Club Option
+chicago-bulls,2025-09-10,7/8/2026,Jalen Smith,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+chicago-bulls,2025-09-10,10/31/2026,Noa Essengue,option,club,2027-28,5972760,,CLUB 2027-28 Club Option
+chicago-bulls,2025-09-10,10/31/2026,Matas Buzelis,option,club,2027-28,7584283,,CLUB 2027-28 Club Option
+chicago-bulls,2025-09-10,6/29/2027,Matas Buzelis,qualifying_offer,,2028-29,11141312,,RFA / QO 2028-29 Qualifying Offer
+chicago-bulls,2025-09-10,6/29/2027,Tre Jones,option,club,2027-28,8000000,,CLUB 2027-28 Club Option
+chicago-bulls,2025-09-10,7/1/2027,Matas Buzelis,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+chicago-bulls,2025-09-10,7/6/2027,Patrick Williams,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+chicago-bulls,2025-09-10,7/6/2027,Tre Jones,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+chicago-bulls,2025-09-10,10/31/2027,Noa Essengue,option,club,2028-29,8230464,,CLUB 2028-29 Club Option
+chicago-bulls,2025-09-10,6/29/2028,Patrick Williams,option,player,2028-29,18000000,,PLAYER 2028-29 Player Option
+chicago-bulls,2025-09-10,7/1/2028,Noa Essengue,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+chicago-bulls,2025-09-10,6/29/2029,Noa Essengue,qualifying_offer,,2029-30,12148165,,RFA / QO 2029-30 Qualifying Offer
+cleveland-cavaliers,2025-11-16,2/14/2026,Craig Porter Jr.,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+cleveland-cavaliers,2025-11-16,6/29/2026,Craig Porter Jr.,guarantee,,2026-27,2406205,,GUARANTEED 2026-27 Guaranteed
+cleveland-cavaliers,2025-11-16,6/29/2026,Chris Livingston,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+cleveland-cavaliers,2025-11-16,6/29/2026,Nae'qwan Tomlin,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+cleveland-cavaliers,2025-11-16,6/29/2026,Lonzo Ball,option,club,2026-27,10000000,,CLUB 2026-27 Club Option
+cleveland-cavaliers,2025-11-16,7/6/2026,Klay Thompson,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+cleveland-cavaliers,2025-11-16,10/31/2026,Jaylon Tyson,option,club,2027-28,5641500,,CLUB 2027-28 Club Option
+cleveland-cavaliers,2025-11-16,1/10/2027,Craig Porter Jr.,option,club,2026-27,,non-guaranteed,CLUB 2026-27 Club Option — non-guaranteed
+cleveland-cavaliers,2025-11-16,2/6/2027,Lonzo Ball,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+cleveland-cavaliers,2025-11-16,6/29/2027,Donovan Mitchell,option,player,2027-28,53817156,,PLAYER 2027-28 Player Option
+cleveland-cavaliers,2025-11-16,7/1/2027,Tyrese Proctor,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+cleveland-cavaliers,2025-11-16,7/1/2027,Jaylon Tyson,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+cleveland-cavaliers,2025-11-16,7/6/2027,Sam Merrill,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+cleveland-cavaliers,2025-11-16,7/7/2027,Donovan Mitchell,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+cleveland-cavaliers,2025-11-16,7/22/2027,Evan Mobley,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+cleveland-cavaliers,2025-11-16,8/2/2027,Jarrett Allen,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+cleveland-cavaliers,2025-11-16,1/10/2028,Tyrese Proctor,guarantee,,2027-28,2525901,,GUARANTEED 2027-28 Guaranteed
+cleveland-cavaliers,2025-11-16,6/29/2028,Tyrese Proctor,option,club,2028-29,,non-guaranteed,CLUB 2028-29 Club Option — non-guaranteed
+cleveland-cavaliers,2025-11-16,6/29/2028,Jaylon Tyson,qualifying_offer,,2028-29,8648420,,RFA / QO 2028-29 Qualifying Offer
+cleveland-cavaliers,2025-11-16,1/10/2029,Tyrese Proctor,guarantee,,2028-29,2735698,,GUARANTEED 2028-29 Guaranteed
+dallas-mavericks,2026-07-18,10/31/2026,Cooper Flagg,option,club,2027-28,15208680,,CLUB 2027-28 Club Option
+dallas-mavericks,2026-07-18,6/29/2027,Dereck Lively II,qualifying_offer,,2027-28,10684958,,RFA / QO 2027-28 Qualifying Offer
+dallas-mavericks,2026-07-18,6/29/2027,Tarik Biberovic,qualifying_offer,,2027-28,4050000,,RFA / QO 2027-28 Qualifying Offer
+dallas-mavericks,2026-07-18,6/29/2027,Tobi Lawal,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+dallas-mavericks,2026-07-18,6/29/2027,Ryan Nembhard,qualifying_offer,,2027-28,,,RFA / QO 2027-28 Qualifying Offer
+dallas-mavericks,2026-07-18,6/29/2027,Tyler Smith,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+dallas-mavericks,2026-07-18,6/29/2027,John Poulakidas,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+dallas-mavericks,2026-07-18,6/29/2027,Santi Aldama,option,club,2027-28,17007043,,CLUB 2027-28 Club Option
+dallas-mavericks,2026-07-18,6/29/2027,Kyrie Irving,option,player,2027-28,42416562,,PLAYER 2027-28 Player Option
+dallas-mavericks,2026-07-18,6/29/2027,Marcus Sasser,qualifying_offer,,2027-28,8157205,,RFA / QO 2027-28 Qualifying Offer
+dallas-mavericks,2026-07-18,6/29/2027,Caleb Martin,option,player,2027-28,9371351,,PLAYER 2027-28 Player Option
+dallas-mavericks,2026-07-18,6/29/2027,Max Christie,option,player,2027-28,8857143,,PLAYER 2027-28 Player Option
+dallas-mavericks,2026-07-18,7/1/2027,Daniel Gafford,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+dallas-mavericks,2026-07-18,7/15/2027,Santi Aldama,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+dallas-mavericks,2026-07-18,10/31/2027,Cooper Flagg,option,club,2028-29,19178146,,CLUB 2028-29 Club Option
+dallas-mavericks,2026-07-18,10/31/2027,Morez Johnson Jr.,option,club,2028-29,7430640,,CLUB 2028-29 Club Option
+dallas-mavericks,2026-07-18,10/31/2027,Sergio de Larrea,option,club,2028-29,3500880,,CLUB 2028-29 Club Option
+dallas-mavericks,2026-07-18,7/1/2028,Cooper Flagg,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+dallas-mavericks,2026-07-18,10/31/2028,Morez Johnson Jr.,option,club,2029-30,9466636,,CLUB 2029-30 Club Option
+dallas-mavericks,2026-07-18,10/31/2028,Sergio de Larrea,option,club,2029-30,6305086,,CLUB 2029-30 Club Option
+dallas-mavericks,2026-07-18,6/29/2029,Cooper Flagg,qualifying_offer,,2029-30,26849405,,RFA / QO 2029-30 Qualifying Offer
+dallas-mavericks,2026-07-18,7/1/2029,Morez Johnson Jr.,extension_eligible,,2029-30,,,EXTENSION ELIGIBLE 2029-30 Extension Eligible
+dallas-mavericks,2026-07-18,7/1/2029,Sergio de Larrea,extension_eligible,,2029-30,,,EXTENSION ELIGIBLE 2029-30 Extension Eligible
+dallas-mavericks,2026-07-18,6/29/2030,Morez Johnson Jr.,qualifying_offer,,2030-31,28399908,,RFA / QO 2030-31 Qualifying Offer
+dallas-mavericks,2026-07-18,6/29/2030,Sergio de Larrea,qualifying_offer,,2030-31,9892680,,RFA / QO 2030-31 Qualifying Offer
+denver-nuggets,2025-10-21,10/31/2025,Julian Strawther,option,club,2026-27,4826931,,CLUB 2026-27 Club Option
+denver-nuggets,2025-10-21,10/31/2025,DaRon Holmes II,option,club,2026-27,3372120,,CLUB 2026-27 Club Option
+denver-nuggets,2025-10-21,6/29/2026,Peyton Watson,qualifying_offer,,2026-27,6534714,,RFA / QO 2026-27 Qualifying Offer
+denver-nuggets,2025-10-21,6/29/2026,Jalen Pickett,option,club,2026-27,2406205,,CLUB 2026-27 Club Option
+denver-nuggets,2025-10-21,6/29/2026,Hunter Tyson,option,club,2026-27,2406205,,CLUB 2026-27 Club Option
+denver-nuggets,2025-10-21,6/29/2026,Jonas Valanciunas,guarantee,,2026-27,10000000,,GUARANTEED 2026-27 Guaranteed
+denver-nuggets,2025-10-21,6/29/2026,Curtis Jones,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+denver-nuggets,2025-10-21,6/29/2026,Spencer Jones,qualifying_offer,,2026-27,,,RFA / QO 2026-27 Qualifying Offer
+denver-nuggets,2025-10-21,6/29/2026,Tamar Bates,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+denver-nuggets,2025-10-21,7/6/2026,Jonas Valanciunas,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+denver-nuggets,2025-10-21,10/21/2026,Zeke Nnaji,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+denver-nuggets,2025-10-21,10/31/2026,DaRon Holmes II,option,club,2027-28,5547138,,CLUB 2027-28 Club Option
+denver-nuggets,2025-10-21,6/29/2027,Nikola Jokic,option,player,2027-28,62832000,,PLAYER 2027-28 Player Option
+denver-nuggets,2025-10-21,6/29/2027,Zeke Nnaji,option,player,2027-28,7466667,,PLAYER 2027-28 Player Option
+denver-nuggets,2025-10-21,6/29/2027,Julian Strawther,qualifying_offer,,2027-28,7723090,,RFA / QO 2027-28 Qualifying Offer
+denver-nuggets,2025-10-21,9/7/2027,Jamal Murray,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+denver-nuggets,2025-10-21,10/1/2027,Aaron Gordon,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+denver-nuggets,2025-10-21,6/29/2028,Aaron Gordon,option,player,2028-29,37094523,,PLAYER 2028-29 Player Option
+denver-nuggets,2025-10-21,6/29/2028,DaRon Holmes II,other,,2028-29,8586971,,2028-29
+denver-nuggets,2025-10-21,10/1/2028,Christian Braun,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+detroit-pistons,2026-03-11,6/29/2026,Tolu Smith III,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+detroit-pistons,2026-03-11,6/29/2026,Wendell Moore Jr.,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+detroit-pistons,2026-03-11,6/29/2026,Daniss Jenkins,option,club,2026-27,4000000,,CLUB 2026-27 Club Option
+detroit-pistons,2026-03-11,6/29/2026,Jalen Duren,qualifying_offer,,2026-27,8966188,,RFA / QO 2026-27 Qualifying Offer
+detroit-pistons,2026-03-11,6/30/2026,Bobi Klintman,guarantee,,2026-27,2296271,,GUARANTEED 2026-27 Guaranteed
+detroit-pistons,2026-03-11,7/11/2026,Isaiah Stewart,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+detroit-pistons,2026-03-11,10/31/2026,Ron Holland II,option,club,2027-28,11491183,,CLUB 2027-28 Club Option
+detroit-pistons,2026-03-11,1/10/2027,Duncan Robinson,guarantee,,2026-27,15992957,,GUARANTEED 2026-27 Guaranteed
+detroit-pistons,2026-03-11,1/10/2027,Paul Reed,guarantee,,2026-27,5602689,,GUARANTEED 2026-27 Guaranteed
+detroit-pistons,2026-03-11,6/29/2027,Isaac Jones,qualifying_offer,,2027-28,,Two-Way,RFA / QO 2027-28 Qualifying Offer — Two-Way
+detroit-pistons,2026-03-11,6/29/2027,Daniss Jenkins,qualifying_offer,,2027-28,5400000,,RFA / QO 2027-28 Qualifying Offer
+detroit-pistons,2026-03-11,6/29/2027,Chaz Lanier,guarantee,,2027-28,2525901,,GUARANTEED 2027-28 Guaranteed
+detroit-pistons,2026-03-11,6/29/2027,Bobi Klintman,option,club,2027-28,,non-guaranteed,CLUB 2027-28 Club Option — non-guaranteed
+detroit-pistons,2026-03-11,6/29/2027,Isaiah Stewart,option,club,2027-28,15000000,,CLUB 2027-28 Club Option
+detroit-pistons,2026-03-11,6/29/2027,Marcus Sasser,qualifying_offer,,2027-28,8157205,,RFA / QO 2027-28 Qualifying Offer
+detroit-pistons,2026-03-11,6/29/2027,Ausar Thompson,qualifying_offer,,2027-28,15854162,,RFA / QO 2027-28 Qualifying Offer
+detroit-pistons,2026-03-11,7/7/2027,Duncan Robinson,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+detroit-pistons,2026-03-11,7/10/2027,Cade Cunningham,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+detroit-pistons,2026-03-11,7/15/2027,Bobi Klintman,guarantee,,2027-28,2486995,,GUARANTEED 2027-28 Guaranteed
+detroit-pistons,2026-03-11,1/10/2028,Duncan Robinson,guarantee,,2027-28,15151222,,GUARANTEED 2027-28 Guaranteed
+detroit-pistons,2026-03-11,6/29/2028,Chaz Lanier,option,club,2028-29,,non-guaranteed,CLUB 2028-29 Club Option — non-guaranteed
+detroit-pistons,2026-03-11,6/29/2028,Ron Holland II,qualifying_offer,,2028-29,16386428,,RFA / QO 2028-29 Qualifying Offer
+detroit-pistons,2026-03-11,7/15/2028,Chaz Lanier,guarantee,,2028-29,2525901,,GUARANTEED 2028-29 Guaranteed
+golden-state-warriors,2026-07-11,10/1/2026,Moses Moody,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+golden-state-warriors,2026-07-11,2/6/2027,Jimmy Butler,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+golden-state-warriors,2026-07-11,6/29/2027,Al Horford,option,player,2027-28,7163100,,PLAYER 2027-28 Player Option
+golden-state-warriors,2026-07-11,6/29/2027,Brandin Podziemski,qualifying_offer,,2027-28,8666855,,RFA / QO 2027-28 Qualifying Offer
+golden-state-warriors,2026-07-11,6/29/2027,Kristaps Porzingis,option,player,2027-28,3000000,,PLAYER 2027-28 Player Option
+golden-state-warriors,2026-07-11,6/29/2027,Malevy Leons,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+golden-state-warriors,2026-07-11,6/29/2027,L.J. Cryer,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+golden-state-warriors,2026-07-11,7/7/2027,Kristaps Porzingis,guarantee,,2027-28,,,GUARANTEED 2027-28 Guaranteed
+golden-state-warriors,2026-07-11,10/31/2027,Yaxel Lendeborg,option,club,2028-29,6706200,,CLUB 2028-29 Club Option
+golden-state-warriors,2026-07-11,1/10/2028,Will Richard,guarantee,,2027-28,2525901,,GUARANTEED 2027-28 Guaranteed
+golden-state-warriors,2026-07-11,2/28/2028,Gui Santos,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+golden-state-warriors,2026-07-11,6/29/2028,Gui Santos,option,player,2028-29,5370370,,PLAYER 2028-29 Player Option
+golden-state-warriors,2026-07-11,6/29/2028,Will Richard,option,club,2028-29,,non-guaranteed,CLUB 2028-29 Club Option — non-guaranteed
+golden-state-warriors,2026-07-11,10/31/2028,Yaxel Lendeborg,option,club,2029-30,8899128,,CLUB 2029-30 Club Option
+golden-state-warriors,2026-07-11,1/10/2029,Will Richard,guarantee,,2028-29,2735698,,GUARANTEED 2028-29 Guaranteed
+golden-state-warriors,2026-07-11,7/1/2029,Yaxel Lendeborg,extension_eligible,,2029-30,,,EXTENSION ELIGIBLE 2029-30 Extension Eligible
+golden-state-warriors,2026-07-11,6/29/2030,Yaxel Lendeborg,qualifying_offer,,2030-31,13072819,,RFA / QO 2030-31 Qualifying Offer
+houston-rockets,2025-06-23,10/31/2025,Amen Thompson,option,club,2026-27,12258609,,CLUB 2026-27 Club Option
+houston-rockets,2025-06-23,10/31/2025,Cam Whitmore,option,club,2026-27,5458310,,CLUB 2026-27 Club Option
+houston-rockets,2025-06-23,10/31/2025,Reed Sheppard,option,club,2026-27,11108880,,CLUB 2026-27 Club Option
+houston-rockets,2025-06-23,6/29/2026,Jabari Smith Jr.,qualifying_offer,,2026-27,16203714,,RFA / QO 2026-27 Qualifying Offer
+houston-rockets,2025-06-23,6/29/2026,Jock Landale,option,club,2026-27,8000000,,CLUB 2026-27 Club Option
+houston-rockets,2025-06-23,6/29/2026,Tari Eason,qualifying_offer,,2026-27,8014182,,RFA / QO 2026-27 Qualifying Offer
+houston-rockets,2025-06-23,6/29/2026,Jeenathan Williams,guarantee,,2026-27,2461462,,GUARANTEED 2026-27 Guaranteed
+houston-rockets,2025-06-23,7/1/2026,Cam Whitmore,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+houston-rockets,2025-06-23,10/31/2026,Reed Sheppard,option,club,2027-28,14041625,,CLUB 2027-28 Club Option
+houston-rockets,2025-06-23,6/14/2027,Steven Adams,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+houston-rockets,2025-06-23,6/29/2027,Cam Whitmore,qualifying_offer,,2027-28,8367590,,RFA / QO 2027-28 Qualifying Offer
+houston-rockets,2025-06-23,6/29/2027,Jeenathan Williams,option,club,2027-28,,,CLUB 2027-28 Club Option
+houston-rockets,2025-06-23,6/29/2027,Jeenathan Williams,guarantee,,2027-28,2789215,,GUARANTEED 2027-28 Guaranteed
+houston-rockets,2025-06-23,6/29/2027,Amen Thompson,qualifying_offer,,2027-28,17394967,,RFA / QO 2027-28 Qualifying Offer
+houston-rockets,2025-06-23,7/1/2027,Reed Sheppard,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+houston-rockets,2025-06-23,10/1/2027,Alperen Sengun,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+houston-rockets,2025-06-23,6/29/2028,Reed Sheppard,qualifying_offer,,2028-29,19826774,,RFA / QO 2028-29 Qualifying Offer
+houston-rockets,2025-06-23,6/29/2029,Alperen Sengun,option,player,2029-30,39036697,,PLAYER 2029-30 Player Option
+indiana-pacers,2026-07-12,7/15/2026,Quenton Jackson,guarantee,,2026-27,2584539,,GUARANTEED 2026-27 Guaranteed
+indiana-pacers,2026-07-12,7/26/2026,Andrew Nembhard,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+indiana-pacers,2026-07-12,9/3/2026,Ivica Zubac,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+indiana-pacers,2026-07-12,1/10/2027,Micah Potter,option,player,2026-27,2801346,,PLAYER 2026-27 Player Option
+indiana-pacers,2026-07-12,6/25/2027,T.J. McConnell,guarantee,,2027-28,11800000,day of NBA Draft 2nd Round - TBD,GUARANTEED 2027-28 Guaranteed — day of NBA Draft 2nd Round - TBD
+indiana-pacers,2026-07-12,6/26/2027,Quenton Jackson,guarantee,,2027-28,2934742,TBD - two days after the 2027 NBA Draft,GUARANTEED 2027-28 Guaranteed — TBD - two days after the 2027 NBA Draft
+indiana-pacers,2026-07-12,6/29/2027,Jay Huff,option,club,2027-28,427323,,CLUB 2027-28 Club Option
+indiana-pacers,2026-07-12,6/29/2027,Kobe Brown,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+indiana-pacers,2026-07-12,6/29/2027,Taelon Peter,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+indiana-pacers,2026-07-12,6/29/2027,Jarace Walker,qualifying_offer,,2027-28,12276929,,RFA / QO 2027-28 Qualifying Offer
+indiana-pacers,2026-07-12,6/29/2027,Johnny Furphy,option,club,2027-28,2486995,,CLUB 2027-28 Club Option
+indiana-pacers,2026-07-12,6/29/2027,Ben Sheppard,qualifying_offer,,2027-28,7929911,,RFA / QO 2027-28 Qualifying Offer
+indiana-pacers,2026-07-12,6/30/2027,Jay Huff,guarantee,,2027-28,3005085,via min/gm metric or date,GUARANTEED 2027-28 Guaranteed — via min/gm metric or date
+indiana-pacers,2026-07-12,9/3/2027,T.J. McConnell,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+indiana-pacers,2026-07-12,6/23/2028,T.J. McConnell,guarantee,,2028-29,11800000,day of NBA Draft 2nd Round - TBD,GUARANTEED 2028-29 Guaranteed — day of NBA Draft 2nd Round - TBD
+indiana-pacers,2026-07-12,6/29/2028,T.J. McConnell,option,club,2028-29,5000000,,CLUB 2028-29 Club Option
+los-angeles-clippers,2026-04-16,6/29/2026,Bradley Beal,option,player,2026-27,5621700,,PLAYER 2026-27 Player Option
+los-angeles-clippers,2026-04-16,6/29/2026,Brook Lopez,option,club,2026-27,9187500,,CLUB 2026-27 Club Option
+los-angeles-clippers,2026-04-16,6/29/2026,Nicolas Batum,option,club,2026-27,5881680,,CLUB 2026-27 Club Option
+los-angeles-clippers,2026-04-16,6/29/2026,James Harden,option,player,2026-27,13317307,,PLAYER 2026-27 Player Option
+los-angeles-clippers,2026-04-16,6/29/2026,Elijah Harkless,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+los-angeles-clippers,2026-04-16,6/29/2026,TyTy Washington Jr.,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+los-angeles-clippers,2026-04-16,6/29/2026,Kobe Sanders,option,club,2026-27,,non-guaranteed,CLUB 2026-27 Club Option — non-guaranteed
+los-angeles-clippers,2026-04-16,6/29/2026,Sean Pedulla,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+los-angeles-clippers,2026-04-16,6/29/2026,Jordan Miller,option,club,2026-27,2497812,,CLUB 2026-27 Club Option
+los-angeles-clippers,2026-04-16,6/29/2026,Norchad Omier,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+los-angeles-clippers,2026-04-16,6/29/2026,Bennedict Mathurin,qualifying_offer,,2026-27,12256222,,RFA / QO 2026-27 Qualifying Offer
+los-angeles-clippers,2026-04-16,6/30/2026,Bogdan Bogdanovic,option,club,2026-27,16020000,,CLUB 2026-27 Club Option
+los-angeles-clippers,2026-04-16,6/30/2026,Cameron Christie,guarantee,,2026-27,2296271,,GUARANTEED 2026-27 Guaranteed
+los-angeles-clippers,2026-04-16,6/30/2026,Kris Dunn,guarantee,,2026-27,5684800,or makes All-Defensive First or Second Team in 24-25 or 25-26,GUARANTEED 2026-27 Guaranteed — or makes All-Defensive First or Second Team in 24-25 or 25-26
+los-angeles-clippers,2026-04-16,7/5/2026,Cameron Christie,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+los-angeles-clippers,2026-04-16,7/9/2026,Derrick Jones Jr.,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+los-angeles-clippers,2026-04-16,7/11/2026,James Harden,guarantee,,2026-27,42317307,,GUARANTEED 2026-27 Guaranteed
+los-angeles-clippers,2026-04-16,7/18/2026,Kris Dunn,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+los-angeles-clippers,2026-04-16,10/31/2026,Yanic Konan Niederhauser,option,club,2027-28,3018480,,CLUB 2027-28 Club Option
+los-angeles-clippers,2026-04-16,1/10/2027,Kobe Sanders,option,club,2026-27,2150917,,CLUB 2026-27 Club Option
+los-angeles-clippers,2026-04-16,6/29/2027,Kobe Sanders,qualifying_offer,,2027-28,,,RFA / QO 2027-28 Qualifying Offer
+los-angeles-clippers,2026-04-16,6/29/2027,Jordan Miller,qualifying_offer,,2027-28,,,RFA / QO 2027-28 Qualifying Offer
+los-angeles-clippers,2026-04-16,6/29/2027,Cameron Christie,option,club,2027-28,,non-guaranteed,CLUB 2027-28 Club Option — non-guaranteed
+los-angeles-clippers,2026-04-16,6/29/2027,Kobe Brown,option,,2027-28,7667295,voided with 4th-year option declined,RFA / QO 2027-28 Qualifying Offer — voided with 4th-year option declined
+los-angeles-clippers,2026-04-16,6/30/2027,Cameron Christie,guarantee,,2027-28,2486995,,GUARANTEED 2027-28 Guaranteed
+los-angeles-clippers,2026-04-16,7/11/2027,Isaiah Jackson,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+los-angeles-clippers,2026-04-16,10/31/2027,Yanic Konan Niederhauser,option,club,2028-29,5448356,,CLUB 2028-29 Club Option
+los-angeles-clippers,2026-04-16,7/1/2028,Yanic Konan Niederhauser,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+los-angeles-clippers,2026-04-16,6/29/2029,Yanic Konan Niederhauser,qualifying_offer,,2029-30,8717371,,RFA / QO 2029-30 Qualifying Offer
+los-angeles-lakers,2026-07-12,9/15/2026,Jarred Vanderbilt,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+los-angeles-lakers,2026-07-12,10/18/2026,Chris Manon,guarantee,,2026-27,,50%; frist day of Regular Season,GUARANTEED 2026-27 Guaranteed — 50%; frist day of Regular Season
+los-angeles-lakers,2026-07-12,10/18/2026,Peter Suder,guarantee,,2026-27,,50%; first day of Regular Season,GUARANTEED 2026-27 Guaranteed — 50%; first day of Regular Season
+los-angeles-lakers,2026-07-12,10/31/2026,Dalton Knecht,option,club,2026-27,6452860,,CLUB 2026-27 Club Option
+los-angeles-lakers,2026-07-12,6/29/2027,Jaden Hardy,option,club,2027-28,6000000,,CLUB 2027-28 Club Option
+los-angeles-lakers,2026-07-12,6/29/2027,Adou Thiero,option,club,2027-28,,non-guaranteed,CLUB 2027-28 Club Option — non-guaranteed
+los-angeles-lakers,2026-07-12,6/29/2027,Bronny James,option,club,2027-28,,non-guaranteed,CLUB 2027-28 Club Option — non-guaranteed
+los-angeles-lakers,2026-07-12,6/29/2027,Jarred Vanderbilt,option,player,2027-28,13285714,,PLAYER 2027-28 Player Option
+los-angeles-lakers,2026-07-12,6/29/2027,Dalton Knecht,qualifying_offer,,2028-29,9756725,,RFA / QO 2028-29 Qualifying Offer
+los-angeles-lakers,2026-07-12,6/29/2027,Bronny James,option,club,2027-28,2486995,,CLUB 2027-28 Club Option
+los-angeles-lakers,2026-07-12,6/29/2027,AK Okereke,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+los-angeles-lakers,2026-07-12,6/29/2027,Peter Suder,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+los-angeles-lakers,2026-07-12,7/1/2027,Dalton Knecht,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+los-angeles-lakers,2026-07-12,7/6/2027,Adou Thiero,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+los-angeles-lakers,2026-07-12,10/31/2027,Cameron Carr,option,club,2026-27,3646800,,CLUB 2026-27 Club Option
+los-angeles-lakers,2026-07-12,6/29/2028,Adou Thiero,qualifying_offer,,2028-29,3409966,,RFA / QO 2028-29 Qualifying Offer
+los-angeles-lakers,2026-07-12,6/29/2028,Luka Doncic,option,player,2028-29,57406428,,PLAYER 2028-29 Player Option
+los-angeles-lakers,2026-07-12,7/7/2028,Quentin Grimes,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+los-angeles-lakers,2026-07-12,7/7/2028,Sandro Mamukelashvili,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+los-angeles-lakers,2026-07-12,8/2/2028,Luka Doncic,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+los-angeles-lakers,2026-07-12,10/31/2028,Cameron Carr,option,club,2026-27,6378253,,CLUB 2026-27 Club Option
+los-angeles-lakers,2026-07-12,1/10/2029,Adou Thiero,guarantee,,2027-28,2525901,,GUARANTEED 2027-28 Guaranteed
+los-angeles-lakers,2026-07-12,6/29/2029,Cameron Carr,qualifying_offer,,2026-27,9962832,,RFA / QO 2026-27 Qualifying Offer
+los-angeles-lakers,2026-07-12,6/29/2029,Sandro Mamukelashvili,option,player,2029-30,13650000,,PLAYER 2029-30 Player Option
+los-angeles-lakers,2026-07-12,6/29/2029,Quentin Grimes,option,player,2029-30,16046511,,PLAYER 2029-30 Player Option
+los-angeles-lakers,2026-07-12,6/29/2029,Walker Kessler,option,player,2029-30,34625144,,PLAYER 2029-30 Player Option
+los-angeles-lakers,2026-07-12,7/1/2029,Cameron Carr,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+memphis-grizzlies,2026-07-11,7/11/2026,Isaiah Stewart,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+memphis-grizzlies,2026-07-11,10/19/2026,Jaylen Wells,guarantee,,2026-27,2296271,Opening Night TBD,GUARANTEED 2026-27 Guaranteed — Opening Night TBD
+memphis-grizzlies,2026-07-11,10/31/2026,AJ Johnson,option,club,2027-28,5493394,,CLUB 2027-28 Club Option
+memphis-grizzlies,2026-07-11,10/31/2026,Zach Edey,option,club,2027-28,8067937,,CLUB 2027-28 Club Option
+memphis-grizzlies,2026-07-11,10/31/2026,Cedric Coward,option,club,2027-28,6286920,,CLUB 2027-28 Club Option
+memphis-grizzlies,2026-07-11,10/31/2026,Walter Clayton Jr.,option,club,2027-28,4390320,,CLUB 2027-28 Club Option
+memphis-grizzlies,2026-07-11,1/10/2027,Taj Gibson,guarantee,,2026-27,3815861,,GUARANTEED 2026-27 Guaranteed
+memphis-grizzlies,2026-07-11,6/26/2027,Quinten Post,guarantee,,2027-28,,two days after 2027 NBA Draft - TBD,GUARANTEED 2027-28 Guaranteed — two days after 2027 NBA Draft - TBD
+memphis-grizzlies,2026-07-11,6/29/2027,Jerami Grant,option,player,2027-28,36413790,,PLAYER 2027-28 Player Option
+memphis-grizzlies,2026-07-11,6/29/2027,Javon Small,qualifying_offer,,2027-28,2301485,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+memphis-grizzlies,2026-07-11,6/29/2027,Ty Jerome,option,player,2027-28,9659100,,PLAYER 2027-28 Player Option
+memphis-grizzlies,2026-07-11,6/29/2027,Scotty Pippen Jr.,option,club,2027-28,396604,,CLUB 2027-28 Club Option
+memphis-grizzlies,2026-07-11,6/29/2027,Taylor Hendricks,qualifying_offer,,2027-28,11357585,,RFA / QO 2027-28 Qualifying Offer
+memphis-grizzlies,2026-07-11,6/29/2027,Jaylen Wells,option,club,2027-28,,,CLUB 2027-28 Club Option
+memphis-grizzlies,2026-07-11,6/29/2027,Isaiah Stewart,option,club,2027-28,15000000,,CLUB 2027-28 Club Option
+memphis-grizzlies,2026-07-11,7/1/2027,Zach Edey,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+memphis-grizzlies,2026-07-11,7/1/2027,AJ Johnson,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+memphis-grizzlies,2026-07-11,7/3/2027,Scotty Pippen Jr.,guarantee,,2027-28,2789215,,GUARANTEED 2027-28 Guaranteed
+memphis-grizzlies,2026-07-11,7/14/2027,Cam Spencer,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+memphis-grizzlies,2026-07-11,10/18/2027,Jaylen Wells,guarantee,,2027-28,2486995,Opening Night TBD,GUARANTEED 2027-28 Guaranteed — Opening Night TBD
+memphis-grizzlies,2026-07-11,10/31/2027,Cedric Coward,option,club,2028-29,8342743,,CLUB 2028-29 Club Option
+memphis-grizzlies,2026-07-11,10/31/2027,Walter Clayton Jr.,option,club,2028-29,6752312,,CLUB 2028-29 Club Option
+memphis-grizzlies,2026-07-11,6/24/2028,Quinten Post,guarantee,,2028-29,,two days after 2028 NBA Draft - TBD,GUARANTEED 2028-29 Guaranteed — two days after 2028 NBA Draft - TBD
+memphis-grizzlies,2026-07-11,6/29/2028,Zach Edey,qualifying_offer,,2028-29,11738849,,RFA / QO 2028-29 Qualifying Offer
+memphis-grizzlies,2026-07-11,6/29/2028,AJ Johnson,qualifying_offer,,2028-29,8542228,,RFA / QO 2028-29 Qualifying Offer
+memphis-grizzlies,2026-07-11,6/29/2028,Cam Spencer,option,club,2028-29,2830685,,CLUB 2028-29 Club Option
+memphis-grizzlies,2026-07-11,7/1/2028,Cedric Coward,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+memphis-grizzlies,2026-07-11,7/1/2028,Walter Clayton Jr.,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+memphis-grizzlies,2026-07-11,7/8/2028,Quinten Post,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+memphis-grizzlies,2026-07-11,6/29/2029,Walter Clayton Jr.,qualifying_offer,,2029-30,10256764,,RFA / QO 2029-30 Qualifying Offer
+memphis-grizzlies,2026-07-11,6/29/2029,Cedric Coward,qualifying_offer,,2029-30,12255491,,RFA / QO 2029-30 Qualifying Offer
+memphis-grizzlies,2026-07-11,6/29/2029,Jaren Jackson Jr.,option,player,2029-30,53500000,,PLAYER 2029-30 Player Option
+miami-heat,2025-10-02,10/31/2025,Jaime Jaquez Jr.,option,club,2026-27,5939141,exercised 9/23/25,CLUB 2026-27 Club Option — exercised 9/23/25
+miami-heat,2025-10-02,10/31/2025,Kel'el Ware,option,club,2026-27,4654920,exercised 9/23/25,CLUB 2026-27 Club Option — exercised 9/23/25
+miami-heat,2025-10-02,6/28/2026,Dru Smith,guarantee,,2026-27,2584539,,GUARANTEED 2026-27 Guaranteed
+miami-heat,2025-10-02,6/29/2026,Keshad Johnson,qualifying_offer,,2026-27,2725905,,RFA / QO 2026-27 Qualifying Offer
+miami-heat,2025-10-02,6/29/2026,Jahmir Young,qualifying_offer,,2026-27,2765467,,RFA / QO 2026-27 Qualifying Offer
+miami-heat,2025-10-02,6/29/2026,Dain Dainja,qualifying_offer,,2026-27,2391885,,RFA / QO 2026-27 Qualifying Offer
+miami-heat,2025-10-02,6/29/2026,Ethan Thompson,qualifying_offer,,2026-27,2765467,,RFA / QO 2026-27 Qualifying Offer
+miami-heat,2025-10-02,6/29/2026,Vladislav Goldin,qualifying_offer,,2026-27,2253346,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+miami-heat,2025-10-02,6/29/2026,Andrew Wiggins,option,player,2026-27,30169644,,PLAYER 2026-27 Player Option
+miami-heat,2025-10-02,6/29/2026,Pelle Larsson,option,club,2026-27,,non-guaranteed,CLUB 2026-27 Club Option — non-guaranteed
+miami-heat,2025-10-02,7/1/2026,Jaime Jaquez Jr.,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+miami-heat,2025-10-02,7/2/2026,Pelle Larsson,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+miami-heat,2025-10-02,10/19/2026,Pelle Larsson,guarantee,,2026-27,,Opening Night TBD,GUARANTEED 2026-27 Guaranteed — Opening Night TBD
+miami-heat,2025-10-02,10/31/2026,Kel'el Ware,option,club,2027-28,7135992,,CLUB 2027-28 Club Option
+miami-heat,2025-10-02,10/31/2026,Kasparas Jakucionis,option,club,2027-28,4024440,,CLUB 2027-28 Club Option
+miami-heat,2025-10-02,6/28/2027,Dru Smith,guarantee,,2027-28,2934742,,GUARANTEED 2027-28 Guaranteed
+miami-heat,2025-10-02,6/29/2027,Jaime Jaquez Jr.,qualifying_offer,,2027-28,9021556,,RFA / QO 2027-28 Qualifying Offer
+miami-heat,2025-10-02,6/29/2027,Dru Smith,option,club,2027-28,,,CLUB 2027-28 Club Option
+miami-heat,2025-10-02,6/29/2027,Myron Gardner,qualifying_offer,,2027-28,2301485,Two-Way,RFA / QO 2027-28 Qualifying Offer — Two-Way
+miami-heat,2025-10-02,7/1/2027,Kel'el Ware,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+miami-heat,2025-10-02,7/6/2027,Bam Adebayo,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+miami-heat,2025-10-02,10/31/2027,Kasparas Jakucionis,option,club,2028-29,6205687,,CLUB 2028-29 Club Option
+miami-heat,2025-10-02,6/29/2028,Kel'el Ware,qualifying_offer,,2028-29,10689719,,RFA / QO 2028-29 Qualifying Offer
+miami-heat,2025-10-02,6/29/2028,Bam Adebayo,option,player,2028-29,57584256,,PLAYER 2028-29 Player Option
+miami-heat,2025-10-02,7/1/2028,Kasparas Jakucionis,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+miami-heat,2025-10-02,10/1/2028,Nikola Jovic,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+miami-heat,2025-10-02,6/29/2029,Kasparas Jakucionis,qualifying_offer,,2029-30,9513319,,RFA / QO 2029-30 Qualifying Offer
+milwaukee-bucks,2026-07-12,10/18/2026,Pete Nance,guarantee,,2026-27,,Opening Night - TBD,GUARANTEED 2026-27 Guaranteed — Opening Night - TBD
+milwaukee-bucks,2026-07-12,10/31/2026,Kel'el Ware,option,club,2027-28,7135992,,CLUB 2027-28 Club Option
+milwaukee-bucks,2026-07-12,10/31/2026,Kasparas Jakucionis,option,club,2027-28,4024440,,CLUB 2027-28 Club Option
+milwaukee-bucks,2026-07-12,6/29/2027,Jaime Jaquez Jr.,qualifying_offer,,2027-28,9021556,,RFA / QO 2027-28 Qualifying Offer
+milwaukee-bucks,2026-07-12,6/29/2027,Pete Nance,option,club,2027-28,,,CLUB 2027-28 Club Option
+milwaukee-bucks,2026-07-12,6/29/2027,Kam Jones,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+milwaukee-bucks,2026-07-12,6/29/2027,Ryan Rollins,option,player,2027-28,4000000,,PLAYER 2027-28 Player Option
+milwaukee-bucks,2026-07-12,6/29/2027,Cormac Ryan,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+milwaukee-bucks,2026-07-12,7/1/2027,Kel'el Ware,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+milwaukee-bucks,2026-07-12,7/6/2027,Myles Turner,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+milwaukee-bucks,2026-07-12,10/17/2027,Pete Nance,guarantee,,2027-28,,Opening Night - TBD,GUARANTEED 2027-28 Guaranteed — Opening Night - TBD
+milwaukee-bucks,2026-07-12,10/31/2027,Nate Ament,option,club,2028-29,6052200,,CLUB 2028-29 Club Option
+milwaukee-bucks,2026-07-12,10/31/2027,Brayden Burries,option,club,2028-29,7058520,,CLUB 2028-29 Club Option
+milwaukee-bucks,2026-07-12,10/31/2027,Kasparas Jakucionis,option,club,2028-29,6205687,,CLUB 2028-29 Club Option
+milwaukee-bucks,2026-07-12,1/10/2028,Bogoljub Marković,guarantee,,2027-28,2294370,,GUARANTEED 2027-28 Guaranteed
+milwaukee-bucks,2026-07-12,6/29/2028,Kel'el Ware,qualifying_offer,,2028-29,10689719,,RFA / QO 2028-29 Qualifying Offer
+milwaukee-bucks,2026-07-12,6/29/2028,Myles Turner,option,player,2028-29,29115990,,PLAYER 2028-29 Player Option
+milwaukee-bucks,2026-07-12,7/1/2028,Kasparas Jakucionis,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+milwaukee-bucks,2026-07-12,7/1/2028,Bogoljub Marković,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+milwaukee-bucks,2026-07-12,7/6/2028,Bogoljub Marković,guarantee,,2028-29,2694363,last day of 2028 Moratorium,GUARANTEED 2028-29 Guaranteed — last day of 2028 Moratorium
+milwaukee-bucks,2026-07-12,10/31/2028,Brayden Burries,option,club,2029-30,8999614,,CLUB 2029-30 Club Option
+milwaukee-bucks,2026-07-12,10/31/2028,Nate Ament,option,club,2029-30,8648594,,CLUB 2029-30 Club Option
+milwaukee-bucks,2026-07-12,6/29/2029,Bogoljub Marković,option,club,2029-30,,non-guaranteed,CLUB 2029-30 Club Option — non-guaranteed
+milwaukee-bucks,2026-07-12,6/29/2029,Kasparas Jakucionis,qualifying_offer,,2029-30,9513319,,RFA / QO 2029-30 Qualifying Offer
+milwaukee-bucks,2026-07-12,7/1/2029,Brayden Burries,extension_eligible,,2029-30,,,EXTENSION ELIGIBLE 2029-30 Extension Eligible
+milwaukee-bucks,2026-07-12,7/1/2029,Nate Ament,extension_eligible,,2029-30,,,EXTENSION ELIGIBLE 2029-30 Extension Eligible
+milwaukee-bucks,2026-07-12,7/6/2029,Bogoljub Marković,guarantee,,2029-30,2918152,last day of 2029 Moratorium,GUARANTEED 2029-30 Guaranteed — last day of 2029 Moratorium
+milwaukee-bucks,2026-07-12,6/29/2030,Brayden Burries,qualifying_offer,,2030-31,13157436,,RFA / QO 2030-31 Qualifying Offer
+milwaukee-bucks,2026-07-12,6/29/2030,Nate Ament,qualifying_offer,,2030-31,12825866,,RFA / QO 2030-31 Qualifying Offer
+minnesota-timberwolves,2023-11-14,10/18/2026,Enrique Freeman,guarantee,,2026-27,,50%; first day of Regular Season,GUARANTEED 2026-27 Guaranteed — 50%; first day of Regular Season
+minnesota-timberwolves,2023-11-14,10/23/2026,Jaden McDaniels,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+minnesota-timberwolves,2023-11-14,10/24/2026,Rudy Gobert,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+minnesota-timberwolves,2023-11-14,10/31/2026,Terrence Shannon Jr.,option,club,2027-28,5054159,,CLUB 2027-28 Club Option
+minnesota-timberwolves,2023-11-14,10/31/2026,Joan Beringer,option,club,2027-28,4621200,,CLUB 2027-28 Club Option
+minnesota-timberwolves,2023-11-14,6/29/2027,Rudy Gobert,option,player,2027-28,38000000,,PLAYER 2027-28 Player Option
+minnesota-timberwolves,2023-11-14,6/29/2027,Julius Randle,option,player,2027-28,35802468,,PLAYER 2027-28 Player Option
+minnesota-timberwolves,2023-11-14,6/29/2027,Rocco Zikarsky,qualifying_offer,,2027-28,2301485,TBD -Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD -Two-Way
+minnesota-timberwolves,2023-11-14,6/29/2027,Zyon Pullin,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+minnesota-timberwolves,2023-11-14,6/29/2027,Enrique Freeman,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+minnesota-timberwolves,2023-11-14,7/1/2027,Terrence Shannon Jr.,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+minnesota-timberwolves,2023-11-14,10/31/2027,Joan Beringer,option,club,2028-29,7098163,,CLUB 2028-29 Club Option
+minnesota-timberwolves,2023-11-14,6/29/2028,Terrence Shannon Jr.,qualifying_offer,,2028-29,8000734,,RFA / QO 2028-29 Qualifying Offer
+minnesota-timberwolves,2023-11-14,7/1/2028,Joan Beringer,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+minnesota-timberwolves,2023-11-14,6/29/2029,Joan Beringer,qualifying_offer,,2029-30,10732423,,RFA / QO 2029-30 Qualifying Offer
+minnesota-timberwolves,2023-11-14,6/29/2030,Ayo Dosunmu,option,player,2030-31,25489652,,PLAYER 2030-31 Player Option
+new-orleans-pelicans,2026-02-25,6/29/2026,Kevon Looney,option,club,2026-27,8000000,,CLUB 2026-27 Club Option
+new-orleans-pelicans,2026-02-25,6/29/2026,Hunter Dickinson,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+new-orleans-pelicans,2026-02-25,6/29/2026,Trey Alexander,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+new-orleans-pelicans,2026-02-25,6/29/2026,Karlo Matkovic,option,club,2026-27,2296271,,CLUB 2026-27 Club Option
+new-orleans-pelicans,2026-02-25,7/1/2026,Jordan Hawkins,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+new-orleans-pelicans,2026-02-25,7/9/2026,Dejounte Murray,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+new-orleans-pelicans,2026-02-25,7/10/2026,Saddiq Bey,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+new-orleans-pelicans,2026-02-25,7/15/2026,Karlo Matkovic,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+new-orleans-pelicans,2026-02-25,7/15/2026,Zion Williamson,guarantee,,2026-27,42166510,,GUARANTEED 2026-27 Guaranteed
+new-orleans-pelicans,2026-02-25,10/31/2026,Yves Missi,option,club,2027-28,5595827,,CLUB 2027-28 Club Option
+new-orleans-pelicans,2026-02-25,10/31/2026,Jeremiah Fears,option,club,2027-28,8271960,,CLUB 2027-28 Club Option
+new-orleans-pelicans,2026-02-25,10/31/2026,Derik Queen,option,club,2027-28,5673840,,CLUB 2027-28 Club Option
+new-orleans-pelicans,2026-02-25,2/20/2027,Bryce McGowens,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+new-orleans-pelicans,2026-02-25,6/29/2027,Jordan Hawkins,qualifying_offer,,2027-28,10469646,,RFA / QO 2027-28 Qualifying Offer
+new-orleans-pelicans,2026-02-25,6/29/2027,Bryce McGowens,option,club,2027-28,2934742,,CLUB 2027-28 Club Option
+new-orleans-pelicans,2026-02-25,6/29/2027,Herb Jones,option,player,2027-28,24195628,,PLAYER 2027-28 Player Option
+new-orleans-pelicans,2026-02-25,6/29/2027,Dejounte Murray,option,player,2027-28,30751504,,PLAYER 2027-28 Player Option
+new-orleans-pelicans,2026-02-25,6/29/2027,Karlo Matkovic,qualifying_offer,,2027-28,3099966,,RFA / QO 2027-28 Qualifying Offer
+new-orleans-pelicans,2026-02-25,7/1/2027,Yves Missi,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+new-orleans-pelicans,2026-02-25,7/6/2027,Micah Peavy,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+new-orleans-pelicans,2026-02-25,7/15/2027,Zion Williamson,guarantee,,2027-28,44886930,,GUARANTEED 2027-28 Guaranteed
+new-orleans-pelicans,2026-02-25,10/1/2027,Trey Murphy III,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+new-orleans-pelicans,2026-02-25,10/18/2027,Micah Peavy,guarantee,,2027-28,2525901,Opening Night TBD,GUARANTEED 2027-28 Guaranteed — Opening Night TBD
+new-orleans-pelicans,2026-02-25,10/31/2027,Jeremiah Fears,option,club,2028-29,10505389,,CLUB 2028-29 Club Option
+new-orleans-pelicans,2026-02-25,10/31/2027,Derik Queen,option,club,2028-29,8107918,,CLUB 2028-29 Club Option
+new-orleans-pelicans,2026-02-25,6/29/2028,Yves Missi,qualifying_offer,,2028-29,8623170,,RFA / QO 2028-29 Qualifying Offer
+new-orleans-pelicans,2026-02-25,6/29/2028,Micah Peavy,option,club,2028-29,,,CLUB 2028-29 Club Option
+new-orleans-pelicans,2026-02-25,7/1/2028,Derik Queen,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+new-orleans-pelicans,2026-02-25,7/1/2028,Jeremiah Fears,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+new-orleans-pelicans,2026-02-25,7/14/2028,Herb Jones,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+new-orleans-pelicans,2026-02-25,10/16/2028,Micah Peavy,guarantee,,2028-29,2735698,Opening Night TBD,GUARANTEED 2028-29 Guaranteed — Opening Night TBD
+new-orleans-pelicans,2026-02-25,6/29/2029,Jeremiah Fears,qualifying_offer,,2029-30,15138266,,RFA / QO 2029-30 Qualifying Offer
+new-orleans-pelicans,2026-02-25,6/29/2029,Derik Queen,qualifying_offer,,2029-30,12024042,,RFA / QO 2029-30 Qualifying Offer
+new-york-knicks,2026-03-25,6/29/2026,Ariel Hukporti,qualifying_offer,,2026-27,2725905,,RFA / QO 2026-27 Qualifying Offer
+new-york-knicks,2026-03-25,6/29/2026,Dillon Jones,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+new-york-knicks,2026-03-25,6/29/2026,Trey Jemison,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+new-york-knicks,2026-03-25,6/29/2026,Kevin McCullar Jr.,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+new-york-knicks,2026-03-25,6/29/2026,Mohamed Diawara,qualifying_offer,,2026-27,,,RFA / QO 2026-27 Qualifying Offer
+new-york-knicks,2026-03-25,6/29/2026,Jose Alvarado,option,player,2026-27,4500000,,PLAYER 2026-27 Player Option
+new-york-knicks,2026-03-25,7/4/2026,Tyler Kolek,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+new-york-knicks,2026-03-25,8/10/2026,Josh Hart,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+new-york-knicks,2026-03-25,10/31/2026,Pacome Dadiet,option,club,2027-28,5373608,,CLUB 2027-28 Club Option
+new-york-knicks,2026-03-25,6/29/2027,Karl-Anthony Towns,option,player,2027-28,62062000,,PLAYER 2027-28 Player Option
+new-york-knicks,2026-03-25,6/29/2027,Tyler Kolek,option,club,2027-28,2486995,,CLUB 2027-28 Club Option
+new-york-knicks,2026-03-25,6/29/2027,Josh Hart,option,club,2027-28,22375280,,CLUB 2027-28 Club Option
+new-york-knicks,2026-03-25,7/6/2027,OG Anunoby,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+new-york-knicks,2026-03-25,7/12/2027,Jalen Brunson,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+new-york-knicks,2026-03-25,6/29/2028,Jalen Brunson,option,player,2028-29,43330561,,PLAYER 2028-29 Player Option
+new-york-knicks,2026-03-25,6/29/2028,Pacome Dadiet,qualifying_offer,,2028-29,8431191,,RFA / QO 2028-29 Qualifying Offer
+new-york-knicks,2026-03-25,6/29/2028,OG Anunoby,option,player,2028-29,48362068,,PLAYER 2028-29 Player Option
+new-york-knicks,2026-03-25,8/1/2028,Mikal Bridges,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+new-york-knicks,2026-03-25,6/29/2029,Mikal Bridges,option,player,2029-30,41517856,,PLAYER 2029-30 Player Option
+oklahoma-city-thunder,2025-07-30,10/31/2025,Dillon Jones,option,club,2026-27,2884440,,CLUB 2026-27 Club Option
+oklahoma-city-thunder,2025-07-30,10/31/2025,Nikola Topic,option,club,2026-27,5429760,,CLUB 2026-27 Club Option
+oklahoma-city-thunder,2025-07-30,10/31/2025,Cason Wallace,option,club,2026-27,7420806,,CLUB 2026-27 Club Option
+oklahoma-city-thunder,2025-07-30,6/29/2026,Jalen Williams,qualifying_offer,,2026-27,9055452,,RFA / QO 2026-27 Qualifying Offer
+oklahoma-city-thunder,2025-07-30,6/29/2026,Brooks Barnhizer,qualifying_offer,,2026-27,2253346,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+oklahoma-city-thunder,2025-07-30,6/29/2026,Isaiah Hartenstein,option,club,2026-27,28500000,,CLUB 2026-27 Club Option
+oklahoma-city-thunder,2025-07-30,6/29/2026,Kenrich Williams,option,club,2026-27,7163000,,CLUB 2026-27 Club Option
+oklahoma-city-thunder,2025-07-30,6/29/2026,Chet Holmgren,qualifying_offer,,2026-27,17919435,,RFA / QO 2026-27 Qualifying Offer
+oklahoma-city-thunder,2025-07-30,6/29/2026,Ousmane Dieng,option,club,2026-27,9132437,,CLUB 2026-27 Club Option
+oklahoma-city-thunder,2025-07-30,6/29/2026,Luguentz Dort,option,club,2026-27,17722222,,CLUB 2026-27 Club Option
+oklahoma-city-thunder,2025-07-30,6/30/2026,Ajay Mitchell,guarantee,,2026-27,2850000,,GUARANTEED 2026-27 Guaranteed
+oklahoma-city-thunder,2025-07-30,7/1/2026,Cason Wallace,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+oklahoma-city-thunder,2025-07-30,7/6/2026,Isaiah Hartenstein,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+oklahoma-city-thunder,2025-07-30,7/7/2026,Isaiah Joe,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+oklahoma-city-thunder,2025-07-30,10/31/2026,Dillon Jones,option,club,2027-28,5200646,,CLUB 2027-28 Club Option
+oklahoma-city-thunder,2025-07-30,10/31/2026,Thomas Sorber,option,club,2027-28,5120400,,CLUB 2027-28 Club Option
+oklahoma-city-thunder,2025-07-30,10/31/2026,Nikola Topic,option,club,2027-28,7482210,,CLUB 2027-28 Club Option
+oklahoma-city-thunder,2025-07-30,6/29/2027,Cason Wallace,qualifying_offer,,2027-28,10849219,,RFA / QO 2027-28 Qualifying Offer
+oklahoma-city-thunder,2025-07-30,6/29/2027,Ajay Mitchell,option,club,2027-28,1500000,,CLUB 2027-28 Club Option
+oklahoma-city-thunder,2025-07-30,6/29/2027,Jaylin Williams,option,club,2027-28,7774648,,CLUB 2027-28 Club Option
+oklahoma-city-thunder,2025-07-30,6/29/2027,Isaiah Joe,option,club,2027-28,11323006,,CLUB 2027-28 Club Option
+oklahoma-city-thunder,2025-07-30,6/30/2027,Ajay Mitchell,guarantee,,2027-28,2850000,,GUARANTEED 2027-28 Guaranteed
+oklahoma-city-thunder,2025-07-30,7/1/2027,Dillon Jones,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+oklahoma-city-thunder,2025-07-30,7/1/2027,Nikola Topic,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+oklahoma-city-thunder,2025-07-30,7/6/2027,Ajay Mitchell,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+oklahoma-city-thunder,2025-07-30,7/7/2027,Aaron Wiggins,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+oklahoma-city-thunder,2025-07-30,10/31/2027,Thomas Sorber,option,club,2028-29,7849573,,CLUB 2028-29 Club Option
+oklahoma-city-thunder,2025-07-30,12/22/2027,Alex Caruso,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+oklahoma-city-thunder,2025-07-30,6/29/2028,Nikola Topic,qualifying_offer,,2028-29,11043743,,RFA / QO 2028-29 Qualifying Offer
+oklahoma-city-thunder,2025-07-30,6/29/2028,Dillon Jones,qualifying_offer,,2028-29,8196220,,RFA / QO 2028-29 Qualifying Offer
+oklahoma-city-thunder,2025-07-30,7/1/2028,Thomas Sorber,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+oklahoma-city-thunder,2025-07-30,7/9/2028,Chet Holmgren,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+oklahoma-city-thunder,2025-07-30,6/29/2029,Thomas Sorber,qualifying_offer,,2029-30,11758661,,RFA / QO 2029-30 Qualifying Offer
+orlando-magic,2025-08-02,10/31/2025,Anthony Black,option,club,2026-27,10106316,,CLUB 2026-27 Club Option
+orlando-magic,2025-08-02,10/31/2025,Jett Howard,option,club,2026-27,7337939,,CLUB 2026-27 Club Option
+orlando-magic,2025-08-02,10/31/2025,Tristan Da Silva,option,club,2026-27,3991200,,CLUB 2026-27 Club Option
+orlando-magic,2025-08-02,6/29/2026,Jamal Cain,qualifying_offer,,2026-27,2191885,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+orlando-magic,2025-08-02,6/29/2026,Paolo Banchero,qualifying_offer,,2026-27,19935200,,RFA / QO 2026-27 Qualifying Offer
+orlando-magic,2025-08-02,7/1/2026,Jett Howard,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+orlando-magic,2025-08-02,7/1/2026,Anthony Black,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+orlando-magic,2025-08-02,7/6/2026,Goga Bitadze,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+orlando-magic,2025-08-02,7/7/2026,Jonathan Isaac,guarantee,,2026-27,14500000,plays 52 games in 2025-26 or one day after the 2026 moratorium,GUARANTEED 2026-27 Guaranteed — plays 52 games in 2025-26 or one day after the 2026 moratorium
+orlando-magic,2025-08-02,10/31/2026,Jase Richardson,option,club,2027-28,3282000,,CLUB 2027-28 Club Option
+orlando-magic,2025-08-02,10/31/2026,Tristan Da Silva,option,club,2027-28,6138466,,CLUB 2027-28 Club Option
+orlando-magic,2025-08-02,6/29/2027,Anthony Black,qualifying_offer,,2027-28,14492458,,RFA / QO 2027-28 Qualifying Offer
+orlando-magic,2025-08-02,6/29/2027,Jett Howard,qualifying_offer,,2027-28,10779433,,RFA / QO 2027-28 Qualifying Offer
+orlando-magic,2025-08-02,7/1/2027,Tristan Da Silva,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+orlando-magic,2025-08-02,7/4/2027,Noah Penda,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+orlando-magic,2025-08-02,7/6/2027,Franz Wagner,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+orlando-magic,2025-08-02,7/6/2027,Jonathan Isaac,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+orlando-magic,2025-08-02,7/7/2027,Jonathan Isaac,guarantee,,2027-28,14500000,plays 52 games in 2026-27 or one day after the 2027 moratorium,GUARANTEED 2027-28 Guaranteed — plays 52 games in 2026-27 or one day after the 2027 moratorium
+orlando-magic,2025-08-02,10/1/2027,Jalen Suggs,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+orlando-magic,2025-08-02,10/7/2027,Wendell Carter Jr.,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+orlando-magic,2025-08-02,10/31/2027,Jase Richardson,option,club,2028-29,5910882,,CLUB 2028-29 Club Option
+orlando-magic,2025-08-02,6/29/2028,Wendell Carter Jr.,option,club,2028-29,20998320,,CLUB 2028-29 Club Option
+orlando-magic,2025-08-02,6/29/2028,Noah Penda,option,club,2028-29,,,CLUB 2028-29 Club Option
+orlando-magic,2025-08-02,6/29/2028,Tristan Da Silva,qualifying_offer,,2028-29,9324330,,RFA / QO 2028-29 Qualifying Offer
+orlando-magic,2025-08-02,7/1/2028,Jase Richardson,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+orlando-magic,2025-08-02,7/7/2028,Paolo Banchero,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+orlando-magic,2025-08-02,7/7/2028,Jonathan Isaac,guarantee,,2028-29,15000000,plays 52 games in 2027-28 or one day after the 2028 moratorium,GUARANTEED 2028-29 Guaranteed — plays 52 games in 2027-28 or one day after the 2028 moratorium
+orlando-magic,2025-08-02,7/9/2028,Noah Penda,guarantee,,2028-29,2735698,,GUARANTEED 2028-29 Guaranteed
+orlando-magic,2025-08-02,6/29/2029,Jase Richardson,qualifying_offer,,2029-30,9274175,,RFA / QO 2029-30 Qualifying Offer
+orlando-magic,2025-08-02,6/29/2030,Paolo Banchero,option,player,2030-31,54605760,,PLAYER 2030-31 Player Option
+philadelphia-76ers,2026-03-26,6/29/2026,Dominick Barlow,option,club,2026-27,3415000,,CLUB 2026-27 Club Option
+philadelphia-76ers,2026-03-26,6/29/2026,Dalen Terry,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+philadelphia-76ers,2026-03-26,6/29/2026,Tyrese Martin,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+philadelphia-76ers,2026-03-26,6/29/2026,Joel Embiid,option,player,2026-27,59024000,,PLAYER 2026-27 Player Option
+philadelphia-76ers,2026-03-26,7/6/2026,Paul George,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+philadelphia-76ers,2026-03-26,7/7/2026,Adem Bona,guarantee,,2026-27,2296271,TBD,GUARANTEED 2026-27 Guaranteed — TBD
+philadelphia-76ers,2026-03-26,7/21/2026,Adem Bona,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+philadelphia-76ers,2026-03-26,10/31/2026,VJ Edgecombe,option,club,2027-28,12219840,,CLUB 2027-28 Club Option
+philadelphia-76ers,2026-03-26,1/10/2027,Jabari Walker,guarantee,,2026-27,2584539,,GUARANTEED 2026-27 Guaranteed
+philadelphia-76ers,2026-03-26,6/29/2027,Justin Edwards,option,club,2027-28,2616754,,CLUB 2027-28 Club Option
+philadelphia-76ers,2026-03-26,6/29/2027,Adem Bona,option,club,2027-28,,,CLUB 2027-28 Club Option
+philadelphia-76ers,2026-03-26,7/1/2027,Johni Broome,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+philadelphia-76ers,2026-03-26,7/6/2027,Justin Edwards,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+philadelphia-76ers,2026-03-26,7/7/2027,Tyrese Maxey,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+philadelphia-76ers,2026-03-26,7/7/2027,Adem Bona,guarantee,,2027-28,2486995,TBD,GUARANTEED 2027-28 Guaranteed — TBD
+philadelphia-76ers,2026-03-26,9/20/2027,Joel Embiid,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+philadelphia-76ers,2026-03-26,10/31/2027,VJ Edgecombe,option,club,2028-29,15445878,,CLUB 2028-29 Club Option
+philadelphia-76ers,2026-03-26,1/10/2028,Johni Broome,guarantee,,2027-28,2525901,,GUARANTEED 2027-28 Guaranteed
+philadelphia-76ers,2026-03-26,6/29/2028,Johni Broome,option,club,2028-29,,,CLUB 2028-29 Club Option
+philadelphia-76ers,2026-03-26,6/29/2028,Joel Embiid,option,player,2028-29,66990000,,PLAYER 2028-29 Player Option
+philadelphia-76ers,2026-03-26,7/1/2028,VJ Edgecombe,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+philadelphia-76ers,2026-03-26,1/10/2029,Johni Broome,guarantee,,2028-29,2735698,,GUARANTEED 2028-29 Guaranteed
+phoenix-suns,2026-07-12,10/1/2026,Jalen Green,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+phoenix-suns,2026-07-12,10/18/2026,Pat Spencer,guarantee,,2026-27,,50%; first day of Regular Season,GUARANTEED 2026-27 Guaranteed — 50%; first day of Regular Season
+phoenix-suns,2026-07-12,10/18/2026,Koby Brea,guarantee,,2026-27,,50%; first day of Regular Season,GUARANTEED 2026-27 Guaranteed — 50%; first day of Regular Season
+phoenix-suns,2026-07-12,10/19/2026,Oso Ighodaro,guarantee,,2026-27,500000,guaranteed 6/1/26,GUARANTEED 2026-27 Guaranteed — guaranteed 6/1/26
+phoenix-suns,2026-07-12,10/31/2026,Ryan Dunn,option,club,2027-28,5025553,,CLUB 2027-28 Club Option
+phoenix-suns,2026-07-12,10/31/2026,Khaman Maluach,option,club,2027-28,6617160,,CLUB 2027-28 Club Option
+phoenix-suns,2026-07-12,1/10/2027,Oso Ighodaro,guarantee,,2026-27,2296271,guaranteed 6/1/26,GUARANTEED 2026-27 Guaranteed — guaranteed 6/1/26
+phoenix-suns,2026-07-12,1/10/2027,Jamaree Bouyea,guarantee,,2026-27,2584539,,GUARANTEED 2026-27 Guaranteed
+phoenix-suns,2026-07-12,1/10/2027,Haywood Highsmith,guarantee,,2026-27,3018158,,GUARANTEED 2026-27 Guaranteed
+phoenix-suns,2026-07-12,4/16/2027,Grayson Allen,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+phoenix-suns,2026-07-12,6/29/2027,Koby Brea,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+phoenix-suns,2026-07-12,6/29/2027,Jalen Green,option,player,2027-28,36000000,,PLAYER 2027-28 Player Option
+phoenix-suns,2026-07-12,6/29/2027,Oso Ighodaro,option,club,2027-28,,,CLUB 2027-28 Club Option
+phoenix-suns,2026-07-12,6/29/2027,Pat Spencer,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+phoenix-suns,2026-07-12,6/29/2027,CJ Huntley,qualifying_offer,,2027-28,,TBD - Two-Way,RFA / QO 2027-28 Qualifying Offer — TBD - Two-Way
+phoenix-suns,2026-07-12,6/29/2027,Grayson Allen,option,player,2027-28,19375000,,PLAYER 2027-28 Player Option
+phoenix-suns,2026-07-12,7/1/2027,Ryan Dunn,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+phoenix-suns,2026-07-12,7/7/2027,Rasheer Fleming,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+phoenix-suns,2026-07-12,10/18/2027,Oso Ighodaro,guarantee,,2027-28,2486995,,GUARANTEED 2027-28 Guaranteed
+phoenix-suns,2026-07-12,10/31/2027,Khaman Maluach,option,club,2028-29,8436880,,CLUB 2028-29 Club Option
+phoenix-suns,2026-07-12,6/28/2028,Rasheer Fleming,guarantee,,2028-29,2735698,,GUARANTEED 2028-29 Guaranteed
+phoenix-suns,2026-07-12,6/29/2028,Rasheer Fleming,option,club,2028-29,,,CLUB 2028-29 Club Option
+phoenix-suns,2026-07-12,6/29/2028,Ryan Dunn,qualifying_offer,,2028-29,7990630,,RFA / QO 2028-29 Qualifying Offer
+phoenix-suns,2026-07-12,6/29/2028,Jordan Goodwin,option,player,2028-29,6802469,,PLAYER 2028-29 Player Option
+phoenix-suns,2026-07-12,7/1/2028,Khaman Maluach,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+phoenix-suns,2026-07-12,7/7/2028,Collin Gillespie,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+phoenix-suns,2026-07-12,7/7/2028,Jordan Goodwin,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+phoenix-suns,2026-07-12,7/7/2028,Mark Williams,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+phoenix-suns,2026-07-12,6/29/2029,Khaman Maluach,qualifying_offer,,2029-30,12334718,,RFA / QO 2029-30 Qualifying Offer
+phoenix-suns,2026-07-12,6/29/2030,Devin Booker,option,player,2029-30,68763114,,PLAYER 2029-30 Player Option
+portland-trail-blazers,2025-07-22,8/1/2025,Duop Reath,guarantee,,2025-26,2221677,,GUARANTEED 2025-26 Guaranteed
+portland-trail-blazers,2025-07-22,10/31/2025,Scoot Henderson,option,club,2026-27,13585523,,CLUB 2026-27 Club Option
+portland-trail-blazers,2025-07-22,10/31/2025,Donovan Clingan,option,club,2026-27,7519920,,CLUB 2026-27 Club Option
+portland-trail-blazers,2025-07-22,10/31/2025,Kris Murray,option,club,2026-27,5315004,,CLUB 2026-27 Club Option
+portland-trail-blazers,2025-07-22,2/16/2026,Duop Reath,extension_eligible,,2025-26,,,EXTENSION ELIGIBLE 2025-26 Extension Eligible
+portland-trail-blazers,2025-07-22,6/29/2026,Caleb Love,qualifying_offer,,2026-27,2253346,,RFA / QO 2026-27 Qualifying Offer
+portland-trail-blazers,2025-07-22,6/29/2026,Sidy Cissoko,qualifying_offer,,2026-27,2253346,,RFA / QO 2026-27 Qualifying Offer
+portland-trail-blazers,2025-07-22,6/29/2026,Shaedon Sharpe,qualifying_offer,,2026-27,11264377,,RFA / QO 2026-27 Qualifying Offer
+portland-trail-blazers,2025-07-22,6/29/2026,Duop Reath,qualifying_offer,,2026-27,2999264,,RFA / QO 2026-27 Qualifying Offer
+portland-trail-blazers,2025-07-22,6/29/2026,Toumani Camara,option,club,2026-27,,non-guaranteed,CLUB 2026-27 Club Option — non-guaranteed
+portland-trail-blazers,2025-07-22,6/29/2026,Rayan Rupert,qualifying_offer,,2026-27,2999264,,RFA / QO 2026-27 Qualifying Offer
+portland-trail-blazers,2025-07-22,7/1/2026,Scoot Henderson,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+portland-trail-blazers,2025-07-22,7/9/2026,Jerami Grant,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+portland-trail-blazers,2025-07-22,7/20/2026,Toumani Camara,guarantee,,2026-27,2406205,,GUARANTEED 2026-27 Guaranteed
+portland-trail-blazers,2025-07-22,10/1/2026,Deni Avdija,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+portland-trail-blazers,2025-07-22,10/1/2026,Deni Avdija,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+portland-trail-blazers,2025-07-22,10/31/2026,Hansen Yang,option,club,2027-28,4864920,,CLUB 2027-28 Club Option
+portland-trail-blazers,2025-07-22,10/31/2026,Donovan Clingan,option,club,2027-28,9550298,,CLUB 2027-28 Club Option
+portland-trail-blazers,2025-07-22,4/11/2027,Jrue Holiday,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+portland-trail-blazers,2025-07-22,6/29/2027,Damian Lillard,option,player,2027-28,14104000,,PLAYER 2027-28 Player Option
+portland-trail-blazers,2025-07-22,6/29/2027,Jrue Holiday,option,player,2027-28,37200000,,PLAYER 2027-28 Player Option
+portland-trail-blazers,2025-07-22,6/29/2027,Jerami Grant,option,player,2027-28,36413790,,PLAYER 2027-28 Player Option
+portland-trail-blazers,2025-07-22,6/29/2027,Kris Murray,qualifying_offer,,2027-28,8264832,,RFA / QO 2027-28 Qualifying Offer
+portland-trail-blazers,2025-07-22,6/29/2027,Scoot Henderson,qualifying_offer,,2027-28,19182759,,RFA / QO 2027-28 Qualifying Offer
+portland-trail-blazers,2025-07-22,7/1/2027,Donovan Clingan,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+portland-trail-blazers,2025-07-22,10/31/2027,Hansen Yang,option,club,2028-29,7462788,,CLUB 2028-29 Club Option
+portland-trail-blazers,2025-07-22,6/29/2028,Donovan Clingan,option,club,2028-29,13761980,,CLUB 2028-29 Club Option
+portland-trail-blazers,2025-07-22,7/1/2028,Hansen Yang,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+portland-trail-blazers,2025-07-22,6/29/2029,Hansen Yang,qualifying_offer,,2029-30,11231496,,RFA / QO 2029-30 Qualifying Offer
+sacramento-kings,2026-03-11,3/15/2026,Killian Hayes,other,,2025-26,,10-day expired (2nd),2025-26 — 10-day expired (2nd)
+sacramento-kings,2026-03-11,6/29/2026,Keegan Murray,qualifying_offer,,2026-27,14699059,,RFA / QO 2026-27 Qualifying Offer
+sacramento-kings,2026-03-11,6/29/2026,Patrick Baldwin Jr.,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+sacramento-kings,2026-03-11,6/29/2026,Daeqwon Plowden,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+sacramento-kings,2026-03-11,6/29/2026,Isaiah Stevens,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+sacramento-kings,2026-03-11,6/29/2026,Zach LaVine,option,player,2026-27,48967380,,PLAYER 2026-27 Player Option
+sacramento-kings,2026-03-11,7/6/2026,Malik Monk,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+sacramento-kings,2026-03-11,7/6/2026,Domantas Sabonis,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+sacramento-kings,2026-03-11,7/8/2026,DeMar DeRozan,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+sacramento-kings,2026-03-11,10/31/2026,Nique Clifford,option,club,2027-28,3418800,,CLUB 2027-28 Club Option
+sacramento-kings,2026-03-11,10/31/2026,Devin Carter,option,club,2027-28,7370897,,CLUB 2027-28 Club Option
+sacramento-kings,2026-03-11,1/10/2027,DeMar DeRozan,guarantee,,2026-27,25740000,,GUARANTEED 2026-27 Guaranteed
+sacramento-kings,2026-03-11,6/29/2027,Malik Monk,option,player,2027-28,21582451,,PLAYER 2027-28 Player Option
+sacramento-kings,2026-03-11,6/29/2027,Maxime Raynaud,option,club,2027-28,,non-guaranteed,CLUB 2027-28 Club Option — non-guaranteed
+sacramento-kings,2026-03-11,7/1/2027,Devin Carter,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+sacramento-kings,2026-03-11,7/2/2027,Maxime Raynaud,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+sacramento-kings,2026-03-11,10/31/2027,Nique Clifford,option,club,2028-29,5979481,,CLUB 2028-29 Club Option
+sacramento-kings,2026-03-11,1/10/2028,Maxime Raynaud,guarantee,,2027-28,2525901,,GUARANTEED 2027-28 Guaranteed
+sacramento-kings,2026-03-11,1/10/2028,Dylan Cardwell,guarantee,,2027-28,2525901,,GUARANTEED 2027-28 Guaranteed
+sacramento-kings,2026-03-11,6/29/2028,Devin Carter,other,,2028-29,10931040,,2028-29
+sacramento-kings,2026-03-11,6/29/2028,Dylan Cardwell,option,club,2028-29,,,CLUB 2028-29 Club Option
+sacramento-kings,2026-03-11,6/29/2028,Maxime Raynaud,qualifying_offer,,2028-29,3409966,,RFA / QO 2028-29 Qualifying Offer
+sacramento-kings,2026-03-11,7/1/2028,Nique Clifford,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+sacramento-kings,2026-03-11,1/10/2029,Dylan Cardwell,guarantee,,2028-29,2735698,,GUARANTEED 2028-29 Guaranteed
+sacramento-kings,2026-03-11,6/29/2029,Nique Clifford,qualifying_offer,,2029-30,9339950,,RFA / QO 2029-30 Qualifying Offer
+san-antonio-spurs,2025-10-17,10/31/2025,Victor Wembanyama,option,club,2026-27,16868246,,CLUB 2026-27 Club Option
+san-antonio-spurs,2025-10-17,10/31/2025,Stephon Castle,option,club,2026-27,10015920,,CLUB 2026-27 Club Option
+san-antonio-spurs,2025-10-17,1/10/2026,Bismack Biyombo,guarantee,,2026-27,3634153,,GUARANTEED 2026-27 Guaranteed
+san-antonio-spurs,2025-10-17,1/10/2026,Stanley Umude,guarantee,,2025-26,2378870,,GUARANTEED 2025-26 Guaranteed
+san-antonio-spurs,2025-10-17,1/10/2026,Adam Flagler,guarantee,,2025-26,2296274,,GUARANTEED 2025-26 Guaranteed
+san-antonio-spurs,2025-10-17,1/10/2026,Micah Potter,guarantee,,2025-26,2461463,,GUARANTEED 2025-26 Guaranteed
+san-antonio-spurs,2025-10-17,1/10/2026,Lindy Waters III,guarantee,,2025-26,2461463,,GUARANTEED 2025-26 Guaranteed
+san-antonio-spurs,2025-10-17,6/29/2026,Adam Flagler,qualifying_offer,,2026-27,,,RFA / QO 2026-27 Qualifying Offer
+san-antonio-spurs,2025-10-17,6/29/2026,Riley Minix,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+san-antonio-spurs,2025-10-17,6/29/2026,Harrison Ingram,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+san-antonio-spurs,2025-10-17,6/29/2026,David Jones-Garcia,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+san-antonio-spurs,2025-10-17,6/29/2026,Jeremy Sochan,qualifying_offer,,2026-27,9615393,,RFA / QO 2026-27 Qualifying Offer
+san-antonio-spurs,2025-10-17,6/29/2026,Julian Champagnie,option,club,2026-27,,non-guaranteed,CLUB 2026-27 Club Option — non-guaranteed
+san-antonio-spurs,2025-10-17,7/1/2026,Victor Wembanyama,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+san-antonio-spurs,2025-10-17,8/1/2026,Julian Champagnie,guarantee,,2026-27,3000000,,GUARANTEED 2026-27 Guaranteed
+san-antonio-spurs,2025-10-17,10/1/2026,Devin Vassell,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+san-antonio-spurs,2025-10-17,10/31/2026,Dylan Harper,option,club,2027-28,13607760,,CLUB 2027-28 Club Option
+san-antonio-spurs,2025-10-17,10/31/2026,Stephon Castle,option,club,2027-28,12670139,,CLUB 2027-28 Club Option
+san-antonio-spurs,2025-10-17,10/31/2026,Carter Bryant,option,club,2027-28,5390640,,CLUB 2027-28 Club Option
+san-antonio-spurs,2025-10-17,6/29/2027,Victor Wembanyama,qualifying_offer,,2027-28,23615545,,RFA / QO 2027-28 Qualifying Offer
+san-antonio-spurs,2025-10-17,6/30/2027,Luke Kornet,guarantee,,2027-28,9900000,,GUARANTEED 2027-28 Guaranteed
+san-antonio-spurs,2025-10-17,7/1/2027,Stephon Castle,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+san-antonio-spurs,2025-10-17,7/7/2027,Luke Kornet,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+san-antonio-spurs,2025-10-17,10/31/2027,Dylan Harper,option,club,2028-29,17172994,,CLUB 2028-29 Club Option
+san-antonio-spurs,2025-10-17,10/31/2027,Carter Bryant,option,club,2028-29,7983539,,CLUB 2028-29 Club Option
+san-antonio-spurs,2025-10-17,6/29/2028,Luke Kornet,option,club,2028-29,,,CLUB 2028-29 Club Option
+san-antonio-spurs,2025-10-17,6/29/2028,Stephon Castle,qualifying_offer,,2028-29,17978928,,RFA / QO 2028-29 Qualifying Offer
+san-antonio-spurs,2025-10-17,6/30/2028,Luke Kornet,guarantee,,2028-29,9350000,,GUARANTEED 2028-29 Guaranteed
+san-antonio-spurs,2025-10-17,7/1/2028,Dylan Harper,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+san-antonio-spurs,2025-10-17,7/1/2028,Carter Bryant,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+san-antonio-spurs,2025-10-17,6/29/2029,Carter Bryant,qualifying_offer,,2029-30,11903456,,RFA / QO 2029-30 Qualifying Offer
+san-antonio-spurs,2025-10-17,6/29/2029,Dylan Harper,qualifying_offer,,2029-30,24128057,,RFA / QO 2029-30 Qualifying Offer
+toronto-raptors,2025-11-25,6/29/2026,A.J. Lawson,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+toronto-raptors,2025-11-25,6/29/2026,Sandro Mamukelashvili,option,player,2026-27,2801346,,PLAYER 2026-27 Player Option
+toronto-raptors,2025-11-25,6/29/2026,Alijah Martin,qualifying_offer,,2026-27,,,RFA / QO 2026-27 Qualifying Offer
+toronto-raptors,2025-11-25,6/29/2026,Ochai Agbaji,qualifying_offer,,2026-27,8879483,,RFA / QO 2026-27 Qualifying Offer
+toronto-raptors,2025-11-25,6/29/2026,Jakob Poeltl,option,player,2026-27,19500000,exercised 7/1/25 as part of extension,PLAYER 2026-27 Player Option — exercised 7/1/25 as part of extension
+toronto-raptors,2025-11-25,6/29/2026,Jonathan Mogbo,option,club,2026-27,2296271,,CLUB 2026-27 Club Option
+toronto-raptors,2025-11-25,6/29/2026,Jamal Shead,option,club,2026-27,2296271,,CLUB 2026-27 Club Option
+toronto-raptors,2025-11-25,6/30/2026,Jamison Battle,guarantee,,2026-27,2296271,,GUARANTEED 2026-27 Guaranteed
+toronto-raptors,2025-11-25,7/1/2026,Gradey Dick,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+toronto-raptors,2025-11-25,7/4/2026,Jamal Shead,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+toronto-raptors,2025-11-25,7/4/2026,Jonathan Mogbo,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+toronto-raptors,2025-11-25,10/31/2026,Collin Murray-Boyles,option,club,2027-28,6966000,,CLUB 2027-28 Club Option
+toronto-raptors,2025-11-25,10/31/2026,Ja'Kobe Walter,option,club,2027-28,5870172,,CLUB 2027-28 Club Option
+toronto-raptors,2025-11-25,6/29/2027,Brandon Ingram,option,player,2027-28,41904762,,PLAYER 2027-28 Player Option
+toronto-raptors,2025-11-25,6/29/2027,Gradey Dick,qualifying_offer,,2027-28,10576031,,RFA / QO 2027-28 Qualifying Offer
+toronto-raptors,2025-11-25,6/29/2027,Jonathan Mogbo,qualifying_offer,,2027-28,3099966,,RFA / QO 2027-28 Qualifying Offer
+toronto-raptors,2025-11-25,6/29/2027,Jamison Battle,qualifying_offer,,2027-28,3134745,,RFA / QO 2027-28 Qualifying Offer
+toronto-raptors,2025-11-25,6/29/2027,Jamal Shead,qualifying_offer,,2027-28,2296271,,RFA / QO 2027-28 Qualifying Offer
+toronto-raptors,2025-11-25,7/1/2027,Jakob Poeltl,guarantee,,2027-28,,"(i) increase by $5,000,000 per season for each season player plays at least 1,400 minutes (starting with the 2026-27 Season); and (ii) increase by $2,433,333 per season for each season player plays at least 1,400 minutes and team makes the playoffs (starting with the 2026-27 Season)","GUARANTEED 2027-28 Guaranteed — (i) increase by $5,000,000 per season for each season player plays at least 1,400 minutes (starting with the 2026-27 Season); and (ii) increase by $2,433,333 per season for each season player plays at least 1,400 minutes and team makes the playoffs (starting with the 2026-27 Season)"
+toronto-raptors,2025-11-25,7/1/2027,Ja'Kobe Walter,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+toronto-raptors,2025-11-25,7/8/2027,Immanuel Quickley,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+toronto-raptors,2025-11-25,7/8/2027,Scottie Barnes,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+toronto-raptors,2025-11-25,10/31/2027,Collin Murray-Boyles,option,club,2028-29,8874684,,CLUB 2028-29 Club Option
+toronto-raptors,2025-11-25,6/29/2028,Ja'Kobe Walter,qualifying_offer,,2028-29,8957884,,RFA / QO 2028-29 Qualifying Offer
+toronto-raptors,2025-11-25,7/1/2028,Jakob Poeltl,guarantee,,2028-29,,"(i) increase by $5,000,000 per season for each season player plays at least 1,400 minutes (starting with the 2026-27 Season); and (ii) increase by $2,433,333 per season for each season player plays at least 1,400 minutes and team makes the playoffs (starting with the 2026-27 Season)","GUARANTEED 2028-29 Guaranteed — (i) increase by $5,000,000 per season for each season player plays at least 1,400 minutes (starting with the 2026-27 Season); and (ii) increase by $2,433,333 per season for each season player plays at least 1,400 minutes and team makes the playoffs (starting with the 2026-27 Season)"
+toronto-raptors,2025-11-25,7/10/2028,Collin Murray-Boyles,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+toronto-raptors,2025-11-25,6/29/2029,Collin Murray-Boyles,qualifying_offer,,2029-30,12982080,,RFA / QO 2029-30 Qualifying Offer
+toronto-raptors,2025-11-25,7/1/2029,Jakob Poeltl,guarantee,,2029-30,,"(i) increase by $5,000,000 per season for each season player plays at least 1,400 minutes (starting with the 2026-27 Season); and (ii) increase by $2,433,333 per season for each season player plays at least 1,400 minutes and team makes the playoffs (starting with the 2026-27 Season)","GUARANTEED 2029-30 Guaranteed — (i) increase by $5,000,000 per season for each season player plays at least 1,400 minutes (starting with the 2026-27 Season); and (ii) increase by $2,433,333 per season for each season player plays at least 1,400 minutes and team makes the playoffs (starting with the 2026-27 Season)"
+utah-jazz,2026-02-11,6/29/2026,Walker Kessler,qualifying_offer,,2026-27,7064702,,RFA / QO 2026-27 Qualifying Offer
+utah-jazz,2026-02-11,6/29/2026,Oscar Tshiebwe,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+utah-jazz,2026-02-11,6/29/2026,Vincent Williams Jr.,option,club,2026-27,2489752,,CLUB 2026-27 Club Option
+utah-jazz,2026-02-11,6/29/2026,Sviatoslav Mykhailiuk,option,club,2027-28,,non-guaranteed,CLUB 2027-28 Club Option — non-guaranteed
+utah-jazz,2026-02-11,6/30/2026,Sviatoslav Mykhailiuk,guarantee,,2026-27,3850000,,GUARANTEED 2026-27 Guaranteed
+utah-jazz,2026-02-11,6/30/2026,Kyle Filipowski,guarantee,,2026-27,3000000,,GUARANTEED 2026-27 Guaranteed
+utah-jazz,2026-02-11,7/1/2026,Keyonte George,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+utah-jazz,2026-02-11,7/1/2026,Brice Sensabaugh,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+utah-jazz,2026-02-11,8/11/2026,Sviatoslav Mykhailiuk,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+utah-jazz,2026-02-11,8/12/2026,Kyle Filipowski,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+utah-jazz,2026-02-11,10/31/2026,Ace Bailey,option,club,2027-28,9976560,,CLUB 2027-28 Club Option
+utah-jazz,2026-02-11,10/31/2026,Isaiah Collier,option,club,2027-28,4988948,,CLUB 2027-28 Club Option
+utah-jazz,2026-02-11,10/31/2026,Cody Williams,option,club,2027-28,7669890,,CLUB 2027-28 Club Option
+utah-jazz,2026-02-11,6/29/2027,Blake Hinson,qualifying_offer,,2027-28,,,RFA / QO 2027-28 Qualifying Offer
+utah-jazz,2026-02-11,6/29/2027,Kyle Filipowski,option,club,2027-28,,,CLUB 2027-28 Club Option
+utah-jazz,2026-02-11,6/29/2027,Isaiah Collier,qualifying_offer,,2028-29,7982318,,RFA / QO 2028-29 Qualifying Offer
+utah-jazz,2026-02-11,6/29/2027,Brice Sensabaugh,qualifying_offer,,2027-28,7730957,,RFA / QO 2027-28 Qualifying Offer
+utah-jazz,2026-02-11,6/29/2027,Keyonte George,qualifying_offer,,2027-28,9878708,,RFA / QO 2027-28 Qualifying Offer
+utah-jazz,2026-02-11,6/30/2027,Kyle Filipowski,guarantee,,2027-28,3000000,,GUARANTEED 2027-28 Guaranteed
+utah-jazz,2026-02-11,6/30/2027,Sviatoslav Mykhailiuk,guarantee,,2027-28,4025000,,GUARANTEED 2027-28 Guaranteed
+utah-jazz,2026-02-11,7/1/2027,Isaiah Collier,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+utah-jazz,2026-02-11,7/1/2027,Cody Williams,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+utah-jazz,2026-02-11,8/7/2027,Lauri Markkanen,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+utah-jazz,2026-02-11,8/7/2027,Lauri Markkanen,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+utah-jazz,2026-02-11,10/31/2027,Ace Bailey,option,club,2028-29,12640302,,CLUB 2028-29 Club Option
+utah-jazz,2026-02-11,7/1/2028,Ace Bailey,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+utah-jazz,2026-02-11,6/29/2029,Ace Bailey,qualifying_offer,,2029-30,18025072,,RFA / QO 2029-30 Qualifying Offer
+washington-wizards,2025-10-15,10/31/2025,Bilal Coulibaly,option,club,2026-27,9240012,,CLUB 2026-27 Club Option
+washington-wizards,2025-10-15,10/31/2025,Cam Whitmore,option,club,2026-27,5458310,,CLUB 2026-27 Club Option
+washington-wizards,2025-10-15,10/31/2025,AJ Johnson,option,club,2026-27,3237120,,CLUB 2026-27 Club Option
+washington-wizards,2025-10-15,10/31/2025,Alex Sarr,option,club,2026-27,12370680,,CLUB 2026-27 Club Option
+washington-wizards,2025-10-15,10/31/2025,Kyshawn George,option,club,2026-27,3108000,,CLUB 2026-27 Club Option
+washington-wizards,2025-10-15,10/31/2025,Bub Carrington,option,club,2026-27,4900560,,CLUB 2026-27 Club Option
+washington-wizards,2025-10-15,6/29/2026,Malaki Branham,qualifying_offer,,2026-27,7110593,,RFA / QO 2026-27 Qualifying Offer
+washington-wizards,2025-10-15,6/29/2026,Alondes Williams,qualifying_offer,,2026-27,,,RFA / QO 2026-27 Qualifying Offer
+washington-wizards,2025-10-15,6/29/2026,Leaky Black,qualifying_offer,,2026-27,,,RFA / QO 2026-27 Qualifying Offer
+washington-wizards,2025-10-15,6/29/2026,Sharife Cooper,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+washington-wizards,2025-10-15,6/29/2026,Tristan Vukcevic,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+washington-wizards,2025-10-15,6/29/2026,Jamir Watkins,qualifying_offer,,2026-27,,Two-Way,RFA / QO 2026-27 Qualifying Offer — Two-Way
+washington-wizards,2025-10-15,7/1/2026,Cam Whitmore,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+washington-wizards,2025-10-15,7/1/2026,Bilal Coulibaly,extension_eligible,,2026-27,,,EXTENSION ELIGIBLE 2026-27 Extension Eligible
+washington-wizards,2025-10-15,10/31/2026,Tre Johnson,option,club,2027-28,9061680,,CLUB 2027-28 Club Option
+washington-wizards,2025-10-15,10/31/2026,AJ Johnson,option,club,2027-28,5493394,,CLUB 2027-28 Club Option
+washington-wizards,2025-10-15,10/31/2026,Alex Sarr,option,club,2027-28,15611798,,CLUB 2027-28 Club Option
+washington-wizards,2025-10-15,10/31/2026,Will Riley,option,club,2027-28,3864000,,CLUB 2027-28 Club Option
+washington-wizards,2025-10-15,10/31/2026,Kyshawn George,option,club,2027-28,5435892,,CLUB 2027-28 Club Option
+washington-wizards,2025-10-15,10/31/2026,Bub Carrington,option,club,2027-28,7257730,,CLUB 2027-28 Club Option
+washington-wizards,2025-10-15,1/10/2027,Justin Champagnie,guarantee,,2026-27,2667944,,GUARANTEED 2026-27 Guaranteed
+washington-wizards,2025-10-15,6/29/2027,Bilal Coulibaly,qualifying_offer,,2027-28,13314858,,RFA / QO 2027-28 Qualifying Offer
+washington-wizards,2025-10-15,6/29/2027,Cam Whitmore,qualifying_offer,,2027-28,8367590,,RFA / QO 2027-28 Qualifying Offer
+washington-wizards,2025-10-15,6/29/2027,Justin Champagnie,option,club,2027-28,,non-guaranteed,CLUB 2027-28 Club Option — non-guaranteed
+washington-wizards,2025-10-15,6/29/2027,Bub Carrington,qualifying_offer,,2028-29,10821276,,RFA / QO 2028-29 Qualifying Offer
+washington-wizards,2025-10-15,7/1/2027,Alex Sarr,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+washington-wizards,2025-10-15,7/1/2027,AJ Johnson,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+washington-wizards,2025-10-15,7/1/2027,Bub Carrington,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+washington-wizards,2025-10-15,7/1/2027,Kyshawn George,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+washington-wizards,2025-10-15,10/1/2027,Corey Kispert,extension_eligible,,2027-28,,,EXTENSION ELIGIBLE 2027-28 Extension Eligible
+washington-wizards,2025-10-15,10/31/2027,Will Riley,option,club,2028-29,6155352,,CLUB 2028-29 Club Option
+washington-wizards,2025-10-15,10/31/2027,Tre Johnson,option,club,2028-29,11490211,,CLUB 2028-29 Club Option
+washington-wizards,2025-10-15,1/10/2028,Justin Champagnie,guarantee,,2027-28,3005085,,GUARANTEED 2027-28 Guaranteed
+washington-wizards,2025-10-15,6/29/2028,AJ Johnson,qualifying_offer,,2028-29,8542228,,RFA / QO 2028-29 Qualifying Offer
+washington-wizards,2025-10-15,6/29/2028,Kyshawn George,qualifying_offer,,2028-29,8490864,,RFA / QO 2028-29 Qualifying Offer
+washington-wizards,2025-10-15,6/29/2028,Alex Sarr,other,,2028-29,21934577,,2028-29
+washington-wizards,2025-10-15,6/29/2028,Corey Kispert,option,club,2028-29,13025000,,CLUB 2028-29 Club Option
+washington-wizards,2025-10-15,7/1/2028,Tre Johnson,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+washington-wizards,2025-10-15,7/1/2028,Will Riley,extension_eligible,,2028-29,,,EXTENSION ELIGIBLE 2028-29 Extension Eligible
+washington-wizards,2025-10-15,6/29/2029,Tre Johnson,qualifying_offer,,2029-30,16476964,,RFA / QO 2029-30 Qualifying Offer
+washington-wizards,2025-10-15,6/29/2029,Will Riley,qualifying_offer,,2029-30,9485398,,RFA / QO 2029-30 Qualifying Offer

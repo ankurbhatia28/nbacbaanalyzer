@@ -1,0 +1,19 @@
+{
+  "scraped_at": "2026-09-23T21:23:43.696229+00:00",
+  "source": "basketball-reference.com/contracts/",
+  "crawl_delay_s": 3.0,
+  "teams_requested": 30,
+  "teams_ok": 30,
+  "failures": [],
+  "rows": {
+    "contracts": 1124,
+    "contract_totals": 564,
+    "contract_notes": 567
+  },
+  "not_covered": [
+    "guarantee dates",
+    "partial guarantee amounts",
+    "trade kickers",
+    "incentives (likely/unlikely)"
+  ]
+}

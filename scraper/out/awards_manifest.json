@@ -1,0 +1,16 @@
+{
+  "scraped_at": "2026-09-25T06:38:48.201907+00:00",
+  "source": "basketball-reference.com/awards/",
+  "crawl_delay_s": 3.0,
+  "from_season": 2020,
+  "awards_collected": [
+    "All-NBA (1st/2nd/3rd)",
+    "DPOY",
+    "MVP"
+  ],
+  "deliberately_excluded": [
+    "All-Star -- not part of Higher Max Criteria (CBA Art. II sec. 7)"
+  ],
+  "cba_basis": "Higher Max Criteria, Article II, Section 7, pp. 60-61",
+  "row_count": 102
+}

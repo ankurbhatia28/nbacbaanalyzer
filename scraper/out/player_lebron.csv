@@ -1,0 +1,430 @@
+id,offensiveType,position,singleYearLEBRON,tier,_source_team_ids
+3887dba0-c114-4eff-9b8a-870f84c51a54,Off Screen Shooter,SF,-3.37,,1
+2e8bff66-58a7-44ec-aff0-87fe1178871c,Primary Ball Handler,PG,-1.1,,1
+851da45b-6a0d-400f-8dc8-a25474fd9796,Shot Creator,PF,0.18,,1
+7734cf7c-f8e9-4473-bf71-de8561e35791,Primary Ball Handler,SG,-0.69,,1
+4fdaafc2-3435-4865-9f19-07c5a982f6a8,,,0,,1
+841b6870-7dbf-4af6-b7ba-3f59a478d5d0,Secondary Ball Handler,PG,0.61,,1
+89f2529c-bcfa-4d74-9734-ba78655e61d8,Roll + Cut Big,C,1.63,,1
+b6c51a5a-e652-4a54-9966-124510eb9309,Low Minute,PG,-0.37,,1
+335d1348-5913-4865-9466-96ae4428d731,Stationary Shooter,PF,2.34,,1
+0a22c762-a3e8-4466-9fcc-88771810a11a,,,0,,1
+74db8509-6519-49ee-9494-4dbdefc67dd5,Roll + Cut Big,C,-1.73,,1
+d53e3b00-8326-4e7c-9378-2c503c90783a,Athletic Finisher,SF,1.23,,1
+fe4a156c-f292-4dc9-862f-1d1dbfb892dd,Primary Ball Handler,SG,2.02,,1
+c148f5fa-c73f-4f34-afd4-11215f063c66,Movement Shooter,SG,0.28,,1
+bf9a7fda-8e3e-459a-a3cc-9056c46083f1,Movement Shooter,SF,-2.38,,1
+851e2af6-7e0f-4d9c-999f-f19a361cb81c,Off Screen Shooter,SG,-0.28,,1
+f4939b43-6497-4a00-8010-cf56835519a0,Movement Shooter,PF,0.61,,2
+c678552d-da6b-46c5-ae34-f5d332aa1a9d,Roll + Cut Big,C,0.23,,2
+2da11b8f-a2c5-4bfd-9e91-3c41706f1c77,Primary Ball Handler,PG,2.48,,2
+27b9fedb-9024-4881-a3c8-fac4bf707612,Shot Creator,PF,4.33,,2
+e64003f4-028c-4937-9898-b5c92d0865e9,,,0,,2
+5a2f6b49-1780-4e63-b476-e96bfa7f0f37,Roll + Cut Big,C,-0.39,,2
+dbf8ca6b-ba5f-4074-bf31-c8a43e85441d,Stretch Big,C,-1.36,,2
+dd5d31d9-8fba-482f-a7a9-3327224d32f5,,,0,,2
+27356880-f5e3-4377-9ea0-f4cb13c4fe59,Shot Creator,PF,0.7,,2
+fa044d54-f2d4-482c-9e79-fde6fe691214,Movement Shooter,SG,-0.89,,2
+79f49889-d775-4c88-aa87-e18e3bb78a19,Low Minute,SF,-0.28,,2
+5d20ce74-1cf6-4736-b4ac-2a2f8420c63d,Primary Ball Handler,PG,1.1,,2
+646e7d15-6953-437b-94ad-825a7e60ec8f,Stationary Shooter,PF,-2.53,,2
+e1c8aa25-6c13-4200-86f6-942652b6f8f2,Primary Ball Handler,SG,1.85,,2
+250f45f0-bfb8-4360-87a3-7e933c445930,,,0,,3
+d999aaf0-2e09-4a93-9986-e272fed18ed9,Movement Shooter,PF,-2.02,,3
+f07c83b9-e2b1-4c78-a880-06a846abd217,,,0,,3
+44a1dedb-c92e-49b1-a75d-03e84f3f3560,,,0,,3
+ee947a8e-b8f8-4c9e-a6df-0393d6399eb7,Movement Shooter,SG,-1.55,,3
+b9bd79f4-5112-4478-aec5-b44f037ba1eb,Roll + Cut Big,C,1.39,,3
+256cff32-8353-4233-8134-f9d930b2f407,Movement Shooter,SF,-1.08,,3
+7f522ce0-911a-448b-abf4-8bab9918b67d,Movement Shooter,SF,-0.01,,3
+1c0a46ad-8db5-48ca-9ad5-c23f8f12c398,Shot Creator,PF,-0.72,,3
+259de157-29a4-4a95-86c2-05df23a16284,,,0,,3
+edc02c71-f27d-4bd5-9f47-7585a2f0d655,Movement Shooter,SG,1.34,,3
+e4373e58-9dc9-4724-9a1b-5094b4ef04c5,,,0,,3
+201af997-f840-41e4-a8a4-5bcb11257e47,,,0,,3
+4c13fa82-ebc4-400c-96a5-b0e48fd96d6a,Movement Shooter,SG,-0.35,,4
+d77c1426-af61-4b1f-a16c-12055f49f02b,Movement Shooter,PF,-3.32,,4
+2a31dd8c-e027-458e-98fd-9fe75f7c32e4,Primary Ball Handler,SG,0.12,,4
+5cfff337-4211-4660-8e2f-6ea9eb6bd88b,Stationary Shooter,PF,-1.11,,4
+05d20870-fb2e-47b1-a577-712e3dd342ab,Movement Shooter,SG,-1.06,,4
+55f95730-3402-4001-a08c-be43867a8ea1,,,0,,4
+2feaa084-5398-4b0a-899a-a4322ade1851,,,0,,4
+96eb8024-3f4c-45d6-942e-e405645db557,Roll + Cut Big,C,0.82,,4
+8af4a0f1-822a-4afa-978c-f40c08b7fff1,Primary Ball Handler,SF,-0.13,,4
+715d8f69-7306-4793-b53a-b08669ca19c0,Shot Creator,PG,-2.03,,4
+8176319b-f991-4f2f-8e75-86439c396219,Stationary Shooter,PF,-1.08,,4
+7b9dcbbf-b206-42a7-8dc6-f80d6dbdd7b8,,,0,,4
+70372ebc-08b4-4ef8-9fb2-2f68a101fb26,Stationary Shooter,SF,0.67,,4
+b3a6ac6c-503c-4cf9-99e5-75adcbddf6a8,,,0,,4
+bd6b2d19-cce9-4368-8500-69280ed28335,Movement Shooter,C,1.12,,4
+bbd772a3-8d32-4901-b013-d194dfe54a3d,Low Minute,C,-1.07,,4
+1b361644-1767-499b-a639-953e24fc8e93,,,0,,4
+24c14de0-aa0e-4a5a-b812-daf679dac105,Secondary Ball Handler,SG,1.19,,5
+4b3f5837-1c49-4fc7-b30c-63506a8346b9,Stretch Big,PF,1.2,,5
+159e4dee-0e6e-4c5c-8255-33d2d5fd4efa,Movement Shooter,SF,-1.47,,5
+d459f214-07ac-450a-9b0b-2c3dc3c88cb5,Stationary Shooter,PF,-1.68,,5
+bacbd276-44c3-43dc-8e8d-c83c3e5e93f1,Roll + Cut Big,C,-1.01,,5
+4012678a-a523-4a30-a951-1e13b0269521,,,0,,5
+52cba2ea-7409-4825-bdd3-969a68437066,Secondary Ball Handler,PG,-2.77,,5
+d0155f2e-6ba4-4559-b5b9-09eeb1593442,Stationary Shooter,SG,-0.24,,5
+b4b46eaf-1282-4b82-9458-dbe3fd94741d,Stretch Big,C,0.77,,5
+f1d793b6-4fb3-4bb4-868b-c25bd1e5af1b,Primary Ball Handler,PG,-0.03,,5
+620a9742-05b1-4e22-9d02-dd07d5121c16,Low Minute,SF,-0.81,,5
+42061ed1-adde-4549-aec0-2875cf798874,Primary Ball Handler,PG,0.83,,5
+94f7dced-0da1-48ae-a7ac-b4c5529828e6,,,0,,6
+8fe61347-346a-44ab-a715-fac1fbf03951,Shot Creator,SG,4.04,,6
+1f20b370-a468-4de2-893a-c2a482a982f6,Stretch Big,C,-0.62,,6
+a90387d0-9529-4358-9351-4d12f9f9f692,Low Minute,SF,-0.57,,6
+e163b9f7-f885-4a55-b47c-0b3085f68e4a,Secondary Ball Handler,PG,-2.67,,6
+dcbe20d2-9909-4db1-a8a0-3a4bec7526b4,,,0,,6
+26c70ebe-f65d-40b4-8763-aa92cc73277e,Movement Shooter,SG,0.63,,6
+fb18fc85-f026-4d47-86de-b67372b7a783,Shot Creator,PF,3.08,,6
+92662f8a-e66e-40be-a1cc-eff077c3aa30,Primary Ball Handler,PG,0.64,,6
+4d4b648a-ff39-45be-a837-94e5ceaf6164,Movement Shooter,SF,-0.54,,6
+9989aa44-7964-43d9-9f0c-8ba01435b36a,Roll + Cut Big,C,3.39,,6
+f92c03ad-58fe-4cdb-b0c1-c304fbe4f64c,Shot Creator,PG,3.48,,6
+d565f9dd-cebf-4d53-b568-589de2be207f,Low Minute,PF,-1.12,,6
+b583b7b1-974d-406a-a5c2-9d38ee37ea3d,Movement Shooter,SG,-2.8,,6
+211c5f55-bfb6-4935-95de-2aa74734fea5,Roll + Cut Big,C,1.86,,7
+fd3394d7-c2ee-4b10-8677-024b96f2d601,Stretch Big,PF,-0.64,,7
+b19ee947-c7db-44c7-8db5-76bdbe610f89,Roll + Cut Big,C,1.56,,7
+63d8b530-bf43-497f-ba34-ab8bb7c7a144,Shot Creator,PF,0.05,,7
+bf9da89f-9b45-4a24-8c65-28bb0243e9b7,Stationary Shooter,SF,-1.39,,7
+2156e7f9-ddf7-4c5e-a060-d02dac6d2c8e,Primary Ball Handler,PG,-0.4,,7
+9789ab9b-0ca9-4468-bd72-91fa82986ec6,Movement Shooter,SG,-1.58,,7
+34e9b16f-9e36-40b9-a420-4ff02d6bd2ae,,,0,,7
+ffe1dacd-58ce-4050-a9ad-2cc6c568b03a,Movement Shooter,PF,1.07,,7
+5639ea3f-8131-4619-9eb7-18525e8db974,Off Screen Shooter,SF,-0.87,,7
+3308fe9e-71f7-4dac-ba57-b97e95b7baef,Shot Creator,SG,1.3,,7
+161e2b7a-182f-4514-a394-8973ebd64875,Movement Shooter,SF,-2.02,,7
+3a34a2fc-5bfd-4f44-8308-d642b5ad83b5,,,0,,7
+40b561d8-b99c-4052-a91c-f4195d8c45dc,Primary Ball Handler,PG,-2.16,,8
+eb8823bf-abdd-4082-af6d-95a6f02d5825,Shot Creator,C,7.92,,8
+62077658-1554-41c4-b7ac-6bbf19bdbd29,Shot Creator,PG,1.18,,8
+1b6f55d2-b9ab-48a0-b2df-db5f75fb5903,Movement Shooter,PF,0.6,,8
+960a2307-30f6-45da-9077-9f09f96a92d8,Shot Creator,PF,-0.74,,8
+5cbf6d78-fba7-4488-8d1d-79425fbf7feb,Stationary Shooter,SG,0.37,,8
+062d689a-3163-4f6a-96a7-c0ee589204b5,Stretch Big,PF,-2.22,,8
+7d25e0bb-3106-491f-be76-caa47cead082,,,0,,8
+61e483aa-acbf-4e09-8f57-396bca29248f,Movement Shooter,SG,-3.18,,8
+a35067d7-d729-4573-8f3a-8e3867367c76,Movement Shooter,SG,-1.97,,9
+11a58647-7f85-49f8-a4dd-50b194f5bd3d,Off Screen Shooter,SF,-1.55,,9
+b73666b8-8be4-4b29-a652-02eeba465b3c,Movement Shooter,SF,-1.43,,9
+d63a51dc-cd43-4f9e-9240-fd4f0bc695e2,Stretch Big,PF,-0.59,,9
+5e72ec0d-8613-4acf-85e1-fd0f01a088ca,Low Minute,PF,-0.41,,9
+108fe1dc-d5b9-48cf-b344-4b1d9c8bd859,,,0,,9
+c5c9ec12-5f8a-4ec2-8324-38cb14301b37,Movement Shooter,SG,-0.11,,9
+1e5fcd1e-ef93-47de-943d-1d9be541030c,Stationary Shooter,SF,-0.94,,9
+8eb81556-0edc-472d-8397-545152d73a49,Movement Shooter,SG,-0.8,,9
+70747451-b547-4a52-8792-f5f61fdc50d2,Stationary Shooter,SG,-1.76,,9
+b6e946d6-d43a-42a2-94f2-fb6900df6c51,Low Minute,PG,-0.31,,9
+b4168166-07f6-47bd-97b5-57de496c4c12,Roll + Cut Big,C,1.95,,9
+05570413-e841-414e-bddd-799a68e8d5e2,Shot Creator,PG,1.56,,9
+03fcf6c1-244e-46ef-92b3-ebfe1d58eb2f,Athletic Finisher,SF,2.13,,9
+4b6e2a3c-699a-482e-8804-2110004c2890,Roll + Cut Big,PF,-1.52,,9
+82203086-3b0d-49f4-ac94-ad27d50c5b5e,Stationary Shooter,SG,0.25,,9
+2bcef3f7-49e9-4469-8a2b-5f74dd7caf54,Versatile Big,C,2.39,,10
+f596abc4-aa40-4a62-b8dd-89ac7e1dd678,Stationary Shooter,C,1.22,,10
+8d17f620-bb74-433e-b7b0-59eb187bda99,Roll + Cut Big,C,0.01,,10
+7b3c1e7d-fd88-4ea2-8e0e-cace54aa85be,Low Minute,SF,-1.57,,10
+e413a417-1538-46d9-80cd-7afeaa49db71,Stationary Shooter,PF,2.51,,10
+e6fe2f1b-b289-426c-ac9a-1397f17428a0,Primary Ball Handler,SG,1.75,,10
+ebffcdb1-1db9-424c-8c06-f1985da47b84,Primary Ball Handler,PG,4.11,,10
+ef67f775-cde8-4160-9b9d-c122ce1eb0b6,Movement Shooter,PF,-0.21,,10
+ed7f87dc-0659-4775-83e1-bc75e39785a0,,,0,,10
+d24aecb8-4fe7-45da-9079-5f720b65f331,Shot Creator,SF,3.58,,10
+be756624-84c2-4ac3-8c50-304102eba095,Movement Shooter,SG,0.68,,10
+2119fa7c-28cf-4610-96ca-9a091bf57218,,,0,,10
+76d59a7c-0b32-4b9d-974e-fb28195be317,Shot Creator,C,2.22,,11
+74235dd1-fd65-4435-895b-a8fc985bc321,Low Minute,PG,-1.29,,11
+d94a5963-35e1-41fb-801a-c8fe15ce4db3,Movement Shooter,SG,-0.74,,11
+30c0e401-c20a-499d-bba0-ada0a14eefd6,Shot Creator,PG,-0.06,,11
+51fd0260-1c61-47ef-9460-3168ce14164a,Low Minute,SG,-0.85,,11
+14c19ee2-5e90-4e5c-b27f-8128a5d9d553,Movement Shooter,PF,0.27,,11
+96d803fe-c68c-42b9-bfde-f2f12c8ecb7c,Stationary Shooter,PF,1.37,,11
+76f95407-c9ff-41cf-80d0-a067a55426c4,Movement Shooter,PG,-2.79,,11
+cb69c43c-235b-4d2b-b14f-76290f76329d,Roll + Cut Big,C,-0.12,,11
+a66498e6-cd1c-40a1-afd3-bc8e572754d8,Primary Ball Handler,PG,3.19,,11
+9baa0f56-635b-452a-a835-d3699cacc1ac,Roll + Cut Big,C,-0.02,,11
+aefe8871-4b55-4561-8546-9ee833e7ed85,Shot Creator,PF,0.45,,11
+67fd3347-086b-4bba-9919-435a0bb4dec4,Primary Ball Handler,SF,1.65,,11
+1c1faeb3-723c-411d-a6fd-d9e7361137a3,Stationary Shooter,SF,-0.62,,12
+abc33ca9-2111-4c04-90de-3c7a3c510813,,,0,,12
+6cbade2f-9940-4acc-8981-8620e61bdd23,Primary Ball Handler,SG,0.08,,12
+91f4a0e0-da10-4182-b4f3-2f3af77ffc2d,Athletic Finisher,PG,-0.2,,12
+d2f55cac-4fa8-449c-9fd8-21a4599b5ce4,Shot Creator,PF,2.32,,12
+59043a24-13cb-465f-82c3-544ba8b5b3df,Stationary Shooter,PF,-1.23,,12
+ab52b04a-905d-4897-8c0c-48e80f645063,Movement Shooter,C,0.25,,12
+ee282f8e-8b12-4b96-96f0-c23c16cab1ba,Slasher,PG,-0.62,,12
+4f7abb7b-86cd-4d2e-81e3-512acb417717,Post Scorer,C,2.98,,12
+5fe3ff28-5445-402e-98dd-f2d949de2bab,Stationary Shooter,SG,-1.27,,12
+1da0b6b8-db24-4c7d-a235-5decf9b76917,,,0,,12
+f9a6989f-b302-4e9b-b741-12002f2e457f,Primary Ball Handler,PG,3.54,,12
+3c3f68a7-8c50-47b0-bd7d-53fa685bcd9e,Movement Shooter,SF,-0.03,,12
+f5e0b2e8-5327-4a3d-810e-88b194af285f,Stationary Shooter,PF,-0.68,,12
+f86e4678-53fb-4f2c-a45e-e0a1c9425629,Stationary Shooter,PF,-0.72,,12
+64cc6968-10d2-466c-8a84-2347777080ce,Stationary Shooter,PF,-0.3,,12
+fcefb23a-5605-42ef-9c43-07d0030df9df,Movement Shooter,SG,-2.31,,12
+d8893b21-65a4-4572-bb59-6be1f53a2913,Primary Ball Handler,PG,2.06,,13
+8f194def-4eb0-4db8-a3a8-591a894f2776,Primary Ball Handler,SG,-1.22,,13
+15eecf52-382b-4fb5-b362-112d119363fd,,,0,,13
+323fa87c-933a-4ff7-b74f-a482f5bba497,Shot Creator,SF,2.29,,13
+64748a2b-ff51-4bd8-b579-82c8e30fe089,,,0,,13
+9bd2b564-810c-4298-86d2-202c5b1c6f39,Stationary Shooter,PF,-0.21,,13
+fe1bf5ea-b958-473b-8474-06c3e206c61f,Stationary Shooter,SF,-0.51,,13
+6a5b5c87-0123-4635-93ea-e71f15120c80,Stretch Big,C,0.31,,13
+f39a1304-8587-4bb1-a0e6-0e6ec350ffad,,,0,,13
+1f8ebd06-a835-4279-87b6-6e94d3750196,Movement Shooter,SF,-2.1,,13
+1a6ceec1-495d-41ac-9f89-1f883dc81f20,Low Minute,C,-1.15,,13
+dd617f42-ad0d-4f42-bcee-aab431dc9d4a,Stationary Shooter,PG,1.65,,13
+05837a74-c8bd-4650-aee9-b0683ad6141d,Low Minute,SG,-0.91,,13
+257c6cbd-4d4a-42ff-a4c2-e1a76c341bc9,Secondary Ball Handler,SG,-0.69,,14
+dc8af14c-4f37-4956-bf91-13a17eee3686,Shot Creator,PG,6.12,,14
+b12c859a-b94a-4897-bcfb-c91cb9923db5,Secondary Ball Handler,SG,-3.01,,14
+7453ee7f-7cdd-486c-bde0-39a666ac96dc,,,0,,14
+e6e92e91-785b-4e7d-b9db-38f59c842099,Movement Shooter,SF,-2.8,,14
+550a027e-c459-4fbe-9393-9ee149a5a1c4,Stationary Shooter,PF,1.06,,14
+dcd991e9-7202-4e87-8c29-db81747313c6,Primary Ball Handler,SG,1.49,,14
+54a86e3a-741a-4a03-9f5f-d5cf21cb5953,Roll + Cut Big,C,2.09,,14
+4b6ce63c-e22b-4f4e-83fe-f77b98c3c072,Movement Shooter,PF,-0.84,,14
+37f4f47a-514c-43e5-8f4f-511c0b5428a8,Athletic Finisher,PF,-0.94,,14
+f010a305-be3f-432a-822f-ff73b83b4ef9,Primary Ball Handler,SG,-1.29,,14
+87c0fac6-0ca6-48de-a1c0-cb083f1d4250,Roll + Cut Big,C,1.12,,14
+d765965e-d5d9-4435-85e4-c5bba2cb080d,,,0,,14
+11e0a06d-924d-4f38-9037-21786e3cee90,Secondary Ball Handler,SG,-1.93,,14
+b841eeb7-de84-48b6-91fb-2813c66d2a3c,Stationary Shooter,SF,-2.04,,15
+5d137a34-8354-4f6b-a9cc-5fa296b936f5,,,0,,15
+c977bf55-545f-45bf-8f00-2db8a93f8dbf,,,0,,15
+f42c441f-0c48-467f-b0df-287c51d6b6f2,Stationary Shooter,SG,-1.11,,15
+13f5260a-d81a-40ac-b2d5-42aececb5c5a,Movement Shooter,PF,-2.09,,15
+bcc0cfbd-ddc8-486a-a7cd-756ac311e44b,Low Minute,PF,0.26,,15
+1ac2b265-ad5f-4ebb-b109-1d1353d7f765,Roll + Cut Big,C,-0.75,,15
+bf685eb0-a119-4237-8799-85e15d196193,Primary Ball Handler,SG,1.56,,15
+2d648bb7-46c6-40d8-adc8-6c291421675d,Primary Ball Handler,SG,-3.56,,15
+d20b5bde-e6cd-4872-b2ab-75005b6f8bed,Movement Shooter,SG,-0.53,,15
+402f8a42-650a-47d9-bd08-ac295754c957,Primary Ball Handler,PG,0.88,,15
+3d81cf68-707d-4f09-8d88-8735734c281f,,,0,,15
+e4463827-3c2f-45c4-b2b6-2d65061c49ce,,,0,,15
+627d9722-d436-4ba9-96fe-96aa661c725f,Movement Shooter,PF,-0.95,,15
+d8b156db-e6b3-4369-ab3d-1d2f71fa1a72,Post Scorer,C,0.75,,15
+9669aaec-f419-428f-9be0-376d3b9ae3da,Movement Shooter,SG,-0.18,,15
+97421783-2237-45b2-b0cd-c6713df788a1,Primary Ball Handler,PG,0.51,,15
+d574ca70-3f39-496a-9aa0-807fb530add4,Athletic Finisher,PF,-0.55,,15
+f38510c0-916c-40a1-9efe-4fe55eed6277,Stretch Big,PF,-0.11,,15
+4632fe09-9376-46ec-9a20-19bc2d275a8d,Roll + Cut Big,C,-2.85,,15
+77309f84-a051-4c9a-8f4e-a51a5356c38b,Off Screen Shooter,SG,-1.44,,16
+a36403dc-a90b-4731-89b5-a5ca984fb15f,Movement Shooter,SF,-1.59,,16
+b6bfecbf-6731-4af6-8d09-893c585509d4,Shot Creator,PF,7.08,,16
+f64d49d4-5022-40d9-aa0a-46f9ed4fb6cf,Shot Creator,SF,0.22,,16
+eee8c4dc-1723-41c9-9402-5d6f22ad0722,Shot Creator,C,1.79,,16
+13563546-4589-4eee-81e3-cf8502e15012,Versatile Big,PF,-0.45,,16
+8dace47c-e337-4afe-a82a-415abc8f49a1,Stationary Shooter,SG,-0.99,,16
+3984b8cb-6332-41d4-b259-cd631452097e,Primary Ball Handler,PG,-0.89,,16
+1bd5340b-83bd-4857-9d37-d9affbf5cd72,,,0,,16
+9479532e-7ae7-4e14-9068-0db914596f25,Stationary Shooter,PF,-0.75,,16
+6029ab31-b6c9-4b89-9abd-b1445960832f,Secondary Ball Handler,SG,-0.35,,16
+59a06745-aa51-43c1-87b9-b2c9d767c92a,Primary Ball Handler,SG,1.13,,17
+2a12b48f-ad33-4e12-bb02-b1d6337cea3a,Movement Shooter,PF,-1.93,,17
+7868908b-76fd-4bd9-888b-be78711f8ab2,Stretch Big,C,0.88,,17
+41d9bde7-88ad-43a7-a09b-f1feafa98d88,Stationary Shooter,C,-1.48,,17
+8212703f-0756-44cf-b364-4329e68a0e9f,,,0,,17
+d8e03d58-1cb5-4253-be7f-a4930371b8ce,Roll + Cut Big,C,-0.83,,17
+9e1050ff-b002-47af-b8a2-82b615efc897,Movement Shooter,SG,-0.3,,17
+0a9f1873-0f40-4ecf-9b83-1b9d67d41cec,,,0,,17
+00b89194-b951-422b-a369-47cf6809159c,Stretch Big,C,-0.83,,17
+3c437e42-3b88-4caa-a578-a5eebf901cff,Roll + Cut Big,C,-2.7,,17
+6829730b-4972-4def-81f3-54a99cadfb20,Shot Creator,SG,-0.09,,17
+84a24928-f042-4bf3-87b2-a11dedbef492,Secondary Ball Handler,PG,-1.17,,17
+8ee5d4c0-c70d-4bac-80ca-1ac99b5853aa,Movement Shooter,SG,-0.46,,17
+89d85259-e451-404b-9553-bd790d603ab0,,,0,,17
+b5e53e8a-f409-4805-89f2-381ff09a69e7,Movement Shooter,SG,-1.42,,17
+d33da60c-a858-4741-8573-df4ec1fadbc9,Shot Creator,SF,-1.39,,17
+a0fe9004-0fd3-49d2-b2e0-77b1dde158d5,Shot Creator,PG,-0.48,,18
+1d2281f1-1aaf-4b97-a11e-459f963512bc,Shot Creator,PG,1.9,,18
+a4068965-d195-4893-a865-f077ec564c27,Low Minute,SG,-0.6,,18
+55b477c5-a016-4425-bb56-370d546286c9,Movement Shooter,SG,-0.02,,18
+ef04f725-1735-43a8-b039-b27d4f5a8545,Stationary Shooter,SG,-2.15,,18
+7c9224f8-246d-4c7e-8e43-e278637ad9f1,,,0,,18
+099e1db3-7868-472d-acb3-a3f932ce6279,Shot Creator,SG,2.16,,18
+1e12731f-7ecd-4f81-bc0e-e564a74638ef,Stationary Shooter,SG,-0.76,,18
+07bfe82c-a184-43a5-ae05-0eaef71c1ca8,Movement Shooter,PF,0.05,,18
+369ad804-50df-4320-b02b-9363b97c7038,Athletic Finisher,PF,-2.02,,18
+3797f8ba-4963-4758-b06f-85e7fea30a75,,,0,,18
+376773b9-9546-4b13-8c6c-299f364f3a99,Stationary Shooter,PF,1.51,,18
+12dbc655-5cf9-465d-80da-52f0a6b9dde8,Roll + Cut Big,C,2.08,,18
+6f2514e6-0dc5-4d90-854b-b54c07f49eb0,Stationary Shooter,SG,-2.02,,18
+ab0bafaa-89da-4596-9713-d67e461cb5dd,Primary Ball Handler,SG,-2.39,,18
+afcd3381-0210-4ab4-ba81-ccceaddcded7,Low Minute,SG,-0.39,,19
+a7aaf327-8190-4bb7-8660-727137c75ca9,,,0,,19
+73f166c6-5ef4-4e25-b71d-4a0e9eb2e25e,Stretch Big,PF,-1.5,,19
+0cb61162-3609-49e2-8892-fb47f8f93005,Shot Creator,PG,1.1,,19
+709e095d-845f-4aea-b2ed-9fc01708ccd2,Off Screen Shooter,SG,-3.15,,19
+9581d4ed-d10d-47b9-9efe-2c2611bc8197,Roll + Cut Big,C,-1.67,,19
+956ac299-ac53-437c-8b1b-e091522fc08f,,,0,,19
+a6ef5b2f-7548-4361-b2b6-a7b19cf6e5d2,,,0,,19
+ff86debb-a769-435c-b18c-e7033ec9a394,,,0,,19
+e67da216-8a57-4abc-bf4f-ca3b7b0fd194,,,0,,19
+19df8b16-edf0-490b-a8a7-da080ff97f34,Stationary Shooter,SF,-0.9,,19
+5ee37a89-0dc2-4897-bde9-d36e1e4ca287,Movement Shooter,SF,0.32,,19
+babc6898-aee3-4f99-981f-c3c659ac04d9,Shot Creator,PF,2.58,,19
+7d05f917-ad04-4522-9d66-e98ddac64874,Roll + Cut Big,C,-1.48,,19
+1ea15d9e-1b23-4c1c-81b5-3da28165a8cd,Primary Ball Handler,SG,-1.52,,19
+c72b5ba9-3b7b-4f2e-81f1-e7d88f3c2489,Movement Shooter,SG,-3.09,,20
+427240ac-3344-4a47-a090-409dfc9a9e8a,Secondary Ball Handler,SG,0.37,,20
+fd14a959-4378-4ba3-b406-40ab7ea7a785,Secondary Ball Handler,PG,-2.04,,20
+bb3dbb6a-7769-4683-adab-b2a09ccd0e6b,Shot Creator,PG,1.8,,20
+c63f7c43-ad16-4c14-a4ea-40dbb1babc9d,Movement Shooter,PF,1.42,,20
+b0cab057-5792-4394-a6f5-702dd5d6df34,Movement Shooter,SF,-0.25,,20
+06daf555-4a72-48bd-a2f0-710b0beee848,Movement Shooter,SG,-2.29,,20
+048217bb-808e-4c75-8a23-cf5bf754347f,Athletic Finisher,SG,1.45,,20
+53994ce5-5da7-4fce-bc05-1fd3150a5297,Roll + Cut Big,C,-0.87,,20
+97859d2e-c113-48b3-baaa-278fe5dd64d2,Post Scorer,C,3.16,,20
+d0306f2a-c4a4-4fa1-9ca1-0eae17774374,Shot Creator,SG,-1.56,,20
+94333886-0b35-4e13-bd26-34d521e6cd91,,,0,,20
+e51cdfdb-f369-4357-bf4a-90765f7f0294,Primary Ball Handler,PG,-1.41,,20
+f4c287ef-18d4-4a77-bf18-b4b29a9810ee,Roll + Cut Big,C,2.32,,21
+ec8a0d6c-301f-4a2d-a91b-36c916f59476,Shot Creator,SG,3.44,,21
+8d3a9822-4ee2-4ebe-8abd-3f6e46ee8ca9,Secondary Ball Handler,SG,-1.64,,21
+3a6015f9-93c4-45ff-8f5e-8313d7554632,,,0,,21
+4a0f6a17-30b6-47fe-af49-723b894e5bb5,Secondary Ball Handler,SG,-1.49,,21
+f067d10a-5967-43df-b09c-7a3680620f9d,Stationary Shooter,SG,0.92,,21
+fc32cb86-62f4-43e6-a93b-3325a514afb5,Shot Creator,PG,7.09,,21
+d25baafd-0bdd-4f89-b82c-3d16cbb79c4d,Stationary Shooter,PF,-0.01,,21
+1502af91-8919-4fdd-9155-85812fdcd2d0,,,0,,21
+b158ff5e-c7fc-42eb-9e7c-76c8fd39c1f6,Stationary Shooter,SG,1.78,,21
+8b2c51b9-c129-4152-a1d2-f562930cfcb4,Stationary Shooter,PF,0.64,,21
+791b0d11-d08f-4d69-a9ac-f2a38c23401f,,,0,,21
+39f59824-ba67-4bf7-b8c0-09d640fed0ed,Movement Shooter,SF,0.76,,21
+3e069a1c-05f6-401c-87c5-585ad18d3cf7,Shot Creator,C,2.31,,21
+d96eb3e1-1b97-4c1c-93b6-1e9483b91396,Roll + Cut Big,C,-1.32,,22
+24b7e753-795a-431b-b381-1608bdf256f4,Movement Shooter,SF,-2.62,,22
+e550d186-902c-448e-a888-1d52fce9b9ec,,,0,,22
+116fa2cd-1bf9-4683-8dda-c5957e5e09d9,Versatile Big,C,0.38,,22
+b63086b3-0c32-4e0f-a910-d57a8dac5073,Primary Ball Handler,SG,1.32,,22
+5bdc2caa-a4c9-4eb7-988b-01298d7a8f65,Stretch Big,PF,2.58,,22
+e32bdc26-3872-42e7-b878-ac7e8403467e,Shot Creator,SF,3.31,,22
+9aaf9890-5039-42c6-8bf5-bbc58c0d87b9,,,0,,22
+7ef89cd3-8f84-4621-afe6-a9f325fb3e66,Movement Shooter,SF,-2.1,,22
+1b32171d-2ae3-4044-96e2-cce45bfc9126,Movement Shooter,PG,0.05,,22
+91d7c729-2dc8-4b0d-8b5e-7374ee11dd72,Shot Creator,PF,1.04,,22
+1a4b67b8-ca25-4213-8575-eb8ba14f49ae,Primary Ball Handler,PG,-0.91,,22
+c964f334-66ee-4f08-b376-f6f239a5199e,Stretch Big,C,0.43,,22
+d1bbffa8-21d7-4e2a-9905-3aa1d2d56b50,Movement Shooter,SF,-2.46,,22
+313c7d27-029c-48f5-8c2b-b493fb8c83e0,Roll + Cut Big,C,1.64,,22
+0b80845a-b9f9-4058-9747-54d5724a0fe5,Primary Ball Handler,PG,1.7,,22
+eb588e9c-6e7c-41be-8aa7-3aefc20025b8,,,0,,22
+a696ee40-bc2a-4879-b575-1b5c60ec433b,Shot Creator,PG,1.22,,23
+cc69ced6-d7ac-46d0-8def-da9942881c6d,Shot Creator,PF,-1.81,,23
+1241902d-97de-49a7-ae62-41ae0ceeebc6,,,0,,23
+dc29a579-0791-4406-b83b-81ee964821e4,Athletic Finisher,PF,-0.68,,23
+a3fa792c-04d7-4c13-8ef9-74aa80ce5df0,Athletic Finisher,C,-3.55,,23
+2979f2f2-5721-4332-8947-c63f95a4b197,Movement Shooter,PF,0.34,,23
+26e2b155-28da-47db-8ce1-b31d2990f37c,Movement Shooter,SF,-2.93,,23
+c1565036-4095-4e25-bff2-10a54737d73c,Stationary Shooter,SG,-1.9,,23
+2e0cbaa0-5ce1-4007-b11a-a1692d1271b6,Shot Creator,SG,-1.21,,23
+6f99df30-b63d-4699-8a17-cfd960f54b89,Roll + Cut Big,C,-1.66,,23
+17cd20ff-6b5d-4b98-9f66-24086cbf53d5,,,0,,23
+1ddc9be7-3639-47d3-910b-5457c2fae728,,,0,,23
+9250daba-da9d-4cb5-97e2-b818faa6525a,Shot Creator,SF,1.86,,23
+fb579262-06c3-4ed6-8f55-8bbd67f9ad9e,Athletic Finisher,PF,-0.79,,23
+32561334-a0f7-4e8c-8c60-f9c60a9bc5a1,Stationary Shooter,SG,-2.63,,23
+1c6cce51-765d-4f23-bd5a-55f2f6154ec5,Shot Creator,C,2.68,,23
+d4903e5d-5753-4d6b-bd62-74d9be925f58,Shot Creator,SG,-0.31,,24
+66337f3e-290e-46c2-8d17-3e20fb88083f,Slasher,PG,-0.77,,24
+a457b1b7-cc29-4bf6-a5d2-7295ccccfce9,Shot Creator,PF,0.98,,24
+46f3bc01-5ba7-4e78-94bd-79e67bc7eef6,Roll + Cut Big,C,1.44,,24
+12460e5c-a2ea-44fa-99f7-61d34b424c90,,,0,,24
+35e285c2-f010-4f89-9be8-c7a09096f53c,Stationary Shooter,PG,-1.05,,24
+c959515f-9a50-4bb7-a3d8-11b426bf82dc,,,0,,24
+bfde5536-f0fb-4624-ac48-39c902f569b6,Stationary Shooter,SF,-0.71,,24
+14954c57-6b91-403f-8fee-974c5194c765,Movement Shooter,SF,-0.57,,24
+8cf71a25-9a7c-4c48-8aa3-0c0181e2a495,Low Minute,PG,-0.68,,24
+1c119b44-4b7e-4df0-90ed-9c6beccbc216,Stationary Shooter,SF,0.47,,24
+c4350536-86c8-427a-8cf3-9414b269b2b0,,,0,,24
+107e9824-c8da-408f-9495-01b7b495ea5d,Secondary Ball Handler,PG,0.81,,24
+11c38846-e327-4e40-a5e4-88974d7f5b3a,Shot Creator,SG,2.03,,24
+02e07642-2427-43d6-89ed-973297c0ceb2,,,0,,24
+b79f2eac-d60b-4456-88ba-d52ec886d493,Roll + Cut Big,PF,-0.7,,24
+ad5a7543-e3a7-4f18-aaeb-0c57fcce2425,Shot Creator,PG,-0.79,,25
+1fba19e4-e779-490a-b3cc-a9e4a3d666e7,Stationary Shooter,C,-3.34,,25
+e610c83d-b097-4e38-b8a7-810c0c914d8a,Athletic Finisher,C,0.86,,25
+ec6184f6-8765-4258-bd82-57741ea72efe,Shot Creator,PG,1.65,,25
+bb2395a5-a3eb-42cd-9a1c-e403418c58a2,Stationary Shooter,PF,0.35,,25
+6bd3cad4-d0dc-4e31-a853-8c52be7d8597,Shot Creator,PG,0.36,,25
+f3c18dcd-c34c-4cb3-998a-d60b447d63a6,Secondary Ball Handler,SG,-1.72,,25
+2e3a6fa9-9363-4a24-805c-032c143a81ef,Shot Creator,PG,2.39,,25
+f341191a-8958-4da6-b136-4f8b125b75f7,,,0,,25
+edfdb7f1-0419-4903-ba29-7705806f991e,Primary Ball Handler,SF,1.52,,25
+39cc3f71-db87-4353-8c67-1b28e491fddf,Stretch Big,C,-0.85,,25
+5eb89cec-1f1a-4825-a63a-e5d4eea8ae2a,Athletic Finisher,C,0.89,,25
+bd2b3a5d-e54a-4e66-9e40-76c1d6afb348,Movement Shooter,PG,-1.62,,25
+79de10d8-3e6a-4c0f-88df-7b383c566627,Stationary Shooter,SF,-0.93,,25
+06335576-3e37-42ca-a21a-7c84f1e83238,,,0,,25
+c3f3faf8-bd3f-478e-bcd9-05d84279d769,Roll + Cut Big,C,-0.8,,26
+71a2cb05-0a97-4768-b874-8fa191670546,Shot Creator,SG,-2.24,,26
+f57cf8e1-1cd8-428f-b30c-e4ac6be8edf9,Low Minute,SG,-0.67,,26
+30b6bb24-05d9-41b9-b4f6-f65e2330167f,Roll + Cut Big,C,2.86,,26
+6cbdd7d9-55da-47a6-9f78-5b21ce6a189a,,,0,,26
+63f955e6-44de-49e6-ba44-aee62dbf3a4c,Primary Ball Handler,SG,1.4,,26
+4195e9a2-cbd8-4a47-b492-cfb931f0e436,Movement Shooter,PF,0.35,,26
+c10f3f3e-39ed-4f1e-b6e8-b3fee99d3419,,,0,,26
+ee1ecb67-072f-4bde-8bb9-8fba45579bc0,Movement Shooter,SF,-0.34,,26
+b4e15114-b07b-4045-842c-3ec4f953492f,Movement Shooter,SG,-2.18,,26
+7213eae2-405d-4898-a0a6-f278e55b77e3,,,0,,26
+ab8cc2ab-4b00-45a7-accd-778ce0c54f8f,Athletic Finisher,PF,-1.13,,26
+451e8e18-7fa7-458e-879e-5046f86159f6,Shot Creator,C,3.27,,27
+eb4dfbdf-9c61-4c9e-a3a4-b029643bb760,Shot Creator,PG,1.81,,27
+2f60c293-6a0e-4992-97b9-4f3f7ba76676,Secondary Ball Handler,SG,-1.3,,27
+4aa40969-2807-474a-ab5b-f8f41f228179,Stationary Shooter,SF,-1.03,,27
+ffd8660f-ce0d-4be8-a639-2512ffdfdacf,Shot Creator,PF,0.66,,27
+ca6c3aa0-76e6-4cdf-a915-0c5fcd700dd1,Shot Creator,PF,-1.14,,27
+eafd76d0-de9a-468d-b783-1c43e51cc8cd,Movement Shooter,SF,-1.84,,27
+93c305e8-98b7-47d9-940d-6cc091abe75a,,,0,,27
+486005b2-8a08-4b8b-8ad4-619bfaede0af,Roll + Cut Big,C,2.67,,27
+3891ea95-070e-4060-942d-7dbb100bdb7d,Low Minute,PF,-0.43,,27
+e38b6c23-78b7-4d37-a436-d8c0a1bc76de,,,0,,27
+876146a9-0e94-4b8d-883b-a95edb55cb97,Primary Ball Handler,SG,-2.31,,27
+752b6e33-238e-4075-97e7-e8762dbae027,Off Screen Shooter,SG,-2.25,,28
+8c8561c9-cae9-4545-b8dd-cdac3bcdb909,Movement Shooter,SG,-1.33,,28
+adc8eb80-8f25-4746-b094-2ac8e48ed765,Primary Ball Handler,SF,0.45,,28
+aeffc073-e131-4e74-9ab2-7dad6d12bdc9,Roll + Cut Big,C,1.3,,28
+2d907a33-5f23-4b87-b411-73568f69133d,Movement Shooter,SF,-2.94,,28
+61aca18b-b835-4158-9d64-bcb5fa1de081,Primary Ball Handler,PG,1.41,,28
+de06f45e-9909-413a-9266-aa7ac2716f10,,,0,,28
+91091af6-e306-4396-a2b3-34aea1b56198,Primary Ball Handler,PG,-2.22,,28
+ef777ec5-f690-4692-85bf-30a6d26e5249,,,0,,28
+2725d28b-5766-4c5b-9a66-1569ff2a3bfd,,,0,,28
+385dd20a-1c22-4c82-ae72-b0afa194fb59,Roll + Cut Big,C,-0.09,,28
+dcc41efd-d57c-4ac1-906f-8f16ab45d8b5,Shot Creator,PF,-0.43,,28
+c168cdd6-a658-4081-9dda-7c91a54c3cae,Shot Creator,SF,-1.29,,28
+5e08ff44-54ab-46c2-8b86-882414eeda6a,Shot Creator,PF,1.85,,28
+ae44c3bf-98e7-4782-af43-193b675a6df8,Off Screen Shooter,PF,0.19,,29
+9102622f-cb2d-4d1b-9262-30b86b6345fb,Stationary Shooter,SG,-0.01,,29
+4880e90f-e239-47ac-be1a-e50770496646,Primary Ball Handler,PG,-3.18,,29
+104d1d21-f920-4a90-9655-75fc17cfd0d0,Stretch Big,C,-0.29,,29
+0c3cb58f-683d-4a85-b4f8-039c79ccd862,,,0,,29
+3b019f93-a62d-4fbc-b247-6d901b4cd2e6,Primary Ball Handler,PG,-2.44,,29
+1a28fcd5-cd06-4439-80b3-a2a062aac2d0,Stationary Shooter,SG,1.23,,29
+ccf89ad2-f95c-4343-a8bc-4a14ef575911,Movement Shooter,SF,-2.17,,29
+fc0a0c81-ae7b-436a-9b17-7609657e9ab6,Shot Creator,C,2.05,,29
+87080b67-c0cd-46e8-b9dd-1f0f4ac739e2,Secondary Ball Handler,SG,-2,,29
+62ee39ee-847b-4f77-9073-3764f75acddb,Post Scorer,C,0.63,,29
+3112af4c-f440-4fb0-b9af-d4accb63c277,Roll + Cut Big,C,-0.45,,29
+b4eb4aec-eb76-4291-af53-15965a5332b2,Movement Shooter,SG,-5.28,,29
+e45257b0-cf80-45e1-a4ee-5ef1eaf51822,Movement Shooter,SF,-2.7,,29
+54c00870-2cd1-4d59-8e2b-dddc0871048b,Stationary Shooter,C,-1.81,,29
+dc787b7f-4231-40e5-b5cc-435fcaa288bb,,,0,,29
+1e09d6e1-5c0f-4f46-b560-3ea55d09437f,Movement Shooter,SG,-2.53,,30
+15269328-9b06-4438-b6c2-e7fb16c7d6dc,Secondary Ball Handler,SF,-2.79,,30
+124061d7-90ce-49c0-8cbe-a306406655f1,,,0,,30
+9a4c0f82-f3c3-4ee4-af27-7fbc40caf441,Shot Creator,SF,0.28,,30
+8af0ab62-2b94-41db-9c62-9aa808920102,Movement Shooter,SF,-0.74,,30
+387423a0-7285-4b96-acd3-90a55bc028c4,Stretch Big,C,-1.71,,30
+a1eb5346-524f-48b6-8f02-39b0e9f7082a,Movement Shooter,SF,-2.25,,30
+aa1d6a26-acf9-448e-ae41-6346da11b573,,,0,,30
+7feafeed-d219-4cb0-927f-fa2883e5335a,Primary Ball Handler,PG,2.55,,30
+bb8294be-c72e-4b08-832e-4bee3ccfb115,Roll + Cut Big,C,-0.52,,30
+522725fe-581a-4ae2-b2a5-7d68adcfdf57,,,0,,30
+90a2cbea-f856-497a-a8d9-80009ee3a4d1,Stretch Big,C,-0.42,,30
+984e6efa-84ac-4334-b0ca-6d223a595d57,Shot Creator,C,3.45,,30
+cb4c1efc-bc3e-4e09-96a4-56a88dd00933,Primary Ball Handler,PG,-4.91,,30
