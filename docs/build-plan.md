@@ -65,6 +65,8 @@ required UI element rather than a nicety.
 - [ ] **1.12** Hand-built fixture team covering every edge case, before real data
 - [ ] **1.13** JSON Schema for the whole model — one contract shared by engine, API, web, and evals
 - [ ] **1.14** `as_of` and provenance on every ingested record
+- [ ] **1.15** **Apron *status* and apron *ceiling* are separate fields.** Status is where a team's Apron Team Salary sits. Ceiling is what a prior transaction forbids it from exceeding. Houston is far *below* the second apron yet may not cross it; OKC is far *above* it and may go higher. A single "apron" field conflates opposite situations.
+- [ ] **1.16** **`HardCapCeiling` is a set, not a scalar.** One entry per triggering transaction — `(trigger_row, apron_level, effective_date, source_transaction)` — with the operative ceiling computed as the **minimum**. Confirmed against real data: Milwaukee holds a first-apron ceiling (Jul 8 expanded-TPE acquisition) *and* a second-apron ceiling (Jun 24 cash payment); trackers show 1st because the lower one binds.
 
 > **Done when** a full 30-team league state loads from the scraper CSVs, round-trips through the schema, and any team's roster and contract detail is queryable.
 
@@ -102,7 +104,7 @@ required UI element rather than a nicety.
 - [ ] **3.5** Cap-space absorption path for room teams
 - [ ] **3.6** First apron restrictions
 - [ ] **3.7** Second apron restrictions — aggregation, prior-year TPEs, cash, taxpayer MLE, frozen pick
-- [ ] **3.8** Hard cap triggers, and enforcement for the rest of the league year
+- [ ] **3.8** Hard cap ceilings. The CBA never says "hard cap" — the mechanism is Art. VII §2(e)(2)(i)(B), driven by the **Transaction Restrictions Table** (§2(e)(4), pp. 214–215), **rows A–K**. Encode all eleven: A–G set the **first** apron (bi-annual exception, non-taxpayer MLE, sign-and-trade acquisition, waived-player signing above the MLE, expanded TPE, post-season standard TPE, transition TPE); H–K set the **second** (aggregated TPE, **paying cash in a trade**, TPE from a signed-and-traded contract, taxpayer MLE). §2(e)(2)(ii) makes rows E–J executed after the Regular Season bind the *following* Salary Cap Year.
 - [ ] **3.9** Stepien rule, accounting for swaps and protections
 - [ ] **3.10** Base year compensation
 - [ ] **3.11** Poison pill provision

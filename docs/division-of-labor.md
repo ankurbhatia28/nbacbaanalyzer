@@ -36,6 +36,7 @@ B7 was extended back to 2020-21 after the fact: Higher Max Criteria looks at "th
 | **B-R contracts** | `contracts`, `contract_totals`, `contract_notes` | 1,124 player-seasons, 365 option-years, 349 signing dates, guaranteed remaining |
 | **B-R awards** | `awards` | All-NBA / DPOY / MVP, 2020-21 → 2025-26 |
 | **B-R rosters** | `roster_experience` | Authoritative years of service (661 players), birth dates |
+| **SalarySwish** | `salaryswish_hard_caps`, `salaryswish_trade_legs` | Hard-cap ceilings with their triggering transaction, mapped to Transaction Restrictions Table rows; trades with **cash amounts and direction** |
 | **Spotrac (archive)** | `spotrac_decisions`, `spotrac_roster`, `spotrac_cap_holds`, `spotrac_trade_exceptions` | 30/30 teams. Guarantee **dates**, extension-eligibility dates, qualifying offers, TPE original-vs-available. **Not** trade kickers (column empty league-wide) and effectively not incentives. Snapshot dates span 13 months — see `scraper/README.md`. |
 
 Three sources independently cover draft picks, cap holds, trade exceptions and contract type. That redundancy is worth keeping — cross-source disagreement is a cheap correctness signal, and it already caught two real bugs (§1 caveats, and the option-signal gap in `scraper/README.md`).
@@ -164,7 +165,7 @@ Three items remain, and the right answer for all three is **not to fill them**:
 |---|---|---|
 | **Trade kickers** | No structured source. Spotrac's column is empty league-wide; one incidental mention across 814 Fanspo transactions. | Model as **unknown**, not zero. |
 | **No-trade clauses** | No source. ~5 players league-wide qualify (8 years service, 4 with the team). | Model as **unknown**; hand-enter the handful if news confirms them. |
-| **Cash considerations** | Frequently never publicly disclosed. | Model as **unknown**. |
+| **Cash considerations** | **Partly obtainable after all** — SalarySwish carries amount and direction ($1.25M MIL→ORL, $1.1M LAC→MIL). My earlier write-off was premature. | Ingest it. It matters directly: paying cash is row I of the Transaction Restrictions Table and sets a second-apron ceiling. Model as `unknown` only where absent. |
 
 **Why unknown rather than zero.** Defaulting these to zero makes the engine quietly wrong: a trade that is actually illegal because of a 15% kicker would validate clean, with nothing anywhere indicating a guess was made. Task 5.7 already commits to stating assumptions rather than silently guessing, and 9.7 to showing provenance. These three are exactly that case.
 

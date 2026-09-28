@@ -7,6 +7,7 @@ Two scripts, both stdlib-only:
 - `bbref_contracts.py` — multi-year salaries, per-year options, signing dates
 - `spotrac_archive.py` — guarantee dates, extension-eligibility dates, via the Wayback Machine
 - `bbref_roster.py` — years of service (the roster "Exp" column) and birth dates
+- `salaryswish_scrape.py` — hard-cap ceilings with their triggers, and trades with cash direction
 
 ---
 
@@ -300,3 +301,50 @@ adjustment is explicit rather than assumed.
 Row count exceeds unique players (661 rows, 582 ids) because players traded
 mid-season appear on both rosters — correct for a season roster, but dedupe on
 `bbref_id` before joining. `birth_date` cross-checks Fanspo's `player_info`.
+
+
+---
+
+# SalarySwish scraper
+
+```bash
+python3 salaryswish_scrape.py                                   # hard caps
+python3 salaryswish_scrape.py --what trades --from-id 1 --to-id 520
+python3 salaryswish_scrape.py --what all
+```
+
+Two things no other source we have provides.
+
+### `salaryswish_hard_caps.csv` — ceilings with their trigger
+
+**48 triggers across 20 teams.** The CBA never uses the phrase "hard cap": the
+mechanism is Article VII §2(e)(2)(i)(B), driven by the **Transaction
+Restrictions Table** (§2(e)(4), rows A–K). This site's two tables map almost
+column-for-column onto it — first-apron triggers in one, second-apron in the
+other — so each row is `(team, capped_at, trigger_scope, trigger_category,
+trigger_detail)`.
+
+Observed categories: `TP-MLE Exceeded` (9), `Trade Salary Acquired` (12), `BAE`
+(3), `S&T` (3), `Past-Season TPE` (3), `MLE Trade` (1), `TP-MLE Length Exceeded`
+(2) at the first apron; `Cash Traded` (12), `Any MLE` (2), `Trade Aggregate` (1)
+at the second.
+
+**A team can hold several ceilings; the lowest binds.** Milwaukee appears twice —
+a first-apron ceiling from the Jul 8 expanded-TPE acquisition of Caris LeVert,
+and a second-apron ceiling from paying cash on Jun 24 — and `capped_at` reads
+`1st Apron` on both rows. Model ceilings as a set and take the minimum, never a
+single field.
+
+### `salaryswish_trade_legs.csv` — trades with cash direction
+
+One row per team-leg: `trade_id`, `date`, `team`, `cash_received`,
+`tpes_generated`, and the raw `detail` blob (players, picks with protection
+text, cap-hit totals) preserved rather than lossily parsed.
+
+**This is the only source we have carrying cash amounts with direction**, which
+matters because paying cash is row I and sets a second-apron ceiling.
+
+### Politeness
+
+`robots.txt` disallows only `/maintenance`. Raw HTML is cached, so re-runs cost
+nothing; trades are fetched by id range with a configurable delay.
