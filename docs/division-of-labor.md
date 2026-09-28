@@ -2,7 +2,7 @@
 
 Companion to [`build-plan.md`](./build-plan.md). Task numbering matches that file exactly.
 
-> **Status: data collection complete enough to build on.** Four sources scraped — Fanspo, Basketball-Reference contracts, Basketball-Reference awards, and archived Spotrac. Every numbered input is closed. What remains is three small items in §4.1, none of which blocks a phase. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
+> **Status: Phase 0 complete, data collection done.** Scope is now CBA question answering, not trade analysis alone. Four sources scraped — Fanspo, Basketball-Reference contracts, Basketball-Reference awards, and archived Spotrac. Every numbered input is closed. What remains is three small items in §4.1, none of which blocks a phase. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
 
 **Legend**
 
@@ -42,160 +42,82 @@ Three sources independently cover draft picks, cap holds, trade exceptions and c
 
 ## 2. Phase-by-phase ownership
 
-### Phase 0 — Rails
-
-| Task | Owner | What I need from you |
-|---|---|---|
-| 0.1 Monorepo scaffold | `CLAUDE` | — |
-| 0.2 Toolchain | `CLAUDE` | — |
-| 0.3 Lint + type gates | `CLAUDE` | — |
-| 0.4 CI pipeline | `BOTH` | I write the workflow; you create the GitHub repo and confirm Actions is enabled |
-| 0.5 LLM client module | `CLAUDE` | — |
-| 0.6 Logging + tracing | `BOTH` | Decide: local structured logs only, or a hosted tracing tool (see D4) |
-| 0.7 ADR-001 | `CLAUDE` | — |
+Phases renumbered for the rescope — see [`build-plan.md`](./build-plan.md). Phase 0 is complete.
 
 ### Phase 1 — Domain model
 
-| Task | Owner | What I need from you |
+| Task | Owner | Notes |
 |---|---|---|
-| 1.1 `Season` | `CLAUDE` | Types now; values need B2 |
-| 1.2 `Team` / `Player` | `CLAUDE` | — |
-| 1.3 `Contract` | `CLAUDE` | **Unblocked** — 1,124 player-seasons with options; guarantee dates from Spotrac |
-| 1.4 Contract type enum | `CLAUDE` | — |
-| 1.5 `CapHold` | `CLAUDE` | Data in hand — `team_cap_hold.csv` |
-| 1.6 `BirdRights` | `CLAUDE` | Data in hand — `rightType` on cap holds gives the classification directly |
-| 1.7 `DraftPick` + protections | `CLAUDE` | **Unblocked** — 616 picks with full protection prose |
-| 1.8 `TradeException` | `CLAUDE` | Data in hand, but see the two attribution/staleness caveats in §1 |
-| 1.9 `TradeRestriction` | `CLAUDE` | — |
-| 1.10 Roster state | `CLAUDE` | — |
-| 1.11 Hand-built team fixture | `CLAUDE` | Synthetic, no real data needed. **Worth your review** — if the fixture misses an edge case, Phase 2 never tests for it. |
-| 1.12 JSON Schema | `CLAUDE` | — |
-| 1.13 Provenance fields | `CLAUDE` | Tell me your data sources so I can enumerate them |
+| 1.1–1.10 core types | `CLAUDE` | All source data in hand |
+| 1.11 `Unknown` tri-state | `CLAUDE` | ADR-003. The type that keeps the engine honest. |
+| 1.12 Fixture team | `CLAUDE` | **Worth your review** — an edge case missing here is never tested in Phase 3 |
+| 1.13 JSON Schema | `CLAUDE` | — |
+| 1.14 Provenance | `CLAUDE` | — |
 
-### Phase 2 — Rules engine
+### Phase 2 — Data layer
 
-This is where the split matters most.
-
-| Task | Owner | What I need from you |
+| Task | Owner | Notes |
 |---|---|---|
-| 2.1 Read Articles I, VII, X | `BOTH` | **See §3.** Text already extracted; the ~15-constant verification pass is still yours. |
-| 2.2 Three salary totals | `CLAUDE` | B1 |
-| 2.3 Apron classification | `CLAUDE` | B1, B2 |
-| 2.4 Salary matching bands | `BOTH` | I transcribe from the PDF; **you spot-check the numbers.** This is the most load-bearing constant in the codebase. |
-| 2.5 Cap-space absorption | `CLAUDE` | B1 |
-| 2.6 First apron restrictions | `CLAUDE` | B1 |
-| 2.7 Second apron restrictions | `BOTH` | I implement; **you spot-check.** Second on the load-bearing list. |
-| 2.8 Hard cap triggers | `BOTH` | I enumerate from the text; you sanity-check the list is complete against your own knowledge |
-| 2.9 Stepien rule | `CLAUDE` | B1, B4 |
-| 2.10 Base year compensation | `CLAUDE` | B1 |
-| 2.11 Poison pill | `CLAUDE` | B1 |
-| 2.12 Trade kickers | `CLAUDE` | B1 |
-| 2.13 Trade date calendar | `CLAUDE` | **Unblocked** — 349 signing dates from `contract_notes.csv` |
-| 2.14 Simultaneous vs. non-simultaneous | `CLAUDE` | B1 |
-| 2.15 Multi-team trades | `CLAUDE` | B1 |
-| 2.16 Roster + pick tradeability | `CLAUDE` | B1, B4 |
-| 2.17 Violation → citation table | `BOTH` | I build it; **you audit it.** If a citation is wrong the app confidently misinforms people, and this is the one error type no test can catch. |
-| 2.18 `validate_trade` API | `CLAUDE` | — |
-| 2.19 Property-based tests | `CLAUDE` | — |
-| 2.20 Golden tests from CBA examples | `CLAUDE` | B1 |
+| 2.1–2.4 schema, ingest, reconciliation, entity resolution | `CLAUDE` | **Source precedence is a judgment call** — I'll propose a per-field ranking for you to confirm |
+| 2.5–2.7 DSL, compiler, validation | `CLAUDE` | ADR-002 |
+| 2.8 Golden query tests | `BOTH` | I write them; **you sanity-check the expected answers** — a wrong gold label makes a broken query layer look correct |
+| 2.9–2.10 lookup, refusals | `CLAUDE` | — |
 
-### Phase 3 — Ground-truth evals
+### Phase 3 — Rules engine
 
-| Task | Owner | What I need from you |
+| Task | Owner | Notes |
 |---|---|---|
-| 3.1 Scrape transaction log | `BOTH` | **Decision D2**: which source, and your call on its terms of service. I'll write the scraper for whichever you pick. |
-| 3.2 Normalize into trade legs | `BOTH` | 814 records already scraped to start against. I do the bulk; ambiguous cases go to `data/evals/needs-review.jsonl` for you — expect 20–40, mostly multi-team deals and cash considerations. |
-| 3.3 Reconstruct as-of-date state | `BOTH` | I build the reconstruction. **You decide the scope cut** if it stalls — see D6. Do not let me quietly expand this one. |
-| 3.4 Assertion suite | `CLAUDE` | — |
-| 3.5 Mutation generators | `CLAUDE` | — |
-| 3.6 Precision/recall scoring | `CLAUDE` | — |
-| 3.7 `make eval` + CI gate | `CLAUDE` | — |
+| 3.1 Read the CBA | `BOTH` | See §3. Extraction is solved; the ~15-constant verification pass is still yours. |
+| 3.4 Salary matching bands | `BOTH` | **You spot-check.** Most load-bearing constant in the codebase. |
+| 3.7 Second apron restrictions | `BOTH` | **You spot-check.** Second on that list. |
+| 3.8 Hard cap triggers | `BOTH` | I enumerate; you confirm the list is complete |
+| 3.17 Violation → citation table | `BOTH` | **You audit.** A wrong citation misinforms confidently and no test catches it. |
+| 3.19 `team_trade_constraints` | `BOTH` | New tool. **You define what a useful answer looks like** for "what limits the 76ers" — I can build it, but you know what a fan actually wants to see. |
+| All other 3.x | `CLAUDE` | Written from the PDF with citations |
 
-### Phase 4 — CBA retrieval
+### Phase 4 — Ground-truth evals
 
-| Task | Owner | What I need from you |
+| Task | Owner | Notes |
 |---|---|---|
-| 4.1 Acquire PDF | `YOU` | **Done** |
-| 4.2 Structure-preserving parser | `CLAUDE` | Largely solved — the PDF carries its own 2,412-entry outline. See §3. |
-| 4.3 Chunking | `CLAUDE` | — |
-| 4.4 Definitions handling | `CLAUDE` | — |
-| 4.5 Cross-reference graph | `CLAUDE` | — |
-| 4.6 Hybrid retrieval | `BOTH` | **Decision D3**: local embeddings vs. hosted vector DB |
-| 4.7 Deterministic citation path | `CLAUDE` | — |
-| 4.8 Golden Q&A set | `BOTH` | I draft ~50 questions with expected citations; **you review the expected answers.** A wrong gold label is worse than no eval — it makes a broken system look passing. |
-| 4.9 Numeric guardrail | `CLAUDE` | — |
+| 4.1–4.2 corpus, normalization | `BOTH` | Ambiguous legs land in `needs-review.jsonl` for you — expect 20–40 |
+| 4.3 Scope note | `CLAUDE` | Excluded trades are counted, never silently dropped |
+| 4.4–4.8 assertions, mutations, scoring, CI | `CLAUDE` | — |
 
-### Phase 5 — Agent layer
+### Phase 5 — CBA retrieval
 
-| Task | Owner | What I need from you |
+| Task | Owner | Notes |
 |---|---|---|
-| 5.1 Tool schemas | `CLAUDE` | — |
-| 5.2 NL → trade legs + entity resolution | `CLAUDE` | — |
-| 5.3 Structured outputs | `CLAUDE` | — |
-| 5.4 Agent loop | `CLAUDE` | B5 |
-| 5.5 Prompt caching | `CLAUDE` | — |
-| 5.6 Streaming | `CLAUDE` | — |
-| 5.7 Missing-data behavior | `CLAUDE` | — |
-| 5.8 Adversarial eval | `BOTH` | I write the ~30 bait prompts; **add any you think of** — you know the phrasings a real fan would use better than I do |
+| 5.1–5.3 extraction, outline traversal | `CLAUDE` | Solved — PyMuPDF plus the PDF's own outline |
+| 5.4–5.7 definitions, cross-refs, hybrid retrieval, citation path | `CLAUDE` | — |
+| 5.8 Golden Q&A | `BOTH` | I draft ~50; **you review the expected citations** |
+| 5.9 Numeric guardrail | `CLAUDE` | — |
 
-### Phase 6 — Trade search
+### Phase 6 — Agent layer
 
-| Task | Owner | What I need from you |
+| Task | Owner | Notes |
 |---|---|---|
-| 6.1 Team need vector | `BOTH` | **Basketball judgment is yours.** What counts as a positional gap, how timeline is classified. I'll implement whatever you specify; I should not be inventing this. |
-| 6.2 Archetype proposal | `CLAUDE` | — |
-| 6.3 Staged pruning | `CLAUDE` | — |
-| 6.4 Complexity control | `CLAUDE` | — |
-| 6.5 Fit score | `BOTH` | Same as 6.1 — you set the weights, I build the machinery |
-| 6.6 Mutual benefit constraint | `CLAUDE` | — |
-| 6.7 Ranking + explanation | `CLAUDE` | — |
+| 6.1–6.5 routing, tools, intent, loop | `CLAUDE` | Needs **B5 (API key)** |
+| 6.6 Refusal policy | `BOTH` | I implement; **you own the wording** — a refusal is a product surface, not an error |
+| 6.7–6.9 assumptions, caching, streaming | `CLAUDE` | — |
+| 6.10 Raindrop tracing | `BOTH` | I instrument; **you provide the Raindrop account/key**. Note: the Workshop MCP server failed to connect in this session, so I cannot verify traces land from here. |
+| 6.11 Adversarial eval | `BOTH` | I write ~30 bait prompts; **add any phrasings a real fan would use** |
+| 6.12 Cost tracking | `CLAUDE` | — |
 
-### Phase 7 — Cap sheet time machine
+### Phase 7 — Interface
 
-| Task | Owner | What I need from you |
+| Task | Owner | Notes |
 |---|---|---|
-| 7.1 Three-year projection | `CLAUDE` | Default growth assumption is yours to set |
-| 7.2 Cap holds + renouncement | `CLAUDE` | — |
-| 7.3 Options as branch points | `CLAUDE` | — |
-| 7.4 Extension eligibility | `BOTH` | **Unblocked** — awards 2020-21→2025-26, plus extension-eligibility dates from Spotrac. I implement; **you spot-check** the designated-veteran criteria — intricate and easy to get subtly wrong |
-| 7.5 Scenario tree UI | `CLAUDE` | — |
-| 7.6 Threshold crossing flags | `CLAUDE` | — |
+| 7.2 Answer card | `BOTH` | I build it; **you own whether it reads clearly** to someone who doesn't know the CBA. This is the demo. |
+| All other 7.x | `CLAUDE` | — |
 
-### Phase 8 — Protected pick simulation
+### Phase 8 — Ship
 
-| Task | Owner | What I need from you |
+| Task | Owner | Notes |
 |---|---|---|
-| 8.1 Win distribution | `BOTH` | You supply or approve the strength prior. Keep it simple — I'll push back if this starts growing. |
-| 8.2 Standings simulation | `CLAUDE` | — |
-| 8.3 Lottery draw | `CLAUDE` | — |
-| 8.4 Protection resolution | `CLAUDE` | B4 |
-| 8.5 Distribution output | `CLAUDE` | — |
-| 8.6 Feed back into Stepien + search | `CLAUDE` | — |
-
-### Phase 9 — Interface
-
-| Task | Owner | What I need from you |
-|---|---|---|
-| 9.1 Trade builder | `CLAUDE` | — |
-| 9.2 Violation panel | `BOTH` | I build it; **you own whether the plain-English explanations actually read clearly** to someone who doesn't know the CBA. This is the demo. |
-| 9.3 Cap sheet table | `CLAUDE` | — |
-| 9.4 Chat pane | `CLAUDE` | — |
-| 9.5 Rumor check | `CLAUDE` | — |
-| 9.6 Permalinks | `CLAUDE` | — |
-| 9.7 Provenance display | `CLAUDE` | — |
-| 9.8 States + mobile | `CLAUDE` | — |
-
-### Phase 10 — Ship
-
-| Task | Owner | What I need from you |
-|---|---|---|
-| 10.1 Deploy | `BOTH` | I write config and Dockerfiles; **you own the accounts, DNS, and the deploy button** |
-| 10.2 Rate limit + spend cap | `BOTH` | I write the limiter; you set the cap on the key |
-| 10.3 README | `CLAUDE` | — |
-| 10.4 Demo video | `YOU` | Screen recording and narration. I can write the script and pick the trade to demo. |
-| 10.5 Eval harness write-up | `BOTH` | I can draft it, but **this should sound like you** — it's the piece people will read as evidence of how you think |
-
----
+| 8.1–8.2 deploy, limits | `BOTH` | I write config; **you own accounts and the deploy** |
+| 8.3 README | `CLAUDE` | — |
+| 8.4 Demo video | `YOU` | I can script it and pick the cases |
+| 8.5 Write-up | `BOTH` | I can draft, but **it should sound like you** |
 
 ## 3. The CBA reading question
 
@@ -291,23 +213,20 @@ Everything except Phases 5 and 6, which need the API key (B5).
 
 Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order, since Phase 2 transcription wants clean section-numbered text) → Phase 2 → Phase 7.
 
-## 6. Decisions I need from you
+## 6. Decisions — settled
 
-Each has my recommendation. If you agree, say so and I'll proceed — no need to deliberate on any of them.
-
-| # | Decision | My recommendation |
+| # | Decision | Outcome |
 |---|---|---|
-| D1 | Frontend stack | **Next.js + TypeScript.** Boring, well-supported, deploys trivially. |
-| D2 | Transaction data source, and your ToS comfort | Your call — this is a legal judgment, not a technical one. Tell me the source and I'll write to it. |
-| D3 | Vector store | **Local — SQLite FTS5 for BM25 plus an on-disk embedding index.** The CBA is one document; a hosted vector DB is unjustified infrastructure here, and local keeps the repo self-contained for anyone who clones it. |
-| D4 | Tracing | **Structured local logs to start.** Add hosted tracing only if Phase 5 debugging gets painful. |
-| D5 | Which of Phases 6/7/8 first | **Phase 7, the cap time machine.** It reuses Phases 1–2 most directly, needs no new data, and is the most genuinely useful of the three. Phase 8 next, since it feeds 2.9. Phase 6 last — it's the most work for the softest output. |
-| D6 | Phase 3 fallback scope | **Deadline-day and offseason trades, 2023-24 forward.** Now live rather than hypothetical — the current data is a forward-looking snapshot with no historical state, so 3.3 needs either historical collection or this scope cut. Decide before Phase 3, not during it. |
-| D7 | Model the 2017 CBA too? | **No.** It doubles the rules engine to extend the eval corpus backward. Not worth it. |
-| D8 | Monthly LLM budget | Tell me a number and I'll build the spend cap around it. |
-| D9 | Model incentive compensation? | **Not for v1.** It pulls in the full "Generally Recognized League Honors" set plus likely/unlikely bonus classification, for a modest accuracy gain on a minority of contracts. Revisit after Phase 7. |
-
----
+| D1 | Frontend | **Next.js + TypeScript** |
+| D2 | Data sources | **Any reliable source.** Six scraped; see §1 inventory |
+| D3 | Vector store | **Local** — SQLite FTS5 + on-disk embeddings, no hosted service |
+| D4 | Tracing | **Raindrop, one trace per user session**, carrying user input, system prompt, every tool call and result, retrieved context, every intermediate model call, and the final output. Task 6.10. |
+| D5 | Phase ordering | Superseded by the rescope — see `build-plan.md` |
+| D6 | Historical scope | **Out of v1.** Current state only; historical questions are refused with a reason. Deferred to v2 item 11. |
+| D7 | Model the 2017 CBA | **No** |
+| D8 | Budget | **Local and minimal.** No hosted services in v1; hard spend cap on the model key (8.2) |
+| D9 | Incentive compensation | **Out of v1** |
+| D10 | Hypotheticals | **No.** "Is this legal" is answered; "should they do it" is declined. v2 may present live statistics alongside a trade but will not conclude. |
 
 ## 7. The honest summary
 

@@ -38,7 +38,7 @@ jobs:
       - name: Tests
         run: uv run pytest
 
-  # Promoted to blocking once Phase 3 reports a pass rate (see docs/build-plan.md 3.7)
+  # Promoted to blocking once Phase 4 reports a pass rate (see docs/build-plan.md 4.8)
   evals:
     runs-on: ubuntu-latest
     continue-on-error: true
