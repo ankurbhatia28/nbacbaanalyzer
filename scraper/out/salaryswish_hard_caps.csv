@@ -1,0 +1,49 @@
+team,team_slug,capped_at,trigger_scope,trigger_category,trigger_detail
+Atlanta Hawks ATL,hawks,1st Apron,first,TP-MLE Exceeded,Jock Landale (Jul 10)
+Atlanta Hawks ATL,hawks,1st Apron,first,Trade Salary Acquired,Jul 19 trade
+Atlanta Hawks ATL,hawks,1st Apron,first,Past-Season TPE,Jul 6 trade
+Boston Celtics BOS,celtics,1st Apron,first,TP-MLE Exceeded,Mitchell Robinson (Jul 6)
+Charlotte Hornets CHA,hornets,1st Apron,first,TP-MLE Exceeded,Jul 6 trade
+Charlotte Hornets CHA,hornets,1st Apron,first,TP-MLE Length Exceeded,Jul 6 trade
+Charlotte Hornets CHA,hornets,1st Apron,first,Trade Salary Acquired,Jul 10 trade Aug 20 trade
+Cleveland Cavaliers CLE,cavaliers,1st Apron,first,Trade Salary Acquired,Aug 20 trade
+Dallas Mavericks DAL,mavericks,1st Apron,first,BAE,Jul 8 trade
+Dallas Mavericks DAL,mavericks,1st Apron,first,Trade Salary Acquired,Jul 8 trade
+Detroit Pistons DET,pistons,1st Apron,first,MLE Trade,Jul 6 trade
+Detroit Pistons DET,pistons,1st Apron,first,S&T,John Collins (Jul 7)
+Detroit Pistons DET,pistons,1st Apron,first,Trade Salary Acquired,Jul 8 trade
+Indiana Pacers IND,pacers,1st Apron,first,TP-MLE Exceeded,Kelly Oubre Jr. (Jul 7)
+LA Clippers LAC,clippers,1st Apron,first,TP-MLE Exceeded,Rui Hachimura (Jul 6)
+Los Angeles Lakers LAL,lakers,1st Apron,first,S&T,Walker Kessler (Jul 7)
+Memphis Grizzlies MEM,grizzlies,1st Apron,first,TP-MLE Exceeded,Quinten Post (Jul 8)
+Memphis Grizzlies MEM,grizzlies,1st Apron,first,Trade Salary Acquired,Jul 8 trade
+Miami Heat MIA,heat,1st Apron,first,TP-MLE Exceeded,Tim Hardaway Jr. (Jul 6)
+Miami Heat MIA,heat,1st Apron,first,Trade Salary Acquired,Jul 6 trade Jul 6 trade
+Miami Heat MIA,heat,1st Apron,first,Past-Season TPE,Jul 6 trade
+Milwaukee Bucks MIL,bucks,1st Apron,first,Trade Salary Acquired,Jul 8 trade
+Minnesota Timberwolves MIN,timberwolves,1st Apron,first,Trade Salary Acquired,Jul 10 trade
+Philadelphia 76ers PHI,sixers,1st Apron,first,TP-MLE Exceeded,Dean Wade (Jul 6)
+Philadelphia 76ers PHI,sixers,1st Apron,first,TP-MLE Length Exceeded,Dean Wade (Jul 6)
+Philadelphia 76ers PHI,sixers,1st Apron,first,BAE,Ariel Hukporti (Jul 6)
+Philadelphia 76ers PHI,sixers,1st Apron,first,Trade Salary Acquired,Jul 6 trade
+Sacramento Kings SAC,kings,1st Apron,first,BAE,Precious Achiuwa (Jul 7)
+San Antonio Spurs SAS,spurs,1st Apron,first,TP-MLE Exceeded,Tobias Harris (Jul 6)
+Utah Jazz UTA,jazz,1st Apron,first,Trade Salary Acquired,Aug 29 trade
+Washington Wizards WAS,wizards,1st Apron,first,S&T,Khris Middleton (Jul 7)
+Washington Wizards WAS,wizards,1st Apron,first,Trade Salary Acquired,Aug 20 trade
+Washington Wizards WAS,wizards,1st Apron,first,Past-Season TPE,Jul 8 trade Jul 8 trade
+Atlanta Hawks ATL,hawks,1st Apron,second,Cash Traded,Jun 24 trade
+Charlotte Hornets CHA,hornets,1st Apron,second,Cash Traded,Jul 6 trade
+Dallas Mavericks DAL,mavericks,1st Apron,second,Cash Traded,Jun 25 trade
+Detroit Pistons DET,pistons,1st Apron,second,Cash Traded,Jun 25 trade
+Houston Rockets HOU,rockets,2nd Apron,second,Any MLE,Marcus Smart (Jul 10)
+Indiana Pacers IND,pacers,1st Apron,second,Cash Traded,Jun 24 trade
+LA Clippers LAC,clippers,1st Apron,second,Cash Traded,Jun 24 trade Jul 8 trade
+Los Angeles Lakers LAL,lakers,1st Apron,second,Cash Traded,Jun 24 trade Jun 24 trade
+Memphis Grizzlies MEM,grizzlies,1st Apron,second,Cash Traded,Jun 29 trade
+Miami Heat MIA,heat,1st Apron,second,Cash Traded,Jun 24 trade
+Milwaukee Bucks MIL,bucks,1st Apron,second,Cash Traded,Jun 24 trade
+Minnesota Timberwolves MIN,timberwolves,1st Apron,second,Cash Traded,Aug 29 trade
+Phoenix Suns PHX,suns,2nd Apron,second,Any MLE,Luke Kennard (Jul 14)
+Phoenix Suns PHX,suns,2nd Apron,second,Trade Aggregate,Jul 13 trade
+Phoenix Suns PHX,suns,2nd Apron,second,Cash Traded,Jun 24 trade
