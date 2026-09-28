@@ -30,10 +30,13 @@ apps/web/.next/
 apps/web/out/
 .turbo/
 
-# Secrets
+# Secrets — every .env variant, at any depth. Only the example is tracked.
 .env
-.env.local
+.env.*
+**/.env
+**/.env.*
 !.env.example
+!**/.env.example
 
 # OS / editor
 .DS_Store

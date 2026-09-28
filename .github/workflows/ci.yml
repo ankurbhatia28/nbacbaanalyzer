@@ -16,6 +16,16 @@ jobs:
       - run: uv python install 3.12
       - run: uv sync --all-packages --dev
 
+      # A committed .env cannot be un-leaked by a later commit. Fail loudly.
+      - name: No secrets tracked
+        run: |
+          leaked=$(git ls-files | grep -E '(^|/)\.env($|\.)' | grep -v '\.env\.example$' || true)
+          if [ -n "$leaked" ]; then
+            echo "::error::env file(s) tracked in git: $leaked"
+            exit 1
+          fi
+          echo "ok: no .env files tracked"
+
       - name: Lint
         run: uv run ruff check .
 
