@@ -114,10 +114,13 @@ Phases renumbered for the rescope — see [`build-plan.md`](./build-plan.md). Ph
 
 | Task | Owner | Notes |
 |---|---|---|
-| 8.1–8.2 deploy, limits | `BOTH` | I write config; **you own accounts and the deploy** |
-| 8.3 README | `CLAUDE` | — |
-| 8.4 Demo video | `YOU` | I can script it and pick the cases |
-| 8.5 Write-up | `BOTH` | I can draft, but **it should sound like you** |
+| 8.1 CI build pipeline | `CLAUDE` | Emits `nbacba.db` and the index as deployment artifacts |
+| 8.2–8.3 Vercel + Render deploys | `BOTH` | I write config, Dockerfile and CI; **you own the accounts, linking the repo, and the deploy** |
+| 8.5 Secrets and spend cap | `YOU` | Platform env vars and the cap on the model key |
+| 8.6 Always-on vs free tier | `YOU` | Render free spins down; a cold résumé link takes ~30s |
+| 8.4, 8.7 package + README | `CLAUDE` | — |
+| 8.8 Demo video | `YOU` | I can script it and pick the cases |
+| 8.9 Write-up | `BOTH` | I can draft, but **it should sound like you** |
 
 ## 3. The CBA reading question
 
@@ -227,6 +230,8 @@ Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order
 | D8 | Budget | **Local and minimal.** No hosted services in v1; hard spend cap on the model key (8.2) |
 | D9 | Incentive compensation | **Out of v1** |
 | D10 | Hypotheticals | **No.** "Is this legal" is answered; "should they do it" is declined. v2 may present live statistics alongside a trade but will not conclude. |
+| D11 | Hosting | **Next.js → Vercel, FastAPI → Render.** Database and index are read-only build artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)); no managed DB, no persistent disk. |
+| D12 | Retrieval strategy | **BM25 first** (SQLite FTS5, no model at inference). Embeddings added only if the measured gain in 5.6 justifies the cold-start and bundle cost. Settled by measurement, not assertion. |
 
 ## 7. The honest summary
 

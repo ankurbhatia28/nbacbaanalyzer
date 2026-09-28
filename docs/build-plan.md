@@ -28,6 +28,11 @@ answers. Questions needing history are refused with a reason.
 **No hypotheticals.** "Is this trade legal" is checkable; "should they do it" is
 opinion. The system answers the first and declines the second.
 
+**Deployed, read-only.** The database and retrieval index are build artifacts the
+app opens read-only — see [ADR-004](adr/0004-read-only-at-runtime.md). Data
+currency is therefore a deploy-time property, which is why as-of provenance is a
+required UI element rather than a nicety.
+
 ---
 
 ## Phase 0 — Rails ✅ Complete
@@ -141,7 +146,7 @@ opinion. The system answers the first and declines the second.
 - [ ] **5.3** Sub-split the 39 oversized Section units at outline level 3–4
 - [ ] **5.4** **Definitions index.** Article I terms of art govern every other Article; attach relevant definitions to chunks that use them
 - [ ] **5.5** Cross-reference graph with one-hop expansion at retrieval time
-- [ ] **5.6** Hybrid retrieval — BM25 (SQLite FTS5) + local embeddings, reranked. Measure both arms separately.
+- [ ] **5.6** **BM25 first** (SQLite FTS5, no model at inference). Legal text is dense with exact terms of art where lexical search wins. Add embeddings only if measured retrieval gains justify the cold-start and bundle cost — measure both arms separately and report the delta.
 - [ ] **5.7** **Deterministic citation path:** violation code → canonical citation → fetch that unit verbatim. The model quotes; it never chooses.
 - [ ] **5.8** Golden Q&A set (~50) with expected citations; score recall@k and citation exact-match
 - [ ] **5.9** Guardrail: numeric answers must originate from a tool result, never from retrieved prose
@@ -162,6 +167,7 @@ opinion. The system answers the first and declines the second.
 - [ ] **6.10** **Tracing via Raindrop — one trace per user session.** Each trace carries the user input, system prompt, every tool call and result, retrieved context, every intermediate model call, and the final user-facing output.
 - [ ] **6.11** Adversarial eval — ~30 prompts engineered to bait the model into doing cap math or asserting a rule unaided. Assert it always calls the tool.
 - [ ] **6.12** Cost and latency tracking per request
+- [ ] **6.13** **Rate limiting and a hard spend cap**, built with the agent loop rather than bolted on at deploy. A public URL in front of a model key is not deployable without them.
 
 ---
 
@@ -172,7 +178,7 @@ opinion. The system answers the first and declines the second.
 - [ ] **7.3** Show the structured query behind any number, inspectable on demand
 - [ ] **7.4** Trade builder with live verdict, reachable from a chat answer
 - [ ] **7.5** Cap sheet view with apron lines as visible thresholds, tabular numerals
-- [ ] **7.6** Provenance and as-of date on every figure
+- [ ] **7.6** **Provenance and as-of date on every figure — mandatory.** The dataset is a snapshot, and the Spotrac rows alone span 13 months of differing snapshot dates. A public app implies currency; without prominent as-of labelling it is quietly misleading.
 - [ ] **7.7** Permalinks for a question and its answer
 - [ ] **7.8** Empty, loading, error and refusal states; usable read-only mobile view
 
@@ -180,13 +186,18 @@ opinion. The system answers the first and declines the second.
 
 ## Phase 8 — Ship
 
-- [ ] **8.1** Deploy API and web; publish `packages/engine` as a standalone installable package
-- [ ] **8.2** Rate limiting and a hard spend cap
-- [ ] **8.3** README leading with the architecture thesis and the eval numbers
-- [ ] **8.4** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason
-- [ ] **8.5** Write-up on the eval harness and the deterministic citation path
+**Next.js → Vercel. FastAPI → Render.** The engine, data and rag packages stay
+platform-agnostic; only `apps/` knows where it runs.
 
----
+- [ ] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source.
+- [ ] **8.2** Deploy `apps/web` to Vercel
+- [ ] **8.3** Deploy `apps/api` to Render, with the artifacts from 8.1 bundled
+- [ ] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app
+- [ ] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live
+- [ ] **8.6** Cold-start note: Render's free tier spins down after inactivity. Either pay for always-on or accept a slow first load on a résumé link.
+- [ ] **8.7** README leading with the architecture thesis and the eval numbers
+- [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason
+- [ ] **8.9** Write-up on the eval harness and the deterministic citation path
 
 ## v2 — deferred
 
