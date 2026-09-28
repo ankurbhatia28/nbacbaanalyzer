@@ -116,7 +116,7 @@ This is where the split matters most.
 | Task | Owner | What I need from you |
 |---|---|---|
 | 4.1 Acquire PDF | `YOU` | **Done** |
-| 4.2 Structure-preserving parser | `CLAUDE` | — (see §3 on the word-boundary defect — this is now a known requirement, not a discovery) |
+| 4.2 Structure-preserving parser | `CLAUDE` | Largely solved — the PDF carries its own 2,412-entry outline. See §3. |
 | 4.3 Chunking | `CLAUDE` | — |
 | 4.4 Definitions handling | `CLAUDE` | — |
 | 4.5 Cross-reference graph | `CLAUDE` | — |
@@ -203,7 +203,11 @@ Task 2.1 says "read the CBA." Worth being precise about who does that, because i
 
 **What I'll do:** write the parser (4.2) early — out of build-plan order, deliberately — and run it to get clean, section-numbered text. Then read the specific Articles and transcribe each rule into code with its citation constant attached. This is reading from source, not from memory, and it's the only acceptable way for me to write these rules.
 
-A first raw extraction is already done (676 pages, ~1.37M characters) and was used to verify the §4.2 data requirements, so this path is proven. **It also surfaced a defect worth knowing about now:** the PDF's text layer has broken word boundaries throughout — the document yields `Generally Rec ognized`, `Tea m`, `w hose`, `gr eater`, `de creases`. Left uncorrected this would split terms across chunk text and cause BM25 to miss a large share of query terms, producing retrieval scores that look mysteriously bad for no visible reason. Task 4.2 therefore needs a normalization pass before indexing. Better to have found it by accident now than to debug it in Phase 4.
+A first raw extraction is already done (676 pages, ~1.37M characters, ~343k tokens), so this path is proven.
+
+**Correction to an earlier claim.** I previously reported that this PDF's text layer has broken word boundaries throughout (`Generally Rec ognized`, `Tea m`, `w hose`) and that task 4.2 would need a normalization pass. **That was a pypdf artifact, not a property of the document.** Extracting with PyMuPDF yields zero occurrences of all seven defects tested, and runs 5x faster (1.4s vs 6.9s for the full document). No normalization pass is needed. Use PyMuPDF.
+
+**The document also ships its own structure.** The PDF carries a 2,412-entry bookmark outline — 7 levels deep, covering pages 1–671 — that mirrors the legal hierarchy exactly: 42 Articles at level 1, 288 Sections at level 2, 938 subsections at level 3. `Article VII, Section 8. Trade Rules` resolves to p. 284 directly. Task 4.2 is therefore mostly outline traversal rather than heuristic parsing, which removes the largest piece of guesswork from Phase 4.
 
 **What I need from you:** a verification pass on roughly fifteen load-bearing constants. Not the whole document — just the values where a transcription slip silently corrupts every downstream result:
 
@@ -281,7 +285,7 @@ Everything except Phases 5 and 6, which need the API key (B5).
 - **Phase 1** — every type, against real data from four sources rather than a synthetic fixture
 - **1.7's hard part** — 616 rows of draft-pick protection prose into structured predicates
 - **Phase 2** — rules transcribed from the PDF with citations; 2.13 now has signing dates, so nothing is field-blocked
-- **Phase 4.2** — the CBA parser, including the word-boundary normalization §3 describes
+- **Phase 4.2** — the CBA parser, now mostly outline traversal (see §3)
 - **Phase 7** — unblocked. Options, multi-year salaries, guarantee dates and extension-eligibility dates are all in hand.
 - **Phase 3 scaffolding** — 814 transactions to normalize, pending D2
 
