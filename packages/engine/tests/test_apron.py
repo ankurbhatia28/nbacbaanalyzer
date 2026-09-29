@@ -113,3 +113,30 @@ def test_status_and_ceiling_are_independent():
     okc = CeilingSet()
     assert classify(232_001_714, CAP, TAX, A1, A2) is ApronStatus.SECOND_APRON
     assert okc.effective(TH) is None
+
+
+def test_row_g_is_unreachable_for_seasons_we_model():
+    """
+    Its apron level is transcribed correctly, but the Transition exception it
+    refers to existed in 2023-24 only, and Sec. 2(e)(5) exempts rows F-J executed
+    during 2023-24 from creating a 2023-24 ceiling. So the one season row G can
+    fire in is the season it is exempted in.
+    """
+    assert RestrictionRow.G_TRANSITION_TPE.applicable_apron is ApronLevel.FIRST
+    assert not RestrictionRow.G_TRANSITION_TPE.is_reachable_after_2024
+    assert all(
+        row.is_reachable_after_2024
+        for row in RestrictionRow
+        if row is not RestrictionRow.G_TRANSITION_TPE
+    )
+
+
+def test_the_transition_exception_is_unavailable_outside_2023_24():
+    """The reason row G cannot fire: the exception itself does not exist."""
+    from dataclasses import replace
+
+    from engine.fixtures import SEASON_2026_27
+    from engine.salary_matching import transition
+
+    assert transition(10_000_000, SEASON_2026_27, 150_000_000) is None
+    assert transition(10_000_000, replace(SEASON_2026_27, season_id="2023-2024"), 150_000_000)
