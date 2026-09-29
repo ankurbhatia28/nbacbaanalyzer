@@ -25,16 +25,27 @@ from .contract import (
 )
 from .entities import Player, Team
 from .holds import BirdRights, CapHold, DeadMoney, HoldKind
+from .max_salary import MaximumSalary, MaxTier, maximum_annual_salary, tier_for
 from .maybe import Assumption, AssumptionLog, Maybe, State, UnknownValueError
 from .picks import ConveyanceOutcome, DraftPick, PickInventory, Protection, SwapRight
 from .provenance import Provenance, Source
 from .restrictions import RestrictionReason, TradeRestriction
 from .roster import RosterState
+from .salary_matching import Allowance, MatchingExceptionKind, best_allowance
 from .season import Season
 from .team_state import TeamState
+from .trade import PickAsset, Trade, TradeLeg
 from .trade_exceptions import TPEKind, TradeException
+from .validate import (
+    Constraint,
+    ConstraintReport,
+    team_trade_constraints,
+    validate_trade,
+)
+from .violations import Code, Verdict, Violation
 
 __all__ = [
+    "Allowance",
     "ApronLevel",
     "ApronStatus",
     "Assumption",
@@ -42,6 +53,9 @@ __all__ = [
     "BirdRights",
     "CapHold",
     "CeilingSet",
+    "Code",
+    "Constraint",
+    "ConstraintReport",
     "Contract",
     "ContractOption",
     "ContractType",
@@ -53,8 +67,12 @@ __all__ = [
     "GuaranteeType",
     "HardCapCeiling",
     "HoldKind",
+    "MatchingExceptionKind",
+    "MaxTier",
+    "MaximumSalary",
     "Maybe",
     "OptionType",
+    "PickAsset",
     "PickInventory",
     "Player",
     "Protection",
@@ -70,8 +88,17 @@ __all__ = [
     "TPEKind",
     "Team",
     "TeamState",
+    "Trade",
     "TradeException",
+    "TradeLeg",
     "TradeRestriction",
     "UnknownValueError",
+    "Verdict",
+    "Violation",
+    "best_allowance",
     "classify",
+    "maximum_annual_salary",
+    "team_trade_constraints",
+    "tier_for",
+    "validate_trade",
 ]
