@@ -20,6 +20,7 @@ from pathlib import Path
 
 from ..db import build
 from .names import normalise
+from .overrides import apply_pick_overrides, load_pick_overrides
 from .precedence import Src
 from .reconcile import Reconciler
 from .resolve import ResolutionReport
@@ -64,6 +65,7 @@ class IngestReport:
     resolution: dict[str, int] = dc_field(default_factory=dict)
     reconciliation: dict[str, int] = dc_field(default_factory=dict)
     unresolved: list[str] = dc_field(default_factory=list)
+    overrides: dict[str, int] = dc_field(default_factory=dict)
 
     def __getitem__(self, key: str) -> object:  # convenience for tests
         return getattr(self, key)
@@ -249,17 +251,23 @@ def load(csv_dir: Path, db_path: Path) -> IngestReport:
     # ---- draft picks ----------------------------------------------------
     pick_rows = []
     for pid, r in enumerate(rows(csv_dir, "draft_pick.csv"), start=1):
+        owner = fanspo_to_tri.get(r.get("teamId") or "")
+        # Fanspo's `from` names the originating team; empty means the pick is the
+        # owner's own. Without this distinction an override cannot tell LAC's own
+        # first from a Toronto first LAC happens to hold.
+        origin_raw = (r.get("from") or "").strip()
+        origin = canonical_team(origin_raw) if origin_raw and " " not in origin_raw else None
         pick_rows.append(
             (
                 pid,
                 as_int(r["year"]),
                 as_int(r["round"]),
-                fanspo_to_tri.get(r.get("teamId") or ""),
-                fanspo_to_tri.get(r.get("teamId") or ""),
+                origin or owner,
+                owner,
                 0,
                 r.get("details") or None,
                 Src.FANSPO.value,
-                r.get("updatedAt"),
+                None,
             )
         )
     conn.executemany("INSERT INTO draft_picks VALUES (?,?,?,?,?,?,?,?,?)", pick_rows)
@@ -321,6 +329,11 @@ def load(csv_dir: Path, db_path: Path) -> IngestReport:
     conn.executemany("INSERT INTO awards VALUES (?,?,?,?,?,?,?)", award_rows)
     counts["awards"] = len(award_rows)
 
+    # Hand-asserted corrections go on last, so they visibly override scraped data
+    # rather than competing with it.
+    override_report = apply_pick_overrides(conn, load_pick_overrides())
+    counts["pick_overrides_applied"] = len(override_report.applied)
+
     rec.write(conn)
     conn.executemany(
         "INSERT OR REPLACE INTO ingest_meta VALUES (?,?)",
@@ -330,6 +343,7 @@ def load(csv_dir: Path, db_path: Path) -> IngestReport:
             ("counts", json.dumps(counts)),
             ("resolution", json.dumps(ids.summary)),
             ("reconciliation", json.dumps(rec.summary)),
+            ("pick_overrides", json.dumps(override_report.summary)),
         ],
     )
     conn.commit()
@@ -338,6 +352,7 @@ def load(csv_dir: Path, db_path: Path) -> IngestReport:
         resolution=ids.summary,
         reconciliation=rec.summary,
         unresolved=sorted(ids.unresolved)[:20],
+        overrides=override_report.summary,
     )
 
 
@@ -352,6 +367,7 @@ def main() -> int:
         print(f"  {table:22s} {n:6d}")
     print("\n  identities:", report.resolution)
     print("  reconciliation:", report.reconciliation)
+    print("  overrides:", report.overrides)
     print("  unresolved sample:", report.unresolved[:6])
     return 0
 
