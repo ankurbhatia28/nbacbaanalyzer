@@ -18,8 +18,9 @@ ATL,landajo01,Jock Landale,2026-27,2026-2027,14100000,
 ATL,kispeco01,Corey Kispert,2026-27,2026-2027,13975000,
 ATL,kispeco01,Corey Kispert,2027-28,2027-2028,13050000,
 ATL,kispeco01,Corey Kispert,2028-29,2028-2029,13050000,team
-ATL,hieldbu01,Buddy Hield,2026-27,2026-2027,9658536,
-ATL,hieldbu01,Buddy Hield,2027-28,2027-2028,10097560,player
+ATL,finnedo01,Dorian Finney-Smith,2026-27,2026-2027,13335000,
+ATL,finnedo01,Dorian Finney-Smith,2027-28,2027-2028,13335000,
+ATL,finnedo01,Dorian Finney-Smith,2028-29,2028-2029,13335000,player
 ATL,wiggiaa01,Aaron Wiggins,2026-27,2026-2027,9224300,
 ATL,wiggiaa01,Aaron Wiggins,2027-28,2027-2028,8345797,
 ATL,wiggiaa01,Aaron Wiggins,2028-29,2028-2029,8345797,team
@@ -35,7 +36,6 @@ ATL,newelas01,Asa Newell,2026-27,2026-2027,3399480,
 ATL,newelas01,Asa Newell,2027-28,2027-2028,3560880,team
 ATL,newelas01,Asa Newell,2028-29,2028-2029,6042814,team
 ATL,gueyemo02,Mouhamed Gueye,2026-27,2026-2027,2406205,team
-ATL,nembhry01,Ryan Nembhard,2026-27,2026-2027,2150917,
 ATL,veesahe01,Henri Veesaar,2026-27,2026-2027,1357763,
 ATL,veesahe01,Henri Veesaar,2027-28,2027-2028,2294370,
 ATL,veesahe01,Henri Veesaar,2028-29,2028-2029,2694363,
@@ -77,8 +77,8 @@ BOS,quetane01,Neemias Queta,2027-28,2027-2028,12500000,
 BOS,quetane01,Neemias Queta,2028-29,2028-2029,13500000,
 BOS,quetane01,Neemias Queta,2029-30,2029-2030,14500000,
 BOS,quetane01,Neemias Queta,2030-31,2030-2031,15500000,
-BOS,conlemi01,Mike Conley,2026-27,2026-2027,2449421,
 BOS,cartede02,Devin Carter,2026-27,2026-2027,2449421,
+BOS,conlemi01,Mike Conley,2026-27,2026-2027,2449421,
 BOS,walshjo01,Jordan Walsh,2026-27,2026-2027,2406205,team
 BOS,walshjo01,Jordan Walsh,2027-28,2027-2028,4629630,
 BOS,walshjo01,Jordan Walsh,2028-29,2028-2029,5000000,
@@ -122,6 +122,7 @@ BRK,jeffejo01,Joshua Jefferson,2029-30,2029-2030,5896718,team
 BRK,wolfda01,Danny Wolf,2026-27,2026-2027,2941440,
 BRK,wolfda01,Danny Wolf,2027-28,2027-2028,3081840,team
 BRK,wolfda01,Danny Wolf,2028-29,2028-2029,5559640,team
+BRK,pringni01,Nick Pringle,2026-27,2026-2027,1357763,
 CHO,reidna01,Naz Reid,2026-27,2026-2027,23275862,
 CHO,reidna01,Naz Reid,2027-28,2027-2028,25000000,
 CHO,reidna01,Naz Reid,2028-29,2028-2029,26724138,
@@ -135,14 +136,13 @@ CHO,millebr02,Brandon Miller,2026-27,2026-2027,15104626,team
 CHO,schrode01,Dennis Schröder,2026-27,2026-2027,14809200,
 CHO,schrode01,Dennis Schröder,2027-28,2027-2028,15514400,
 CHO,willigr01,Grant Williams,2026-27,2026-2027,14265750,
-CHO,finnedo01,Dorian Finney-Smith,2026-27,2026-2027,13335000,
-CHO,finnedo01,Dorian Finney-Smith,2027-28,2027-2028,13335000,
-CHO,finnedo01,Dorian Finney-Smith,2028-29,2028-2029,13335000,player
 CHO,onealro01,Royce O'Neale,2026-27,2026-2027,10875000,
 CHO,onealro01,Royce O'Neale,2027-28,2027-2028,11625000,
 CHO,knuepko01,Kon Knueppel,2026-27,2026-2027,10516560,
 CHO,knuepko01,Kon Knueppel,2027-28,2027-2028,11017560,team
 CHO,knuepko01,Kon Knueppel,2028-29,2028-2029,13937214,team
+CHO,hieldbu01,Buddy Hield,2026-27,2026-2027,9658536,
+CHO,hieldbu01,Buddy Hield,2027-28,2027-2028,10097560,player
 CHO,salauti01,Tidjane Salaün,2026-27,2026-2027,8237880,team
 CHO,salauti01,Tidjane Salaün,2027-28,2027-2028,10445633,team
 CHO,steinha02,Hannes Steinbach,2026-27,2026-2027,5227200,
@@ -164,6 +164,7 @@ CHO,jamessi01,Sion James,2028-29,2028-2029,2735698,team
 CHO,kalkbry01,Ryan Kalkbrenner,2026-27,2026-2027,2411090,
 CHO,kalkbry01,Ryan Kalkbrenner,2027-28,2027-2028,2525901,
 CHO,kalkbry01,Ryan Kalkbrenner,2028-29,2028-2029,2735698,team
+CHO,nembhry01,Ryan Nembhard,2026-27,2026-2027,2150917,
 CHI,giddejo01,Josh Giddey,2026-27,2026-2027,25000000,
 CHI,giddejo01,Josh Giddey,2027-28,2027-2028,25000000,
 CHI,giddejo01,Josh Giddey,2028-29,2028-2029,25000000,
@@ -320,6 +321,11 @@ DET,robindu01,Duncan Robinson,2027-28,2027-2028,15151222,
 DET,joeis01,Isaiah Joe,2026-27,2026-2027,11323006,
 DET,joeis01,Isaiah Joe,2027-28,2027-2028,11323006,team
 DET,thompau01,Ausar Thompson,2026-27,2026-2027,11117925,team
+DET,thompau01,Ausar Thompson,2027-28,2027-2028,26724138,
+DET,thompau01,Ausar Thompson,2028-29,2028-2029,28862069,
+DET,thompau01,Ausar Thompson,2029-30,2029-2030,31000000,
+DET,thompau01,Ausar Thompson,2030-31,2030-2031,33137931,
+DET,thompau01,Ausar Thompson,2031-32,2031-2032,35275862,
 DET,hollaro01,Ron Holland,2026-27,2026-2027,9069600,team
 DET,hollaro01,Ron Holland,2027-28,2027-2028,11491183,team
 DET,huertke01,Kevin Huerter,2026-27,2026-2027,8333333,
@@ -358,16 +364,15 @@ GSW,santogu01,Gui Santos,2026-27,2026-2027,4629630,
 GSW,santogu01,Gui Santos,2027-28,2027-2028,5000000,
 GSW,santogu01,Gui Santos,2028-29,2028-2029,5370370,player
 GSW,willibr03,Brandon Williams,2026-27,2026-2027,2449421,
+GSW,bassech01,Charles Bassey,2026-27,2026-2027,2449421,
 GSW,paytoga02,Gary Payton II,2026-27,2026-2027,2449421,
 GSW,niangge01,Georges Niang,2026-27,2026-2027,2449421,
-GSW,bassech01,Charles Bassey,2026-27,2026-2027,2449421,
 GSW,tooheal01,Alex Toohey,2026-27,2026-2027,2185116,
 GSW,richawi02,Will Richard,2026-27,2026-2027,2150917,
 GSW,richawi02,Will Richard,2027-28,2027-2028,2525901,
 GSW,richawi02,Will Richard,2028-29,2028-2029,2735698,team
-GSW,boydni01,Nick Boyd,2026-27,2026-2027,1357763,
 GSW,terryda01,Dalen Terry,2026-27,2026-2027,1357763,
-GSW,agbimob01,Obi Agbim,2026-27,2026-2027,1357763,
+GSW,boydni01,Nick Boyd,2026-27,2026-2027,1357763,
 HOU,duranke01,Kevin Durant,2026-27,2026-2027,43902439,
 HOU,duranke01,Kevin Durant,2027-28,2027-2028,46097561,player
 HOU,sengual01,Alperen Şengün,2026-27,2026-2027,35642202,
@@ -470,13 +475,11 @@ LAC,sandeko01,Kobe Sanders,2029-30,2029-2030,3019474,team
 LAC,kawamyu01,Yuki Kawamura,2026-27,2026-2027,2449421,
 LAC,chrisca02,Cam Christie,2026-27,2026-2027,2296271,
 LAC,chrisca02,Cam Christie,2027-28,2027-2028,2486995,team
-LAC,broomjo01,Johni Broome,2026-27,2026-2027,2150917,
-LAC,broomjo01,Johni Broome,2027-28,2027-2028,2525901,
-LAC,broomjo01,Johni Broome,2028-29,2028-2029,2735698,team
 LAC,milleba01,Baba Miller,2026-27,2026-2027,1705630,
 LAC,milleba01,Baba Miller,2027-28,2027-2028,2294370,
 LAC,milleba01,Baba Miller,2028-29,2028-2029,2694363,
 LAC,milleba01,Baba Miller,2029-30,2029-2030,2918152,team
+LAC,broomjo01,Johni Broome,2026-27,2026-2027,2150917,
 LAL,doncilu01,Luka Dončić,2026-27,2026-2027,49800000,
 LAL,doncilu01,Luka Dončić,2027-28,2027-2028,53784000,
 LAL,doncilu01,Luka Dončić,2028-29,2028-2029,57768000,player
@@ -586,12 +589,17 @@ MIA,smithdr01,Dru Smith,2027-28,2027-2028,2934742,team
 MIA,fontesi01,Simone Fontecchio,2026-27,2026-2027,2449421,
 MIA,richani01,Nick Richards,2026-27,2026-2027,2449421,
 MIA,larsspe01,Pelle Larsson,2026-27,2026-2027,2296271,team
+MIA,larsspe01,Pelle Larsson,2027-28,2027-2028,13392857,
+MIA,larsspe01,Pelle Larsson,2028-29,2028-2029,14464286,
+MIA,larsspe01,Pelle Larsson,2029-30,2029-2030,15535714,
+MIA,larsspe01,Pelle Larsson,2030-31,2030-2031,16607143,
+MIA,mbengbe01,Bez Mbeng,2026-27,2026-2027,2185116,
 MIA,gardnmy01,Myron Gardner,2026-27,2026-2027,2150917,
 MIA,gardnmy01,Myron Gardner,2027-28,2027-2028,2525901,
+MIA,hadlejv01,J'Vonne Hadley,2026-27,2026-2027,1357763,
 MIA,conwery01,Ryan Conwell,2026-27,2026-2027,1357763,
 MIA,conwery01,Ryan Conwell,2027-28,2027-2028,2294370,
 MIA,conwery01,Ryan Conwell,2028-29,2028-2029,2694363,team
-MIA,hadlejv01,J'Vonne Hadley,2026-27,2026-2027,1357763,
 MIL,herroty01,Tyler Herro,2026-27,2026-2027,33000000,
 MIL,turnemy01,Myles Turner,2026-27,2026-2027,26584164,
 MIL,turnemy01,Myles Turner,2027-28,2027-2028,27850077,
@@ -1021,8 +1029,9 @@ SAS,reedjta01,Tarris Reed Jr.,2028-29,2028-2029,3384480,team
 SAS,reedjta01,Tarris Reed Jr.,2029-30,2029-2030,6102218,team
 SAS,mclaujo01,Jordan McLaughlin,2026-27,2026-2027,2449421,
 SAS,peterta01,Taelon Peter,2026-27,2026-2027,2185116,
-SAS,nunnja01,Jayden Nunn,2026-27,2026-2027,1357763,
 TOR,leonaka01,Kawhi Leonard,2026-27,2026-2027,50300000,
+TOR,leonaka01,Kawhi Leonard,2027-28,2027-2028,56097561,
+TOR,leonaka01,Kawhi Leonard,2028-29,2028-2029,58902439,player
 TOR,barnesc01,Scottie Barnes,2026-27,2026-2027,41754690,
 TOR,barnesc01,Scottie Barnes,2027-28,2027-2028,44847630,
 TOR,barnesc01,Scottie Barnes,2028-29,2028-2029,47940570,
@@ -1051,7 +1060,10 @@ TOR,battlja01,Jamison Battle,2026-27,2026-2027,2296271,
 TOR,sheadja01,Jamal Shead,2026-27,2026-2027,2296271,team
 TOR,martial01,Alijah Martin,2026-27,2026-2027,2185116,
 TOR,martial01,Alijah Martin,2027-28,2027-2028,2571895,player
-TOR,smithma02,Malachi Smith,2026-27,2026-2027,2185116,
+TOR,bradlja02,Jaden Bradley,2026-27,2026-2027,1357763,
+TOR,bradlja02,Jaden Bradley,2027-28,2027-2028,2294370,
+TOR,bradlja02,Jaden Bradley,2028-29,2028-2029,2694363,
+TOR,bradlja02,Jaden Bradley,2029-30,2029-2030,2918152,team
 TOR,bittlna01,Nate Bittle,2026-27,2026-2027,1357763,
 UTA,jacksja02,Jaren Jackson Jr.,2026-27,2026-2027,49000000,
 UTA,jacksja02,Jaren Jackson Jr.,2027-28,2027-2028,50500000,

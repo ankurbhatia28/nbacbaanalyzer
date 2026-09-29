@@ -7,15 +7,15 @@ ATL,okongon01,Onyeka Okongwu,25,33000000
 ATL,alexani01,Nickeil Alexander-Walker,28,29565510
 ATL,landajo01,Jock Landale,30,14100000
 ATL,kispeco01,Corey Kispert,27,27025000
-ATL,hieldbu01,Buddy Hield,33,9658536
+ATL,finnedo01,Dorian Finney-Smith,33,26670000
 ATL,wiggiaa01,Aaron Wiggins,27,17570097
 ATL,flemiki01,Kingston Flemings,19,15064800
 ATL,ejiofzu01,Zuby Ejiofor,22,7079520
 ATL,newelas01,Asa Newell,20,3399480
 ATL,gueyemo02,Mouhamed Gueye,23,2406205
-ATL,nembhry01,Ryan Nembhard,23,2150917
 ATL,veesahe01,Henri Veesaar,22,3652133
 ATL,wilsoja03,Jalen Wilson,25,
+ATL,mckneis01,Isaac McKneely,22,
 ATL,cartede02,Devin Carter,24,5158080
 BOS,tatumja01,Jayson Tatum,28,188360046
 BOS,georgpa01,Paul George,36,54126380
@@ -27,16 +27,15 @@ BOS,harpero02,Ron Harper Jr.,26,6459042
 BOS,cenacch01,Chris Cenac Jr.,19,6125760
 BOS,gonzahu01,Hugo González,20,2923560
 BOS,garzalu01,Luka Garza,27,2801346
-BOS,scheiba01,Baylor Scheierman,25,2744040
+BOS,scheiba01,Baylor Scheierman,26,2744040
 BOS,quetane01,Neemias Queta,27,58667944
-BOS,conlemi01,Mike Conley,38,2449421
 BOS,cartede02,Devin Carter,24,
+BOS,conlemi01,Mike Conley,38,2449421
 BOS,walshjo01,Jordan Walsh,22,17406205
 BOS,devritu01,Tucker DeVries,23,
 BOS,uzanmi01,Milos Uzan,23,
-BOS,mitchdi01,Dillon Mitchell,22,
-BOS,shulgma01,Max Shulga,24,
 BOS,william01,Amari Williams,24,
+BOS,mitchdi01,Dillon Mitchell,22,
 BRK,portemi01,Michael Porter Jr.,28,12000000
 BRK,randlju01,Julius Randle,31,33333334
 BRK,mannte01,Terance Mann,29,31500000
@@ -52,7 +51,10 @@ BRK,poweldr01,Drake Powell,21,3540600
 BRK,sarafbe01,Ben Saraf,20,3028560
 BRK,jeffejo01,Joshua Jefferson,22,6088080
 BRK,wolfda01,Danny Wolf,22,2941440
+BRK,pringni01,Nick Pringle,25,
 BRK,nelsogr02,Grant Nelson,24,
+BRK,humribe01,Ben Humrichous,24,
+BRK,dainjda01,Dain Dainja,24,
 BRK,bilodty01,Tyler Bilodeau,22,
 CHO,reidna01,Naz Reid,27,75000000
 CHO,whiteco01,Coby White,26,74000000
@@ -60,9 +62,9 @@ CHO,allengr01,Grayson Allen,30,18125000
 CHO,millebr02,Brandon Miller,23,15104626
 CHO,schrode01,Dennis Schröder,33,14809200
 CHO,willigr01,Grant Williams,27,14265750
-CHO,finnedo01,Dorian Finney-Smith,33,26670000
 CHO,onealro01,Royce O'Neale,33,22500000
 CHO,knuepko01,Kon Knueppel,21,10516560
+CHO,hieldbu01,Buddy Hield,33,9658536
 CHO,salauti01,Tidjane Salaün,21,8237880
 CHO,steinha02,Hannes Steinbach,20,10715760
 CHO,anderch02,Christian Anderson Jr.,20,8727480
@@ -71,6 +73,7 @@ CHO,mcneeli01,Liam McNeeley,20,2902080
 CHO,diabamo01,Moussa Diabaté,24,
 CHO,jamessi01,Sion James,23,2411090
 CHO,kalkbry01,Ryan Kalkbrenner,24,2411090
+CHO,nembhry01,Ryan Nembhard,23,2150917
 CHO,bosweky01,Kylan Boswell,21,
 CHO,ajayimi01,Michael Ajayi,23,
 CHI,giddejo01,Josh Giddey,23,75000000
@@ -87,8 +90,9 @@ CHI,buzelma01,Matas Buzelis,21,5715360
 CHI,essenno01,Noa Essengue,19,5701200
 CHI,swainda01,Dailyn Swain,21,10179240
 CHI,millele01,Leonard Miller,22,2406205
-CHI,awakato01,Tobe Awaka,22,
 CHI,selleja01,Jaylin Sellers,23,
+CHI,malleho01,Houston Mallette,23,
+CHI,awakato01,Tobe Awaka,22,
 CLE,mitchdo01,Donovan Mitchell,30,247460184
 CLE,mobleev01,Evan Mobley,25,222691680
 CLE,hardeja01,James Harden,37,62827619
@@ -112,7 +116,7 @@ DAL,gaffoda01,Daniel Gafford,27,54380289
 DAL,aldamsa01,Santi Aldama,25,17007043
 DAL,flaggco01,Cooper Flagg,19,14517480
 DAL,risacza01,Zaccharie Risacher,21,13826040
-DAL,martica02,Caleb Martin,30,10001493
+DAL,martica02,Caleb Martin,31,10001493
 DAL,marshna01,Naji Marshall,28,61286031
 DAL,chrisma02,Max Christie,23,8285714
 DAL,livelde01,Dereck Lively II,22,7239131
@@ -142,11 +146,11 @@ DEN,jonesty01,Tyus Jones,30,2449421
 DEN,brazitr01,Trevon Brazile,23,1357763
 DEN,hopkibr01,Bryce Hopkins,24,
 DEN,whitmca01,Cam Whitmore,22,
-DET,cunnica01,Cade Cunningham,24,222691680
+DET,cunnica01,Cade Cunningham,25,222691680
 DET,collijo01,John Collins,29,17000000
 DET,robindu01,Duncan Robinson,32,
 DET,joeis01,Isaiah Joe,27,11323006
-DET,thompau01,Ausar Thompson,23,11117925
+DET,thompau01,Ausar Thompson,23,166117925
 DET,hollaro01,Ron Holland,21,9069600
 DET,huertke01,Kevin Huerter,28,27000000
 DET,reedpa01,Paul Reed,27,
@@ -158,7 +162,7 @@ DET,princta02,Taurean Prince,32,3815861
 DET,smithto05,Tolu Smith,26,2411090
 DET,laniech01,Chaz Lanier,24,2150917
 DET,harklej01,Elijah Harkless,26,
-DET,onyenug01,Ugonna Onyenso,22,
+DET,onyenug01,Ugonna Onyenso,23,
 GSW,curryst01,Stephen Curry,38,62587158
 GSW,butleji01,Jimmy Butler,37,56832773
 GSW,greendr01,Draymond Green,36,27678571
@@ -170,14 +174,14 @@ GSW,podzibr01,Brandin Podziemski,23,5679459
 GSW,meltode01,De'Anthony Melton,28,5477000
 GSW,santogu01,Gui Santos,24,9629630
 GSW,willibr03,Brandon Williams,26,
+GSW,bassech01,Charles Bassey,25,2449421
 GSW,paytoga02,Gary Payton II,33,2449421
 GSW,niangge01,Georges Niang,33,
-GSW,bassech01,Charles Bassey,25,2449421
 GSW,tooheal01,Alex Toohey,22,
 GSW,richawi02,Will Richard,23,2150917
-GSW,boydni01,Nick Boyd,25,
 GSW,terryda01,Dalen Terry,24,
-GSW,agbimob01,Obi Agbim,24,
+GSW,boydni01,Nick Boyd,25,
+GSW,ikegr01,Graham Ike,24,
 HOU,duranke01,Kevin Durant,37,43902439
 HOU,sengual01,Alperen Şengün,24,112018349
 HOU,vanvlfr01,Fred VanVleet,32,25000000
@@ -213,6 +217,7 @@ IND,furphjo01,Johnny Furphy,21,2296271
 IND,keitake01,Keba Keita,23,
 IND,mastri01,Rienk Mast,25,
 IND,jacksqu01,Quenton Jackson,28,
+IND,johnsja01,James Johnson,39,
 IND,brownko01,Kobe Brown,26,
 IND,slawsja01,Jalen Slawson,26,
 IND,smithbr01,Braden Smith,23,
@@ -233,11 +238,11 @@ LAC,konanya01,Yanic Konan Niederhäuser,23,2880960
 LAC,sandeko01,Kobe Sanders,24,5375385
 LAC,kawamyu01,Yuki Kawamura,25,
 LAC,chrisca02,Cam Christie,21,
-LAC,broomjo01,Johni Broome,24,2150917
 LAC,milleba01,Baba Miller,22,4000000
 LAC,martini01,Nick Martinelli,22,
 LAC,pickeja02,Jalen Pickett,26,
 LAC,sharpja01,Jamarion Sharp,25,
+LAC,broomjo01,Johni Broome,24,2150917
 LAL,doncilu01,Luka Dončić,27,103584000
 LAL,reaveau01,Austin Reaves,28,133618410
 LAL,kesslwa01,Walker Kessler,25,95232558
@@ -293,20 +298,21 @@ MIA,thompkl01,Klay Thompson,36,5600000
 MIA,smithdr01,Dru Smith,28,
 MIA,fontesi01,Simone Fontecchio,30,2449421
 MIA,richani01,Nick Richards,28,2449421
-MIA,larsspe01,Pelle Larsson,25,2296271
+MIA,larsspe01,Pelle Larsson,25,45689128
+MIA,mbengbe01,Bez Mbeng,23,
 MIA,gardnmy01,Myron Gardner,25,
-MIA,conwery01,Ryan Conwell,22,3652133
 MIA,hadlejv01,J'Vonne Hadley,24,
-MIA,youngja05,Jahmir Young,25,
-MIA,johnske10,Keshad Johnson,25,
+MIA,conwery01,Ryan Conwell,22,3652133
 MIA,goldivl01,Vladislav Goldin,25,
+MIA,johnske10,Keshad Johnson,25,
 MIA,donaltr01,Tre Donaldson,22,
+MIA,youngja05,Jahmir Young,25,
 MIL,herroty01,Tyler Herro,26,33000000
 MIL,turnemy01,Myles Turner,30,54434241
 MIL,kuzmaky01,Kyle Kuzma,31,20345152
 MIL,trentga02,Gary Trent Jr.,27,64000000
 MIL,leverca01,Caris LeVert,32,14809200
-MIL,greenaj01,A.J. Green,26,45000000
+MIL,greenaj01,A.J. Green,27,45000000
 MIL,burribr01,Brayden Burries,21,13155360
 MIL,jaqueja01,Jaime Jaquez Jr.,25,5939141
 MIL,diengou01,Ousmane Dieng,23,11500000
@@ -432,7 +438,7 @@ PHI,bonaad01,Adem Bona,23,
 PHI,nelsoja02,Jameer Nelson Jr.,25,
 PHI,fallta01,Tacko Fall,30,
 PHI,thomasa03,Saint Thomas,23,
-PHI,loveca01,Caleb Love,24,
+PHI,loveca01,Caleb Love,25,
 PHI,milesdu01,Duke Miles,24,
 PHI,ruperra01,Rayan Rupert,22,
 PHO,bookede01,Devin Booker,29,182159872
@@ -450,6 +456,8 @@ PHO,dunnry01,Ryan Dunn,23,2784240
 PHO,bouyeja01,Jamaree Bouyea,27,2584539
 PHO,ighodos01,Oso Ighodaro,24,
 PHO,flemira01,Rasheer Fleming,22,4676818
+PHO,hoibesa01,Sam Hoiberg,23,
+PHO,campeco01,Corey Camper,23,
 PHO,spencpa01,Pat Spencer,30,
 PHO,breako01,Koby Brea,23,
 PHO,bealbr01,Bradley Beal,33,77532040
@@ -504,11 +512,11 @@ SAS,quainja01,Jayden Quaintance,19,8000640
 SAS,reedjta01,Tarris Reed Jr.,23,6307440
 SAS,mclaujo01,Jordan McLaughlin,30,2449421
 SAS,peterta01,Taelon Peter,24,
-SAS,nunnja01,Jayden Nunn,23,
 SAS,gilleja02,Ja'Kobi Gillespie,22,
 SAS,jonesda06,David Jones García,24,
+SAS,suderpe01,Peter Suder,23,
 SAS,brownma05,Maliq Brown,22,
-TOR,leonaka01,Kawhi Leonard,35,50300000
+TOR,leonaka01,Kawhi Leonard,35,106397561
 TOR,barnesc01,Scottie Barnes,25,185576400
 TOR,quickim01,Immanuel Quickley,27,97500000
 TOR,barrerj01,RJ Barrett,26,29616071
@@ -522,11 +530,11 @@ TOR,jackstr02,Trayce Jackson-Davis,26,2406205
 TOR,battlja01,Jamison Battle,25,
 TOR,sheadja01,Jamal Shead,24,2296271
 TOR,martial01,Alijah Martin,24,2185116
-TOR,smithma02,Malachi Smith,26,
+TOR,bradlja02,Jaden Bradley,23,1357763
 TOR,bittlna01,Nate Bittle,23,
 TOR,jemistr01,Trey Jemison,26,
 TOR,hepbuch01,Chucky Hepburn,23,
-TOR,bradlja02,Jaden Bradley,23,
+TOR,smithma02,Malachi Smith,26,
 UTA,jacksja02,Jaren Jackson Jr.,27,151500000
 UTA,markkla01,Lauri Markkanen,29,149474044
 UTA,greenjo02,Josh Green,25,14679012

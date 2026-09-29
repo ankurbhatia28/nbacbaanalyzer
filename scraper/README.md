@@ -91,6 +91,19 @@ against this data.
 **5. Draft picks are 2027–2033 only**, 616 rows across both rounds. Swap rights
 appear as their own entries, which is why the count exceeds 30 teams × 7 years × 2.
 
+**6. Forfeited picks are not represented.** Fanspo models pick ownership and
+trades, not league-imposed forfeitures. Verified by re-scraping 24 days after
+the September 2026 Clippers penalty: the data was fresh (`updatedAt` one day
+old) and still showed LAC holding 2029–2033 firsts, with zero forfeit language
+anywhere in the file. This is a coverage gap in the source, not staleness, so a
+re-scrape cannot fix it.
+
+**7. `updatedAt` is dropped from draft picks.** The source bumps it on every
+crawl without the record changing — across two scrapes 24 days apart, all 616
+picks had a new timestamp and zero substantive differences. Keeping it produced
+a ~1,200-line diff of noise per refresh, which would hide real changes.
+`createdAt` is retained; it genuinely marks first appearance.
+
 ## Provenance
 
 `manifest.json` records the fetch timestamp, URL, and a content hash per page.

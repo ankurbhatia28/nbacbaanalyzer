@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-08-31T22:54:03.779632+00:00",
+  "scraped_at": "2026-09-29T05:59:29.813159+00:00",
   "source": "fanspo.com",
   "url_pattern": "https://fanspo.com/nba/cap-sheets/team/{team_id}",
   "note": "Initial HTML payload carries the CURRENT season only. Multi-year salary grids, per-year option flags, and guarantee status load client-side and are NOT captured here.",
@@ -9,9 +9,10 @@
       "team_name": "Atlanta Hawks",
       "url": "https://fanspo.com/nba/cap-sheets/team/1",
       "status": "ok",
-      "source": "network",
-      "sha256": "680c6a6d66d64396",
+      "source": "cache",
+      "sha256": "443f8b32fbc8f966",
       "objects": {
+        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 18,
         "nba_Player": 25,
@@ -20,7 +21,6 @@
         "nba_TradeException": 19,
         "nba_PlayerTransaction": 38,
         "nba_DraftPick": 21,
-        "nba_TeamProfile": 30,
         "PlayerLEBRON": 16,
         "nba_PlayerInfo": 18
       }
@@ -30,8 +30,8 @@
       "team_name": "Boston Celtics",
       "url": "https://fanspo.com/nba/cap-sheets/team/2",
       "status": "ok",
-      "source": "network",
-      "sha256": "7de68e73d156ec93",
+      "source": "cache",
+      "sha256": "3f78ab45801bb44e",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -51,8 +51,8 @@
       "team_name": "Brooklyn Nets",
       "url": "https://fanspo.com/nba/cap-sheets/team/3",
       "status": "ok",
-      "source": "network",
-      "sha256": "f7608fe04f65d560",
+      "source": "cache",
+      "sha256": "d8d33c2037cfd1e4",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -72,8 +72,8 @@
       "team_name": "Charlotte Hornets",
       "url": "https://fanspo.com/nba/cap-sheets/team/4",
       "status": "ok",
-      "source": "network",
-      "sha256": "dafd8e34fd9cf5b8",
+      "source": "cache",
+      "sha256": "7e3f99365e1c51df",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -93,8 +93,8 @@
       "team_name": "Chicago Bulls",
       "url": "https://fanspo.com/nba/cap-sheets/team/5",
       "status": "ok",
-      "source": "network",
-      "sha256": "726e518011ebd50a",
+      "source": "cache",
+      "sha256": "faf3197ad7b14916",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -113,9 +113,10 @@
       "team_name": "Cleveland Cavaliers",
       "url": "https://fanspo.com/nba/cap-sheets/team/6",
       "status": "ok",
-      "source": "network",
-      "sha256": "08e415f004e96731",
+      "source": "cache",
+      "sha256": "b9dea23f73c75756",
       "objects": {
+        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 17,
         "nba_Player": 22,
@@ -124,7 +125,6 @@
         "nba_TradeException": 12,
         "nba_PlayerTransaction": 28,
         "nba_DraftPick": 15,
-        "nba_TeamProfile": 30,
         "PlayerLEBRON": 14,
         "nba_PlayerInfo": 14
       }
@@ -134,10 +134,9 @@
       "team_name": "Dallas Mavericks",
       "url": "https://fanspo.com/nba/cap-sheets/team/7",
       "status": "ok",
-      "source": "network",
-      "sha256": "aa9fac2fc38b6319",
+      "source": "cache",
+      "sha256": "bdb2986c7cf9c238",
       "objects": {
-        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 21,
         "nba_Player": 27,
@@ -146,6 +145,7 @@
         "nba_TradeException": 15,
         "nba_PlayerTransaction": 30,
         "nba_DraftPick": 17,
+        "nba_TeamProfile": 30,
         "PlayerLEBRON": 13,
         "nba_PlayerInfo": 16
       }
@@ -155,8 +155,8 @@
       "team_name": "Denver Nuggets",
       "url": "https://fanspo.com/nba/cap-sheets/team/8",
       "status": "ok",
-      "source": "network",
-      "sha256": "8593e2da6ed9e905",
+      "source": "cache",
+      "sha256": "a442c1a7834df89a",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -176,8 +176,8 @@
       "team_name": "Detroit Pistons",
       "url": "https://fanspo.com/nba/cap-sheets/team/9",
       "status": "ok",
-      "source": "network",
-      "sha256": "1916af55101cbb61",
+      "source": "cache",
+      "sha256": "e87b8e030e088659",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -197,8 +197,8 @@
       "team_name": "Golden State Warriors",
       "url": "https://fanspo.com/nba/cap-sheets/team/10",
       "status": "ok",
-      "source": "network",
-      "sha256": "d689ceda57485def",
+      "source": "cache",
+      "sha256": "ff6df5098eb2a30a",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -218,9 +218,10 @@
       "team_name": "Houston Rockets",
       "url": "https://fanspo.com/nba/cap-sheets/team/11",
       "status": "ok",
-      "source": "network",
-      "sha256": "4a3d780cb7fdc98e",
+      "source": "cache",
+      "sha256": "a7eaf80089eac64e",
       "objects": {
+        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 13,
         "nba_Player": 20,
@@ -229,7 +230,6 @@
         "nba_TradeException": 18,
         "nba_PlayerTransaction": 16,
         "nba_DraftPick": 19,
-        "nba_TeamProfile": 30,
         "PlayerLEBRON": 13,
         "nba_PlayerInfo": 13
       }
@@ -239,9 +239,10 @@
       "team_name": "Indiana Pacers",
       "url": "https://fanspo.com/nba/cap-sheets/team/12",
       "status": "ok",
-      "source": "network",
-      "sha256": "a4d7ac409d1ed3f0",
+      "source": "cache",
+      "sha256": "276a703c346a4a46",
       "objects": {
+        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 11,
         "nba_Player": 20,
@@ -250,7 +251,6 @@
         "nba_TradeException": 14,
         "nba_PlayerTransaction": 33,
         "nba_DraftPick": 17,
-        "nba_TeamProfile": 30,
         "PlayerLEBRON": 17,
         "nba_PlayerInfo": 17
       }
@@ -260,8 +260,8 @@
       "team_name": "LA Clippers",
       "url": "https://fanspo.com/nba/cap-sheets/team/13",
       "status": "ok",
-      "source": "network",
-      "sha256": "912cc5eddc77fb2e",
+      "source": "cache",
+      "sha256": "387b630c27ac6802",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -281,10 +281,9 @@
       "team_name": "Los Angeles Lakers",
       "url": "https://fanspo.com/nba/cap-sheets/team/14",
       "status": "ok",
-      "source": "network",
-      "sha256": "06943ad11d80d4a9",
+      "source": "cache",
+      "sha256": "548c1a5f04db7c9b",
       "objects": {
-        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 19,
         "nba_Player": 16,
@@ -292,6 +291,7 @@
         "nba_TradeException": 12,
         "nba_PlayerTransaction": 26,
         "nba_DraftPick": 16,
+        "nba_TeamProfile": 30,
         "PlayerLEBRON": 14,
         "nba_PlayerInfo": 15
       }
@@ -301,9 +301,10 @@
       "team_name": "Memphis Grizzlies",
       "url": "https://fanspo.com/nba/cap-sheets/team/15",
       "status": "ok",
-      "source": "network",
-      "sha256": "9f77e8ffeabb47d5",
+      "source": "cache",
+      "sha256": "98256833473bc79e",
       "objects": {
+        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 20,
         "nba_Player": 23,
@@ -312,7 +313,6 @@
         "nba_TradeException": 21,
         "nba_PlayerTransaction": 47,
         "nba_DraftPick": 27,
-        "nba_TeamProfile": 30,
         "PlayerLEBRON": 20,
         "nba_PlayerInfo": 21
       }
@@ -322,8 +322,8 @@
       "team_name": "Miami Heat",
       "url": "https://fanspo.com/nba/cap-sheets/team/16",
       "status": "ok",
-      "source": "network",
-      "sha256": "45bcaf456560cfa3",
+      "source": "cache",
+      "sha256": "1491a2cb84e2a271",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -343,8 +343,8 @@
       "team_name": "Milwaukee Bucks",
       "url": "https://fanspo.com/nba/cap-sheets/team/17",
       "status": "ok",
-      "source": "network",
-      "sha256": "86e81c45a787b4c7",
+      "source": "cache",
+      "sha256": "232059da96fbb237",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -364,8 +364,8 @@
       "team_name": "Minnesota Timberwolves",
       "url": "https://fanspo.com/nba/cap-sheets/team/18",
       "status": "ok",
-      "source": "network",
-      "sha256": "c8b0080ee64f4ef4",
+      "source": "cache",
+      "sha256": "e61d4bbe017d1823",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -385,8 +385,8 @@
       "team_name": "New Orleans Pelicans",
       "url": "https://fanspo.com/nba/cap-sheets/team/19",
       "status": "ok",
-      "source": "network",
-      "sha256": "420fe7f12caa815c",
+      "source": "cache",
+      "sha256": "d31a178c52a018fb",
       "objects": {
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 18,
@@ -406,10 +406,9 @@
       "team_name": "New York Knicks",
       "url": "https://fanspo.com/nba/cap-sheets/team/20",
       "status": "ok",
-      "source": "network",
-      "sha256": "73bd1cb634cbda86",
+      "source": "cache",
+      "sha256": "e08582078b259115",
       "objects": {
-        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 22,
         "nba_Player": 18,
@@ -418,6 +417,7 @@
         "nba_TradeException": 12,
         "nba_PlayerTransaction": 23,
         "nba_DraftPick": 23,
+        "nba_TeamProfile": 30,
         "PlayerLEBRON": 13,
         "nba_PlayerInfo": 13
       }
@@ -427,8 +427,8 @@
       "team_name": "Oklahoma City Thunder",
       "url": "https://fanspo.com/nba/cap-sheets/team/21",
       "status": "ok",
-      "source": "network",
-      "sha256": "9f7d4f1fe293e9ba",
+      "source": "cache",
+      "sha256": "4c0a7392b620fbb1",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -448,10 +448,9 @@
       "team_name": "Orlando Magic",
       "url": "https://fanspo.com/nba/cap-sheets/team/22",
       "status": "ok",
-      "source": "network",
-      "sha256": "d414eebf589ee291",
+      "source": "cache",
+      "sha256": "36426d9a67b64d70",
       "objects": {
-        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 15,
         "nba_Player": 20,
@@ -460,6 +459,7 @@
         "nba_TradeException": 7,
         "nba_PlayerTransaction": 14,
         "nba_DraftPick": 18,
+        "nba_TeamProfile": 30,
         "PlayerLEBRON": 17,
         "nba_PlayerInfo": 17
       }
@@ -469,8 +469,8 @@
       "team_name": "Philadelphia 76ers",
       "url": "https://fanspo.com/nba/cap-sheets/team/23",
       "status": "ok",
-      "source": "network",
-      "sha256": "99bbb4ce141954ae",
+      "source": "cache",
+      "sha256": "a4820f1192cfaaeb",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -490,10 +490,9 @@
       "team_name": "Phoenix Suns",
       "url": "https://fanspo.com/nba/cap-sheets/team/24",
       "status": "ok",
-      "source": "network",
-      "sha256": "b2f65c815ab417bb",
+      "source": "cache",
+      "sha256": "78157d50ce2fb5c5",
       "objects": {
-        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 26,
         "nba_Player": 32,
@@ -502,6 +501,7 @@
         "nba_TradeException": 12,
         "nba_PlayerTransaction": 19,
         "nba_DraftPick": 17,
+        "nba_TeamProfile": 30,
         "PlayerLEBRON": 16,
         "nba_PlayerInfo": 17
       }
@@ -511,10 +511,9 @@
       "team_name": "Portland Trail Blazers",
       "url": "https://fanspo.com/nba/cap-sheets/team/25",
       "status": "ok",
-      "source": "network",
-      "sha256": "ef0774ba00692280",
+      "source": "cache",
+      "sha256": "5d17b50580af7445",
       "objects": {
-        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 17,
         "nba_Player": 24,
@@ -523,6 +522,7 @@
         "nba_TradeException": 16,
         "nba_PlayerTransaction": 13,
         "nba_DraftPick": 21,
+        "nba_TeamProfile": 30,
         "PlayerLEBRON": 15,
         "nba_PlayerInfo": 15
       }
@@ -532,10 +532,9 @@
       "team_name": "Sacramento Kings",
       "url": "https://fanspo.com/nba/cap-sheets/team/26",
       "status": "ok",
-      "source": "network",
-      "sha256": "67927a215d4feac2",
+      "source": "cache",
+      "sha256": "78d34afc65c73393",
       "objects": {
-        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 19,
         "nba_Player": 25,
@@ -544,6 +543,7 @@
         "nba_TradeException": 17,
         "nba_PlayerTransaction": 23,
         "nba_DraftPick": 17,
+        "nba_TeamProfile": 30,
         "nba_PlayerInfo": 14,
         "PlayerLEBRON": 12
       }
@@ -553,10 +553,9 @@
       "team_name": "San Antonio Spurs",
       "url": "https://fanspo.com/nba/cap-sheets/team/27",
       "status": "ok",
-      "source": "network",
-      "sha256": "576321596ce41aa1",
+      "source": "cache",
+      "sha256": "07e63779aacde5a6",
       "objects": {
-        "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 10,
         "nba_Player": 20,
@@ -565,6 +564,7 @@
         "nba_TradeException": 3,
         "nba_PlayerTransaction": 18,
         "nba_DraftPick": 24,
+        "nba_TeamProfile": 30,
         "PlayerLEBRON": 12,
         "nba_PlayerInfo": 14
       }
@@ -574,8 +574,8 @@
       "team_name": "Toronto Raptors",
       "url": "https://fanspo.com/nba/cap-sheets/team/28",
       "status": "ok",
-      "source": "network",
-      "sha256": "bb4a0fbae6ccb941",
+      "source": "cache",
+      "sha256": "678a67263cc39505",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
@@ -595,8 +595,8 @@
       "team_name": "Utah Jazz",
       "url": "https://fanspo.com/nba/cap-sheets/team/29",
       "status": "ok",
-      "source": "network",
-      "sha256": "27a13ce8e046bd6f",
+      "source": "cache",
+      "sha256": "cdfd5b08a056bad9",
       "objects": {
         "nba_SalaryCapFigure": 24,
         "nba_TeamStaff": 16,
@@ -616,8 +616,8 @@
       "team_name": "Washington Wizards",
       "url": "https://fanspo.com/nba/cap-sheets/team/30",
       "status": "ok",
-      "source": "network",
-      "sha256": "b4aa96f3dbf8f194",
+      "source": "cache",
+      "sha256": "858c4bd7715b37b2",
       "objects": {
         "nba_TeamProfile": 30,
         "nba_SalaryCapFigure": 24,
