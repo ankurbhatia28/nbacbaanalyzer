@@ -42,6 +42,13 @@ module = "engine.*"
 strict = true
 disallow_any_explicit = true
 
+# engine.schema walks arbitrary dataclasses by reflection, so Any is inherent
+# there rather than a shortcut. The rules code stays Any-free, which is where
+# it matters.
+[[tool.mypy.overrides]]
+module = "engine.schema"
+disallow_any_explicit = false
+
 [tool.pytest.ini_options]
 testpaths = ["tests", "packages"]
 addopts = "-q"
