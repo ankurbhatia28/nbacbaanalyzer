@@ -105,11 +105,11 @@ required UI element rather than a nicety.
 - [ ] **3.6** First apron restrictions
 - [ ] **3.7** Second apron restrictions — aggregation, prior-year TPEs, cash, taxpayer MLE, frozen pick
 - [ ] **3.8** Hard cap ceilings. The CBA never says "hard cap" — the mechanism is Art. VII §2(e)(2)(i)(B), driven by the **Transaction Restrictions Table** (§2(e)(4), pp. 214–215), **rows A–K**. Encode all eleven: A–G set the **first** apron (bi-annual exception, non-taxpayer MLE, sign-and-trade acquisition, waived-player signing above the MLE, expanded TPE, post-season standard TPE, transition TPE); H–K set the **second** (aggregated TPE, **paying cash in a trade**, TPE from a signed-and-traded contract, taxpayer MLE). §2(e)(2)(ii) makes rows E–J executed after the Regular Season bind the *following* Salary Cap Year.
-- [ ] **3.9** Stepien rule, accounting for swaps and protections
-- [ ] **3.10** Base year compensation
-- [ ] **3.11** Poison pill provision
+- [x] **3.9** ~~Stepien rule~~ — **not in the CBA.** No provision restricts assigning draft picks between teams; the rule lives in the NBA Constitution and By-Laws, which p. 322 explicitly holds separate ("nothing contained in this Agreement shall be deemed to be an agreement of the Players Association to any provision of the NBA Constitution and By-Laws"). Cannot be implemented from this document. Needs a source we do not have.
+- [x] **3.10** ~~Base year compensation~~ — **eliminated.** "Base Year" appears **zero** times in 676 pages. The term is definitional, so its absence is conclusive rather than suggestive. The rule does not exist under the 2023 CBA.
+- [ ] **3.11** Poison pill provision — **not located.** "Poison pill" is a nickname and appears zero times, which proves nothing on its own, but the asymmetric-valuation language it describes is not in Art. VII §7 either. Either eliminated with base year compensation or under wording not yet found. **Do not implement until located.**
 - [ ] **3.12** Trade kickers — honouring `Unknown` rather than assuming zero
-- [ ] **3.13** Trade date calendar — Dec 15, Jan 15, three-month and two-month restrictions
+- [x] **3.13** Trade date calendar — Art. VII §8(c)–(d). Four rules with separate clocks: no trade after the deadline in a possible final Season; 30 days for rookies and two-ways; later of 3 months or **December 15** for free agent signings; later of 3 months or **January 15** for a prior-team re-signing above **120%**. The last bars the *trade*, not merely aggregation — distinct from the two-month bar in §6(j)(4)(i).
 - [ ] **3.14** Simultaneous vs non-simultaneous trades and TPE creation
 - [ ] **3.15** Multi-team trades — validate each team's send and receive independently
 - [ ] **3.16** Roster counts and pick tradeability

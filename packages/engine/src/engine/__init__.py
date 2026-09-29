@@ -35,6 +35,7 @@ from .salary_matching import Allowance, MatchingExceptionKind, best_allowance
 from .season import Season
 from .team_state import TeamState
 from .trade import PickAsset, Trade, TradeLeg
+from .trade_dates import TradeBarReason, TradeEligibility
 from .trade_exceptions import TPEKind, TradeException
 from .validate import (
     Constraint,
@@ -89,6 +90,8 @@ __all__ = [
     "Team",
     "TeamState",
     "Trade",
+    "TradeBarReason",
+    "TradeEligibility",
     "TradeException",
     "TradeLeg",
     "TradeRestriction",
