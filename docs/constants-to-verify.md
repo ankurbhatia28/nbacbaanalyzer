@@ -73,17 +73,34 @@ sole season it can fire in is the season it is exempted in. The only residue is
 |---|---|---|---|
 | ☐ | Trigger | **four or more Seasons** AND one commencing after the player reaches 38 | Both halves required — a three-year deal never qualifies |
 
-## 5. Higher Max Criteria — Article II §7, pp. 60–61
+## 5. Maximum Annual Salary — Article II §7(a), pp. 59–61
+
+Each tier reads **"the greater of X% of the Salary Cap, or 105% of the Salary for
+the final Season of the player's prior Contract."** The 105% alternative is
+routinely dropped from summaries and raises the maximum for anyone coming off a
+large deal.
+
+| ☐ | Tier | Standard | Higher | Who qualifies for the higher figure |
+|---|---|---|---|---|
+| ☐ | **fewer than 7** YOS (so 0–6, not 1–6) | **25%** | **30%** | **"5th Year Eligible Players"** only — 4 YOS as of the June 30 following their last contract season |
+| ☐ | **7 to 9** YOS | **30%** | **35%** | **8 or 9** YOS only, *and* rendered with the team he first signed with (or changed teams only by trade in his first four cap years) |
+| ☐ | **10 or more** YOS | **35%** | — | already top tier |
 
 | ☐ | Constant | Value encoded |
 |---|---|---|
+| ☐ | Prior-salary alternative | **105%** of the prior contract's final-Season Salary, in every tier |
 | ☐ | Qualifying honours | All-NBA (1st/2nd/3rd), **Defensive Player of the Year**, or **MVP** |
 | ☐ | All-NBA / DPOY window | immediately preceding Season, **or two of the preceding three** |
 | ☐ | MVP window | **one of the preceding three** Seasons |
-| ☐ | All-Star | **not** a qualifying honour — deliberately excluded |
-| ☐ | 4 YOS tier | 25% → up to **30%** of the cap |
-| ☐ | 8–9 YOS tier | 30% → up to **35%**, with continuous-team tenure |
-| ☐ | Rookie extension tiers | All-NBA 2nd **27%**, All-NBA 1st **28%**, MVP **30%** (Art. II §7(d), p. 65) |
+| ☐ | All-Star | **not** qualifying — deliberately excluded |
+| ☐ | 5th-year timing | criteria measured **as of the July 1 following the player's fourth Season** |
+| ☐ | Designated veteran timing | criteria measured **at the time the Contract is executed** |
+| ☐ | Rookie extension tiers | All-NBA 2nd **27%**, All-NBA 1st **28%**, MVP **30%** (§7(d), p. 65) |
+
+**Two traps worth confirming.** Meeting the Higher Max Criteria is *not*
+sufficient on its own — each tier has a separate eligibility gate, so a 7-YOS
+player with an All-NBA selection is still capped at 30%. And the higher figure
+applies to a subset of the tier, not the whole tier.
 
 ## What to do with a mismatch
 
