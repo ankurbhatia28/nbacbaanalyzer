@@ -21,6 +21,7 @@ from engine.fixtures import (
     trade_kicker_unknown,
 )
 from engine.fixtures.contracts import OVER_38_BIRTH_YEAR
+from engine.fixtures.picks import BARE_FIRST_ROUND_YEARS
 
 
 def test_every_shell_builds():
@@ -65,12 +66,29 @@ def test_milwaukee_shell_keeps_both_ceilings():
     assert mil.effective_ceiling() == (ApronLevel.FIRST.value, SEASON_2026_27.first_apron)
 
 
-def test_forfeited_picks_span_five_consecutive_drafts():
+def test_clippers_own_firsts_are_forfeited_2029_to_2033():
     inv = forfeited_firsts()
     gone = sorted(p.year for p in inv.picks if p.forfeited)
     assert gone == [2029, 2030, 2031, 2032, 2033]
-    assert inv.has_first_in(2027)
-    assert not inv.has_first_in(2030)
+
+
+def test_clippers_are_not_pickless_in_the_penalty_years():
+    """
+    The penalty took their own firsts, but they still hold other teams' picks in
+    2029, 2031 and 2033. Modelling five straight empty years would make a legal
+    position look illegal under Stepien.
+    """
+    inv = forfeited_firsts()
+    bare = [y for y in range(2027, 2034) if not inv.has_first_in(y)]
+    assert bare == list(BARE_FIRST_ROUND_YEARS) == [2028, 2030, 2032]
+    assert not any(y + 1 in bare for y in bare), "bare years must not be consecutive"
+
+
+def test_a_pick_conveyed_away_does_not_count_as_held():
+    """Ownership, not origin. LAC originated the 2028 first; Boston holds it."""
+    inv = forfeited_firsts()
+    assert any(p.year == 2028 and p.current_owner_team_id == "BOS" for p in inv.firsts_in(2028))
+    assert not inv.has_first_in(2028)
 
 
 def test_pick_poverty_shell_carries_the_inventory():

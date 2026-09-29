@@ -50,6 +50,13 @@ NEXT_DATA_RE = re.compile(
 # Apollo bookkeeping entries we never want as rows.
 SKIP_TYPENAMES = {"Query"}
 
+# Fields the source bumps on every crawl without the record changing. Keeping
+# them produces a ~1,200-line diff of pure noise on each re-scrape, which hides
+# real changes. Verified: across two scrapes 24 days apart, all 616 draft picks
+# had a new updatedAt and zero substantive differences. createdAt is retained
+# because it genuinely marks when the record first appeared.
+NOISY_FIELDS: dict[str, set[str]] = {"nba_DraftPick": {"updatedAt"}}
+
 
 # --------------------------------------------------------------------------
 # fetch
@@ -153,6 +160,9 @@ def collect(state: dict, team_id: int, store: dict) -> dict:
         if not typename or typename in SKIP_TYPENAMES:
             continue
 
+        noisy = NOISY_FIELDS.get(typename, set())
+        if noisy:
+            obj = {k: v for k, v in obj.items() if k not in noisy}
         bucket = store.setdefault(typename, {})
         if apollo_key in bucket:
             bucket[apollo_key]["_source_team_ids"].add(team_id)
