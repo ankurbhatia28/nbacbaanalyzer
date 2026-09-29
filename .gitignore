@@ -1,8 +1,9 @@
 # Scraper caches — raw HTML, ~64MB, regenerable by re-running the scrapers
 scraper/out/raw/
 
-# The CBA PDF is a public document; see data/cba/README.md for where to get it
+# Source documents are not redistributed; see each directory's README
 data/cba/*.pdf
+data/constitution/*.pdf
 
 # Python
 __pycache__/
