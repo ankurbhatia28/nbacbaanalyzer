@@ -284,7 +284,15 @@ def recently_signed(season: Season) -> tuple[Contract, TradeRestriction]:
 
 
 def re_signed_with_raise(season: Season) -> tuple[Contract, TradeRestriction]:
-    """Aggregation-blocked for two months, but tradeable on its own."""
+    """
+    Re-signed with his prior team above 120%, which bars the TRADE until the
+    later of three months or January 15 (Art. VII 8(d)(iii)).
+
+    This fixture previously said "aggregation-blocked but tradeable", conflating
+    8(d)(iii) with the separate two-month aggregation bar in 6(j)(4)(i). They are
+    different rules with different clocks, and the conflation under-restricted a
+    player who cannot be traded at all.
+    """
     c = Contract(
         player_id="fx_raise",
         team_id="FIX",
@@ -297,9 +305,8 @@ def re_signed_with_raise(season: Season) -> tuple[Contract, TradeRestriction]:
     r = TradeRestriction(
         player_id="fx_raise",
         reason=RestrictionReason.RE_SIGNED_WITH_RAISE,
-        expires=date(season.start_year, 9, 6),
-        blocks_trade_entirely=False,
-        blocks_aggregation_only=True,
+        expires=date(season.start_year + 1, 1, 15),
+        blocks_trade_entirely=True,
     )
     return c, r
 

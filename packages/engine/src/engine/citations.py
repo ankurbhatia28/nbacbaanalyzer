@@ -95,6 +95,29 @@ AGGREGATION_THREE_PLAYER_RULE = Citation(
 TRADE_RULES = Citation("VII", "8", 284, "Trade Rules")
 CASH_IN_TRADE = Citation("VII", "8(a)", 284, "Cash paid in connection with a trade")
 SIGN_AND_TRADE = Citation("VII", "8(e)(1)", 287, "Sign-and-trade transactions")
+ROOKIE_EXTENSION_TRADE_RULE = Citation(
+    "VII",
+    "8(g)",
+    288,
+    "A traded rookie-scale extension is valued at the average of its remaining years, "
+    "for the acquiring team's Room only",
+)
+
+# -- Article XI: restricted free agency -----------------------------------
+ARENAS_OFFER_SHEET_LIMIT = Citation(
+    "XI",
+    "5(d)(i)",
+    346,
+    "Offer Sheet to a restricted free agent with one or two Years of Service may not "
+    "exceed the Non-Taxpayer MLE in the first Salary Cap Year",
+)
+ARENAS_THIRD_YEAR = Citation("XI", "5(d)(ii)", 347, "Third-year balloon and its conditions")
+ARENAS_DEEMED_AVERAGE = Citation(
+    "XI",
+    "5(d)(iii)",
+    347,
+    "For the offering team's Room, first-year Salary is deemed the average of all years",
+)
 
 # -- Article I: definitions ------------------------------------------------
 DEFINITIONS = Citation("I", "1", 25, "Definitions")
