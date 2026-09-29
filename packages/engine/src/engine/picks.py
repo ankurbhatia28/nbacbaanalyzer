@@ -82,7 +82,18 @@ class PickInventory:
     swaps: list[SwapRight] = field(default_factory=list)
 
     def firsts_in(self, year: int) -> list[DraftPick]:
+        """Every first-round record for that year, including ones conveyed away."""
         return [p for p in self.picks if p.round_ == 1 and p.year == year]
 
     def has_first_in(self, year: int) -> bool:
-        return any(not p.forfeited for p in self.firsts_in(year))
+        """
+        Does this team actually hold a first that year?
+
+        Ownership matters, not origin: an inventory legitimately carries records
+        of picks the team originated but has since conveyed, and those must not
+        count as held. Stepien reasons over what a team *has*.
+        """
+        return any(
+            p.current_owner_team_id == self.team_id and not p.forfeited
+            for p in self.firsts_in(year)
+        )

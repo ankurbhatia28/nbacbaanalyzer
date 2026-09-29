@@ -76,25 +76,85 @@ def swap_right(holder: str = "FIX", counterparty: str = "OTH", year: int = 2031)
 
 def forfeited_firsts(team_id: str = "LAC") -> PickInventory:
     """
-    Mirrors the Clippers: firsts forfeited in five consecutive drafts,
-    2029-2033, as a league penalty. Creates a Stepien interaction that no
-    generic fixture would produce -- what does the consecutive-years rule permit
-    when those years are already gone?
+    Mirrors the Clippers as they actually are, which is more interesting than
+    "five years of nothing".
+
+    The league penalty forfeited their own firsts in 2029-2033, but they still
+    hold other teams' picks in some of those years. Per RealGM's future-picks
+    table, the net position is:
+
+        2027  own, via a swap chain                      -> has a first
+        2028  conveyed to BOS                            -> none
+        2029  own (1-3) / own-or-PHL (4-30)              -> has a first
+        2030  forfeited                                  -> none
+        2031  forfeited, but holds TOR                   -> has a first
+        2032  forfeited                                  -> none
+        2033  forfeited, but holds TOR                   -> has a first
+
+    So the bare years are 2028, 2030 and 2032 -- alternating, never consecutive,
+    which is what keeps the position Stepien-legal. A fixture asserting five
+    straight empty years would have had Phase 3 reasoning about a team that does
+    not exist, and would have made a legal position look illegal.
     """
     inv = PickInventory(team_id=team_id)
-    for year in range(2027, 2034):
+
+    # Own firsts forfeited by league penalty, 2029-2033.
+    for year in range(2029, 2034):
         inv.picks.append(
             DraftPick(
                 year=year,
                 round_=1,
                 original_team_id=team_id,
                 current_owner_team_id=team_id,
-                forfeited=2029 <= year <= 2033,
-                raw_details="forfeited by league penalty" if 2029 <= year <= 2033 else None,
+                forfeited=True,
+                raw_details="Forfeited (league penalty)",
+                provenance=FIXTURE,
+            )
+        )
+
+    # Own firsts still held.
+    for year in (2027,):
+        inv.picks.append(own_outright(team_id, year))
+
+    # 2028 was conveyed to Boston, so it is absent rather than forfeited.
+    inv.picks.append(
+        DraftPick(
+            year=2028,
+            round_=1,
+            original_team_id=team_id,
+            current_owner_team_id="BOS",
+            raw_details="LAC 17-30 to BOS via swap",
+            provenance=FIXTURE,
+        )
+    )
+
+    # Picks acquired from other teams, which is why some penalty years are not bare.
+    inv.picks.append(
+        DraftPick(
+            year=2029,
+            round_=1,
+            original_team_id="PHL",
+            current_owner_team_id=team_id,
+            raw_details="4-30 Own or PHL via PHL swap",
+            provenance=FIXTURE,
+        )
+    )
+    for year in (2031, 2033):
+        inv.picks.append(
+            DraftPick(
+                year=year,
+                round_=1,
+                original_team_id="TOR",
+                current_owner_team_id=team_id,
+                raw_details="TOR first held by LAC",
                 provenance=FIXTURE,
             )
         )
     return inv
+
+
+BARE_FIRST_ROUND_YEARS = (2028, 2030, 2032)
+"""Years forfeited_firsts() leaves with no first-round pick. Non-consecutive."""
 
 
 def stepien_violating(team_id: str = "FIX") -> PickInventory:
