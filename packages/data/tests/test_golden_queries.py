@@ -133,19 +133,50 @@ def test_player_lookup_returns_candidates_not_a_guess(conn):
     assert len(lookup_player(conn, "williams")) > 1  # ambiguous -> clarify, never pick
 
 
-def test_forfeited_picks_are_absent_and_that_is_documented(conn):
+def test_forfeited_picks_come_from_the_override_not_the_scrape(conn):
     """
-    Guards a known gap. The snapshot predates the September 2026 Clippers
-    penalty, so a zero result here means "no forfeiture data", not "no team has
-    forfeited picks". If a re-scrape ever populates it, this test should fail
-    and be updated deliberately.
+    Superseded the earlier "no forfeiture data" guard, deliberately.
+
+    No scraped source represents forfeiture, so these five rows exist only
+    because data/overrides/pick_overrides.csv asserts them with a citation.
     """
     result = run(
         conn,
         Query(
             entity="draft_picks",
-            select=[Projection("*", Agg.COUNT, "n")],
+            select=[Projection("year"), Projection("team"), Projection("original_team")],
             filters=[Filter("forfeited", Op.EQ, 1)],
+            order_by=[Order("year")],
         ),
     )
-    assert result.scalar() == 0
+    assert result.row_count == 5
+    assert [r["year"] for r in result.rows] == [2029, 2030, 2031, 2032, 2033]
+    assert all(r["team"] == "LAC" for r in result.rows)
+
+
+def test_the_clippers_still_hold_firsts_in_three_penalty_years(conn):
+    """
+    The precision the override buys. RealGM's counts across 2029-2033 are
+    1/0/1/0/1: their own firsts are gone in four of those years and the Indiana
+    pick in the fifth, but Toronto firsts in 2031 and 2033 and their own in 2029
+    mean the bare years are non-consecutive -- and so Stepien-legal.
+    """
+    held = {}
+    for year in range(2029, 2034):
+        result = run(
+            conn,
+            Query(
+                entity="draft_picks",
+                select=[Projection("*", Agg.COUNT, "n")],
+                filters=[
+                    Filter("year", Op.EQ, year),
+                    Filter("round", Op.EQ, 1),
+                    Filter("team", Op.EQ, "LAC"),
+                    Filter("forfeited", Op.EQ, 0),
+                ],
+            ),
+        )
+        held[year] = result.scalar()
+    assert held == {2029: 1, 2030: 0, 2031: 1, 2032: 0, 2033: 1}
+    bare = [y for y, n in held.items() if n == 0]
+    assert not any(y + 1 in bare for y in bare), "bare years must not be consecutive"
