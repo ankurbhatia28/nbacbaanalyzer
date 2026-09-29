@@ -53,6 +53,12 @@ class RestrictionRow(StrEnum):
     D_WAIVED_PLAYER_ABOVE_MLE = "D"  # in-season signing of a waived player paid above the MLE
     E_EXPANDED_TPE = "E"  # acquires using an Expanded Traded Player Exception
     F_POST_SEASON_STANDARD_TPE = "F"  # standard TPE used after its Regular Season
+    # Row G is dead in practice, and the table alone does not show it: the
+    # Transition exception exists in 2023-24 only (6(j)(1)(iii)), and 2(e)(5)
+    # exempts rows F-J executed during 2023-24 from creating a 2023-24 ceiling.
+    # The one season it can fire is the season it is exempted in. The only
+    # residue is 2(e)(2)(ii): used after the 2023-24 Regular Season but before
+    # 30 June 2024, it could bind 2024-25. Never reachable for seasons we model.
     G_TRANSITION_TPE = "G"  # acquires using a Transition Traded Player Exception
     H_AGGREGATED_TPE = "H"  # acquires using an Aggregated Standard TPE
     I_CASH_PAID = "I"  # pays cash to another team in a trade
@@ -62,6 +68,14 @@ class RestrictionRow(StrEnum):
     @property
     def applicable_apron(self) -> ApronLevel:
         return ApronLevel.FIRST if self.value <= "G" else ApronLevel.SECOND
+
+    @property
+    def is_reachable_after_2024(self) -> bool:
+        """
+        False for row G only. See the note on G_TRANSITION_TPE: the exception it
+        refers to expired after 2023-24, so no later season can trigger it.
+        """
+        return self is not RestrictionRow.G_TRANSITION_TPE
 
     @property
     def binds_subsequent_year_if_post_season(self) -> bool:

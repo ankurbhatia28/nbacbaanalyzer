@@ -39,14 +39,23 @@ ceiling; H–K a **second**.
 | ☐ | D | In-season signing of a waived player paid above the Non-Taxpayer MLE | First |
 | ☐ | E | Expanded Traded Player Exception | First |
 | ☐ | F | Standard TPE used after the Regular Season in which it arose | First |
-| ☐ | G | Transition Traded Player Exception | First |
+| ☐ | G | Transition Traded Player Exception | First *(see note)* |
 | ☐ | H | Aggregated Standard TPE | **Second** |
 | ☐ | I | **Paying cash** to another team in a trade | **Second** |
 | ☐ | J | TPE arising from a signed-and-traded contract | **Second** |
 | ☐ | K | Taxpayer MLE | **Second** |
 
+**Note on row G.** The apron level is transcribed correctly, but the row is
+unreachable for any season we model. The Transition exception exists in 2023-24
+only (§6(j)(1)(iii)), and §2(e)(5) — directly beneath the table on p. 215 —
+exempts rows F–J executed during 2023-24 from creating a 2023-24 ceiling. The
+sole season it can fire in is the season it is exempted in. The only residue is
+§2(e)(2)(ii): used between the end of the 2023-24 Regular Season and 30 June
+2024, it could bind 2024-25. Worth confirming the reading, not the value.
+
 | ☐ | Also | Detail | Citation |
 |---|---|---|---|
+| ☐ | 2023-24 carve-out | Rows **F–J** executed during 2023-24 create **no** 2023-24 ceiling | §2(e)(5), p. 215 |
 | ☐ | Mechanism | A team engaging in a listed transaction may not exceed that row's apron level **for the remainder of the Salary Cap Year** | §2(e)(2)(i)(B), p. 211 |
 | ☐ | Timing | Rows **E–J** executed after the Regular Season bind the **following** Salary Cap Year | §2(e)(2)(ii), p. 212 |
 
