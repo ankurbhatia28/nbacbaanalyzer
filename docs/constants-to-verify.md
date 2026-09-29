@@ -106,6 +106,26 @@ sufficient on its own — each tier has a separate eligibility gate, so a 7-YOS
 player with an All-NBA selection is still capped at 30%. And the higher figure
 applies to a subset of the tier, not the whole tier.
 
+## 6. NBA Constitution and By-Laws (2024) — a different document
+
+Not collective bargaining. Cited separately so a verdict says which document it
+rests on.
+
+| ☐ | By-Law | Rule encoded |
+|---|---|---|
+| ☐ | **7.03**, p. 85 | No Member may **sell** first-round pick rights for cash or its equivalent |
+| ☐ | **7.03**, p. 85 | No trade whose result **"may be"** to leave the Member without first-round picks in any **two consecutive** future Drafts |
+| ☐ | 7.03 reading | "without first-round pick**s**" — *any* first satisfies it, including another team's |
+| ☐ | 7.03 reading | **"may be"** — a protected pick that might not convey counts as possibly absent |
+| ☐ | **4.01(a)**, p. 69 | Deadline is 3 p.m. eastern on the **second Thursday prior** to that Season's All-Star Game |
+| ☐ | 4.01(a) | Closed from the deadline until the day after the last Regular Season Game |
+| ☐ | 4.01(a) | Postseason teams may not assign a Player on the Postseason Roster until eliminated; nothing moves during the Moratorium Period |
+| ☐ | **Not found** | The seven-Drafts-ahead horizon is in neither document. Confirm you agree it is absent. |
+
+**This is the section to review for 3.16.** The two readings of 7.03 are
+judgment calls on wording rather than transcription, so they are where a second
+opinion is worth most.
+
 ## What to do with a mismatch
 
 Every one of these has a test asserting it, so a correction is a one-line change
