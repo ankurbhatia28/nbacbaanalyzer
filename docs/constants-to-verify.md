@@ -106,6 +106,24 @@ sufficient on its own — each tier has a separate eligibility gate, so a 7-YOS
 player with an All-NBA selection is still capped at 30%. And the higher figure
 applies to a subset of the tier, not the whole tier.
 
+## 5b. Apron restrictions are derived, not listed — Art. VII §2(e)(2)(i)(A), p. 211
+
+Worth a look because it contradicts every summary. **The CBA contains no list of
+apron restrictions.** They fall out of one sentence: a team may not engage in a
+Transaction Restrictions Table row if its Apron Team Salary *immediately
+following* would exceed that row's Applicable Apron Level.
+
+| ☐ | Claim | Check |
+|---|---|---|
+| ☐ | There is no enumerated "second apron restrictions" list in the document | Confirm you cannot find one |
+| ☐ | Rows **A–F** close above the first apron | §2(e)(4) plus §2(e)(2)(i)(A) |
+| ☐ | Rows **H–K** close above the second apron | Same |
+| ☐ | "Cannot aggregate salaries" = row **H** | Aggregated Standard TPE |
+| ☐ | "Cannot send cash" = row **I** | Pays cash in a trade |
+| ☐ | "Cannot use the taxpayer MLE" = row **K** | Taxpayer MLE |
+| ☐ | The test is salary **after** the transaction, not before | §2(e)(2)(i)(A) wording |
+| ☐ | §6(m) non-aggregation applies to **all** teams, not just apron teams | Often miscited as an apron rule |
+
 ## 6. NBA Constitution and By-Laws (2024) — a different document
 
 Not collective bargaining. Cited separately so a verdict says which document it
