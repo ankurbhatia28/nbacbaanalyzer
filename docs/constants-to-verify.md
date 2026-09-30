@@ -122,7 +122,23 @@ following* would exceed that row's Applicable Apron Level.
 | ☐ | "Cannot send cash" = row **I** | Pays cash in a trade |
 | ☐ | "Cannot use the taxpayer MLE" = row **K** | Taxpayer MLE |
 | ☐ | The test is salary **after** the transaction, not before | §2(e)(2)(i)(A) wording |
-| ☐ | §6(m) non-aggregation applies to **all** teams, not just apron teams | Often miscited as an apron rule |
+| ☐ | Two rules share the word "aggregate" | §6(m) combines **Exceptions** (all teams); row **H** combines **outgoing contracts** in a trade (second-apron restricted). "Second apron teams cannot aggregate salaries" means row H and is correct. |
+
+## 5c. Draft Pick Penalty — Art. VII §2(f), pp. 219–220
+
+The second-apron consequence that is **not** a Transaction Restrictions Table
+row, so it does not fall out of §2(e)(2)(i)(A) and needed separate implementation.
+
+| ☐ | Constant | Value encoded |
+|---|---|---|
+| ☐ | "Second Apron Team" | Over the second apron **as of the start of the last Regular Season game** — a snapshot, not a season-long condition |
+| ☐ | Freeze horizon | First Draft after the **seventh Season** following that one. 2024-25 → **2032**, per the CBA's own example |
+| ☐ | Freeze effect | May not be traded **conditionally or unconditionally** |
+| ☐ | Penalty trigger | Second Apron Team in **two or more** of the next **four** Salary Cap Years |
+| ☐ | Penalty effect | Pick becomes the **final** selection of the first round |
+| ☐ | Multiple penalised picks | **Inverse order of winning percentage** — better record picks last |
+| ☐ | Release | Fewer than two → tradeable the day after the Regular Season of the **third** of those four years in which it was not a Second Apron Team |
+| ☐ | Applies from | The **2024-25** Salary Cap Year |
 
 ## 6. NBA Constitution and By-Laws (2024) — a different document
 

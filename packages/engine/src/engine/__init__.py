@@ -30,6 +30,7 @@ from .contract import (
     GuaranteeType,
     OptionType,
 )
+from .draft_pick_penalty import PickPenaltyStatus, frozen_draft_year
 from .entities import Player, Team
 from .holds import BirdRights, CapHold, DeadMoney, HoldKind
 from .max_salary import MaximumSalary, MaxTier, maximum_annual_salary, tier_for
@@ -89,6 +90,7 @@ __all__ = [
     "Party",
     "PickAsset",
     "PickInventory",
+    "PickPenaltyStatus",
     "Player",
     "Protection",
     "Provenance",
@@ -120,6 +122,7 @@ __all__ = [
     "best_allowance",
     "classify",
     "explain_apron_position",
+    "frozen_draft_year",
     "maximum_annual_salary",
     "may_engage",
     "rookie_extension_trade_value",
