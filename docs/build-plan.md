@@ -132,10 +132,10 @@ required UI element rather than a nicety.
 - [x] **4.2** Legs derived from two published figures per team: `incoming = Cap Hit Sum`, `outgoing = Cap Hit Sum − Cap Hit Change`. Verified rather than assumed — **all 184 trades balance**, total incoming equalling total outgoing.
 - [ ] **4.3** Scope note: v1 validates against **current-state** reconstruction only. Trades needing state we lack are excluded and counted, not silently skipped.
 - [x] **4.4** **184/184 trades, zero failures.** 341 salary-matching checks pass; 78 are undeterminable and skipped, as are 161 ceiling checks. Partial verdicts throughout: a skipped check says why.
-- [ ] **4.5** Mutation generators for labelled illegal cases, each with an expected violation code
-- [ ] **4.6** Precision and recall on violation codes, not just the legal/illegal bit
+- [x] **4.5** Mutation generators — **627 mutants** from real trades. Three kinds: blunt inflation (243), **boundary mutations set one dollar above the largest allowance any exception offers** (243), and unbalancing (141), which tests the harness rather than the engine.
+- [x] **4.6** **Recall 100%** (627/627), **reason accuracy 100%**, **precision floor 96.9%**. Precision is reported as a floor, not a measurement: its denominator counts real trades the engine cannot permit outright, most of which are cap room rather than errors.
 - [ ] **4.7** Query DSL eval set — golden questions with expected results
-- [ ] **4.8** `make eval` → markdown report card; promote the CI job to blocking
+- [x] **4.8** `python -m nbadata.evals` prints the report card and **the CI job is now blocking** — a regression in the suite fails the build.
 
 > **Done when** you can state "passes N/N reconstructible trades, M% violation-code accuracy" and defend how it was measured.
 

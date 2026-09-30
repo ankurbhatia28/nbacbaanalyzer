@@ -7,7 +7,9 @@ import sys
 from pathlib import Path
 
 from .corpus import load
+from .mutate import generate
 from .run import run
+from .score import score
 from .seasons import load_seasons
 
 
@@ -15,6 +17,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Validate the engine against real trades.")
     ap.add_argument("--legs", type=Path, default=None)
     ap.add_argument("--min-season", default="2023-2024")
+    ap.add_argument("--skip-mutations", action="store_true", help="corpus only, no mutation suite")
     args = ap.parse_args()
 
     cases = load(args.legs, min_season=args.min_season)
@@ -28,7 +31,17 @@ def main() -> int:
 
     report = run(cases, seasons, base_cap)
     print(report.render())
-    return 1 if report.failures else 0
+
+    if args.skip_mutations:
+        return 1 if report.failures else 0
+
+    print("\n" + "-" * 64 + "\n")
+    result = score(generate(cases, seasons, base_cap), cases, seasons, base_cap)
+    print(result.render())
+
+    missed = len(result.detections) - result.detected
+    wrong_reason = result.detected - result.right_reason
+    return 1 if (report.failures or missed or wrong_reason) else 0
 
 
 if __name__ == "__main__":
