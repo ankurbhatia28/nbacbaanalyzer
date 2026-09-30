@@ -31,10 +31,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from engine.salary_matching import best_allowance
 from engine.season import Season
 from engine.violations import Code
 
+from .capacity import permits
 from .corpus import TradeCase
 from .mutate import Mutant, MutationKind
 
@@ -108,8 +108,7 @@ def _detect(mutant: Mutant, season: Season, base_cap: int) -> Detection:
     leg = mutant.case.leg_for(mutant.team)
     if leg is None:
         return Detection(mutant, False, None, False)
-    allowed = best_allowance(leg.outgoing, leg.incoming, season, 0, base_cap, aggregating=True)
-    caught = allowed is None
+    caught = not permits(leg, season, base_cap)
     return Detection(
         mutant,
         caught,
@@ -140,9 +139,6 @@ def score(
         for leg in case.legs:
             if leg.incoming <= leg.outgoing or leg.outgoing <= 0:
                 continue
-            if (
-                best_allowance(leg.outgoing, leg.incoming, season, 0, base_cap, aggregating=True)
-                is None
-            ):
+            if not permits(leg, season, base_cap):
                 result.undeterminable += 1
     return result

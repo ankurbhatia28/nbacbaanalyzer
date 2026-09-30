@@ -25,7 +25,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from enum import StrEnum
 
-from engine.salary_matching import best_allowance
+from engine.salary_matching import best_allowance, best_structure
 from engine.season import Season
 
 from .corpus import TradeCase
@@ -145,16 +145,39 @@ def evaluate(case: TradeCase, season: Season, base_season_cap: int) -> CaseResul
         # The most permissive reading: assume the team lands below the first
         # apron, so the $250,000 allowance survives (Art. VII 6(j)(3)), and that
         # it may aggregate. A real trade failing even this is a genuine defect.
-        allowance = best_allowance(
-            leg.outgoing,
-            leg.incoming,
-            season,
-            0,
-            base_season_cap,
-            aggregating=True,
-            cap_room=None,
+        #
+        # Where the individual outgoing contracts are known, the team may split
+        # them across several exceptions (6(j) is carved out of 6(m)'s bar on
+        # combining), which permits materially more than one exception alone.
+        permitted = False
+        how = ""
+        if leg.outgoing_reconstructed:
+            structure = best_structure(list(leg.outgoing_salaries), season, 0, base_season_cap)
+            if structure.permits(leg.incoming):
+                permitted = True
+                how = (
+                    f"permitted across {structure.exception_count} exception(s) "
+                    f"(${structure.total_allowance:,} allowed)"
+                )
+        allowance = (
+            None
+            if permitted
+            else best_allowance(
+                leg.outgoing,
+                leg.incoming,
+                season,
+                0,
+                base_season_cap,
+                aggregating=True,
+                cap_room=None,
+            )
         )
-        if allowance is None:
+        if allowance is not None:
+            permitted = True
+            how = (
+                f"permitted by the {allowance.kind.value} exception (${allowance.amount:,} allowed)"
+            )
+        if not permitted:
             result.checks.append(
                 CheckResult(
                     "salary_matching",
@@ -165,15 +188,7 @@ def evaluate(case: TradeCase, season: Season, base_season_cap: int) -> CaseResul
                 )
             )
         else:
-            result.checks.append(
-                CheckResult(
-                    "salary_matching",
-                    Outcome.PASS,
-                    f"permitted by the {allowance.kind.value} exception "
-                    f"(${allowance.amount:,} allowed)",
-                    leg.team,
-                )
-            )
+            result.checks.append(CheckResult("salary_matching", Outcome.PASS, how, leg.team))
 
         result.checks.append(
             CheckResult("hard_cap_ceiling", Outcome.SKIPPED, NEEDS_TEAM_STATE, leg.team)

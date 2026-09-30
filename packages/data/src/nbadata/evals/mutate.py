@@ -25,10 +25,10 @@ from __future__ import annotations
 from dataclasses import dataclass, replace
 from enum import StrEnum
 
-from engine.salary_matching import aggregated, best_allowance, expanded, standard
 from engine.season import Season
 from engine.violations import Code
 
+from .capacity import ceiling, permits
 from .corpus import Leg, TradeCase
 
 
@@ -64,10 +64,7 @@ def _conclusively_legal(leg: Leg, season: Season, base_cap: int) -> bool:
         return False
     if leg.incoming <= leg.outgoing:
         return True
-    return (
-        best_allowance(leg.outgoing, leg.incoming, season, 0, base_cap, aggregating=True)
-        is not None
-    )
+    return permits(leg, season, base_cap)
 
 
 def inflate_incoming(
@@ -85,12 +82,7 @@ def inflate_incoming(
         if not _conclusively_legal(leg, season, base_cap):
             continue
         inflated = replace(leg, incoming=max(leg.incoming, leg.outgoing) * factor + 10_000_000)
-        if (
-            best_allowance(
-                inflated.outgoing, inflated.incoming, season, 0, base_cap, aggregating=True
-            )
-            is not None
-        ):
+        if permits(inflated, season, base_cap):
             continue  # still permitted, so not a valid mutation
         out.append(
             Mutant(
@@ -143,21 +135,13 @@ def just_over_the_band(case: TradeCase, season: Season, base_cap: int) -> list[M
     for leg in case.legs:
         if not _conclusively_legal(leg, season, base_cap):
             continue
-        # best_allowance returns the *least* consequential exception that fits,
-        # which is not the boundary. The largest allowance any exception offers
-        # is what a trade actually has to clear, so that is what we step over.
-        largest = max(
-            (
-                standard(leg.outgoing, season, 0).amount,
-                aggregated(leg.outgoing, season, 0).amount,
-                expanded(leg.outgoing, season, 0, base_cap).amount,
-            )
-        )
+        # The boundary is the largest allowance any *lawful structure* offers,
+        # not the largest single exception. Where the outgoing contracts are
+        # known, splitting them across exceptions permits more, and a dollar
+        # over the single-exception figure would still be legal.
+        largest = ceiling(leg, season, base_cap)
         over = replace(leg, incoming=largest + 1)
-        if (
-            best_allowance(over.outgoing, over.incoming, season, 0, base_cap, aggregating=True)
-            is not None
-        ):
+        if permits(over, season, base_cap):
             continue
         out.append(
             Mutant(
@@ -166,7 +150,7 @@ def just_over_the_band(case: TradeCase, season: Season, base_cap: int) -> list[M
                 _replace_leg(case, leg.team, over),
                 leg.team,
                 f"incoming set to ${over.incoming:,}, one dollar above the largest "
-                f"allowance any exception offers on ${leg.outgoing:,} sent (${largest:,})",
+                f"allowance any lawful structure offers on ${leg.outgoing:,} sent (${largest:,})",
                 case.trade_id,
             )
         )

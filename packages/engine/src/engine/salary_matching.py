@@ -23,6 +23,7 @@ conclusion from the text, independent of any tracker.
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import StrEnum
 
@@ -202,3 +203,104 @@ def best_allowance(
         if candidate.permits(incoming):
             return candidate
     return None
+
+
+# ----------------------------------------------------------------------
+# Structuring a trade across several exceptions
+# ----------------------------------------------------------------------
+
+MAX_PARTITIONED_PLAYERS = 8
+"""
+Above this, enumerating partitions costs more than it is worth. Bell(8) is 4,140
+and Bell(12) is over four million; real trades rarely send more than a handful
+of players from one team.
+"""
+
+
+def _partitions(items: list[int]) -> Iterator[list[list[int]]]:
+    """Every way of splitting a list into non-empty groups."""
+    if not items:
+        yield []
+        return
+    first, rest = items[0], items[1:]
+    for smaller in _partitions(rest):
+        for i, group in enumerate(smaller):
+            yield smaller[:i] + [[first, *group]] + smaller[i + 1 :]
+        yield [[first], *smaller]
+
+
+def _group_allowance(
+    group: list[int], season: Season, post_apron_salary: int, base_season_cap: int
+) -> int:
+    """The most a single exception permits against one group of traded players."""
+    total = sum(group)
+    options = [
+        standard(total, season, post_apron_salary).amount
+        if len(group) == 1
+        else aggregated(total, season, post_apron_salary).amount,
+        expanded(total, season, post_apron_salary, base_season_cap).amount,
+    ]
+    return max(options)
+
+
+@dataclass(frozen=True, slots=True)
+class Structure:
+    """How a trade is split across exceptions, and what that permits in total."""
+
+    total_allowance: int
+    groups: tuple[tuple[int, ...], ...]
+    citation: Citation = TPE_STANDARD
+
+    def permits(self, incoming: int) -> bool:
+        return incoming <= self.total_allowance
+
+    @property
+    def exception_count(self) -> int:
+        return len(self.groups)
+
+
+def best_structure(
+    outgoing_salaries: list[int],
+    season: Season,
+    post_apron_salary: int,
+    base_season_cap: int,
+) -> Structure:
+    """
+    The most incoming salary a team may absorb, allowing it to split its outgoing
+    players across several exceptions.
+
+    Art. VII 6(j)(1)(i) lets one exception "replace one (1) Traded Player", so a
+    team sending several players may use several exceptions -- and 6(m) permits
+    exactly that, carving Section 6(j) out of its general bar on combining
+    exceptions.
+
+    Treating a trade as a single exception understates capacity, sometimes
+    badly. Sending four players separately earns the $250,000 allowance four
+    times rather than once; aggregating them instead opens the Expanded
+    formula against a larger base. Which wins depends on the salaries, so both
+    are considered.
+    """
+    salaries = [s for s in outgoing_salaries if s > 0]
+    if not salaries:
+        return Structure(0, ())
+    if len(salaries) > MAX_PARTITIONED_PLAYERS:
+        # Fall back to the two obvious structures rather than enumerate.
+        singles = sum(
+            _group_allowance([s], season, post_apron_salary, base_season_cap) for s in salaries
+        )
+        whole = _group_allowance(salaries, season, post_apron_salary, base_season_cap)
+        if singles >= whole:
+            return Structure(singles, tuple((s,) for s in salaries))
+        return Structure(whole, (tuple(salaries),))
+
+    best_total = -1
+    best_groups: tuple[tuple[int, ...], ...] = ()
+    for partition in _partitions(salaries):
+        total = sum(
+            _group_allowance(group, season, post_apron_salary, base_season_cap)
+            for group in partition
+        )
+        if total > best_total:
+            best_total = total
+            best_groups = tuple(tuple(g) for g in partition)
+    return Structure(best_total, best_groups)
