@@ -29,8 +29,10 @@ Two further conditions sit alongside:
                  modelled in `apron.CeilingSet`
   6(n)(1)        several exceptions are available only to a team at or above
                  the cap, or below it by less than the exception amount
-  6(m)           exceptions may not be combined to sign or acquire at a higher
-                 salary than any single one permits -- universal, not apron-specific
+  6(m)           **Exceptions** may not be combined with each other to sign or
+                 acquire above what any single one permits. A different rule
+                 from aggregating outgoing contracts in a trade; the shared word
+                 "aggregate" makes the two easy to conflate.
 """
 
 from __future__ import annotations
@@ -136,12 +138,26 @@ def exception_requires_being_near_the_cap(
 
 
 NON_AGGREGATION_RULE = (
-    "Art. VII 6(m): other than as Section 6(j) allows, exceptions may not be "
-    "combined to sign or acquire players at salaries greater than any single "
-    "exception permits. A team holding several may choose which to use."
+    "Art. VII 6(m): other than as Section 6(j) allows, a team may not combine "
+    "two or more Exceptions with each other to sign or acquire a player above "
+    "what any single Exception permits. A team holding several chooses one."
 )
-"""6(m) applies to every team regardless of apron status -- often described as an
-apron restriction, which it is not."""
+"""
+Two distinct rules share the word "aggregate":
+
+  6(m)    combining **Exceptions** -- say the mid-level with the bi-annual -- to
+          sign one player at a larger number. Applies to every team, whatever
+          its apron position.
+
+  row H   combining **outgoing player contracts** in a trade to match a larger
+          incoming salary, the Aggregated Standard Traded Player Exception.
+          This *is* apron-restricted: a team at or above the second apron, or
+          that the deal would push above it, cannot use it.
+
+"Second apron teams cannot aggregate salaries" refers to row H and is correct.
+6(m) is a separate, universal rule about stacking exceptions, and calling it an
+apron restriction is the miscitation -- not the row H claim.
+"""
 
 
 def explain_apron_position(*, apron_salary: int, season: Season) -> str:
