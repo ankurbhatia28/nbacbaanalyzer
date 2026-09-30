@@ -45,6 +45,14 @@ from .citations import (
 )
 from .season import Season
 
+TRANSITION_CARVE_OUT_SEASON = "2023-2024"
+"""
+Art. VII 2(e)(5): rows F-J executed during 2023-24 create no 2023-24 ceiling --
+and, per the document's own Example 5, are exempt from the 2(e)(2)(i)(A)
+prohibition as well. Team E's Apron Team Salary of $175m exceeded the $170m
+first apron and the trade was still permitted, "notwithstanding" that fact.
+"""
+
 
 @dataclass(frozen=True, slots=True)
 class TransactionPermission:
@@ -53,10 +61,16 @@ class TransactionPermission:
     applicable_level: ApronLevel
     level_amount: int
     salary_after: int
+    exempt: bool = False
     citation: Citation = TRANSACTION_RESTRICTIONS
 
     def describe(self) -> str:
         verb = "may" if self.permitted else "may not"
+        if self.exempt:
+            return (
+                f"{verb} use row {self.row.value}: exempt for {TRANSITION_CARVE_OUT_SEASON} "
+                f"under Art. VII 2(e)(5) despite salary of ${self.salary_after:,}"
+            )
         return (
             f"{verb} use row {self.row.value}: would leave Apron Team Salary at "
             f"${self.salary_after:,} against a {self.applicable_level.value.replace('_', ' ')} "
@@ -79,12 +93,18 @@ def may_engage(
     thresholds = SeasonThresholds(season.first_apron, season.second_apron)
     level = row.applicable_apron
     amount = thresholds.amount_for(level)
+
+    # 2(e)(5): rows F-J in 2023-24 are exempt. The document's Example 5 applies
+    # this to the (i)(A) prohibition, not only to the (i)(B) ceiling -- Team E
+    # was permitted "notwithstanding" being over the level.
+    exempt = season.season_id == TRANSITION_CARVE_OUT_SEASON and "F" <= row.value <= "J"
     return TransactionPermission(
         row=row,
-        permitted=apron_salary_after <= amount,
+        permitted=exempt or apron_salary_after <= amount,
         applicable_level=level,
         level_amount=amount,
         salary_after=apron_salary_after,
+        exempt=exempt,
     )
 
 
