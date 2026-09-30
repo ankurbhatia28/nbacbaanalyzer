@@ -14,6 +14,13 @@ from .apron import (
     SeasonThresholds,
     classify,
 )
+from .apron_restrictions import (
+    TransactionPermission,
+    available_transactions,
+    barred_transactions,
+    explain_apron_position,
+    may_engage,
+)
 from .contract import (
     Contract,
     ContractOption,
@@ -102,14 +109,19 @@ __all__ = [
     "TradeException",
     "TradeLeg",
     "TradeRestriction",
+    "TransactionPermission",
     "UnknownValueError",
     "Verdict",
     "Violation",
     "arenas_applies",
     "arenas_offer_sheet_room_value",
+    "available_transactions",
+    "barred_transactions",
     "best_allowance",
     "classify",
+    "explain_apron_position",
     "maximum_annual_salary",
+    "may_engage",
     "rookie_extension_trade_value",
     "team_trade_constraints",
     "tier_for",
