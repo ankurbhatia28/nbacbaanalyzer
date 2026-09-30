@@ -225,7 +225,7 @@ def _partitions(items: list[int]) -> Iterator[list[list[int]]]:
     first, rest = items[0], items[1:]
     for smaller in _partitions(rest):
         for i, group in enumerate(smaller):
-            yield smaller[:i] + [[first, *group]] + smaller[i + 1 :]
+            yield [*smaller[:i], [first, *group], *smaller[i + 1 :]]
         yield [[first], *smaller]
 
 

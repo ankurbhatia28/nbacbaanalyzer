@@ -172,3 +172,24 @@ def test_many_players_fall_back_without_enumerating_partitions():
     got = best_structure(players, S, UNDER, BASE_CAP)
     assert got.total_allowance > 0
     assert got.exception_count in (1, len(players))
+
+
+def test_the_partition_generator_is_exhaustive_and_sound():
+    """
+    best_structure is only correct if it considers every way of grouping the
+    outgoing players. The count of set partitions is the Bell sequence, so a
+    generator that drops or repeats groupings shows up here immediately.
+    """
+    from engine.salary_matching import _partitions
+
+    bell = [1, 2, 5, 15, 52, 203, 877]
+    for n, expected in enumerate(bell, start=1):
+        partitions = list(_partitions(list(range(n))))
+        assert len(partitions) == expected, f"n={n}"
+        # sound: each is a true partition -- no empty group, nothing lost or duplicated
+        for partition in partitions:
+            assert all(group for group in partition)
+            assert sorted(x for group in partition for x in group) == list(range(n))
+        # distinct: no grouping is offered twice
+        canonical = {tuple(sorted(tuple(sorted(g)) for g in p)) for p in partitions}
+        assert len(canonical) == expected
