@@ -117,7 +117,7 @@ required UI element rather than a nicety.
 - [ ] **3.18** `validate_trade(legs, as_of) -> Verdict` with violations **and assumptions**
 - [ ] **3.19** **`team_trade_constraints(team, player) -> Constraints`** — enumerate everything limiting a team, without a proposed deal. Answers the Embiid question.
 - [ ] **3.20** Every verdict carries the assumptions it rests on (ADR-003)
-- [ ] **3.21** Property-based tests on salary matching
+- [x] **3.21** Property-based tests — invariants across the input space: permission is monotonic in salary, expanded is never worse than standard, a returned allowance always fits, more ceilings only tighten, more lost picks never make Stepien pass, an unknown always records exactly one assumption.
 - [ ] **3.22** Golden tests from the CBA's own worked examples
 
 > **Done when** the fixture team validates correctly, every rule has a citation constant and a test, and `team_trade_constraints` explains a real team's situation in terms traceable to Articles.
