@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2026-09-29T05:55:04.656216+00:00",
+  "scraped_at": "2026-09-30T19:32:23.096412+00:00",
   "source": "salaryswish.com",
   "note": "Hard-cap columns map onto the CBA Transaction Restrictions Table (Art. VII Sec. 2(e)(4), rows A-K). A team may hold several ceilings; the lowest binds.",
-  "hard_cap_rows": 48
+  "trade_legs": 433
 }
