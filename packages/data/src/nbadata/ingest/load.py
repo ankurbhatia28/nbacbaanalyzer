@@ -213,7 +213,10 @@ def load(csv_dir: Path, db_path: Path) -> IngestReport:
                     cid,
                     s["season_id"],
                     as_int(s["salary"]),
-                    "full",
+                    # Basketball-Reference marks guarantee status with cell
+                    # styling this scraper does not read, so it is genuinely
+                    # unknown -- the same treatment trade kickers get above.
+                    "unknown",
                     None,
                     None,
                     s["option_type"] or None,

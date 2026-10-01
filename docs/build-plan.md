@@ -86,6 +86,7 @@ required UI element rather than a nicety.
 - [ ] **2.8** Golden query tests — question → DSL → expected rows
 - [ ] **2.9** `player_lookup` fuzzy search returning candidates, never a guess
 - [ ] **2.10** Refuse what the DSL cannot express; log each refusal as a candidate extension
+- [x] **2.11** **`guarantee_kind` now reads `unknown`, not `full`.** The schema defaulted it to `'full'` and the loader wrote `'full'` positionally, so all 1,136 contract-years claimed to be fully guaranteed — while the scraped CSV has no guarantee column at all. Basketball-Reference marks guarantee status with cell styling the scraper never read, so the value was asserted, not observed, in breach of [ADR-003](adr/0003-unknown-is-not-zero.md). The catalog advertised "full, partial or none" on a column that could only ever say one of them. Found by writing the 4.7 question "which contracts are not fully guaranteed?", which returned an empty list — readable as "none", which was false. Closing it properly needs a source that publishes guarantee dates and amounts.
 
 > **Done when** "how many players have Bird rights this season" returns a number, the DSL behind it is inspectable, and an unexpressible question is refused rather than approximated.
 
@@ -131,11 +132,11 @@ required UI element rather than a nicety.
 
 - [x] **4.1** Corpus built from **SalarySwish** rather than Fanspo. Fanspo yielded 62 trade events across 9 months; SalarySwish gives **184 trades across four seasons** (2023-07 → 2026-09), all under the 2023 CBA.
 - [x] **4.2** Legs derived from two published figures per team: `incoming = Cap Hit Sum`, `outgoing = Cap Hit Sum − Cap Hit Change`. Verified rather than assumed — **all 184 trades balance**, total incoming equalling total outgoing.
-- [ ] **4.3** Scope note: v1 validates against **current-state** reconstruction only. Trades needing state we lack are excluded and counted, not silently skipped.
-- [x] **4.4** **184/184 trades, zero failures.** 341 salary-matching checks pass; 78 are undeterminable and skipped, as are 161 ceiling checks. Partial verdicts throughout: a skipped check says why.
-- [x] **4.5** Mutation generators — **627 mutants** from real trades. Three kinds: blunt inflation (243), **boundary mutations set one dollar above the largest allowance any exception offers** (243), and unbalancing (141), which tests the harness rather than the engine.
-- [x] **4.6** **Recall 100%** (627/627), **reason accuracy 100%**, **precision floor 96.9%**. Precision is reported as a floor, not a measurement: its denominator counts real trades the engine cannot permit outright, most of which are cap room rather than errors.
-- [ ] **4.7** Query DSL eval set — golden questions with expected results
+- [x] **4.3** Scope note: v1 validates against **current-state** reconstruction only. Trades needing state we lack are excluded and counted, not silently skipped.
+- [x] **4.4** **184/184 trades, zero failures.** 344 salary-matching checks pass; 75 are undeterminable and skipped, as are 161 ceiling checks. Partial verdicts throughout: a skipped check says why.
+- [x] **4.5** Mutation generators — **633 mutants** from real trades. Three kinds: blunt inflation, **boundary mutations set one dollar above the largest allowance any lawful *structure* offers** — not merely any single exception, which was letting still-legal trades count as illegal — and unbalancing, which tests the harness rather than the engine.
+- [x] **4.6** **Recall 100%** (633/633), **reason accuracy 100%**, **precision floor 97.4%**. Precision is reported as a floor, not a measurement: its denominator counts real trades the engine cannot permit outright, most of which are cap room rather than errors.
+- [x] **4.7** Query DSL eval set — **18 golden questions**, 12 answerable by one query and all 12 correct. The other 6 are labelled with the category that should route them elsewhere (rules, validation, constraints, refused), which is what task 6.1 will be measured against. Graded **on the result, not the query text**: an alias, a different column order or a different filter order is still a correct translation. A real data defect fell out of writing it — see 2.11.
 - [x] **4.8** `python -m nbadata.evals` prints the report card and **the CI job is now blocking** — a regression in the suite fails the build.
 
 > **Done when** you can state "passes N/N reconstructible trades, M% violation-code accuracy" and defend how it was measured.

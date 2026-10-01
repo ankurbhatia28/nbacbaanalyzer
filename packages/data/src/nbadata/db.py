@@ -73,7 +73,10 @@ CREATE TABLE contract_years (
     contract_id      INTEGER NOT NULL REFERENCES contracts(contract_id),
     season_id        TEXT NOT NULL,
     cap_figure       INTEGER NOT NULL,
-    guarantee_kind   TEXT NOT NULL DEFAULT 'full',
+    -- 'unknown' until a source supplies it. Basketball-Reference marks
+    -- guarantee status with cell styling the scraper does not capture, so
+    -- defaulting to 'full' asserted something we had never read (ADR-003).
+    guarantee_kind   TEXT NOT NULL DEFAULT 'unknown',
     guarantee_amount INTEGER,
     guarantee_date   TEXT,
     option_kind      TEXT,
