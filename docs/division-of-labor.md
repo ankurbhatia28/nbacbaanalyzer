@@ -234,6 +234,7 @@ Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order
 | D11 | Hosting | **Next.js → Vercel, FastAPI → Render.** Database and index are read-only build artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)); no managed DB, no persistent disk. |
 | D12 | Retrieval strategy | **BM25 for candidates, then term-coverage re-ranking** (SQLite FTS5, still no model at inference). Measured in 5.8: recall@1 34%, recall@3 48%, MRR 0.433 — but **76% recall@3 when the query carries the term of art against 20% when it does not.** Ranking work is done; the residue was vocabulary, settled by D14. |
 | D14 | Paraphrase gap | **Resolve a question to one of the document's 670 names, then look the provision up** — not search for a paraphrase. Reaches 25 of 25 provisions the engine cites against 20% recall@3 by search. Exact matching only; an invented name resolves to nothing. Dense retrieval stays the fallback if 6.3's naming accuracy disappoints. See §6a. |
+| D15 | Model per role | **Haiku 4.5 for routing and provision-name selection, Sonnet 5 for the answer.** Not one model: ADR-001 leaves the model classification and selection, which do not need the top tier. Measured on the router (6.1): Haiku **88.9%** exact-set accuracy against Sonnet's 91.1%, both at **100% refusal recall**. 2.2 points is not worth the tier for a four-way label. Opus 5.5 held in reserve for the answer role if 6.11's adversarial set defeats Sonnet. Configured per role via `ANTHROPIC_MODEL_{ROUTER,INTENT,ANSWER}`; `ANTHROPIC_MODEL` pins all three, which is what an eval run does. See §6b. |
 | D13 | Raindrop deployment | **Cloud, Hobby (free) tier** — there is no alternative: self-hosting is VPC-only, Enterprise, and in beta with selected partners. 1,000 events/month, 14-day retention, 1 custom signal. Pro is $299/month, which this project will not spend. **Narrows D8:** "no hosted services" already gave way to D11 (Vercel + Render); the operative constraint is no recurring fee, which the Hobby tier meets. |
 
 ## 6a. D14 — closing the paraphrase gap: **settled, option A**
@@ -278,6 +279,45 @@ and a name it invents resolves to nothing rather than to something plausible.
 Phase 6 and is 6.3's eval, not this one. What is settled is that the vocabulary
 can reach every provision the engine cites, which is the bound that mattered.
 Option C stays available if 6.3's naming accuracy disappoints.
+
+## 6b. D15 — which model, and why not the expensive one
+
+The agent is given very little to do. ADR-001 puts the reasoning in the engine:
+nothing in `packages/agent` computes a figure or decides a rule. What is left is
+classification, selection from closed sets, and restraint — so the question is
+not "which model is best" but "which role needs what".
+
+| role | the actual task | tier |
+|---|---|---|
+| `ROUTER` | sort a question into four classes plus a refusal | small — Haiku 4.5 |
+| `INTENT` | pick one of the document's 670 names (D14) | small — Haiku 4.5 |
+| `ANSWER` | orchestrate tools, quote provisions, surface assumptions | mid — Sonnet 5 |
+
+**Measured, not assumed.** The router was scored on 45 labelled questions:
+
+| model | exact-set accuracy | refusal recall | input tokens | output tokens |
+|---|---|---|---|---|
+| **Haiku 4.5** | **88.9%** | **100%** | 20,668 | 2,621 |
+| Sonnet 5 | 91.1% | 100% | 27,302 | 3,502 |
+
+Sonnet is 2.2 points better and costs more per token *and* used more tokens.
+That is not worth a tier for a four-way label — particularly since **both reach
+100% refusal recall**, which is the error that actually matters: a missed
+refusal means a historical question gets answered from current data, and the
+user cannot see that it is wrong.
+
+`ANSWER` is the one role not on the small tier, because it is the only one where
+the failure is a judgement failure rather than a wrong label — answering a
+figure out of retrieved prose, or asserting a rule without calling a tool. Task
+6.11 baits exactly that, and the tier for this role should be whatever passes
+it. Opus 5.5 stays in reserve for that result, not for a preference.
+
+**`.env.example` was pinning `claude-opus-5`** — the most expensive tier, and
+not a current model id either. Now commented out so the per-role defaults apply.
+
+**A cheap win still on the table:** both runs show `cached-read 0`, because each
+call is a fresh conversation and the system prompt repeats 45 times. Task 6.8's
+prompt caching should take a visible bite out of that 20,668.
 
 ## 7. The honest summary
 

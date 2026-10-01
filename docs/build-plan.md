@@ -272,7 +272,17 @@ required UI element rather than a nicety.
 
 ## Phase 6 — Agent layer
 
-- [ ] **6.1** **Question router** — classify into rules / data / validation / constraints, allowing combinations
+- [x] **6.1** **Question router — 88.9% exact-set accuracy, 100% refusal recall on Haiku 4.5.** Five classes (rules, data, validation, constraints, refused), and **combinations are allowed**, because real questions are compound: *"if I traded Embiid, what are my limits and what rule sets them?"* needs the engine *and* the text, and a router forced to pick one label drops half of what was asked.
+
+  **The labelled set had to be rebuilt first.** 4.7 carried routing labels for 18 questions, but they were 12 `data` against one each of three other classes — a classifier answering "data" every time would have scored respectably. Those 18 are reused (they were labelled when the category mattered for a different reason, so they are less likely to be bent to suit the router) and 27 added for balance: **45 cases, no class above a third, 4 compound.**
+
+  **Scored on exact-set match**, not per-label overlap. A compound question is answered wrongly if either path is missed, so partial credit would hide the failure that matters. Per-class recall is reported alongside, because an aggregate cannot distinguish a router that over-uses `data` from one that is evenly wrong.
+
+  **One of my labels was wrong, and the model found it.** I had labelled *"which contracts are not fully guaranteed?"* as `refused`, because the guarantee data is unknown (2.11). But whether the data exists is a tool-layer fact, not a question-type fact — the D6 and D10 refusals are about *scope*, and that question is neither historical nor an opinion. It routes to `data`, and the tool reports the unknown. Relabelled on that principle, which took accuracy 84.4% → 88.9% and refusal recall 87.5% → 100%. Reported both figures rather than only the better one.
+
+  Residual errors are mild: the router sometimes adds `data` to a `constraints` question, which costs an extra tool call rather than a wrong answer. The one real miss is reading *"can the Suns aggregate contracts at all?"* as `rules`.
+
+  Tested offline against a stub caller — a test that needs an API key is a test that stops running. The scored run is `python -m agent.router_cli`, a command rather than a test, because it spends money.
 - [x] **6.2** **Six tools, in a new `packages/agent` — the one package allowed a model client.** The engine, data and retrieval layers stay free of one, which is what makes their answers reproducible with no key present.
 
   Two properties shape the schemas, and both are tested:
