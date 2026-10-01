@@ -232,8 +232,33 @@ Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order
 | D9 | Incentive compensation | **Out of v1** |
 | D10 | Hypotheticals | **No.** "Is this legal" is answered; "should they do it" is declined. v2 may present live statistics alongside a trade but will not conclude. |
 | D11 | Hosting | **Next.js → Vercel, FastAPI → Render.** Database and index are read-only build artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)); no managed DB, no persistent disk. |
-| D12 | Retrieval strategy | **BM25 first** (SQLite FTS5, no model at inference) — **now measured (5.8): insufficient alone.** recall@10 62% overall, but 44% on paraphrased questions against 80% when the query carries the term of art. The bottleneck is vocabulary, not ranking; a document-frequency stop list made it worse. Next step is query expansion through the definitions index, with 6.3's intent extraction helping structurally. Embeddings remain the fallback, now with a measured gap behind them rather than an assertion. |
+| D12 | Retrieval strategy | **BM25 for candidates, then term-coverage re-ranking** (SQLite FTS5, still no model at inference). Measured in 5.8: recall@1 34%, recall@3 48%, MRR 0.433 — but **76% recall@3 when the query carries the term of art against 20% when it does not.** Ranking work is done; the residue is vocabulary. **Open: D14.** |
 | D13 | Raindrop deployment | **Cloud, Hobby (free) tier** — there is no alternative: self-hosting is VPC-only, Enterprise, and in beta with selected partners. 1,000 events/month, 14-day retention, 1 custom signal. Pro is $299/month, which this project will not spend. **Narrows D8:** "no hosted services" already gave way to D11 (Vercel + Render); the operative constraint is no recurring fee, which the Hobby tier meets. |
+
+## 6a. Open question — D14: how to close the paraphrase gap
+
+Retrieval is good when a query carries the term of art (recall@3 76%, MRR 0.663)
+and poor when it does not (20%). Task 5.8b exhausted what ranking can do; what
+remains is that the user's words and the document's words differ — §6(j)(4) says
+*aggregating* where a user says *combined*. Three options, and this one is yours
+because it reaches deployment:
+
+| | cost | keeps "no model at inference" |
+|---|---|---|
+| **A. Lean on 6.3's intent extraction** — the agent names the term of art, retrieval stays lexical | none beyond Phase 6 work already planned | yes |
+| **B. Hand-written synonym map** (combined→aggregate, take back→acquire) | cheap, but guesswork about user vocabulary and generalises badly | yes |
+| **C. Dense retrieval fused with BM25** | ~90MB local model against Render's 512MB free tier and slower cold starts, **or** a hosted embedding API with a per-query fee, latency and another vendor key — touches D8 and D11 | no |
+
+**My recommendation is A, then measure, and hold C as the fallback.** The evidence
+already says the retriever works when handed the right term, and Phase 6 puts a
+model in the loop regardless; using it to translate a question into a term of art
+is nearly free and does not breach [ADR-001](adr/0001-the-model-does-not-decide.md),
+since the model is helping *find* text rather than deciding a rule or a figure. C
+is the known-good answer to paraphrase but spends the deployment budget D8 and D11
+were written to protect, and it would be spent before knowing whether A suffices.
+
+The honest caveat on A: it cannot be measured offline without a model, so the
+proxy is the term-of-art arm of the 5.8 eval, which stands at 76% recall@3.
 
 ## 7. The honest summary
 

@@ -161,11 +161,14 @@ def test_retrieval_does_not_regress_below_the_measured_floor(report):
     """
     A floor, not a pin. The figures move when chunking or the question set
     changes, and pinning them would turn every improvement into a failing test.
-    Set well under what is measured today (recall@10 62%, MRR 0.280) so this
-    catches a real regression rather than noise.
+
+    Set under what is measured today (recall@1 34%, recall@10 66%, MRR 0.433)
+    but **above** what BM25 scored without coverage re-ranking (16% / 62% /
+    0.280), so removing the re-ranker fails here rather than passing quietly.
     """
-    assert report.recall_at(10) >= 0.50, f"recall@10 fell to {report.recall_at(10):.1%}"
-    assert report.mrr >= 0.20, f"MRR fell to {report.mrr:.3f}"
+    assert report.recall_at(1) >= 0.25, f"recall@1 fell to {report.recall_at(1):.1%}"
+    assert report.recall_at(10) >= 0.55, f"recall@10 fell to {report.recall_at(10):.1%}"
+    assert report.mrr >= 0.35, f"MRR fell to {report.mrr:.3f}"
 
 
 def test_the_chosen_ceiling_is_the_one_that_was_measured():
@@ -182,3 +185,79 @@ def test_the_report_shows_the_split_not_just_an_aggregate(report):
     assert "by how the question is phrased" in rendered
     assert Kind.PARAPHRASE.value in rendered
     assert Kind.TERM.value in rendered
+
+
+# -- the ranker, and the failures that motivated it -----------------------
+
+
+@pytest.mark.parametrize(
+    ("query", "must_not_win"),
+    [
+        ("Is there a larger allowance for matching salary in a trade?", "Art. III §2"),
+        ("Can a team put two contracts together to bring back one bigger salary?", "Art. II §9"),
+    ],
+)
+def test_a_single_rare_word_no_longer_picks_the_result(conn, query, must_not_win):
+    """
+    The concrete failures that forced the re-ranker. Ranking on BM25 alone,
+    "allowance" pulled up **Meal Expense Allowance** (Art. III §2) and
+    "contracts" pulled up **10-Day Contracts** (Art. II §9) -- each time one
+    rare-ish word chose the chunk.
+    """
+    top = ix.search(conn, query, limit=3)
+    assert all(hit.citation != must_not_win for hit in top), (
+        f"{must_not_win} came back for {query!r}"
+    )
+
+
+def test_the_remaining_gap_is_vocabulary_and_is_not_fixable_by_ranking(conn):
+    """
+    Kept as evidence, not as a passing bar. "Is there a cap on how many
+    contracts can be combined at once?" cannot be answered lexically: the
+    provision (§6(j)(4)) says *aggregating*, never *combined*, so the query's
+    key concept word appears nowhere in the target. Coverage re-ranking cannot
+    help -- the target scores 2 of 5 terms and so do several unrelated
+    passages, leaving the order to a BM25 tiebreak.
+
+    This is the shape of what is left after the re-ranker, and the reason the
+    answer is query expansion or dense retrieval rather than more ranking work.
+    """
+    query = "Is there a cap on how many contracts can be combined at once?"
+    target = ix.containing_chunk(conn, "Art. VII §6(j)(4)(ii)")
+    assert target is not None
+    passage = ix.fetch(conn, target[0], target[1])
+    assert passage is not None
+    assert "aggregat" in passage.body.lower()
+    assert "combined" not in passage.body.lower()
+    assert target not in [(h.citation, h.ordinal) for h in ix.search(conn, query, limit=10)]
+
+
+def test_results_are_ordered_by_coverage_then_bm25(conn):
+    """
+    Breadth of match first, score second. The reverse order is what produced
+    the failures above.
+    """
+    hits = ix.search(conn, "aggregated traded player exception salary", limit=8)
+    keys = [(-hit.coverage, hit.score) for hit in hits]
+    assert keys == sorted(keys)
+
+
+def test_coverage_counts_distinct_query_terms(conn):
+    hits = ix.search(conn, "Standard Traded Player Exception", limit=3)
+    assert hits[0].coverage >= 3
+    assert all(hit.coverage <= 4 for hit in hits), "cannot exceed the number of query terms"
+
+
+def test_a_wider_pool_does_not_change_the_leader_for_a_term_of_art(conn):
+    """The pool size is a recall/precision dial, not a correctness dependency."""
+    narrow = ix.search(conn, "Expanded Traded Player Exception", limit=1, pool=10)
+    wide = ix.search(conn, "Expanded Traded Player Exception", limit=1, pool=200)
+    assert narrow[0].citation == wide[0].citation
+
+
+def test_stop_words_are_dropped_but_a_stop_word_only_query_still_runs(conn):
+    from rag.index import query_terms
+
+    assert query_terms("How much can it be?") == []
+    ix.search(conn, "How much can it be?", limit=3)
+    assert "salary" in query_terms("How much salary can a team take back?")
