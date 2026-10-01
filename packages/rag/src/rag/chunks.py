@@ -40,9 +40,28 @@ class Chunk:
     printed_page: int
     last_pdf_page: int
     level: int
+    start: int = 0
+    """Offset of this passage in the document text, for citation mapping."""
+    end: int = 0
+    ordinal: int = 1
+    """
+    Which passage this is among those sharing a citation, 1-based.
+
+    26 citations cover more than one passage, because the document puts several
+    distinct passages under one number -- Art. VII §2(e) carries its heading
+    plus five worked Examples, and Example 5 is what established that §2(e)(5)
+    reaches the (i)(A) prohibition and not only the (i)(B) ceiling. They are
+    kept separate because they are separately useful, and numbered because two
+    results labelled "Art. VII §2(e)" would be indistinguishable to a reader.
+    """
     oversized: bool = False
     """True when no further split was available and the unit still exceeds the
     ceiling. Flagged rather than force-cut, so a caller can see it."""
+
+    @property
+    def label(self) -> str:
+        """The citation as it should be shown, disambiguated where it repeats."""
+        return self.citation if self.ordinal == 1 else f"{self.citation} (passage {self.ordinal})"
 
     @property
     def indexed_text(self) -> str:
@@ -111,6 +130,8 @@ def _split(outline: Outline, unit: Unit, max_chars: int, out: list[Chunk]) -> No
                 printed_page=unit.printed_page,
                 last_pdf_page=last,
                 level=unit.level,
+                start=unit.start,
+                end=unit.subtree_end,
             )
         )
         return
@@ -128,6 +149,8 @@ def _split(outline: Outline, unit: Unit, max_chars: int, out: list[Chunk]) -> No
                 printed_page=unit.printed_page,
                 last_pdf_page=last,
                 level=unit.level,
+                start=unit.start,
+                end=unit.subtree_end,
                 oversized=True,
             )
         )
@@ -147,6 +170,8 @@ def _split(outline: Outline, unit: Unit, max_chars: int, out: list[Chunk]) -> No
                 printed_page=unit.printed_page,
                 last_pdf_page=first,
                 level=unit.level,
+                start=unit.start,
+                end=children[0].start,
                 # A preamble has no sub-structure in the outline, so when it
                 # alone exceeds the ceiling there is nothing to split it on --
                 # the same case as a childless unit, and flagged the same way.
@@ -168,4 +193,16 @@ def build(outline: Outline, max_chars: int = MAX_CHARS) -> list[Chunk]:
     out: list[Chunk] = []
     for section in outline.sections():
         _split(outline, section, max_chars, out)
+    return _numbered(out)
+
+
+def _numbered(chunks: list[Chunk]) -> list[Chunk]:
+    """Assign each chunk its position among those sharing a citation."""
+    from dataclasses import replace
+
+    seen: dict[str, int] = {}
+    out: list[Chunk] = []
+    for chunk in chunks:
+        seen[chunk.citation] = seen.get(chunk.citation, 0) + 1
+        out.append(replace(chunk, ordinal=seen[chunk.citation]))
     return out

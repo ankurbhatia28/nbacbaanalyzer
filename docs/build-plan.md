@@ -189,10 +189,28 @@ required UI element rather than a nicety.
   - **Statutory references are excluded.** Article IV cites the Internal Revenue Code constantly — "Section 401(a) of the Code", "Section 415(d)(2) of the Code" — and Article VI cites "Section 302(c)(5) of the Labor Management Relations Act of 1947". Read as internal references these produced 33 edges to provisions that do not exist, which is how they were found: every one failed to resolve. Excluding them took unresolved references from 53 to 20.
   - **Unresolved references are kept, not dropped.** An edge to a provision that does not exist would send retrieval after nothing, but discarding the reference would hide that the parser and the outline disagreed. They sit on `Graph.unresolved`.
   - **One hop by default.** Two hops reaches most of Article VII from almost anywhere inside it, which stops being context and becomes the whole Article. Seeds are returned first so a caller can tell them from an expansion, and the reverse direction (`cited_by`) answers what relies on a provision.
-- [ ] **5.6** **BM25 first** (SQLite FTS5, no model at inference). Legal text is dense with exact terms of art where lexical search wins. Add embeddings only if measured retrieval gains justify the cold-start and bundle cost — measure both arms separately and report the delta.
-- [ ] **5.7** **Deterministic citation path:** violation code → canonical citation → fetch that unit verbatim. The model quotes; it never chooses.
+- [x] **5.6** **BM25 over SQLite FTS5 — 1,276 chunks in a 5.0MB artifact, no model at inference.** External-content FTS5, so the index points at the chunk table rather than holding a second copy of 1.2MB of text. `python -m rag` builds it and reports what went in.
+
+  **The trap worth naming:** FTS5 treats parentheses as grouping, so *"what does 6(j) say"* is not a query that returns nothing — unescaped it is a **syntax error**. Every query goes through `escape_query`, which strips operators and quotes each term; passing user text to MATCH is the same class of mistake as string-building SQL. Tested against parentheses, quotes, bare `AND`/`NOT`, wildcards, `NEAR`, empty input and stop-words-only.
+
+  `OR` beats `AND` as the default, measured rather than assumed: their top-3 agree where both work, but `AND` returns **nothing** for "Bird rights qualifying veteran" since no single passage carries all four terms.
+
+  **The artifact is self-contained** (ADR-004): definitions and cross-reference edges are written into it, so the serving application never parses a 676-page PDF at startup. Opened read-only — a test asserts a write fails.
+
+  26 citations cover more than one passage (Art. VII §2(e) carries its heading plus five worked Examples, one of which established that §2(e)(5) reaches the (i)(A) prohibition). They stay separate because they are separately useful, and carry an ordinal so two results are never both labelled "Art. VII §2(e)".
+- [x] **5.7** **Deterministic citation path — all 30 engine citations reach substantive text.** No ranking, no model, nothing that can return the wrong provision because a query was phrased oddly.
+
+  Getting there needed two corrections, both found by checking the whole citation table rather than a sample:
+  - **String-prefix fallback is not good enough.** §2(e)(2)(ii) shares a prefix with §2(e), whose own chunk is the 30-character heading *"(e) Operation of Apron Levels."* — so the walk "succeeded" while returning nothing quotable. Citations are now mapped to the **smallest chunk whose text contains them**, computed by span at build time (2,285 rows).
+  - **A Section-level citation resolves to its preamble**, which is frequently just a title — *"Section 8. Trade Rules."* is 23 characters. Those now bring their subsections too.
+
+  Asserted on **total characters, not "a passage came back"**: a lookup returning 23 characters of heading reports success and conveys nothing. Where a citation is finer than any chunk (§2(e)(2)(i)(A) lives inside §2(e)(2)(i)), the substitution is reported on `resolved_to` so a caller never claims to quote (A) while holding (i). An unknown citation returns nothing rather than a near miss.
+
+  **Provenance on every passage:** matched the query, referenced by something that did, or fetched by citation. Context is not evidence — an answer resting only on expansion means the query never matched the provision it claims to rely on. Expansion is capped at 2 per hit and 4 overall, because the Transaction Restrictions Table alone cites eight provisions and one broad match would otherwise bury the passages that answered the question.
 - [ ] **5.8** Golden Q&A set (~50) with expected citations; score recall@k and citation exact-match
-- [ ] **5.9** Guardrail: numeric answers must originate from a tool result, never from retrieved prose
+- [x] **5.9** **Guardrail: figures in retrieved prose are marked so they can be refused.** `figures_in` finds dollar amounts, percentages and bare thousands-separated numbers, and every `Retrieval` carries them.
+
+  This matters here more than it would elsewhere. The document is full of numbers that belong to a *different* exception, a worked example, or a prior CBA than the one being asked about — the "125% + $100,000" band that Phase 0 had to disprove is sitting in this text as live prose. Detection is deliberately broad: flagging a figure nobody would have quoted costs nothing, missing one costs a confident wrong dollar amount.
 
 ---
 
