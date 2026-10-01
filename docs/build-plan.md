@@ -305,7 +305,20 @@ required UI element rather than a nicety.
 - [ ] **6.5** Agent loop with a hard prohibition on unaided arithmetic or rule assertions
 - [ ] **6.6** **Refusal policy** — hypotheticals ("should they?"), historical questions (out of v1 scope), and anything the tools cannot answer. Each refusal states why.
 - [ ] **6.7** Assumptions surfaced in the answer, not buried
-- [ ] **6.8** Prompt caching on the stable prefix; measure the cost delta
+- [x] **6.8** **Prompt caching on the stable prefix — 97% off the answer role's billed input, and nothing for the router.** `python -m agent.cache_cli` runs both arms and reports the delta.
+
+  | shape | uncached input | cached input | from cache | saved |
+  |---|---|---|---|---|
+  | router (system only, 447 tok prefix) | 1,359 | 1,359 | 0 | **0%** |
+  | answer (system + 6 tools, ~2,700 tok prefix) | 8,262 | **252** | 8,010 | **97%** |
+
+  **I was wrong about where this would help.** After 6.1 I said caching would "take a visible bite out of" the router's 20,668 input tokens. It cannot: the router's prefix is **447 tokens**, below the model's minimum cacheable length, so the breakpoint is silently ignored. Measured, not assumed — a 447-token prefix returns `cache_write=0` and `cache_read=0` on every call. The win is entirely in the answer role, which is both the expensive tier (Sonnet) and the one carrying the 2,697-token tool schemas.
+
+  **The breakpoint goes on the system block, not the last tool.** The request is assembled tools-then-system, so a breakpoint after the system text covers both. Marking the last tool instead caches the tools and leaves the system prompt out — 2,565 tokens against 2,650, measured. A test holds the placement, since this is invisible when wrong.
+
+  Applied unconditionally rather than behind a size threshold: a prefix below the minimum is *ignored, not charged*, so there is no constant here to go stale. The ledger reports the hit rate over cacheable tokens (reads plus writes) rather than over total input, because the per-turn message is never cacheable and including it would understate prefix reuse. When nothing cached at all the ledger says why, so a bare 0% is not read as a misconfiguration.
+
+  The first call of each arm is discarded in the measurement: with caching on it pays the write, and including it reports the cost of warming rather than the steady state a served request sees.
 - [ ] **6.9** Streaming, with tool-call progress visible
 - [ ] **6.10** **Tracing via Raindrop — one trace per user session.** Each trace carries the user input, system prompt, every tool call and result, retrieved context, every intermediate model call, and the final user-facing output. **Cloud, Hobby tier (D13).** Raindrop bills per *event*, and an event is one logged interaction — a user turn, an agent response, or a tool call. This architecture is deliberately tool-heavy, so one question costs roughly:
 

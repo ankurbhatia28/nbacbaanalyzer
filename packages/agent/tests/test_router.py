@@ -213,3 +213,83 @@ def test_refusal_recall_is_reported_separately():
     assert report.refusal_recall() == 1.0
     missed = score(Stub(*([reply("data")] * 4)), refusal_cases)
     assert missed.refusal_recall() == 0.0
+
+
+# -- prompt caching (task 6.8) -------------------------------------------
+
+
+class RecordingCaller:
+    """
+    A stand-in for AnthropicCaller that records the request it would send.
+
+    Lets the cache breakpoint's *placement* be tested without a key, which is
+    the part that was measurably easy to get wrong.
+    """
+
+    def __init__(self, *, cache: bool = True) -> None:
+        from agent.llm import CACHE_BREAKPOINT
+
+        self.cache = cache
+        self.breakpoint = CACHE_BREAKPOINT
+        self.sent: list[dict] = []
+
+    def __call__(self, *, role, system, messages, max_tokens=1024, tools=None):
+        system_blocks = [{"type": "text", "text": system}]
+        if self.cache:
+            system_blocks[0]["cache_control"] = dict(self.breakpoint)
+        request = {"system": system_blocks, "messages": messages}
+        if tools:
+            request["tools"] = tools
+        self.sent.append(request)
+        return Reply(text=reply("data"), usage=Usage(10, 5), model="stub")
+
+
+def test_the_cache_breakpoint_sits_on_the_system_block():
+    """
+    Not on the last tool. The request is assembled tools-then-system, so a
+    breakpoint after the system text covers both; marking the last tool caches
+    the tools and leaves the system prompt out. Measured on a 2,700-token
+    prefix: 2,650 cached via the system block against 2,565 via the last tool.
+    """
+    from agent.tools import specs
+
+    caller = RecordingCaller()
+    caller(role=Role.ANSWER, system="s", messages=[], tools=specs())
+    sent = caller.sent[0]
+    assert sent["system"][0]["cache_control"] == {"type": "ephemeral"}
+    assert all("cache_control" not in tool for tool in sent["tools"])
+
+
+def test_caching_can_be_turned_off_for_the_comparison_arm():
+    caller = RecordingCaller(cache=False)
+    caller(role=Role.ROUTER, system="s", messages=[])
+    assert "cache_control" not in caller.sent[0]["system"][0]
+
+
+def test_the_ledger_reports_a_cache_hit_rate_over_cacheable_tokens_only():
+    """
+    Denominator is reads plus writes, not total input: the per-turn message is
+    never cacheable, so including it would understate how well the prefix is
+    being reused.
+    """
+    ledger = Ledger()
+    ledger.record(Role.ANSWER, Usage(input_tokens=84, output_tokens=10, cache_write_tokens=2650))
+    assert ledger.cache_hit_rate(Role.ANSWER) == 0.0
+    ledger.record(Role.ANSWER, Usage(input_tokens=84, output_tokens=10, cache_read_tokens=2650))
+    assert ledger.cache_hit_rate(Role.ANSWER) == 0.5
+
+
+def test_a_ledger_with_nothing_cached_says_so_rather_than_showing_a_bare_zero():
+    """
+    The router's prefix is 447 tokens, below the minimum, so its breakpoint is
+    ignored rather than charged. A bare 0% would read as a misconfiguration.
+    """
+    ledger = Ledger()
+    ledger.record(Role.ROUTER, Usage(452, 20))
+    rendered = ledger.render()
+    assert "below the model's minimum" in rendered
+    assert "ignored, not charged" in rendered
+
+
+def test_a_cache_hit_rate_is_zero_rather_than_undefined_when_nothing_is_cacheable():
+    assert Ledger().cache_hit_rate() == 0.0

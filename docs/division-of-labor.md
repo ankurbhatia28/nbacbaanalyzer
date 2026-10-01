@@ -315,9 +315,13 @@ it. Opus 5.5 stays in reserve for that result, not for a preference.
 **`.env.example` was pinning `claude-opus-5`** — the most expensive tier, and
 not a current model id either. Now commented out so the per-role defaults apply.
 
-**A cheap win still on the table:** both runs show `cached-read 0`, because each
-call is a fresh conversation and the system prompt repeats 45 times. Task 6.8's
-prompt caching should take a visible bite out of that 20,668.
+**On caching, I guessed wrong and the measurement corrected me.** I expected 6.8
+to reduce the router's 20,668 input tokens. It cannot: the router's prefix is 447
+tokens, below the model's minimum cacheable length, so the breakpoint is silently
+ignored (`cache_write=0`, `cache_read=0`, every call). Caching instead cuts the
+**answer** role's billed input by **97%** — 8,262 uncached tokens become 252 —
+which is the better place for it anyway, since that role runs on the mid tier and
+carries the 2,697-token tool schemas. See 6.8 in the build plan.
 
 ## 7. The honest summary
 
