@@ -142,7 +142,27 @@ reports success and conveys nothing.
 """
 
 INNER_PASSAGES = 5
-"""How many subsections to return for a citation that names a split Section."""
+"""
+How many subsections to return for a citation finer than a whole Section.
+
+Rarely needed: a specific subsection resolves to the chunk containing it.
+"""
+
+SECTION_INNER_PASSAGES = 12
+"""
+How many to return when the citation names a whole Section.
+
+This is the case that needs breadth, and only this one. Eleven of the 25
+provisions the engine cites have no heading of their own, so naming them (D14
+option A) reaches a whole Section instead -- "trade rules" for §8(g), the
+rookie-extension rule. At 5 subsections the target was missed 2 times in 25; at
+12 it is never missed, which is worth the extra text *here* while not inflating
+every lookup, since a lookup that already names the subsection needs none of it.
+
+Measured over the 25 rules questions, naming each one's nearest named
+provision: 5 -> 92% reach at 4.5k characters, 8 -> 96% at 7.0k, 12 -> 100% at
+9.6k.
+"""
 
 
 _FIGURE = re.compile(
@@ -307,7 +327,8 @@ def for_citation(
     # come too -- otherwise the deterministic path "succeeds" with 23
     # characters of title.
     if len(hit.body) < SECTION_PREAMBLE_CHARS:
-        for inner in chunks_within(conn, used, limit=INNER_PASSAGES):
+        breadth = INNER_PASSAGES if "(" in used else SECTION_INNER_PASSAGES
+        for inner in chunks_within(conn, used, limit=breadth):
             if (inner.citation, inner.ordinal) == (hit.citation, hit.ordinal):
                 continue
             result.passages.append(_passage(inner, Why.CITED, hit.label))

@@ -65,6 +65,16 @@ CREATE TABLE citation_map (
     unit_end   INTEGER NOT NULL
 );
 
+-- The document's own vocabulary: every heading and defined term, mapped to the
+-- provision it names. This is the closed set an intent-extraction step picks
+-- from (D14 option A), so the model selects the document's words rather than
+-- inventing a term, and the citation then resolves deterministically.
+CREATE TABLE vocabulary (
+    name     TEXT PRIMARY KEY,
+    citation TEXT NOT NULL,
+    kind     TEXT NOT NULL
+);
+
 CREATE TABLE definitions (
     term     TEXT PRIMARY KEY,
     citation TEXT NOT NULL,
@@ -94,7 +104,108 @@ CREATE VIRTUAL TABLE chunk_fts USING fts5(
 """
 
 _TOKEN = re.compile(r"[\w$][\w$'.,-]*")
-_STOP = frozenset({"the", "a", "an", "of", "and", "or", "to", "in", "is", "for", "what", "does"})
+
+_STOP = frozenset(
+    [
+        "the",
+        "a",
+        "an",
+        "of",
+        "and",
+        "or",
+        "to",
+        "in",
+        "is",
+        "for",
+        "what",
+        "does",
+        "how",
+        "much",
+        "can",
+        "when",
+        "it",
+        "one",
+        "are",
+        "there",
+        "any",
+        "at",
+        "if",
+        "be",
+        "by",
+        "as",
+        "on",
+        "its",
+        "that",
+        "this",
+        "these",
+        "those",
+        "with",
+        "from",
+        "which",
+        "who",
+        "whom",
+        "will",
+        "shall",
+        "may",
+        "do",
+        "did",
+        "has",
+        "have",
+        "had",
+        "was",
+        "were",
+        "been",
+        "being",
+        "not",
+        "no",
+        "nor",
+        "but",
+        "than",
+        "then",
+        "so",
+        "such",
+    ]
+)
+"""
+Words carrying no retrieval signal.
+
+Bigger than it first was, and the enlargement is load-bearing. With a short
+list, "How much salary can a team take back when it trades one player away"
+kept `how`, `much`, `can`, `when`, `it`, `one`, `back` and `away` -- and
+because the match is a disjunction, a chunk sharing several of those beat the
+chunk that actually answered the question.
+
+Not derived from document frequency, which was tried and made things worse:
+dropping terms above a frequency cutoff took recall@10 from 52% to 29% as the
+cutoff tightened. BM25's IDF already discounts common words. The damage came
+from the question's *rare* words -- "much" occurs in no chunk at all and "away"
+in one -- so this list is about words that are uninformative in any corpus,
+not words that are frequent in this one.
+"""
+
+MIN_TERM_CHARS = 3
+"""Below this a token is noise: "to", "of", stray initials."""
+
+CANDIDATE_POOL = 50
+"""
+How many BM25 candidates to re-rank by term coverage.
+
+Measured: 50 gives recall@1 34.0% and recall@3 50.0%; 200 trades recall@3 back
+for a little recall@10 (48.0% / 68.0%), and no re-ranking at all gives 16.0% /
+36.0%.
+"""
+
+
+def query_terms(text: str) -> list[str]:
+    """The informative, de-duplicated terms of a query, lowercased."""
+    seen: list[str] = []
+    for match in _TOKEN.finditer(text):
+        token = match.group(0).strip(".,'-").lower()
+        if len(token) < MIN_TERM_CHARS or token in _STOP:
+            continue
+        if token not in seen:
+            seen.append(token)
+    return seen
 
 
 @dataclass(frozen=True, slots=True)
@@ -107,8 +218,19 @@ class Hit:
     pdf_page: int
     printed_page: int
     score: float
-    ordinal: int = 1
     """BM25. SQLite returns it negated, so **lower is a better match**."""
+    ordinal: int = 1
+    """Which passage this is among those sharing a citation."""
+    coverage: int = 0
+    """
+    How many distinct query terms this passage contains.
+
+    The primary sort key, with BM25 as the tiebreak. BM25 alone lets one
+    rare-ish query word choose the result: "is there a larger allowance for
+    matching salary in a trade" returned *Meal Expense Allowance*, because
+    "allowance" is rare and that chunk is short. Requiring breadth of match
+    addresses exactly that, and roughly doubled recall@1.
+    """
 
     @property
     def label(self) -> str:
@@ -130,16 +252,22 @@ def escape_query(text: str) -> str:
     returning nothing, so operators are stripped rather than escaped and every
     remaining term is quoted as a literal.
 
+    Joined with OR, not AND. Measured: their top results agree wherever both
+    return anything, but AND returns nothing at all for "Bird rights
+    qualifying veteran" because no single passage carries all four terms.
+    Breadth of match is then recovered in the re-ranking, which is a better
+    place for it -- a hard AND cannot be partially satisfied.
+
     Stop words are dropped only when something else survives: a query that is
     nothing but stop words should still run, even if it matches poorly.
     """
-    tokens = [match.group(0).strip(".,'-") for match in _TOKEN.finditer(text)]
-    tokens = [token for token in tokens if token]
-    if not tokens:
+    terms = query_terms(text)
+    if not terms:
+        fallback = [match.group(0).strip(".,'-") for match in _TOKEN.finditer(text)]
+        terms = [token for token in fallback if token]
+    if not terms:
         return '""'
-    meaningful = [token for token in tokens if token.lower() not in _STOP]
-    chosen = meaningful or tokens
-    return " OR ".join(f'"{token}"' for token in chosen)
+    return " OR ".join(f'"{term}"' for term in terms)
 
 
 def build(
@@ -187,6 +315,10 @@ def build(
     )
     if outline is not None:
         conn.executemany(
+            "INSERT OR IGNORE INTO vocabulary (name, citation, kind) VALUES (?,?,?)",
+            _vocabulary_rows(outline, definitions),
+        )
+        conn.executemany(
             "INSERT OR IGNORE INTO citation_map (citation, chunk_id, exact, unit_start, "
             "unit_end) VALUES (?,?,?,?,?)",
             _citation_rows(outline, chunks),
@@ -208,6 +340,57 @@ def build(
     conn.execute("INSERT INTO chunk_fts(chunk_fts) VALUES ('rebuild')")
     conn.commit()
     return conn
+
+
+_HEADING = re.compile(r"^(?:\([A-Za-z0-9]{1,5}\)\s*)*(?:Section\s+\d+\.\s*)?([A-Z][^.:]{2,69})[.:]")
+"""
+A provision's heading, where it has one.
+
+The drafters gave most provisions a title -- "(j) Traded Player Exception." --
+and that title is the name a person would use for it. Terminated by a period
+*or a colon*, which matters: "Transaction Restrictions Table:" and "Over 38
+Rule:" use a colon and were missed until this allowed for it.
+"""
+
+MAX_HEADING_WORDS = 12
+"""Longer than this and it is a sentence, not a name."""
+
+
+def _vocabulary_rows(
+    outline: Outline, definitions: DefinitionIndex | None
+) -> list[tuple[str, str, str]]:
+    """
+    Every name the document gives something, mapped to what it names.
+
+    Headings first, then defined terms, with `setdefault` semantics so a
+    heading is not displaced by a term that happens to share its wording.
+    Names are stored lowercased; matching is exact on the normalised form,
+    because a near-miss here would resolve to the wrong provision silently.
+    """
+    rows: list[tuple[str, str, str]] = []
+    seen: set[str] = set()
+    for unit in outline.units:
+        if not (unit.section or unit.subsection):
+            continue
+        match = _HEADING.match(unit.title)
+        if not match:
+            continue
+        name = " ".join(match.group(1).split())
+        if len(name.split()) > MAX_HEADING_WORDS:
+            continue
+        key = name.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append((key, unit.citation, "heading"))
+    if definitions is not None:
+        for name, definition in definitions.by_name.items():
+            key = name.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append((key, definition.citation, "definition"))
+    return rows
 
 
 def _citation_rows(outline: Outline, chunks: list[Chunk]) -> list[tuple[str, int, int, int, int]]:
@@ -267,28 +450,63 @@ def _row_to_hit(row: sqlite3.Row) -> Hit:
     )
 
 
-def search(conn: sqlite3.Connection, query: str, limit: int = 10) -> list[Hit]:
+def search(
+    conn: sqlite3.Connection,
+    query: str,
+    limit: int = 10,
+    pool: int = CANDIDATE_POOL,
+) -> list[Hit]:
     """
     The passages best matching a question, best first.
+
+    Two stages. BM25 over a disjunction of the query terms gathers candidates,
+    then those candidates are re-ranked by **how many distinct query terms each
+    one contains**, with BM25 breaking ties.
+
+    The second stage is not a refinement; without it the results were close to
+    useless on anything but a term of art. "Can a team put two contracts
+    together to bring back one bigger salary" returned *10-Day Contracts* and
+    *Minimum League-Wide Roster*; "is there a cap on how many contracts can be
+    combined" returned *Charitable Contributions*. In each case a single
+    rare-ish word picked the chunk. Ranking by breadth of match first took
+    recall@1 from 16% to 34% and recall@3 from 36% to 50%.
 
     Scored on `indexed_text`, which carries the heading path as well as the
     body -- a subsection never repeats the heading it sits under, although that
     is how a reader would search for it.
     """
     match = escape_query(query)
+    terms = query_terms(query)
     rows = conn.execute(
         """
-        SELECT c.citation, c.heading_path, c.body, c.pdf_page, c.printed_page,
-               c.ordinal, bm25(chunk_fts) AS score
+        SELECT c.citation, c.heading_path, c.body, c.indexed_text, c.pdf_page,
+               c.printed_page, c.ordinal, bm25(chunk_fts) AS score
         FROM chunk_fts
         JOIN chunks c ON c.id = chunk_fts.rowid
         WHERE chunk_fts MATCH ?
         ORDER BY score
         LIMIT ?
         """,
-        (match, limit),
+        (match, max(pool, limit)),
     ).fetchall()
-    return [_row_to_hit(row) for row in rows]
+
+    hits: list[Hit] = []
+    for row in rows:
+        body = row["indexed_text"].lower()
+        hits.append(
+            Hit(
+                citation=row["citation"],
+                heading_path=row["heading_path"],
+                body=row["body"],
+                pdf_page=row["pdf_page"],
+                printed_page=row["printed_page"],
+                score=row["score"],
+                ordinal=row["ordinal"],
+                coverage=sum(1 for term in terms if term in body),
+            )
+        )
+    hits.sort(key=lambda hit: (-hit.coverage, hit.score))
+    return hits[:limit]
 
 
 def fetch(conn: sqlite3.Connection, citation: str, ordinal: int = 1) -> Hit | None:
@@ -420,3 +638,77 @@ def chunks_within(conn: sqlite3.Connection, citation: str, limit: int = 6) -> li
         (citation, limit),
     ).fetchall()
     return [_row_to_hit(row) for row in rows]
+
+
+def containing_chunk(conn: sqlite3.Connection, citation: str) -> tuple[str, int] | None:
+    """
+    Which chunk holds a cited provision, as (citation, ordinal).
+
+    The unit of scoring for task 5.8. A question about §6(j)(1)(i) is answered
+    correctly by the chunk for §6(j)(1), because that chunk *contains* the
+    provision -- chunks stop splitting once a passage fits the ceiling, so
+    demanding string equality would mark a right answer wrong.
+    """
+    row = conn.execute(
+        "SELECT c.citation, c.ordinal FROM citation_map m JOIN chunks c ON c.id = m.chunk_id "
+        "WHERE m.citation = ?",
+        (citation,),
+    ).fetchone()
+    return (row["citation"], row["ordinal"]) if row else None
+
+
+def resolve_term(conn: sqlite3.Connection, name: str) -> tuple[str, str] | None:
+    """
+    The provision a name refers to, as (citation, kind), or None.
+
+    Exact on the normalised name, deliberately. Fuzzy matching here would
+    resolve "traded player" to the Standard Traded Player Exception or to the
+    definition of a Traded Player depending on edit distance, and quietly
+    citing the wrong provision is the failure this project is arranged against.
+    A name that is not in the document's vocabulary gets no answer, and the
+    caller falls back to search.
+    """
+    row = conn.execute(
+        "SELECT citation, kind FROM vocabulary WHERE name = ?",
+        (" ".join(name.split()).lower(),),
+    ).fetchone()
+    return (row["citation"], row["kind"]) if row else None
+
+
+def vocabulary_names(conn: sqlite3.Connection, kind: str | None = None) -> list[str]:
+    """
+    The closed set of names a question can be resolved to (D14 option A).
+
+    Given to the intent-extraction step so it chooses from the document's own
+    vocabulary instead of inventing a term of art that is then searched for.
+    """
+    if kind is None:
+        rows = conn.execute("SELECT name FROM vocabulary ORDER BY name").fetchall()
+    else:
+        rows = conn.execute(
+            "SELECT name FROM vocabulary WHERE kind = ? ORDER BY name", (kind,)
+        ).fetchall()
+    return [row["name"] for row in rows]
+
+
+def nameable_ancestor(conn: sqlite3.Connection, citation: str) -> str | None:
+    """
+    The nearest named provision containing this one.
+
+    Eleven of the 25 provisions the engine cites have no heading of their own --
+    §6(j)(4)(i) begins "No Team may aggregate" and was never given a title. The
+    enclosing provision almost always has one, and naming it reaches the right
+    region of the document, which the 5.7 path then returns with its
+    subsections.
+    """
+    markers = _MARKER.findall(citation)
+    head = citation[: citation.index("(")] if "(" in citation else citation
+    for drop in range(len(markers) + 1):
+        kept = markers[: len(markers) - drop]
+        candidate = head + "".join(f"({m})" for m in kept)
+        row = conn.execute(
+            "SELECT name FROM vocabulary WHERE citation = ? LIMIT 1", (candidate,)
+        ).fetchone()
+        if row:
+            return str(row["name"])
+    return None

@@ -48,7 +48,15 @@ def conn(artifact):
 
 
 def test_the_index_holds_every_chunk(conn):
-    assert ix.count(conn) == 1276
+    """
+    Nothing is lost between chunking and indexing. Asserted against what
+    `build_chunks` produced rather than a pinned number, which would have to be
+    edited every time the measured ceiling moves -- and did, when 5.8 settled
+    it at 6,000.
+    """
+    expected = len(build_chunks(load()))
+    assert ix.count(conn) == expected
+    assert expected > 500, "a plausible number of retrieval units"
 
 
 def test_the_artifact_is_self_contained(conn):

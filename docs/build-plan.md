@@ -207,10 +207,66 @@ required UI element rather than a nicety.
   Asserted on **total characters, not "a passage came back"**: a lookup returning 23 characters of heading reports success and conveys nothing. Where a citation is finer than any chunk (§2(e)(2)(i)(A) lives inside §2(e)(2)(i)), the substitution is reported on `resolved_to` so a caller never claims to quote (A) while holding (i). An unknown citation returns nothing rather than a near miss.
 
   **Provenance on every passage:** matched the query, referenced by something that did, or fetched by citation. Context is not evidence — an answer resting only on expansion means the query never matched the provision it claims to rely on. Expansion is capped at 2 per hit and 4 overall, because the Transaction Restrictions Table alone cites eight provisions and one broad match would otherwise bury the passages that answered the question.
-- [ ] **5.8** Golden Q&A set (~50) with expected citations; score recall@k and citation exact-match
-- [x] **5.9** **Guardrail: figures in retrieved prose are marked so they can be refused.** `figures_in` finds dollar amounts, percentages and bare thousands-separated numbers, and every `Retrieval` carries them.
+- [x] **5.8** **Golden Q&A set — 50 questions. `python -m rag.eval_cli` scores it.** After the ranking fix in 5.8b: **recall@1 34%, recall@3 48%, recall@10 66%, MRR 0.433.**
 
-  This matters here more than it would elsewhere. The document is full of numbers that belong to a *different* exception, a worked example, or a prior CBA than the one being asked about — the "125% + $100,000" band that Phase 0 had to disprove is sitting in this text as live prose. Detection is deliberately broad: flagging a figure nobody would have quoted costs nothing, missing one costs a confident wrong dollar amount.
+  **Where the expectations come from matters more than how many there are.** Writing both the question and its answer invites a set that flatters whatever the retriever already does, so none are chosen freely: the 25 rules questions take their citations from the engine's table, which 5.2a verified provision by provision, and the 25 definition questions read theirs out of the built index, so they cannot drift from what the parser extracted. Questions are phrased as a user would ask, not in the provision's words.
+
+  **The split is the finding, and the aggregate hides it:**
+
+  | phrasing | n | r@1 | r@3 | r@10 | MRR |
+  |---|---|---|---|---|---|
+  | paraphrased, no term of art | 25 | 12.0% | 20.0% | 48.0% | 0.202 |
+  | contains the term of art | 25 | 56.0% | 76.0% | 84.0% | 0.663 |
+
+  **Retrieval is now good when the query carries the term of art and still poor when it does not.** That is the live constraint on Phase 6, and it is a vocabulary problem, not a ranking one.
+
+  **Scoring credits containment, not string equality.** A question about §6(j)(1)(i) is answered by the chunk for §6(j)(1), which contains it. Demanding an exact match would mark right answers wrong and make the score an artefact of the chunk ceiling. Scored on **search alone** — expansion and definition attachment make an answer more useful but would make it impossible to tell whether the query found the provision or merely found something pointing at it.
+
+  Two harness faults it surfaced, both now tested against: `Art. VII §8(e)(1)` is unreachable because the PDF never bookmarks §8(e) (5.2b), so that question targets the containing Section; and "Tax Level" was in the term list although the document quotes it once and never defines it.
+
+- [x] **5.8a** **The chunk ceiling is measured, not guessed.** `MAX_CHARS` was 4,000 by assertion; swept against the golden set it settles at **6,000**, re-confirmed after the ranking change.
+
+  | ceiling | r@1 | r@3 | r@10 | MRR |
+  |---|---|---|---|---|
+  | 1,000 | 32.0% | 42.0% | 50.0% | 0.380 |
+  | 4,000 | 34.0% | 44.0% | 62.0% | 0.422 |
+  | **6,000** | **34.0%** | **48.0%** | **66.0%** | **0.433** |
+  | 10,000 | 30.0% | 50.0% | 70.0% | 0.418 |
+
+  Stated caveat: the metric credits the chunk *containing* the expected provision, so a coarser ceiling is structurally favoured — bigger chunks contain more. The choice therefore rests on recall@1 and MRR, which do not reward coarseness.
+
+- [x] **5.8b** **Two-stage ranking: BM25 for candidates, then term coverage.** BM25 alone was not merely imprecise, it was close to useless on anything but a term of art, because a **single rare-ish query word chose the chunk**:
+
+  | query | BM25 returned |
+  |---|---|
+  | *"larger **allowance** for matching salary in a trade"* | **Meal Expense Allowance** (Art. III §2) |
+  | *"two **contracts** together for one bigger salary"* | **10-Day Contracts** (Art. II §9) |
+  | *"cap on how many contracts can be **combined**"* | **Charitable Contributions** (Art. XIII §6) |
+
+  Candidates are now re-ranked by **how many distinct query terms each passage contains**, with BM25 as the tiebreak. That took **recall@1 from 16% to 34%** and MRR from 0.280 to 0.433; on term-of-art queries recall@3 went 56% → 76%.
+
+  Two things measured and rejected along the way, recorded so they are not retried:
+  - **A document-frequency stop list made it worse** — recall@10 fell 52% → 46% → 29% as the cutoff tightened. BM25's IDF already discounts common words; the damage came from the question's *rare* words, where "much" occurs in no chunk and "away" in one. The enlarged stop list that did help is of words uninformative in any corpus, not words frequent in this one.
+  - **Indexing each chunk's defined-term bodies alongside it halved the score** (recall@1 34% → 16%). The definitions add boilerplate shared across chunks, which destroys discrimination.
+
+- [x] **5.8c** **The residue was vocabulary, and D14 settles it by not searching.** *"Is there a cap on how many contracts can be combined at once?"* cannot be answered lexically: §6(j)(4) says **aggregating** and never **combined**. A test keeps that as standing evidence.
+
+  The fix is to stop paraphrasing at the index. The document **names its own provisions**, so those names are indexed and resolved exactly, skipping ranking:
+
+  | | measured |
+  |---|---|
+  | vocabulary built from the document | **670 names** (512 drafter-written headings + defined terms) |
+  | provisions the engine cites that are nameable | **25 of 25** (14 directly, 11 via their containing provision) |
+  | deterministic lookup returns the target | **25 of 25, 100%** (mean 7,927 chars) |
+  | the same questions searched as paraphrases | 20% recall@3 |
+
+  Measured and discarded on the way: "let the agent write a better *search* query" tops out at **61.5% recall@3** even when handed the provision's own heading. Naming and looking up is the better shape, and it is deterministic.
+
+  Resolution is exact on the normalised name — fuzzy matching would resolve "traded player" to either the Standard Traded Player Exception or the definition of a Traded Player depending on edit distance. An unknown name returns nothing and the caller falls back to search.
+
+  A Section-level name returns more subsections than a specific one, because 11 provisions have no name and are reached through the Section containing them — §8(g), the rookie-extension rule, is one. Measured: 5 subsections reaches 92%, 8 reaches 96%, **12 reaches 100%**, and the extra text is spent only on the Section case.
+
+  **Phase 6 owes this task 6.3:** pick a name from `vocabulary_names()`, a closed set of the document's own words. Whether a model picks the *right* name cannot be measured offline — that is 6.3's eval. What is settled is that the vocabulary reaches every provision the engine cites.
 
 ---
 

@@ -232,8 +232,52 @@ Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order
 | D9 | Incentive compensation | **Out of v1** |
 | D10 | Hypotheticals | **No.** "Is this legal" is answered; "should they do it" is declined. v2 may present live statistics alongside a trade but will not conclude. |
 | D11 | Hosting | **Next.js → Vercel, FastAPI → Render.** Database and index are read-only build artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)); no managed DB, no persistent disk. |
-| D12 | Retrieval strategy | **BM25 first** (SQLite FTS5, no model at inference). Embeddings added only if the measured gain in 5.6 justifies the cold-start and bundle cost. Settled by measurement, not assertion. |
+| D12 | Retrieval strategy | **BM25 for candidates, then term-coverage re-ranking** (SQLite FTS5, still no model at inference). Measured in 5.8: recall@1 34%, recall@3 48%, MRR 0.433 — but **76% recall@3 when the query carries the term of art against 20% when it does not.** Ranking work is done; the residue was vocabulary, settled by D14. |
+| D14 | Paraphrase gap | **Resolve a question to one of the document's 670 names, then look the provision up** — not search for a paraphrase. Reaches 25 of 25 provisions the engine cites against 20% recall@3 by search. Exact matching only; an invented name resolves to nothing. Dense retrieval stays the fallback if 6.3's naming accuracy disappoints. See §6a. |
 | D13 | Raindrop deployment | **Cloud, Hobby (free) tier** — there is no alternative: self-hosting is VPC-only, Enterprise, and in beta with selected partners. 1,000 events/month, 14-day retention, 1 custom signal. Pro is $299/month, which this project will not spend. **Narrows D8:** "no hosted services" already gave way to D11 (Vercel + Render); the operative constraint is no recurring fee, which the Hobby tier meets. |
+
+## 6a. D14 — closing the paraphrase gap: **settled, option A**
+
+Retrieval does well when a query carries the term of art (recall@3 76%, MRR
+0.663) and poorly when it does not (20%). Task 5.8b exhausted what ranking can
+do; what remained was that the user's words and the document's words differ —
+§6(j)(4) says *aggregating* where a user says *combined*.
+
+**Resolved as A: a question is resolved to a name and the provision is looked
+up, rather than searched for as a paraphrase.** Dense retrieval (option C) is
+not spent, so D8 and D11 are untouched and "no model at inference" still holds.
+
+The implementation turned out stronger than the option was framed as. A in its
+first form was "let the agent write a better search query", whose ceiling was
+measured at **61.5% recall@3** even with the provision's own heading supplied —
+not good enough. But a term of art does not need to be *searched* for. The
+document names its own provisions, so the names can be indexed and resolved
+exactly, which skips ranking altogether:
+
+| | measured |
+|---|---|
+| vocabulary built from the document | **670 names** — 512 headings the drafters wrote, plus the defined terms |
+| provisions the engine cites that are nameable | **25 of 25** (14 directly, 11 via the provision containing them) |
+| deterministic lookup returns the target text | **25 of 25, 100%** (mean 7,927 characters) |
+| the same questions, searched as paraphrases | 20% recall@3 |
+
+Resolution is **exact on the normalised name**. Fuzzy matching would resolve
+"traded player" to the Standard Traded Player Exception or to the definition of
+a Traded Player depending on edit distance, and quietly citing the wrong
+provision is the failure this project is arranged against. A name outside the
+vocabulary gets no answer and the caller falls back to search.
+
+**What Phase 6 now owes this** (task 6.3): pick a name from
+`vocabulary_names()` — a closed set of the document's own words, not a free
+-form guess — and the citation resolves deterministically from there. This does
+not breach [ADR-001](adr/0001-the-model-does-not-decide.md): the model selects
+which provision to *read*, it does not decide the rule or compute the figure,
+and a name it invents resolves to nothing rather than to something plausible.
+
+**Still unmeasurable offline:** whether a model picks the right name. That needs
+Phase 6 and is 6.3's eval, not this one. What is settled is that the vocabulary
+can reach every provision the engine cites, which is the bound that mattered.
+Option C stays available if 6.3's naming accuracy disappoints.
 
 ## 7. The honest summary
 
