@@ -17,7 +17,7 @@ from .chunks import MAX_CHARS
 from .chunks import build as build_chunks
 from .crossrefs import build as build_graph
 from .definitions import build as build_definitions
-from .evals import Kind, all_questions, render_sweep, score, sweep
+from .evals import Kind, all_questions, render_sweep, score, score_named_lookup, sweep
 from .outline import DEFAULT_PDF, load
 
 
@@ -53,15 +53,19 @@ def main() -> int:
         report.max_chars = args.max_chars
         print(report.render())
 
+        print("\n" + "-" * 64 + "\n")
+        print(score_named_lookup(conn).render())
+
         if args.sweep:
             print("\nchunk ceiling sweep:")
             print(render_sweep(sweep(outline)))
 
     print(
-        "\nReading this honestly: BM25 does reasonably when the query carries the term of "
-        f"art ({report.subset(Kind.TERM).recall_at(3):.0%} recall@3) and poorly when it does "
-        f"not ({report.subset(Kind.PARAPHRASE).recall_at(3):.0%}). The bottleneck is "
-        "vocabulary, not ranking -- see 5.8 in the build plan."
+        "\nReading this honestly: search does well when the query carries the term of art "
+        f"({report.subset(Kind.TERM).recall_at(3):.0%} recall@3) and poorly when it does not "
+        f"({report.subset(Kind.PARAPHRASE).recall_at(3):.0%}). That gap is vocabulary, not "
+        "ranking, which is why D14 resolves a question to a name and looks it up rather than "
+        "searching for a paraphrase."
     )
 
     if report.recall_at(10) < args.min_recall:

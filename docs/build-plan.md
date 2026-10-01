@@ -249,12 +249,24 @@ required UI element rather than a nicety.
   - **A document-frequency stop list made it worse** — recall@10 fell 52% → 46% → 29% as the cutoff tightened. BM25's IDF already discounts common words; the damage came from the question's *rare* words, where "much" occurs in no chunk and "away" in one. The enlarged stop list that did help is of words uninformative in any corpus, not words frequent in this one.
   - **Indexing each chunk's defined-term bodies alongside it halved the score** (recall@1 34% → 16%). The definitions add boilerplate shared across chunks, which destroys discrimination.
 
-- [ ] **5.8c** **The residue is vocabulary, and ranking cannot reach it.** *"Is there a cap on how many contracts can be combined at once?"* cannot be answered lexically at all: §6(j)(4) says **aggregating** and never **combined**, so the query's key concept word is absent from the target. It scores 2 of 5 terms, as do several unrelated passages, leaving the order to a tiebreak. A test keeps this as standing evidence rather than a passing bar.
+- [x] **5.8c** **The residue was vocabulary, and D14 settles it by not searching.** *"Is there a cap on how many contracts can be combined at once?"* cannot be answered lexically: §6(j)(4) says **aggregating** and never **combined**. A test keeps that as standing evidence.
 
-  Three ways forward, in increasing cost. **Not yet decided — see the open question in `division-of-labor.md`.**
-  1. **Lean on 6.3's intent extraction.** The agent already converts a question into a structured intent, so the retrieval query need not be the raw user sentence. Measured support: when the query carries the term of art, recall@3 is 76% and MRR 0.663. Costs nothing new, keeps the citation path deterministic, and does not violate [ADR-001](adr/0001-the-model-does-not-decide.md) — the model helps *find* text, it does not decide the rule or the figure.
-  2. **A hand-written synonym map** from plain language to terms of art (combined→aggregate, take back→acquire). Deterministic and cheap, but it is guesswork about user vocabulary and generalises badly.
-  3. **Dense retrieval, fused with BM25.** The standard answer to paraphrase and what D12 pre-authorised subject to measurement. Costs a model at inference (~90MB local, against Render's 512MB free tier and cold starts) or a hosted embedding API (per-query fee, latency, another vendor key) — which touches D8 and D11.
+  The fix is to stop paraphrasing at the index. The document **names its own provisions**, so those names are indexed and resolved exactly, skipping ranking:
+
+  | | measured |
+  |---|---|
+  | vocabulary built from the document | **670 names** (512 drafter-written headings + defined terms) |
+  | provisions the engine cites that are nameable | **25 of 25** (14 directly, 11 via their containing provision) |
+  | deterministic lookup returns the target | **25 of 25, 100%** (mean 7,927 chars) |
+  | the same questions searched as paraphrases | 20% recall@3 |
+
+  Measured and discarded on the way: "let the agent write a better *search* query" tops out at **61.5% recall@3** even when handed the provision's own heading. Naming and looking up is the better shape, and it is deterministic.
+
+  Resolution is exact on the normalised name — fuzzy matching would resolve "traded player" to either the Standard Traded Player Exception or the definition of a Traded Player depending on edit distance. An unknown name returns nothing and the caller falls back to search.
+
+  A Section-level name returns more subsections than a specific one, because 11 provisions have no name and are reached through the Section containing them — §8(g), the rookie-extension rule, is one. Measured: 5 subsections reaches 92%, 8 reaches 96%, **12 reaches 100%**, and the extra text is spent only on the Section case.
+
+  **Phase 6 owes this task 6.3:** pick a name from `vocabulary_names()`, a closed set of the document's own words. Whether a model picks the *right* name cannot be measured offline — that is 6.3's eval. What is settled is that the vocabulary reaches every provision the engine cites.
 
 ---
 

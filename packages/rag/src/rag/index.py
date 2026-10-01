@@ -65,6 +65,16 @@ CREATE TABLE citation_map (
     unit_end   INTEGER NOT NULL
 );
 
+-- The document's own vocabulary: every heading and defined term, mapped to the
+-- provision it names. This is the closed set an intent-extraction step picks
+-- from (D14 option A), so the model selects the document's words rather than
+-- inventing a term, and the citation then resolves deterministically.
+CREATE TABLE vocabulary (
+    name     TEXT PRIMARY KEY,
+    citation TEXT NOT NULL,
+    kind     TEXT NOT NULL
+);
+
 CREATE TABLE definitions (
     term     TEXT PRIMARY KEY,
     citation TEXT NOT NULL,
@@ -305,6 +315,10 @@ def build(
     )
     if outline is not None:
         conn.executemany(
+            "INSERT OR IGNORE INTO vocabulary (name, citation, kind) VALUES (?,?,?)",
+            _vocabulary_rows(outline, definitions),
+        )
+        conn.executemany(
             "INSERT OR IGNORE INTO citation_map (citation, chunk_id, exact, unit_start, "
             "unit_end) VALUES (?,?,?,?,?)",
             _citation_rows(outline, chunks),
@@ -326,6 +340,57 @@ def build(
     conn.execute("INSERT INTO chunk_fts(chunk_fts) VALUES ('rebuild')")
     conn.commit()
     return conn
+
+
+_HEADING = re.compile(r"^(?:\([A-Za-z0-9]{1,5}\)\s*)*(?:Section\s+\d+\.\s*)?([A-Z][^.:]{2,69})[.:]")
+"""
+A provision's heading, where it has one.
+
+The drafters gave most provisions a title -- "(j) Traded Player Exception." --
+and that title is the name a person would use for it. Terminated by a period
+*or a colon*, which matters: "Transaction Restrictions Table:" and "Over 38
+Rule:" use a colon and were missed until this allowed for it.
+"""
+
+MAX_HEADING_WORDS = 12
+"""Longer than this and it is a sentence, not a name."""
+
+
+def _vocabulary_rows(
+    outline: Outline, definitions: DefinitionIndex | None
+) -> list[tuple[str, str, str]]:
+    """
+    Every name the document gives something, mapped to what it names.
+
+    Headings first, then defined terms, with `setdefault` semantics so a
+    heading is not displaced by a term that happens to share its wording.
+    Names are stored lowercased; matching is exact on the normalised form,
+    because a near-miss here would resolve to the wrong provision silently.
+    """
+    rows: list[tuple[str, str, str]] = []
+    seen: set[str] = set()
+    for unit in outline.units:
+        if not (unit.section or unit.subsection):
+            continue
+        match = _HEADING.match(unit.title)
+        if not match:
+            continue
+        name = " ".join(match.group(1).split())
+        if len(name.split()) > MAX_HEADING_WORDS:
+            continue
+        key = name.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append((key, unit.citation, "heading"))
+    if definitions is not None:
+        for name, definition in definitions.by_name.items():
+            key = name.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append((key, definition.citation, "definition"))
+    return rows
 
 
 def _citation_rows(outline: Outline, chunks: list[Chunk]) -> list[tuple[str, int, int, int, int]]:
@@ -590,3 +655,60 @@ def containing_chunk(conn: sqlite3.Connection, citation: str) -> tuple[str, int]
         (citation,),
     ).fetchone()
     return (row["citation"], row["ordinal"]) if row else None
+
+
+def resolve_term(conn: sqlite3.Connection, name: str) -> tuple[str, str] | None:
+    """
+    The provision a name refers to, as (citation, kind), or None.
+
+    Exact on the normalised name, deliberately. Fuzzy matching here would
+    resolve "traded player" to the Standard Traded Player Exception or to the
+    definition of a Traded Player depending on edit distance, and quietly
+    citing the wrong provision is the failure this project is arranged against.
+    A name that is not in the document's vocabulary gets no answer, and the
+    caller falls back to search.
+    """
+    row = conn.execute(
+        "SELECT citation, kind FROM vocabulary WHERE name = ?",
+        (" ".join(name.split()).lower(),),
+    ).fetchone()
+    return (row["citation"], row["kind"]) if row else None
+
+
+def vocabulary_names(conn: sqlite3.Connection, kind: str | None = None) -> list[str]:
+    """
+    The closed set of names a question can be resolved to (D14 option A).
+
+    Given to the intent-extraction step so it chooses from the document's own
+    vocabulary instead of inventing a term of art that is then searched for.
+    """
+    if kind is None:
+        rows = conn.execute("SELECT name FROM vocabulary ORDER BY name").fetchall()
+    else:
+        rows = conn.execute(
+            "SELECT name FROM vocabulary WHERE kind = ? ORDER BY name", (kind,)
+        ).fetchall()
+    return [row["name"] for row in rows]
+
+
+def nameable_ancestor(conn: sqlite3.Connection, citation: str) -> str | None:
+    """
+    The nearest named provision containing this one.
+
+    Eleven of the 25 provisions the engine cites have no heading of their own --
+    §6(j)(4)(i) begins "No Team may aggregate" and was never given a title. The
+    enclosing provision almost always has one, and naming it reaches the right
+    region of the document, which the 5.7 path then returns with its
+    subsections.
+    """
+    markers = _MARKER.findall(citation)
+    head = citation[: citation.index("(")] if "(" in citation else citation
+    for drop in range(len(markers) + 1):
+        kept = markers[: len(markers) - drop]
+        candidate = head + "".join(f"({m})" for m in kept)
+        row = conn.execute(
+            "SELECT name FROM vocabulary WHERE citation = ? LIMIT 1", (candidate,)
+        ).fetchone()
+        if row:
+            return str(row["name"])
+    return None

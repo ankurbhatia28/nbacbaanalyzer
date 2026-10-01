@@ -22,6 +22,7 @@ from rag.evals import (
     definition_questions,
     missing_terms,
     score,
+    score_named_lookup,
 )
 from rag.outline import DEFAULT_PDF, load
 
@@ -261,3 +262,97 @@ def test_stop_words_are_dropped_but_a_stop_word_only_query_still_runs(conn):
     assert query_terms("How much can it be?") == []
     ix.search(conn, "How much can it be?", limit=3)
     assert "salary" in query_terms("How much salary can a team take back?")
+
+
+# -- D14 option A: resolve to a name, then look it up ---------------------
+
+
+def test_the_vocabulary_is_the_documents_own(conn):
+    """
+    670 names: 512 headings the drafters wrote plus the defined terms. The
+    closed set intent extraction picks from, so the model chooses the
+    document's words rather than inventing a term that is then searched for.
+    """
+    names = ix.vocabulary_names(conn)
+    assert len(names) == 670
+    assert len(ix.vocabulary_names(conn, "heading")) == 512
+    assert names == sorted(names)
+    assert all(name == name.lower() for name in names), "stored normalised"
+
+
+@pytest.mark.parametrize(
+    ("name", "citation"),
+    [
+        ("Standard Traded Player Exception", "Art. VII §6(j)(1)(i)"),
+        ("expanded traded player exception", "Art. VII §6(j)(1)(iv)"),
+        ("Transaction Restrictions Table", "Art. VII §2(e)(4)"),
+        ("Over 38 Rule", "Art. VII §3(a)(2)"),
+        ("Apron Team Salary", "Art. VII §2(e)(1)"),
+        ("Trade Rules", "Art. VII §8"),
+    ],
+)
+def test_a_name_resolves_to_its_provision(conn, name, citation):
+    """
+    Exactly, and case-insensitively. "Transaction Restrictions Table" and
+    "Over 38 Rule" end their headings with a colon rather than a period, and
+    were missed until the heading pattern allowed for it.
+    """
+    resolved = ix.resolve_term(conn, name)
+    assert resolved is not None
+    assert resolved[0] == citation
+
+
+def test_an_unknown_name_resolves_to_nothing_rather_than_a_near_miss(conn):
+    """
+    Fuzzy matching here would resolve "traded player" to the Standard Traded
+    Player Exception or to the definition of a Traded Player depending on edit
+    distance, and quietly citing the wrong provision is the failure this
+    project is arranged against. The caller falls back to search instead.
+    """
+    assert ix.resolve_term(conn, "the thing about trades") is None
+    assert ix.resolve_term(conn, "") is None
+
+
+def test_every_provision_the_engine_cites_is_nameable(conn):
+    """
+    Eleven of the 25 have no heading of their own -- §6(j)(4)(i) opens "No Team
+    may aggregate" and was never given a title -- but the provision containing
+    them does, which is enough to reach the right region.
+    """
+    report = score_named_lookup(conn)
+    assert report.unnameable == 0
+    assert report.exact == 14
+    assert report.via_ancestor == 11
+
+
+def test_naming_a_provision_reaches_its_text_every_time(conn):
+    """
+    The measurement that settled D14. Searching with a paraphrase reaches the
+    right provision 20% of the time at recall@3; naming it and looking it up
+    reaches it 100% of the time.
+    """
+    report = score_named_lookup(conn)
+    assert report.reach == 1.0, f"missed: {report.misses}"
+
+
+def test_a_section_level_name_returns_enough_breadth_to_find_an_unnamed_rule(conn):
+    """
+    §8(g), the rookie-extension trade rule, has no name; the nearest one is
+    "trade rules" for the whole of §8. At 5 subsections it was missed, which is
+    why a Section-level citation returns more.
+    """
+    from rag.retrieve import for_citation
+
+    resolved = ix.resolve_term(conn, "trade rules")
+    assert resolved is not None
+    result = for_citation(conn, resolved[0])
+    labels = [p.label for p in result.passages]
+    assert "Art. VII §8(g)" in labels
+
+
+def test_breadth_is_not_spent_on_a_lookup_that_already_names_a_subsection(conn):
+    """The extra text is for the Section case only."""
+    from rag.retrieve import for_citation
+
+    result = for_citation(conn, "Art. VII §6(j)(1)")
+    assert len(result.passages) == 1

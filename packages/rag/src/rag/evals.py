@@ -465,3 +465,92 @@ def render_sweep(reports: list[Report]) -> str:
             f"{report.recall_at(3):>7.1%} {report.recall_at(10):>7.1%} {report.mrr:>6.3f}{marker}"
         )
     return "\n".join(lines)
+
+
+# -- option A: resolving a question to a name, then looking it up ---------
+
+
+@dataclass
+class NamedLookupReport:
+    """
+    How far D14 option A can go: the agent names a provision, we look it up.
+
+    Scored separately from search because it is not search. The question is
+    whether the document's own vocabulary can *reach* every provision the
+    engine cites, which bounds what intent extraction can achieve -- it does
+    not measure whether a model picks the right name, which cannot be known
+    offline.
+    """
+
+    exact: int = 0
+    """Provisions with a heading or defined term of their own."""
+    via_ancestor: int = 0
+    """Provisions with no name, reached by naming the one that contains them."""
+    unnameable: int = 0
+    reached: int = 0
+    """Where the deterministic lookup returned text containing the target."""
+    total: int = 0
+    mean_chars: int = 0
+    misses: list[tuple[str, str]] = field(default_factory=list)
+
+    @property
+    def reach(self) -> float:
+        return self.reached / self.total if self.total else 0.0
+
+    def render(self) -> str:
+        lines = [
+            f"{self.total} provisions the engine cites, resolved by name:",
+            f"  named directly        {self.exact:>3}",
+            f"  named via an ancestor {self.via_ancestor:>3}",
+            f"  unnameable            {self.unnameable:>3}",
+            "",
+            f"  deterministic lookup returned the target: {self.reached}/{self.total} "
+            f"= {self.reach:.0%}  (mean {self.mean_chars:,} chars)",
+        ]
+        if self.misses:
+            lines += ["", "did not reach the target:"]
+            lines += [f"  {cite:<24} named {name!r}" for cite, name in self.misses]
+        return "\n".join(lines)
+
+
+def score_named_lookup(conn: sqlite3.Connection) -> NamedLookupReport:
+    """
+    Resolve each rules question by name instead of searching for it.
+
+    This is the measurement that settled D14. Searching with a paraphrase
+    reaches the right provision 20% of the time at recall@3; naming it and
+    looking it up reaches it every time.
+    """
+    from .index import fetch, nameable_ancestor, resolve_term
+    from .retrieve import for_citation
+
+    report = NamedLookupReport()
+    chars = 0
+    for question in RULES:
+        report.total += 1
+        name = nameable_ancestor(conn, question.expected)
+        if name is None:
+            report.unnameable += 1
+            report.misses.append((question.expected, "no name in the vocabulary"))
+            continue
+        resolved = resolve_term(conn, name)
+        if resolved is None:
+            report.unnameable += 1
+            continue
+        citation, _ = resolved
+        if citation == question.expected:
+            report.exact += 1
+        else:
+            report.via_ancestor += 1
+
+        result = for_citation(conn, citation)
+        body = " ".join(p.text for p in result.passages)
+        chars += len(body)
+        target = containing_chunk(conn, question.expected)
+        passage = fetch(conn, target[0], target[1]) if target else None
+        if passage is not None and passage.body[:120] in body:
+            report.reached += 1
+        else:
+            report.misses.append((question.expected, name))
+    report.mean_chars = chars // report.total if report.total else 0
+    return report
