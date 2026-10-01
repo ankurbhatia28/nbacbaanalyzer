@@ -61,17 +61,32 @@ MODEL_IDS: dict[Tier, str] = {
 
 DEFAULT_TIERS: dict[Role, Tier] = {
     Role.ROUTER: Tier.SMALL,
-    Role.INTENT: Tier.SMALL,
+    Role.INTENT: Tier.MID,
     Role.ANSWER: Tier.MID,
 }
 """
-The starting point, to be moved by measurement.
+Measured, and already moved once.
 
-`ANSWER` is the one role that is not on the small tier, because it is the only
-one where the failure mode is a judgement failure rather than a wrong label:
-answering a figure out of retrieved prose, or asserting a rule without calling
-a tool. Task 6.11 baits exactly that with ~30 adversarial prompts, and the
-tier for this role should be whatever passes it.
+`ROUTER` stays small: 88.9% exact-set accuracy against the mid tier's 91.1%,
+both at 100% refusal recall, which is not worth a tier for a four-way label.
+
+`INTENT` **moved up** after 6.3 measured it. Naming the right provision is the
+whole of D14 option A, and the small tier reached 64% of the 100% ceiling
+against the mid tier's 80%. Two things decided it, and the second was a
+surprise:
+
+  * 16 points of accuracy on the task the retrieval strategy depends on.
+  * The prompt carries the document's 612-name vocabulary, about 3,150 tokens.
+    That is **above the mid tier's 1,024-token cache minimum and below the
+    small tier's 4,096**, so it caches on the larger model and not the smaller
+    one. Uncached input across 25 calls: 609 tokens on the mid tier against
+    83,399 on the small one. The cheaper model is the one that resends the
+    prompt every time.
+
+`ANSWER` is mid tier because it is the only role whose failure is a judgement
+failure rather than a wrong label: answering a figure out of retrieved prose,
+or asserting a rule without calling a tool. Task 6.11 baits exactly that, and
+the tier for this role should be whatever passes it.
 """
 
 _ENV_OVERRIDE = {

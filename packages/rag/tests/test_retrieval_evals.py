@@ -269,13 +269,19 @@ def test_stop_words_are_dropped_but_a_stop_word_only_query_still_runs(conn):
 
 def test_the_vocabulary_is_the_documents_own(conn):
     """
-    670 names: 512 headings the drafters wrote plus the defined terms. The
+    612 names: 454 headings the drafters wrote plus the defined terms. The
     closed set intent extraction picks from, so the model chooses the
     document's words rather than inventing a term that is then searched for.
+
+    Was 670 before the title-case filter. The heading pattern matched any
+    capitalised run ending in a period or colon, which caught sentences as well
+    as titles -- "Notwithstanding Section 2(a) above, except as provided" and
+    "Beginning at 12" were both in the list. 60 such entries were removed, and
+    the next test holds that removing them cost no provision.
     """
     names = ix.vocabulary_names(conn)
-    assert len(names) == 670
-    assert len(ix.vocabulary_names(conn, "heading")) == 512
+    assert len(names) == 612
+    assert len(ix.vocabulary_names(conn, "heading")) == 454
     assert names == sorted(names)
     assert all(name == name.lower() for name in names), "stored normalised"
 
@@ -323,6 +329,19 @@ def test_every_provision_the_engine_cites_is_nameable(conn):
     assert report.unnameable == 0
     assert report.exact == 14
     assert report.via_ancestor == 11
+
+
+def test_filtering_sentences_out_of_the_vocabulary_cost_no_provision(conn):
+    """
+    The title-case filter removed 60 entries. If it had removed one that was
+    the only route to a provision, reach would have dropped below 100% -- which
+    is what the next test would catch, so this states the intent directly.
+    """
+    names = set(ix.vocabulary_names(conn))
+    assert "notwithstanding any other provision of this agreement" not in names
+    assert "trade rules" in names
+    assert "standard traded player exception" in names
+    assert score_named_lookup(conn).unnameable == 0
 
 
 def test_naming_a_provision_reaches_its_text_every_time(conn):
