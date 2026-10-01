@@ -64,7 +64,14 @@ _PLAYER_CONTRACT_SEASONS = Entity(
         Field("season", FieldType.TEXT, "y.season_id", "Season, e.g. 2026-2027"),
         Field("salary", FieldType.INTEGER, "y.cap_figure", "Cap figure for that season"),
         Field("option_kind", FieldType.TEXT, "y.option_kind", "team, player or eto; null if none"),
-        Field("guarantee_kind", FieldType.TEXT, "y.guarantee_kind", "full, partial or none"),
+        Field(
+            "guarantee_kind",
+            FieldType.TEXT,
+            "y.guarantee_kind",
+            "full, partial, none or unknown. No source scraped so far carries "
+            "guarantee structure, so this is 'unknown' for every row today; "
+            "do not read it as 'fully guaranteed'",
+        ),
         Field("contract_type", FieldType.TEXT, "c.contract_type", "Contract classification"),
         Field("signed_date", FieldType.DATE, "c.signed_date", "When the contract was signed"),
         Field(
