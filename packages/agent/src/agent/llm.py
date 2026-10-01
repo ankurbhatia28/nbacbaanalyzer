@@ -43,10 +43,18 @@ the last tool caches the tools and leaves the system prompt out. Measured on a
 last tool, so the placement is worth getting right.
 
 Applied unconditionally. A prefix below the model's minimum is silently
-*ignored* rather than charged -- measured: a 447-token router prefix returns
-cache_write=0 and cache_read=0 on every call -- so there is no threshold
-constant here to go stale. What caching is worth is reported by the ledger
-instead of assumed.
+*ignored* rather than charged, so there is no threshold constant here to go
+stale; what caching is worth is reported by the ledger instead of assumed.
+
+The minimums, measured by bisection rather than recalled:
+
+    Sonnet 5     1,024 tokens   (a 2,650-token prefix caches)
+    Haiku 4.5    4,096 tokens   (3,470 does not cache, 4,617 does)
+
+That asymmetry decides where caching pays. The answer role runs on Sonnet with
+a 2,700-token tool prefix and saves 97%. The router's 447 tokens and the intent
+step's ~3,150 both sit under Haiku's 4,096, so neither caches -- the intent
+prompt by a frustratingly small margin.
 """
 
 

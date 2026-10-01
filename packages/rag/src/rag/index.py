@@ -355,6 +355,30 @@ Rule:" use a colon and were missed until this allowed for it.
 MAX_HEADING_WORDS = 12
 """Longer than this and it is a sentence, not a name."""
 
+MIN_TITLE_CASE_RATIO = 0.6
+"""
+How much of a candidate heading must be capitalised to count as a name.
+
+The pattern above matches any capitalised run ending in a period or colon,
+which catches sentences as well as titles: "Notwithstanding Section 2(a)
+above, except as provided" and "Beginning at 12" were both in the vocabulary.
+Those are not names anyone would use to ask for a provision, and they made the
+list longer and the choice harder for the intent step that reads it.
+
+Title case separates them cleanly, because the drafters capitalise their
+headings and not their sentences. Measured: 60 of 553 candidates are
+sentences, and removing them does not cost a single provision -- the 25
+provisions the engine cites are all still nameable.
+"""
+
+
+def _is_title_case(name: str) -> bool:
+    words = [word for word in name.split() if word[:1].isalpha()]
+    if not words:
+        return False
+    capitalised = sum(1 for word in words if word[0].isupper())
+    return capitalised / len(words) >= MIN_TITLE_CASE_RATIO
+
 
 def _vocabulary_rows(
     outline: Outline, definitions: DefinitionIndex | None
@@ -376,7 +400,7 @@ def _vocabulary_rows(
         if not match:
             continue
         name = " ".join(match.group(1).split())
-        if len(name.split()) > MAX_HEADING_WORDS:
+        if len(name.split()) > MAX_HEADING_WORDS or not _is_title_case(name):
             continue
         key = name.lower()
         if key in seen:

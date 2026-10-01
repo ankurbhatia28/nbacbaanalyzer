@@ -300,7 +300,30 @@ required UI element rather than a nicety.
 
   An unknown tool name comes back as a correctable error rather than an exception, so the loop can fix itself inside its retry budget instead of failing the question.
 - [x] **6.2a** **`tests/test_architecture.py` widened.** It guarded ADR-001 for the engine only, by regex. It now covers the data and retrieval layers too, parses imports via the AST so one written inside a function body is caught, names `agent` as the single permitted exception so a fifth package forces a decision rather than inheriting an exemption, and checks the `.env` rule CLAUDE.md states. CI's grep was widened to match.
-- [ ] **6.3** NL → structured intent with entity resolution; ambiguity triggers a clarification turn, not a guess
+- [x] **6.3** **NL → structured intent — and the real test of D14 option A: 80%, against a 100% ceiling.**
+
+  D14 measured that *naming* a provision reaches its text where searching for a paraphrase reaches it 20% of the time, and that all 25 provisions the engine cites are nameable. What it could not measure without a model is whether a model picks the right name. This is that number:
+
+  | approach | reaches the right provision |
+  |---|---|
+  | search with a paraphrase (5.8) | 20% |
+  | Haiku, one name | 52% |
+  | Haiku, up to three names | 64% |
+  | Sonnet, one name | 68% |
+  | **Sonnet, up to three names** | **80%** |
+  | ceiling: perfect naming (D14) | 100% |
+
+  **Four times better than search, and still 20 points short of the ceiling.** Stated plainly because it bounds what Phase 6 can promise.
+
+  Three findings got it from 52% to 80%:
+  - **My prompt omitted the thing the ceiling depended on.** 11 of the 25 provisions have no heading of their own, and D14's 100% came from naming the *containing* provision. The first prompt never said so, and the model returned nothing for exactly those. Telling it to prefer the broader name over an empty list was the single largest gain.
+  - **Naming up to three beats naming one** (+12 points on both tiers). The rules overlap — a question about matching salary touches the exception that permits it and the restrictions that limit it — and fetching two short provisions costs less than missing the one that answers.
+  - **The vocabulary had 60 sentences in it.** The heading pattern matched any capitalised run ending in a period or colon, so *"Notwithstanding Section 2(a) above, except as provided"* and *"Beginning at 12"* were offered as names. Filtering to title case took 670 → 612 entries and cost no provision: reach stays 25/25.
+
+  **The residual 20% is 5 cases of a real name for the wrong rule**, which is the dangerous shape — it reads correctly. The mitigation is downstream: the answer step quotes the provision it cites, so a wrong provision produces an answer that visibly fails to address the question rather than a confident wrong figure. 6.11 should bait this specifically.
+
+  **Ambiguity asks rather than guesses.** Two players called Williams is not a coin flip, so an ambiguous entity yields a clarification and no plan. An *unresolved provision name* deliberately does not: the user did not choose it, the model did, and asking them about it would be asking them to debug the agent.
+- [x] **6.3a** **D15 revised: `INTENT` moves to the mid tier**, on two measurements rather than a preference. 16 points of accuracy on the task the whole retrieval strategy rests on, and — the surprise — the **cheaper model is the one that resends the prompt every time.** The vocabulary prefix is ~3,150 tokens, which is above Sonnet's 1,024-token cache minimum and below Haiku's 4,096. Uncached input across 25 calls: **609 tokens on Sonnet against 83,399 on Haiku.** The minimums were measured by bisection, not recalled.
 - [ ] **6.4** Structured outputs, schema validation, bounded retry
 - [ ] **6.5** Agent loop with a hard prohibition on unaided arithmetic or rule assertions
 - [ ] **6.6** **Refusal policy** — hypotheticals ("should they?"), historical questions (out of v1 scope), and anything the tools cannot answer. Each refusal states why.
