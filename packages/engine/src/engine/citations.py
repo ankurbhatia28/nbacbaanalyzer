@@ -32,7 +32,7 @@ class Citation:
 
 
 # -- Article VII, Section 2: cap, tax and apron levels ---------------------
-APRON_LEVELS = Citation("VII", "2(e)(1)(iii)", 195, "First and Second Apron Levels")
+APRON_LEVELS = Citation("VII", "2(a)(4)(iii)", 195, "First and Second Apron Levels")
 APRON_TEAM_SALARY = Citation("VII", "2(e)(1)", 211, "Apron Team Salary computation")
 TRANSACTION_PROHIBITION = Citation(
     "VII",
@@ -76,7 +76,7 @@ OVER_38_RULE = Citation(
 
 # -- Article VII, Section 6: exceptions -----------------------------------
 TAXPAYER_MLE = Citation("VII", "6(f)", 261, "Taxpayer Mid-Level Salary Exception")
-NON_TAXPAYER_MLE = Citation("VII", "6(e)", 262, "Non-Taxpayer Mid-Level Salary Exception")
+NON_TAXPAYER_MLE = Citation("VII", "6(e)", 260, "Non-Taxpayer Mid-Level Salary Exception")
 TPE_STANDARD = Citation("VII", "6(j)(1)(i)", 264, "Standard Traded Player Exception")
 TPE_AGGREGATED = Citation("VII", "6(j)(1)(ii)", 264, "Aggregated Standard Traded Player Exception")
 TPE_TRANSITION = Citation("VII", "6(j)(1)(iii)", 265, "Transition Traded Player Exception")
@@ -121,7 +121,7 @@ ROOKIE_EXTENSION_TRADE_RULE = Citation(
 ARENAS_OFFER_SHEET_LIMIT = Citation(
     "XI",
     "5(d)(i)",
-    346,
+    347,
     "Offer Sheet to a restricted free agent with one or two Years of Service may not "
     "exceed the Non-Taxpayer MLE in the first Salary Cap Year",
 )
@@ -135,7 +135,7 @@ ARENAS_DEEMED_AVERAGE = Citation(
 
 # -- Article I: definitions ------------------------------------------------
 DEFINITIONS = Citation("I", "1", 25, "Definitions")
-GENERALLY_RECOGNIZED_HONORS = Citation("I", "1(cc)", 27, "Generally Recognized League Honors")
+GENERALLY_RECOGNIZED_HONORS = Citation("I", "1(cc)", 28, "Generally Recognized League Honors")
 
 # -- Article II: contracts and maximum salary ------------------------------
 HIGHER_MAX_CRITERIA = Citation(

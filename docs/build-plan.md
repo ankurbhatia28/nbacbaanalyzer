@@ -155,9 +155,27 @@ required UI element rather than a nicety.
 
 ## Phase 5 — CBA retrieval
 
-- [ ] **5.1** Extract with **PyMuPDF**, not pypdf — zero word-boundary defects, ~5× faster
-- [ ] **5.2** Build the unit tree from the PDF's own **2,412-entry bookmark outline** (42 Articles, 288 Sections, 938 subsections, pp. 1–671). Traversal, not heuristic parsing.
-- [ ] **5.3** Sub-split the 39 oversized Section units at outline level 3–4
+- [x] **5.1** Extract with **PyMuPDF**, not pypdf — zero word-boundary defects, ~5× faster. All PyMuPDF access is confined to one function, since it ships no type information and every call needs an escape hatch.
+- [x] **5.2** Unit tree built from the PDF's own **2,412-entry bookmark outline** — **2,411 units placed**, 42 Articles confirmed. The one failure has a malformed bookmark title (words run together, unsearchable); it is reported on `Outline.unmatched`, never dropped.
+
+  Three things the outline does not hand over for free:
+  - **Locating text.** The outline gives a page, not an offset, and every definition in Art. I §1 starts on page 25. Entries are found by searching from their own page, so the Table of Contents — which repeats every heading verbatim — cannot match first. Titles are truncated at 254 characters, so matching uses a normalised 40-character prefix: **2,411 of 2,412 match, against 1,069 for the full title**.
+  - **Numbering.** One bookmark can carry two levels: the entry for §2(e)(2)(i) is titled `"(2) (i) At any point..."`. Worse, the outline then puts `(A)` and `(ii)` at the same depth below it — although `(A)` is a *child* of `(i)` and `(ii)` is its *sibling*. Depth cannot tell them apart; the **marker series** can. A marker that is the successor of the parent's trailing marker continues the series, so it is a sibling. This also dissolves the letter-vs-roman ambiguity without resolving it: the first marker of any series is never a successor, so `(i)` after `(d)` opens the romans while `(i)` after `(h)` continues the letters.
+  - **Page numbers.** The pages carry a printed folio running **24 behind the PDF page** (PDF 25 is printed page 1), confirmed on 560 of the 563 machine-readable folios. Both are kept on every unit, because "p. 211" is otherwise ambiguous — `engine.citations` values are PDF pages.
+- [x] **5.2a** **The outline cross-checks the engine's citation table, and found four errors.** Every one of the 30 citations now resolves and points inside its own provision's page span:
+  - `APRON_LEVELS` cited **§2(e)(1)(iii)**, which is part of the *Apron Team Salary computation*. The levels are defined at **§2(a)(4)(iii)** (pp. 195–197) — *"a 'First Apron Level' and a 'Second Apron Level' as follows"*. Wrong provision, right page.
+  - `NON_TAXPAYER_MLE` cited p. 262; §6(e) runs **pp. 260–261**, and p. 262 is already §6(f) and §6(g).
+  - `ARENAS_OFFER_SHEET_LIMIT` p. 346 → **347**; `GENERALLY_RECOGNIZED_HONORS` p. 27 → **28**.
+
+  Asserted as "the cited page falls inside the provision's span" rather than "equals its first page", because a provision regularly runs across a page break and pointing at the sentence that matters is legitimate. A parametrised test now holds all 30, so the table cannot drift from the document again.
+- [x] **5.2b** **Ancestor fallback for unbookmarked provisions.** The PDF has no bookmark for Art. VII **§8(e)**, the sign-and-trade rule the engine enforces. `resolve()` returns the containing Section together with *the citation it actually reached*, so a caller can say "Art. VII §8" rather than claiming to quote §8(e)(1).
+- [x] **5.3** **Retrieval units: 1,276 chunks, median 592 characters, p90 2,320.** A Section is what a lawyer cites and for most of the document it is also the right size — the median Section is ~1,500 characters. But the tail is long (Art. VII §1 Definitions is **82,893** characters, §2 is 52,436), so Sections are opened into their subsections recursively wherever they exceed the ceiling.
+
+  The split follows the document's numbering rather than a character window, so every chunk keeps a checkable citation and none begins mid-provision. **Lossless**: Art. VII §6 is 39,262 characters in and 39,262 across 38 chunks out, asserted as a test on the four Sections that actually split.
+
+  A parent's **preamble is kept** when its children are split out — §6(j) opens *"Subject to the rules set forth in Section 2(e) above"*, and dropping it would strip the apron precondition off every exception beneath it. Only **2** units exceed the ceiling with nothing left to split on, and both are flagged rather than force-cut: `Art. XI §5(j)(ii)(1)`, and `Art. XLII §3` (Exhibits), whose contents the PDF bookmarks as top-level entries rather than children of the Section.
+
+  `MAX_CHARS = 4000` is a starting point, not a finding — per D12 it gets chosen against recall@k in 5.8 rather than asserted here.
 - [ ] **5.4** **Definitions index.** Article I terms of art govern every other Article; attach relevant definitions to chunks that use them
 - [ ] **5.5** Cross-reference graph with one-hop expansion at retrieval time
 - [ ] **5.6** **BM25 first** (SQLite FTS5, no model at inference). Legal text is dense with exact terms of art where lexical search wins. Add embeddings only if measured retrieval gains justify the cold-start and bundle cost — measure both arms separately and report the delta.
