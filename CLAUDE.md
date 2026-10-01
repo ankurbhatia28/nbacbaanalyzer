@@ -19,8 +19,10 @@ otherwise. CI runs on pull requests, so the green check is visible before merge.
 
 These are enforced, not aspirational. Breaking them fails CI.
 
-- **`packages/engine` imports no LLM client.** Checked by CI and by
-  `tests/test_architecture.py`. See [ADR-001](docs/adr/0001-the-model-does-not-decide.md).
+- **`packages/engine`, `packages/data` and `packages/rag` import no LLM
+  client.** `packages/agent` is the one package that may. Checked by CI and by
+  `tests/test_architecture.py`, which parses imports rather than matching text.
+  See [ADR-001](docs/adr/0001-the-model-does-not-decide.md).
 - **No `.env` file is ever tracked** except `.env.example`. Checked by CI.
 - **Unknown is never zero.** Trade kickers, no-trade clauses and cash
   considerations are tri-state. A verdict resting on an unknown must say so.
@@ -34,7 +36,7 @@ These are enforced, not aspirational. Breaking them fails CI.
 uv sync --all-packages --dev
 uv run pytest
 uv run ruff check . && uv run ruff format --check .
-uv run mypy packages/engine/src packages/data/src packages/rag/src
+uv run mypy packages/engine/src packages/data/src packages/rag/src packages/agent/src
 ```
 
 ## Scrapers
