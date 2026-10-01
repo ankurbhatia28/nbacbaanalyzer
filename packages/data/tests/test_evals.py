@@ -6,6 +6,7 @@ all the harness over-claiming. A harness that cries wolf is worse than none,
 because the natural response is to loosen the engine.
 """
 
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -182,3 +183,69 @@ def test_season_constants_load_from_the_scraped_history():
         pytest.skip("scraper output not present")
     assert "2023-2024" in seasons
     assert base == seasons["2023-2024"].salary_cap
+
+
+def test_outgoing_contracts_are_reconstructed_from_the_counterparty(tmp_path):
+    """
+    A team's outgoing players are exactly what the other side acquired. Without
+    the split, the engine cannot tell whether a trade may use several exceptions.
+    """
+    body = (
+        '1,2026-07-01,,Milwaukee Bucks,,,"Milwaukee Bucks Acquire: A · $10,000,000 '
+        'Cap Hit Sum: $10,000,000 Cap Hit Change: +$4,000,000"\n'
+        '1,2026-07-01,,Boston Celtics,,,"Boston Celtics Acquire: B · $4,000,000 '
+        'C · $2,000,000 Cap Hit Sum: $6,000,000 Cap Hit Change: -$4,000,000"\n'
+    )
+    case = load(write(tmp_path, body))[0]
+    milwaukee = case.leg_for("Milwaukee Bucks")
+    assert milwaukee.outgoing_salaries == (4_000_000, 2_000_000)
+    assert milwaukee.outgoing_reconstructed
+    assert milwaukee.is_aggregating
+
+
+def test_a_split_that_does_not_reconcile_is_not_trusted(tmp_path):
+    """Picks and cash move the aggregate, so a mismatch means the split is unsafe."""
+    body = (
+        '1,2026-07-01,,Milwaukee Bucks,,,"Milwaukee Bucks Acquire: A · $10,000,000 '
+        'Cap Hit Sum: $10,000,000 Cap Hit Change: +$1,000,000"\n'
+        '1,2026-07-01,,Boston Celtics,,,"Boston Celtics Acquire: B · $4,000,000 '
+        'Cap Hit Sum: $4,000,000 Cap Hit Change: -$1,000,000"\n'
+    )
+    case = load(write(tmp_path, body))[0]
+    milwaukee = case.leg_for("Milwaukee Bucks")
+    assert milwaukee.outgoing_salaries == (4_000_000,)
+    assert milwaukee.outgoing != 4_000_000
+    assert not milwaukee.outgoing_reconstructed
+
+
+def test_the_boundary_mutant_steps_over_the_structured_allowance(tmp_path):
+    """
+    The regression this guards: stepping one dollar over the largest *single*
+    exception produces a trade that is still legal when the team can split its
+    outgoing players across exceptions. Such a mutant is not illegal, so
+    counting it as caught would inflate recall.
+    """
+    from nbadata.evals.capacity import ceiling, permits
+    from nbadata.evals.mutate import just_over_the_band
+
+    season = SEASON_2026_27
+    body = (
+        '1,2026-07-01,,Milwaukee Bucks,,,"Milwaukee Bucks Acquire: A · $30,000,000 '
+        'Cap Hit Sum: $30,000,000 Cap Hit Change: +$6,000,000"\n'
+        '1,2026-07-01,,Boston Celtics,,,"Boston Celtics Acquire: B · $12,000,000 '
+        'C · $12,000,000 Cap Hit Sum: $24,000,000 Cap Hit Change: -$6,000,000"\n'
+    )
+    case = load(write(tmp_path, body))[0]
+    leg = case.leg_for("Milwaukee Bucks")
+    assert leg.outgoing_reconstructed
+
+    single = ceiling(replace(leg, outgoing_salaries=()), season, BASE_CAP)
+    structured = ceiling(leg, season, BASE_CAP)
+    assert structured > single, "splitting two contracts must permit more"
+
+    for mutant in just_over_the_band(case, season, BASE_CAP):
+        if mutant.team != "Milwaukee Bucks":
+            continue
+        mutated = mutant.case.leg_for("Milwaukee Bucks")
+        assert mutated.incoming > structured
+        assert not permits(mutated, season, BASE_CAP)

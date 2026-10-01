@@ -48,14 +48,14 @@ jobs:
       - name: Tests
         run: uv run pytest
 
-  # Promoted to blocking once Phase 4 reports a pass rate (see docs/build-plan.md 4.8)
+  # Blocking as of Phase 4: the suite reports a real pass rate, so a regression
+  # in it is a regression in the engine.
   evals:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3
       - run: uv python install 3.12
       - run: uv sync --all-packages --dev
       - name: Eval suite
-        run: uv run pytest -m eval || echo "eval suite not yet implemented"
+        run: uv run python -m nbadata.evals

@@ -119,3 +119,77 @@ def test_every_allowance_carries_its_citation():
     ):
         assert got.citation.article == "VII"
         assert got.citation.section.startswith("6(j)")
+
+
+# -- structuring across several exceptions ---------------------------------
+
+
+def test_splitting_outgoing_players_permits_more_than_one_exception():
+    """
+    Art. VII 6(j)(1)(i) lets one exception replace "one (1) Traded Player", and
+    6(m) carves Section 6(j) out of its bar on combining exceptions. So a team
+    sending four players may use four exceptions, earning the $250,000 allowance
+    four times rather than once.
+    """
+    from engine.salary_matching import best_structure
+
+    players = [20_000_000, 12_000_000, 9_435_741, 6_000_000]
+    structured = best_structure(players, S, UNDER, BASE_CAP)
+    single = expanded(sum(players), S, UNDER, BASE_CAP).amount
+    assert structured.total_allowance > single
+    assert structured.exception_count > 1
+
+
+def test_a_single_outgoing_player_cannot_be_split():
+    from engine.salary_matching import best_structure
+
+    got = best_structure([47_435_741], S, UNDER, BASE_CAP)
+    assert got.exception_count == 1
+    assert got.total_allowance == expanded(47_435_741, S, UNDER, BASE_CAP).amount
+
+
+def test_structuring_never_permits_less_than_a_single_exception():
+    """Splitting is optional, so it can only help."""
+    from engine.salary_matching import best_structure
+
+    for players in ([5_000_000, 3_000_000], [30_000_000, 1_000_000], [9_000_000] * 3):
+        structured = best_structure(players, S, UNDER, BASE_CAP)
+        assert structured.total_allowance >= expanded(sum(players), S, UNDER, BASE_CAP).amount
+
+
+def test_no_outgoing_players_permits_nothing():
+    from engine.salary_matching import best_structure
+
+    assert best_structure([], S, UNDER, BASE_CAP).total_allowance == 0
+    assert best_structure([0, 0], S, UNDER, BASE_CAP).total_allowance == 0
+
+
+def test_many_players_fall_back_without_enumerating_partitions():
+    """Bell(12) is over four million; the fallback keeps this bounded."""
+    from engine.salary_matching import MAX_PARTITIONED_PLAYERS, best_structure
+
+    players = [3_000_000] * (MAX_PARTITIONED_PLAYERS + 4)
+    got = best_structure(players, S, UNDER, BASE_CAP)
+    assert got.total_allowance > 0
+    assert got.exception_count in (1, len(players))
+
+
+def test_the_partition_generator_is_exhaustive_and_sound():
+    """
+    best_structure is only correct if it considers every way of grouping the
+    outgoing players. The count of set partitions is the Bell sequence, so a
+    generator that drops or repeats groupings shows up here immediately.
+    """
+    from engine.salary_matching import _partitions
+
+    bell = [1, 2, 5, 15, 52, 203, 877]
+    for n, expected in enumerate(bell, start=1):
+        partitions = list(_partitions(list(range(n))))
+        assert len(partitions) == expected, f"n={n}"
+        # sound: each is a true partition -- no empty group, nothing lost or duplicated
+        for partition in partitions:
+            assert all(group for group in partition)
+            assert sorted(x for group in partition for x in group) == list(range(n))
+        # distinct: no grouping is offered twice
+        canonical = {tuple(sorted(tuple(sorted(g)) for g in p)) for p in partitions}
+        assert len(canonical) == expected

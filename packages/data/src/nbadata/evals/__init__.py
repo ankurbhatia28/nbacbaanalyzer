@@ -8,18 +8,26 @@ testing, which is a separate suite.
 """
 
 from .corpus import Leg, TradeCase, load
+from .mutate import Mutant, MutationKind, generate
 from .run import CaseResult, CheckResult, EvalReport, Outcome, evaluate, run
+from .score import Detection, Score, score
 from .seasons import load_seasons
 
 __all__ = [
     "CaseResult",
     "CheckResult",
+    "Detection",
     "EvalReport",
     "Leg",
+    "Mutant",
+    "MutationKind",
     "Outcome",
+    "Score",
     "TradeCase",
     "evaluate",
+    "generate",
     "load",
     "load_seasons",
     "run",
+    "score",
 ]

@@ -110,6 +110,7 @@ required UI element rather than a nicety.
 - [x] **3.11** Poison pill — **located and implemented.** The nickname covers two provisions sharing one mechanism: Art. VII **§8(g)** (Rookie Extension Trade Rule, pp. 288–289) and Art. XI **§5(d)** (Gilbert Arenas, pp. 346–347). Both deem a salary to equal the average of a contract's remaining years, for one party's Room only. I had searched §7 (Extensions); the trade-valuation rule lives in §8 (Trade Rules).
 - [ ] **3.12** Trade kickers — honouring `Unknown` rather than assuming zero
 - [x] **3.13** Trade date calendar — Art. VII §8(c)–(d). Four rules with separate clocks: no trade after the deadline in a possible final Season; 30 days for rookies and two-ways; later of 3 months or **December 15** for free agent signings; later of 3 months or **January 15** for a prior-team re-signing above **120%**. The last bars the *trade*, not merely aggregation — distinct from the two-month bar in §6(j)(4)(i).
+- [x] **3.14a** **Structuring across several exceptions.** Art. VII §6(j)(1)(i) lets one exception replace "one (1) Traded Player", and §6(m) carves §6(j) out of its bar on combining Exceptions — so a team sending several players may use several. Modelling a trade as a single exception understated capacity: four contracts totalling $47.4M permit **$81.1M structured vs $59.5M** as one exception. `best_structure()` enumerates the partitions. Found by the eval harness, not by reading — 14 of 20 undetermined legs acquired two or more players.
 - [ ] **3.14** Simultaneous vs non-simultaneous trades and TPE creation
 - [ ] **3.15** Multi-team trades — validate each team's send and receive independently
 - [ ] **3.16** Roster counts and pick tradeability
@@ -132,10 +133,10 @@ required UI element rather than a nicety.
 - [x] **4.2** Legs derived from two published figures per team: `incoming = Cap Hit Sum`, `outgoing = Cap Hit Sum − Cap Hit Change`. Verified rather than assumed — **all 184 trades balance**, total incoming equalling total outgoing.
 - [ ] **4.3** Scope note: v1 validates against **current-state** reconstruction only. Trades needing state we lack are excluded and counted, not silently skipped.
 - [x] **4.4** **184/184 trades, zero failures.** 341 salary-matching checks pass; 78 are undeterminable and skipped, as are 161 ceiling checks. Partial verdicts throughout: a skipped check says why.
-- [ ] **4.5** Mutation generators for labelled illegal cases, each with an expected violation code
-- [ ] **4.6** Precision and recall on violation codes, not just the legal/illegal bit
+- [x] **4.5** Mutation generators — **627 mutants** from real trades. Three kinds: blunt inflation (243), **boundary mutations set one dollar above the largest allowance any exception offers** (243), and unbalancing (141), which tests the harness rather than the engine.
+- [x] **4.6** **Recall 100%** (627/627), **reason accuracy 100%**, **precision floor 96.9%**. Precision is reported as a floor, not a measurement: its denominator counts real trades the engine cannot permit outright, most of which are cap room rather than errors.
 - [ ] **4.7** Query DSL eval set — golden questions with expected results
-- [ ] **4.8** `make eval` → markdown report card; promote the CI job to blocking
+- [x] **4.8** `python -m nbadata.evals` prints the report card and **the CI job is now blocking** — a regression in the suite fails the build.
 
 > **Done when** you can state "passes N/N reconstructible trades, M% violation-code accuracy" and defend how it was measured.
 
