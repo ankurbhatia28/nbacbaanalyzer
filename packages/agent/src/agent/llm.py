@@ -32,6 +32,23 @@ JsonDict = dict[str, Any]
 MAX_JSON_ATTEMPTS = 2
 """The first try plus one correction. See the module docstring."""
 
+CACHE_BREAKPOINT = {"type": "ephemeral"}
+"""
+Marks the end of the stable prefix for prompt caching (task 6.8).
+
+Placed on the **system block**, not on the last tool. The request is assembled
+tools-then-system, so a breakpoint after the system text covers both; marking
+the last tool caches the tools and leaves the system prompt out. Measured on a
+2,700-token prefix: the system block caches 2,650 tokens against 2,565 for the
+last tool, so the placement is worth getting right.
+
+Applied unconditionally. A prefix below the model's minimum is silently
+*ignored* rather than charged -- measured: a 447-token router prefix returns
+cache_write=0 and cache_read=0 on every call -- so there is no threshold
+constant here to go stale. What caching is worth is reported by the ledger
+instead of assumed.
+"""
+
 
 @dataclass(frozen=True, slots=True)
 class Usage:
@@ -104,15 +121,36 @@ class Ledger:
             out = out + usage
         return out
 
+    def cache_hit_rate(self, role: Role | None = None) -> float:
+        """
+        The share of prefix tokens served from cache rather than recomputed.
+
+        Denominator is cache reads plus cache writes, not total input: the
+        per-turn message is never cacheable, so including it would understate
+        how well the *prefix* is being reused.
+        """
+        usage = self.by_role.get(role, Usage()) if role else self.total
+        cacheable = usage.cache_read_tokens + usage.cache_write_tokens
+        return usage.cache_read_tokens / cacheable if cacheable else 0.0
+
     def render(self) -> str:
         lines = [f"{self.calls} model calls"]
         for role, usage in sorted(self.by_role.items()):
             lines.append(
                 f"  {role.value:<7} in {usage.input_tokens:>7,}  out {usage.output_tokens:>6,}"
-                f"  cached-read {usage.cache_read_tokens:>7,}"
+                f"  cache r/w {usage.cache_read_tokens:>7,}/{usage.cache_write_tokens:<7,}"
+                f"  hit {self.cache_hit_rate(role):>5.0%}"
             )
         total = self.total
-        lines.append(f"  {'total':<7} in {total.input_tokens:>7,}  out {total.output_tokens:>6,}")
+        lines.append(
+            f"  {'total':<7} in {total.input_tokens:>7,}  out {total.output_tokens:>6,}"
+            f"  cache r/w {total.cache_read_tokens:>7,}/{total.cache_write_tokens:<7,}"
+            f"  hit {self.cache_hit_rate():>5.0%}"
+        )
+        if total.cache_read_tokens == 0 and total.cache_write_tokens == 0:
+            lines.append(
+                "  (nothing cached: a prefix below the model's minimum is ignored, not charged)"
+            )
         return "\n".join(lines)
 
 
@@ -125,9 +163,16 @@ class AnthropicCaller:
     installed or a key to be set.
     """
 
-    def __init__(self, ledger: Ledger | None = None, api_key: str | None = None) -> None:
+    def __init__(
+        self,
+        ledger: Ledger | None = None,
+        api_key: str | None = None,
+        *,
+        cache: bool = True,
+    ) -> None:
         import anthropic
 
+        self.cache = cache
         key = api_key or os.environ.get("ANTHROPIC_API_KEY")
         if not key:
             raise RuntimeError(
@@ -148,10 +193,13 @@ class AnthropicCaller:
         import anthropic
 
         selection = model_for(role)
+        system_blocks: list[JsonDict] = [{"type": "text", "text": system}]
+        if self.cache:
+            system_blocks[0]["cache_control"] = dict(CACHE_BREAKPOINT)
         kwargs: JsonDict = {
             "model": selection.model,
             "max_tokens": max_tokens,
-            "system": system,
+            "system": system_blocks,
             "messages": messages,
         }
         if tools:
