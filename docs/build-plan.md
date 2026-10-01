@@ -196,10 +196,22 @@ required UI element rather than a nicety.
 - [ ] **6.7** Assumptions surfaced in the answer, not buried
 - [ ] **6.8** Prompt caching on the stable prefix; measure the cost delta
 - [ ] **6.9** Streaming, with tool-call progress visible
-- [ ] **6.10** **Tracing via Raindrop — one trace per user session.** Each trace carries the user input, system prompt, every tool call and result, retrieved context, every intermediate model call, and the final user-facing output.
+- [ ] **6.10** **Tracing via Raindrop — one trace per user session.** Each trace carries the user input, system prompt, every tool call and result, retrieved context, every intermediate model call, and the final user-facing output. **Cloud, Hobby tier (D13).** Raindrop bills per *event*, and an event is one logged interaction — a user turn, an agent response, or a tool call. This architecture is deliberately tool-heavy, so one question costs roughly:
+
+  | | events |
+  |---|---|
+  | user turn | 1 |
+  | router + intent model calls | ~2 |
+  | tool calls (DSL query, retrieval, engine) | ~3 |
+  | final response | 1 |
+  | **per single-question session** | **~7** |
+
+  1,000 events/month is therefore **~140 single-question sessions**, fewer once conversations run multi-turn. Two consequences for 6.13: the event budget needs enforcing client-side rather than trusting the vendor to stop at the cap (unconfirmed, and not worth depending on either way), and exceeding it must degrade tracing, never fail the request.
+
+- [ ] **6.10a** **Retention is 14 days on the free tier**, so a trace worth showing is gone within a fortnight. Persist a handful of exemplar traces as repo artifacts so the observability story is always demonstrable, independent of the live account.
 - [ ] **6.11** Adversarial eval — ~30 prompts engineered to bait the model into doing cap math or asserting a rule unaided. Assert it always calls the tool.
 - [ ] **6.12** Cost and latency tracking per request
-- [ ] **6.13** **Rate limiting and a hard spend cap**, built with the agent loop rather than bolted on at deploy. A public URL in front of a model key is not deployable without them.
+- [ ] **6.13** **Rate limiting and two hard caps — model spend and Raindrop events**, built with the agent loop rather than bolted on at deploy. A public URL in front of a model key is not deployable without them, and the 1,000-event tracing budget (6.10) is exhausted by roughly 140 questions.
 
 ---
 

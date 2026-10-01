@@ -100,7 +100,7 @@ Phases renumbered for the rescope — see [`build-plan.md`](./build-plan.md). Ph
 | 6.1–6.5 routing, tools, intent, loop | `CLAUDE` | Needs **B5 (API key)** |
 | 6.6 Refusal policy | `BOTH` | I implement; **you own the wording** — a refusal is a product surface, not an error |
 | 6.7–6.9 assumptions, caching, streaming | `CLAUDE` | — |
-| 6.10 Raindrop tracing | `BOTH` | I instrument; **you provide the Raindrop account/key**. Note: the Workshop MCP server failed to connect in this session, so I cannot verify traces land from here. |
+| 6.10 Raindrop tracing | `BOTH` | **Key supplied** — `RAINDROP_API_KEY` is in `.env` (untracked). I install the SDK and instrument. Hobby tier, free, 1,000 events/month — see D13 for the budget this implies. The Workshop MCP server failed to connect in this session, so I cannot verify traces land from here until Phase 6. |
 | 6.11 Adversarial eval | `BOTH` | I write ~30 bait prompts; **add any phrasings a real fan would use** |
 | 6.12 Cost tracking | `CLAUDE` | — |
 
@@ -228,11 +228,12 @@ Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order
 | D5 | Phase ordering | Superseded by the rescope — see `build-plan.md` |
 | D6 | Historical scope | **Out of v1.** Current state only; historical questions are refused with a reason. Deferred to v2 item 11. |
 | D7 | Model the 2017 CBA | **No** |
-| D8 | Budget | **Local and minimal.** No hosted services in v1; hard spend cap on the model key (8.2) |
+| D8 | Budget | **Local and minimal.** No *paid* hosted services in v1; hard spend cap on the model key (8.2). Free tiers on Vercel, Render and Raindrop are in scope — see D11 and D13 |
 | D9 | Incentive compensation | **Out of v1** |
 | D10 | Hypotheticals | **No.** "Is this legal" is answered; "should they do it" is declined. v2 may present live statistics alongside a trade but will not conclude. |
 | D11 | Hosting | **Next.js → Vercel, FastAPI → Render.** Database and index are read-only build artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)); no managed DB, no persistent disk. |
 | D12 | Retrieval strategy | **BM25 first** (SQLite FTS5, no model at inference). Embeddings added only if the measured gain in 5.6 justifies the cold-start and bundle cost. Settled by measurement, not assertion. |
+| D13 | Raindrop deployment | **Cloud, Hobby (free) tier** — there is no alternative: self-hosting is VPC-only, Enterprise, and in beta with selected partners. 1,000 events/month, 14-day retention, 1 custom signal. Pro is $299/month, which this project will not spend. **Narrows D8:** "no hosted services" already gave way to D11 (Vercel + Render); the operative constraint is no recurring fee, which the Hobby tier meets. |
 
 ## 7. The honest summary
 
