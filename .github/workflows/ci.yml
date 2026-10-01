@@ -32,18 +32,23 @@ jobs:
       - name: Format check
         run: uv run ruff format --check .
 
-      # The engine must stay free of LLM dependencies (ADR-001). This is the
-      # cheapest possible enforcement and it fails loudly.
-      - name: Engine imports no LLM client
+      # The engine, data and retrieval layers must stay free of LLM
+      # dependencies (ADR-001), so their answers are reproducible with no key
+      # present. `packages/agent` is the one place a client is allowed.
+      # tests/test_architecture.py checks this by parsing imports; this grep is
+      # the cheap loud version that runs before the suite.
+      - name: Deterministic packages import no LLM client
         run: |
-          if grep -rEn "import (anthropic|openai)|from (anthropic|openai)" packages/engine/src; then
-            echo "::error::packages/engine must not import an LLM client (ADR-001)"
-            exit 1
-          fi
-          echo "ok: engine is LLM-free"
+          for pkg in engine data rag; do
+            if grep -rEn "import (anthropic|openai)|from (anthropic|openai)" "packages/$pkg/src"; then
+              echo "::error::packages/$pkg must not import an LLM client (ADR-001)"
+              exit 1
+            fi
+          done
+          echo "ok: engine, data and rag are LLM-free"
 
       - name: Typecheck
-        run: uv run mypy packages/engine/src packages/data/src packages/rag/src
+        run: uv run mypy packages/engine/src packages/data/src packages/rag/src packages/agent/src
 
       - name: Tests
         run: uv run pytest

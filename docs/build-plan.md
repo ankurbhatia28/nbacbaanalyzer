@@ -273,7 +273,23 @@ required UI element rather than a nicety.
 ## Phase 6 — Agent layer
 
 - [ ] **6.1** **Question router** — classify into rules / data / validation / constraints, allowing combinations
-- [ ] **6.2** Tool schemas generated from the Phase 1 JSON Schema
+- [x] **6.2** **Six tools, in a new `packages/agent` — the one package allowed a model client.** The engine, data and retrieval layers stay free of one, which is what makes their answers reproducible with no key present.
+
+  Two properties shape the schemas, and both are tested:
+  - **No tool accepts a figure from the model.** There is no `check_salary_match(outgoing=47_000_000)`, because a model that can pass a figure can pass a wrong one and the error becomes invisible. Tools take identifiers — a team, a player, a citation — and look the figures up.
+  - **Schemas are generated where a closed set exists.** `query_league_data` enumerates the catalog's entities *and each one's own fields*, so naming `cap_holds.salary` (which does not exist) is refused with the allowed list rather than returning an empty result that looks like an answer. `resolve_provision` is backed by the document's 670-name vocabulary (D14).
+
+  | tool | what it does |
+  |---|---|
+  | `resolve_provision` | a rule's name → its citation. Refuses an invented name and offers real ones |
+  | `fetch_provision` | citation → verbatim text, reporting any substitution so the model cannot claim to quote §2(e)(2)(i)(A) while holding §2(e)(2)(i) |
+  | `search_cba` | the fallback, and its description says so — 20% against 100% at reaching the right provision |
+  | `define_term` | Article I's meaning for a term of art, with its citation |
+  | `query_league_data` | the structured DSL, returning the SQL that produced the number |
+  | `lookup_player` | candidates, never a best guess |
+
+  An unknown tool name comes back as a correctable error rather than an exception, so the loop can fix itself inside its retry budget instead of failing the question.
+- [x] **6.2a** **`tests/test_architecture.py` widened.** It guarded ADR-001 for the engine only, by regex. It now covers the data and retrieval layers too, parses imports via the AST so one written inside a function body is caught, names `agent` as the single permitted exception so a fifth package forces a decision rather than inheriting an exemption, and checks the `.env` rule CLAUDE.md states. CI's grep was widened to match.
 - [ ] **6.3** NL → structured intent with entity resolution; ambiguity triggers a clarification turn, not a guess
 - [ ] **6.4** Structured outputs, schema validation, bounded retry
 - [ ] **6.5** Agent loop with a hard prohibition on unaided arithmetic or rule assertions
