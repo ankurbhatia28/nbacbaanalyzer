@@ -232,7 +232,7 @@ Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order
 | D9 | Incentive compensation | **Out of v1** |
 | D10 | Hypotheticals | **No.** "Is this legal" is answered; "should they do it" is declined. v2 may present live statistics alongside a trade but will not conclude. |
 | D11 | Hosting | **Next.js → Vercel, FastAPI → Render.** Database and index are read-only build artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)); no managed DB, no persistent disk. |
-| D12 | Retrieval strategy | **BM25 first** (SQLite FTS5, no model at inference). Embeddings added only if the measured gain in 5.6 justifies the cold-start and bundle cost. Settled by measurement, not assertion. |
+| D12 | Retrieval strategy | **BM25 first** (SQLite FTS5, no model at inference) — **now measured (5.8): insufficient alone.** recall@10 62% overall, but 44% on paraphrased questions against 80% when the query carries the term of art. The bottleneck is vocabulary, not ranking; a document-frequency stop list made it worse. Next step is query expansion through the definitions index, with 6.3's intent extraction helping structurally. Embeddings remain the fallback, now with a measured gap behind them rather than an assertion. |
 | D13 | Raindrop deployment | **Cloud, Hobby (free) tier** — there is no alternative: self-hosting is VPC-only, Enterprise, and in beta with selected partners. 1,000 events/month, 14-day retention, 1 custom signal. Pro is $299/month, which this project will not spend. **Narrows D8:** "no hosted services" already gave way to D11 (Vercel + Render); the operative constraint is no recurring fee, which the Hobby tier meets. |
 
 ## 7. The honest summary

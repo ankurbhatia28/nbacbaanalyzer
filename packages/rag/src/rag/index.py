@@ -420,3 +420,20 @@ def chunks_within(conn: sqlite3.Connection, citation: str, limit: int = 6) -> li
         (citation, limit),
     ).fetchall()
     return [_row_to_hit(row) for row in rows]
+
+
+def containing_chunk(conn: sqlite3.Connection, citation: str) -> tuple[str, int] | None:
+    """
+    Which chunk holds a cited provision, as (citation, ordinal).
+
+    The unit of scoring for task 5.8. A question about §6(j)(1)(i) is answered
+    correctly by the chunk for §6(j)(1), because that chunk *contains* the
+    provision -- chunks stop splitting once a passage fits the ceiling, so
+    demanding string equality would mark a right answer wrong.
+    """
+    row = conn.execute(
+        "SELECT c.citation, c.ordinal FROM citation_map m JOIN chunks c ON c.id = m.chunk_id "
+        "WHERE m.citation = ?",
+        (citation,),
+    ).fetchone()
+    return (row["citation"], row["ordinal"]) if row else None

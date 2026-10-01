@@ -57,12 +57,13 @@ def test_every_chunk_is_under_the_ceiling_or_says_why(chunks):
 
 def test_only_the_genuinely_unsplittable_units_are_oversized(chunks):
     """
-    Two units have no subsections to open. Art. XLII §3 is "Exhibits", whose
-    contents the PDF bookmarks as top-level entries rather than as children of
-    the Section, so the hierarchy offers nothing to split on.
+    At the measured ceiling of 6,000 exactly one unit has no subsections to
+    open: Art. XLII §3 is "Exhibits", whose contents the PDF bookmarks as
+    top-level entries rather than as children of the Section, so the hierarchy
+    offers nothing to split on.
     """
     oversized = {c.citation for c in chunks if c.oversized}
-    assert oversized == {"Art. XLII §3", "Art. XI §5(j)(ii)(1)"}
+    assert oversized == {"Art. XLII §3"}
 
 
 def test_a_chunk_carries_a_citation_that_resolves_back(outline, chunks):

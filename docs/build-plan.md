@@ -207,7 +207,39 @@ required UI element rather than a nicety.
   Asserted on **total characters, not "a passage came back"**: a lookup returning 23 characters of heading reports success and conveys nothing. Where a citation is finer than any chunk (§2(e)(2)(i)(A) lives inside §2(e)(2)(i)), the substitution is reported on `resolved_to` so a caller never claims to quote (A) while holding (i). An unknown citation returns nothing rather than a near miss.
 
   **Provenance on every passage:** matched the query, referenced by something that did, or fetched by citation. Context is not evidence — an answer resting only on expansion means the query never matched the provision it claims to rely on. Expansion is capped at 2 per hit and 4 overall, because the Transaction Restrictions Table alone cites eight provisions and one broad match would otherwise bury the passages that answered the question.
-- [ ] **5.8** Golden Q&A set (~50) with expected citations; score recall@k and citation exact-match
+- [x] **5.8** **Golden Q&A set — 50 questions. `python -m rag.eval_cli` scores it.** The headline is uncomfortable and worth stating plainly: **recall@1 14%, recall@3 34%, recall@10 62%, MRR 0.280**.
+
+  **Where the expectations come from matters more than how many there are.** Writing both the question and its answer invites a set that flatters whatever the retriever already does, so none of the expectations are chosen freely: the 25 rules questions take their citations from the engine's table, which 5.2a verified provision by provision, and the 25 definition questions read theirs out of the built index, so they cannot drift from what the parser extracted. Questions are phrased as a user would ask, not in the provision's words.
+
+  **The split is the finding, and the aggregate hides it:**
+
+  | phrasing | n | r@1 | r@3 | r@10 | MRR |
+  |---|---|---|---|---|---|
+  | paraphrased, no term of art | 25 | 8.0% | 12.0% | 44.0% | 0.157 |
+  | contains the term of art | 25 | 20.0% | 56.0% | 80.0% | 0.404 |
+  | bare term of art alone (probe) | 7 | 57.1% | 57.1% | — | 0.631 |
+
+  **The bottleneck is vocabulary, not ranking.** *"How much salary can a team take back when it trades one player away"* shares no distinctive term with *"replace one (1) Traded Player"*, so a lexical index cannot bridge it. I tested the obvious ranking fix first and it was the wrong diagnosis: a corpus-derived stop list (dropping terms above a document-frequency cutoff) made recall **worse** at every threshold — 52.1% → 45.8% → 29.2% as the cutoff tightened. BM25's IDF already discounts common words; the damage comes from the question's *rare* words, where "much" has a document frequency of 0 and "away" of 1, so matching them boosts irrelevant passages.
+
+  **What this means for D12.** BM25 alone is not sufficient for natural questions, and that is now measured rather than assumed. Two mitigations, cheapest first:
+  - **Query expansion through the definitions index** before reaching for embeddings. The evidence says a query carrying the term of art works, and mapping user language onto terms of art is exactly what the 162-definition index is for.
+  - **Phase 6 already helps structurally.** Task 6.3 turns a question into a structured intent, so the retrieval query need not be the raw user sentence — the agent can search with the term of art it resolved.
+  - Embeddings remain the fallback, now with a measured gap to justify the cold-start and bundle cost rather than an assertion.
+
+  **Scoring credits containment, not string equality.** A question about §6(j)(1)(i) is answered by the chunk for §6(j)(1), which contains it. Demanding an exact match would mark right answers wrong and make the score an artefact of the chunk ceiling. Scored on **search alone** — expansion and definition attachment make an answer more useful but would make it impossible to tell whether the query found the provision or merely found something pointing at it.
+
+  Two harness faults it surfaced: `Art. VII §8(e)(1)` is unreachable because the PDF never bookmarks §8(e) (5.2b), so that question targets the containing Section; and "Tax Level" was in the term list although the document quotes it once and never defines it. Both are now tested against, since a low score caused by the harness is worse than no score.
+- [x] **5.8a** **The chunk ceiling is now measured, not guessed.** `MAX_CHARS` was 4,000 by assertion; swept against the golden set it settles at **6,000** — best or tied-best on every metric. 10,000 buys a little recall@3 while losing recall@1 and MRR, and returns more irrelevant text for it.
+
+  | ceiling | chunks | r@1 | r@3 | r@10 | MRR |
+  |---|---|---|---|---|---|
+  | 1,000 | 2,168 | 10.4% | 29.2% | 45.8% | 0.220 |
+  | 3,000 | 1,470 | 8.3% | 33.3% | 56.2% | 0.240 |
+  | 4,000 | 1,276 | 12.5% | 33.3% | 56.2% | 0.264 |
+  | **6,000** | **1,016** | **14.6%** | **35.4%** | **64.6%** | **0.292** |
+  | 10,000 | 743 | 12.5% | 39.6% | 64.6% | 0.283 |
+
+  Stated caveat: the metric credits the chunk *containing* the expected provision, so a coarser ceiling is structurally favoured — bigger chunks contain more. That is why the choice rests on recall@1 and MRR, which do not reward coarseness.
 - [x] **5.9** **Guardrail: figures in retrieved prose are marked so they can be refused.** `figures_in` finds dollar amounts, percentages and bare thousands-separated numbers, and every `Retrieval` carries them.
 
   This matters here more than it would elsewhere. The document is full of numbers that belong to a *different* exception, a worked example, or a prior CBA than the one being asked about — the "125% + $100,000" band that Phase 0 had to disprove is sitting in this text as live prose. Detection is deliberately broad: flagging a figure nobody would have quoted costs nothing, missing one costs a confident wrong dollar amount.
