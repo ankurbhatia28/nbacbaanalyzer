@@ -65,6 +65,17 @@ class RestrictionRow(StrEnum):
     J_TPE_FROM_SIGN_AND_TRADE = "J"  # TPE arising from a signed-and-traded contract
     K_TAXPAYER_MLE = "K"  # signs using the Taxpayer MLE
 
+    def describe(self) -> str:
+        """
+        The row as a phrase completing "may not ...".
+
+        Taken from the Table's own wording rather than the familiar shorthand:
+        row H is "aggregate" in every summary written about the second apron,
+        but what it actually covers is acquiring a player using an exception
+        created by aggregating contracts, which is a narrower thing.
+        """
+        return _ROW_DESCRIPTIONS[self]
+
     @property
     def applicable_apron(self) -> ApronLevel:
         return ApronLevel.FIRST if self.value <= "G" else ApronLevel.SECOND
@@ -84,6 +95,37 @@ class RestrictionRow(StrEnum):
         *following* Salary Cap Year rather than the current one.
         """
         return "E" <= self.value <= "J"
+
+
+_ROW_DESCRIPTIONS: dict[RestrictionRow, str] = {
+    RestrictionRow.A_BI_ANNUAL: "sign or acquire a player using the Bi-annual Exception",
+    RestrictionRow.B_NON_TAXPAYER_MLE: (
+        "sign or acquire a player using the Non-Taxpayer Mid-Level Exception"
+    ),
+    RestrictionRow.C_SIGN_AND_TRADE_IN: (
+        "acquire a player on a contract signed under Art. VII 8(e)(1), i.e. take in a "
+        "sign-and-trade"
+    ),
+    RestrictionRow.D_WAIVED_PLAYER_ABOVE_MLE: (
+        "sign a player waived during the Season whose pre-waiver salary exceeded the "
+        "Non-Taxpayer Mid-Level"
+    ),
+    RestrictionRow.E_EXPANDED_TPE: "acquire a player using an Expanded Traded Player Exception",
+    RestrictionRow.F_POST_SEASON_STANDARD_TPE: (
+        "use a Standard Traded Player Exception created in a prior Salary Cap Year"
+    ),
+    RestrictionRow.G_TRANSITION_TPE: (
+        "acquire a player using a Transition Traded Player Exception"
+    ),
+    RestrictionRow.H_AGGREGATED_TPE: (
+        "acquire a player using an exception created by aggregating two or more contracts"
+    ),
+    RestrictionRow.I_CASH_PAID: "send cash to another team in a trade",
+    RestrictionRow.J_TPE_FROM_SIGN_AND_TRADE: (
+        "use a Traded Player Exception created by a signed-and-traded contract"
+    ),
+    RestrictionRow.K_TAXPAYER_MLE: "sign a player using the Taxpayer Mid-Level Exception",
+}
 
 
 class SeasonThresholds:

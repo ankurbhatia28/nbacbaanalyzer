@@ -39,7 +39,7 @@ from dataclasses import dataclass
 
 from .apron import ApronLevel, RestrictionRow, SeasonThresholds
 from .citations import (
-    TRANSACTION_RESTRICTIONS,
+    TRANSACTION_PROHIBITION,
     TRANSACTION_RESTRICTIONS_TABLE,
     Citation,
 )
@@ -62,7 +62,7 @@ class TransactionPermission:
     level_amount: int
     salary_after: int
     exempt: bool = False
-    citation: Citation = TRANSACTION_RESTRICTIONS
+    citation: Citation = TRANSACTION_PROHIBITION
 
     def describe(self) -> str:
         verb = "may" if self.permitted else "may not"

@@ -34,6 +34,20 @@ class Citation:
 # -- Article VII, Section 2: cap, tax and apron levels ---------------------
 APRON_LEVELS = Citation("VII", "2(e)(1)(iii)", 195, "First and Second Apron Levels")
 APRON_TEAM_SALARY = Citation("VII", "2(e)(1)", 211, "Apron Team Salary computation")
+TRANSACTION_PROHIBITION = Citation(
+    "VII",
+    "2(e)(2)(i)(A)",
+    211,
+    "A Team may not engage in a transaction set forth in the Transaction Restrictions "
+    "Table if, immediately following such transaction, the Team's Apron Team Salary "
+    "would exceed the Applicable Apron Level",
+)
+"""The forward-looking prohibition: what a team may not do at all.
+
+Distinct from TRANSACTION_RESTRICTIONS below, which is the ceiling that attaches
+*after* a permitted transaction. Citing (B) for a refusal to permit would point a
+reader at the wrong rule.
+"""
 TRANSACTION_RESTRICTIONS = Citation(
     "VII",
     "2(e)(2)(i)(B)",
