@@ -245,3 +245,44 @@ I can write essentially all of the code. What I can't do is:
 5. **Decide what to cut when something stalls** — especially 3.3
 
 Items 2 and 3 are the ones that get skipped under time pressure, and they're the ones that determine whether the finished app is trustworthy or just plausible. Everything else is mechanical.
+
+
+## Guarantee structure, trade kickers and no-trade clauses — sourcing (2026-09-30)
+
+All three were listed as "model as unknown" for want of a source. One source covers
+all three: **Hoops Rumors** publishes an annual article per topic, updated through the
+season. `robots.txt` allows the article paths (it disallows only `/wp-admin/`,
+`/search`, `/*/email` and some query strings) and declares `Crawl-delay: 1`, so this
+fits the convention the existing scrapers already follow.
+
+| gap | source | notes |
+|---|---|---|
+| Non-guaranteed and partial salary | [2026/27 non-guaranteed by team](https://www.hoopsrumors.com/2026/07/2026-27-non-guaranteed-contracts-by-team.html) | Partial amounts given to the dollar. Mostly Exhibit 10 deals plus ~40 real cases. League-wide guarantee date **January 10**. |
+| Trade kickers | [2026/27 trade kickers](https://www.hoopsrumors.com/2026/08/nba-players-with-trade-kickers-in-2026-27.html) | Percentages given; most are 15%, the CBA maximum (Art. XXIV §2(a)(ii), p. 438). |
+| No-trade clauses | [2026/27 players who can veto trades](https://www.hoopsrumors.com/2026/07/nba-players-who-can-veto-trades-in-2026-27.html) | Only **one** explicit NTC in 2026/27 (Lillard). The implicit ones are derivable, not scraped. |
+
+### A derivation that did not work
+
+Before looking for a source I tried to derive guarantee status from data already in
+hand, since `contract_totals.csv` carries `guaranteed_remaining` (76% populated) and
+`contracts.csv` carries per-season salary and option markers. Subtracting the
+guaranteed total from the sum of listed seasons leaves a gap, and netting off the
+option years should isolate non-guaranteed money. On 439 contracts that gave 331
+"fully guaranteed", 30 "carrying non-guaranteed money", and 78 inconsistent.
+
+Validated against the Hoops Rumors list, **only 2 of those 30 are really
+non-guaranteed** (Moussa Cisse and Haywood Highsmith). The rest are false positives —
+the derived set is topped by John Collins, Michael Porter Jr. and Isaiah Hartenstein,
+none of whom appear on the authoritative list. `guaranteed_remaining` excludes more
+than unexercised options, and the 78 inconsistent cases were the warning sign. **The
+derivation is abandoned**; `guarantee_kind` stays `unknown` until the source above is
+loaded.
+
+### Priority note
+
+Guarantee structure does **not** affect trade legality. Searching the CBA for
+protection language inside the trade rules returns nothing: every occurrence sits in
+the waiver and claim provisions (pp. 418–420). Salary matching uses a player's
+*Salary*, not his guaranteed amount, so a non-guaranteed contract is traded at full
+value. The gap therefore blocks waiver, stretch and roster-flexibility questions —
+not 3.18 or 3.19.
