@@ -176,12 +176,41 @@ required UI element rather than a nicety.
   A parent's **preamble is kept** when its children are split out — §6(j) opens *"Subject to the rules set forth in Section 2(e) above"*, and dropping it would strip the apron precondition off every exception beneath it. Only **2** units exceed the ceiling with nothing left to split on, and both are flagged rather than force-cut: `Art. XI §5(j)(ii)(1)`, and `Art. XLII §3` (Exhibits), whose contents the PDF bookmarks as top-level entries rather than children of the Section.
 
   `MAX_CHARS = 4000` is a starting point, not a finding — per D12 it gets chosen against recall@k in 5.8 rather than asserted here.
-- [ ] **5.4** **Definitions index.** Article I terms of art govern every other Article; attach relevant definitions to chunks that use them
-- [ ] **5.5** Cross-reference graph with one-hop expansion at retrieval time
-- [ ] **5.6** **BM25 first** (SQLite FTS5, no model at inference). Legal text is dense with exact terms of art where lexical search wins. Add embeddings only if measured retrieval gains justify the cold-start and bundle cost — measure both arms separately and report the delta.
-- [ ] **5.7** **Deterministic citation path:** violation code → canonical citation → fetch that unit verbatim. The model quotes; it never chooses.
+- [x] **5.4** **Definitions index — 162 definitions, 176 names including aliases and pointers.** Article I opens *"As used in this Agreement, the following terms shall have the following meanings"*, and those meanings govern every other Article. A passage read without them supports a confident wrong answer.
+
+  - **Definitions are not only in the Definitions sections.** Three Sections are titled that (Art. I §1 with 87 terms, Art. VII §1, Art. XXXIII §1), but terms are also defined where they are needed — "Force Majeure Event" sits alone at Art. XXXIX §5(a). Every unit is scanned, not just the titled ones.
+  - **Four alias shapes, all of which the first parser missed:** an "or" alias (`"Audit Report" or "final Audit Report"`), a parenthetical (`"Early Termination Option" (or "ETO")`), a bare cross-reference (`"Player Contract" (see "Uniform Player Contract")`), and a comma-separated list inside the quotes (`"Renegotiation," "renegotiate," or "renegotiated"`). Plus the `The term "negotiate" means` lead-in.
+  - **Matching is case-sensitive**, because the document's convention is that a term is Capitalised where it carries its defined meaning. "the player" is not "the Player", and conflating them attaches a definition to every ordinary use of the word.
+  - **Nested terms resolve to the longest.** "Apron Team Salary" contains "Team Salary" and "Salary", both separately defined; reporting the generic one would label a passage with a term it does not use. A genuinely separate later occurrence still counts.
+  - **Ubiquitous terms are suppressed** rather than ranked down — "Team", "Agreement", "Salary Cap Year" match constantly and explain nothing, and every slot they take is one the operative term does not get. Held as an explicit list so it can be argued with; a test enforces that every entry is a name the document actually defines, after an earlier version listed "Player" and "NBA", neither of which the CBA defines at all.
+- [x] **5.5** **Cross-reference graph — 1,217 edges from 833 provisions, 20 unresolved (1.6%).** The CBA is a network, not a list: Art. VII §6(j)(1)(i) opens *"Subject to the rules set forth in Section 2(e) above"*, and §2(e) is where the apron restrictions live. Retrieving the exception without that reference returns a permission stripped of its precondition.
+
+  - **Resolution is per unit, because context decides the target.** A bare "Section 6(j)" means Section 6(j) *of the Article it appears in*; the same string in two Articles points at two different provisions. The text makes 1,144 bare references against 337 that name their Article.
+  - **Statutory references are excluded.** Article IV cites the Internal Revenue Code constantly — "Section 401(a) of the Code", "Section 415(d)(2) of the Code" — and Article VI cites "Section 302(c)(5) of the Labor Management Relations Act of 1947". Read as internal references these produced 33 edges to provisions that do not exist, which is how they were found: every one failed to resolve. Excluding them took unresolved references from 53 to 20.
+  - **Unresolved references are kept, not dropped.** An edge to a provision that does not exist would send retrieval after nothing, but discarding the reference would hide that the parser and the outline disagreed. They sit on `Graph.unresolved`.
+  - **One hop by default.** Two hops reaches most of Article VII from almost anywhere inside it, which stops being context and becomes the whole Article. Seeds are returned first so a caller can tell them from an expansion, and the reverse direction (`cited_by`) answers what relies on a provision.
+- [x] **5.6** **BM25 over SQLite FTS5 — 1,276 chunks in a 5.0MB artifact, no model at inference.** External-content FTS5, so the index points at the chunk table rather than holding a second copy of 1.2MB of text. `python -m rag` builds it and reports what went in.
+
+  **The trap worth naming:** FTS5 treats parentheses as grouping, so *"what does 6(j) say"* is not a query that returns nothing — unescaped it is a **syntax error**. Every query goes through `escape_query`, which strips operators and quotes each term; passing user text to MATCH is the same class of mistake as string-building SQL. Tested against parentheses, quotes, bare `AND`/`NOT`, wildcards, `NEAR`, empty input and stop-words-only.
+
+  `OR` beats `AND` as the default, measured rather than assumed: their top-3 agree where both work, but `AND` returns **nothing** for "Bird rights qualifying veteran" since no single passage carries all four terms.
+
+  **The artifact is self-contained** (ADR-004): definitions and cross-reference edges are written into it, so the serving application never parses a 676-page PDF at startup. Opened read-only — a test asserts a write fails.
+
+  26 citations cover more than one passage (Art. VII §2(e) carries its heading plus five worked Examples, one of which established that §2(e)(5) reaches the (i)(A) prohibition). They stay separate because they are separately useful, and carry an ordinal so two results are never both labelled "Art. VII §2(e)".
+- [x] **5.7** **Deterministic citation path — all 30 engine citations reach substantive text.** No ranking, no model, nothing that can return the wrong provision because a query was phrased oddly.
+
+  Getting there needed two corrections, both found by checking the whole citation table rather than a sample:
+  - **String-prefix fallback is not good enough.** §2(e)(2)(ii) shares a prefix with §2(e), whose own chunk is the 30-character heading *"(e) Operation of Apron Levels."* — so the walk "succeeded" while returning nothing quotable. Citations are now mapped to the **smallest chunk whose text contains them**, computed by span at build time (2,285 rows).
+  - **A Section-level citation resolves to its preamble**, which is frequently just a title — *"Section 8. Trade Rules."* is 23 characters. Those now bring their subsections too.
+
+  Asserted on **total characters, not "a passage came back"**: a lookup returning 23 characters of heading reports success and conveys nothing. Where a citation is finer than any chunk (§2(e)(2)(i)(A) lives inside §2(e)(2)(i)), the substitution is reported on `resolved_to` so a caller never claims to quote (A) while holding (i). An unknown citation returns nothing rather than a near miss.
+
+  **Provenance on every passage:** matched the query, referenced by something that did, or fetched by citation. Context is not evidence — an answer resting only on expansion means the query never matched the provision it claims to rely on. Expansion is capped at 2 per hit and 4 overall, because the Transaction Restrictions Table alone cites eight provisions and one broad match would otherwise bury the passages that answered the question.
 - [ ] **5.8** Golden Q&A set (~50) with expected citations; score recall@k and citation exact-match
-- [ ] **5.9** Guardrail: numeric answers must originate from a tool result, never from retrieved prose
+- [x] **5.9** **Guardrail: figures in retrieved prose are marked so they can be refused.** `figures_in` finds dollar amounts, percentages and bare thousands-separated numbers, and every `Retrieval` carries them.
+
+  This matters here more than it would elsewhere. The document is full of numbers that belong to a *different* exception, a worked example, or a prior CBA than the one being asked about — the "125% + $100,000" band that Phase 0 had to disprove is sitting in this text as live prose. Detection is deliberately broad: flagging a figure nobody would have quoted costs nothing, missing one costs a confident wrong dollar amount.
 
 ---
 
