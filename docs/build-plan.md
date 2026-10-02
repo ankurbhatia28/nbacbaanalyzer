@@ -389,8 +389,32 @@ required UI element rather than a nicety.
   4. **My scoring conflated over-refusal with fabrication**, which hid which was happening. They are now counted separately: `MISLEADING` for a figure or claim with nothing behind it, `over-refused` for declining something answerable — wrong, but wrong in the safe direction.
 
   Cost per run: ~122 model calls, ~380k input tokens at a **100% cache hit** on the answer and intent roles, 11s per question.
-- [ ] **6.12** Cost and latency tracking per request
-- [ ] **6.13** **Rate limiting and two hard caps — model spend and Raindrop events**, built with the agent loop rather than bolted on at deploy. A public URL in front of a model key is not deployable without them, and the 1,000-event tracing budget (6.10) is exhausted by roughly 140 questions.
+- [x] **6.12** **Per-request cost and latency**, reported from the API's own usage rather than estimated:
+
+  ```
+  What is the Standard Traded Player Exception?   10.9s, 4 model calls, 3 tool calls,
+                                                  10,923 in / 934 out, 3,293 cached, 8 trace events
+  How much are the Nuggets committed for?         16.1s, 8 model calls, 8 tool calls,
+                                                  13,868 in / 1,284 out, 24,891 cached, 17 trace events
+  ```
+
+  **No prices are hard-coded.** Per-token pricing changes, and a stale table would be worse than none, because the whole point of a cap is that the operator can trust it. Tokens are always counted; dollars appear only when a price table is supplied, and an unpriced request reports `None` rather than `0.0` — zero would read as free, which is a different claim from unknown. Cache reads are priced separately from fresh input, because at a 97% hit rate (6.8) folding them together would misstate the bill badly.
+- [x] **6.13** **Rate limiting and two hard caps, built with the loop rather than bolted on at deploy.** The loop is what knows how many calls a question cost.
+
+  **The two caps fail differently, on purpose.** Exceeding the tracing budget *degrades tracing*; exceeding the spend budget *refuses the request*. A trace is diagnostics and losing one costs a developer some insight; a model call costs money that is not recoverable. Drops are counted either way, so silence is distinguishable from nothing having happened.
+
+  Caps are checked **before the first model call**, because the point of a spend cap is to not spend — verified: a rate-limited request reports 0 model calls. A capped request returns a *verdict* explaining itself rather than raising, so the reason reaches the user instead of becoming a 500.
+
+  The request window is a sliding deque rather than fixed buckets, so a burst straddling a boundary cannot push two windows' worth through.
+
+- [x] **6.13a** **The D13 event estimate was optimistic, and the measurement corrects it.** I projected ~7 events per question and therefore ~140 questions a month on Raindrop's 1,000-event free tier. Measured: **8 events for a simple provision lookup and 17 for a data question** that took 8 model calls and 8 tool calls.
+
+  | | estimated (D13) | measured |
+  |---|---|---|
+  | events per question | ~7 | **8–17** |
+  | questions per 1,000 events | ~140 | **~60–125** |
+
+  The tool-heavy design that ADR-001 requires is what costs the events, so this is a consequence of the architecture rather than a bug. It makes the client-side event cap more important, not less: at 17 events a question the free tier is gone in 59.
 
 ---
 

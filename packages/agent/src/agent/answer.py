@@ -29,14 +29,16 @@ caller can show them next to the conclusion.
 from __future__ import annotations
 
 import sqlite3
+import time
 from dataclasses import dataclass, field
 
 from rag.retrieve import figures_in
 
+from .budget import Budget, BudgetError, RequestCost, measure
 from .intent import Plan
 from .intent import plan as build_plan
-from .llm import Caller, JsonDict, JsonReplyError, Reply, ToolRequest
-from .models import Role
+from .llm import Caller, JsonDict, JsonReplyError, Ledger, Reply, ToolRequest
+from .models import Role, model_for
 from .router import Routing, route
 from .tools import Resources, call, specs
 
@@ -119,6 +121,15 @@ class Verdict:
     refused: bool = False
     clarification: str | None = None
     rounds: int = 0
+    cost: RequestCost | None = None
+    """What this question cost (task 6.12). None when no budget was supplied."""
+    over_budget: str | None = None
+    """
+    Why a cap refused the request, if one did.
+
+    A verdict rather than an exception, so a caller gets the same shape back
+    whatever happened, and the reason reaches the user instead of a 500.
+    """
 
     @property
     def supported(self) -> bool:
@@ -128,7 +139,12 @@ class Verdict:
         A claim about the Agreement with no citation is unsupported even when it
         happens to be right, because nothing in it can be checked.
         """
-        return bool(self.citations) or self.refused or self.clarification is not None
+        return (
+            bool(self.citations)
+            or self.refused
+            or self.clarification is not None
+            or self.over_budget is not None
+        )
 
     @property
     def trustworthy(self) -> bool:
@@ -141,6 +157,10 @@ class Verdict:
         if self.assumptions:
             lines += ["", "Assumed:"]
             lines += [f"  - {a}" for a in self.assumptions]
+        if self.over_budget:
+            lines += ["", f"Refused by a cap: {self.over_budget}"]
+        if self.cost:
+            lines += ["", f"Cost: {self.cost.render()}"]
         if self.unsourced_figures:
             lines += [
                 "",
@@ -218,6 +238,7 @@ def answer(
     question: str,
     res: Resources,
     league: sqlite3.Connection | None = None,
+    budget: Budget | None = None,
 ) -> Verdict:
     """
     Answer one question, or refuse, or ask for clarification.
@@ -228,12 +249,59 @@ def answer(
     """
     verdict = Verdict(question=question)
     data_conn = league if league is not None else res.league
+    started = time.monotonic()
+    spent = Ledger()
+
+    # Checked before the first model call, because the point of a spend cap is
+    # to not spend.
+    if budget is not None:
+        try:
+            budget.check_rate()
+            budget.check_spend()
+        except BudgetError as exc:
+            verdict.over_budget = str(exc)
+            verdict.text = f"I cannot take that request right now: {exc}"
+            return verdict
+
+    def tracked(
+        *,
+        role: Role,
+        system: str,
+        messages: list[JsonDict],
+        max_tokens: int = 1024,
+        tools: list[JsonDict] | None = None,
+    ) -> Reply:
+        """
+        Every model call in this request goes through here.
+
+        Mirrors the `Caller` protocol so it can be passed wherever one is
+        expected, and exists only so usage is counted exactly once -- reading
+        the caller's own ledger would double-count across requests that share
+        a client.
+        """
+        reply = caller(
+            role=role, system=system, messages=messages, max_tokens=max_tokens, tools=tools
+        )
+        spent.record(role, reply.usage)
+        return reply
+
+    def finish() -> Verdict:
+        if budget is not None:
+            verdict.cost = measure(
+                budget,
+                question=question,
+                ledger=spent,
+                tool_calls=len(verdict.tool_calls),
+                seconds=time.monotonic() - started,
+                models={role: model_for(role).model for role in Role},
+            )
+        return verdict
 
     try:
-        verdict.routing = route(caller, question)
+        verdict.routing = route(tracked, question)
     except JsonReplyError as exc:
         verdict.text = f"I could not interpret that question ({exc})."
-        return verdict
+        return finish()
 
     if verdict.routing.refused and not verdict.routing.actionable:
         verdict.refused = True
@@ -242,11 +310,11 @@ def answer(
             "This is outside what this tool answers, and I would rather say so than "
             f"guess: {verdict.routing.reason}"
         )
-        return verdict
+        return finish()
 
     try:
         verdict.plan = build_plan(
-            caller,
+            tracked,
             question=question,
             kinds=verdict.routing.actionable or verdict.routing.intents,
             cba=res.cba,
@@ -258,7 +326,7 @@ def answer(
     if verdict.plan and verdict.plan.clarification:
         verdict.clarification = verdict.plan.clarification
         verdict.text = verdict.plan.clarification
-        return verdict
+        return finish()
 
     opening = _opening_message(question, verdict)
     messages: list[JsonDict] = [{"role": "user", "content": opening}]
@@ -274,7 +342,7 @@ def answer(
 
     for round_number in range(MAX_TOOL_ROUNDS):
         verdict.rounds = round_number + 1
-        reply = caller(
+        reply = tracked(
             role=Role.ANSWER,
             system=SYSTEM,
             messages=messages,
@@ -295,7 +363,7 @@ def answer(
 
     verdict.text = reply.text if reply else ""
     verdict.unsourced_figures = _audit_figures(verdict.text, sourced | asked, quoted)
-    return verdict
+    return finish()
 
 
 def _opening_message(question: str, verdict: Verdict) -> str:
