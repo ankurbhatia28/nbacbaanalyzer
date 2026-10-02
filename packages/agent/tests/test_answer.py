@@ -291,3 +291,89 @@ def test_the_system_prompt_forbids_calculation_and_unaided_assertion():
     assert "citation_returned" in SYSTEM
     assert "figures_present" in SYSTEM
     assert "unknown" in SYSTEM
+
+
+# -- caps inside the loop (6.13) -----------------------------------------
+
+
+def test_a_rate_limited_request_never_reaches_a_model(res):
+    """
+    The point of a spend cap is to not spend, so it is checked before the
+    first model call.
+    """
+    from agent.budget import Budget
+
+    budget = Budget(max_requests=1, window_seconds=60)
+    budget.check_rate()
+    script = Script(router=routing("data"), intent=planning(), answers=["should not be reached"])
+    verdict = answer(script, question="q", res=res, budget=budget)
+    assert verdict.over_budget is not None
+    assert "rate limit" in verdict.over_budget
+    assert script.answer_calls == 0
+    assert verdict.tool_calls == []
+
+
+def test_a_capped_request_returns_a_verdict_rather_than_raising(res):
+    """
+    A caller should get the same shape back whatever happened, and the reason
+    should reach the user rather than becoming a 500.
+    """
+    from agent.budget import Budget
+
+    budget = Budget(max_input_tokens=10)
+    budget.record("m", Usage(input_tokens=100))
+    verdict = answer(
+        Script(router=routing("data"), intent=planning(), answers=["x"]),
+        question="q",
+        res=res,
+        budget=budget,
+    )
+    assert verdict.over_budget is not None
+    assert "cannot take that request" in verdict.text
+    assert verdict.supported, "a capped request is accounted for, not an unexplained blank"
+    assert "Refused by a cap" in verdict.render()
+
+
+def test_a_request_records_what_it_cost(res):
+    from agent.budget import Budget
+
+    budget = Budget()
+    script = Script(
+        router=routing("rules"),
+        intent=planning("Trade Rules"),
+        answers=[[("fetch_provision", {"citation": "Art. VII §8"})], "The trade rules say..."],
+    )
+    verdict = answer(script, question="q", res=res, budget=budget)
+    assert verdict.cost is not None
+    assert verdict.cost.model_calls >= 3
+    assert verdict.cost.tool_calls == 1
+    assert verdict.cost.trace_events > 0
+    assert "Cost:" in verdict.render()
+
+
+def test_no_budget_means_no_cost_recorded_rather_than_a_zero(res):
+    verdict = answer(
+        Script(router=routing("rules"), intent=planning(), answers=["x"]),
+        question="q",
+        res=res,
+    )
+    assert verdict.cost is None
+
+
+def test_a_refused_question_still_records_its_cost(res):
+    """
+    The router call was made and the tokens were spent; reporting nothing would
+    make refusals look free.
+    """
+    from agent.budget import Budget
+
+    budget = Budget()
+    verdict = answer(
+        Script(router=routing("refused", basis="opinion"), intent=planning(), answers=[]),
+        question="should they?",
+        res=res,
+        budget=budget,
+    )
+    assert verdict.refused
+    assert verdict.cost is not None
+    assert verdict.cost.model_calls == 1
