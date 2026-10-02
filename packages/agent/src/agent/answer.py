@@ -41,6 +41,7 @@ from .llm import Caller, JsonDict, JsonReplyError, Ledger, Reply, ToolRequest
 from .models import Role, model_for
 from .router import Routing, route
 from .tools import Resources, call, specs
+from .trace import Kind, Trace
 
 MAX_TOOL_ROUNDS = 6
 """
@@ -123,6 +124,11 @@ class Verdict:
     rounds: int = 0
     cost: RequestCost | None = None
     """What this question cost (task 6.12). None when no budget was supplied."""
+    trace: Trace | None = None
+    """
+    The session record (task 6.10). Always built; exporting it is the caller's
+    choice, so a trace exists even with no vendor configured.
+    """
     over_budget: str | None = None
     """
     Why a cap refused the request, if one did.
@@ -239,6 +245,7 @@ def answer(
     res: Resources,
     league: sqlite3.Connection | None = None,
     budget: Budget | None = None,
+    session: str | None = None,
 ) -> Verdict:
     """
     Answer one question, or refuse, or ask for clarification.
@@ -251,6 +258,9 @@ def answer(
     data_conn = league if league is not None else res.league
     started = time.monotonic()
     spent = Ledger()
+    trace = Trace(session=session or "")
+    verdict.trace = trace
+    trace.record(Kind.USER_TURN, "question", text=question)
 
     # Checked before the first model call, because the point of a spend cap is
     # to not spend.
@@ -279,13 +289,42 @@ def answer(
         the caller's own ledger would double-count across requests that share
         a client.
         """
-        reply = caller(
-            role=role, system=system, messages=messages, max_tokens=max_tokens, tools=tools
+        span = trace.start(
+            Kind.MODEL_CALL,
+            role.value,
+            # The system prompt is recorded once per role rather than per call.
+            # D4 asks for it in the trace; repeating 3,000 tokens of vocabulary
+            # on every span would make the trace unreadable and, on a metered
+            # backend, expensive.
+            system_chars=len(system),
+            turns=len(messages),
+        )
+        try:
+            reply = caller(
+                role=role, system=system, messages=messages, max_tokens=max_tokens, tools=tools
+            )
+        except Exception as exc:
+            span.ended_at = time.time()
+            span.error = f"{type(exc).__name__}: {exc}"
+            raise
+        span.ended_at = time.time()
+        span.payload.update(
+            model=reply.model,
+            input_tokens=reply.usage.input_tokens,
+            output_tokens=reply.usage.output_tokens,
+            cached_tokens=reply.usage.cache_read_tokens,
+            wants_tools=reply.wants_tools,
         )
         spent.record(role, reply.usage)
         return reply
 
     def finish() -> Verdict:
+        trace.metadata.update(
+            refused=verdict.refused,
+            supported=verdict.supported,
+            trustworthy=verdict.trustworthy,
+            rounds=verdict.rounds,
+        )
         if budget is not None:
             verdict.cost = measure(
                 budget,
@@ -309,6 +348,11 @@ def answer(
         verdict.text = basis or (
             "This is outside what this tool answers, and I would rather say so than "
             f"guess: {verdict.routing.reason}"
+        )
+        trace.record(
+            Kind.REFUSAL,
+            verdict.routing.refusal_basis or "out_of_scope",
+            reason=verdict.routing.reason,
         )
         return finish()
 
@@ -355,7 +399,14 @@ def answer(
         messages.append({"role": "assistant", "content": list(reply.raw_content)})
         results: list[JsonDict] = []
         for request in reply.tool_requests:
+            span = trace.start(Kind.TOOL_CALL, request.name, arguments=request.arguments)
             result = call(res, request.name, request.arguments)
+            span.ended_at = time.time()
+            span.payload["ok"] = result.get("ok", True) and result.get("found", True)
+            if result.get("citation_returned") or result.get("citation"):
+                span.payload["citation"] = result.get("citation_returned") or result.get("citation")
+            if result.get("row_count") is not None:
+                span.payload["row_count"] = result["row_count"]
             verdict.tool_calls.append((request.name, request.arguments, result))
             _collect(result, verdict, sourced, quoted)
             results.append(_tool_result_block(request, result))
@@ -363,6 +414,14 @@ def answer(
 
     verdict.text = reply.text if reply else ""
     verdict.unsourced_figures = _audit_figures(verdict.text, sourced | asked, quoted)
+    trace.record(
+        Kind.ANSWER,
+        "final",
+        chars=len(verdict.text),
+        citations=list(verdict.citations),
+        unsourced_figures=list(verdict.unsourced_figures),
+        assumptions=verdict.assumptions,
+    )
     return finish()
 
 

@@ -332,6 +332,64 @@ ignored (`cache_write=0`, `cache_read=0`, every call). Caching instead cuts the
 which is the better place for it anyway, since that role runs on the mid tier and
 carries the 2,697-token tool schemas. See 6.8 in the build plan.
 
+## 6c. D16 — tracing vendor: Langfuse looks strictly better than Raindrop
+
+Raised because the 6.13a measurement made the Raindrop free tier much tighter
+than D13 assumed, and because Langfuse was worth checking.
+
+| | Raindrop Hobby | Langfuse Cloud Hobby | Langfuse self-hosted |
+|---|---|---|---|
+| cost | free | free | free, open source |
+| allowance | **1,000 events/mo** | **50,000 units/mo** | unlimited |
+| retention | 14 days | 30 days | yours |
+| self-host | Enterprise, VPC beta, selected partners | — | yes |
+
+At the measured **8–21 events per question** (6.13a, 6.10):
+
+| | questions per month on the free tier |
+|---|---|
+| Raindrop | **~50–125** |
+| Langfuse Cloud | **~2,400–6,250** |
+
+That is the difference between a demo that runs out of tracing in a week and one
+that does not. Self-hosting also removes the retention problem that 6.10a exists
+to work around.
+
+**My recommendation is Langfuse**, self-hosted if the Render free tier can carry
+it and Cloud Hobby otherwise. This reverses D4 and D13, which chose Raindrop, so
+it is your call — and the cost of being wrong is low either way, because 6.10
+built the tracer vendor-neutral: switching is an adapter, not a rewrite. The
+`RAINDROP_API_KEY` already in `.env` is not wasted work; it is just unused if you
+switch.
+
+## 6d. D17 — an LLM gateway (LiteLLM or OpenRouter): not yet, and the reason is caching
+
+Both would work. Neither earns its place right now, and the blocker is specific.
+
+**Prompt caching is doing a lot of work here.** 6.8 measured a 97% cut in the
+answer role's billed input and a 100% hit rate on the intent role, whose prompt
+carries 612 provision names. The breakpoint sits on the **system block**, which
+is exactly the shape that travels worst through a gateway:
+
+- LiteLLM supports *message-level* `cache_control` via injection points, not
+  Anthropic's system-block parameter, and its OpenAI transport
+  [strips `cache_control` from content blocks](https://github.com/BerriAI/litellm/issues/22071).
+- OpenRouter caches Anthropic models only when explicit markers survive the
+  route, and several reports describe routes
+  [dropping them](https://github.com/anomalyco/opencode/issues/39009).
+
+A gateway's main benefit is switching models freely. We do not need that: D15
+settled the per-role assignment *by measurement*, and the one remaining
+candidate is Opus for the answer role if 6.11 ever demands it.
+
+**The option stays cheap.** `llm.Caller` is a protocol, so a LiteLLM or
+OpenRouter client is one class implementing one method. And if we ever do switch,
+the canary is already built: `Ledger.cache_hit_rate` would drop from ~100% to 0
+and say so, rather than the bill quietly tripling.
+
+**Revisit if** we want to evaluate non-Anthropic models side by side, or if cost
+becomes dominated by something caching cannot reach.
+
 ## 7. The honest summary
 
 I can write essentially all of the code. What I can't do is:
