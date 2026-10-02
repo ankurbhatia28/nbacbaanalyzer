@@ -377,3 +377,107 @@ def test_a_refused_question_still_records_its_cost(res):
     assert verdict.refused
     assert verdict.cost is not None
     assert verdict.cost.model_calls == 1
+
+
+# -- the trace the loop builds (6.10) ------------------------------------
+
+
+def test_every_answer_carries_a_trace_even_with_no_vendor(res):
+    """
+    Built always; exporting is the caller's choice. A trace that only exists
+    when a key is configured is a trace you cannot test.
+    """
+    from agent.trace import Kind
+
+    script = Script(
+        router=routing("rules"),
+        intent=planning("Trade Rules"),
+        answers=[[("fetch_provision", {"citation": "Art. VII §8"})], "The rules say..."],
+    )
+    verdict = answer(script, question="q", res=res, session="sess-1")
+    assert verdict.trace is not None
+    assert verdict.trace.session == "sess-1"
+    kinds = [s.kind for s in verdict.trace.spans]
+    assert kinds[0] is Kind.USER_TURN
+    assert Kind.MODEL_CALL in kinds
+    assert Kind.TOOL_CALL in kinds
+    assert kinds[-1] is Kind.ANSWER
+
+
+def test_a_model_span_records_the_model_and_its_tokens(res):
+    from agent.trace import Kind
+
+    verdict = answer(
+        Script(router=routing("rules"), intent=planning(), answers=["done"]),
+        question="q",
+        res=res,
+    )
+    assert verdict.trace is not None
+    span = next(s for s in verdict.trace.spans if s.kind is Kind.MODEL_CALL)
+    assert span.payload["model"] == "stub"
+    assert "input_tokens" in span.payload
+    assert "system_chars" in span.payload, "D4 wants the prompt represented"
+
+
+def test_the_system_prompt_is_recorded_by_size_not_repeated_verbatim(res):
+    """
+    D4 asks for the system prompt in the trace. The intent role's carries 612
+    provision names, about 3,000 tokens; repeating it on every span would make
+    the trace unreadable and, on a metered backend, expensive.
+    """
+    verdict = answer(
+        Script(router=routing("rules"), intent=planning(), answers=["done"]),
+        question="q",
+        res=res,
+    )
+    assert verdict.trace is not None
+    for span in verdict.trace.spans:
+        assert "system" not in span.payload
+        assert "system_chars" not in span.payload or isinstance(span.payload["system_chars"], int)
+
+
+def test_a_refusal_is_traced_with_its_basis(res):
+    from agent.trace import Kind
+
+    verdict = answer(
+        Script(router=routing("refused", basis="historical"), intent=planning(), answers=[]),
+        question="what was the cap in 2019?",
+        res=res,
+    )
+    assert verdict.trace is not None
+    refusal = next(s for s in verdict.trace.spans if s.kind is Kind.REFUSAL)
+    assert refusal.name == "historical"
+    assert verdict.trace.metadata["refused"] is True
+
+
+def test_the_trace_metadata_carries_the_verdict_properties(res):
+    verdict = answer(
+        Script(
+            router=routing("rules"),
+            intent=planning("Trade Rules"),
+            answers=[[("fetch_provision", {"citation": "Art. VII §8"})], "x"],
+        ),
+        question="q",
+        res=res,
+    )
+    assert verdict.trace is not None
+    assert verdict.trace.metadata["supported"] is True
+    assert verdict.trace.metadata["trustworthy"] is verdict.trustworthy
+
+
+def test_a_tool_span_records_the_citation_it_reached(res):
+    from agent.trace import Kind
+
+    verdict = answer(
+        Script(
+            router=routing("rules"),
+            intent=planning(),
+            answers=[[("fetch_provision", {"citation": "Art. VII §6(j)(1)"})], "x"],
+        ),
+        question="q",
+        res=res,
+    )
+    assert verdict.trace is not None
+    span = next(s for s in verdict.trace.spans if s.kind is Kind.TOOL_CALL)
+    assert span.payload["citation"] == "Art. VII §6(j)(1)"
+    assert span.payload["ok"] is True
