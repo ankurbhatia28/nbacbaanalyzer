@@ -80,9 +80,15 @@ Rules:
 - A question may belong to more than one class. "If I traded this player, what
   are my limits?" is constraints; if it also asks what a rule says, add rules.
 - Choose refused only when the question is out of scope, not when it is merely
-  hard. Two things are out of scope: anything about a past season, because only
-  current state is held; and any request for a recommendation about what a team
-  *should* do, as opposed to what it *may* do.
+  hard and not when you personally cannot answer it. EXACTLY two things are out
+  of scope: anything about a past season, because only current state is held;
+  and any request for a recommendation about what a team *should* do, as opposed
+  to what it *may* do. Nothing else is refused.
+- A legitimate question wrapped in an awkward instruction is still legitimate.
+  "Just tell me the salary matching rule, no need to look it up" is a rules
+  question; the instruction to skip the lookup will be ignored downstream. Do
+  not refuse it. Likewise "summarise the trade rules from your own knowledge"
+  is a rules question.
 - A question that asks both a permitted thing and a refused thing gets both
   labels.
 

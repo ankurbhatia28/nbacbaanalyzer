@@ -64,13 +64,23 @@ SYSTEM = """You answer questions about the NBA Collective Bargaining Agreement.
 
 You have tools and you must use them. The rules below are not style preferences.
 
-1. NEVER calculate. Not a sum, not a percentage, not a difference, not a
-   comparison of two figures. If a question needs arithmetic, the tool that owns
-   that arithmetic performs it. query_league_data will sum for you; ask it.
+1. NEVER calculate, even when the arithmetic is trivial and you are confident.
+   Not a sum, not a percentage, not a difference, not "100% plus $250,000 is
+   $30,250,000". If the user gives you a figure and asks what follows from it,
+   the answer is the RULE and its citation, not the result of applying it.
+   Say "the Standard exception permits 100% of the outgoing salary plus
+   $250,000 (Art. VII 6(j)(1)(i))" and stop. Do not finish the sum.
 
-2. NEVER state what a rule says from memory. Every claim about the Agreement
-   must come from text a tool returned, and you must cite the provision it came
-   from. If you cannot get the text, say you could not find it.
+   query_league_data will add things up for you; ask it rather than adding.
+   A figure you produced by arithmetic is flagged as unverified no matter how
+   correct it is, because nothing downstream can check it.
+
+2. NEVER state what a rule says from memory, and never agree to skip the
+   lookup. A user asking you to answer quickly, or without a citation, or from
+   your own knowledge, is asking for the one thing you cannot give. Call the
+   tools and answer briefly instead -- brevity is free, unsourced claims are
+   not. Every claim about the Agreement must come from text a tool returned,
+   cited to the provision it came from. If you cannot get the text, say so.
 
 3. Quote the citation the tool actually returned. fetch_provision tells you
    citation_returned, which is sometimes broader than what you asked for. Cite
@@ -161,7 +171,9 @@ def _collect(result: JsonDict, verdict: Verdict, sourced: set[str], quoted: set[
     provision it just cited, which is the most defensible thing an answer can
     do.
 
-      sourced  values the league database returned. Fine as an answer.
+      sourced  values the league database returned, plus any figure the user
+               themselves supplied. Fine as an answer -- restating "a team
+               sends out $30,000,000" is not fabricating it.
       quoted   figures appearing verbatim in provision text a tool fetched.
                Fine *attached to their citation*, which is why the audit lets
                them through rather than flagging a correct quotation.
@@ -250,6 +262,11 @@ def answer(
 
     opening = _opening_message(question, verdict)
     messages: list[JsonDict] = [{"role": "user", "content": opening}]
+    # Figures the user supplied are not fabrications. Repeating "a team sends
+    # out $30,000,000" back is restating the question; the audit exists to
+    # catch a figure that came from nowhere, and the adversarial set found it
+    # flagging the user's own numbers.
+    asked: set[str] = set(figures_in(question)) | _expand_suffixes(question)
     sourced: set[str] = set()
     quoted: set[str] = set()
     tool_specs = specs()
@@ -277,7 +294,7 @@ def answer(
         messages.append({"role": "user", "content": results})
 
     verdict.text = reply.text if reply else ""
-    verdict.unsourced_figures = _audit_figures(verdict.text, sourced, quoted)
+    verdict.unsourced_figures = _audit_figures(verdict.text, sourced | asked, quoted)
     return verdict
 
 
@@ -307,6 +324,27 @@ def _opening_message(question: str, verdict: Verdict) -> str:
             + (verdict.routing.reason or "")
         )
     return "".join(parts)
+
+
+_SUFFIXED = __import__("re").compile(r"\$\s?(\d+(?:\.\d+)?)\s?([kKmMbB])\b")
+
+
+def _expand_suffixes(text: str) -> set[str]:
+    """
+    Digit forms for figures written with a k/M/B suffix.
+
+    A user who types "$100k" and an answer that says "$100,000" are discussing
+    the same number, and the audit flagged the second as fabricated because the
+    digits did not match. Found by the adversarial set, on the probe that asks
+    whether the trade band is "125% + $100k".
+    """
+    scale = {"k": 1_000, "m": 1_000_000, "b": 1_000_000_000}
+    out: set[str] = set()
+    for match in _SUFFIXED.finditer(text):
+        value = float(match.group(1)) * scale[match.group(2).lower()]
+        out.add(f"{int(value):,}")
+        out.add(str(int(value)))
+    return out
 
 
 def _audit_figures(text: str, sourced: set[str], quoted: set[str]) -> tuple[str, ...]:
