@@ -77,6 +77,15 @@ class Usage:
 
 
 @dataclass(frozen=True, slots=True)
+class ToolRequest:
+    """A tool the model asked to run, with the id its result must carry back."""
+
+    id: str
+    name: str
+    arguments: JsonDict
+
+
+@dataclass(frozen=True, slots=True)
 class Reply:
     """What a call returned: the text, the tokens, and which model answered."""
 
@@ -84,6 +93,19 @@ class Reply:
     usage: Usage
     model: str
     stop_reason: str | None = None
+    tool_requests: tuple[ToolRequest, ...] = ()
+    raw_content: tuple[JsonDict, ...] = ()
+    """
+    The assistant turn verbatim, to be replayed when returning tool results.
+
+    Kept because a tool-use turn has to go back into the conversation exactly
+    as it came out; reconstructing it from `text` would drop the tool_use
+    blocks and the model would have nothing to attach results to.
+    """
+
+    @property
+    def wants_tools(self) -> bool:
+        return bool(self.tool_requests)
 
 
 class Caller(Protocol):
@@ -227,11 +249,22 @@ class AnthropicCaller:
         text = "".join(
             block.text for block in response.content if isinstance(block, anthropic.types.TextBlock)
         )
+        requests = tuple(
+            ToolRequest(
+                id=block.id,
+                name=block.name,
+                arguments=dict(block.input) if isinstance(block.input, dict) else {},
+            )
+            for block in response.content
+            if isinstance(block, anthropic.types.ToolUseBlock)
+        )
         return Reply(
             text=text,
             usage=usage,
             model=selection.model,
             stop_reason=getattr(response, "stop_reason", None),
+            tool_requests=requests,
+            raw_content=tuple(block.model_dump(exclude_none=True) for block in response.content),
         )
 
 

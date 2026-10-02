@@ -324,10 +324,22 @@ required UI element rather than a nicety.
 
   **Ambiguity asks rather than guesses.** Two players called Williams is not a coin flip, so an ambiguous entity yields a clarification and no plan. An *unresolved provision name* deliberately does not: the user did not choose it, the model did, and asking them about it would be asking them to debug the agent.
 - [x] **6.3a** **D15 revised: `INTENT` moves to the mid tier**, on two measurements rather than a preference. 16 points of accuracy on the task the whole retrieval strategy rests on, and — the surprise — the **cheaper model is the one that resends the prompt every time.** The vocabulary prefix is ~3,150 tokens, which is above Sonnet's 1,024-token cache minimum and below Haiku's 4,096. Uncached input across 25 calls: **609 tokens on Sonnet against 83,399 on Haiku.** The minimums were measured by bisection, not recalled.
-- [ ] **6.4** Structured outputs, schema validation, bounded retry
-- [ ] **6.5** Agent loop with a hard prohibition on unaided arithmetic or rule assertions
-- [ ] **6.6** **Refusal policy** — hypotheticals ("should they?"), historical questions (out of v1 scope), and anything the tools cannot answer. Each refusal states why.
-- [ ] **6.7** Assumptions surfaced in the answer, not buried
+- [x] **6.4** **Structured outputs with one bounded retry**, which hands the model its own parse error. A bare "try again" wastes the turn; naming what was wrong usually fixes it. Unbounded retries on a confused model burn budget, so the budget is the first try plus one correction. Fenced blocks and JSON wrapped in prose are both accepted, because models produce both — but ambiguity is not guessed at.
+- [x] **6.5** **The loop — route, plan, run tools, answer — with the prohibition enforced rather than requested.**
+
+  The system prompt forbids calculating and forbids stating a rule from memory. But a prompt is a request, not a guarantee, so the loop checks the finished answer:
+
+  - **Every figure in the answer is audited** against what the tools actually returned. A number from neither a database row nor cited text is reported on the verdict. The check is a set comparison over digits — **nothing in it consults a model**, because a guardrail a model can talk its way past is not one. Normalised on digits, so `$221,069,148` matches a raw `221069148` and formatting is not mistaken for fabrication.
+  - **An answer citing nothing is marked unsupported**, even when it happens to be right, because nothing in it can be checked.
+  - **Tool rounds are capped at 6** — enough for the longest real path, short enough that a loop which has lost its way stops costing money.
+
+  **The audit caught a flaw in itself on the first real run.** It flagged `$250,000` and `100%` in an answer that was *quoting Art. VII §6(j)(1)(i) verbatim* — the most defensible thing an answer can do. 5.9 forbids computing or recalling a figure, not quoting one out of the provision just cited, so figures are now split: values from the database are `sourced`, figures appearing in fetched provision text are `quoted`, and only a figure in neither is flagged. A warning that fires on the right answer teaches readers to ignore it.
+
+  The plan's citations are handed to the answer turn rather than left to be rediscovered, since naming reaches the right provision 80% of the time against search's 20% (6.3).
+- [x] **6.6** **Refusals name the decision they rest on.** Historical questions cite D6 — *"only current state is held, so answering would mean reporting today's figures as though they were then"* — and requests for a recommendation cite D10. A refusal that cannot say why is indistinguishable from a bug.
+
+  **A partly refused question is still answered.** The refusal is carried into the answer turn instead of ending it, because declining the whole question would drop the part that is answerable.
+- [x] **6.7** **Assumptions travel with the answer.** A citation substitution (*"the citation asked for was finer than any indexed passage"*), a tool reporting a term the Agreement does not define, and the engine's own recorded assumptions all attach to the verdict, so a caller can show them beside the conclusion rather than beneath it. `Verdict.trustworthy` is the single property that is false if anything is unsupported or unverified.
 - [x] **6.8** **Prompt caching on the stable prefix — 97% off the answer role's billed input, and nothing for the router.** `python -m agent.cache_cli` runs both arms and reports the delta.
 
   | shape | uncached input | cached input | from cache | saved |
