@@ -235,7 +235,9 @@ Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order
 | D12 | Retrieval strategy | **BM25 for candidates, then term-coverage re-ranking** (SQLite FTS5, still no model at inference). Measured in 5.8: recall@1 34%, recall@3 48%, MRR 0.433 — but **76% recall@3 when the query carries the term of art against 20% when it does not.** Ranking work is done; the residue was vocabulary, settled by D14. |
 | D14 | Paraphrase gap | **Resolve a question to one of the document's 670 names, then look the provision up** — not search for a paraphrase. Reaches 25 of 25 provisions the engine cites against 20% recall@3 by search. Exact matching only; an invented name resolves to nothing. Dense retrieval stays the fallback if 6.3's naming accuracy disappoints. See §6a. |
 | D15 | Model per role | **Haiku 4.5 for routing; Sonnet 5 for provision-name selection and the answer.** (Intent moved up after 6.3 measured it — see §6b.) Not one model: ADR-001 leaves the model classification and selection, which do not need the top tier. Measured on the router (6.1): Haiku **88.9%** exact-set accuracy against Sonnet's 91.1%, both at **100% refusal recall**. 2.2 points is not worth the tier for a four-way label. Opus 5.5 held in reserve for the answer role if 6.11's adversarial set defeats Sonnet. Configured per role via `ANTHROPIC_MODEL_{ROUTER,INTENT,ANSWER}`; `ANTHROPIC_MODEL` pins all three, which is what an eval run does. See §6b. |
-| D13 | Raindrop deployment | **Cloud, Hobby (free) tier** — event budget re-measured in 6.13a: **8–17 events per question, so ~60–125 questions a month**, not the ~140 first estimated. — there is no alternative: self-hosting is VPC-only, Enterprise, and in beta with selected partners. 1,000 events/month, 14-day retention, 1 custom signal. Pro is $299/month, which this project will not spend. **Narrows D8:** "no hosted services" already gave way to D11 (Vercel + Render); the operative constraint is no recurring fee, which the Hobby tier meets. |
+| D16 | Tracing vendor | **Langfuse Cloud Hobby.** Free, 50,000 units/month, 30 days retention. Self-hosting needs Postgres + Redis + ClickHouse + blob storage behind two containers, which contradicts D11 and buys only retention that `FileExporter` already provides. Supersedes the Raindrop half of D4 and D13. See §6c. |
+| D17 | LLM gateway | **Not yet.** LiteLLM and OpenRouter both mishandle Anthropic's system-block `cache_control`, and 6.8 measured that caching cuts the answer role's billed input by 97%. A gateway's benefit is free model switching, which D15 settled by measurement instead. `llm.Caller` is a protocol, so the option stays one class away, and `Ledger.cache_hit_rate` is the canary. See §6d. |
+| D13 | Raindrop deployment (superseded by D16) | **Cloud, Hobby (free) tier** — event budget re-measured in 6.13a: **8–17 events per question, so ~60–125 questions a month**, not the ~140 first estimated. — there is no alternative: self-hosting is VPC-only, Enterprise, and in beta with selected partners. 1,000 events/month, 14-day retention, 1 custom signal. Pro is $299/month, which this project will not spend. **Narrows D8:** "no hosted services" already gave way to D11 (Vercel + Render); the operative constraint is no recurring fee, which the Hobby tier meets. |
 
 ## 6a. D14 — closing the paraphrase gap: **settled, option A**
 
@@ -332,7 +334,7 @@ ignored (`cache_write=0`, `cache_read=0`, every call). Caching instead cuts the
 which is the better place for it anyway, since that role runs on the mid tier and
 carries the 2,697-token tool schemas. See 6.8 in the build plan.
 
-## 6c. D16 — tracing vendor: Langfuse looks strictly better than Raindrop
+## 6c. D16 — tracing vendor: **Langfuse Cloud Hobby** (settled)
 
 Raised because the 6.13a measurement made the Raindrop free tier much tighter
 than D13 assumed, and because Langfuse was worth checking.
@@ -355,12 +357,25 @@ That is the difference between a demo that runs out of tracing in a week and one
 that does not. Self-hosting also removes the retention problem that 6.10a exists
 to work around.
 
-**My recommendation is Langfuse**, self-hosted if the Render free tier can carry
-it and Cloud Hobby otherwise. This reverses D4 and D13, which chose Raindrop, so
-it is your call — and the cost of being wrong is low either way, because 6.10
-built the tracer vendor-neutral: switching is an adapter, not a rewrite. The
-`RAINDROP_API_KEY` already in `.env` is not wasted work; it is just unused if you
-switch.
+**Settled: Langfuse Cloud Hobby, and self-hosting is not worth it here.**
+
+Self-hosting Langfuse needs **Postgres, Redis/Valkey, ClickHouse and blob
+storage behind two containers** (Web and Worker). That contradicts D11 — "no
+managed DB, no persistent disk" — and would not fit the free tier this project
+deploys to. Six moving parts to run an observability stack, on a project whose
+substance is the CBA reasoning.
+
+And the one thing self-hosting buys is already covered. Its advantage over Cloud
+Hobby is retention past 30 days; `FileExporter` keeps every trace locally for
+nothing, and task 6.10a commits five of them to the repo. The durable record
+exists either way.
+
+50,000 units a month is roughly 2,400–6,250 questions at the measured 8–21
+events each. We will not approach it.
+
+`RAINDROP_API_KEY` in `.env` is now unused and can be removed. This supersedes
+the Raindrop half of D4 and D13; the *shape* D4 specified is unchanged and
+implemented.
 
 ## 6d. D17 — an LLM gateway (LiteLLM or OpenRouter): not yet, and the reason is caching
 
