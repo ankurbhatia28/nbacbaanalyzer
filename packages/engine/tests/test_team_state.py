@@ -26,11 +26,15 @@ def contract(pid, amount):
     )
 
 
-def test_denver_crosses_the_second_apron_only_once_holds_count():
+def test_denver_holds_count_against_the_cap_but_not_the_aprons():
     """
-    The worked case. $208.7M of active salary sits under the second apron;
-    $250.6M with holds sits well over it. Which number you use decides whether
-    Denver is a second-apron team.
+    The worked case, corrected in Phase 7. $208.7M of active salary plus $41.9M
+    of free-agent holds is $250.6M of cap salary -- but Art. VII §2(e)(1)(iv)
+    subtracts Free Agent Amounts from Apron Team Salary, so Denver is a
+    taxpayer below the first apron, not a second-apron team.
+
+    This test used to assert SECOND_APRON. The engine counted holds toward the
+    aprons, and the test encoded the same mistake.
     """
     den = TeamState(
         team_id="DEN",
@@ -40,9 +44,49 @@ def test_denver_crosses_the_second_apron_only_once_holds_count():
     )
     assert den.committed_salary() == 208_710_566
     assert den.cap_salary() == 250_580_710
-    assert den.committed_salary() < SEASON.second_apron
-    assert den.cap_salary() > SEASON.second_apron
-    assert den.apron_status() is ApronStatus.SECOND_APRON
+    assert den.apron_team_salary() == 208_710_566
+    assert den.apron_status() is ApronStatus.TAXPAYER
+
+
+def test_a_restricted_free_agent_counts_toward_the_aprons_at_the_qualifying_offer():
+    """§2(e)(1)(iv) removes the hold; (v) adds back the outstanding Qualifying Offer."""
+    den = TeamState(
+        team_id="DEN",
+        season=SEASON,
+        contracts=[contract("p1", 200_000_000)],
+        cap_holds=[CapHold(HoldKind.QUALIFYING_OFFER, 13_069_428, qualifying_offer=6_534_714)],
+    )
+    assert den.cap_salary() == 213_069_428
+    assert den.apron_team_salary() == 206_534_714
+
+
+def test_draft_and_incomplete_roster_holds_are_excluded_from_the_aprons():
+    """§2(e)(1)(vi) and (x)."""
+    team = TeamState(
+        team_id="X",
+        season=SEASON,
+        contracts=[contract("p1", 150_000_000)],
+        cap_holds=[
+            CapHold(HoldKind.DRAFT_PICK, 3_173_040),
+            CapHold(HoldKind.INCOMPLETE_ROSTER, 1_272_870),
+        ],
+    )
+    assert team.apron_team_salary() == 150_000_000
+
+
+def test_room_is_a_cap_question_so_holds_can_take_it_away():
+    """
+    Holds are excluded from the aprons, not from the cap. A team whose contracts
+    sit under the cap but whose holds take it over has no room.
+    """
+    team = TeamState(
+        team_id="X",
+        season=SEASON,
+        contracts=[contract("p1", 150_000_000)],
+        cap_holds=[CapHold(HoldKind.FREE_AGENT, 20_000_000)],
+    )
+    assert team.apron_team_salary() < SEASON.salary_cap < team.cap_salary()
+    assert team.apron_status() is ApronStatus.OVER_CAP
 
 
 def test_no_ceiling_means_no_room_figure():

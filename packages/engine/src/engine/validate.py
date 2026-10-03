@@ -530,6 +530,15 @@ def _add_trade_window(
         log.add(Assumption("signed_date", player_id, None, "not carried for this contract"))
         return
 
+    if contract.contract_type is ContractType.UNKNOWN:
+        log.add(
+            Assumption(
+                "contract_type",
+                player_id,
+                "not rookie scale, not sign-and-trade",
+                "contract type is not carried by any available source",
+            )
+        )
     eligibility = trade_dates.check(
         when=when,
         signed=contract.signed_date,
