@@ -37,6 +37,21 @@ class Entity:
     source_sql: str
     description: str
     fields: tuple[Field, ...]
+    source_column: str = "source"
+    """
+    Where the figure-bearing table records its source (task 7.6).
+
+    Named per entity because a joined view has several tables, and the
+    provenance worth reporting is that of the table the figures come from --
+    a salary's, not the player record it was joined to.
+    """
+    as_of_column: str | None = None
+    """
+    The per-row observation date, where the table has one.
+
+    None for tables whose rows carry no date. Their provenance falls back to
+    when the source was scraped, and says that is what it is.
+    """
 
     def field(self, name: str) -> Field | None:
         return next((f for f in self.fields if f.name == name), None)
@@ -81,6 +96,8 @@ _PLAYER_CONTRACT_SEASONS = Entity(
             "Seasons completed before this one",
         ),
     ),
+    source_column="c.source",
+    as_of_column="c.as_of",
 )
 
 _CAP_HOLDS = Entity(
@@ -106,6 +123,8 @@ _CAP_HOLDS = Entity(
         Field("qualifying_offer", FieldType.INTEGER, "h.qualifying_offer", "QO amount if any"),
         Field("season", FieldType.TEXT, "h.season_id", "Season the hold applies to"),
     ),
+    source_column="h.source",
+    as_of_column="h.as_of",
 )
 
 _HARD_CAP_CEILINGS = Entity(
@@ -128,6 +147,7 @@ _HARD_CAP_CEILINGS = Entity(
         Field("trigger_detail", FieldType.TEXT, "trigger_detail", "The specific transaction"),
         Field("season", FieldType.TEXT, "season_id", "Season the ceiling applies to"),
     ),
+    source_column="source",
 )
 
 _DRAFT_PICKS = Entity(
@@ -151,6 +171,8 @@ _DRAFT_PICKS = Entity(
         Field("forfeited", FieldType.INTEGER, "forfeited", "Always 0 -- no source populates this"),
         Field("protection_text", FieldType.TEXT, "protection_text", "Protection prose, if any"),
     ),
+    source_column="source",
+    as_of_column="as_of",
 )
 
 _TRADE_EXCEPTIONS = Entity(
@@ -165,6 +187,8 @@ _TRADE_EXCEPTIONS = Entity(
         Field("kind", FieldType.TEXT, "kind", "Exception type"),
         Field("reason", FieldType.TEXT, "reason", "Transaction that created it"),
     ),
+    source_column="source",
+    as_of_column="as_of",
 )
 
 _AWARDS = Entity(
@@ -180,6 +204,7 @@ _AWARDS = Entity(
         Field("award", FieldType.TEXT, "a.award", "All-NBA, DPOY or MVP"),
         Field("tier", FieldType.TEXT, "a.tier", "1st/2nd/3rd for All-NBA, else Winner"),
     ),
+    source_column="a.source",
 )
 
 _SEASONS = Entity(
@@ -195,6 +220,7 @@ _SEASONS = Entity(
         Field("non_taxpayer_mle", FieldType.INTEGER, "non_taxpayer_mle", "Non-taxpayer MLE"),
         Field("taxpayer_mle", FieldType.INTEGER, "taxpayer_mle", "Taxpayer MLE"),
     ),
+    source_column="source",
 )
 
 ENTITIES: dict[str, Entity] = {

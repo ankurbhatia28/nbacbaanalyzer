@@ -77,6 +77,18 @@ def test_no_deterministic_package_imports_a_model_client(package: str) -> None:
         assert not offenders, f"{path.relative_to(REPO)} imports {offenders} (ADR-001)"
 
 
+def test_the_api_reaches_a_model_only_through_the_agent() -> None:
+    """
+    `apps/api` is a transport. A model client imported there would be a second
+    place model calls happen, outside the loop that audits their output.
+    """
+    sources = sorted((REPO / "apps" / "api" / "src").rglob("*.py"))
+    assert sources, "no sources found for apps/api"
+    for path in sources:
+        offenders = _imported_modules(path) & MODEL_CLIENTS
+        assert not offenders, f"{path.relative_to(REPO)} imports {offenders} (ADR-001)"
+
+
 def test_the_engine_does_not_depend_on_where_figures_came_from() -> None:
     """
     The engine is the rules. Importing the data or retrieval layers would make

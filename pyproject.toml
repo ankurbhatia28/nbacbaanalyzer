@@ -5,7 +5,7 @@ description = "Ask questions about the NBA CBA and get answers a rules engine ca
 requires-python = ">=3.12"
 
 [tool.uv.workspace]
-members = ["packages/*"]
+members = ["packages/*", "apps/*"]
 
 [dependency-groups]
 dev = [
@@ -14,6 +14,8 @@ dev = [
     "hypothesis>=6.100",
     "ruff>=0.6",
     "mypy>=1.11",
+    # FastAPI's TestClient is built on it.
+    "httpx>=0.27",
 ]
 
 [tool.ruff]
@@ -50,5 +52,5 @@ module = "engine.schema"
 disallow_any_explicit = false
 
 [tool.pytest.ini_options]
-testpaths = ["tests", "packages"]
+testpaths = ["tests", "packages", "apps"]
 addopts = "-q"

@@ -170,6 +170,7 @@ CREATE TABLE ingest_meta (
 def build(path: Path | str) -> sqlite3.Connection:
     """Create a fresh database. Existing file is replaced -- ingest is a rebuild."""
     target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
     if target.exists():
         target.unlink()
     conn = sqlite3.connect(target)

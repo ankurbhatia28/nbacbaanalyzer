@@ -2,14 +2,15 @@
 
 > ## Where this stands
 >
-> **Phases 0–6 are complete. Phases 7 and 8 have not started.**
+> **Phases 0–6 are complete. Phase 7 is under way: the API and the answer-card contract (7.0) are done, the web app has not started. Phase 8 has not started.**
 >
 > | phase | state |
 > |---|---|
 > | 0 Rails · 1 Domain model · 2 Data layer · 3 Rules engine | done |
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
 > | 6 Agent layer | done |
-> | 7 Interface · 8 Ship | **not started** |
+> | 7 Interface | **in progress** — 7.0 (API + answer-card contract) done; the web app is next |
+> | 8 Ship | **not started** |
 >
 > Two items in Phase 3 are deliberately left open and say why inline: **3.14**
 > (non-simultaneous TPE creation) and **3.16** (Art. VII §2(f), the Second Apron
@@ -68,7 +69,7 @@ required UI element rather than a nicety.
 
 ## Phase 0 — Rails ✅ Complete
 
-- [x] **0.1** Monorepo: `packages/{engine,data,rag}`, `apps/{api,web}`
+- [x] **0.1** Monorepo: `packages/{engine,data,rag}`, `apps/{api,web}` — *ticked early: `apps/` did not exist until Phase 7. `apps/api` landed with 7.0; `apps/web` is still to come.*
 - [x] **0.2** uv workspace, Python 3.12+
 - [x] **0.3** ruff + mypy (strict on engine), pytest
 - [x] **0.4** GitHub Actions CI against `ankurbhatia28/nbacbaanalyzer`
@@ -516,12 +517,15 @@ required UI element rather than a nicety.
 
 ## Phase 7 — Interface
 
+- [x] **7.0** **The API and the answer-card contract.** Not in the original plan: 8.3 deployed `apps/api`, but nothing built it. `apps/api` (FastAPI) serves `GET /health`, `POST /ask` (JSON) and `POST /ask/stream` (server-sent events: progress, then the card). Both ask routes end in the same `agent.card.build`, so they cannot disagree. The card (`packages/agent/src/agent/card.py`, schema version 1) carries verbatim quotes with PDF and printed page, every league query with its SQL, parameters and provenance, and warnings for unsourced figures, uncited answers, exhausted rounds, `unknown` values (ADR-003) and undated rows.
+  - **Found while building it: `as_of` was empty on every table except `trade_exceptions`.** The columns existed and nothing filled them, so 7.6 had nothing to show. Each scraper manifest records `scraped_at`; ingest now writes those to `ingest_meta.source_dates`, and every `QueryResult` carries `provenance` — per source, the row's own date where one exists, otherwise the scrape date *labelled as a scrape date*, otherwise `undated`. **Spotrac is deliberately excluded from the fallback**: its `scraped_at` is when the Wayback Machine was read, up to 13 months after the facts.
+  - **First live run** (*"How much are the Nuggets committed for in 2026-27?"*): correct figure, verified card, 21s, **$0.125** — above the 6.12 figure because the model spent six queries finding the filter values (`"Denver Nuggets"` and `"2026-27"` before `DEN` and `2026-2027`) and exhausted its rounds. The card made the dead ends visible; the fix belongs in the query tool's descriptions.
 - [ ] **7.1** Chat as the primary surface — questions, not forms
-- [ ] **7.2** **Answer card**: verdict, plain English, verbatim CBA quote, citation, assumptions
-- [ ] **7.3** Show the structured query behind any number, inspectable on demand
+- [ ] **7.2** **Answer card**: verdict, plain English, verbatim CBA quote, citation, assumptions — *data contract done in 7.0; rendering is not*
+- [ ] **7.3** Show the structured query behind any number, inspectable on demand — *each figure carries its SQL, parameters and the answer figures it supplied (7.0); the UI is not built*
 - [ ] **7.4** Trade builder with live verdict, reachable from a chat answer
 - [ ] **7.5** Cap sheet view with apron lines as visible thresholds, tabular numerals
-- [ ] **7.6** **Provenance and as-of date on every figure — mandatory.** The dataset is a snapshot, and the Spotrac rows alone span 13 months of differing snapshot dates. A public app implies currency; without prominent as-of labelling it is quietly misleading.
+- [ ] **7.6** **Provenance and as-of date on every figure — mandatory.** *Data side done in 7.0 (`QueryResult.provenance`, `ingest_meta.source_dates`); display is not.* The dataset is a snapshot, and the Spotrac rows alone span 13 months of differing snapshot dates. A public app implies currency; without prominent as-of labelling it is quietly misleading.
 - [ ] **7.7** Permalinks for a question and its answer
 - [ ] **7.8** Empty, loading, error and refusal states; usable read-only mobile view
 
