@@ -82,6 +82,12 @@ def events(response) -> list[tuple[str, dict]]:
     return out
 
 
+def test_the_bare_url_leads_somewhere_useful_rather_than_a_404(empty):
+    response = client(empty, Script(intents=["rules"])).get("/", follow_redirects=False)
+    assert response.status_code == 307
+    assert response.headers["location"] == "/docs"
+
+
 def test_health_reports_the_dataset_and_the_card_schema(empty):
     body = client(empty, Script(intents=["rules"])).get("/health").json()
     assert body["ok"] is True
