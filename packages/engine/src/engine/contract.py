@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from datetime import date
 from enum import StrEnum
 
-from .maybe import Maybe
+from .maybe import Maybe, UnknownValueError
 from .provenance import Provenance
 
 
@@ -29,6 +29,9 @@ class ContractType(StrEnum):
     EXHIBIT_9 = "E9"
     EXHIBIT_10 = "E10"
     FREE_AGENT_SIGNING = "FA"
+    UNKNOWN = "unknown"
+    """No source scraped so far carries contract type (ADR-003). Rules that
+    turn on it -- rookie-scale and sign-and-trade bars -- record an assumption."""
 
 
 class OptionType(StrEnum):
@@ -41,6 +44,8 @@ class GuaranteeType(StrEnum):
     FULL = "full"
     PARTIAL = "partial"
     NONE = "none"
+    UNKNOWN = "unknown"
+    """No source carries guarantee structure (ADR-003). Not 'full'."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -50,6 +55,8 @@ class Guarantee:
     guarantee_date: date | None = None  # the date it becomes fully guaranteed
 
     def guaranteed_amount(self, cap_figure: int) -> int:
+        if self.kind is GuaranteeType.UNKNOWN:
+            raise UnknownValueError("guarantee structure is unknown for this contract year")
         if self.kind is GuaranteeType.FULL:
             return cap_figure
         if self.kind is GuaranteeType.NONE:
