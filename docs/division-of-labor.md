@@ -108,6 +108,7 @@ Phases renumbered for the rescope — see [`build-plan.md`](./build-plan.md). Ph
 
 | Task | Owner | Notes |
 |---|---|---|
+| 7.0 API + answer-card contract | `CLAUDE` | Done. The card's fields are the contract the web app renders; **worth your review before the UI hardens around them** — `agent/card.py` |
 | 7.2 Answer card | `BOTH` | I build it; **you own whether it reads clearly** to someone who doesn't know the CBA. This is the demo. |
 | All other 7.x | `CLAUDE` | — |
 

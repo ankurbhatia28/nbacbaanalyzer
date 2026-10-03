@@ -46,7 +46,7 @@ These are enforced, not aspirational. Breaking them fails CI.
 uv sync --all-packages --dev
 uv run pytest
 uv run ruff check . && uv run ruff format --check .
-uv run mypy packages/engine/src packages/data/src packages/rag/src packages/agent/src
+uv run mypy packages/engine/src packages/data/src packages/rag/src packages/agent/src apps/api/src
 ```
 
 ## Scrapers

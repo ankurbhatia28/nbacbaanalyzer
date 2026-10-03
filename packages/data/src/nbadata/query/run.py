@@ -7,6 +7,7 @@ from dataclasses import dataclass
 
 from .compile import compile_query
 from .dsl import Query
+from .provenance import Observed, observe
 
 
 @dataclass(frozen=True, slots=True)
@@ -20,6 +21,8 @@ class QueryResult:
     rows: list[dict[str, object]]
     sql: str
     params: list[object]
+    provenance: tuple[Observed, ...] = ()
+    """Which sources the selected rows came from, and when (task 7.6)."""
 
     @property
     def row_count(self) -> int:
@@ -36,4 +39,6 @@ def run(conn: sqlite3.Connection, query: Query) -> QueryResult:
     cursor = conn.execute(sql, params)
     columns = [d[0] for d in cursor.description]
     rows = [dict(zip(columns, r, strict=True)) for r in cursor.fetchall()]
-    return QueryResult(columns=columns, rows=rows, sql=sql, params=params)
+    return QueryResult(
+        columns=columns, rows=rows, sql=sql, params=params, provenance=observe(conn, query)
+    )

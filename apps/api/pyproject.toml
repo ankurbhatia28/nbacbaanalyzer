@@ -1,0 +1,22 @@
+[project]
+name = "nbacba-api"
+version = "0.1.0"
+description = "The HTTP surface: one question in, an answer card out, streamed as it is worked."
+requires-python = ">=3.12"
+dependencies = [
+    "nbacba-agent",
+    "nbacba-data",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/api"]
+
+[tool.uv.sources]
+nbacba-agent = { workspace = true }
+nbacba-data = { workspace = true }

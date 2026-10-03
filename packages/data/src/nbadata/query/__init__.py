@@ -11,15 +11,18 @@ from .catalog import ENTITIES, Entity, Field, FieldType, describe_catalog
 from .compile import compile_query
 from .dsl import Agg, Filter, Op, Order, Projection, Query, QueryError
 from .lookup import PlayerMatch, lookup_player
+from .provenance import Basis, Observed, Snapshot, observe, snapshot, source_dates
 from .run import QueryResult, run
 
 __all__ = [
     "ENTITIES",
     "Agg",
+    "Basis",
     "Entity",
     "Field",
     "FieldType",
     "Filter",
+    "Observed",
     "Op",
     "Order",
     "PlayerMatch",
@@ -27,8 +30,12 @@ __all__ = [
     "Query",
     "QueryError",
     "QueryResult",
+    "Snapshot",
     "compile_query",
     "describe_catalog",
     "lookup_player",
+    "observe",
     "run",
+    "snapshot",
+    "source_dates",
 ]

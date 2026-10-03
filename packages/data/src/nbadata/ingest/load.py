@@ -29,6 +29,27 @@ from .teams import canonical_team, from_display, from_slug
 DEFAULT_CSV_DIR = Path(__file__).resolve().parents[5] / "scraper" / "out"
 SEASON = "2026-2027"
 
+SOURCE_MANIFESTS = {
+    "fanspo": "manifest.json",
+    "bbref_contracts": "contracts_manifest.json",
+    "bbref_roster": "roster_manifest.json",
+    "bbref_awards": "awards_manifest.json",
+    "salaryswish": "salaryswish_manifest.json",
+}
+"""
+Where each live source's scrape time is recorded (task 7.6).
+
+Only these rows carry no date of their own. A live page read on a given day
+describes the league as of that day, so the scrape date is the honest as-of
+for them.
+
+**Spotrac is deliberately absent.** Its rows come from Wayback Machine
+snapshots, so its `scraped_at` is when the archive was read, not when the page
+was true -- a date up to 13 months later than the facts. Those rows carry
+their own `snapshot_date`, and an undated Spotrac row has to read as unknown
+rather than borrow the retrieval date.
+"""
+
 
 def rows(directory: Path, name: str) -> list[dict[str, str]]:
     path = directory / name
@@ -57,6 +78,19 @@ def as_int(value: str | None) -> int | None:
         return int(float(value))
     except ValueError:
         return None
+
+
+def source_dates(directory: Path) -> dict[str, str]:
+    """When each live source was scraped, as an ISO date, from its manifest."""
+    found: dict[str, str] = {}
+    for source, name in SOURCE_MANIFESTS.items():
+        path = directory / name
+        if not path.exists():
+            continue
+        scraped = json.loads(path.read_text(encoding="utf-8")).get("scraped_at")
+        if isinstance(scraped, str) and scraped:
+            found[source] = datetime.fromisoformat(scraped).date().isoformat()
+    return found
 
 
 @dataclass
@@ -347,6 +381,7 @@ def load(csv_dir: Path, db_path: Path) -> IngestReport:
             ("resolution", json.dumps(ids.summary)),
             ("reconciliation", json.dumps(rec.summary)),
             ("pick_overrides", json.dumps(override_report.summary)),
+            ("source_dates", json.dumps(source_dates(csv_dir))),
         ],
     )
     conn.commit()

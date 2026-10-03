@@ -221,7 +221,13 @@ def _fetch_provision(res: Resources, args: JsonDict) -> JsonDict:
         "citation_returned": result.resolved_to or citation,
         "substituted": result.resolved_to is not None,
         "passages": [
-            {"citation": p.label, "pdf_page": p.pdf_page, "text": p.text} for p in result.passages
+            {
+                "citation": p.label,
+                "pdf_page": p.pdf_page,
+                "printed_page": p.printed_page,
+                "text": p.text,
+            }
+            for p in result.passages
         ],
         "defined_terms": [{"term": d.term, "citation": d.citation} for d in result.definitions],
         "figures_present": result.figures,
@@ -237,6 +243,7 @@ def _search_cba(res: Resources, args: JsonDict) -> JsonDict:
             {
                 "citation": p.label,
                 "pdf_page": p.pdf_page,
+                "printed_page": p.printed_page,
                 "text": p.text,
                 "why": p.why.value,
                 "is_evidence": p.is_evidence,
@@ -299,6 +306,10 @@ def _query_league_data(res: Resources, args: JsonDict) -> JsonDict:
         "rows": result.rows,
         "row_count": result.row_count,
         "sql": result.sql,
+        "params": result.params,
+        # Which source each row came from and when (7.6). Returned to the model
+        # as well as the UI, so an answer can say "as of" without guessing.
+        "provenance": [o.to_json() for o in result.provenance],
     }
 
 

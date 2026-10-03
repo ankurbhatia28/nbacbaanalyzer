@@ -48,7 +48,7 @@ jobs:
           echo "ok: engine, data and rag are LLM-free"
 
       - name: Typecheck
-        run: uv run mypy packages/engine/src packages/data/src packages/rag/src packages/agent/src
+        run: uv run mypy packages/engine/src packages/data/src packages/rag/src packages/agent/src apps/api/src
 
       - name: Tests
         run: uv run pytest
