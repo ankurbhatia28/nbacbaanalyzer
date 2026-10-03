@@ -199,7 +199,7 @@ def test_a_streamed_data_answer_shows_progress_then_a_card_with_provenance(real)
         intents=["data"],
         answers=[
             [("query_league_data", query), ("fetch_provision", fetch)],
-            "Denver is committed for $221,069,148 in 2026-27 (Art. VII §6(j)(1)).",
+            "Denver is committed for $208,710,566 in 2026-27 (Art. VII §6(j)(1)).",
         ],
     )
     streamed = events(client(real, script).post("/ask/stream", json={"question": "Nuggets?"}))
@@ -210,7 +210,7 @@ def test_a_streamed_data_answer_shows_progress_then_a_card_with_provenance(real)
     assert card["status"] == "answered"
     assert card["verified"] is True
     (figure,) = card["figures"]
-    assert figure["in_answer"] == ["$221,069,148"]
+    assert figure["in_answer"] == ["$208,710,566"]
     assert figure["provenance"][0]["basis"] == "scraped"
     assert card["quotes"][0]["cited_in_answer"] is True
     assert card["dataset"]["source_dates"]["bbref_contracts"]
