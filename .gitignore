@@ -50,3 +50,5 @@ scraper/out/all.json
 
 # Skills installed from upstream repos; symlinks to a local clone.
 .claude/skills/
+apps/web/next-env.d.ts
+apps/web/*.tsbuildinfo
