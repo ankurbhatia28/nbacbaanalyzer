@@ -133,6 +133,17 @@ def test_events_count_the_root_and_every_descendant():
 
 def test_an_empty_trace_reports_no_events():
     assert Trace().events == 0
+    assert Trace().units == 0
+
+
+def test_units_count_what_langfuse_bills_the_trace_observations_and_scores():
+    """
+    D16. Langfuse bills "traces ..., observations ... and scores". Counting
+    observations alone -- Raindrop's model -- missed the trace and its scores.
+    """
+    trace = built()
+    assert trace.units == 1 + trace.events + len(trace.scores) == 6
+    assert trace.to_json()["units"] == 6
 
 
 def test_a_trace_serialises_with_its_tree_intact():
@@ -208,35 +219,35 @@ def test_exporters_satisfy_the_protocol():
 
 
 def test_the_cap_drops_a_trace_that_would_exceed_the_allowance(tmp_path):
-    exporter = CappedExporter(FileExporter(tmp_path / "t.jsonl"), max_events=4)
-    assert exporter.export(built())  # 3 events
-    assert not exporter.export(built())  # would make 6
+    exporter = CappedExporter(FileExporter(tmp_path / "t.jsonl"), max_units=8)
+    assert exporter.export(built())  # 6 units
+    assert not exporter.export(built())  # would make 12
     assert exporter.dropped_traces == 1
-    assert exporter.remaining == 1
+    assert exporter.remaining == 2
 
 
 def test_a_dropped_trace_does_not_consume_the_allowance(tmp_path):
-    exporter = CappedExporter(FileExporter(tmp_path / "t.jsonl"), max_events=4)
+    exporter = CappedExporter(FileExporter(tmp_path / "t.jsonl"), max_units=8)
     exporter.export(built())
     exporter.export(built())
-    assert exporter.spent == 3, "the dropped trace must not be billed"
+    assert exporter.spent == 6, "the dropped trace must not be billed"
 
 
 def test_the_cap_reports_that_questions_were_still_answered(tmp_path):
-    exporter = CappedExporter(FileExporter(tmp_path / "t.jsonl"), max_events=1)
+    exporter = CappedExporter(FileExporter(tmp_path / "t.jsonl"), max_units=1)
     exporter.export(built())
     assert "the questions were still answered" in exporter.render()
 
 
 def test_a_failing_inner_exporter_does_not_consume_the_allowance():
-    exporter = CappedExporter(NullExporter(), max_events=100)
+    exporter = CappedExporter(NullExporter(), max_units=100)
     assert not exporter.export(built())
     assert exporter.spent == 0, "nothing stored, so nothing billed"
 
 
 def test_the_summary_is_readable():
     text = summarise(built())
-    assert "3 events" in text
+    assert "3 events, 6 units" in text
     assert "generation 1" in text
     assert "retriever 1" in text
 

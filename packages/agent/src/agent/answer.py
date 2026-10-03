@@ -394,6 +394,7 @@ def answer(
                 ledger=spent,
                 tool_calls=len(verdict.tool_calls),
                 seconds=time.monotonic() - started,
+                trace_units=trace.units,
                 models={role: model_for(role).model for role in Role},
             )
         return verdict

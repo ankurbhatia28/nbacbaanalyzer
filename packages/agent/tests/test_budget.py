@@ -124,7 +124,7 @@ def test_the_tracing_cap_degrades_rather_than_refusing():
     A trace is diagnostics. A question must not fail because the observability
     budget ran out.
     """
-    budget = Budget(max_trace_events=5)
+    budget = Budget(max_trace_units=5)
     assert budget.allow_trace(4)
     assert not budget.allow_trace(4)
     assert budget.traces_dropped == 4
@@ -133,7 +133,7 @@ def test_the_tracing_cap_degrades_rather_than_refusing():
 
 
 def test_dropped_traces_are_counted_so_silence_is_explicable():
-    budget = Budget(max_trace_events=1)
+    budget = Budget(max_trace_units=1)
     budget.allow_trace(5)
     assert budget.traces_dropped == 5
 
@@ -149,6 +149,7 @@ def test_a_request_reports_calls_tools_tokens_and_latency():
         ledger=ledger(answer=Usage(10_000, 800, cache_read_tokens=5_000), router=Usage(450, 60)),
         tool_calls=3,
         seconds=9.4,
+        trace_units=0,
     )
     assert cost.model_calls == 2
     assert cost.tool_calls == 3
@@ -157,11 +158,10 @@ def test_a_request_reports_calls_tools_tokens_and_latency():
     assert "9.4s" in cost.render()
 
 
-def test_trace_events_are_counted_the_way_raindrop_bills_them():
+def test_a_request_records_the_units_its_trace_actually_used():
     """
-    The user turn, each model response, and each tool call (D13). A measured
-    3.5 tool calls per question lands near 6 events, which is what the
-    1,000-a-month budget was estimated against.
+    Taken from the finished trace, not estimated from call counts. The old
+    estimate was Raindrop's model (D13) and missed the trace and its scores.
     """
     budget = Budget()
     cost = measure(
@@ -170,15 +170,26 @@ def test_trace_events_are_counted_the_way_raindrop_bills_them():
         ledger=ledger(router=Usage(1, 1), intent=Usage(1, 1), answer=Usage(1, 1)),
         tool_calls=3,
         seconds=1.0,
+        trace_units=13,
     )
-    assert cost.trace_events == 1 + 3 + 3
-    assert budget.trace_events == 7
+    assert cost.trace_units == 13
+    assert budget.trace_units == 13
+
+
+def test_the_default_tracing_allowance_is_langfuse_hobby():
+    """D16: 50,000 units a month, not Raindrop's 1,000 events."""
+    assert Budget().max_trace_units == 50_000
 
 
 def test_an_unpriced_request_reports_none_not_zero():
     """Zero would read as free, which is a different claim from unknown."""
     cost = measure(
-        Budget(), question="q", ledger=ledger(answer=Usage(1_000, 100)), tool_calls=0, seconds=1.0
+        Budget(),
+        question="q",
+        ledger=ledger(answer=Usage(1_000, 100)),
+        tool_calls=0,
+        seconds=1.0,
+        trace_units=0,
     )
     assert cost.dollars is None
     assert "not priced" in cost.render()
@@ -192,6 +203,7 @@ def test_a_priced_request_attributes_cost_to_the_model_that_ran():
         ledger=ledger(answer=Usage(1_000_000, 0)),
         tool_calls=0,
         seconds=1.0,
+        trace_units=0,
         models={Role.ANSWER: "sonnet"},
     )
     assert cost.dollars == pytest.approx(3.0)
