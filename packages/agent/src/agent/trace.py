@@ -159,6 +159,20 @@ class Trace:
         """
         return 0 if self.root is None else 1 + self.root.descendants
 
+    @property
+    def units(self) -> int:
+        """
+        What Langfuse bills for this trace (D16): the trace itself, every
+        observation, and every score.
+
+        Langfuse's definition, from its pricing page: "any tracing data point
+        sent to the platform -- including traces ..., observations (individual
+        steps: spans, events, and generations), and scores". Counting only
+        observations, as Raindrop's event model did, undercounts by the trace
+        and its four scores -- five units on every question.
+        """
+        return 0 if self.root is None else 1 + self.events + len(self.scores)
+
     def to_json(self) -> JsonDict:
         return {
             "trace_id": self.trace_id,
@@ -168,6 +182,7 @@ class Trace:
             "tags": self.tags,
             "started_at": self.started_at,
             "events": self.events,
+            "units": self.units,
             "metadata": self.metadata,
             "scores": self.scores,
             "root": self.root.to_json() if self.root else None,
@@ -224,7 +239,8 @@ class FileExporter:
 @dataclass
 class CappedExporter:
     """
-    Wraps an exporter with the event budget (6.13).
+    Wraps an exporter with the tracing allowance (6.13), counted in Langfuse
+    billable units (D16).
 
     Applied here rather than inside each vendor adapter, so a free tier's
     allowance is enforced identically however the trace is stored, and
@@ -232,30 +248,30 @@ class CappedExporter:
     """
 
     inner: Exporter
-    max_events: int
+    max_units: int
     spent: int = 0
     dropped_traces: int = 0
-    dropped_events: int = 0
+    dropped_units: int = 0
 
     @property
     def remaining(self) -> int:
-        return max(0, self.max_events - self.spent)
+        return max(0, self.max_units - self.spent)
 
     def export(self, trace: Trace) -> bool:
-        if self.spent + trace.events > self.max_events:
+        if self.spent + trace.units > self.max_units:
             self.dropped_traces += 1
-            self.dropped_events += trace.events
+            self.dropped_units += trace.units
             return False
         if not self.inner.export(trace):
             return False
-        self.spent += trace.events
+        self.spent += trace.units
         return True
 
     def render(self) -> str:
-        line = f"traces: {self.spent}/{self.max_events} events used"
+        line = f"traces: {self.spent:,}/{self.max_units:,} units used"
         if self.dropped_traces:
             line += (
-                f"; {self.dropped_traces} traces dropped ({self.dropped_events} events) "
+                f"; {self.dropped_traces} traces dropped ({self.dropped_units} units) "
                 "after the cap -- the questions were still answered"
             )
         return line
@@ -277,4 +293,4 @@ def summarise(trace: Trace) -> str:
     for span in walk(trace.root):
         counts[span.kind.value] = counts.get(span.kind.value, 0) + 1
     breakdown = ", ".join(f"{name} {n}" for name, n in sorted(counts.items()))
-    return f"{trace.trace_id}  {trace.events} events  [{breakdown}]"
+    return f"{trace.trace_id}  {trace.events} events, {trace.units} units  [{breakdown}]"
