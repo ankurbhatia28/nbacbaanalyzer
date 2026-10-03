@@ -9,6 +9,8 @@ Three routes, and deliberately nothing that writes:
   POST /ask          one question, one answer card, as JSON
   POST /ask/stream   the same run as server-sent events: progress while the
                      work happens, then the card
+  POST /quotes       provision text by passage label, for a permalink (7.7):
+                     a lookup, no search and no model
 
 **The two ask routes cannot disagree.** Both end in `card.build` over the
 verdict `answer()` returned -- the streaming route reads it from the stream's
@@ -29,6 +31,8 @@ JSON route -- that one is a bug, and should look like one.
 from __future__ import annotations
 
 import json
+import re
+import sqlite3
 from collections.abc import Iterator
 from dataclasses import dataclass, field
 from typing import Any
@@ -46,6 +50,7 @@ from agent.stream import Event, Update, stream
 from agent.tools import Resources
 from agent.trace import Exporter, NullExporter
 from nbadata.query import Snapshot, snapshot
+from rag import index as ix
 
 MAX_QUESTION_CHARS = 500
 """
@@ -79,6 +84,32 @@ class Service:
         if verdict.trace is not None:
             self.exporter.export(verdict.trace)
         return card.build(verdict, self.dataset)
+
+
+MAX_QUOTES = 64
+"""More passages than any card has carried; a request for more is not a card."""
+
+_PASSAGE = re.compile(r"^(?P<citation>.+?) \(passage (?P<ordinal>\d+)\)$")
+
+
+def passage_text(cba: sqlite3.Connection, label: str) -> str | None:
+    """
+    The verbatim text behind a passage label, or None.
+
+    A label is a citation, disambiguated as "(passage N)" where one repeats
+    (`rag.index.Hit.label`), so it names exactly one chunk. Exact lookup only:
+    a label that is no longer in the index returns None rather than a nearby
+    passage, because a permalink quoting the wrong words is worse than one
+    that says the words are gone.
+    """
+    match = _PASSAGE.match(label)
+    citation, ordinal = (match["citation"], int(match["ordinal"])) if match else (label, 1)
+    hit = ix.fetch(cba, citation, ordinal)
+    return hit.body if hit else None
+
+
+class Quotes(BaseModel):
+    labels: list[str] = Field(max_length=MAX_QUOTES)
 
 
 class Ask(BaseModel):
@@ -121,6 +152,10 @@ def create_app(service: Service, *, allowed_origins: list[str] | None = None) ->
             "schema": card.SCHEMA_VERSION,
             "dataset": service.dataset.to_json() if service.dataset else None,
         }
+
+    @app.post("/quotes")
+    def quotes(body: Quotes) -> dict[str, Any]:
+        return {"texts": {label: passage_text(service.res.cba, label) for label in body.labels}}
 
     @app.post("/ask")
     def ask(body: Ask) -> dict[str, Any]:

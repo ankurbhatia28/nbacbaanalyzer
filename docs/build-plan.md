@@ -526,7 +526,7 @@ required UI element rather than a nicety.
 - [ ] **7.4** Trade builder with live verdict, reachable from a chat answer
 - [ ] **7.5** Cap sheet view with apron lines as visible thresholds, tabular numerals
 - [x] **7.6** **Provenance and as-of date on every figure — mandatory.** *Done: every query in a card lists source, basis and date ("scraped 29 Sep 2026", "as of …", or "date unknown"), and every answer carries the dataset line.* The dataset is a snapshot, and the Spotrac rows alone span 13 months of differing snapshot dates. A public app implies currency; without prominent as-of labelling it is quietly misleading.
-- [ ] **7.7** Permalinks for a question and its answer
+- [x] **7.7** Permalinks for a question and its answer — *D19: the card travels in the URL fragment, compressed, with quote text dropped and re-fetched by exact passage label (`POST /quotes`, no model). Each dropped quote keeps a hash, and the reopened page warns if the index has changed the words since. Measured: a rules answer's link is 2,241 characters and reopens byte-identical; a truncated link is refused with a sentence.*
 - [x] **7.8** Empty, loading, error and refusal states; usable read-only mobile view. *Checked in headless Chrome at 820px and 390px against the live API.*
 
 ---

@@ -226,3 +226,38 @@ def test_development_defaults_cors_to_the_local_web_app_and_nowhere_else(monkeyp
     assert allowed_origins("production") == ["https://a.example", "https://b.example"]
     monkeypatch.setenv("NBACBA_ALLOWED_ORIGINS", "")
     assert allowed_origins("development") == []
+
+
+def test_too_many_quote_labels_are_refused(empty):
+    response = client(empty, Script(intents=["rules"])).post("/quotes", json={"labels": ["x"] * 65})
+    assert response.status_code == 422
+
+
+@needs_data
+def test_quotes_come_back_verbatim_by_label_and_never_as_a_near_miss(real):
+    """
+    The permalink contract (7.7): a passage label resolves to exactly the text a
+    tool returned for it, a repeated citation's "(passage N)" label to its own
+    chunk, and a label no longer in the index to nothing.
+    """
+    from agent.tools import call
+
+    fetched = call(real, "fetch_provision", {"citation": "Art. VII §6(j)(1)"})
+    labels = [p["citation"] for p in fetched["passages"]]
+    repeated = real.cba.execute("SELECT citation FROM chunks WHERE ordinal = 2 LIMIT 1").fetchone()[
+        0
+    ]
+    labels += [f"{repeated} (passage 2)", "Art. XCIX §1"]
+
+    texts = (
+        client(real, Script(intents=["rules"]))
+        .post("/quotes", json={"labels": labels})
+        .json()["texts"]
+    )
+    for passage in fetched["passages"]:
+        assert texts[passage["citation"]] == passage["text"]
+    second = real.cba.execute(
+        "SELECT body FROM chunks WHERE citation = ? AND ordinal = 2", (repeated,)
+    ).fetchone()[0]
+    assert texts[f"{repeated} (passage 2)"] == second
+    assert texts["Art. XCIX §1"] is None

@@ -18,6 +18,7 @@ import { AskError, ask, type Progress } from "@/lib/ask";
 import type { AnswerCard as Card } from "@/lib/card";
 
 import { AnswerCard } from "./AnswerCard";
+import { ShareLink } from "./ShareLink";
 
 const MAX_CHARS = 500;
 
@@ -33,6 +34,8 @@ interface Turn {
   question: string;
   progress: Progress[];
   card?: Card;
+  /** When the card arrived; a permalink says when the answer was given. */
+  givenAt?: string;
   error?: string;
 }
 
@@ -103,7 +106,7 @@ export function Chat() {
         signal: abort.current.signal,
         onProgress: (p) => update(id, (t) => ({ ...t, progress: [...t.progress, p] })),
       });
-      update(id, (t) => ({ ...t, card }));
+      update(id, (t) => ({ ...t, card, givenAt: new Date().toISOString() }));
     } catch (error) {
       if (abort.current.signal.aborted) return;
       const message = error instanceof Error ? error.message : String(error);
@@ -152,6 +155,7 @@ export function Chat() {
         <section key={turn.id} className="turn">
           <p className="question">{turn.question}</p>
           {turn.card && <AnswerCard card={turn.card} />}
+          {turn.card && turn.givenAt && <ShareLink card={turn.card} givenAt={turn.givenAt} />}
           {turn.error && (
             <div className="error" role="alert">
               <p>{turn.error}</p>
