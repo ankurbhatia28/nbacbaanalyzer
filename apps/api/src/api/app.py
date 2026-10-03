@@ -3,6 +3,8 @@ The HTTP surface (Phase 7; deployed by 8.3).
 
 Three routes, and deliberately nothing that writes:
 
+  GET  /             redirects to /docs, the interactive API page -- there is
+                     no page here until the web app exists
   GET  /health       liveness, plus the dataset's build record
   POST /ask          one question, one answer card, as JSON
   POST /ask/stream   the same run as server-sent events: progress while the
@@ -33,7 +35,7 @@ from typing import Any
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import RedirectResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
 from agent import card
@@ -107,6 +109,10 @@ def create_app(service: Service, *, allowed_origins: list[str] | None = None) ->
             allow_methods=["GET", "POST"],
             allow_headers=["content-type"],
         )
+
+    @app.get("/", include_in_schema=False)
+    def root() -> RedirectResponse:
+        return RedirectResponse("/docs")
 
     @app.get("/health")
     def health() -> dict[str, Any]:
