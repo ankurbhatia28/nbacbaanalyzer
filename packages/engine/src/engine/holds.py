@@ -29,8 +29,10 @@ class HoldKind(StrEnum):
 class CapHold:
     """
     Holds are why cap salary, tax salary and apron salary are three different
-    numbers. Denver is the worked example: $208.7M of active salary sits under
-    the second apron, and $250.6M with holds sits well over it.
+    numbers. Denver is the worked example: $208.7M of active salary plus $41.9M
+    of holds is $250.6M against the cap, but Art. VII §2(e)(1)(iv) takes
+    Free Agent Amounts back out of Apron Team Salary, so for the aprons Denver
+    is at $208.7M -- a taxpayer, below the first apron.
     """
 
     kind: HoldKind

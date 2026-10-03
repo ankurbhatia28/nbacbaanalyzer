@@ -89,3 +89,14 @@ def test_guarantee_kinds():
     assert full.guaranteed == 10_000_000
     assert none.guaranteed == 0
     assert part.guaranteed == 2_406_205
+
+
+def test_an_unknown_guarantee_cannot_be_read_as_an_amount():
+    """ADR-003: no source carries guarantee structure, and 'unknown' is not 'full'."""
+    import pytest
+
+    from engine.contract import Guarantee, GuaranteeType
+    from engine.maybe import UnknownValueError
+
+    with pytest.raises(UnknownValueError):
+        Guarantee(GuaranteeType.UNKNOWN).guaranteed_amount(10_000_000)
