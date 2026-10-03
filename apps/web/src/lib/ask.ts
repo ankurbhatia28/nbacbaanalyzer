@@ -71,3 +71,23 @@ export async function ask(
   }
   throw new AskError("The answer stream ended before the answer arrived.");
 }
+
+/**
+ * Provision text by passage label, for reopening a permalink. A deterministic
+ * lookup on the API -- no model, nothing spent.
+ */
+export async function fetchQuotes(labels: string[]): Promise<Record<string, string | null>> {
+  if (!labels.length) return {};
+  let response: Response;
+  try {
+    response = await fetch(`${API_URL}/quotes`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ labels }),
+    });
+  } catch {
+    throw new AskError(`Could not reach the API at ${API_URL} to load the quoted text.`);
+  }
+  if (!response.ok) throw new AskError(`The API answered ${response.status} loading quotes.`);
+  return ((await response.json()) as { texts: Record<string, string | null> }).texts;
+}
