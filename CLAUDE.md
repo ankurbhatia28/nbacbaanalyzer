@@ -47,7 +47,20 @@ uv sync --all-packages --dev
 uv run pytest
 uv run ruff check . && uv run ruff format --check .
 uv run mypy packages/engine/src packages/data/src packages/rag/src packages/agent/src apps/api/src
+
+# Run it locally: build the two artifacts, then the API, then the web app
+uv run python -m nbadata.ingest.load --out build/nbacba.db
+uv run python -m rag --out build/cba-index.db
+uv run --env-file .env uvicorn api.main:app --port 8000
+cd apps/web && npm ci && npm run dev                      # http://localhost:3000
+
+# Web app checks (apps/web)
+npm run typecheck && npm test && npm run build
 ```
+
+`apps/web` is not a uv workspace member: the workspace lists `apps/api`
+explicitly, because a glob over `apps/*` matches the Node app and breaks every
+`uv` command.
 
 ## Scrapers
 

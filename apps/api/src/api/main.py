@@ -13,7 +13,9 @@ key should stop the process, not produce a 500 for whoever asks first.
 
     NBACBA_LEAGUE_DB        league database   (default build/nbacba.db)
     NBACBA_CBA_INDEX        retrieval index   (default build/cba-index.db)
-    NBACBA_ALLOWED_ORIGINS  comma-separated origins for the web app's CORS
+    NBACBA_ALLOWED_ORIGINS  comma-separated origins for the web app's CORS;
+                            unset in development, the local web app's
+                            http://localhost:3000
     NBACBA_ENVIRONMENT      trace environment (default development)
     ANTHROPIC_API_KEY       required
     LANGFUSE_*              optional; traces go to Langfuse when set (D16)
@@ -42,6 +44,7 @@ from nbadata.db import open_readonly
 from rag import index as ix
 
 from .app import Service, create_app
+from .origins import allowed_origins
 
 BASE_SEASON = "2023-2024"
 """The season the Expanded exception's growth factor is measured from."""
@@ -88,15 +91,15 @@ def exporter(budget: Budget) -> Exporter:
 
 def build() -> FastAPI:
     budget = Budget(prices=ANTHROPIC_PRICES)
+    environment = os.environ.get("NBACBA_ENVIRONMENT", "development")
     service = Service(
         res=resources(),
         caller=AnthropicCaller(),
         budget=budget,
         exporter=exporter(budget),
-        environment=os.environ.get("NBACBA_ENVIRONMENT", "development"),
+        environment=environment,
     )
-    origins = [o.strip() for o in os.environ.get("NBACBA_ALLOWED_ORIGINS", "").split(",")]
-    return create_app(service, allowed_origins=[o for o in origins if o])
+    return create_app(service, allowed_origins=allowed_origins(environment))
 
 
 app = build()

@@ -214,3 +214,15 @@ def test_a_streamed_data_answer_shows_progress_then_a_card_with_provenance(real)
     assert figure["provenance"][0]["basis"] == "scraped"
     assert card["quotes"][0]["cited_in_answer"] is True
     assert card["dataset"]["source_dates"]["bbref_contracts"]
+
+
+def test_development_defaults_cors_to_the_local_web_app_and_nowhere_else(monkeypatch):
+    from api.origins import allowed_origins
+
+    monkeypatch.delenv("NBACBA_ALLOWED_ORIGINS", raising=False)
+    assert allowed_origins("development") == ["http://localhost:3000"]
+    assert allowed_origins("production") == []
+    monkeypatch.setenv("NBACBA_ALLOWED_ORIGINS", "https://a.example, https://b.example")
+    assert allowed_origins("production") == ["https://a.example", "https://b.example"]
+    monkeypatch.setenv("NBACBA_ALLOWED_ORIGINS", "")
+    assert allowed_origins("development") == []

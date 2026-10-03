@@ -2,14 +2,14 @@
 
 > ## Where this stands
 >
-> **Phases 0–6 are complete. Phase 7 is under way: the API and the answer-card contract (7.0) are done, the web app has not started. Phase 8 has not started.**
+> **Phases 0–6 are complete. Phase 7 is under way: the API, the answer card and the chat app are done (7.0–7.3, 7.6, 7.8); the trade builder, cap sheet and permalinks (7.4, 7.5, 7.7) remain. Phase 8 has not started.**
 >
 > | phase | state |
 > |---|---|
 > | 0 Rails · 1 Domain model · 2 Data layer · 3 Rules engine | done |
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
 > | 6 Agent layer | done |
-> | 7 Interface | **in progress** — 7.0 (API + answer-card contract) done; the web app is next |
+> | 7 Interface | **in progress** — API, card and chat done; 7.4, 7.5, 7.7 remain |
 > | 8 Ship | **not started** |
 >
 > Two items in Phase 3 are deliberately left open and say why inline: **3.14**
@@ -520,14 +520,14 @@ required UI element rather than a nicety.
 - [x] **7.0** **The API and the answer-card contract.** Not in the original plan: 8.3 deployed `apps/api`, but nothing built it. `apps/api` (FastAPI) serves `GET /health`, `POST /ask` (JSON) and `POST /ask/stream` (server-sent events: progress, then the card). Both ask routes end in the same `agent.card.build`, so they cannot disagree. The card (`packages/agent/src/agent/card.py`, schema version 1) carries verbatim quotes with PDF and printed page, every league query with its SQL, parameters and provenance, and warnings for unsourced figures, uncited answers, exhausted rounds, `unknown` values (ADR-003) and undated rows.
   - **Found while building it: `as_of` was empty on every table except `trade_exceptions`.** The columns existed and nothing filled them, so 7.6 had nothing to show. Each scraper manifest records `scraped_at`; ingest now writes those to `ingest_meta.source_dates`, and every `QueryResult` carries `provenance` — per source, the row's own date where one exists, otherwise the scrape date *labelled as a scrape date*, otherwise `undated`. **Spotrac is deliberately excluded from the fallback**: its `scraped_at` is when the Wayback Machine was read, up to 13 months after the facts.
   - **First live run** (*"How much are the Nuggets committed for in 2026-27?"*): correct figure, verified card, 21s, **$0.125** — above the 6.12 figure because the model spent six queries finding the filter values (`"Denver Nuggets"` and `"2026-27"` before `DEN` and `2026-2027`) and exhausted its rounds. The card made the dead ends visible; the fix belongs in the query tool's descriptions.
-- [ ] **7.1** Chat as the primary surface — questions, not forms
-- [ ] **7.2** **Answer card**: verdict, plain English, verbatim CBA quote, citation, assumptions — *data contract done in 7.0; rendering is not*
-- [ ] **7.3** Show the structured query behind any number, inspectable on demand — *each figure carries its SQL, parameters and the answer figures it supplied (7.0); the UI is not built*
+- [x] **7.1** Chat as the primary surface — questions, not forms. *`apps/web` (Next.js 16, React 19). Streams progress from `/ask/stream`, one question at a time.*
+- [x] **7.2** **Answer card**: verdict, plain English, verbatim CBA quote, citation, assumptions — *contract done in 7.0 and rendered in `AnswerCard.tsx`: warnings before the answer, quotes the answer names first, dead-end queries folded. Signed off by the owner on 2026-10-03, with a note that it **shows more than it needs to and should be culled later** — the obvious candidates are the folded passages (a §4 fetch alone surfaced 14) and the long, elaborated answer text.*
+- [x] **7.3** Show the structured query behind any number, inspectable on demand — *each number the answer took from a query links to that query (`linkFigures`), whose SQL and parameters sit behind "Show the query"; an unsourced number is struck through in red.*
 - [ ] **7.4** Trade builder with live verdict, reachable from a chat answer
 - [ ] **7.5** Cap sheet view with apron lines as visible thresholds, tabular numerals
-- [ ] **7.6** **Provenance and as-of date on every figure — mandatory.** *Data side done in 7.0 (`QueryResult.provenance`, `ingest_meta.source_dates`); display is not.* The dataset is a snapshot, and the Spotrac rows alone span 13 months of differing snapshot dates. A public app implies currency; without prominent as-of labelling it is quietly misleading.
+- [x] **7.6** **Provenance and as-of date on every figure — mandatory.** *Done: every query in a card lists source, basis and date ("scraped 29 Sep 2026", "as of …", or "date unknown"), and every answer carries the dataset line.* The dataset is a snapshot, and the Spotrac rows alone span 13 months of differing snapshot dates. A public app implies currency; without prominent as-of labelling it is quietly misleading.
 - [ ] **7.7** Permalinks for a question and its answer
-- [ ] **7.8** Empty, loading, error and refusal states; usable read-only mobile view
+- [x] **7.8** Empty, loading, error and refusal states; usable read-only mobile view. *Checked in headless Chrome at 820px and 390px against the live API.*
 
 ---
 

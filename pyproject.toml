@@ -5,7 +5,7 @@ description = "Ask questions about the NBA CBA and get answers a rules engine ca
 requires-python = ">=3.12"
 
 [tool.uv.workspace]
-members = ["packages/*", "apps/*"]
+members = ["packages/*", "apps/api"]
 
 [dependency-groups]
 dev = [
