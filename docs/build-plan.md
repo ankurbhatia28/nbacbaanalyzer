@@ -2,13 +2,13 @@
 
 > ## Where this stands
 >
-> **Phases 0–5 are complete. Phase 6 is complete except 6.9 (streaming). Phases 7 and 8 have not started.**
+> **Phases 0–6 are complete. Phases 7 and 8 have not started.**
 >
 > | phase | state |
 > |---|---|
 > | 0 Rails · 1 Domain model · 2 Data layer · 3 Rules engine | done |
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
-> | 6 Agent layer | done except **6.9 streaming** |
+> | 6 Agent layer | done |
 > | 7 Interface · 8 Ship | **not started** |
 >
 > Two items in Phase 3 are deliberately left open and say why inline: **3.14**
@@ -385,7 +385,31 @@ required UI element rather than a nicety.
   Applied unconditionally rather than behind a size threshold: a prefix below the minimum is *ignored, not charged*, so there is no constant here to go stale. The ledger reports the hit rate over cacheable tokens (reads plus writes) rather than over total input, because the per-turn message is never cacheable and including it would understate prefix reuse. When nothing cached at all the ledger says why, so a bare 0% is not read as a misconfiguration.
 
   The first call of each arm is discarded in the measurement: with caching on it pays the write, and including it reports the cost of warming rather than the steady state a served request sees.
-- [ ] **6.9** Streaming, with tool-call progress visible
+- [x] **6.9** **Streaming — progress, not tokens.** A question takes about eleven seconds and makes three to eight model calls, and without this a user cannot tell "nothing is happening" from "it is working".
+
+  What is streamed is **which step is running**, because that is also the first place an answer goes wrong: seeing *"searching the Agreement"* when you asked for a salary figure says immediately that the question was misread.
+
+  ```
+    0.1s  [step] working out what you asked
+    1.0s  [step] choosing which rules apply
+    6.1s  [tool] reading the provision Art. I §1(uuu)
+    8.1s  [tool] querying league data
+   15.4s  [done] $0.0768  trustworthy=True
+  ```
+
+  **The loop is observed, not re-implemented.** The caller supplies the trace, the loop fills it, and progress is read from the same spans the trace records — so what a user sees and what is recorded cannot disagree. A parallel callback system would create exactly that opportunity. The final update carries the audited verdict, so the streaming path cannot quietly drop the 5.9 unverified-figure warning.
+
+  Read-only connections now cross threads: ADR-004 makes both databases read-only build artifacts, so there is no write contention for `check_same_thread` to guard, and Python reports `threadsafety == 3`.
+
+- [x] **6.9a** **Rationale we were already paying for.** The router and intent steps are both already asked for a `reason`, both already return one, and it was parsed, used, then dropped before reaching the trace. It is now attached to the generation that produced it, along with the names that **resolved to nothing** — which is what the model was reaching for when it missed. Costs nothing, and it is the only record of *why* a provision was chosen, which matters most where 6.3 measured a fifth of selections reaching a real name for the wrong rule.
+
+  Not a substitute for model thinking, which remains an open decision with a real cost — see the gap noted under 6.10c.
+
+- [x] **6.9b** **An empty answer at the tool-round cap, found by streaming against the live API.** A question finished with fourteen citations, no answer text, and `trustworthy=True` — the loop had exhausted its six rounds while the model was still asking for more, so the last reply had no text in it and success was being reported for nothing.
+
+  The loop now makes one final call with **no tools offered**, so the model must answer from what it gathered, and `answered` is a separate property so an empty answer is never `trustworthy` however well cited the run was.
+
+  The first version of that fix was itself wrong: it appended a plain user message after an assistant turn containing `tool_use` blocks, which the API rejects — every `tool_use` must be answered by a `tool_result` in the very next message. The outstanding requests are now closed out with the reason they went unanswered. Verified live: the run that produced nothing now answers **$221,069,148** correctly.
 - [x] **6.10** **Tracing built, vendor deliberately not chosen.** D4's shape — one trace per session carrying the user input, the system prompt, every tool call and result, every model call and the final output — is the same whoever stores it, so it is modelled once and the vendor is a thin adapter.
 
   That separation is not fussiness: the vendor question is open (see **D16**), and building against one SDK then moving would mean rewriting the instrumentation rather than the twenty lines that export it.
