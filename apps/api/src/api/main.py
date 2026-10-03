@@ -86,7 +86,7 @@ def exporter(budget: Budget) -> Exporter:
     else:
         inner = NullExporter()
     # The free tier's allowance binds however traces are stored (6.13).
-    return CappedExporter(inner, max_events=budget.max_trace_events)
+    return CappedExporter(inner, max_units=budget.max_trace_units)
 
 
 def build() -> FastAPI:

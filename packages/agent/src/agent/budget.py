@@ -5,12 +5,13 @@ A public URL in front of a model key is not deployable without these, and they
 belong with the agent loop rather than bolted on at deploy time: the loop is
 what knows how many calls a question cost.
 
-**Two caps, not one.** Model spend is the obvious one. The second is Raindrop
-events: the free tier allows 1,000 a month and this architecture is
-deliberately tool-heavy, so a measured 3.5 tool calls per question works out
-at about 6 events. That is roughly 140 questions a month (D13), and a cap that
-only watched dollars would let tracing die silently a third of the way through
-a demo.
+**Two caps, not one.** Model spend is the obvious one. The second is the
+tracing allowance: Langfuse Cloud Hobby allows 50,000 billable units a month
+(D16), and a question costs 8 units (a refusal) to 24 (a data question that
+exhausts its tool rounds), measured on real traces. That is roughly
+2,100-6,250 questions, and a cap that only watched dollars would let tracing
+die silently partway through a demo. (This was 1,000 Raindrop events under
+D13, which D16 superseded.)
 
 **The two caps fail differently, on purpose.** Exceeding the tracing budget
 *degrades tracing*; exceeding the spend budget *refuses the request*. A trace
@@ -108,8 +109,13 @@ class Budget:
     window_seconds: float = 60.0
     max_input_tokens: int = 2_000_000
     max_output_tokens: int = 200_000
-    max_trace_events: int = 1_000
-    """Raindrop's Hobby tier allowance (D13)."""
+    max_trace_units: int = 50_000
+    """
+    Langfuse Cloud Hobby's monthly allowance (D16).
+
+    Enforced per process, not per calendar month: a restart resets the count.
+    The cap is a backstop against a runaway process, not the bill itself.
+    """
     prices: dict[str, Price] = field(default_factory=dict)
 
     _requests: deque[float] = field(default_factory=deque, repr=False)
@@ -117,7 +123,7 @@ class Budget:
     spent_output: int = 0
     spent_cache_read: int = 0
     spent_cache_write: int = 0
-    trace_events: int = 0
+    trace_units: int = 0
     dollars: float = 0.0
     refusals: int = 0
     traces_dropped: int = 0
@@ -181,7 +187,7 @@ class Budget:
 
     # -- tracing ---------------------------------------------------------
 
-    def allow_trace(self, events: int = 1) -> bool:
+    def allow_trace(self, units: int = 1) -> bool:
         """
         Whether this many trace events fit in the remaining allowance.
 
@@ -189,15 +195,15 @@ class Budget:
         not fail because the observability budget ran out. Drops are counted,
         so silence is distinguishable from nothing having happened.
         """
-        if self.trace_events + events > self.max_trace_events:
-            self.traces_dropped += events
+        if self.trace_units + units > self.max_trace_units:
+            self.traces_dropped += units
             return False
-        self.trace_events += events
+        self.trace_units += units
         return True
 
     @property
     def trace_remaining(self) -> int:
-        return max(0, self.max_trace_events - self.trace_events)
+        return max(0, self.max_trace_units - self.trace_units)
 
     # -- reporting -------------------------------------------------------
 
@@ -207,7 +213,7 @@ class Budget:
             f"  input tokens   {self.spent_input:>9,} / {self.max_input_tokens:,}",
             f"  output tokens  {self.spent_output:>9,} / {self.max_output_tokens:,}",
             f"  cache read     {self.spent_cache_read:>9,}",
-            f"  trace events   {self.trace_events:>9,} / {self.max_trace_events:,}",
+            f"  trace units    {self.trace_units:>9,} / {self.max_trace_units:,}",
         ]
         if self.spend_known:
             lines.append(f"  spend          {self.dollars:>9.4f} USD")
@@ -232,7 +238,7 @@ class RequestCost:
     model_calls: int
     tool_calls: int
     usage: Usage
-    trace_events: int
+    trace_units: int
     dollars: float | None = None
     """None when no price table was supplied -- not zero, which would read as free."""
 
@@ -247,7 +253,7 @@ class RequestCost:
             f"{self.tool_calls} tool calls, "
             f"{self.usage.input_tokens:,} in / {self.usage.output_tokens:,} out, "
             f"{self.usage.cache_read_tokens:,} cached, "
-            f"{self.trace_events} trace events, {money}"
+            f"{self.trace_units} trace units, {money}"
         )
 
 
@@ -258,18 +264,20 @@ def measure(
     ledger: Ledger,
     tool_calls: int,
     seconds: float,
+    trace_units: int,
     models: dict[Role, str] | None = None,
 ) -> RequestCost:
     """
     Fold one request into the budget and return what it cost.
 
-    Trace events are counted the way Raindrop bills them (D13): the user turn,
-    each model response, and each tool call.
+    `trace_units` is the finished trace's own count (`Trace.units`), taken
+    rather than estimated here. The previous estimate -- the user turn, each
+    model response, each tool call -- was Raindrop's billing model, and it
+    missed the trace itself, its scores, and the rationale events.
     """
     assignment = models or {}
     budget.record_ledger(ledger, assignment)
-    events = 1 + ledger.calls + tool_calls
-    traced = budget.allow_trace(events)
+    traced = budget.allow_trace(trace_units)
     dollars: float | None = None
     if budget.spend_known:
         dollars = sum(
@@ -283,6 +291,6 @@ def measure(
         model_calls=ledger.calls,
         tool_calls=tool_calls,
         usage=ledger.total,
-        trace_events=events if traced else 0,
+        trace_units=trace_units if traced else 0,
         dollars=dollars,
     )

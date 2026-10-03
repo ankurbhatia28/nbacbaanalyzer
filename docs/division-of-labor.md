@@ -347,12 +347,12 @@ than D13 assumed, and because Langfuse was worth checking.
 | retention | 14 days | 30 days | yours |
 | self-host | Enterprise, VPC beta, selected partners | — | yes |
 
-At the measured **8–21 events per question** (6.13a, 6.10):
+At the measured **8–21 events per question** (6.13a, 6.10) — *corrected below to 8–24 units*:
 
 | | questions per month on the free tier |
 |---|---|
 | Raindrop | **~50–125** |
-| Langfuse Cloud | **~2,400–6,250** |
+| Langfuse Cloud | **~2,100–6,250** (was ~2,400–6,250; see the correction below) |
 
 That is the difference between a demo that runs out of tracing in a week and one
 that does not. Self-hosting also removes the retention problem that 6.10a exists
@@ -371,8 +371,19 @@ Hobby is retention past 30 days; `FileExporter` keeps every trace locally for
 nothing, and task 6.10a commits five of them to the repo. The durable record
 exists either way.
 
-50,000 units a month is roughly 2,400–6,250 questions at the measured 8–21
-events each. We will not approach it.
+50,000 units a month is roughly 2,100–6,250 questions at the measured 8–24
+units each. We will not approach it.
+
+**Correction, after Phase 7.0: a Langfuse unit is not a Raindrop event.**
+Langfuse's pricing page defines a billable unit as "any tracing data point
+sent to the platform -- including traces ..., observations (individual steps:
+spans, events, and generations), and scores". The 8–21 above counted
+observations only, so it missed the trace itself and its four scores: five
+units on every question. Re-measured with `Trace.units` on the five committed
+exemplars and a live run, **a refusal is 8 units and the heaviest data question
+24**. The code had also kept Raindrop's 1,000-event cap (`max_trace_events`) and
+its call-count estimate; both now count `Trace.units` against 50,000. The cap is
+per process, not per calendar month, so it is a backstop rather than the bill.
 
 `RAINDROP_API_KEY` in `.env` is now unused and can be removed. This supersedes
 the Raindrop half of D4 and D13; the *shape* D4 specified is unchanged and

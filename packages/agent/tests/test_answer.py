@@ -399,7 +399,7 @@ def test_a_request_records_what_it_cost(res):
     assert verdict.cost is not None
     assert verdict.cost.model_calls >= 3
     assert verdict.cost.tool_calls == 1
-    assert verdict.cost.trace_events > 0
+    assert verdict.cost.trace_units == verdict.trace.units > 0
     assert "Cost:" in verdict.render()
 
 
