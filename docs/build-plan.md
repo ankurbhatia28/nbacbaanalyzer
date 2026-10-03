@@ -371,6 +371,32 @@ required UI element rather than a nicety.
 
   **The system prompt is recorded by size, not verbatim.** D4 asks for it to be represented; the intent role's prompt carries 612 provision names, so repeating ~3,000 tokens on every span would make the trace unreadable and, on a metered backend, expensive.
 
+- [x] **6.10c** **Instrumentation audited against Langfuse's own guidance, and reworked.** Installed the [Langfuse agent skill](https://github.com/langfuse/skills), which insists on documentation-first and on a run-fetch-audit loop that cannot be skipped. Both were worth obeying — the first version was written from memory and failed on several counts:
+
+  | gap | fix |
+  |---|---|
+  | **Flat traces** (listed in their docs as a common mistake) | A tree: tools are siblings of the generation that requested them, under the agent that orchestrates them |
+  | Every non-model span typed `span` | `agent` for the root, `generation` per model call, **`retriever`** for every tool — all six look something up without changing state, which is ADR-004 showing through |
+  | Root input was `{"session": ...}` | The **question** in and the **answer** out, since the trace list shows those first |
+  | Names like `model_call:router` | Verb-first and stable: `classify-question`, `select-provisions`, `generate-answer`, `fetch-provision`. Never the model name — that breaks every filter on a model swap |
+  | No session, tags, environment, or scores | All four, with judgements as **scores** because tags are immutable and set at creation while `trustworthy` is only known afterwards |
+
+  **Three bugs the live run found that no test would have.** `update_current_trace` is a **v3** API and does not exist in v4 (4.16.0 installed) — trace attributes use the module-level `propagate_attributes`. `event` is not a valid `as_type`; the SDK warns and silently downgrades it to a span, so refusals are created on their parent with `create_event`. And a propagated attribute is capped at **200 characters** and dropped with a warning above it, which the citation list blew through — per-run detail belongs on the root observation's metadata, not propagated to every span.
+
+  **Verified by fetching the traces back**, not by assuming they arrived:
+
+  ```
+  AGENT       answer-cba-question     session=exemplars env=development tags=['rules']
+    GENERATION  classify-question     claude-haiku-4-5   usage + cost
+    GENERATION  select-provisions     claude-sonnet-5
+    GENERATION  generate-answer       claude-sonnet-5
+    RETRIEVER   fetch-provision
+  ```
+
+  Langfuse prices the calls itself from the model name and usage details — `totalCost` comes back populated — and all four scores attach to each trace.
+
+  **One gap left open rather than papered over:** thinking is not captured, because extended thinking is not enabled on these calls. The guidance asks for it on every generation, so if it is ever turned on, the reasoning blocks should be captured with it.
+
 - [x] **6.10b** **Langfuse exporter written (D16).** The one vendor-specific file, and the reason 6.10 kept the export behind a twenty-line adapter.
 
   Model calls are sent as **generations** carrying the model and token counts, which is what makes the cost view work; everything else is a plain span. Cache reads are reported under their own key rather than folded into input — at a 97% hit rate that is the one number a cost dashboard exists to get right.

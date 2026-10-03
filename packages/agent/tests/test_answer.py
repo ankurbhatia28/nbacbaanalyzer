@@ -397,75 +397,113 @@ def test_every_answer_carries_a_trace_even_with_no_vendor(res):
     verdict = answer(script, question="q", res=res, session="sess-1")
     assert verdict.trace is not None
     assert verdict.trace.session == "sess-1"
-    kinds = [s.kind for s in verdict.trace.spans]
-    assert kinds[0] is Kind.USER_TURN
-    assert Kind.MODEL_CALL in kinds
-    assert Kind.TOOL_CALL in kinds
-    assert kinds[-1] is Kind.ANSWER
+    assert verdict.trace.root is not None
+    assert verdict.trace.root.kind is Kind.AGENT
 
 
-def test_a_model_span_records_the_model_and_its_tokens(res):
-    from agent.trace import Kind
-
-    verdict = answer(
-        Script(router=routing("rules"), intent=planning(), answers=["done"]),
-        question="q",
-        res=res,
-    )
-    assert verdict.trace is not None
-    span = next(s for s in verdict.trace.spans if s.kind is Kind.MODEL_CALL)
-    assert span.payload["model"] == "stub"
-    assert "input_tokens" in span.payload
-    assert "system_chars" in span.payload, "D4 wants the prompt represented"
-
-
-def test_the_system_prompt_is_recorded_by_size_not_repeated_verbatim(res):
+def test_the_root_carries_the_question_and_the_answer(res):
     """
-    D4 asks for the system prompt in the trace. The intent role's carries 612
-    provision names, about 3,000 tokens; repeating it on every span would make
-    the trace unreadable and, on a metered backend, expensive.
+    The trace list shows the root's input and output, so those are what a
+    reviewer reads first -- not a JSON blob of arguments.
     """
     verdict = answer(
-        Script(router=routing("rules"), intent=planning(), answers=["done"]),
-        question="q",
+        Script(router=routing("rules"), intent=planning(), answers=["Here is the answer."]),
+        question="What is the Standard Traded Player Exception?",
         res=res,
     )
-    assert verdict.trace is not None
-    for span in verdict.trace.spans:
-        assert "system" not in span.payload
-        assert "system_chars" not in span.payload or isinstance(span.payload["system_chars"], int)
+    assert verdict.trace is not None and verdict.trace.root is not None
+    assert verdict.trace.root.input == "What is the Standard Traded Player Exception?"
+    assert verdict.trace.root.output == "Here is the answer."
 
 
-def test_a_refusal_is_traced_with_its_basis(res):
+def test_a_tool_is_a_sibling_of_the_generation_that_requested_it(res):
+    """
+    Not a child of the generation, and not dangling at the trace root. The
+    tree has to show which step each action belongs to.
+    """
     from agent.trace import Kind
 
-    verdict = answer(
-        Script(router=routing("refused", basis="historical"), intent=planning(), answers=[]),
-        question="what was the cap in 2019?",
-        res=res,
-    )
-    assert verdict.trace is not None
-    refusal = next(s for s in verdict.trace.spans if s.kind is Kind.REFUSAL)
-    assert refusal.name == "historical"
-    assert verdict.trace.metadata["refused"] is True
-
-
-def test_the_trace_metadata_carries_the_verdict_properties(res):
     verdict = answer(
         Script(
             router=routing("rules"),
-            intent=planning("Trade Rules"),
+            intent=planning(),
             answers=[[("fetch_provision", {"citation": "Art. VII §8"})], "x"],
         ),
         question="q",
         res=res,
     )
-    assert verdict.trace is not None
-    assert verdict.trace.metadata["supported"] is True
-    assert verdict.trace.metadata["trustworthy"] is verdict.trustworthy
+    assert verdict.trace is not None and verdict.trace.root is not None
+    kinds = [c.kind for c in verdict.trace.root.children]
+    assert Kind.GENERATION in kinds
+    assert Kind.RETRIEVER in kinds
+    for child in verdict.trace.root.children:
+        assert child.children == [], "nothing nests under a generation or a tool"
 
 
-def test_a_tool_span_records_the_citation_it_reached(res):
+def test_spans_are_named_for_the_step_not_the_model_or_the_role(res):
+    """
+    Names behave like an API: evaluators and dashboards target them, so they
+    are verb-first, stable, and never carry the model.
+    """
+    verdict = answer(
+        Script(
+            router=routing("rules"),
+            intent=planning(),
+            answers=[[("fetch_provision", {"citation": "Art. VII §8"})], "x"],
+        ),
+        question="q",
+        res=res,
+    )
+    assert verdict.trace is not None and verdict.trace.root is not None
+    names = [c.name for c in verdict.trace.root.children]
+    assert "classify-question" in names
+    assert "select-provisions" in names
+    assert "generate-answer" in names
+    assert "fetch-provision" in names
+    assert not any("stub" in n or "claude" in n for n in names)
+
+
+def test_a_generation_records_the_model_and_token_usage(res):
+    from agent.trace import Kind
+
+    verdict = answer(
+        Script(router=routing("rules"), intent=planning(), answers=["done"]),
+        question="q",
+        res=res,
+    )
+    assert verdict.trace is not None and verdict.trace.root is not None
+    span = next(c for c in verdict.trace.root.children if c.kind is Kind.GENERATION)
+    assert span.model == "stub"
+    assert "input" in span.usage
+    assert "cache_read_input_tokens" in span.usage
+
+
+def test_the_system_prompt_is_clipped_rather_than_repeated_in_full(res):
+    """
+    D4 asks for the system prompt in the trace. The intent role's carries 612
+    provision names -- about 16,000 characters -- and repeating it on every
+    span would bury the conversation and cost money to store.
+    """
+    verdict = answer(
+        Script(router=routing("rules"), intent=planning(), answers=["done"]),
+        question="q",
+        res=res,
+    )
+    assert verdict.trace is not None and verdict.trace.root is not None
+    for child in verdict.trace.root.children:
+        if not child.input or not isinstance(child.input, list):
+            continue
+        system = child.input[0]
+        assert system["role"] == "system"
+        assert len(system["content"]) < 1_000, "clipped, not verbatim"
+
+
+def test_a_tool_span_summarises_rather_than_dumping_the_whole_result(res):
+    """
+    A fetch_provision result carries several thousand characters of provision
+    text; a trace full of those is unreadable. The citation and the shape are
+    what tell you whether the step did its job.
+    """
     from agent.trace import Kind
 
     verdict = answer(
@@ -477,7 +515,54 @@ def test_a_tool_span_records_the_citation_it_reached(res):
         question="q",
         res=res,
     )
+    assert verdict.trace is not None and verdict.trace.root is not None
+    span = next(c for c in verdict.trace.root.children if c.kind is Kind.RETRIEVER)
+    assert span.output["citation_returned"] == "Art. VII §6(j)(1)"
+    assert span.metadata["ok"] is True
+    assert len(str(span.output)) < 1_000
+
+
+def test_a_refusal_is_traced_as_an_event_with_its_basis(res):
+    from agent.trace import Kind
+
+    verdict = answer(
+        Script(router=routing("refused", basis="historical"), intent=planning(), answers=[]),
+        question="what was the cap in 2019?",
+        res=res,
+    )
+    assert verdict.trace is not None and verdict.trace.root is not None
+    event = next(c for c in verdict.trace.root.children if c.kind is Kind.EVENT)
+    assert event.name == "refuse-question"
+    assert event.metadata["basis"] == "historical"
+    assert verdict.trace.scores["refused"] == 1
+
+
+def test_judgements_become_scores_and_routing_becomes_tags(res):
+    """
+    Tags are immutable and set at creation, so they carry what is structural.
+    Whether the answer was supported is only known afterwards, so it is a score.
+    """
+    verdict = answer(
+        Script(
+            router=routing("rules"),
+            intent=planning("Trade Rules"),
+            answers=[[("fetch_provision", {"citation": "Art. VII §8"})], "x"],
+        ),
+        question="q",
+        res=res,
+    )
     assert verdict.trace is not None
-    span = next(s for s in verdict.trace.spans if s.kind is Kind.TOOL_CALL)
-    assert span.payload["citation"] == "Art. VII §6(j)(1)"
-    assert span.payload["ok"] is True
+    assert verdict.trace.tags == ["rules"]
+    assert verdict.trace.scores["supported"] == 1
+    assert verdict.trace.scores["trustworthy"] == int(verdict.trustworthy)
+
+
+def test_the_environment_is_recorded_so_test_runs_are_separable(res):
+    verdict = answer(
+        Script(router=routing("rules"), intent=planning(), answers=["x"]),
+        question="q",
+        res=res,
+        environment="staging",
+    )
+    assert verdict.trace is not None
+    assert verdict.trace.environment == "staging"
