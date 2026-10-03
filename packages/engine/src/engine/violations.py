@@ -28,6 +28,7 @@ class Code(StrEnum):
     AGGREGATION_TWO_MONTH_BAR = "aggregation_two_month_bar"
     PLAYER_TRADE_RESTRICTED = "player_trade_restricted"
     ROSTER_MAXIMUM_EXCEEDED = "roster_maximum_exceeded"
+    APRON_TRANSACTION_BARRED = "apron_transaction_barred"
 
 
 CITATION_FOR: dict[Code, Citation] = {
@@ -37,6 +38,7 @@ CITATION_FOR: dict[Code, Citation] = {
     Code.AGGREGATION_TWO_MONTH_BAR: citations.AGGREGATION_TWO_MONTH_BAR,
     Code.PLAYER_TRADE_RESTRICTED: citations.TRADE_RULES,
     Code.ROSTER_MAXIMUM_EXCEEDED: citations.TRADE_RULES,
+    Code.APRON_TRANSACTION_BARRED: citations.TRANSACTION_PROHIBITION,
 }
 
 

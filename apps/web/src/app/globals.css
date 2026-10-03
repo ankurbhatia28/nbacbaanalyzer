@@ -707,3 +707,109 @@ tr.line-dead td:first-child {
 .threshold-end .threshold-label {
   transform: translateX(calc(-100% + 1px));
 }
+
+/* -- trade builder (7.4) -------------------------------------------------- */
+
+.builder-teams {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.builder-team {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 12px;
+  min-width: 0;
+}
+
+.builder-team-head {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.builder-team select,
+.builder-roster select {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 6px;
+  max-width: 100%;
+}
+
+.builder-team-head select {
+  font-weight: 600;
+}
+
+.builder-team .small {
+  margin: 6px 0 8px;
+}
+
+.builder-roster {
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+.builder-roster td {
+  padding: 3px 4px;
+}
+
+.builder-roster tr.moving td {
+  background: var(--verified-bg);
+}
+
+.builder-roster select {
+  font-size: 0.8rem;
+  padding: 1px 4px;
+}
+
+.verdict {
+  margin-top: 20px;
+}
+
+.trade-sides {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.trade-side {
+  border-left: 3px solid var(--verified);
+  padding: 2px 0 2px 10px;
+}
+
+.trade-side-failing {
+  border-left-color: var(--danger);
+}
+
+.trade-side h4 {
+  margin: 0 0 4px;
+}
+
+.trade-side p {
+  margin: 0 0 4px;
+}
+
+.violation p {
+  margin: 0 0 6px;
+}
+
+.violation blockquote {
+  white-space: pre-wrap;
+  font-size: 0.85rem;
+}
+
+.to-builder {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}

@@ -13,6 +13,7 @@ import ReactMarkdown, { type Components } from "react-markdown";
 
 import type { AnswerCard as Card, CardWarning, Status } from "@/lib/card";
 import { datasetSummary, FIGURE_HREF, linkFigures, UNSOURCED_HREF } from "@/lib/format";
+import { seedHref } from "@/lib/trade";
 
 import { FigureView } from "./FigureView";
 import { QuoteView } from "./QuoteView";
@@ -117,6 +118,15 @@ export function AnswerCard({ card }: { card: Card }) {
       {card.status === "answered" && card.refusal_basis && (
         <p className="partial-refusal">
           <strong>Part of this question was declined.</strong> {card.refusal_basis}
+        </p>
+      )}
+
+      {card.trade && card.trade.players.length > 0 && (
+        <p className="to-builder">
+          <a href={seedHref(card.trade.players)}>Check this trade in the trade builder →</a>{" "}
+          <span className="muted">
+            The rules engine runs it against current rosters and shows which rule it breaks.
+          </span>
         </p>
       )}
 

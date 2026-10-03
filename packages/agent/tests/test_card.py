@@ -205,3 +205,23 @@ def test_the_card_serialises_to_plain_json_with_the_dataset_and_schema():
     assert payload["dataset"]["source_dates"] == {"fanspo": "2026-09-29"}
     assert payload["status"] == "answered"
     assert payload["quotes"][0]["printed_page"] == 240
+
+
+def test_a_validation_question_carries_its_players_to_the_trade_builder():
+    """7.4: reachable from a chat answer, with only the players that resolved."""
+    from agent.intent import Entity, Plan
+
+    routing = Routing(intents=(Intent.VALIDATION,), reason="r")
+    plan = Plan(
+        question="q",
+        kinds=(Intent.VALIDATION,),
+        players=(
+            Entity(asked_as="Murray", key="jamal murray", display_name="Jamal Murray"),
+            Entity(asked_as="Williams", candidates=("Jalen Williams", "Jaylin Williams")),
+        ),
+    )
+    card = build(verdict("x", routing=routing, plan=plan))
+    assert card.trade == {"players": ["jamal murray"]}
+
+    rules = Routing(intents=(Intent.RULES,), reason="r")
+    assert build(verdict("x", routing=rules, plan=plan)).trade is None

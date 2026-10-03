@@ -75,6 +75,11 @@ export interface AnswerCard {
   dataset: Dataset | null;
   cost_usd: number | null;
   seconds: number | null;
+  /**
+   * Players a validation question named, for the trade builder (7.4). Optional:
+   * cards from before it, permalinks included, do not carry it.
+   */
+  trade?: { players: string[] } | null;
 }
 
 export class SchemaMismatch extends Error {

@@ -146,3 +146,77 @@ def test_naming_a_player_surfaces_an_unknown_trade_kicker():
 def test_naming_a_player_the_team_does_not_have_is_blocking():
     report = team_trade_constraints(room_team(), player_id="nobody", as_of=WHEN)
     assert any(c.kind == "unknown_player" and c.blocking for c in report.constraints)
+
+
+def test_a_team_sending_several_players_may_split_them_across_exceptions():
+    """
+    3.14a, which `validate_trade` did not use until the trade builder (7.4).
+
+    Art. VII 6(j)(1)(i) lets one exception replace "one (1) Traded Player" and
+    6(m) carves 6(j) out of its bar on combining exceptions, so four outgoing
+    contracts may be matched as four. Judged as one aggregated exception this
+    trade was refused, though a lawful structure permits it.
+    """
+    from engine.salary_matching import best_allowance, best_structure
+    from engine.team_state import TeamState
+
+    sent = [fully_guaranteed(S, x) for x in (20_000_000, 12_000_000, 9_435_741, 6_000_000)]
+    filler = fully_guaranteed(S, 120_000_000)
+    a = TeamState(team_id="A", season=S, contracts=[*sent, filler])
+    outgoing = sum(c.cap_figure(S.season_id) for c in sent)
+    structure = best_structure([c.cap_figure(S.season_id) for c in sent], S, 0, BASE)
+    taken = fully_guaranteed(S, structure.total_allowance)
+    post = a.apron_team_salary() - outgoing + structure.total_allowance
+    assert post < S.first_apron
+    # One exception alone does not permit it -- the case this test exists for.
+    incoming = taken.cap_figure(S.season_id)
+    assert best_allowance(outgoing, incoming, S, post, BASE, aggregating=True) is None
+
+    b = TeamState(team_id="B", season=S, contracts=[taken, fully_guaranteed(S, 100_000_000)])
+    verdict = validate_trade(two_team(a, b, sent, [taken]), {"A": a, "B": b}, BASE)
+    assert verdict.legal, verdict.summary()
+    assert any("exceptions" in note for note in verdict.notes)
+
+
+def test_a_trade_matched_by_the_expanded_exception_says_it_hard_caps_the_team():
+    """Art. VII 2(e)(2)(i)(B): legal, but at the cost of a first-apron ceiling (row E)."""
+    from engine.team_state import TeamState
+
+    a = TeamState(
+        team_id="A",
+        season=S,
+        contracts=[fully_guaranteed(S, 20_000_000), fully_guaranteed(S, 150_000_000)],
+    )
+    b = TeamState(team_id="B", season=S, contracts=[fully_guaranteed(S, 100_000_000)])
+    sent, taken = [a.contracts[0]], [fully_guaranteed(S, 28_000_000)]
+    b.contracts.append(taken[0])
+    verdict = validate_trade(two_team(a, b, sent, taken), {"A": a, "B": b}, BASE)
+    assert verdict.legal, verdict.summary()
+    assert any("row E" in n and "first apron" in n for n in verdict.notes), verdict.notes
+
+
+def test_an_exception_in_the_restrictions_table_is_barred_above_its_apron():
+    """
+    Art. VII 2(e)(2)(i)(A): a team may not use the Expanded exception (row E)
+    if its Apron Team Salary would exceed the first apron immediately after.
+    The amount 6(j)(1)(iv) permits is irrelevant once the transaction is barred.
+    Found by the trade builder (7.4): Murray for Irving and Washington was
+    called legal while leaving Denver over the second apron.
+    """
+    from engine.team_state import TeamState
+
+    a = TeamState(
+        team_id="A",
+        season=S,
+        contracts=[fully_guaranteed(S, 20_000_000), fully_guaranteed(S, 190_000_000)],
+    )
+    b = TeamState(team_id="B", season=S, contracts=[fully_guaranteed(S, 100_000_000)])
+    sent, taken = [a.contracts[0]], [fully_guaranteed(S, 28_000_000)]
+    b.contracts.append(taken[0])
+    assert a.apron_team_salary() - 20_000_000 + 28_000_000 > S.first_apron
+    verdict = validate_trade(two_team(a, b, sent, taken), {"A": a, "B": b}, BASE)
+    assert not verdict.legal
+    (barred,) = [v for v in verdict.violations if v.team_id == "A"]
+    assert barred.code is Code.APRON_TRANSACTION_BARRED
+    assert barred.citation.section == "2(e)(2)(i)(A)"
+    assert "expanded" in barred.detail

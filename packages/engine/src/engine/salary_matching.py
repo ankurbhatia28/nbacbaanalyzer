@@ -179,6 +179,7 @@ def best_allowance(
     *,
     aggregating: bool,
     cap_room: int | None = None,
+    exclude: frozenset[MatchingExceptionKind] = frozenset(),
 ) -> Allowance | None:
     """
     The least-consequential exception that permits `incoming`, or None.
@@ -200,7 +201,7 @@ def best_allowance(
     candidates.append(expanded(outgoing, season, post_apron_salary, base_season_cap))
 
     for candidate in candidates:
-        if candidate.permits(incoming):
+        if candidate.kind not in exclude and candidate.permits(incoming):
             return candidate
     return None
 
@@ -230,17 +231,21 @@ def _partitions(items: list[int]) -> Iterator[list[list[int]]]:
 
 
 def _group_allowance(
-    group: list[int], season: Season, post_apron_salary: int, base_season_cap: int
+    group: list[int],
+    season: Season,
+    post_apron_salary: int,
+    base_season_cap: int,
+    exclude: frozenset[MatchingExceptionKind] = frozenset(),
 ) -> int:
     """The most a single exception permits against one group of traded players."""
     total = sum(group)
     options = [
-        standard(total, season, post_apron_salary).amount
+        standard(total, season, post_apron_salary)
         if len(group) == 1
-        else aggregated(total, season, post_apron_salary).amount,
-        expanded(total, season, post_apron_salary, base_season_cap).amount,
+        else aggregated(total, season, post_apron_salary),
+        expanded(total, season, post_apron_salary, base_season_cap),
     ]
-    return max(options)
+    return max((o.amount for o in options if o.kind not in exclude), default=0)
 
 
 @dataclass(frozen=True, slots=True)
@@ -264,6 +269,7 @@ def best_structure(
     season: Season,
     post_apron_salary: int,
     base_season_cap: int,
+    exclude: frozenset[MatchingExceptionKind] = frozenset(),
 ) -> Structure:
     """
     The most incoming salary a team may absorb, allowing it to split its outgoing
@@ -286,9 +292,10 @@ def best_structure(
     if len(salaries) > MAX_PARTITIONED_PLAYERS:
         # Fall back to the two obvious structures rather than enumerate.
         singles = sum(
-            _group_allowance([s], season, post_apron_salary, base_season_cap) for s in salaries
+            _group_allowance([s], season, post_apron_salary, base_season_cap, exclude)
+            for s in salaries
         )
-        whole = _group_allowance(salaries, season, post_apron_salary, base_season_cap)
+        whole = _group_allowance(salaries, season, post_apron_salary, base_season_cap, exclude)
         if singles >= whole:
             return Structure(singles, tuple((s,) for s in salaries))
         return Structure(whole, (tuple(salaries),))
@@ -297,7 +304,7 @@ def best_structure(
     best_groups: tuple[tuple[int, ...], ...] = ()
     for partition in _partitions(salaries):
         total = sum(
-            _group_allowance(group, season, post_apron_salary, base_season_cap)
+            _group_allowance(group, season, post_apron_salary, base_season_cap, exclude)
             for group in partition
         )
         if total > best_total:
