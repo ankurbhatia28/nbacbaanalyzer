@@ -23,7 +23,7 @@
 > re-run `gh pr list` before branching: the merge state lives on GitHub, not in
 > this file.
 >
-> Decisions D1–D17 live in [`division-of-labor.md`](division-of-labor.md).
+> Decisions D1–D19 live in [`division-of-labor.md`](division-of-labor.md).
 > The measured results worth knowing before changing anything:
 > **router 88.9%** exact-set (6.1), **provision naming 80%** against a 100%
 > ceiling (6.3), **retrieval recall@1 34%** (5.8), **adversarial 0–4 misleading
@@ -109,7 +109,7 @@ required UI element rather than a nicety.
 *New in this scope. Data questions are a first-class surface, so the dataset needs to be queryable — safely.*
 
 - [x] **2.1** SQLite schema derived from the Phase 1 model
-- [x] **2.2** Ingest the six sources with explicit precedence rules per field
+- [x] **2.2** Ingest the six sources with explicit precedence rules per field — *current-season salaries changed to Fanspo in Phase 7 (D18), with every override reported*
 - [x] **2.3** Cross-source reconciliation and a disagreement report
 - [x] **2.4** Entity resolution across sources — `bbref_id`, Fanspo `playerId`, Spotrac display names
 - [x] **2.5** Query DSL schema — entity, filters, grouping, aggregation ([ADR-002](adr/0002-structured-query-not-text-to-sql.md))

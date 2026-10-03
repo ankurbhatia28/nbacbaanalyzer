@@ -75,7 +75,7 @@ not the holder).
 - [`docs/build-plan.md`](docs/build-plan.md) — phases and tasks. **Opens with a
   "where this stands" header**; read it before planning anything.
 - [`docs/division-of-labor.md`](docs/division-of-labor.md) — who owns what, and
-  settled decisions **D1–D17**
+  settled decisions **D1–D19**
 - [`docs/traces/`](docs/traces/) — five real sessions, committed because hosted
   retention is 30 days
 
