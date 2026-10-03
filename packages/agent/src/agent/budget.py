@@ -61,6 +61,30 @@ class Price:
         ) / MILLION
 
 
+ANTHROPIC_PRICES: dict[str, Price] = {
+    # Dollars per million tokens, from Anthropic's published pricing.
+    #
+    # `cache_write` is the **5-minute** write price, because the breakpoint
+    # this code sets is `{"type": "ephemeral"}`, which is the 5-minute TTL.
+    # The 1-hour tier costs more to write and would be the wrong number here;
+    # if the TTL ever changes, this has to change with it.
+    "claude-haiku-4-5-20251001": Price(input_=1.0, output=5.0, cache_write=1.25, cache_read=0.10),
+    "claude-sonnet-5": Price(input_=2.0, output=10.0, cache_write=2.50, cache_read=0.20),
+    "claude-opus-5-5": Price(input_=4.0, output=20.0, cache_write=5.0, cache_read=0.20),
+}
+"""
+Supplied rather than defaulted into `Budget`.
+
+A budget still starts unpriced, so a deployment that forgets to pass this gets
+exact token ceilings instead of a stale guess at dollars. Pricing changes; this
+table is a convenience for the models D15 actually selected, not a claim that
+it will stay current.
+
+Note how much the cache read price matters here: at the 97% hit rate measured
+in 6.8, Sonnet's answer-role input is billed mostly at $0.20 rather than $2.00.
+"""
+
+
 class BudgetError(RuntimeError):
     """
     The request was refused because a hard cap was reached.
