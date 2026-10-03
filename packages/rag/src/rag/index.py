@@ -455,9 +455,19 @@ def _citation_rows(outline: Outline, chunks: list[Chunk]) -> list[tuple[str, int
 
 
 def open_index(path: Path | str) -> sqlite3.Connection:
-    """How the serving application opens it (ADR-004): read-only."""
+    """
+    How the serving application opens it (ADR-004): read-only.
+
+    `check_same_thread=False` because ADR-004 makes this a read-only build
+    artifact -- nothing at runtime writes to it, so there is no write
+    contention for that guard to protect against. Python reports
+    `sqlite3.threadsafety == 3` (serialized), meaning connections may be shared
+    across threads. Streaming (6.9) runs the agent loop on a worker thread
+    while the caller reads progress, and without this it fails with
+    "SQLite objects created in a thread can only be used in that same thread".
+    """
     uri = f"file:{Path(path).resolve()}?mode=ro"
-    conn = sqlite3.connect(uri, uri=True)
+    conn = sqlite3.connect(uri, uri=True, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     return conn
 
