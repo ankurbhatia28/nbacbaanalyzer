@@ -32,7 +32,13 @@ class Src(StrEnum):
 # Field -> sources in descending priority. First source that has a value wins.
 PRECEDENCE: dict[str, tuple[Src, ...]] = {
     # B-R publishes a six-year grid; Fanspo's payload is current-season only.
+    # So B-R is the source for every season *after* the current one.
     "salary_by_season": (Src.BBREF_CONTRACTS, Src.SPOTRAC, Src.FANSPO),
+    # D18: for the current season Fanspo's payroll wins. B-R's current-season
+    # column reads as a contract projection -- declined options and camp
+    # deals still listed -- and disagreed with Fanspo by up to $39.4M a team.
+    # Fanspo's is the one consistent with SalarySwish's hard caps.
+    "salary_current_season": (Src.FANSPO, Src.BBREF_CONTRACTS),
     # Only B-R carries options per year, via CSS class plus prose. Spotrac's
     # decision calendar corroborates and adds dates.
     "option_type": (Src.BBREF_CONTRACTS, Src.SPOTRAC),

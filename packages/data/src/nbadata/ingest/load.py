@@ -22,7 +22,7 @@ from ..db import build
 from .names import normalise
 from .overrides import apply_pick_overrides, load_pick_overrides
 from .precedence import Src
-from .reconcile import Reconciler
+from .reconcile import Disagreement, Reconciler
 from .resolve import ResolutionReport
 from .teams import canonical_team, from_display, from_slug
 
@@ -91,6 +91,34 @@ def source_dates(directory: Path) -> dict[str, str]:
         if isinstance(scraped, str) and scraped:
             found[source] = datetime.fromisoformat(scraped).date().isoformat()
     return found
+
+
+CURRENT_PAYROLL = ("activeRoster", "restOfSeason")
+"""Fanspo payroll types that are contracts counting this season. Two-way deals
+carry a $0 cap hit and do not count toward Team Salary; dead cap is separate."""
+
+
+def fanspo_payroll(
+    csv_dir: Path, fanspo_to_tri: dict[str, str]
+) -> tuple[dict[tuple[str, str], int], list[tuple[str, str, int]]]:
+    """
+    Fanspo's current-season payroll: contracts by (player, team), and dead cap.
+
+    Keyed by normalised name, the same join the cap holds use.
+    """
+    contracts: dict[tuple[str, str], int] = {}
+    dead: list[tuple[str, str, int]] = []
+    for r in rows(csv_dir, "team_payroll_player.csv"):
+        tri = fanspo_to_tri.get((r["_source_team_ids"].split("|") or [""])[0])
+        amount = as_int(r.get("capHit"))
+        if not tri or amount is None:
+            continue
+        key = normalise(r.get("name") or "")
+        if r.get("payrollType") in CURRENT_PAYROLL and amount > 0:
+            contracts[(key, tri)] = amount
+        elif r.get("payrollType") == "deadCap" and amount > 0:
+            dead.append((key, tri, amount))
+    return contracts, dead
 
 
 @dataclass
@@ -214,12 +242,39 @@ def load(csv_dir: Path, db_path: Path) -> IngestReport:
     notes = {r["bbref_id"]: r for r in rows(csv_dir, "contract_notes.csv") if r["bbref_id"]}
     name_by_bbref = {i.bbref_id: i.key for i in ids.identities.values() if i.bbref_id}
 
+    # D18: for the current season, Fanspo's payroll decides who is under
+    # contract and for how much. Every place it overrules Basketball-Reference
+    # goes through the reconciler, so the disagreements are a report rather
+    # than a silent substitution.
+    payroll, dead = fanspo_payroll(csv_dir, fanspo_to_tri)
+    matched: set[tuple[str, str]] = set()
+
     cid = 0
     contract_rows, year_rows = [], []
     for (bbref_id, team), seasons in by_player.items():
         player_key = name_by_bbref.get(bbref_id)
         if player_key is None:
             continue
+        tri_team = canonical_team(team) or team
+        listed_now = next((as_int(s["salary"]) for s in seasons if s["season_id"] == SEASON), None)
+        on_payroll = payroll.get((player_key, tri_team))
+        if listed_now and on_payroll is None:
+            # B-R carries a current-season salary Fanspo's payroll does not:
+            # a declined option, a released camp deal, a player since moved.
+            # The contract is dropped, not just its current year -- a contract
+            # that is not on the books now has no future years either.
+            rec.disagreements.append(
+                Disagreement(
+                    "salary_current_season",
+                    f"{player_key}@{tri_team}",
+                    Src.FANSPO,
+                    "not on the current payroll",
+                    {Src.BBREF_CONTRACTS.value: listed_now},
+                )
+            )
+            continue
+        if on_payroll is not None:
+            matched.add((player_key, tri_team))
         cid += 1
         note = notes.get(bbref_id, {})
         contract_rows.append(
@@ -242,11 +297,18 @@ def load(csv_dir: Path, db_path: Path) -> IngestReport:
             if s["season_id"] in seen_seasons:
                 continue
             seen_seasons.add(s["season_id"])
+            salary = as_int(s["salary"])
+            if s["season_id"] == SEASON and on_payroll is not None:
+                salary = rec.resolve(
+                    "salary_current_season",
+                    f"{player_key}@{tri_team}",
+                    {Src.FANSPO: on_payroll, Src.BBREF_CONTRACTS: salary},
+                )
             year_rows.append(
                 (
                     cid,
                     s["season_id"],
-                    as_int(s["salary"]),
+                    salary,
                     # Basketball-Reference marks guarantee status with cell
                     # styling this scraper does not read, so it is genuinely
                     # unknown -- the same treatment trade kickers get above.
@@ -258,10 +320,46 @@ def load(csv_dir: Path, db_path: Path) -> IngestReport:
                     None,
                 )
             )
+        if on_payroll is not None and SEASON not in seen_seasons:
+            # On Fanspo's payroll for a season B-R's grid does not list.
+            year_rows.append((cid, SEASON, on_payroll, "unknown", None, None, None, None, None))
+
+    # On Fanspo's payroll with no Basketball-Reference contract at all: a
+    # current-season contract only, since Fanspo carries no later years.
+    for (player_key, tri_team), amount in sorted(payroll.items()):
+        if (player_key, tri_team) in matched or player_key not in known:
+            continue
+        cid += 1
+        contract_rows.append(
+            (
+                cid,
+                player_key,
+                tri_team,
+                None,
+                None,
+                "unknown",
+                None,
+                "unknown",
+                None,
+                Src.FANSPO.value,
+                None,
+            )
+        )
+        year_rows.append((cid, SEASON, amount, "unknown", None, None, None, None, None))
+        counts["contracts_from_fanspo_only"] = counts.get("contracts_from_fanspo_only", 0) + 1
+
     conn.executemany("INSERT INTO contracts VALUES (?,?,?,?,?,?,?,?,?,?,?)", contract_rows)
     conn.executemany("INSERT INTO contract_years VALUES (?,?,?,?,?,?,?,?,?)", year_rows)
     counts["contracts"] = len(contract_rows)
     counts["contract_years"] = len(year_rows)
+
+    # ---- dead money (Fanspo only) ---------------------------------------
+    dead_rows = [
+        (i, tri_team, key if key in known else None, amount, SEASON, Src.FANSPO.value, None)
+        for i, (key, tri_team, amount) in enumerate(dead, start=1)
+    ]
+    conn.executemany("INSERT INTO dead_money VALUES (?,?,?,?,?,?,?)", dead_rows)
+    counts["dead_money"] = len(dead_rows)
 
     # ---- cap holds (Fanspo wins on bird_rights) -------------------------
     hold_rows = []

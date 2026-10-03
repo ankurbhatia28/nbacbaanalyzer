@@ -86,6 +86,17 @@ CREATE TABLE contract_years (
 );
 CREATE INDEX idx_cy_season ON contract_years(season_id);
 
+CREATE TABLE dead_money (
+    dead_id     INTEGER PRIMARY KEY,
+    team_key    TEXT NOT NULL,
+    player_key  TEXT,
+    amount      INTEGER NOT NULL,
+    season_id   TEXT NOT NULL,
+    source      TEXT NOT NULL,
+    as_of       TEXT
+);
+CREATE INDEX idx_dead_team ON dead_money(team_key);
+
 CREATE TABLE cap_holds (
     hold_id     INTEGER PRIMARY KEY,
     team_key    TEXT NOT NULL,
