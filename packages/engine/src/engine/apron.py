@@ -141,17 +141,25 @@ class SeasonThresholds:
 
 @dataclass(frozen=True, slots=True)
 class HardCapCeiling:
-    """One ceiling, created by one transaction."""
+    """
+    One ceiling, created by one transaction.
 
-    row: RestrictionRow
+    `row` and `effective_date` may be unknown: SalarySwish publishes the apron
+    level and the triggering transaction but neither the Transaction
+    Restrictions Table row nor the date. The level is what sets the dollar
+    figure, so a ceiling with an unknown row still binds correctly.
+    """
+
+    row: RestrictionRow | None
     level: ApronLevel
-    effective_date: date
+    effective_date: date | None
     season_id: str
     source_transaction: str | None = None
 
     def describe(self) -> str:
         where = f" ({self.source_transaction})" if self.source_transaction else ""
-        return f"{self.level.value} via row {self.row.value}{where}"
+        via = f"row {self.row.value}" if self.row else "a row not published by the source"
+        return f"{self.level.value} via {via}{where}"
 
 
 @dataclass
