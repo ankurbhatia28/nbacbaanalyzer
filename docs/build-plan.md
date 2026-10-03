@@ -1,3 +1,34 @@
+# Build plan
+
+> ## Where this stands
+>
+> **Phases 0–5 are complete. Phase 6 is complete except 6.9 (streaming). Phases 7 and 8 have not started.**
+>
+> | phase | state |
+> |---|---|
+> | 0 Rails · 1 Domain model · 2 Data layer · 3 Rules engine | done |
+> | 4 Ground-truth evals · 5 CBA retrieval | done |
+> | 6 Agent layer | done except **6.9 streaming** |
+> | 7 Interface · 8 Ship | **not started** |
+>
+> Two items in Phase 3 are deliberately left open and say why inline: **3.14**
+> (non-simultaneous TPE creation) and **3.16** (Art. VII §2(f), the Second Apron
+> pick freeze).
+>
+> **Checkboxes in Phases 1–3 were stale until 2026-10-02** — the work was done
+> during Phases 1–3 but never ticked, so this file read as though the domain
+> model had not been started. Each was verified against the codebase before
+> being ticked. If you are picking this up fresh, trust the boxes now, and
+> re-run `gh pr list` before branching: the merge state lives on GitHub, not in
+> this file.
+>
+> Decisions D1–D17 live in [`division-of-labor.md`](division-of-labor.md).
+> The measured results worth knowing before changing anything:
+> **router 88.9%** exact-set (6.1), **provision naming 80%** against a 100%
+> ceiling (6.3), **retrieval recall@1 34%** (5.8), **adversarial 0–4 misleading
+> failures in 30**, variance included (6.11), **97% of the answer role's input
+> served from cache** (6.8).
+
 # NBA CBA Analyzer — Build Plan
 
 Ask a question about the NBA Collective Bargaining Agreement and get an answer a
@@ -51,22 +82,22 @@ required UI element rather than a nicety.
 
 *Every later phase reads these types. Mistakes here surface as unfixable bugs in Phase 3.*
 
-- [ ] **1.1** `Season` — cap, tax, both aprons, three MLE tiers, BAE, minimum scale by YOS, rookie scale by slot
-- [ ] **1.2** `Team`, `Player` — including authoritative years of service from `roster_experience.csv`
-- [ ] **1.3** `Contract` as a row per season — cap figure, guarantee status and date, option type, incentives, trade kicker, no-trade clause
-- [ ] **1.4** Contract type enum — rookie scale, veteran, max, minimum, two-way, Exhibit 10
-- [ ] **1.5** `CapHold` — free agent holds, roster charges, unsigned pick holds
-- [ ] **1.6** `BirdRights` — Full / Early / Non, from `team_cap_hold.rightType`
-- [ ] **1.7** `DraftPick` — protection as a structured predicate plus conveyance rule; swaps as their own entity
-- [ ] **1.8** `TradeException` — amount, created, expiry, and apron-dependent usability
-- [ ] **1.9** `TradeRestriction` — reason and expiry, so violations can explain themselves
-- [ ] **1.10** Roster state — 15 standard, 3 two-way, 14 minimum with grace
-- [ ] **1.11** **`Unknown` as a first-class type.** Tri-state present / absent / unknown for trade kickers, no-trade clauses, cash. Never coerced to zero — [ADR-003](adr/0003-unknown-is-not-zero.md)
-- [ ] **1.12** Hand-built fixture team covering every edge case, before real data
-- [ ] **1.13** JSON Schema for the whole model — one contract shared by engine, API, web, and evals
-- [ ] **1.14** `as_of` and provenance on every ingested record
-- [ ] **1.15** **Apron *status* and apron *ceiling* are separate fields.** Status is where a team's Apron Team Salary sits. Ceiling is what a prior transaction forbids it from exceeding. Houston is far *below* the second apron yet may not cross it; OKC is far *above* it and may go higher. A single "apron" field conflates opposite situations.
-- [ ] **1.16** **`HardCapCeiling` is a set, not a scalar.** One entry per triggering transaction — `(trigger_row, apron_level, effective_date, source_transaction)` — with the operative ceiling computed as the **minimum**. Confirmed against real data: Milwaukee holds a first-apron ceiling (Jul 8 expanded-TPE acquisition) *and* a second-apron ceiling (Jun 24 cash payment); trackers show 1st because the lower one binds.
+- [x] **1.1** `Season` — cap, tax, both aprons, three MLE tiers, BAE, minimum scale by YOS, rookie scale by slot
+- [x] **1.2** `Team`, `Player` — including authoritative years of service from `roster_experience.csv`
+- [x] **1.3** `Contract` as a row per season — cap figure, guarantee status and date, option type, incentives, trade kicker, no-trade clause
+- [x] **1.4** Contract type enum — rookie scale, veteran, max, minimum, two-way, Exhibit 10
+- [x] **1.5** `CapHold` — free agent holds, roster charges, unsigned pick holds
+- [x] **1.6** `BirdRights` — Full / Early / Non, from `team_cap_hold.rightType`
+- [x] **1.7** `DraftPick` — protection as a structured predicate plus conveyance rule; swaps as their own entity
+- [x] **1.8** `TradeException` — amount, created, expiry, and apron-dependent usability
+- [x] **1.9** `TradeRestriction` — reason and expiry, so violations can explain themselves
+- [x] **1.10** Roster state — 15 standard, 3 two-way, 14 minimum with grace
+- [x] **1.11** **`Unknown` as a first-class type.** Tri-state present / absent / unknown for trade kickers, no-trade clauses, cash. Never coerced to zero — [ADR-003](adr/0003-unknown-is-not-zero.md)
+- [x] **1.12** Hand-built fixture team covering every edge case, before real data
+- [x] **1.13** JSON Schema for the whole model — one contract shared by engine, API, web, and evals
+- [x] **1.14** `as_of` and provenance on every ingested record
+- [x] **1.15** **Apron *status* and apron *ceiling* are separate fields.** Status is where a team's Apron Team Salary sits. Ceiling is what a prior transaction forbids it from exceeding. Houston is far *below* the second apron yet may not cross it; OKC is far *above* it and may go higher. A single "apron" field conflates opposite situations.
+- [x] **1.16** **`HardCapCeiling` is a set, not a scalar.** One entry per triggering transaction — `(trigger_row, apron_level, effective_date, source_transaction)` — with the operative ceiling computed as the **minimum**. Confirmed against real data: Milwaukee holds a first-apron ceiling (Jul 8 expanded-TPE acquisition) *and* a second-apron ceiling (Jun 24 cash payment); trackers show 1st because the lower one binds.
 
 > **Done when** a full 30-team league state loads from the scraper CSVs, round-trips through the schema, and any team's roster and contract detail is queryable.
 
@@ -76,16 +107,16 @@ required UI element rather than a nicety.
 
 *New in this scope. Data questions are a first-class surface, so the dataset needs to be queryable — safely.*
 
-- [ ] **2.1** SQLite schema derived from the Phase 1 model
-- [ ] **2.2** Ingest the six sources with explicit precedence rules per field
-- [ ] **2.3** Cross-source reconciliation and a disagreement report
-- [ ] **2.4** Entity resolution across sources — `bbref_id`, Fanspo `playerId`, Spotrac display names
-- [ ] **2.5** Query DSL schema — entity, filters, grouping, aggregation ([ADR-002](adr/0002-structured-query-not-text-to-sql.md))
-- [ ] **2.6** Deterministic DSL → SQL compiler
-- [ ] **2.7** Validation with errors written for a model to act on, one bounded retry
-- [ ] **2.8** Golden query tests — question → DSL → expected rows
-- [ ] **2.9** `player_lookup` fuzzy search returning candidates, never a guess
-- [ ] **2.10** Refuse what the DSL cannot express; log each refusal as a candidate extension
+- [x] **2.1** SQLite schema derived from the Phase 1 model
+- [x] **2.2** Ingest the six sources with explicit precedence rules per field
+- [x] **2.3** Cross-source reconciliation and a disagreement report
+- [x] **2.4** Entity resolution across sources — `bbref_id`, Fanspo `playerId`, Spotrac display names
+- [x] **2.5** Query DSL schema — entity, filters, grouping, aggregation ([ADR-002](adr/0002-structured-query-not-text-to-sql.md))
+- [x] **2.6** Deterministic DSL → SQL compiler
+- [x] **2.7** Validation with errors written for a model to act on, one bounded retry
+- [x] **2.8** Golden query tests — question → DSL → expected rows
+- [x] **2.9** `player_lookup` fuzzy search returning candidates, never a guess
+- [x] **2.10** Refuse what the DSL cannot express; log each refusal as a candidate extension
 - [x] **2.11** **`guarantee_kind` now reads `unknown`, not `full`.** The schema defaulted it to `'full'` and the loader wrote `'full'` positionally, so all 1,136 contract-years claimed to be fully guaranteed — while the scraped CSV has no guarantee column at all. Basketball-Reference marks guarantee status with cell styling the scraper never read, so the value was asserted, not observed, in breach of [ADR-003](adr/0003-unknown-is-not-zero.md). The catalog advertised "full, partial or none" on a column that could only ever say one of them. Found by writing the 4.7 question "which contracts are not fully guaranteed?", which returned an empty list — readable as "none", which was false. Closing it properly needs a source that publishes guarantee dates and amounts.
 
 > **Done when** "how many players have Bird rights this season" returns a number, the DSL behind it is inspectable, and an unexpressible question is refused rather than approximated.
@@ -98,25 +129,25 @@ required UI element rather than a nicety.
 
 *Pure functions over Phase 1 types. No model calls — enforced by lint and CI.*
 
-- [ ] **3.1** Read Articles I, VII, VIII and X from the PDF, taking section references as you go
-- [ ] **3.2** Three salary totals — cap, tax, apron. They diverge on holds and exceptions.
-- [ ] **3.3** Apron classification — room / over-cap / taxpayer / first apron / second apron
-- [ ] **3.4** Salary matching bands — transcribed from the text, never from a summary
-- [ ] **3.5** Cap-space absorption path for room teams
+- [x] **3.1** Read Articles I, VII, VIII and X from the PDF, taking section references as you go
+- [x] **3.2** Three salary totals — cap, tax, apron. They diverge on holds and exceptions.
+- [x] **3.3** Apron classification — room / over-cap / taxpayer / first apron / second apron
+- [x] **3.4** Salary matching bands — transcribed from the text, never from a summary
+- [x] **3.5** Cap-space absorption path for room teams
 - [x] **3.6** First apron restrictions — **derived, not transcribed.** The CBA has no such list; the restrictions fall out of Art. VII §2(e)(2)(i)(A) — a team may not use a Transaction Restrictions Table row if it would exceed that row's level immediately after. Rows A–F close above the first apron.
-- [ ] **3.7** Second apron restrictions — aggregation, prior-year TPEs, cash, taxpayer MLE, frozen pick
-- [ ] **3.8** Hard cap ceilings. The CBA never says "hard cap" — the mechanism is Art. VII §2(e)(2)(i)(B), driven by the **Transaction Restrictions Table** (§2(e)(4), pp. 214–215), **rows A–K**. Encode all eleven: A–G set the **first** apron (bi-annual exception, non-taxpayer MLE, sign-and-trade acquisition, waived-player signing above the MLE, expanded TPE, post-season standard TPE, transition TPE); H–K set the **second** (aggregated TPE, **paying cash in a trade**, TPE from a signed-and-traded contract, taxpayer MLE). §2(e)(2)(ii) makes rows E–J executed after the Regular Season bind the *following* Salary Cap Year.
+- [x] **3.7** Second apron restrictions — aggregation, prior-year TPEs, cash, taxpayer MLE, frozen pick
+- [x] **3.8** Hard cap ceilings. The CBA never says "hard cap" — the mechanism is Art. VII §2(e)(2)(i)(B), driven by the **Transaction Restrictions Table** (§2(e)(4), pp. 214–215), **rows A–K**. Encode all eleven: A–G set the **first** apron (bi-annual exception, non-taxpayer MLE, sign-and-trade acquisition, waived-player signing above the MLE, expanded TPE, post-season standard TPE, transition TPE); H–K set the **second** (aggregated TPE, **paying cash in a trade**, TPE from a signed-and-traded contract, taxpayer MLE). §2(e)(2)(ii) makes rows E–J executed after the Regular Season bind the *following* Salary Cap Year.
 - [x] **3.9** Stepien rule — **implemented from the NBA Constitution and By-Laws §7.03** (p. 85), where it is unnamed. No provision restricts assigning draft picks between teams; the rule lives in the NBA Constitution and By-Laws, which p. 322 explicitly holds separate ("nothing contained in this Agreement shall be deemed to be an agreement of the Players Association to any provision of the NBA Constitution and By-Laws"). Two prohibitions: no selling first-round pick rights for cash, and no trade whose result *may be* to leave a Member without first-round picks in any two consecutive future Drafts. Cited as a By-Law, not a CBA provision, since the documents have different force.
 - [x] **3.10** ~~Base year compensation~~ — **eliminated.** "Base Year" appears **zero** times in 676 pages. The term is definitional, so its absence is conclusive rather than suggestive. The rule does not exist under the 2023 CBA.
 - [x] **3.11** Poison pill — **located and implemented.** The nickname covers two provisions sharing one mechanism: Art. VII **§8(g)** (Rookie Extension Trade Rule, pp. 288–289) and Art. XI **§5(d)** (Gilbert Arenas, pp. 346–347). Both deem a salary to equal the average of a contract's remaining years, for one party's Room only. I had searched §7 (Extensions); the trade-valuation rule lives in §8 (Trade Rules).
-- [ ] **3.12** Trade kickers — honouring `Unknown` rather than assuming zero. **Source found:** Hoops Rumors publishes an annual list with percentages ([2026/27](https://www.hoopsrumors.com/2026/08/nba-players-with-trade-kickers-in-2026-27.html)). **Settled:** the **sending** team pays the player (Art. XXIV §2(a), p. 438), but the bonus lands in the **acquiring** team's Team Salary and counts as incoming trade salary for matching — so the engine's existing treatment was right. Teams may alter the payment arrangement between themselves, governed by cash-in-trade (Art. VII §8(a)), which does not move the cap hit. **A player may also reduce or waive the bonus** (§2(a)(iii)(B)(3), p. 439), so a deal failing *only* on a kicker is conditional, not illegal — the constraint report now says so instead of marking it blocking. Keyword search did not surface a single clause stating the acquiring-team attribution; it is recorded on the user's domain knowledge, consistent with §2(a) and p. 295.
+- [x] **3.12** Trade kickers — honouring `Unknown` rather than assuming zero. **Source found:** Hoops Rumors publishes an annual list with percentages ([2026/27](https://www.hoopsrumors.com/2026/08/nba-players-with-trade-kickers-in-2026-27.html)). **Settled:** the **sending** team pays the player (Art. XXIV §2(a), p. 438), but the bonus lands in the **acquiring** team's Team Salary and counts as incoming trade salary for matching — so the engine's existing treatment was right. Teams may alter the payment arrangement between themselves, governed by cash-in-trade (Art. VII §8(a)), which does not move the cap hit. **A player may also reduce or waive the bonus** (§2(a)(iii)(B)(3), p. 439), so a deal failing *only* on a kicker is conditional, not illegal — the constraint report now says so instead of marking it blocking. Keyword search did not surface a single clause stating the acquiring-team attribution; it is recorded on the user's domain knowledge, consistent with §2(a) and p. 295.
 - [x] **3.13** Trade date calendar — Art. VII §8(c)–(d). Four rules with separate clocks: no trade after the deadline in a possible final Season; 30 days for rookies and two-ways; later of 3 months or **December 15** for free agent signings; later of 3 months or **January 15** for a prior-team re-signing above **120%**. The last bars the *trade*, not merely aggregation — distinct from the two-month bar in §6(j)(4)(i).
 - [x] **3.14a** **Structuring across several exceptions.** Art. VII §6(j)(1)(i) lets one exception replace "one (1) Traded Player", and §6(m) carves §6(j) out of its bar on combining Exceptions — so a team sending several players may use several. Modelling a trade as a single exception understated capacity: four contracts totalling $47.4M permit **$81.1M structured vs $59.5M** as one exception. `best_structure()` enumerates the partitions. Found by the eval harness, not by reading — 14 of 20 undetermined legs acquired two or more players.
-- [ ] **3.14** Simultaneous vs non-simultaneous trades and TPE creation
-- [ ] **3.15** Multi-team trades — validate each team's send and receive independently
-- [ ] **3.16** Roster counts and pick tradeability
-- [ ] **3.17** **Violation code → CBA citation table.** The join between engine and retrieval; the reason citations are right
-- [ ] **3.18** `validate_trade(legs, as_of) -> Verdict` with violations **and assumptions**
+- [ ] **3.14** Simultaneous vs non-simultaneous trades and TPE creation. **Partial:** 3.14a built structuring across several simultaneous exceptions; creating a *non-simultaneous* TPE from a trade is not implemented.
+- [x] **3.15** Multi-team trades — validate each team's send and receive independently
+- [ ] **3.16** Roster counts and pick tradeability. **Partial:** roster counts and By-Law 7.03 pick tradeability are built and used by 3.19; **Art. VII §2(f)** (the Second Apron pick freeze) has a citation but no implementation, and the seven-Drafts-ahead horizon is unsourced (`constitution.PICK_HORIZON_NOT_SOURCED`).
+- [x] **3.17** **Violation code → CBA citation table.** The join between engine and retrieval; the reason citations are right
+- [x] **3.18** `validate_trade(legs, as_of) -> Verdict` with violations **and assumptions**
 - [x] **3.19** **`team_trade_constraints(team, player) -> Constraints`** — enumerate everything limiting a team, without a proposed deal. Answers the Embiid question. **Built.** Hard-cap ceilings (binding and superseded), player-level restrictions, trade kickers, and now:
   - **the Transaction Restrictions Table rows the team may not engage in** — the substance of the answer, since being over an apron does not stop a team trading, it stops it trading in particular *ways*
   - **first-round pick tradeability, asked one pick at a time.** A team can be free to move one year's first and barred from moving another's, so a single yes/no over the inventory would be wrong. On the real Clippers position (firsts in 2027/29/31/33, bare in 2028/30/32) every held first is untradeable while the position itself is legal
@@ -128,9 +159,9 @@ required UI element rather than a nicety.
   Two fixes fell out of it: `RestrictionRow.describe()` (the rows had no human-readable phrasing, so prohibitions would have rendered empty), and a **miscitation** — `TransactionPermission` cited §2(e)(2)(i)(**B**), the ceiling that attaches *after* a permitted transaction, for a rule that implements (i)(**A**), the prohibition itself. Added `TRANSACTION_PROHIBITION` with the verbatim text from p. 211.
 
   Still absent rather than approximated: Art. VII §2(f) (the Second Apron pick freeze, **not implemented** despite a citation existing for it) and the seven-Drafts-ahead horizon.
-- [ ] **3.20** Every verdict carries the assumptions it rests on (ADR-003)
+- [x] **3.20** Every verdict carries the assumptions it rests on (ADR-003)
 - [x] **3.21** Property-based tests — invariants across the input space: permission is monotonic in salary, expanded is never worse than standard, a returned allowance always fits, more ceilings only tighten, more lost picks never make Stepien pass, an unknown always records exactly one assumption.
-- [ ] **3.22** Golden tests from the CBA's own worked examples
+- [x] **3.22** Golden tests from the CBA's own worked examples
 
 > **Done when** the fixture team validates correctly, every rule has a citation constant and a test, and `team_trade_constraints` explains a real team's situation in terms traceable to Articles.
 

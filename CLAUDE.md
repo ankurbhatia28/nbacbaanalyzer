@@ -15,6 +15,16 @@ gh pr create --fill
 Branch names: `phase-N-<slug>` for plan work, `fix/<slug>` and `chore/<slug>`
 otherwise. CI runs on pull requests, so the green check is visible before merge.
 
+**Check `gh pr list` before branching off `main`.** A green PR is not a merged
+one, and merge state lives on GitHub rather than in the conversation or in any
+file here. Branching off `main` while an approved PR is still open produces
+edits against a stale file, which fail in confusing ways — this happened twice.
+If an open PR contains work the next change depends on, say so and stop rather
+than stacking: a stack whose base merges first strands everything above it.
+
+**Stash before you reset.** `git reset --hard` with uncommitted work destroys
+it, and `git stash push -u` first costs nothing.
+
 ## Architectural constraints
 
 These are enforced, not aspirational. Breaking them fails CI.
@@ -49,5 +59,19 @@ not the holder).
 
 ## Planning docs
 
-- [`docs/build-plan.md`](docs/build-plan.md) — phases and tasks
-- [`docs/division-of-labor.md`](docs/division-of-labor.md) — who owns what, settled decisions D1–D12
+- [`docs/build-plan.md`](docs/build-plan.md) — phases and tasks. **Opens with a
+  "where this stands" header**; read it before planning anything.
+- [`docs/division-of-labor.md`](docs/division-of-labor.md) — who owns what, and
+  settled decisions **D1–D17**
+- [`docs/traces/`](docs/traces/) — five real sessions, committed because hosted
+  retention is 30 days
+
+These are the project's memory. A session that reads them is nearly as
+well-oriented as one that was here for the whole build, which is what makes it
+cheap to start a fresh session at a phase boundary. **Keep them current**: a
+stale checkbox is worse than no checkbox, because the next session believes it.
+
+Record what was *tried and rejected*, with the number that killed it, not just
+what shipped. Several decisions here rest on measurements that came out the
+wrong way — a document-frequency stop list that made recall worse, indexing
+definition text that halved it, a guarantee derivation that validated at 2 of 30.
