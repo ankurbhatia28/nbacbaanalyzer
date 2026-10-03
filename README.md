@@ -50,7 +50,8 @@ with tests.
 packages/engine    CBA rules. Pure functions, no LLM imports (CI-enforced).
 packages/data      Scraper output → SQLite, plus the structured query DSL.
 packages/rag       Structure-aware retrieval over the CBA text.
-apps/api           FastAPI. Tool definitions and the agent loop.
+packages/agent     Routing, tools and the agent loop. The one package that calls a model.
+apps/api           FastAPI over the agent, the cap sheet and the trade check.
 apps/web           Next.js + TypeScript.
 scraper/           Six data sources. See scraper/README.md.
 docs/              Build plan, division of labor, ADRs.
@@ -61,11 +62,13 @@ docs/              Build plan, division of labor, ADRs.
 - [ADR-001 — The model does not compute, interpret, or recall](docs/adr/0001-the-model-does-not-decide.md)
 - [ADR-002 — A structured query DSL, not text-to-SQL](docs/adr/0002-structured-query-not-text-to-sql.md)
 - [ADR-003 — Unknown is not zero](docs/adr/0003-unknown-is-not-zero.md)
+- [ADR-004 — Read-only at runtime](docs/adr/0004-read-only-at-runtime.md)
 
 ## Status
 
-Data collection complete across six sources. Engine, query layer, retrieval and
-agent are in progress. See [docs/build-plan.md](docs/build-plan.md).
+Built and running locally: rules engine, league database and query layer, CBA
+retrieval, agent, API, and a web app with chat, a cap sheet per team and a
+trade builder. Not yet deployed (Phase 8). See [docs/build-plan.md](docs/build-plan.md).
 
 ## Development
 
@@ -73,6 +76,15 @@ agent are in progress. See [docs/build-plan.md](docs/build-plan.md).
 uv sync --all-packages --dev
 uv run pytest
 uv run ruff check .
+
+# Run it: build the two read-only artifacts, then the API, then the web app.
+# The index needs the CBA PDF at data/cba/nba-cba-2023.pdf (not committed).
+uv run python -m nbadata.ingest.load --out build/nbacba.db
+uv run python -m rag --out build/cba-index.db
+uv run --env-file .env uvicorn api.main:app --port 8000
+cd apps/web && npm ci && npm run dev                      # http://localhost:3000
 ```
 
-Python 3.12+. Everything runs locally; no hosted services are required.
+Python 3.12+, Node 22. The API will not start without an Anthropic key in
+`.env` (see `.env.example`), though only chat spends it: the cap sheet and
+trade builder make no model call.

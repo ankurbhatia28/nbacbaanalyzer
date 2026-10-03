@@ -2,7 +2,7 @@
 
 Companion to [`build-plan.md`](./build-plan.md). Task numbering matches that file exactly.
 
-> **Status: Phase 0 complete, data collection done.** Scope is now CBA question answering, not trade analysis alone. Four sources scraped — Fanspo, Basketball-Reference contracts, Basketball-Reference awards, and archived Spotrac. Every numbered input is closed. What remains is three small items in §4.1, none of which blocks a phase. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
+> **Status (2026-10-03): Phases 0–7 complete; Phase 8 (Ship) is next.** Where things stand, and what Phase 8 needs decided first, is in the header of [`build-plan.md`](./build-plan.md). This file's §1 inventory, §2 ownership table and §6 decisions (D1–D19) are current; §4.3, §5 and §7 are kept as the record of how the work was planned in Phase 0 and are not a to-do list. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
 
 **Legend**
 
@@ -22,7 +22,7 @@ Companion to [`build-plan.md`](./build-plan.md). Task numbering matches that fil
 | B2 | Season constants | **Done** — `salary_cap_figure.csv`, 2011-12 → 2034-35 |
 | B3 | Contract data | **Done** — see the inventory below; only no-trade clauses remain |
 | B4 | Draft picks + protections | **Done** — 616 rows with full protection prose, plus Spotrac as a second source |
-| B5 | Anthropic API key | Still needed before Phase 5 |
+| B5 | Anthropic API key | **Done** — in `.env` (untracked); used since Phase 6 |
 | B6 | Player birthdates | **Done** — 461 rows |
 | B7 | Award history | **Done** — 102 rows, **2020-21 → 2025-26** |
 
@@ -100,7 +100,7 @@ Phases renumbered for the rescope — see [`build-plan.md`](./build-plan.md). Ph
 | 6.1–6.5 routing, tools, intent, loop | `CLAUDE` | Needs **B5 (API key)** |
 | 6.6 Refusal policy | `BOTH` | I implement; **you own the wording** — a refusal is a product surface, not an error |
 | 6.7–6.9 assumptions, caching, streaming | `CLAUDE` | — |
-| 6.10 Raindrop tracing | `BOTH` | **Key supplied** — `RAINDROP_API_KEY` is in `.env` (untracked). I install the SDK and instrument. Hobby tier, free, 1,000 events/month — see D13 for the budget this implies. The Workshop MCP server failed to connect in this session, so I cannot verify traces land from here until Phase 6. |
+| 6.10 Tracing | `BOTH` | Done, on **Langfuse Cloud Hobby (D16)**, which superseded Raindrop (D13). Keys in `.env` (untracked); without them traces are written locally. |
 | 6.11 Adversarial eval | `BOTH` | I write ~30 bait prompts; **add any phrasings a real fan would use** |
 | 6.12 Cost tracking | `CLAUDE` | — |
 
@@ -110,13 +110,14 @@ Phases renumbered for the rescope — see [`build-plan.md`](./build-plan.md). Ph
 |---|---|---|
 | 7.0 API + answer-card contract | `CLAUDE` | Done. The card's fields are the contract the web app renders; **worth your review before the UI hardens around them** — `agent/card.py` |
 | 7.2 Answer card | `BOTH` | I build it; **you own whether it reads clearly** to someone who doesn't know the CBA. This is the demo. |
-| All other 7.x | `CLAUDE` | — |
+| All other 7.x | `CLAUDE` | Done. 7.4 found two engine defects (fixed) and one chat defect (open — build-plan 7.4, task 8.0) |
 
 ### Phase 8 — Ship
 
 | Task | Owner | Notes |
 |---|---|---|
-| 8.1 CI build pipeline | `CLAUDE` | Emits `nbacba.db` and the index as deployment artifacts |
+| 8.0 Empty validation answer | `CLAUDE` | The fix changes per-question cost; **you approve the new figure** |
+| 8.1 CI build pipeline | `BOTH` | I build it; **you decide how CI gets the CBA PDF**, which is not in git (fetch by URL + hash, private artifact, or commit the 4.5 MB index) |
 | 8.2–8.3 Vercel + Render deploys | `BOTH` | I write config, Dockerfile and CI; **you own the accounts, linking the repo, and the deploy** |
 | 8.5 Secrets and spend cap | `YOU` | Platform env vars and the cap on the model key |
 | 8.6 Always-on vs free tier | `YOU` | Render free spins down; a cold résumé link takes ~30s |

@@ -2,15 +2,59 @@
 
 > ## Where this stands
 >
-> **Phases 0–7 are complete. Phase 8 has not started.** One open defect found in 7.4 and not fixed there: chat answers to trade-validation questions can come back empty (see 7.4).
+> **Phases 0–7 are complete (last merge: PR #46, the trade builder, 2026-10-03). Phase 8 has not started.** One open defect found in 7.4 and not fixed there: chat answers to trade-validation questions can come back empty (see 7.4).
 >
 > | phase | state |
 > |---|---|
 > | 0 Rails · 1 Domain model · 2 Data layer · 3 Rules engine | done |
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
 > | 6 Agent layer | done |
-> | 7 Interface | done — the trade builder (7.4) was last |
-> | 8 Ship | **not started** |
+> | 7 Interface | done — chat, answer card, permalinks, cap sheet, trade builder |
+> | 8 Ship | **not started** — read "Before starting Phase 8" below first |
+>
+> **What the running app is**, for a session that was not here: `apps/web`
+> (Next.js 16) has five pages — `/` chat, `/answer` a permalinked answer
+> (7.7), `/cap` and `/cap/[team]` the cap sheet, `/trade` the trade builder. `apps/api` (FastAPI) serves `/health`,
+> `/ask`, `/ask/stream`, `/quotes`, `/teams`, `/teams/{key}/sheet`, `/players`
+> and `/trade`. Only the two ask routes call a model; the cap sheet, trade
+> builder and quote re-fetch are deterministic. **The chat does not call the
+> rules engine** — no agent tool runs `validate_trade`; a validation answer is
+> composed from quoted rules and links to the trade builder, which does.
+>
+> ### Before starting Phase 8
+>
+> Measured or checked on 2026-10-03; each bears on a task below.
+>
+> - **8.1 cannot build the retrieval index from the repo alone.** The CBA PDF
+>   is gitignored (`data/cba/README.md`: the repo does not redistribute it),
+>   and `python -m rag` exits 1 without it. CI has never had it: every test
+>   that needs it skips (`test_tools.py` and others carry a `skipif`). The
+>   scraper output the database is built from *is* tracked (`scraper/out/`,
+>   29 files). So 8.1 needs a decision first — fetch the PDF in CI from a
+>   stable URL and check its hash, keep it as a private CI secret/artifact, or
+>   commit the built index (4.5 MB) as an exception to ADR-004's "out of git".
+>   This is the owner's call; it is a redistribution question, not a technical one.
+> - **The artifacts are small and fast.** `nbacba.db` 532 KB in 0.3 s;
+>   `cba-index.db` 4.5 MB in 2 s. Building them at deploy time costs nothing.
+> - **Configuration is already environment-driven** (`.env.example` lists
+>   all of it): `NBACBA_LEAGUE_DB`, `NBACBA_CBA_INDEX`, `NBACBA_ALLOWED_ORIGINS`
+>   (CORS — unset outside development means *no* browser origin is allowed, so
+>   the deploy fails closed until it is set to the Vercel URL),
+>   `NBACBA_ENVIRONMENT`, the Anthropic key (**required at startup** — the API
+>   refuses to start without it, by design, even though only chat uses it),
+>   Langfuse keys. The web app reads
+>   `NEXT_PUBLIC_API_URL` **at build time**, so changing the API's URL means
+>   rebuilding the web app, not restarting it.
+> - **Fix the empty-answer defect (7.4) before 8.8** — task 8.0. The demo's first case is
+>   "a rumoured trade adjudicated with a citation", and that exact question is
+>   the one that comes back empty. Raising the answer role's `max_tokens`
+>   (1,500, set twice in `packages/agent/src/agent/answer.py`) or bounding its thinking is
+>   the likely fix; either changes the per-question cost 6.12 measured, so
+>   re-measure. Branch `fix/<slug>`.
+> - **The cold-start message is already written**: the web app tells the reader
+>   a free-tier server can take about 30 seconds to wake (8.6).
+> - Locally, `mypy` reports one error in `langfuse_export` that CI on `main`
+>   does not; it is an environment difference, not a regression.
 >
 > Two items in Phase 3 are deliberately left open and say why inline: **3.14**
 > (non-simultaneous TPE creation) and **3.16** (Art. VII §2(f), the Second Apron
@@ -543,14 +587,15 @@ required UI element rather than a nicety.
 **Next.js → Vercel. FastAPI → Render.** The engine, data and rag packages stay
 platform-agnostic; only `apps/` knows where it runs.
 
-- [ ] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source.
+- [ ] **8.0** *(added at the Phase 7 → 8 handoff)* Fix the empty validation answer found in 7.4, in its own `fix/` PR, and re-measure the answer role's cost. Precedes 8.8.
+- [ ] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source. *Blocked on a decision: the CBA PDF the index is built from is not in git — see "Before starting Phase 8" at the top.*
 - [ ] **8.2** Deploy `apps/web` to Vercel
 - [ ] **8.3** Deploy `apps/api` to Render, with the artifacts from 8.1 bundled
 - [ ] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app
 - [ ] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live
 - [ ] **8.6** Cold-start note: Render's free tier spins down after inactivity. Either pay for always-on or accept a slow first load on a résumé link.
-- [ ] **8.7** README leading with the architecture thesis and the eval numbers
-- [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason
+- [ ] **8.7** README leading with the architecture thesis and the eval numbers *— and correct its four-kinds table, which says validation questions are handled by the rules engine; in chat they are not (see the header).*
+- [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason *— the trade builder (7.4) is the surface that adjudicates; the chat answers from quoted rules and links to it.*
 - [ ] **8.9** Write-up on the eval harness and the deterministic citation path
 
 ## v2 — deferred
