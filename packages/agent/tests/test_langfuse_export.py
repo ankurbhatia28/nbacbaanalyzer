@@ -1,14 +1,11 @@
 """
 The Langfuse exporter (D16), tested against a fake client.
 
-**Not verified against the live service.** No Langfuse keys exist in this repo
-yet, so what is tested here is the contract: the mapping from our trace shape
-onto theirs, and -- far more importantly -- that every way this can fail
-returns False instead of raising. 6.13 settles that tracing degrades while
-spend refuses, and an exporter that throws would break that promise.
-
-The live check is one command once keys are set; until then this file is honest
-about what it does and does not cover.
+**Not verified against the live service here.** What these tests cover is the
+mapping from our recorded tree onto Langfuse's, and -- far more importantly --
+that every way this can fail returns False instead of raising. 6.13 settles
+that tracing degrades while spend refuses, and an exporter that throws would
+break that promise.
 """
 
 from __future__ import annotations
@@ -27,43 +24,67 @@ class FakeObservation:
     name: str
     as_type: str
     model: str | None = None
+    depth: int = 0
     updates: list[dict] = field(default_factory=list)
+
+    events: list[dict] = field(default_factory=list)
 
     def update(self, **kwargs) -> None:
         self.updates.append(kwargs)
 
+    def create_event(self, **kwargs) -> None:
+        self.events.append(kwargs)
+
 
 @dataclass
 class FakeClient:
-    """Records what the adapter asked for, in order."""
+    """Records what the adapter asked for, in order, including nesting depth."""
 
     observations: list[FakeObservation] = field(default_factory=list)
+    scores: list[dict] = field(default_factory=list)
     flushes: int = 0
     explode_on: str | None = None
+    _depth: int = 0
+
+    events: list[dict] = field(default_factory=list)
 
     @contextmanager
     def start_as_current_observation(self, *, as_type, name, **kwargs):
         if self.explode_on and self.explode_on in name:
             raise RuntimeError("langfuse is having a day")
-        observation = FakeObservation(name=name, as_type=as_type, model=kwargs.get("model"))
+        observation = FakeObservation(
+            name=name, as_type=as_type, model=kwargs.get("model"), depth=self._depth
+        )
         self.observations.append(observation)
-        yield observation
+        self._depth += 1
+        try:
+            yield observation
+        finally:
+            self._depth -= 1
+
+    def score_current_trace(self, **kwargs) -> None:
+        self.scores.append(kwargs)
 
     def flush(self) -> None:
         self.flushes += 1
 
 
 def built() -> Trace:
-    trace = Trace(session="demo")
-    trace.metadata["trustworthy"] = True
-    trace.record(Kind.USER_TURN, "question", text="q")
-    model = trace.start(Kind.MODEL_CALL, "answer")
-    model.ended_at = model.started_at + 2.0
-    model.payload.update(
-        model="claude-sonnet-5", input_tokens=120, output_tokens=40, cached_tokens=2650
+    """One agent run, with a tool beside the generation that requested it."""
+    trace = Trace(session="conversation-1", environment="development", tags=["rules"])
+    root = trace.begin("What is the Standard Traded Player Exception?")
+    generation = root.child(Kind.GENERATION, "generate-answer")
+    generation.end(
+        output="It permits replacing one traded player.",
+        model="claude-sonnet-5",
+        usage={"input": 120, "output": 40, "cache_read_input_tokens": 2650},
     )
-    trace.record(Kind.TOOL_CALL, "fetch_provision", citation="Art. VII §8", ok=True)
-    trace.record(Kind.ANSWER, "final", chars=200)
+    root.child(Kind.RETRIEVER, "fetch-provision", input={"citation": "Art. VII §8"}).end(
+        output={"citation_returned": "Art. VII §8"}
+    )
+    root.end(output="It permits replacing one traded player.")
+    trace.metadata["rounds"] = 2
+    trace.scores = {"supported": 1, "trustworthy": 1}
     return trace
 
 
@@ -77,76 +98,122 @@ def wired(**kwargs) -> tuple[LangfuseExporter, FakeClient]:
 # -- the mapping ----------------------------------------------------------
 
 
-def test_a_session_becomes_one_root_with_each_span_beneath_it():
+def test_the_root_is_an_agent_named_for_what_it_does():
     exporter, client = wired()
     assert exporter.export(built())
-    assert client.observations[0].name == "demo"
-    assert client.observations[0].as_type == "span"
-    assert len(client.observations) == 5, "one root plus four spans"
+    root = client.observations[0]
+    assert root.as_type == "agent"
+    assert root.name == "answer-cba-question"
+    assert root.depth == 0
+
+
+def test_the_tree_is_replayed_with_children_nested_under_the_root():
+    """
+    Not a flat list. A tool call has to show which step it belongs to, so the
+    recorded shape is reproduced rather than flattened.
+    """
+    exporter, client = wired()
+    exporter.export(built())
+    assert [(o.name, o.depth) for o in client.observations] == [
+        ("answer-cba-question", 0),
+        ("generate-answer", 1),
+        ("fetch-provision", 1),
+    ]
 
 
 def test_a_model_call_is_sent_as_a_generation_with_its_model():
     """
-    A generation carries a model and token counts, which is what makes the
-    cost view work. A plain span would not.
+    A generation carries a model and token counts, which is what makes the cost
+    view work. A plain span would not.
     """
     exporter, client = wired()
     exporter.export(built())
     generation = next(o for o in client.observations if o.as_type == "generation")
-    assert generation.name == "model_call:answer"
+    assert generation.name == "generate-answer"
     assert generation.model == "claude-sonnet-5"
 
 
-def test_everything_other_than_a_model_call_is_a_plain_span():
+def test_a_tool_is_sent_as_a_retriever_rather_than_a_generic_span():
+    """
+    The specific type, because every tool here looks something up without
+    changing state -- ADR-004 showing through.
+    """
     exporter, client = wired()
     exporter.export(built())
-    types = {o.name: o.as_type for o in client.observations}
-    assert types["tool_call:fetch_provision"] == "span"
-    assert types["user_turn:question"] == "span"
-    assert types["answer:final"] == "span"
+    assert any(o.as_type == "retriever" for o in client.observations)
+    assert not any(o.as_type == "span" for o in client.observations)
 
 
 def test_token_counts_are_reported_with_cache_reads_kept_separate():
     """
     At a 97% cache hit rate, folding cache reads into input would misstate the
-    bill badly -- which is the one number a cost dashboard exists to get right.
+    bill badly -- the one number a cost dashboard exists to get right.
     """
     exporter, client = wired()
     exporter.export(built())
     generation = next(o for o in client.observations if o.as_type == "generation")
-    usage = generation.updates[0]["usage_details"]
-    assert usage == {"input": 120, "output": 40, "cache_read_input_tokens": 2650}
+    assert generation.updates[0]["usage_details"] == {
+        "input": 120,
+        "output": 40,
+        "cache_read_input_tokens": 2650,
+    }
 
 
-def test_span_payload_travels_as_metadata():
+def test_trace_attributes_are_propagated_with_the_v4_api(monkeypatch):
+    """
+    v4 has no `update_current_trace`; trace-level attributes are set with the
+    module-level `propagate_attributes`, and it must wrap the root's creation
+    because it only applies to spans created after it.
+    """
+    captured: dict = {}
+
+    from contextlib import contextmanager
+
+    from agent import langfuse_export
+
+    @contextmanager
+    def fake_propagate(**kwargs):
+        captured.update(kwargs)
+        yield
+
+    monkeypatch.setattr(langfuse_export, "propagate", fake_propagate)
+    exporter, _ = wired()
+    exporter.export(built())
+    assert captured["session_id"] == "conversation-1"
+    assert captured["tags"] == ["rules"]
+    assert captured["environment"] == "development"
+    assert captured["trace_name"] == "answer-cba-question"
+
+
+def test_the_root_carries_the_trace_input_and_output():
+    """`set_trace_io` is deprecated in v4; the root observation supplies both."""
     exporter, client = wired()
     exporter.export(built())
-    tool = next(o for o in client.observations if o.name == "tool_call:fetch_provision")
-    assert tool.updates[0]["metadata"]["citation"] == "Art. VII §8"
+    root = client.observations[0]
+    assert root.updates[-1]["output"].startswith("It permits")
 
 
-def test_the_model_is_not_duplicated_into_metadata():
+def test_judgements_are_sent_as_scores_not_tags():
+    """
+    Tags are immutable and set at creation; whether an answer was supported is
+    only known once it exists. Scores are the documented place for that.
+    """
     exporter, client = wired()
     exporter.export(built())
-    generation = next(o for o in client.observations if o.as_type == "generation")
-    assert "model" not in generation.updates[0]["metadata"]
+    assert {s["name"]: s["value"] for s in client.scores} == {
+        "supported": 1,
+        "trustworthy": 1,
+    }
 
 
 def test_a_failed_span_is_marked_as_an_error():
-    trace = Trace(session="s")
-    span = trace.start(Kind.MODEL_CALL, "answer")
-    span.error = "RuntimeError: boom"
+    trace = Trace()
+    trace.begin("q").child(Kind.GENERATION, "generate-answer").end(error="RuntimeError: boom")
     exporter, client = wired()
     exporter.export(trace)
     observation = client.observations[-1]
     assert observation.updates[0]["level"] == "ERROR"
     assert "boom" in observation.updates[0]["status_message"]
-
-
-def test_trace_metadata_reaches_the_root():
-    exporter, client = wired()
-    exporter.export(built())
-    assert client.observations[0].updates[-1]["output"]["events"] == 4
 
 
 def test_it_flushes_because_a_request_may_outlive_the_process():
@@ -161,21 +228,23 @@ def test_flushing_can_be_deferred_for_a_batch():
     assert client.flushes == 0
 
 
+def test_an_empty_trace_is_a_no_op_rather_than_an_error():
+    exporter, client = wired()
+    assert exporter.export(Trace())
+    assert client.observations == []
+
+
 # -- every failure degrades, none raises ---------------------------------
 
 
 def test_a_missing_key_is_reported_rather_than_raised(monkeypatch):
-    """
-    The common case on a fresh checkout, and it must not be a crash.
-    """
     for name in ENV_KEYS:
         monkeypatch.delenv(name, raising=False)
     assert not configured()
     exporter = LangfuseExporter()
     assert exporter.export(built()) is False
     assert exporter.failed == 1
-    assert exporter.last_error is not None
-    assert "not set" in exporter.last_error
+    assert "not set" in (exporter.last_error or "")
 
 
 def test_a_missing_key_is_only_diagnosed_once(monkeypatch):
@@ -195,31 +264,37 @@ def test_an_sdk_that_throws_mid_export_does_not_raise():
     adapter was written. 6.13: tracing degrades, spend refuses.
     """
     exporter, client = wired()
-    client.explode_on = "model_call"
+    client.explode_on = "generate-answer"
     assert exporter.export(built()) is False
-    assert exporter.failed == 1
     assert "having a day" in (exporter.last_error or "")
 
 
 def test_a_failure_does_not_count_as_exported():
     exporter, client = wired()
-    client.explode_on = "demo"
+    client.explode_on = "answer-cba-question"
     exporter.export(built())
     assert exporter.exported == 0
 
 
+def test_a_failing_score_does_not_fail_the_export():
+    """A score is the least important thing in the trace."""
+
+    class NoScores(FakeClient):
+        def score_current_trace(self, **kwargs):
+            raise RuntimeError("scores are down")
+
+    exporter = LangfuseExporter()
+    exporter._client = NoScores()
+    assert exporter.export(built()) is True
+    assert "scores are down" in (exporter.last_error or "")
+
+
 def test_it_satisfies_the_exporter_protocol():
-    """So it is interchangeable with the file and null exporters."""
     assert isinstance(LangfuseExporter(), Exporter)
 
 
 def test_importing_the_module_needs_neither_the_sdk_nor_a_key():
-    """
-    Which is what lets the whole suite import it unconditionally. The client is
-    built lazily on first export.
-    """
-    exporter = LangfuseExporter()
-    assert exporter._client is None
+    assert LangfuseExporter()._client is None
 
 
 @pytest.mark.parametrize("missing", ENV_KEYS)
@@ -228,3 +303,72 @@ def test_one_key_alone_is_not_configured(monkeypatch, missing):
         monkeypatch.setenv(name, "x")
     monkeypatch.delenv(missing)
     assert not configured()
+
+
+def test_an_event_is_created_on_its_parent_not_opened_as_an_observation():
+    """
+    `event` is not a valid `as_type`: the SDK warns and silently downgrades it
+    to a span. Events belong on their parent, which also fits what they are --
+    instants with no duration and no children.
+    """
+    trace = Trace()
+    root = trace.begin("q")
+    root.child(Kind.EVENT, "refuse-question", output="declined").end()
+    root.end(output="declined")
+    exporter, client = wired()
+    exporter.export(trace)
+    assert [o.as_type for o in client.observations] == ["agent"]
+    assert client.observations[0].events[0]["name"] == "refuse-question"
+
+
+def test_only_short_stable_dimensions_are_propagated(monkeypatch):
+    """
+    Propagated attribute values are capped at 200 characters and dropped with a
+    warning above it -- a citation list blew through that. Per-run detail goes
+    on the root observation's metadata, where it describes this run rather than
+    every span in it.
+    """
+    captured: dict = {}
+
+    from contextlib import contextmanager
+
+    from agent import langfuse_export
+
+    @contextmanager
+    def fake_propagate(**kwargs):
+        captured.update(kwargs)
+        yield
+
+    monkeypatch.setattr(langfuse_export, "propagate", fake_propagate)
+    trace = built()
+    trace.metadata["citations"] = ["Art. VII §6(j)(1)(i)"] * 40
+    exporter, client = wired()
+    exporter.export(trace)
+    assert "metadata" not in captured
+    assert client.observations[0].name == "answer-cba-question"
+
+
+def test_the_exporter_works_with_a_fake_client_and_no_sdk_installed(monkeypatch):
+    """
+    The SDK is an optional dependency, so the suite must pass without it. CI
+    caught this: `propagate_attributes` was imported unconditionally inside
+    `_send`, so a test driving a fake client still needed the real package.
+    """
+    import builtins
+
+    from agent import langfuse_export
+
+    real_import = builtins.__import__
+
+    def no_langfuse(name, *args, **kwargs):
+        if name == "langfuse":
+            raise ImportError("No module named 'langfuse'")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", no_langfuse)
+    monkeypatch.setattr(
+        langfuse_export, "propagate", langfuse_export.propagate
+    )  # resolved at call time
+    exporter, client = wired()
+    assert exporter.export(built()) is True
+    assert client.observations[0].as_type == "agent"

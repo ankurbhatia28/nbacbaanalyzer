@@ -47,3 +47,6 @@ apps/web/out/
 # Unsplit Fanspo dump — duplicates every CSV beside it and churns on re-scrape.
 # Regenerate with: python3 scraper/fanspo_scrape.py
 scraper/out/all.json
+
+# Skills installed from upstream repos; symlinks to a local clone.
+.claude/skills/

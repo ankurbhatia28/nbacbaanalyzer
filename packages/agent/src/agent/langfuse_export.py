@@ -22,19 +22,12 @@ deliberately conservative about the SDK surface it touches.
 from __future__ import annotations
 
 import os
+from collections.abc import Iterator
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from typing import Any
 
 from .trace import Kind, Trace
-
-GENERATION_KINDS = frozenset({Kind.MODEL_CALL})
-"""
-Spans Langfuse should treat as generations rather than plain spans.
-
-A generation carries a model and token counts, which is what makes the cost
-view in the dashboard work. Everything else -- tool calls, retrieval, the user
-turn, the final answer -- is a span.
-"""
 
 ENV_KEYS = ("LANGFUSE_PUBLIC_KEY", "LANGFUSE_SECRET_KEY")
 ENV_HOST = "LANGFUSE_BASE_URL"
@@ -43,6 +36,28 @@ ENV_HOST = "LANGFUSE_BASE_URL"
 def configured() -> bool:
     """Whether both keys are present. Checked before importing the SDK."""
     return all(os.environ.get(name) for name in ENV_KEYS)
+
+
+@contextmanager
+def _no_attributes(**_: Any) -> Iterator[None]:
+    """Stand-in for `propagate_attributes` when the SDK is not installed."""
+    yield
+
+
+def propagate(**attributes: Any) -> Any:
+    """
+    `langfuse.propagate_attributes`, resolved at call time.
+
+    Looked up here rather than imported at module scope for the same reason the
+    client is built lazily: the SDK is an optional dependency, and the suite has
+    to pass without it. A test driving this with a fake client never reaches a
+    real SDK call, and should not need one installed to get that far.
+    """
+    try:
+        from langfuse import propagate_attributes
+    except ImportError:
+        return _no_attributes(**attributes)
+    return propagate_attributes(**attributes)
 
 
 @dataclass
@@ -105,50 +120,107 @@ class LangfuseExporter:
 
     def _send(self, client: Any, trace: Trace) -> None:
         """
-        One root observation per session, with each recorded span beneath it.
+        Replay the recorded tree onto Langfuse's, depth first.
 
-        Our spans are a flat sequence rather than a tree, so each child opens
-        and closes inside the root's context and they come out as siblings --
-        which is the shape that was recorded, rather than a nesting invented
-        here to look tidier.
+        Written against the **v4** SDK, verified against the installed version
+        rather than recalled. v3's `update_current_trace` does not exist in v4;
+        trace-level attributes are set with the module-level
+        `propagate_attributes`, and `set_trace_io` is deprecated in favour of
+        the root observation's own input and output.
+
+        `propagate_attributes` wraps the root's creation because it only
+        applies to the active span and to spans created after it -- called
+        late, the earlier observations drop out of any aggregation by session
+        or environment.
         """
-        with client.start_as_current_observation(
-            as_type="span",
-            name=trace.session or "session",
-            input={"session": trace.session},
-            metadata={**trace.metadata, "trace_id": trace.trace_id, "events": trace.events},
-        ) as root:
-            for span in trace.spans:
-                self._send_span(client, span)
-            root.update(output={"events": trace.events})
+        if trace.root is None:
+            return
+        # Only short, stable dimensions are propagated. A propagated attribute
+        # value is capped at 200 characters and dropped with a warning above
+        # it -- the citation list blew through that on the first live run. The
+        # per-run detail goes on the root observation's metadata instead, where
+        # it belongs anyway: it describes this run, not every span in it.
+        with (
+            propagate(
+                session_id=trace.session,
+                user_id=trace.user,
+                tags=trace.tags or None,
+                environment=trace.environment,
+                trace_name=trace.name,
+            ),
+            client.start_as_current_observation(
+                as_type=trace.root.kind.value,
+                name=trace.root.name,
+                input=trace.root.input,
+                metadata=trace.metadata or None,
+            ) as root,
+        ):
+            for child in trace.root.children:
+                self._send_span(client, root, child)
+            root.update(output=trace.root.output)
+            self._send_scores(client, trace)
+
         if self.flush_each:
             client.flush()
 
-    def _send_span(self, client: Any, span: Any) -> None:
-        as_type = "generation" if span.kind in GENERATION_KINDS else "span"
-        kwargs: dict[str, Any] = {
-            "as_type": as_type,
-            "name": f"{span.kind.value}:{span.name}",
-        }
-        if as_type == "generation" and span.payload.get("model"):
-            kwargs["model"] = span.payload["model"]
+    def _send_span(self, client: Any, parent: Any, span: Any) -> None:
+        """
+        One observation, with its children beneath it.
+
+        Nesting comes from the context manager: an observation created inside
+        another becomes its child. That reproduces the recorded tree, so a tool
+        call stays a sibling of the generation that requested it rather than
+        being flattened to the root.
+
+        An `event` is not a valid `as_type` -- the SDK warns and silently
+        downgrades it to a span. Events are created on their parent instead,
+        which is also the better fit: they are instants with no duration and
+        no children.
+        """
+        if span.kind is Kind.EVENT:
+            parent.create_event(
+                name=span.name,
+                input=span.input,
+                output=span.output,
+                metadata=span.metadata or None,
+            )
+            return
+
+        kwargs: dict[str, Any] = {"as_type": span.kind.value, "name": span.name}
+        if span.input is not None:
+            kwargs["input"] = span.input
+        if span.model:
+            kwargs["model"] = span.model
         with client.start_as_current_observation(**kwargs) as observation:
-            update: dict[str, Any] = {
-                "metadata": {k: v for k, v in span.payload.items() if k != "model"},
-            }
-            if as_type == "generation":
-                # Reported under the names Langfuse costs from. Cache reads are
-                # kept separate because at a 97% hit rate (6.8) folding them
-                # into input would misstate the bill badly.
-                update["usage_details"] = {
-                    "input": span.payload.get("input_tokens", 0),
-                    "output": span.payload.get("output_tokens", 0),
-                    "cache_read_input_tokens": span.payload.get("cached_tokens", 0),
-                }
+            update: dict[str, Any] = {}
+            if span.output is not None:
+                update["output"] = span.output
+            if span.metadata:
+                update["metadata"] = span.metadata
+            if span.usage:
+                update["usage_details"] = span.usage
             if span.error:
                 update["level"] = "ERROR"
                 update["status_message"] = span.error
-            observation.update(**update)
+            if update:
+                observation.update(**update)
+            for child in span.children:
+                self._send_span(client, observation, child)
+
+    def _send_scores(self, client: Any, trace: Trace) -> None:
+        """
+        Judgements made after the run.
+
+        Tags cannot carry these: tags are immutable and set at creation, while
+        whether an answer was supported, or carried an unverified figure, is
+        only known once it exists. A failing score does not fail the export --
+        it is the least important thing in the trace.
+        """
+        for name, value in trace.scores.items():
+            try:
+                client.score_current_trace(name=name, value=value)
+            except Exception as exc:
+                self.last_error = f"score {name}: {type(exc).__name__}: {exc}"
 
     def render(self) -> str:
         line = f"langfuse: {self.exported} traces sent"

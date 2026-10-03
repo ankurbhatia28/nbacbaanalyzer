@@ -1,24 +1,33 @@
 """
-Tracing (task 6.10), built without choosing a vendor.
+Tracing (task 6.10), modelled on Langfuse's guidance but not bound to it.
 
 D4 asks for one trace per user session carrying the user input, the system
-prompt, every tool call and result, the retrieved context, every intermediate
-model call, and the final output. That shape is the same whoever stores it, so
-it is modelled here and the vendor is a thin adapter.
+prompt, every tool call and result, every intermediate model call and the final
+output. That shape is the same whoever stores it, so it is modelled here and
+the vendor is a thin adapter (D16).
 
-That separation is not architectural fussiness. The vendor question is open:
-Raindrop's free tier allows 1,000 events a month, which the 6.13a measurement
-showed is 60 to 125 questions, and it keeps them for 14 days. Building directly
-against one SDK and then moving would mean rewriting the instrumentation rather
-than the twenty lines that export it.
+The structure follows Langfuse's "what does a good trace look like?" guidance,
+because it is sound regardless of backend:
 
-**The local exporter is not a placeholder.** A trace written to a JSONL file is
-the one that survives a vendor's retention window, works with no network and no
-key, and can be committed as an artifact (task 6.10a). The hosted exporter adds
-a dashboard, not the record.
+* **A trace is one agent run.** One question in, one answer out. Several
+  questions in a conversation are separate traces tied together by a session.
+* **The root is an `agent`** -- it decides the flow and calls tools with a
+  model's guidance -- and its input and output are the *question and the
+  answer*, not a JSON blob of arguments. The trace list shows those two fields,
+  so they are what a reviewer sees first.
+* **Each model invocation is its own generation**, never one generation
+  wrapping the loop. Aggregating them hides what the agent decided after each
+  tool result, which is the thing you actually want when debugging.
+* **A tool call is a sibling of the generation that requested it**, under the
+  agent that orchestrates them, rather than dangling at the root.
+* **Names are verb-first and low-cardinality** -- `classify-intent`,
+  `fetch-provision` -- because names are an API: evaluators, dashboards and
+  saved filters target them, and they break silently when a name changes. No
+  run-specific values and no model names in them.
 
-**Events are counted the way a vendor bills them**, so the budget's cap (6.13)
-binds against the same number the invoice will.
+**The local exporter is not a placeholder.** A trace written to JSONL survives
+any retention window, needs no network and no key, and can be committed as an
+artifact (6.10a). The hosted exporter adds a dashboard, not the record.
 """
 
 from __future__ import annotations
@@ -36,93 +45,132 @@ JsonDict = dict[str, Any]
 
 class Kind(StrEnum):
     """
-    What a span records.
+    Observation types, named as Langfuse names them.
 
-    Each is one billable event on both vendors considered, which is why the
-    budget can count spans and trust the number.
+    `retriever` covers every tool this agent has, which is a consequence of the
+    architecture rather than a simplification: ADR-004 makes the database and
+    the index read-only build artifacts, so no tool changes state. `tool` is
+    kept for the day one does.
     """
 
-    USER_TURN = "user_turn"
-    MODEL_CALL = "model_call"
-    TOOL_CALL = "tool_call"
-    RETRIEVAL = "retrieval"
-    ANSWER = "answer"
-    REFUSAL = "refusal"
+    AGENT = "agent"
+    GENERATION = "generation"
+    RETRIEVER = "retriever"
+    TOOL = "tool"
+    EVENT = "event"
 
 
 @dataclass
 class Span:
-    """One recorded step."""
+    """
+    One recorded step, with its children.
+
+    A tree rather than a list, because nesting is what shows which step an
+    action belongs to. A flat sequence leaves tool calls dangling at the root.
+    """
 
     kind: Kind
     name: str
     started_at: float
     ended_at: float | None = None
-    payload: JsonDict = field(default_factory=dict)
+    input: Any = None
+    output: Any = None
+    metadata: JsonDict = field(default_factory=dict)
+    model: str | None = None
+    usage: JsonDict = field(default_factory=dict)
     error: str | None = None
+    children: list[Span] = field(default_factory=list)
 
     @property
     def seconds(self) -> float:
         return (self.ended_at or self.started_at) - self.started_at
+
+    def child(self, kind: Kind, name: str, **kwargs: Any) -> Span:
+        span = Span(kind=kind, name=name, started_at=time.time(), **kwargs)
+        self.children.append(span)
+        return span
+
+    def end(self, **updates: Any) -> Span:
+        for key, value in updates.items():
+            setattr(self, key, value)
+        self.ended_at = time.time()
+        return self
+
+    @property
+    def descendants(self) -> int:
+        return len(self.children) + sum(child.descendants for child in self.children)
 
     def to_json(self) -> JsonDict:
         out: JsonDict = {
             "kind": self.kind.value,
             "name": self.name,
             "seconds": round(self.seconds, 3),
-            "payload": self.payload,
         }
-        if self.error:
-            out["error"] = self.error
+        for key in ("input", "output", "model", "error"):
+            value = getattr(self, key)
+            if value is not None:
+                out[key] = value
+        if self.metadata:
+            out["metadata"] = self.metadata
+        if self.usage:
+            out["usage"] = self.usage
+        if self.children:
+            out["children"] = [child.to_json() for child in self.children]
         return out
 
 
 @dataclass
 class Trace:
     """
-    One user session, end to end.
+    One agent run: a question in, an answer out.
 
-    A session rather than a request, per D4: a conversation is the unit a
-    reader wants to follow, and splitting it per turn loses the thing that
-    makes a trace useful.
+    `session` groups several of these, which is what a conversation is. Left
+    unset for a one-shot question rather than invented, since a session of one
+    tells a reader nothing.
     """
 
+    name: str = "answer-cba-question"
     trace_id: str = field(default_factory=lambda: uuid.uuid4().hex[:16])
-    session: str = ""
+    session: str | None = None
+    user: str | None = None
+    environment: str = "development"
+    tags: list[str] = field(default_factory=list)
     started_at: float = field(default_factory=time.time)
-    spans: list[Span] = field(default_factory=list)
+    root: Span | None = None
     metadata: JsonDict = field(default_factory=dict)
+    scores: dict[str, Any] = field(default_factory=dict)
+    """
+    Judgements made *after* the run -- whether the answer was supported, whether
+    any figure was unverified. Tags cannot carry these: tags are immutable and
+    set at creation, and these are only known once the answer exists.
+    """
 
-    def start(self, kind: Kind, name: str, **payload: Any) -> Span:
-        span = Span(kind=kind, name=name, started_at=time.time(), payload=dict(payload))
-        self.spans.append(span)
-        return span
-
-    def record(self, kind: Kind, name: str, **payload: Any) -> Span:
-        """A span with no duration -- something that happened rather than ran."""
-        span = self.start(kind, name, **payload)
-        span.ended_at = span.started_at
-        return span
+    def begin(self, question: str) -> Span:
+        self.root = Span(kind=Kind.AGENT, name=self.name, started_at=time.time(), input=question)
+        return self.root
 
     @property
     def events(self) -> int:
         """
-        Billable events, which is simply the span count.
+        Billable observations: the root plus every descendant.
 
-        Named separately because the budget reasons about events and the trace
-        reasons about spans, and conflating the two words is how an event cap
-        drifts out of step with what is actually sent.
+        The budget reasons about events and the trace about spans; keeping the
+        word separate is how an event cap stays in step with what is sent.
         """
-        return len(self.spans)
+        return 0 if self.root is None else 1 + self.root.descendants
 
     def to_json(self) -> JsonDict:
         return {
             "trace_id": self.trace_id,
+            "name": self.name,
             "session": self.session,
+            "environment": self.environment,
+            "tags": self.tags,
             "started_at": self.started_at,
             "events": self.events,
             "metadata": self.metadata,
-            "spans": [span.to_json() for span in self.spans],
+            "scores": self.scores,
+            "root": self.root.to_json() if self.root else None,
         }
 
 
@@ -131,20 +179,12 @@ class Exporter(Protocol):
     """
     Where a finished trace goes.
 
-    Runtime-checkable so a test can assert every exporter satisfies it; the
-    vendor adapters are written outside this module and that check is what
-    keeps them honest.
+    Must not raise. A tracing backend being down, rate limited or out of quota
+    is not a reason for a user's question to fail -- 6.13 settles that tracing
+    degrades while spend refuses.
     """
 
-    def export(self, trace: Trace) -> bool:
-        """
-        Send it. Returns whether it was accepted.
-
-        Must not raise. A tracing backend being down, rate limited or out of
-        quota is not a reason for a user's question to fail -- 6.13 settles
-        that tracing degrades while spend refuses.
-        """
-        ...
+    def export(self, trace: Trace) -> bool: ...
 
 
 @dataclass
@@ -164,8 +204,7 @@ class FileExporter:
     Appends each trace as one JSON line.
 
     The exporter that survives: no network, no key, no retention window, and
-    the output can be committed as an artifact (6.10a) so the observability
-    story is demonstrable without a live account.
+    the output can be committed as an artifact (6.10a).
     """
 
     path: Path
@@ -177,7 +216,6 @@ class FileExporter:
             with self.path.open("a", encoding="utf-8") as handle:
                 handle.write(json.dumps(trace.to_json(), default=str) + "\n")
         except OSError:
-            # A full disk should not fail a question either.
             return False
         self.written += 1
         return True
@@ -188,9 +226,9 @@ class CappedExporter:
     """
     Wraps an exporter with the event budget (6.13).
 
-    The cap is applied here rather than inside each vendor adapter, so a free
-    tier's allowance is enforced identically however the trace is stored --
-    and so exceeding it drops the trace instead of failing the request.
+    Applied here rather than inside each vendor adapter, so a free tier's
+    allowance is enforced identically however the trace is stored, and
+    exceeding it drops the trace instead of failing the request.
     """
 
     inner: Exporter
@@ -223,10 +261,20 @@ class CappedExporter:
         return line
 
 
+def walk(span: Span) -> list[Span]:
+    """Depth-first, parents before children."""
+    out = [span]
+    for child in span.children:
+        out.extend(walk(child))
+    return out
+
+
 def summarise(trace: Trace) -> str:
     """A readable digest, for a log line or a test failure."""
+    if trace.root is None:
+        return f"{trace.trace_id}  empty"
     counts: dict[str, int] = {}
-    for span in trace.spans:
+    for span in walk(trace.root):
         counts[span.kind.value] = counts.get(span.kind.value, 0) + 1
     breakdown = ", ".join(f"{name} {n}" for name, n in sorted(counts.items()))
     return f"{trace.trace_id}  {trace.events} events  [{breakdown}]"

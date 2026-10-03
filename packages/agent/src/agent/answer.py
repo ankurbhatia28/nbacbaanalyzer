@@ -28,6 +28,7 @@ caller can show them next to the conclusion.
 
 from __future__ import annotations
 
+import json
 import sqlite3
 import time
 from dataclasses import dataclass, field
@@ -42,6 +43,20 @@ from .models import Role, model_for
 from .router import Routing, route
 from .tools import Resources, call, specs
 from .trace import Kind, Trace
+
+SPAN_NAMES = {
+    Role.ROUTER: "classify-question",
+    Role.INTENT: "select-provisions",
+    Role.ANSWER: "generate-answer",
+}
+"""
+Observation names, verb-first and without run-specific values.
+
+Names are referenced by evaluators, dashboard filters and saved views, so they
+behave like an API: changing one silently stops those matching. Deliberately
+not named after the model either -- that is a separate attribute on a
+generation, and naming spans after it would break every filter on a model swap.
+"""
 
 MAX_TOOL_ROUNDS = 6
 """
@@ -246,6 +261,7 @@ def answer(
     league: sqlite3.Connection | None = None,
     budget: Budget | None = None,
     session: str | None = None,
+    environment: str = "development",
 ) -> Verdict:
     """
     Answer one question, or refuse, or ask for clarification.
@@ -258,9 +274,9 @@ def answer(
     data_conn = league if league is not None else res.league
     started = time.monotonic()
     spent = Ledger()
-    trace = Trace(session=session or "")
+    trace = Trace(session=session, environment=environment)
     verdict.trace = trace
-    trace.record(Kind.USER_TURN, "question", text=question)
+    root = trace.begin(question)
 
     # Checked before the first model call, because the point of a spend cap is
     # to not spend.
@@ -289,42 +305,54 @@ def answer(
         the caller's own ledger would double-count across requests that share
         a client.
         """
-        span = trace.start(
-            Kind.MODEL_CALL,
-            role.value,
-            # The system prompt is recorded once per role rather than per call.
-            # D4 asks for it in the trace; repeating 3,000 tokens of vocabulary
-            # on every span would make the trace unreadable and, on a metered
-            # backend, expensive.
-            system_chars=len(system),
-            turns=len(messages),
+        span = root.child(
+            Kind.GENERATION,
+            SPAN_NAMES[role],
+            input=_readable_messages(system, messages),
+            metadata={"role": role.value, "turns": len(messages)},
         )
         try:
             reply = caller(
                 role=role, system=system, messages=messages, max_tokens=max_tokens, tools=tools
             )
         except Exception as exc:
-            span.ended_at = time.time()
-            span.error = f"{type(exc).__name__}: {exc}"
+            span.end(error=f"{type(exc).__name__}: {exc}")
             raise
-        span.ended_at = time.time()
-        span.payload.update(
+        span.end(
+            output=reply.text or [r.name for r in reply.tool_requests],
             model=reply.model,
-            input_tokens=reply.usage.input_tokens,
-            output_tokens=reply.usage.output_tokens,
-            cached_tokens=reply.usage.cache_read_tokens,
-            wants_tools=reply.wants_tools,
+            # The names Langfuse costs from. Cache reads stay separate because
+            # at a 97% hit rate (6.8) folding them into input would misstate
+            # the bill badly.
+            usage={
+                "input": reply.usage.input_tokens,
+                "output": reply.usage.output_tokens,
+                "cache_read_input_tokens": reply.usage.cache_read_tokens,
+                "cache_creation_input_tokens": reply.usage.cache_write_tokens,
+            },
         )
+        span.metadata["requested_tools"] = [r.name for r in reply.tool_requests]
         spent.record(role, reply.usage)
         return reply
 
     def finish() -> Verdict:
+        # The root's output is the answer: the trace list shows the root's
+        # input and output, and that is what a reviewer reads first.
+        root.end(output=verdict.text or verdict.clarification or verdict.over_budget)
         trace.metadata.update(
-            refused=verdict.refused,
-            supported=verdict.supported,
-            trustworthy=verdict.trustworthy,
             rounds=verdict.rounds,
+            citations=list(verdict.citations),
+            assumptions=verdict.assumptions,
         )
+        # Tags are immutable and set at creation, so they carry what is
+        # structural; judgements made after the run are scores.
+        trace.tags = sorted({i.value for i in (verdict.routing.intents if verdict.routing else ())})
+        trace.scores = {
+            "supported": int(verdict.supported),
+            "trustworthy": int(verdict.trustworthy),
+            "unsourced_figures": len(verdict.unsourced_figures),
+            "refused": int(verdict.refused),
+        }
         if budget is not None:
             verdict.cost = measure(
                 budget,
@@ -349,11 +377,13 @@ def answer(
             "This is outside what this tool answers, and I would rather say so than "
             f"guess: {verdict.routing.reason}"
         )
-        trace.record(
-            Kind.REFUSAL,
-            verdict.routing.refusal_basis or "out_of_scope",
-            reason=verdict.routing.reason,
-        )
+        root.child(
+            Kind.EVENT,
+            "refuse-question",
+            input=question,
+            output=verdict.text,
+            metadata={"basis": verdict.routing.refusal_basis or "out_of_scope"},
+        ).end()
         return finish()
 
     try:
@@ -399,14 +429,21 @@ def answer(
         messages.append({"role": "assistant", "content": list(reply.raw_content)})
         results: list[JsonDict] = []
         for request in reply.tool_requests:
-            span = trace.start(Kind.TOOL_CALL, request.name, arguments=request.arguments)
+            # A sibling of the generation that requested it, under the agent
+            # that orchestrates them -- not a child of the generation, and not
+            # dangling at the trace root.
+            #
+            # Typed `retriever` rather than `tool`: every tool here looks
+            # something up without changing state, which is ADR-004 showing
+            # through -- the database and index are read-only build artifacts.
+            span = root.child(
+                Kind.RETRIEVER,
+                request.name.replace("_", "-"),
+                input=request.arguments,
+            )
             result = call(res, request.name, request.arguments)
-            span.ended_at = time.time()
-            span.payload["ok"] = result.get("ok", True) and result.get("found", True)
-            if result.get("citation_returned") or result.get("citation"):
-                span.payload["citation"] = result.get("citation_returned") or result.get("citation")
-            if result.get("row_count") is not None:
-                span.payload["row_count"] = result["row_count"]
+            span.end(output=_tool_summary(result))
+            span.metadata["ok"] = bool(result.get("ok", True) and result.get("found", True))
             verdict.tool_calls.append((request.name, request.arguments, result))
             _collect(result, verdict, sourced, quoted)
             results.append(_tool_result_block(request, result))
@@ -414,14 +451,6 @@ def answer(
 
     verdict.text = reply.text if reply else ""
     verdict.unsourced_figures = _audit_figures(verdict.text, sourced | asked, quoted)
-    trace.record(
-        Kind.ANSWER,
-        "final",
-        chars=len(verdict.text),
-        citations=list(verdict.citations),
-        unsourced_figures=list(verdict.unsourced_figures),
-        assumptions=verdict.assumptions,
-    )
     return finish()
 
 
@@ -500,3 +529,66 @@ def _audit_figures(text: str, sourced: set[str], quoted: set[str]) -> tuple[str,
             continue
         unsourced.append(figure)
     return tuple(unsourced)
+
+
+def _readable_messages(system: str, messages: list[JsonDict]) -> list[JsonDict]:
+    """
+    The conversation in the role/content shape Langfuse renders as a dialogue.
+
+    A raw JSON blob shows up as a blob; this renders as a readable exchange.
+    The system prompt is included as its own turn because D4 asks for it, but
+    truncated: the intent role's carries 612 provision names, and repeating
+    ~16,000 characters on every span would bury the actual conversation and,
+    on a metered backend, cost money to store.
+    """
+    out: list[JsonDict] = [{"role": "system", "content": _clip(system)}]
+    for message in messages:
+        content = message.get("content")
+        out.append({"role": message.get("role", "user"), "content": _clip(content)})
+    return out
+
+
+SYSTEM_PROMPT_CHARS = 600
+"""How much of a system prompt to keep. Enough to identify it, not to drown the trace."""
+
+CONTENT_CHARS = 2_000
+"""Per message. Tool results carry whole provisions; the full text is in the tool span."""
+
+
+def _clip(value: object, limit: int | None = None) -> object:
+    cap = limit if limit is not None else SYSTEM_PROMPT_CHARS
+    if isinstance(value, str):
+        return value if len(value) <= cap else f"{value[:cap]}… [{len(value)} chars]"
+    if isinstance(value, list):
+        rendered = json.dumps(value, default=str)
+        if len(rendered) <= CONTENT_CHARS:
+            return value
+        return f"{rendered[:CONTENT_CHARS]}… [{len(rendered)} chars]"
+    return value
+
+
+def _tool_summary(result: JsonDict) -> JsonDict:
+    """
+    What a reviewer needs from a tool result at a glance.
+
+    Not the whole payload: a `fetch_provision` result carries several thousand
+    characters of provision text, and a trace full of those is unreadable. The
+    citation, the shape and the counts are what tell you whether the step did
+    its job.
+    """
+    summary: JsonDict = {}
+    for key in ("citation_returned", "citation", "term", "resolved", "found", "ok", "row_count"):
+        if key in result:
+            summary[key] = result[key]
+    if result.get("substituted"):
+        summary["substituted"] = True
+    if passages := result.get("passages"):
+        summary["passages"] = len(passages)
+        summary["first_citation"] = passages[0].get("citation") if passages else None
+    if candidates := result.get("candidates"):
+        summary["candidates"] = candidates[:5]
+    if figures := result.get("figures_present"):
+        summary["figures_present"] = figures[:8]
+    if error := result.get("error"):
+        summary["error"] = error
+    return summary or {"returned": sorted(result)[:6]}
