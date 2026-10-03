@@ -261,3 +261,22 @@ def test_quotes_come_back_verbatim_by_label_and_never_as_a_near_miss(real):
     ).fetchone()[0]
     assert texts[f"{repeated} (passage 2)"] == second
     assert texts["Art. XCIX §1"] is None
+
+
+def test_an_unknown_team_has_no_sheet_rather_than_an_empty_one(empty):
+    response = client(empty, Script(intents=["data"])).get("/teams/XYZ/sheet")
+    assert response.status_code == 404
+
+
+@needs_data
+def test_a_cap_sheet_is_served_with_its_dataset_and_no_model_call(real):
+    def no_model(**_):
+        raise AssertionError("the cap sheet must not call a model")
+
+    http = client(real, no_model)
+    keys = [t["key"] for t in http.get("/teams").json()["teams"]]
+    assert len(keys) == 30
+    body = http.get("/teams/mil/sheet").json()
+    assert body["team"] == "MIL"
+    assert body["totals"]["apron"] == sum(line["counts"]["apron"] for line in body["lines"])
+    assert body["dataset"]["season"]

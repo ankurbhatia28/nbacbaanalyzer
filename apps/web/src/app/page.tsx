@@ -9,6 +9,9 @@ export default function Home() {
           Questions about the 2023 NBA Collective Bargaining Agreement, answered from its text and
           a snapshot of league data, or declined with a reason.
         </p>
+        <p className="masthead-links">
+          <a href="/cap">Team cap sheets</a>
+        </p>
       </header>
       <Chat />
       <footer className="page-footer muted">

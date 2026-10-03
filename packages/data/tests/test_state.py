@@ -109,3 +109,24 @@ def test_hard_cap_ceilings_load_with_their_level_and_trigger(league):
 def test_an_unknown_team_is_an_error_not_an_empty_team(league):
     with pytest.raises(MissingDataError):
         team_state(league, "XYZ")
+
+
+@needs_data
+def test_dead_money_counts_toward_the_aprons(league):
+    """Milwaukee carries $22.5M of dead cap for Damian Lillard, and the aprons see it."""
+    state = team_state(league, "MIL")
+    assert any(d.player_id == "damian lillard" for d in state.dead_money)
+    dead = sum(d.amount for d in state.dead_money)
+    assert dead == 22_516_603 + 666_667
+    assert state.apron_team_salary() >= state.committed_salary() + dead
+
+
+@needs_data
+def test_no_team_sits_above_its_own_hard_cap_as_the_engine_sees_it(league):
+    """
+    D18's invariant, asked of `TeamState` rather than SQL: the bridge and the
+    ingest test must agree on what Apron Team Salary includes.
+    """
+    for t in teams(league):
+        room = team_state(league, t.key).room_below_ceiling()
+        assert room is None or room >= 0, t.key

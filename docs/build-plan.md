@@ -2,14 +2,14 @@
 
 > ## Where this stands
 >
-> **Phases 0–6 are complete. Phase 7 is under way: the API, the answer card and the chat app are done (7.0–7.3, 7.6, 7.8); the trade builder, cap sheet and permalinks (7.4, 7.5, 7.7) remain. Phase 8 has not started.**
+> **Phases 0–6 are complete. Phase 7 is under way: the API, answer card, chat app, permalinks and cap sheet are done (7.0–7.3, 7.5–7.8); the trade builder (7.4) remains. Phase 8 has not started.**
 >
 > | phase | state |
 > |---|---|
 > | 0 Rails · 1 Domain model · 2 Data layer · 3 Rules engine | done |
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
 > | 6 Agent layer | done |
-> | 7 Interface | **in progress** — API, card, chat and permalinks done or in review; 7.4 and 7.5 remain, now unblocked by D18 |
+> | 7 Interface | **in progress** — API, card, chat, permalinks and cap sheet done or in review; 7.4 remains |
 > | 8 Ship | **not started** |
 >
 > Two items in Phase 3 are deliberately left open and say why inline: **3.14**
@@ -526,7 +526,8 @@ required UI element rather than a nicety.
 - [x] **7.2** **Answer card**: verdict, plain English, verbatim CBA quote, citation, assumptions — *contract done in 7.0 and rendered in `AnswerCard.tsx`: warnings before the answer, quotes the answer names first, dead-end queries folded. Signed off by the owner on 2026-10-03, with a note that it **shows more than it needs to and should be culled later** — the obvious candidates are the folded passages (a §4 fetch alone surfaced 14) and the long, elaborated answer text.*
 - [x] **7.3** Show the structured query behind any number, inspectable on demand — *each number the answer took from a query links to that query (`linkFigures`), whose SQL and parameters sit behind "Show the query"; an unsourced number is struck through in red.*
 - [ ] **7.4** Trade builder with live verdict, reachable from a chat answer
-- [ ] **7.5** Cap sheet view with apron lines as visible thresholds, tabular numerals
+- [x] **7.5** Cap sheet view with apron lines as visible thresholds, tabular numerals — *`/cap/[team]` in the web app, served by `GET /teams/{key}/sheet` from `nbadata.sheet`, which reads the same `TeamState` the engine does. Two bars, not one, against the four lines: Team Salary (holds in) is measured against the cap, Apron Team Salary (holds out, qualifying offers in) against the tax and aprons, and a single bar would be wrong about one of them. Each line on the books says what it counts toward ("Cap only" for a hold), and a test pins every total to the sum of the lines shown, for all 30 teams. A binding hard cap is drawn as its own red line. Trade exceptions are read directly and checked for expiry against the payroll's date, not the stale flag (OKC's only one had expired). No model call. Checked in headless Chrome at 1040px and 390px; no horizontal page scroll.*
+  - **Found while building it: the bridge left out dead money**, so the engine read Milwaukee's Apron Team Salary $23.2M low and Phoenix's $23.2M low (Lillard, Beal). Loaded from Fanspo's dead cap (D18); D18's hard-cap invariant now also holds as the engine computes it, not only in SQL.
 - [x] **7.6** **Provenance and as-of date on every figure — mandatory.** *Done: every query in a card lists source, basis and date ("scraped 29 Sep 2026", "as of …", or "date unknown"), and every answer carries the dataset line.* The dataset is a snapshot, and the Spotrac rows alone span 13 months of differing snapshot dates. A public app implies currency; without prominent as-of labelling it is quietly misleading.
 - [x] **7.7** Permalinks for a question and its answer — *D19: the card travels in the URL fragment, compressed, with quote text dropped and re-fetched by exact passage label (`POST /quotes`, no model). Each dropped quote keeps a hash, and the reopened page warns if the index has changed the words since. Measured: a rules answer's link is 2,241 characters and reopens byte-identical; a truncated link is refused with a sentence.*
 - [x] **7.8** Empty, loading, error and refusal states; usable read-only mobile view. *Checked in headless Chrome at 820px and 390px against the live API.*

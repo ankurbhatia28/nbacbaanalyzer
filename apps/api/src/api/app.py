@@ -11,6 +11,10 @@ Three routes, and deliberately nothing that writes:
                      work happens, then the card
   POST /quotes       provision text by passage label, for a permalink (7.7):
                      a lookup, no search and no model
+  GET  /teams        the thirty teams, for the cap sheet's picker
+  GET  /teams/{key}/sheet
+                     one team's cap sheet (7.5): no model, read straight
+                     from the bridge the engine reads
 
 **The two ask routes cannot disagree.** Both end in `card.build` over the
 verdict `answer()` returned -- the streaming route reads it from the stream's
@@ -37,7 +41,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass, field
 from typing import Any
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse, StreamingResponse
 from pydantic import BaseModel, Field
@@ -49,6 +53,8 @@ from agent.llm import Caller
 from agent.stream import Event, Update, stream
 from agent.tools import Resources
 from agent.trace import Exporter, NullExporter
+from nbadata import sheet as sheets
+from nbadata import state
 from nbadata.query import Snapshot, snapshot
 from rag import index as ix
 
@@ -156,6 +162,21 @@ def create_app(service: Service, *, allowed_origins: list[str] | None = None) ->
     @app.post("/quotes")
     def quotes(body: Quotes) -> dict[str, Any]:
         return {"texts": {label: passage_text(service.res.cba, label) for label in body.labels}}
+
+    @app.get("/teams")
+    def teams() -> dict[str, Any]:
+        return {"teams": [{"key": t.key, "name": t.name} for t in state.teams(service.res.league)]}
+
+    @app.get("/teams/{team_key}/sheet")
+    def sheet(team_key: str) -> dict[str, Any]:
+        try:
+            got = sheets.cap_sheet(service.res.league, team_key.upper())
+        except state.MissingDataError as missing:
+            raise HTTPException(404, str(missing)) from None
+        return {
+            **got.to_json(),
+            "dataset": service.dataset.to_json() if service.dataset else None,
+        }
 
     @app.post("/ask")
     def ask(body: Ask) -> dict[str, Any]:

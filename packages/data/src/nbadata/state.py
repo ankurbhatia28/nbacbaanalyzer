@@ -17,6 +17,7 @@ an explicit unknown rather than a convenient default:
   trade kicker, NTC  tri-state columns, all unknown     Maybe.unknown()
   ceiling row, date  SalarySwish gives level only       None
   trade exceptions   no creation date                   not loaded into TeamState
+  dead cap, unnamed  Fanspo lists two with no player    player_id None
 
 Trade exceptions are left out of `TeamState` because the engine's
 `TradeException` needs a creation date no source gives, and nothing in trade
@@ -41,7 +42,7 @@ from engine.contract import (
     GuaranteeType,
     OptionType,
 )
-from engine.holds import BirdRights, CapHold, HoldKind
+from engine.holds import BirdRights, CapHold, DeadMoney, HoldKind
 from engine.maybe import Maybe
 from engine.provenance import Provenance, Source
 from engine.roster import RosterState
@@ -261,6 +262,23 @@ def _holds(conn: sqlite3.Connection, team_key: str, season_id: str) -> list[CapH
     ]
 
 
+def _dead_money(conn: sqlite3.Connection, team_key: str, season_id: str) -> list[DeadMoney]:
+    """
+    Fanspo's dead cap (D18). Counts toward Team Salary and the aprons alike.
+
+    A row with no player is dead cap Fanspo lists without a name -- Denver's
+    $2.0M and Milwaukee's $0.67M -- and stays unnamed rather than guessed.
+    """
+    return [
+        DeadMoney(amount=int(amount), player_id=player, description="dead cap")
+        for player, amount in conn.execute(
+            "SELECT player_key, amount FROM dead_money WHERE team_key = ? AND season_id = ? "
+            "ORDER BY amount DESC",
+            (team_key, season_id),
+        )
+    ]
+
+
 def _ceilings(conn: sqlite3.Connection, team_key: str, season_id: str) -> CeilingSet:
     out = CeilingSet()
     for level, detail, category in conn.execute(
@@ -292,6 +310,7 @@ def team_state(
         season=season(conn, season_id),
         contracts=contracts,
         cap_holds=_holds(conn, team_key, season_id),
+        dead_money=_dead_money(conn, team_key, season_id),
         ceilings=_ceilings(conn, team_key, season_id),
         roster=RosterState(standard_count=standard),
         provenance=_provenance(conn, "bbref_contracts"),
