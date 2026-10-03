@@ -280,3 +280,49 @@ def test_a_cap_sheet_is_served_with_its_dataset_and_no_model_call(real):
     assert body["team"] == "MIL"
     assert body["totals"]["apron"] == sum(line["counts"]["apron"] for line in body["lines"])
     assert body["dataset"]["season"]
+
+
+def test_a_trade_that_is_not_one_is_refused_with_a_sentence(empty):
+    response = client(empty, Script(intents=["data"])).post(
+        "/trade", json={"moves": [{"player": "x", "from": "DEN", "to": "DEN"}]}
+    )
+    assert response.status_code == 422
+    assert "two teams" in response.json()["detail"]
+
+
+@needs_data
+def test_a_trade_verdict_quotes_the_provision_each_violation_cites(real):
+    def no_model(**_):
+        raise AssertionError("the trade builder must not call a model")
+
+    body = (
+        client(real, no_model)
+        .post(
+            "/trade",
+            json={
+                "moves": [
+                    {"player": "Jamal Murray", "from": "den", "to": "dal"},
+                    {"player": "kyrie irving", "from": "DAL", "to": "DEN"},
+                    {"player": "pj washington", "from": "DAL", "to": "DEN"},
+                ]
+            },
+        )
+        .json()
+    )
+    assert body["legal"] is False
+    provision = body["provisions"]["Art. VII §2(e)(2)(i)(A)"]
+    # The clause sits inside a larger passage, and the response says which.
+    assert provision["quoted"] == "Art. VII §2(e)(2)(i)"
+    assert "Transaction Restrictions Table" in provision["text"]
+    assert body["dataset"]["season"]
+
+
+@needs_data
+def test_a_chat_answer_seeds_the_builder_with_each_players_team(real):
+    got = client(real, Script(intents=["data"])).get(
+        "/players", params=[("key", "jamal murray"), ("key", "nobody at all")]
+    )
+    assert got.json()["players"] == [
+        {"player": "jamal murray", "name": "Jamal Murray", "team": "DEN"},
+        {"player": "nobody at all", "name": "nobody at all", "team": None},
+    ]

@@ -15,6 +15,10 @@ Three routes, and deliberately nothing that writes:
   GET  /teams/{key}/sheet
                      one team's cap sheet (7.5): no model, read straight
                      from the bridge the engine reads
+  GET  /players      where each named player is under contract, to seed the
+                     trade builder from a chat answer
+  POST /trade        the engine's verdict on a proposed trade (7.4), with the
+                     text of every provision a violation cites. No model
 
 **The two ask routes cannot disagree.** Both end in `card.build` over the
 verdict `answer()` returned -- the streaming route reads it from the stream's
@@ -39,9 +43,10 @@ import re
 import sqlite3
 from collections.abc import Iterator
 from dataclasses import dataclass, field
-from typing import Any
+from datetime import date
+from typing import Annotated, Any
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse, StreamingResponse
 from pydantic import BaseModel, Field
@@ -54,7 +59,7 @@ from agent.stream import Event, Update, stream
 from agent.tools import Resources
 from agent.trace import Exporter, NullExporter
 from nbadata import sheet as sheets
-from nbadata import state
+from nbadata import state, trades
 from nbadata.query import Snapshot, snapshot
 from rag import index as ix
 
@@ -118,6 +123,34 @@ class Quotes(BaseModel):
     labels: list[str] = Field(max_length=MAX_QUOTES)
 
 
+class TradeMove(BaseModel):
+    player: str = Field(min_length=1, max_length=80)
+    from_team: str = Field(alias="from", min_length=2, max_length=4)
+    to_team: str = Field(alias="to", min_length=2, max_length=4)
+
+
+class TradeRequest(BaseModel):
+    moves: list[TradeMove] = Field(max_length=trades.MAX_MOVES)
+
+
+def provision(cba: sqlite3.Connection, citation: str) -> dict[str, Any]:
+    """
+    The text behind an engine citation. The engine cites the clause it
+    enforces; the index may hold it inside a larger passage, and `quoted`
+    says which one is shown so the page never claims more precision than it
+    has (`rag.index.fetch_nearest`).
+    """
+    hit, quoted = ix.fetch_nearest(cba, citation)
+    if hit is None:
+        return {"quoted": None, "text": None, "pdf_page": None, "printed_page": None}
+    return {
+        "quoted": quoted,
+        "text": hit.body,
+        "pdf_page": hit.pdf_page,
+        "printed_page": hit.printed_page,
+    }
+
+
 class Ask(BaseModel):
     question: str = Field(min_length=1, max_length=MAX_QUESTION_CHARS)
     session: str | None = Field(default=None, max_length=128)
@@ -177,6 +210,28 @@ def create_app(service: Service, *, allowed_origins: list[str] | None = None) ->
             **got.to_json(),
             "dataset": service.dataset.to_json() if service.dataset else None,
         }
+
+    @app.get("/players")
+    def players(key: Annotated[list[str], Query(max_length=trades.MAX_MOVES)]) -> dict[str, Any]:
+        return {"players": trades.current_teams(service.res.league, key)}
+
+    @app.post("/trade")
+    def trade(body: TradeRequest) -> dict[str, Any]:
+        moves = [
+            trades.Move(m.player.strip().lower(), m.from_team.upper(), m.to_team.upper())
+            for m in body.moves
+        ]
+        try:
+            verdict, sides, built = trades.check(service.res.league, moves, date.today())
+        except trades.TradeError as bad:
+            raise HTTPException(422, str(bad)) from None
+        except state.MissingDataError as missing:
+            raise HTTPException(404, str(missing)) from None
+        out = trades.to_json(verdict, sides, built)
+        cited = {v["citation"] for s in out["sides"] for v in s["violations"]}
+        out["provisions"] = {c: provision(service.res.cba, c) for c in sorted(cited)}
+        out["dataset"] = service.dataset.to_json() if service.dataset else None
+        return out
 
     @app.post("/ask")
     def ask(body: Ask) -> dict[str, Any]:

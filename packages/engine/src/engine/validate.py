@@ -21,8 +21,8 @@ from dataclasses import dataclass, field
 from datetime import date, timedelta
 
 from . import trade_dates
-from .apron import ApronStatus
-from .apron_restrictions import barred_transactions
+from .apron import ApronStatus, RestrictionRow
+from .apron_restrictions import barred_transactions, may_engage
 from .citations import (
     AGGREGATION_TWO_MONTH_BAR,
     TPE_STANDARD,
@@ -34,7 +34,14 @@ from .constitution import FIRST_ROUND_DRAFT_CHOICE, ByLaw, check_first_round_rul
 from .contract import ContractType
 from .maybe import Assumption, AssumptionLog
 from .roster import STANDARD_MAX, STANDARD_MIN
-from .salary_matching import Allowance, best_allowance, best_structure
+from .salary_matching import (
+    Allowance,
+    MatchingExceptionKind,
+    Structure,
+    best_allowance,
+    best_structure,
+)
+from .season import Season
 from .team_state import TeamState
 from .trade import Trade, TradeLeg
 from .violations import Code, Verdict, Violation
@@ -68,6 +75,16 @@ Not covered, and absent rather than approximated:
 """
 
 AGGREGATION_BAR = timedelta(days=60)
+
+TRIGGERED_ROW = {
+    MatchingExceptionKind.EXPANDED: RestrictionRow.E_EXPANDED_TPE,
+    MatchingExceptionKind.TRANSITION: RestrictionRow.G_TRANSITION_TPE,
+    MatchingExceptionKind.AGGREGATED: RestrictionRow.H_AGGREGATED_TPE,
+}
+"""Exceptions that are rows of the Transaction Restrictions Table: using one
+hard-caps the team at that row's apron for the rest of the Salary Cap Year
+(Art. VII 2(e)(2)(i)(B)). A legal trade can still cost a team its flexibility,
+and the verdict should say so."""
 
 
 def _incoming_with_kickers(leg: TradeLeg, season_id: str, log: AssumptionLog) -> int:
@@ -105,12 +122,114 @@ def _incoming_with_kickers(leg: TradeLeg, season_id: str, log: AssumptionLog) ->
     return total
 
 
+def _match_salary(
+    leg: TradeLeg,
+    season: Season,
+    season_id: str,
+    outgoing: int,
+    incoming: int,
+    post_salary: int,
+    state: TeamState,
+    base_season_cap: int,
+    notes: list[str],
+) -> list[Violation]:
+    """
+    Art. VII 6(j), with 2(e)(2)(i)(A) applied first.
+
+    An exception that is a row of the Transaction Restrictions Table may not be
+    used at all if the team would end above that row's apron, whatever amount
+    6(j) would permit. Until 7.4 this was enforced only in the constraint
+    report, so `validate_trade` let a team use the Expanded exception into the
+    second apron. Barred exceptions are excluded before matching, and a trade
+    only a barred exception would permit is reported as barred, not as one no
+    exception covers -- the remedy differs.
+    """
+    barred = frozenset(
+        kind
+        for kind, row in TRIGGERED_ROW.items()
+        if not may_engage(row, apron_salary_after=post_salary, season=season).permitted
+    )
+    cap_room = max(0, season.salary_cap - state.cap_salary())
+    salaries = [c.cap_figure(season_id) for c in leg.sends]
+
+    def match(exclude: frozenset[MatchingExceptionKind]) -> Allowance | Structure | None:
+        allowance = best_allowance(
+            outgoing,
+            incoming,
+            season,
+            post_salary,
+            base_season_cap,
+            aggregating=leg.is_aggregating,
+            cap_room=cap_room or None,
+            exclude=exclude,
+        )
+        if allowance is not None:
+            return allowance
+        if len(salaries) > 1:
+            # 3.14a: several outgoing players may be matched by several
+            # exceptions (6(j)(1)(i), carved out of 6(m)).
+            structure = best_structure(salaries, season, post_salary, base_season_cap, exclude)
+            if structure.permits(incoming):
+                return structure
+        return None
+
+    found = match(barred)
+    if isinstance(found, Structure):
+        notes.append(
+            f"{leg.team_id}: matched across {found.exception_count} exceptions "
+            f"(${found.total_allowance:,} allowed against ${incoming:,} taken back)"
+        )
+        return []
+    if isinstance(found, Allowance):
+        if found.kind in TRIGGERED_ROW:
+            row = TRIGGERED_ROW[found.kind]
+            notes.append(
+                f"{leg.team_id}: matched by the {found.kind.value} exception (Transaction "
+                f"Restrictions Table row {row.value}), which hard-caps it at the "
+                f"{row.applicable_apron.value.replace('_', ' ')} for the rest of the season"
+            )
+        return []
+
+    unbarred = match(frozenset()) if barred else None
+    if unbarred is not None:
+        if isinstance(unbarred, Allowance):
+            row = TRIGGERED_ROW[unbarred.kind]
+            level = row.applicable_apron
+            limit = season.first_apron if level.value == "first_apron" else season.second_apron
+            why = (
+                f"which needs the {unbarred.kind.value} exception (row {row.value}); a team may "
+                f"not use it to end above the {level.value.replace('_', ' ')} (${limit:,}), "
+                f"and this leaves Apron Team Salary at ${post_salary:,}"
+            )
+        else:
+            why = (
+                f"which needs {unbarred.exception_count} exceptions, at least one barred at "
+                f"Apron Team Salary of ${post_salary:,} after the trade"
+            )
+        return [
+            Violation(
+                Code.APRON_TRANSACTION_BARRED,
+                leg.team_id,
+                f"takes back ${incoming:,} against ${outgoing:,} sent, {why}",
+            )
+        ]
+    return [
+        Violation(
+            Code.NO_EXCEPTION_AVAILABLE,
+            leg.team_id,
+            f"takes back ${incoming:,} against ${outgoing:,} sent; "
+            f"no exception in Art. VII 6(j) permits it",
+        )
+    ]
+
+
 def _validate_leg(
     leg: TradeLeg,
     state: TeamState,
     trade: Trade,
     base_season_cap: int,
     log: AssumptionLog,
+    notes: list[str],
 ) -> list[Violation]:
     violations: list[Violation] = []
     season = state.season
@@ -121,25 +240,17 @@ def _validate_leg(
 
     # -- salary matching, Art. VII 6(j) --------------------------------
     if incoming > outgoing:
-        cap_room = max(0, season.salary_cap - state.cap_salary())
-        allowance: Allowance | None = best_allowance(
+        violations += _match_salary(
+            leg,
+            season,
+            trade.season_id,
             outgoing,
             incoming,
-            season,
             post_salary,
+            state,
             base_season_cap,
-            aggregating=leg.is_aggregating,
-            cap_room=cap_room or None,
+            notes,
         )
-        if allowance is None:
-            violations.append(
-                Violation(
-                    Code.NO_EXCEPTION_AVAILABLE,
-                    leg.team_id,
-                    f"takes back ${incoming:,} against ${outgoing:,} sent; "
-                    f"no exception in Art. VII 6(j) permits it",
-                )
-            )
 
     # -- hard cap ceilings, Art. VII 2(e)(2)(i)(B) ----------------------
     ceiling = state.ceilings.effective(state.thresholds())
@@ -217,14 +328,15 @@ def validate_trade(trade: Trade, states: dict[str, TeamState], base_season_cap: 
     if missing:
         raise KeyError(f"no TeamState supplied for {', '.join(missing)}")
 
+    notes = [f"checked: {', '.join(CHECKS_IMPLEMENTED)}"]
     for leg in trade.legs:
-        violations += _validate_leg(leg, states[leg.team_id], trade, base_season_cap, log)
+        violations += _validate_leg(leg, states[leg.team_id], trade, base_season_cap, log, notes)
 
     return Verdict(
         legal=not violations,
         violations=violations,
         assumptions=log.entries,
-        notes=[f"checked: {', '.join(CHECKS_IMPLEMENTED)}"],
+        notes=notes,
     )
 
 

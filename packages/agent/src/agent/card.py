@@ -40,6 +40,7 @@ from rag.retrieve import figures_in
 
 from .answer import MAX_TOOL_ROUNDS, REFUSAL_BASIS, Verdict
 from .llm import JsonDict
+from .router import Intent
 
 SCHEMA_VERSION = 1
 """
@@ -124,6 +125,13 @@ class AnswerCard:
     dataset: dict[str, Any] | None = None
     cost_usd: float | None = None
     seconds: float | None = None
+    trade: dict[str, Any] | None = None
+    """
+    The players a validation question named, resolved to keys, so the answer
+    can open the trade builder (7.4) with them in it. Additive and optional:
+    a card without it -- any card from before 7.4, including permalinks --
+    still renders, so the schema version is unchanged.
+    """
     schema: int = SCHEMA_VERSION
 
     def to_json(self) -> JsonDict:
@@ -149,10 +157,27 @@ def build(verdict: Verdict, dataset: Snapshot | None = None) -> AnswerCard:
         dataset=dataset.to_json() if dataset else None,
         cost_usd=cost.dollars if cost else None,
         seconds=round(cost.seconds, 2) if cost else None,
+        trade=_trade_seed(verdict),
     )
 
 
 # -- pieces ---------------------------------------------------------------
+
+
+def _trade_seed(verdict: Verdict) -> dict[str, Any] | None:
+    """
+    Players for the trade builder, when the question proposed a transaction.
+
+    Only resolved players: an ambiguous name became a clarification, and an
+    unresolved one is not a key the builder could look up. Which team each
+    plays for is the builder's to look up, not the model's to say.
+    """
+    if verdict.routing is None or Intent.VALIDATION not in verdict.routing.intents:
+        return None
+    if verdict.plan is None:
+        return None
+    keys = [e.key for e in verdict.plan.players if e.key]
+    return {"players": keys} if keys else None
 
 
 def _status(verdict: Verdict) -> Status:

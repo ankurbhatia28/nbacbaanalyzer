@@ -10,7 +10,7 @@ export default function Home() {
           a snapshot of league data, or declined with a reason.
         </p>
         <p className="masthead-links">
-          <a href="/cap">Team cap sheets</a>
+          <a href="/cap">Team cap sheets</a> · <a href="/trade">Trade builder</a>
         </p>
       </header>
       <Chat />
