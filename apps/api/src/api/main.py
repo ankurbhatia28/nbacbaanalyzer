@@ -1,5 +1,11 @@
 """
-The deployed process: `uvicorn api.main:app`.
+The deployed process. Locally:
+
+    uv run --env-file .env uvicorn api.main:app --port 8000
+
+Nothing here reads `.env` itself -- `--env-file` is what loads it. Without it
+the process stops at startup with "ANTHROPIC_API_KEY is not set" even though
+the key is in the file. A deployment sets these as platform env vars (8.5).
 
 Configuration comes from the environment, and everything that can be wrong is
 checked at startup rather than on the first question -- a missing artifact or
