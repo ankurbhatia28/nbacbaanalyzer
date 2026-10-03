@@ -42,7 +42,7 @@ from .llm import Caller, JsonDict, JsonReplyError, Ledger, Reply, ToolRequest
 from .models import Role, model_for
 from .router import Routing, route
 from .tools import Resources, call, specs
-from .trace import Kind, Trace
+from .trace import Kind, Span, Trace
 
 SPAN_NAMES = {
     Role.ROUTER: "classify-question",
@@ -144,6 +144,13 @@ class Verdict:
     The session record (task 6.10). Always built; exporting it is the caller's
     choice, so a trace exists even with no vendor configured.
     """
+    exhausted_rounds: bool = False
+    """
+    Whether the tool budget ran out before the model volunteered an answer.
+
+    Recorded rather than hidden: it means the answer was produced under
+    pressure, from whatever had been gathered by then.
+    """
     over_budget: str | None = None
     """
     Why a cap refused the request, if one did.
@@ -168,8 +175,21 @@ class Verdict:
         )
 
     @property
+    def answered(self) -> bool:
+        """
+        Whether there is an answer at all.
+
+        Separate from `supported`, because the loop can run out of tool rounds
+        with a last reply that only asked for more tools and no text in it. That
+        produced a verdict with fourteen citations, no answer, and
+        `trustworthy=True` -- success reported for nothing, which is the worst
+        shape a bug can take here.
+        """
+        return bool(self.text.strip()) or self.refused or self.clarification is not None
+
+    @property
     def trustworthy(self) -> bool:
-        return self.supported and not self.unsourced_figures
+        return self.answered and self.supported and not self.unsourced_figures
 
     def render(self) -> str:
         lines = [self.text.strip()]
@@ -178,6 +198,12 @@ class Verdict:
         if self.assumptions:
             lines += ["", "Assumed:"]
             lines += [f"  - {a}" for a in self.assumptions]
+        if self.exhausted_rounds:
+            lines += [
+                "",
+                f"Note: the {MAX_TOOL_ROUNDS}-tool-call budget ran out; this answer "
+                "was written from what had been gathered by then.",
+            ]
         if self.over_budget:
             lines += ["", f"Refused by a cap: {self.over_budget}"]
         if self.cost:
@@ -262,6 +288,7 @@ def answer(
     budget: Budget | None = None,
     session: str | None = None,
     environment: str = "development",
+    trace: Trace | None = None,
 ) -> Verdict:
     """
     Answer one question, or refuse, or ask for clarification.
@@ -274,7 +301,14 @@ def answer(
     data_conn = league if league is not None else res.league
     started = time.monotonic()
     spent = Ledger()
-    trace = Trace(session=session, environment=environment)
+    # A caller may supply the trace so it can watch the run as it happens --
+    # that is how streaming (6.9) reads progress without a second set of
+    # callbacks threaded through this function, and so what a user sees and
+    # what the trace records cannot disagree.
+    if trace is None:
+        trace = Trace(session=session, environment=environment)
+    else:
+        trace.session, trace.environment = session, environment
     verdict.trace = trace
     root = trace.begin(question)
 
@@ -366,6 +400,15 @@ def answer(
 
     try:
         verdict.routing = route(tracked, question)
+        _explain(
+            root,
+            SPAN_NAMES[Role.ROUTER],
+            verdict.routing.reason,
+            {
+                "intents": [i.value for i in verdict.routing.intents],
+                "refusal_basis": verdict.routing.refusal_basis,
+            },
+        )
     except JsonReplyError as exc:
         verdict.text = f"I could not interpret that question ({exc})."
         return finish()
@@ -396,6 +439,23 @@ def answer(
         )
     except JsonReplyError:
         verdict.plan = None
+
+    if verdict.plan:
+        _explain(
+            root,
+            SPAN_NAMES[Role.INTENT],
+            verdict.plan.reason,
+            {
+                "named": list(verdict.plan.named_as),
+                "resolved_to": list(verdict.plan.citations),
+                # The interesting case. 6.3 measured a fifth of selections
+                # reaching a real name for the wrong rule, and a name that
+                # resolved to nothing is the only record of what the model was
+                # reaching for when it missed.
+                "unresolved": list(verdict.plan.unresolved_names),
+                "players": [e.asked_as for e in verdict.plan.players],
+            },
+        )
 
     if verdict.plan and verdict.plan.clarification:
         verdict.clarification = verdict.plan.clarification
@@ -448,6 +508,35 @@ def answer(
             _collect(result, verdict, sourced, quoted)
             results.append(_tool_result_block(request, result))
         messages.append({"role": "user", "content": results})
+
+    # If the loop ran out of rounds while the model was still asking for tools,
+    # make one final call with no tools offered. It cannot ask for more, so it
+    # has to answer from what it already gathered -- which by then is usually
+    # plenty. Without this the user gets an empty answer after fifteen seconds
+    # of visible work.
+    if reply is not None and reply.wants_tools and not reply.text.strip():
+        verdict.exhausted_rounds = True
+        messages.append({"role": "assistant", "content": list(reply.raw_content)})
+        # Every tool_use must be answered by a tool_result in the very next
+        # message -- the API rejects the conversation otherwise. So the
+        # outstanding requests are closed out with the reason they went
+        # unanswered, and the instruction rides along in the same turn.
+        closing: list[JsonDict] = [
+            _tool_result_block(request, {"ok": False, "error": "tool call budget exhausted"})
+            for request in reply.tool_requests
+        ]
+        closing.append(
+            {
+                "type": "text",
+                "text": (
+                    "You have run out of tool calls for this question. Answer now "
+                    "from what you have already found, cite it, and say plainly "
+                    "what you could not establish."
+                ),
+            }
+        )
+        messages.append({"role": "user", "content": closing})
+        reply = tracked(role=Role.ANSWER, system=SYSTEM, messages=messages, max_tokens=1500)
 
     verdict.text = reply.text if reply else ""
     verdict.unsourced_figures = _audit_figures(verdict.text, sourced | asked, quoted)
@@ -592,3 +681,32 @@ def _tool_summary(result: JsonDict) -> JsonDict:
     if error := result.get("error"):
         summary["error"] = error
     return summary or {"returned": sorted(result)[:6]}
+
+
+def _explain(root: Span, step: str, reason: str, decision: dict[str, object]) -> None:
+    """
+    Attach a step's stated rationale to the generation that produced it.
+
+    The router and the intent step are both already asked for a `reason`, and
+    both already return one -- it was parsed, used, and then dropped as far as
+    the trace was concerned. Surfacing it costs nothing, because those tokens
+    are bought either way, and it is the only record of *why* a provision was
+    chosen.
+
+    That matters most where the measurement is worst. Task 6.3 found that a
+    fifth of provision selections reach a real name for the wrong rule, which
+    reads correctly in the answer. The stated reason, and the names that
+    resolved to nothing, are what make those cases diagnosable rather than
+    merely countable.
+
+    This is not model thinking, which is a separate decision with a real cost.
+    It is the model's own account of a decision it has already made.
+    """
+    span = next((child for child in reversed(root.children) if child.name == step), None)
+    if span is None:
+        return
+    if reason:
+        span.metadata["stated_reason"] = reason
+    kept = {key: value for key, value in decision.items() if value not in (None, [], "")}
+    if kept:
+        span.metadata["decision"] = kept

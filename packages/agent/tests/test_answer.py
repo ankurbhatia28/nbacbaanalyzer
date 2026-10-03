@@ -64,6 +64,7 @@ class Script:
         self.intent = intent
         self.answers = list(answers)
         self.answer_calls = 0
+        self.tools_offered: list = []
 
     def __call__(self, *, role, system, messages, max_tokens=1024, tools=None) -> Reply:
         from agent.models import Role
@@ -73,6 +74,7 @@ class Script:
         if role is Role.INTENT:
             return Reply(self.intent, Usage(10, 5), "stub")
         self.answer_calls += 1
+        self.tools_offered.append(tools)
         nxt = self.answers.pop(0) if self.answers else "done"
         if isinstance(nxt, list):
             return Reply(
@@ -226,7 +228,57 @@ def test_the_loop_stops_calling_tools_eventually(res):
     script = Script(router=routing("rules"), intent=planning(), answers=forever)
     verdict = answer(script, question="q", res=res)
     assert verdict.rounds == MAX_TOOL_ROUNDS
-    assert script.answer_calls == MAX_TOOL_ROUNDS
+    # One more call than rounds: with the budget gone, the model is asked once
+    # more with no tools offered, so it has to answer from what it gathered.
+    assert script.answer_calls == MAX_TOOL_ROUNDS + 1
+    assert verdict.exhausted_rounds
+
+
+def test_running_out_of_rounds_still_produces_an_answer(res):
+    """
+    Found against the live API: the loop exhausted its rounds with a last reply
+    that only asked for more tools, so the user got fourteen citations, no
+    answer, and `trustworthy=True` -- success reported for nothing.
+    """
+    forever = [[("define_term", {"term": "Salary"})] for _ in range(MAX_TOOL_ROUNDS)]
+    script = Script(
+        router=routing("rules"),
+        intent=planning(),
+        answers=[*forever, "Here is what I found."],
+    )
+    verdict = answer(script, question="q", res=res)
+    assert verdict.exhausted_rounds
+    assert verdict.text == "Here is what I found."
+    assert verdict.answered
+    assert f"{MAX_TOOL_ROUNDS}-tool-call budget ran out" in verdict.render()
+
+
+def test_the_final_forced_call_is_offered_no_tools(res):
+    """
+    Otherwise it would ask for more, which is the thing that ran out.
+    """
+    forever = [[("define_term", {"term": "Salary"})] for _ in range(MAX_TOOL_ROUNDS)]
+    script = Script(router=routing("rules"), intent=planning(), answers=[*forever, "done"])
+    answer(script, question="q", res=res)
+    assert script.tools_offered[-1] is None, "the last call must offer no tools"
+    assert script.tools_offered[0] is not None
+
+
+def test_an_empty_answer_is_never_trustworthy(res):
+    """
+    An answer that does not exist cannot be trustworthy, however well cited the
+    run was. `trustworthy` is the single property a caller checks.
+    """
+    script = Script(
+        router=routing("rules"),
+        intent=planning(),
+        answers=[[("fetch_provision", {"citation": "Art. VII §8"})], "   "],
+    )
+    verdict = answer(script, question="q", res=res)
+    assert verdict.citations, "the run did gather citations"
+    assert verdict.supported
+    assert not verdict.answered
+    assert not verdict.trustworthy
 
 
 def test_a_model_failure_returns_a_verdict_rather_than_raising(res):
