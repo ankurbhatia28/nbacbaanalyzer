@@ -169,14 +169,14 @@ def test_trace_attributes_are_propagated_with_the_v4_api(monkeypatch):
 
     from contextlib import contextmanager
 
-    import langfuse
+    from agent import langfuse_export
 
     @contextmanager
     def fake_propagate(**kwargs):
         captured.update(kwargs)
         yield
 
-    monkeypatch.setattr(langfuse, "propagate_attributes", fake_propagate)
+    monkeypatch.setattr(langfuse_export, "propagate", fake_propagate)
     exporter, _ = wired()
     exporter.export(built())
     assert captured["session_id"] == "conversation-1"
@@ -332,17 +332,43 @@ def test_only_short_stable_dimensions_are_propagated(monkeypatch):
 
     from contextlib import contextmanager
 
-    import langfuse
+    from agent import langfuse_export
 
     @contextmanager
     def fake_propagate(**kwargs):
         captured.update(kwargs)
         yield
 
-    monkeypatch.setattr(langfuse, "propagate_attributes", fake_propagate)
+    monkeypatch.setattr(langfuse_export, "propagate", fake_propagate)
     trace = built()
     trace.metadata["citations"] = ["Art. VII §6(j)(1)(i)"] * 40
     exporter, client = wired()
     exporter.export(trace)
     assert "metadata" not in captured
     assert client.observations[0].name == "answer-cba-question"
+
+
+def test_the_exporter_works_with_a_fake_client_and_no_sdk_installed(monkeypatch):
+    """
+    The SDK is an optional dependency, so the suite must pass without it. CI
+    caught this: `propagate_attributes` was imported unconditionally inside
+    `_send`, so a test driving a fake client still needed the real package.
+    """
+    import builtins
+
+    from agent import langfuse_export
+
+    real_import = builtins.__import__
+
+    def no_langfuse(name, *args, **kwargs):
+        if name == "langfuse":
+            raise ImportError("No module named 'langfuse'")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", no_langfuse)
+    monkeypatch.setattr(
+        langfuse_export, "propagate", langfuse_export.propagate
+    )  # resolved at call time
+    exporter, client = wired()
+    assert exporter.export(built()) is True
+    assert client.observations[0].as_type == "agent"

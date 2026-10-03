@@ -22,6 +22,8 @@ deliberately conservative about the SDK surface it touches.
 from __future__ import annotations
 
 import os
+from collections.abc import Iterator
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -34,6 +36,28 @@ ENV_HOST = "LANGFUSE_BASE_URL"
 def configured() -> bool:
     """Whether both keys are present. Checked before importing the SDK."""
     return all(os.environ.get(name) for name in ENV_KEYS)
+
+
+@contextmanager
+def _no_attributes(**_: Any) -> Iterator[None]:
+    """Stand-in for `propagate_attributes` when the SDK is not installed."""
+    yield
+
+
+def propagate(**attributes: Any) -> Any:
+    """
+    `langfuse.propagate_attributes`, resolved at call time.
+
+    Looked up here rather than imported at module scope for the same reason the
+    client is built lazily: the SDK is an optional dependency, and the suite has
+    to pass without it. A test driving this with a fake client never reaches a
+    real SDK call, and should not need one installed to get that far.
+    """
+    try:
+        from langfuse import propagate_attributes
+    except ImportError:
+        return _no_attributes(**attributes)
+    return propagate_attributes(**attributes)
 
 
 @dataclass
@@ -111,15 +135,13 @@ class LangfuseExporter:
         """
         if trace.root is None:
             return
-        from langfuse import propagate_attributes
-
         # Only short, stable dimensions are propagated. A propagated attribute
         # value is capped at 200 characters and dropped with a warning above
         # it -- the citation list blew through that on the first live run. The
         # per-run detail goes on the root observation's metadata instead, where
         # it belongs anyway: it describes this run, not every span in it.
         with (
-            propagate_attributes(
+            propagate(
                 session_id=trace.session,
                 user_id=trace.user,
                 tags=trace.tags or None,
