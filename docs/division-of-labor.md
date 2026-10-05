@@ -2,7 +2,7 @@
 
 Companion to [`build-plan.md`](./build-plan.md). Task numbering matches that file exactly.
 
-> **Status (2026-10-05): Phases 0–7 complete; Phase 8 (Ship) under way — 8.0 done.** Where things stand, and what Phase 8 needs decided first, is in the header of [`build-plan.md`](./build-plan.md). This file's §1 inventory, §2 ownership table and §6 decisions (D1–D23) are current; §4.3, §5 and §7 are kept as the record of how the work was planned in Phase 0 and are not a to-do list. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
+> **Status (2026-10-05): Phases 0–7 complete; Phase 8 (Ship) under way — 8.0 and 8.1 done.** Where things stand, and what Phase 8 needs decided first, is in the header of [`build-plan.md`](./build-plan.md). This file's §1 inventory, §2 ownership table and §6 decisions (D1–D24) are current; §4.3, §5 and §7 are kept as the record of how the work was planned in Phase 0 and are not a to-do list. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
 
 **Legend**
 

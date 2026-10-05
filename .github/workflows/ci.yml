@@ -50,8 +50,53 @@ jobs:
       - name: Typecheck
         run: uv run mypy packages/engine/src packages/data/src packages/rag/src packages/agent/src apps/api/src
 
+      # The CBA PDF is not in git (D20). Fetched from an official copy and
+      # checked against the sha256 pinned in rag/fetch.py; cached under that
+      # file's hash, so changing the pin invalidates the cache. Without it,
+      # every test that reads the Agreement skips -- which CI did until 8.1.
+      - name: Cache the CBA PDF
+        uses: actions/cache@v4
+        with:
+          path: data/cba/nba-cba-2023.pdf
+          key: cba-pdf-${{ hashFiles('packages/rag/src/rag/fetch.py') }}
+      - name: Fetch and verify the CBA PDF
+        run: uv run python -m rag.fetch
+
       - name: Tests
         run: uv run pytest
+
+  # The two read-only build artifacts (ADR-004, task 8.1): built from source in
+  # CI, never committed, uploaded for the deploy (8.3) to bundle. Only after
+  # the suite passes, so an artifact is never built from code that fails it.
+  artifacts:
+    needs: python
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+      - run: uv python install 3.12
+      - run: uv sync --all-packages --dev
+      - name: Cache the CBA PDF
+        uses: actions/cache@v4
+        with:
+          path: data/cba/nba-cba-2023.pdf
+          key: cba-pdf-${{ hashFiles('packages/rag/src/rag/fetch.py') }}
+      - name: Fetch and verify the CBA PDF
+        run: uv run python -m rag.fetch
+      - name: Build the league database
+        run: uv run python -m nbadata.ingest.load --out build/nbacba.db
+      - name: Build the retrieval index
+        run: uv run python -m rag --out build/cba-index.db
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nbacba-artifacts
+          path: |
+            build/nbacba.db
+            build/cba-index.db
+          if-no-files-found: error
+          retention-days: 30
 
   # Blocking as of Phase 4: the suite reports a real pass rate, so a regression
   # in it is a regression in the engine.
