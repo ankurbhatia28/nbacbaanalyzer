@@ -87,6 +87,12 @@ REFUSAL_BASIS = {
         "This asks what a team should do. Whether something is permitted can be answered "
         "from the Agreement; whether it is wise cannot (decision D10)."
     ),
+    "off_topic": (
+        "Sorry, that is outside what I can help with. I answer questions about NBA player "
+        "contracts, team payrolls, the salary cap, trades and the Collective Bargaining "
+        "Agreement -- for example, whether a trade is legal, what the second apron "
+        "restricts, or how much a team is committed for this season (decision D24)."
+    ),
 }
 
 SYSTEM = """You answer questions about the NBA Collective Bargaining Agreement.

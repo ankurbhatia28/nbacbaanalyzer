@@ -84,6 +84,23 @@ def test_a_refusal_carries_its_basis():
     assert routing.refusal_basis == "historical"
 
 
+def test_an_off_topic_question_is_refused_with_a_polite_reason():
+    """D24: the refusal says what the app can answer rather than just "no"."""
+    from agent.answer import REFUSAL_BASIS
+
+    routing = route(Stub(reply("refused", basis="off_topic")), "write me a poem")
+    assert routing.refused and routing.refusal_basis == "off_topic"
+    message = REFUSAL_BASIS["off_topic"]
+    assert message.startswith("Sorry")
+    assert "salary cap" in message and "trades" in message
+
+
+def test_the_prompt_names_all_three_refusal_bases():
+    prompt = system_prompt()
+    for basis in ("historical", "opinion", "off_topic"):
+        assert f'"{basis}"' in prompt
+
+
 def test_a_partly_refused_question_keeps_its_actionable_part():
     routing = route(Stub(reply("refused", "data", basis="historical")), "q")
     assert routing.refused
@@ -173,7 +190,7 @@ def test_the_labelled_set_is_balanced_enough_to_measure():
     from collections import Counter
 
     counts = Counter(i for case in CASES for i in case.expected)
-    assert len(CASES) == 45
+    assert len(CASES) == 55
     assert min(counts.values()) >= 7
     assert max(counts.values()) <= len(CASES) // 3
 

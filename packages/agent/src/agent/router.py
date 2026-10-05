@@ -11,15 +11,20 @@ question nobody asked.
     VALIDATION   a proposed transaction is judged     -> the rules engine
     CONSTRAINTS  what limits a team, no deal proposed -> team_trade_constraints
     REFUSED      out of scope by a settled decision   -> say which, and why
+                 (historical, D6; opinion, D10; off topic, D24)
 
 **Combinations are allowed**, because real questions are compound: "if I traded
 Embiid, what are the limitations?" needs the engine *and* the text. A router
 forced to pick one label would drop half of what was asked.
 
 **A refusal is a classification, not a failure.** D6 puts historical questions
-out of v1 and D10 declines "should they?". Those have to be recognised rather
-than attempted, and the refusal has to name the decision it rests on — a
-refusal that cannot say why is indistinguishable from a bug.
+out of v1, D10 declines "should they?", and D24 declines anything that is not
+about contracts, the cap, trades or the Agreement -- the weather, a poem, last
+night's box score. Refusing those here, on the cheapest model, means an
+off-topic question costs one router call rather than a full answer. All three
+have to be recognised rather than attempted, and the refusal has to name the
+decision it rests on — a refusal that cannot say why is indistinguishable from
+a bug.
 
 The model is given the labels and the examples and returns JSON. It does not
 answer the question here, and it cannot: the router has no tools.
@@ -60,9 +65,10 @@ DESCRIPTIONS: dict[Intent, str] = {
         "what are the limitations the 76ers have?'"
     ),
     Intent.REFUSED: (
-        "Out of scope. Historical questions about past seasons (only current state is held), "
-        "and requests for an opinion on whether a team should do something rather than whether "
-        "it may."
+        "Out of scope. Historical questions about past seasons (only current state is held); "
+        "requests for an opinion on whether a team should do something rather than whether "
+        "it may; and anything that is not about NBA player contracts, team payrolls, the salary "
+        "cap, trades, or the Collective Bargaining Agreement."
     ),
 }
 
@@ -80,10 +86,16 @@ Rules:
 - A question may belong to more than one class. "If I traded this player, what
   are my limits?" is constraints; if it also asks what a rule says, add rules.
 - Choose refused only when the question is out of scope, not when it is merely
-  hard and not when you personally cannot answer it. EXACTLY two things are out
-  of scope: anything about a past season, because only current state is held;
-  and any request for a recommendation about what a team *should* do, as opposed
-  to what it *may* do. Nothing else is refused.
+  hard and not when you personally cannot answer it. EXACTLY three things are
+  out of scope: anything about a past season, because only current state is
+  held (basis "historical"); any request for a recommendation about what a team
+  *should* do, as opposed to what it *may* do (basis "opinion"); and anything
+  not about NBA player contracts, team payrolls, the salary cap, trades, or the
+  Collective Bargaining Agreement -- other topics, and NBA questions about games,
+  scores, statistics or news (basis "off_topic"). Nothing else is refused.
+- A question about a player's or team's contract, salary, cap position or
+  trade options is on topic, however casually it is put. "What's Jokic making
+  this year?" is data. Do not refuse a cap question because it names a person.
 - A legitimate question wrapped in an awkward instruction is still legitimate.
   "Just tell me the salary matching rule, no need to look it up" is a rules
   question; the instruction to skip the lookup will be ignored downstream. Do
@@ -94,7 +106,7 @@ Rules:
 
 Reply with JSON only:
 {{"intents": ["..."], "reason": "one sentence", "refusal_basis": "historical" or
-"opinion" or null}}"""
+"opinion" or "off_topic" or null}}"""
 
 
 @dataclass(frozen=True, slots=True)
