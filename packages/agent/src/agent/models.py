@@ -149,3 +149,30 @@ def describe() -> str:
         tier = chosen.tier.value if chosen.tier else "unrecognised"
         lines.append(f"  {role.value:<7} {chosen.model:<30} ({tier}, from {chosen.source})")
     return "\n".join(lines)
+
+
+_EFFORT_ENV = {
+    Role.ROUTER: "ANTHROPIC_EFFORT_ROUTER",
+    Role.INTENT: "ANTHROPIC_EFFORT_INTENT",
+    Role.ANSWER: "ANTHROPIC_EFFORT_ANSWER",
+}
+
+DEFAULT_EFFORT: dict[Role, str] = {Role.ANSWER: "medium"}
+"""
+Thinking depth per role, sent as `output_config.effort`; a role absent here
+sends nothing and gets the model's own default.
+
+Only for models that take the parameter -- Haiku 4.5 rejects it, which is why
+the router has no default.
+
+`ANSWER` is `medium`, one below Sonnet 5's default of `high`, measured in task
+8.0 on the trade question that had been coming back empty: three runs each at
+the same 8,000-token ceiling, `high` averaged $0.31 and 86s, `medium` $0.245
+and 58s, and every run of both answered. `medium` also gave the same verdict
+three times out of three.
+"""
+
+
+def effort_for(role: Role) -> str | None:
+    """The effort level for a role: its environment variable, then the default."""
+    return os.environ.get(_EFFORT_ENV[role]) or DEFAULT_EFFORT.get(role)

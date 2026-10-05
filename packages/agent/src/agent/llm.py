@@ -25,7 +25,7 @@ import os
 from dataclasses import dataclass, field
 from typing import Any, Protocol
 
-from .models import Role, model_for
+from .models import Role, effort_for, model_for
 
 JsonDict = dict[str, Any]
 
@@ -234,6 +234,16 @@ class AnthropicCaller:
         }
         if tools:
             kwargs["tools"] = tools
+        if self.cache:
+            # A second, moving breakpoint at the end of the conversation. The
+            # system breakpoint alone leaves every tool round re-sending the
+            # whole history at the full input price: a trade question that ran
+            # six rounds billed 115,285 uncached input tokens against 24,891
+            # cached (task 8.0).
+            kwargs["cache_control"] = dict(CACHE_BREAKPOINT)
+        effort = effort_for(role)
+        if effort:
+            kwargs["output_config"] = {"effort": effort}
         response = self._client.messages.create(**kwargs)
 
         usage = Usage(
