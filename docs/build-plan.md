@@ -358,6 +358,8 @@ required UI element rather than a nicety.
   Residual errors are mild: the router sometimes adds `data` to a `constraints` question, which costs an extra tool call rather than a wrong answer. The one real miss is reading *"can the Suns aggregate contracts at all?"* as `rules`.
 
   Tested offline against a stub caller — a test that needs an API key is a test that stops running. The scored run is `python -m agent.router_cli`, a command rather than a test, because it spends money.
+  **Extended in Phase 8 (D24, 2026-10-05): off-topic questions are refused here.** A third refusal basis, `off_topic`, covers anything not about contracts, payrolls, the cap, trades or the Agreement, and the reply says what the app can answer. The set grew to 55 (six off-topic, four casual near misses); Haiku scores **92.7%** twice with refusal recall 100%. **Two misses predate D24:** "Which players have won MVP?" and "Which draft picks have been forfeited?" are refused as *historical* on `main` too — whether a settled fact like an award is "a past season" in D6's sense is open.
+
 - [x] **6.2** **Six tools, in a new `packages/agent` — the one package allowed a model client.** The engine, data and retrieval layers stay free of one, which is what makes their answers reproducible with no key present.
 
   Two properties shape the schemas, and both are tested:
