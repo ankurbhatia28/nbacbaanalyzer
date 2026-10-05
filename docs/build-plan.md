@@ -64,7 +64,7 @@
 > re-run `gh pr list` before branching: the merge state lives on GitHub, not in
 > this file.
 >
-> Decisions D1–D22 live in [`division-of-labor.md`](division-of-labor.md).
+> Decisions D1–D23 live in [`division-of-labor.md`](division-of-labor.md).
 > The measured results worth knowing before changing anything:
 > **router 88.9%** exact-set (6.1), **provision naming 80%** against a 100%
 > ceiling (6.3), **retrieval recall@1 34%** (5.8), **adversarial 0–4 misleading
@@ -596,6 +596,16 @@ platform-agnostic; only `apps/` knows where it runs.
 
   **Uncached input fell from 65–143k tokens a question to ~570.** That was the bill, more than thinking was. The spread that remains is the number of tool rounds (2 to 6). The 6.12 questions now cost **$0.037** (Standard TPE) and **~$0.05** (Nuggets committed salary — $0.125 in 7.0). **Adversarial set at `medium`, two runs: 1 misleading failure each** (cap math once, a "ballpark" MLE once), inside 6.11's 0–4 band; ~$1 a run.
   - **Tried and kept as fallback: 8,000 tokens at the default `high`.** It fixes the empty answer as well, at 27% more per question and 48% more time, and gave less consistent verdicts (one "No", two "not clearly legal") than `medium` (three "No").
+- [ ] **8.0a** *(added 2026-10-05)* **Free models as the over-cap fallback (D23).** Sonnet and Haiku stay the defaults; when the spend cap is reached, Nemotron 3 Ultra via OpenRouter answers instead of the app refusing. Evaluated through a prototype caller against the existing evals:
+
+  | one run each | router | refusal recall | naming | adversarial (misleading / 30) | per question |
+  |---|---|---|---|---|---|
+  | current (Haiku / Sonnet) | 88.9% | 100% | 80% | 1 | ~10s |
+  | Nemotron 3 Ultra (free) | 86.7% | 100% | 84% | 1 | ~50s, 503s on 3–30% of calls |
+  | Nemotron 3 Super (free) | 82.2% | **85.7%** | 64% | 1 | ~31s |
+
+  - [x] **Found by it, fixed: a malformed tool argument failed the whole request.** Ultra sent `query_league_data` a `select` of bare strings; the `TypeError` escaped `tools.call`. Wrong-shaped arguments now come back to the model as an error it can correct, like an unknown tool name.
+  - [ ] The OpenRouter caller in `packages/agent` (reasoning headroom on `max_tokens`, tool-call translation, retries on 503/429), and the fallback wired to the spend cap.
 - [ ] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source. *The CBA PDF is fetched from NBA.com (NBPA mirror as fallback) and checked against a pinned sha256 (D20).*
 - [ ] **8.2** Deploy `apps/web` to Vercel
 - [ ] **8.3** Deploy `apps/api` to Render, with the artifacts from 8.1 bundled
