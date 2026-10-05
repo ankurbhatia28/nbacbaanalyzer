@@ -123,6 +123,15 @@ You have tools and you must use them. The rules below are not style preferences.
 5. If a tool says something is unknown, the answer is that it is unknown. Do not
    substitute a reasonable default.
 
+6. Whether a specific trade is permitted is decided by validate_trade, never by
+   you. Resolve each player with lookup_player, call validate_trade, and give
+   its verdict as the verdict -- even if your reading of the rules differs. For
+   each violation it reports, fetch_provision the citation it gives and quote
+   it. State the assumptions and unsourced checks it returns: a "legal" that
+   rests on an assumed-absent trade kicker must say so. If the question does
+   not say which team each player goes to and more than two teams are
+   involved, ask rather than guess.
+
 Say what you found, cite it, and say what you had to assume. Be brief."""
 
 
@@ -283,11 +292,40 @@ def _collect(result: JsonDict, verdict: Verdict, sourced: set[str], quoted: set[
                     sourced.add(f"{value:,}")
                     sourced.add(str(value))
 
+    # A trade verdict (validate_trade): every salary in it came from the
+    # league database, and what it assumed is the reader's to see (ADR-003).
+    if "legal" in result and "sides" in result:
+        _numbers_into(result["sides"], sourced)
+        for a in result.get("assumptions") or []:
+            if isinstance(a, dict):
+                verdict.assumptions.append(
+                    f"{a.get('subject')}: {a.get('field')} assumed {a.get('assumed')} "
+                    f"({a.get('reason')})"
+                )
+        for note in result.get("unsourced") or []:
+            if isinstance(note, str) and note not in verdict.assumptions:
+                verdict.assumptions.append(note)
+
     for passage in result.get("passages") or []:
         if isinstance(passage, dict) and isinstance(passage.get("text"), str):
             quoted.update(figures_in(passage["text"]))
     if isinstance(result.get("text"), str):
         quoted.update(figures_in(result["text"]))
+
+
+def _numbers_into(value: object, sourced: set[str]) -> None:
+    """Every number anywhere in a nested result, in both the forms the audit matches."""
+    if isinstance(value, bool):
+        return
+    if isinstance(value, (int, float)):
+        sourced.add(f"{value:,}")
+        sourced.add(str(value))
+    elif isinstance(value, dict):
+        for item in value.values():
+            _numbers_into(item, sourced)
+    elif isinstance(value, list):
+        for item in value:
+            _numbers_into(item, sourced)
 
 
 def answer(

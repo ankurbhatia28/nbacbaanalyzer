@@ -17,9 +17,10 @@
 > (7.7), `/cap` and `/cap/[team]` the cap sheet, `/trade` the trade builder. `apps/api` (FastAPI) serves `/health`,
 > `/ask`, `/ask/stream`, `/quotes`, `/teams`, `/teams/{key}/sheet`, `/players`
 > and `/trade`. Only the two ask routes call a model; the cap sheet, trade
-> builder and quote re-fetch are deterministic. **The chat does not call the
-> rules engine** — no agent tool runs `validate_trade`; a validation answer is
-> composed from quoted rules and links to the trade builder, which does.
+> builder and quote re-fetch are deterministic. **The chat calls the rules
+> engine for trades** (since 2026-10-05): the agent's `validate_trade` tool runs
+> the trade builder's own check, so the two cannot disagree; the answer quotes
+> each violation's provision and links to the builder.
 >
 > ### Before starting Phase 8
 >
@@ -44,12 +45,9 @@
 >   Langfuse keys. The web app reads
 >   `NEXT_PUBLIC_API_URL` **at build time**, so changing the API's URL means
 >   rebuilding the web app, not restarting it.
-> - **The chat can still get a trade verdict wrong**, even now that it answers
->   (8.0): one of nine measured runs called Murray for Irving and Washington
->   "legal in principle but tight", where the trade builder says illegal. The
->   chat composes from quoted rules and never runs `validate_trade`. An agent
->   tool that calls the engine would close this without breaking ADR-001 — the
->   engine would still decide — and is the owner's call before 8.8.
+> - **Closed: the chat could get a trade verdict wrong.** After 8.0 one of nine
+>   runs called Murray for Irving and Washington "legal in principle", where the
+>   engine says illegal. The chat now runs `validate_trade` (see 7.4).
 > - **The cold-start message is already written**: the web app tells the reader
 >   a free-tier server can take about 30 seconds to wake (8.6).
 > - Locally, `mypy` reports one error in `langfuse_export` that CI on `main`
@@ -573,6 +571,7 @@ required UI element rather than a nicety.
   - **And `validate_trade` never used 3.14a's structuring.** A team sending several players was judged as one aggregated exception; the test case is permitted $81.1M structured against $59.5M. `best_structure` is now the fallback, with the same exclusions.
   - **A legal trade now says what it costs**: matching by the Expanded or Aggregated exception hard-caps the team at that row's apron for the season, and the verdict notes it. The ground-truth evals are byte-identical before and after — they do not run `validate_trade` against team states, which is why neither defect showed there.
   - **Found here, fixed in 8.0: validation questions in chat could return an empty answer.** *"Is Jamal Murray for Kyrie Irving and PJ Washington a legal trade?"* came back `unavailable` twice ($0.10 and $0.04). The answer role (`claude-sonnet-5`) thinks before answering, and its 1,500-token `max_tokens` is used up by the thinking block: the last reply stopped at `max_tokens` with a thinking block and no text, and an earlier round stopped mid-tool-call. The exhausted-rounds fallback does not catch it, since no tool was requested. The trade builder link still appears on that card and works.
+  - **Closed 2026-10-05: the chat now runs `validate_trade`.** No agent tool had called the engine, so a validation answer was composed from quoted rules, and after 8.0 one run in nine still reached the wrong verdict. The agent's seventh tool runs `nbadata.trades.check` — the builder's own check — taking player and team keys, never a figure; prompt rule 6 makes its verdict the verdict and requires each violation's provision to be fetched and quoted. Its salaries count as sourced and its assumptions reach the card. Murray for Irving and Washington, three runs: **"Not legal" every time**, citing §2(e)(2)(i)(A), no unsourced figures, **$0.055–0.070 and 14–17s** (after 8.0: mean $0.12 and 34s, because the model no longer reads its way to a verdict). Adversarial set, one run: **30/30, 0 misleading** — inside 6.11's band; one run is not evidence it moved.
 - [x] **7.5** Cap sheet view with apron lines as visible thresholds, tabular numerals — *`/cap/[team]` in the web app, served by `GET /teams/{key}/sheet` from `nbadata.sheet`, which reads the same `TeamState` the engine does. Two bars, not one, against the four lines: Team Salary (holds in) is measured against the cap, Apron Team Salary (holds out, qualifying offers in) against the tax and aprons, and a single bar would be wrong about one of them. Each line on the books says what it counts toward ("Cap only" for a hold), and a test pins every total to the sum of the lines shown, for all 30 teams. A binding hard cap is drawn as its own red line. Trade exceptions are read directly and checked for expiry against the payroll's date, not the stale flag (OKC's only one had expired). No model call. Checked in headless Chrome at 1040px and 390px; no horizontal page scroll.*
   - **Found while building it: the bridge left out dead money**, so the engine read Milwaukee's Apron Team Salary $23.2M low and Phoenix's $23.2M low (Lillard, Beal). Loaded from Fanspo's dead cap (D18); D18's hard-cap invariant now also holds as the engine computes it, not only in SQL.
 - [x] **7.6** **Provenance and as-of date on every figure — mandatory.** *Done: every query in a card lists source, basis and date ("scraped 29 Sep 2026", "as of …", or "date unknown"), and every answer carries the dataset line.* The dataset is a snapshot, and the Spotrac rows alone span 13 months of differing snapshot dates. A public app implies currency; without prominent as-of labelling it is quietly misleading.
@@ -613,8 +612,8 @@ platform-agnostic; only `apps/` knows where it runs.
 - [ ] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app. *GitHub only for now, not PyPI (D22); name to settle — the owner suggested `nba-cba-agent`, but the engine imports no model, so `nba-cba-engine` may describe it better.*
 - [ ] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live
 - [ ] **8.6** Cold-start note: Render's free tier spins down after inactivity. *Settled (D21): the free tier, and a slow first load is accepted. The web app's ~30s wake message is already written; what remains is checking it against the deployed API.*
-- [ ] **8.7** README leading with the architecture thesis and the eval numbers *— and correct its four-kinds table, which says validation questions are handled by the rules engine; in chat they are not (see the header).*
-- [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason *— the trade builder (7.4) is the surface that adjudicates; the chat answers from quoted rules and links to it.*
+- [ ] **8.7** README leading with the architecture thesis and the eval numbers *— its four-kinds table, which says validation is handled by the rules engine, is now true in chat as well (7.4).*
+- [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason *— both surfaces adjudicate with the engine now: the chat runs `validate_trade` and quotes the violated provision, and the trade builder (7.4) shows the same verdict with the numbers.*
 - [ ] **8.9** Write-up on the eval harness and the deterministic citation path
 
 ## v2 — deferred
