@@ -49,6 +49,7 @@ uv run ruff check . && uv run ruff format --check .
 uv run mypy packages/engine/src packages/data/src packages/rag/src packages/agent/src apps/api/src
 
 # Run it locally: build the two artifacts, then the API, then the web app
+uv run python -m rag.fetch                                # the CBA PDF, verified by hash (D20)
 uv run python -m nbadata.ingest.load --out build/nbacba.db
 uv run python -m rag --out build/cba-index.db
 uv run --env-file .env uvicorn api.main:app --port 8000
@@ -75,7 +76,7 @@ not the holder).
 - [`docs/build-plan.md`](docs/build-plan.md) — phases and tasks. **Opens with a
   "where this stands" header**; read it before planning anything.
 - [`docs/division-of-labor.md`](docs/division-of-labor.md) — who owns what, and
-  settled decisions **D1–D19**
+  settled decisions **D1–D24**
 - [`docs/traces/`](docs/traces/) — five real sessions, committed because hosted
   retention is 30 days
 

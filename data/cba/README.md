@@ -1,10 +1,15 @@
 # CBA source document
 
 `nba-cba-2023.pdf` is not committed — it is a public document and the repo does
-not redistribute it.
+not redistribute it. **Fetch it with `uv run python -m rag.fetch`**, which
+downloads an official copy (NBA.com's, then the NBPA's) and keeps it only if its
+sha256 matches the pin in `packages/rag/src/rag/fetch.py` (D20):
 
-Place the 2023 NBA/NBPA Collective Bargaining Agreement here as
-`nba-cba-2023.pdf`. The parser expects 676 pages, ~1.37M characters.
+    bf178ca0f2d64f9dfe6fde095d3ae43d576b12e19ce7a679618d632584f7ab32  (2,850,534 bytes)
+
+A copy that does not match is refused rather than used: a revised PDF would
+move page numbers and citations under every eval. The parser expects 676 pages,
+~1.37M characters.
 
 ## Extract with PyMuPDF, not pypdf
 

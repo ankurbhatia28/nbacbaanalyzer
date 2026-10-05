@@ -78,7 +78,8 @@ uv run pytest
 uv run ruff check .
 
 # Run it: build the two read-only artifacts, then the API, then the web app.
-# The index needs the CBA PDF at data/cba/nba-cba-2023.pdf (not committed).
+# The index needs the CBA PDF, which is not committed; rag.fetch downloads it.
+uv run python -m rag.fetch                                # the CBA PDF, verified by hash (D20)
 uv run python -m nbadata.ingest.load --out build/nbacba.db
 uv run python -m rag --out build/cba-index.db
 uv run --env-file .env uvicorn api.main:app --port 8000

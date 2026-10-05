@@ -2,7 +2,7 @@
 
 > ## Where this stands
 >
-> **Phases 0–7 are complete (last merge: PR #46, the trade builder, 2026-10-03). Phase 8 is under way: 8.0 is done (2026-10-05); 8.1 is next.** The empty chat answer found in 7.4 is fixed — see 8.0 for the fix and the re-measured cost.
+> **Phases 0–7 are complete (last merge: PR #46, the trade builder, 2026-10-03). Phase 8 is under way: 8.0 and 8.1 are done (2026-10-05); the deploys, 8.2 and 8.3, are next.** The empty chat answer found in 7.4 is fixed — see 8.0 for the fix and the re-measured cost.
 >
 > | phase | state |
 > |---|---|
@@ -10,7 +10,7 @@
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
 > | 6 Agent layer | done |
 > | 7 Interface | done — chat, answer card, permalinks, cap sheet, trade builder |
-> | 8 Ship | **in progress** — 8.0 done; read "Before starting Phase 8" below |
+> | 8 Ship | **in progress** — 8.0 and 8.1 done; read "Before starting Phase 8" below |
 >
 > **What the running app is**, for a session that was not here: `apps/web`
 > (Next.js 16) has five pages — `/` chat, `/answer` a permalinked answer
@@ -26,14 +26,12 @@
 >
 > Measured or checked on 2026-10-03; each bears on a task below.
 >
-> - **8.1: the CBA PDF is fetched by URL and checked by hash (D20, settled
->   2026-10-05).** The PDF is gitignored and `python -m rag` exits 1 without
->   it, so CI has never had it: every test that needs it skips (`test_tools.py`
->   and others carry a `skipif`) — expect those to run, and possibly fail,
->   once CI has the file. Two official copies, NBA.com's and the NBPA's, were
->   both checked on 2026-10-05 to be byte-identical to the local file (2,850,534
->   bytes, sha256 `bf178ca0…7ab32`). The deployed API needs only the built
->   index, never the PDF.
+> - **The artifacts are built in CI (8.1, done).** `python -m rag.fetch`
+>   downloads the CBA PDF and refuses any copy that does not match the pinned
+>   sha256 (D20); the `artifacts` job builds `nbacba.db` and `cba-index.db` and
+>   uploads them as `nbacba-artifacts` for 8.3 to bundle. The deployed API needs
+>   only the index, never the PDF. The index build is **byte-identical** run to
+>   run, which D19's permalink quote hashes depend on.
 > - **The artifacts are small and fast.** `nbacba.db` 532 KB in 0.3 s;
 >   `cba-index.db` 4.5 MB in 2 s. Building them at deploy time costs nothing.
 > - **Configuration is already environment-driven** (`.env.example` lists
@@ -64,7 +62,7 @@
 > re-run `gh pr list` before branching: the merge state lives on GitHub, not in
 > this file.
 >
-> Decisions D1–D23 live in [`division-of-labor.md`](division-of-labor.md).
+> Decisions D1–D24 live in [`division-of-labor.md`](division-of-labor.md).
 > The measured results worth knowing before changing anything:
 > **router 88.9%** exact-set (6.1), **provision naming 80%** against a 100%
 > ceiling (6.3), **retrieval recall@1 34%** (5.8), **adversarial 0–4 misleading
@@ -608,7 +606,9 @@ platform-agnostic; only `apps/` knows where it runs.
 
   - [x] **Found by it, fixed: a malformed tool argument failed the whole request.** Ultra sent `query_league_data` a `select` of bare strings; the `TypeError` escaped `tools.call`. Wrong-shaped arguments now come back to the model as an error it can correct, like an unknown tool name.
   - [ ] The OpenRouter caller in `packages/agent` (reasoning headroom on `max_tokens`, tool-call translation, retries on 503/429), and the fallback wired to the spend cap.
-- [ ] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source. *The CBA PDF is fetched from NBA.com (NBPA mirror as fallback) and checked against a pinned sha256 (D20).*
+- [x] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source. *`python -m rag.fetch` (standard library only) tries NBA.com's copy, then the NBPA's, and writes the PDF only if it matches the sha256 pinned in `rag/fetch.py` (D20); a copy that downloads but differs is refused, because a silently revised PDF would move every page number and citation under the evals. CI caches the PDF under that file's hash. A new `artifacts` job, after the tests pass, builds both artifacts and uploads them as `nbacba-artifacts` (30 days).*
+  - **CI now runs the tests that read the Agreement.** Every test needing the PDF had skipped in CI since Phase 5 (`test_tools.py`, the `rag` suite and others carry a `skipif`); with the file fetched they run, and the whole suite takes ~26s locally.
+  - **The index is reproducible to the byte**: two fresh builds from the fetched PDF, and the local build every measurement here was taken against, have the same sha256. Not a given — D19's permalinks hash each dropped quote, and a non-deterministic build would trip their "the words have changed" warning on every deploy.
 - [ ] **8.2** Deploy `apps/web` to Vercel
 - [ ] **8.3** Deploy `apps/api` to Render, with the artifacts from 8.1 bundled
 - [ ] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app. *GitHub only for now, not PyPI (D22); name to settle — the owner suggested `nba-cba-agent`, but the engine imports no model, so `nba-cba-engine` may describe it better.*
