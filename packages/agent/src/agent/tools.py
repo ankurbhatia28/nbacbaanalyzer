@@ -26,8 +26,10 @@ from __future__ import annotations
 import sqlite3
 from collections.abc import Callable
 from dataclasses import dataclass, field
+from datetime import date
 from typing import Any
 
+from nbadata import trades
 from nbadata.query import (
     ENTITIES,
     Agg,
@@ -40,6 +42,7 @@ from nbadata.query import (
     lookup_player,
 )
 from nbadata.query import run as run_query
+from nbadata.state import MissingDataError
 from rag import index as ix
 from rag.retrieve import for_citation, retrieve
 
@@ -330,6 +333,30 @@ def _lookup_player(res: Resources, args: JsonDict) -> JsonDict:
     }
 
 
+def _validate_trade(res: Resources, args: JsonDict) -> JsonDict:
+    """
+    The engine's verdict on a proposed trade -- the same check the trade
+    builder runs (7.4), so the chat and the builder cannot disagree.
+
+    Takes players and teams, never a figure: the salaries are looked up. A
+    trade that is not one (a player the team does not hold, a player moved
+    twice) comes back as an error the model can report or correct.
+    """
+    moves = [
+        trades.Move(
+            str(m["player"]).strip().lower(),
+            str(m["from_team"]).strip().upper(),
+            str(m["to_team"]).strip().upper(),
+        )
+        for m in args.get("moves", [])
+    ]
+    try:
+        verdict, sides, built = trades.check(res.league, moves, date.today())
+    except (trades.TradeError, MissingDataError) as exc:
+        return {"ok": False, "error": str(exc)}
+    return {"ok": True, **trades.to_json(verdict, sides, built)}
+
+
 HANDLERS: dict[str, Callable[[Resources, JsonDict], JsonDict]] = {
     "resolve_provision": _resolve_provision,
     "fetch_provision": _fetch_provision,
@@ -337,6 +364,7 @@ HANDLERS: dict[str, Callable[[Resources, JsonDict], JsonDict]] = {
     "define_term": _define_term,
     "query_league_data": _query_league_data,
     "lookup_player": _lookup_player,
+    "validate_trade": _validate_trade,
 }
 
 
@@ -458,6 +486,40 @@ TOOLS: tuple[Tool, ...] = (
         },
         handler=_lookup_player,
     ),
+    Tool(
+        name="validate_trade",
+        description=(
+            "Whether a specific proposed trade is permitted, decided by the rules engine "
+            "against current payrolls. This is the only source of a trade verdict: never "
+            "reach one yourself. Give each player's key (from lookup_player) and the teams "
+            "it moves between, as team keys like DEN or BKN. Returns legal, each team's "
+            "violations with the provision each one cites, the salaries involved, and what "
+            "the verdict assumes because no source carries it -- report those assumptions."
+        ),
+        input_schema={
+            "type": "object",
+            "properties": {
+                "moves": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": trades.MAX_MOVES,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "player": {"type": "string", "description": "player key"},
+                            "from_team": {"type": "string", "description": "team key"},
+                            "to_team": {"type": "string", "description": "team key"},
+                        },
+                        "required": ["player", "from_team", "to_team"],
+                        "additionalProperties": False,
+                    },
+                }
+            },
+            "required": ["moves"],
+            "additionalProperties": False,
+        },
+        handler=_validate_trade,
+    ),
 )
 
 BY_NAME: dict[str, Tool] = {tool.name: tool for tool in TOOLS}
@@ -482,7 +544,22 @@ def call(res: Resources, name: str, args: JsonDict) -> JsonDict:
             "ok": False,
             "error": f"no tool named {name!r}; available: {', '.join(sorted(BY_NAME))}",
         }
-    return tool.handler(res, args)
+    try:
+        return tool.handler(res, args)
+    except (TypeError, AttributeError, KeyError, ValueError) as exc:
+        # Arguments of the wrong shape -- a string where the schema wants an
+        # object -- are the model's mistake to correct, the same as an unknown
+        # tool name. Anthropic's models validate against the schema and never
+        # did this; Nemotron Ultra (D23) sent `select` as a list of strings and
+        # the TypeError failed the whole request. Narrow on purpose: anything
+        # else is a defect here and should still surface as one.
+        return {
+            "ok": False,
+            "error": (
+                f"invalid arguments for {name}: {type(exc).__name__}: {exc}. "
+                "Check them against the tool's input schema and call it again."
+            ),
+        }
 
 
 @dataclass(frozen=True, slots=True)

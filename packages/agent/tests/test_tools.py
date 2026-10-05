@@ -92,6 +92,20 @@ def test_an_unknown_tool_is_an_error_not_an_exception(res):
     assert "resolve_provision" in result["error"]
 
 
+def test_arguments_of_the_wrong_shape_are_an_error_not_an_exception(res):
+    """
+    The shape Nemotron Ultra sent (D23): `select` as bare strings, where the
+    schema wants objects. It raised a TypeError and failed the whole request.
+    """
+    result = call(
+        res,
+        "query_league_data",
+        {"entity": "contract_seasons", "select": ["salary"]},
+    )
+    assert result["ok"] is False
+    assert "invalid arguments for query_league_data" in result["error"]
+
+
 # -- resolution beats search (D14) ---------------------------------------
 
 
