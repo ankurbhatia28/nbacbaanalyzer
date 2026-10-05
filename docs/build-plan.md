@@ -2,7 +2,7 @@
 
 > ## Where this stands
 >
-> **Phases 0–7 are complete (last merge: PR #46, the trade builder, 2026-10-03). Phase 8 has not started.** One open defect found in 7.4 and not fixed there: chat answers to trade-validation questions can come back empty (see 7.4).
+> **Phases 0–7 are complete (last merge: PR #46, the trade builder, 2026-10-03). Phase 8 is under way: 8.0 is done (2026-10-05); 8.1 is next.** The empty chat answer found in 7.4 is fixed — see 8.0 for the fix and the re-measured cost.
 >
 > | phase | state |
 > |---|---|
@@ -10,7 +10,7 @@
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
 > | 6 Agent layer | done |
 > | 7 Interface | done — chat, answer card, permalinks, cap sheet, trade builder |
-> | 8 Ship | **not started** — read "Before starting Phase 8" below first |
+> | 8 Ship | **in progress** — 8.0 done; read "Before starting Phase 8" below |
 >
 > **What the running app is**, for a session that was not here: `apps/web`
 > (Next.js 16) has five pages — `/` chat, `/answer` a permalinked answer
@@ -25,15 +25,14 @@
 >
 > Measured or checked on 2026-10-03; each bears on a task below.
 >
-> - **8.1 cannot build the retrieval index from the repo alone.** The CBA PDF
->   is gitignored (`data/cba/README.md`: the repo does not redistribute it),
->   and `python -m rag` exits 1 without it. CI has never had it: every test
->   that needs it skips (`test_tools.py` and others carry a `skipif`). The
->   scraper output the database is built from *is* tracked (`scraper/out/`,
->   29 files). So 8.1 needs a decision first — fetch the PDF in CI from a
->   stable URL and check its hash, keep it as a private CI secret/artifact, or
->   commit the built index (4.5 MB) as an exception to ADR-004's "out of git".
->   This is the owner's call; it is a redistribution question, not a technical one.
+> - **8.1: the CBA PDF is fetched by URL and checked by hash (D20, settled
+>   2026-10-05).** The PDF is gitignored and `python -m rag` exits 1 without
+>   it, so CI has never had it: every test that needs it skips (`test_tools.py`
+>   and others carry a `skipif`) — expect those to run, and possibly fail,
+>   once CI has the file. Two official copies, NBA.com's and the NBPA's, were
+>   both checked on 2026-10-05 to be byte-identical to the local file (2,850,534
+>   bytes, sha256 `bf178ca0…7ab32`). The deployed API needs only the built
+>   index, never the PDF.
 > - **The artifacts are small and fast.** `nbacba.db` 532 KB in 0.3 s;
 >   `cba-index.db` 4.5 MB in 2 s. Building them at deploy time costs nothing.
 > - **Configuration is already environment-driven** (`.env.example` lists
@@ -45,12 +44,12 @@
 >   Langfuse keys. The web app reads
 >   `NEXT_PUBLIC_API_URL` **at build time**, so changing the API's URL means
 >   rebuilding the web app, not restarting it.
-> - **Fix the empty-answer defect (7.4) before 8.8** — task 8.0. The demo's first case is
->   "a rumoured trade adjudicated with a citation", and that exact question is
->   the one that comes back empty. Raising the answer role's `max_tokens`
->   (1,500, set twice in `packages/agent/src/agent/answer.py`) or bounding its thinking is
->   the likely fix; either changes the per-question cost 6.12 measured, so
->   re-measure. Branch `fix/<slug>`.
+> - **The chat can still get a trade verdict wrong**, even now that it answers
+>   (8.0): one of nine measured runs called Murray for Irving and Washington
+>   "legal in principle but tight", where the trade builder says illegal. The
+>   chat composes from quoted rules and never runs `validate_trade`. An agent
+>   tool that calls the engine would close this without breaking ADR-001 — the
+>   engine would still decide — and is the owner's call before 8.8.
 > - **The cold-start message is already written**: the web app tells the reader
 >   a free-tier server can take about 30 seconds to wake (8.6).
 > - Locally, `mypy` reports one error in `langfuse_export` that CI on `main`
@@ -67,7 +66,7 @@
 > re-run `gh pr list` before branching: the merge state lives on GitHub, not in
 > this file.
 >
-> Decisions D1–D19 live in [`division-of-labor.md`](division-of-labor.md).
+> Decisions D1–D22 live in [`division-of-labor.md`](division-of-labor.md).
 > The measured results worth knowing before changing anything:
 > **router 88.9%** exact-set (6.1), **provision naming 80%** against a 100%
 > ceiling (6.3), **retrieval recall@1 34%** (5.8), **adversarial 0–4 misleading
@@ -573,7 +572,7 @@ required UI element rather than a nicety.
   - **Found while building it: `validate_trade` let a team use an exception it is barred from.** Art. VII §2(e)(2)(i)(A) — no Transaction Restrictions Table transaction that leaves the team above that row's apron — was enforced only in the constraint report. Murray for Irving and Washington was called **legal** while leaving Denver at $226.4M through the Expanded exception (row E, first apron). Barred exceptions are now excluded before matching, and a trade only a barred exception covers gets its own code, `apron_transaction_barred`, citing §2(e)(2)(i)(A).
   - **And `validate_trade` never used 3.14a's structuring.** A team sending several players was judged as one aggregated exception; the test case is permitted $81.1M structured against $59.5M. `best_structure` is now the fallback, with the same exclusions.
   - **A legal trade now says what it costs**: matching by the Expanded or Aggregated exception hard-caps the team at that row's apron for the season, and the verdict notes it. The ground-truth evals are byte-identical before and after — they do not run `validate_trade` against team states, which is why neither defect showed there.
-  - **Open, not fixed here: validation questions in chat can return an empty answer.** *"Is Jamal Murray for Kyrie Irving and PJ Washington a legal trade?"* came back `unavailable` twice ($0.10 and $0.04). The answer role (`claude-sonnet-5`) thinks before answering, and its 1,500-token `max_tokens` is used up by the thinking block: the last reply stopped at `max_tokens` with a thinking block and no text, and an earlier round stopped mid-tool-call. The exhausted-rounds fallback does not catch it, since no tool was requested. The trade builder link still appears on that card and works.
+  - **Found here, fixed in 8.0: validation questions in chat could return an empty answer.** *"Is Jamal Murray for Kyrie Irving and PJ Washington a legal trade?"* came back `unavailable` twice ($0.10 and $0.04). The answer role (`claude-sonnet-5`) thinks before answering, and its 1,500-token `max_tokens` is used up by the thinking block: the last reply stopped at `max_tokens` with a thinking block and no text, and an earlier round stopped mid-tool-call. The exhausted-rounds fallback does not catch it, since no tool was requested. The trade builder link still appears on that card and works.
 - [x] **7.5** Cap sheet view with apron lines as visible thresholds, tabular numerals — *`/cap/[team]` in the web app, served by `GET /teams/{key}/sheet` from `nbadata.sheet`, which reads the same `TeamState` the engine does. Two bars, not one, against the four lines: Team Salary (holds in) is measured against the cap, Apron Team Salary (holds out, qualifying offers in) against the tax and aprons, and a single bar would be wrong about one of them. Each line on the books says what it counts toward ("Cap only" for a hold), and a test pins every total to the sum of the lines shown, for all 30 teams. A binding hard cap is drawn as its own red line. Trade exceptions are read directly and checked for expiry against the payroll's date, not the stale flag (OKC's only one had expired). No model call. Checked in headless Chrome at 1040px and 390px; no horizontal page scroll.*
   - **Found while building it: the bridge left out dead money**, so the engine read Milwaukee's Apron Team Salary $23.2M low and Phoenix's $23.2M low (Lillard, Beal). Loaded from Fanspo's dead cap (D18); D18's hard-cap invariant now also holds as the engine computes it, not only in SQL.
 - [x] **7.6** **Provenance and as-of date on every figure — mandatory.** *Done: every query in a card lists source, basis and date ("scraped 29 Sep 2026", "as of …", or "date unknown"), and every answer carries the dataset line.* The dataset is a snapshot, and the Spotrac rows alone span 13 months of differing snapshot dates. A public app implies currency; without prominent as-of labelling it is quietly misleading.
@@ -587,13 +586,23 @@ required UI element rather than a nicety.
 **Next.js → Vercel. FastAPI → Render.** The engine, data and rag packages stay
 platform-agnostic; only `apps/` knows where it runs.
 
-- [ ] **8.0** *(added at the Phase 7 → 8 handoff)* Fix the empty validation answer found in 7.4, in its own `fix/` PR, and re-measure the answer role's cost. Precedes 8.8.
-- [ ] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source. *Blocked on a decision: the CBA PDF the index is built from is not in git — see "Before starting Phase 8" at the top.*
+- [x] **8.0** *(added at the Phase 7 → 8 handoff)* Fix the empty validation answer found in 7.4, and re-measure the answer role's cost. *Sonnet 5 thinks by default at effort `high`, and the thinking counts against `max_tokens`: at 1,500, two of three runs of the Murray trade question spent it all thinking and returned no text. Three changes: the ceiling is now 8,000 (`ANSWER_MAX_TOKENS`); the answer role runs at effort `medium` (`DEFAULT_EFFORT`, overridable per role with `ANTHROPIC_EFFORT_*`); and the conversation is cached as well as the system prompt — a second, moving breakpoint — because each tool round was re-sending the whole history at full price.*
+
+  | the trade question, 3 runs each | answered | mean cost | mean time |
+  |---|---|---|---|
+  | before (1,500 tokens) | 1/3 | $0.24 | 49s |
+  | 8,000 tokens | 3/3 | $0.31 | 86s |
+  | + effort `medium` | 3/3 | $0.245 | 58s |
+  | **+ conversation cached** | **3/3** | **$0.12** ($0.05–0.23) | **34s** |
+
+  **Uncached input fell from 65–143k tokens a question to ~570.** That was the bill, more than thinking was. The spread that remains is the number of tool rounds (2 to 6). The 6.12 questions now cost **$0.037** (Standard TPE) and **~$0.05** (Nuggets committed salary — $0.125 in 7.0). **Adversarial set at `medium`, two runs: 1 misleading failure each** (cap math once, a "ballpark" MLE once), inside 6.11's 0–4 band; ~$1 a run.
+  - **Tried and kept as fallback: 8,000 tokens at the default `high`.** It fixes the empty answer as well, at 27% more per question and 48% more time, and gave less consistent verdicts (one "No", two "not clearly legal") than `medium` (three "No").
+- [ ] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source. *The CBA PDF is fetched from NBA.com (NBPA mirror as fallback) and checked against a pinned sha256 (D20).*
 - [ ] **8.2** Deploy `apps/web` to Vercel
 - [ ] **8.3** Deploy `apps/api` to Render, with the artifacts from 8.1 bundled
-- [ ] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app
+- [ ] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app. *GitHub only for now, not PyPI (D22); name to settle — the owner suggested `nba-cba-agent`, but the engine imports no model, so `nba-cba-engine` may describe it better.*
 - [ ] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live
-- [ ] **8.6** Cold-start note: Render's free tier spins down after inactivity. Either pay for always-on or accept a slow first load on a résumé link.
+- [ ] **8.6** Cold-start note: Render's free tier spins down after inactivity. *Settled (D21): the free tier, and a slow first load is accepted. The web app's ~30s wake message is already written; what remains is checking it against the deployed API.*
 - [ ] **8.7** README leading with the architecture thesis and the eval numbers *— and correct its four-kinds table, which says validation questions are handled by the rules engine; in chat they are not (see the header).*
 - [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason *— the trade builder (7.4) is the surface that adjudicates; the chat answers from quoted rules and links to it.*
 - [ ] **8.9** Write-up on the eval harness and the deterministic citation path

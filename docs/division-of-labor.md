@@ -2,7 +2,7 @@
 
 Companion to [`build-plan.md`](./build-plan.md). Task numbering matches that file exactly.
 
-> **Status (2026-10-03): Phases 0–7 complete; Phase 8 (Ship) is next.** Where things stand, and what Phase 8 needs decided first, is in the header of [`build-plan.md`](./build-plan.md). This file's §1 inventory, §2 ownership table and §6 decisions (D1–D19) are current; §4.3, §5 and §7 are kept as the record of how the work was planned in Phase 0 and are not a to-do list. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
+> **Status (2026-10-05): Phases 0–7 complete; Phase 8 (Ship) under way — 8.0 done.** Where things stand, and what Phase 8 needs decided first, is in the header of [`build-plan.md`](./build-plan.md). This file's §1 inventory, §2 ownership table and §6 decisions (D1–D22) are current; §4.3, §5 and §7 are kept as the record of how the work was planned in Phase 0 and are not a to-do list. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
 
 **Legend**
 
@@ -116,12 +116,12 @@ Phases renumbered for the rescope — see [`build-plan.md`](./build-plan.md). Ph
 
 | Task | Owner | Notes |
 |---|---|---|
-| 8.0 Empty validation answer | `CLAUDE` | The fix changes per-question cost; **you approve the new figure** |
-| 8.1 CI build pipeline | `BOTH` | I build it; **you decide how CI gets the CBA PDF**, which is not in git (fetch by URL + hash, private artifact, or commit the 4.5 MB index) |
+| 8.0 Empty validation answer | `CLAUDE` | Done. Mean $0.12 a trade question, down from $0.24 (and empty two times in three); figures in build-plan 8.0 |
+| 8.1 CI build pipeline | `CLAUDE` | PDF fetched by URL and checked by hash — D20 |
 | 8.2–8.3 Vercel + Render deploys | `BOTH` | I write config, Dockerfile and CI; **you own the accounts, linking the repo, and the deploy** |
 | 8.5 Secrets and spend cap | `YOU` | Platform env vars and the cap on the model key |
-| 8.6 Always-on vs free tier | `YOU` | Render free spins down; a cold résumé link takes ~30s |
-| 8.4, 8.7 package + README | `CLAUDE` | — |
+| 8.6 Always-on vs free tier | `YOU` | Settled: free tier (D21) |
+| 8.4, 8.7 package + README | `CLAUDE` | 8.4 is GitHub-only (D22); name to settle |
 | 8.8 Demo video | `YOU` | I can script it and pick the cases |
 | 8.9 Write-up | `BOTH` | I can draft, but **it should sound like you** |
 
@@ -241,6 +241,9 @@ Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order
 | D17 | LLM gateway | **Not yet.** LiteLLM and OpenRouter both mishandle Anthropic's system-block `cache_control`, and 6.8 measured that caching cuts the answer role's billed input by 97%. A gateway's benefit is free model switching, which D15 settled by measurement instead. `llm.Caller` is a protocol, so the option stays one class away, and `Ledger.cache_hit_rate` is the canary. See §6d. |
 | D18 | Current-season salaries | **Fanspo's payroll wins for the current season; Basketball-Reference for every later season and for options.** Settled 2026-10-03. Loading all 30 teams into the engine (7.0a) found Basketball-Reference's 2026-27 totals off Fanspo's by up to $39.4M (GSW), with 20 teams more than $5M apart, and the reconciler reporting 0 — salary never went through it. Fanspo is the source consistent with SalarySwish's hard caps: on Basketball-Reference figures MIN and PHI sat above their own first-apron ceilings, which cannot happen. B-R's current-season column reads as a projection (Draymond Green's $27.7M option year where Fanspo has a free-agent hold; camp minimums since released). Ingest now drops a B-R contract Fanspo's payroll does not list (111) and takes Fanspo's figure where both list one (42 differ), **recording every override as a disagreement**; Fanspo's dead cap is loaded (16 rows). Invariant test: no team's apron salary exceeds its own hard cap. Golden queries unchanged at 12/12. |
 | D19 | Permalinks (7.7) | **The answer card travels in the URL.** Settled 2026-10-03. ADR-004 forbids runtime writes and D11 rules out a persistent disk, so a link cannot point at a stored answer. Re-running the question on open was rejected: it costs $0.01–0.13 per open and the answer can differ from the one shared. The card is compressed into the link with quote text dropped — quotes are re-fetched by citation, which is deterministic — so a link always shows exactly the answer that was given, for nothing. |
+| D20 | CBA PDF in builds (8.1) | **Fetched from a stable URL and checked against a pinned sha256; never committed.** Settled 2026-10-05. NBA.com's copy (`ak-static.cms.nba.com/wp-content/uploads/sites/4/2023/06/2023-NBA-Collective-Bargaining-Agreement.pdf`) and the NBPA's (`imgix.cosmicjs.com/25da5eb0-…-Final-2023-NBA-Collective-Bargaining-Agreement-6-28-23.pdf`) were both byte-identical to the local file — 2,850,534 bytes, sha256 `bf178ca0f2d64f9dfe6fde095d3ae43d576b12e19ce7a679618d632584f7ab32`. **Rejected:** a private CI secret or artifact (opaque, for a file that is officially public), and committing the 4.5 MB index (breaks ADR-004's "out of git", and the index stops being derivable from source). Redistribution was not the deciding factor: the deployed app serves verbatim CBA text whichever way the index is built. What D20 buys is the reproducibility ADR-004 claimed but did not have — the index depended on a file that was not in source control. A changed or missing file fails the build loudly. |
+| D21 | Render tier (8.6) | **Free tier; a ~30s cold start is accepted.** Settled 2026-10-05. Consistent with D8's no-recurring-fee constraint. |
+| D22 | Engine package (8.4) | **Published on GitHub only, not PyPI, for now.** Settled 2026-10-05. Name to settle: the owner suggested `nba-cba-agent`; the engine imports no model client (ADR-001), so a name like `nba-cba-engine` may describe it more accurately. |
 | D13 | Raindrop deployment (superseded by D16) | **Cloud, Hobby (free) tier** — event budget re-measured in 6.13a: **8–17 events per question, so ~60–125 questions a month**, not the ~140 first estimated. — there is no alternative: self-hosting is VPC-only, Enterprise, and in beta with selected partners. 1,000 events/month, 14-day retention, 1 custom signal. Pro is $299/month, which this project will not spend. **Narrows D8:** "no hosted services" already gave way to D11 (Vercel + Render); the operative constraint is no recurring fee, which the Hobby tier meets. |
 
 ## 6a. D14 — closing the paraphrase gap: **settled, option A**

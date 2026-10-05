@@ -67,6 +67,17 @@ query the league data, look up a player, fetch a second provision, then answer
 -- and short enough that a loop which has lost its way stops costing money.
 """
 
+ANSWER_MAX_TOKENS = 8000
+"""
+The answer role's output ceiling, thinking included.
+
+The answer model thinks before it replies, and the thinking counts against
+this limit. At 1,500 a trade-validation question spent the whole allowance on
+thinking and came back with no text at all -- two runs in three, measured at
+the Phase 7 to 8 handoff (task 8.0). The ceiling is a cap, not a target: a
+reply is billed for the tokens it uses, not for the room it was given.
+"""
+
 REFUSAL_BASIS = {
     "historical": (
         "This asks about a past season. Only current state is held, so answering would "
@@ -481,7 +492,7 @@ def answer(
             role=Role.ANSWER,
             system=SYSTEM,
             messages=messages,
-            max_tokens=1500,
+            max_tokens=ANSWER_MAX_TOKENS,
             tools=tool_specs,
         )
         if not reply.wants_tools:
@@ -537,7 +548,9 @@ def answer(
             }
         )
         messages.append({"role": "user", "content": closing})
-        reply = tracked(role=Role.ANSWER, system=SYSTEM, messages=messages, max_tokens=1500)
+        reply = tracked(
+            role=Role.ANSWER, system=SYSTEM, messages=messages, max_tokens=ANSWER_MAX_TOKENS
+        )
 
     verdict.text = reply.text if reply else ""
     verdict.unsourced_figures = _audit_figures(verdict.text, sourced | asked, quoted)
