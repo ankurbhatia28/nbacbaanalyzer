@@ -482,7 +482,22 @@ def call(res: Resources, name: str, args: JsonDict) -> JsonDict:
             "ok": False,
             "error": f"no tool named {name!r}; available: {', '.join(sorted(BY_NAME))}",
         }
-    return tool.handler(res, args)
+    try:
+        return tool.handler(res, args)
+    except (TypeError, AttributeError, KeyError, ValueError) as exc:
+        # Arguments of the wrong shape -- a string where the schema wants an
+        # object -- are the model's mistake to correct, the same as an unknown
+        # tool name. Anthropic's models validate against the schema and never
+        # did this; Nemotron Ultra (D23) sent `select` as a list of strings and
+        # the TypeError failed the whole request. Narrow on purpose: anything
+        # else is a defect here and should still surface as one.
+        return {
+            "ok": False,
+            "error": (
+                f"invalid arguments for {name}: {type(exc).__name__}: {exc}. "
+                "Check them against the tool's input schema and call it again."
+            ),
+        }
 
 
 @dataclass(frozen=True, slots=True)
