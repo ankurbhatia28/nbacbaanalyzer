@@ -29,7 +29,7 @@ from dataclasses import dataclass, field
 from datetime import date
 from typing import Any
 
-from nbadata import trades
+from nbadata import sheet, state, trades
 from nbadata.query import (
     ENTITIES,
     Agg,
@@ -357,6 +357,62 @@ def _validate_trade(res: Resources, args: JsonDict) -> JsonDict:
     return {"ok": True, **trades.to_json(verdict, sides, built)}
 
 
+def _team_cap_position(res: Resources, args: JsonDict) -> JsonDict:
+    """
+    Each team's totals against the four thresholds -- the cap sheet's own
+    figures (7.5), so the chat and the cap sheet cannot disagree.
+
+    Added because "which team has the most cap space?" was being answered by
+    rebuilding team totals out of contract rows: it picked a season, summed
+    salaries, forgot the cap holds, and spent the six-round budget before it
+    had a number (12 tool calls, $0.10, no answer). The engine already
+    computes the totals, holds included, for every team.
+    """
+    keys = [str(k).strip().upper() for k in args.get("teams") or []]
+    if not keys:
+        keys = [t.key for t in state.teams(res.league)]
+    teams: list[JsonDict] = []
+    thresholds: dict[str, int] = {}
+    for key in keys:
+        try:
+            got = sheet.cap_sheet(res.league, key)
+        except MissingDataError as exc:
+            return {"ok": False, "error": str(exc)}
+        thresholds = got.thresholds
+        cap, apron = got.totals["cap"], got.totals["apron"]
+        teams.append(
+            {
+                "team": got.team,
+                "name": got.name,
+                "status": got.status,
+                "cap_salary": cap,
+                "cap_holds": sum(line.cap for line in got.lines if line.kind == "hold"),
+                "apron_salary": apron,
+                "below_salary_cap": thresholds["salary_cap"] - cap,
+                "below_tax_level": thresholds["tax_level"] - apron,
+                "below_first_apron": thresholds["first_apron"] - apron,
+                "below_second_apron": thresholds["second_apron"] - apron,
+                "hard_cap": got.ceiling,
+            }
+        )
+    teams.sort(key=lambda t: t["below_salary_cap"], reverse=True)
+    return {
+        "ok": True,
+        "season": state.CURRENT_SEASON,
+        "thresholds": thresholds,
+        "teams": teams,
+        "notes": [
+            "Sorted by below_salary_cap, most room first. A negative value is how far "
+            "over the threshold the team is.",
+            "cap_salary includes cap holds, as Team Salary does for room; a team can "
+            "remove a hold by renouncing the player, so its room may grow by up to "
+            "cap_holds. apron_salary excludes most holds (Art. VII §2(e)(1)).",
+            "The tax level and both aprons are measured on apron_salary, as the engine's "
+            "status is.",
+        ],
+    }
+
+
 HANDLERS: dict[str, Callable[[Resources, JsonDict], JsonDict]] = {
     "resolve_provision": _resolve_provision,
     "fetch_provision": _fetch_provision,
@@ -365,6 +421,7 @@ HANDLERS: dict[str, Callable[[Resources, JsonDict], JsonDict]] = {
     "query_league_data": _query_league_data,
     "lookup_player": _lookup_player,
     "validate_trade": _validate_trade,
+    "team_cap_position": _team_cap_position,
 }
 
 
@@ -519,6 +576,29 @@ TOOLS: tuple[Tool, ...] = (
             "additionalProperties": False,
         },
         handler=_validate_trade,
+    ),
+    Tool(
+        name="team_cap_position",
+        description=(
+            "Where teams stand against the salary cap, tax level and both aprons this "
+            "season, computed by the rules engine -- the same figures as the cap sheet. "
+            "One call, every team unless you name some, sorted by room under the cap. "
+            "Use it for any question about cap space, room, which teams are over or under "
+            "a threshold, or how far a team is from one. Do not rebuild these totals from "
+            "contract rows: they include cap holds and exclusions a sum of salaries misses."
+        ),
+        input_schema={
+            "type": "object",
+            "properties": {
+                "teams": {
+                    "type": "array",
+                    "items": {"type": "string", "description": "team key, e.g. DEN"},
+                    "description": "Omit for all 30 teams.",
+                }
+            },
+            "additionalProperties": False,
+        },
+        handler=_team_cap_position,
     ),
 )
 
