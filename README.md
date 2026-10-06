@@ -73,7 +73,7 @@ trade builder. Not yet deployed (Phase 8). See [docs/build-plan.md](docs/build-p
 ## Development
 
 ```bash
-uv sync --all-packages --dev
+uv sync --all-packages --dev --extra langfuse     # the extra: traces reach Langfuse (8.5)
 uv run pytest
 uv run ruff check .
 
