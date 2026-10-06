@@ -2,7 +2,7 @@
 
 > ## Where this stands
 >
-> **Phases 0–7 are complete (last merge: PR #46, the trade builder, 2026-10-03). Phase 8 is under way: 8.0–8.3 are done (2026-10-05). The app is live at https://nbacbaanalyzer.vercel.app, with the API at https://nbacba-api.onrender.com.** The empty chat answer found in 7.4 is fixed — see 8.0 for the fix and the re-measured cost.
+> **The app is live: https://nbacbaanalyzer.vercel.app, with the API at https://nbacba-api.onrender.com (since 2026-10-05).** Phases 0–7 are complete. Phase 8 is nearly done: 8.0–8.4 are done, 8.5 and 8.6 are each waiting on one check, and 8.7–8.9 (README, demo, write-up) are still to do. Last merges: PRs #54–#57 (2026-10-06); #58 (8.4, the engine package) may still be open — run `gh pr list`.
 >
 > | phase | state |
 > |---|---|
@@ -10,58 +10,86 @@
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
 > | 6 Agent layer | done |
 > | 7 Interface | done — chat, answer card, permalinks, cap sheet, trade builder |
-> | 8 Ship | **in progress** — 8.0 and 8.1 done; read "Before starting Phase 8" below |
+> | 8 Ship | **live** — 8.0–8.4 done; 8.5, 8.6 one check each; 8.7–8.9 to do |
+> | After launch | debugging from real use — see "After launch" below (A1: cap space) |
+>
+> ### Next session: start here — the cold-start check (8.6)
+>
+> The one open engineering item. Render's free tier (D21) spins the API down
+> after ~15 minutes with no requests; the first request after that waits while
+> it wakes. **What is done:** `WakeNote` (#54) tells the reader, after 8 seconds
+> with no response, that the server is waking — needed because Render *holds*
+> a request during the wake rather than failing it, so the original "could not
+> reach the API" message never showed. **What is not:** a real wake has never
+> been timed. The first attempt (a background `sleep 960` then `curl`) was
+> spoiled by live traffic keeping the server up — it measured 0.19 s.
+>
+> 1. Make sure nobody has used the site or API for 15+ minutes. Render's
+>    dashboard (service `nbacba-api` → Events/Logs) shows when it spun down.
+> 2. Time the wake, then a warm request for comparison:
+>    `curl -s -o /dev/null -w "%{http_code} %{time_total}s\n" https://nbacba-api.onrender.com/health`
+> 3. In a browser after another idle spell, open `/cap/DEN` or ask in chat and
+>    check the `WakeNote` text appears after ~8 s and the page then loads.
+> 4. Record the seconds in 8.6 and tick it. If the wake is much worse than
+>    ~30 s, the options are the owner's call (D21 accepted a slow first load):
+>    a scheduled ping to `/health` every ~10 minutes keeps it warm — one
+>    always-on free service fits Render's 750 free instance-hours a month — or a
+>    paid instance.
+>
+> ### Also open, in rough order
+>
+> - **8.5** — owner to confirm the Anthropic workspace's monthly spend limit is
+>   set. The Render key **expires around 2026-11-04**; replace it before then
+>   (Render → Environment; it redeploys itself). Optional: a separate,
+>   low-limit `OPENROUTER_API_KEY` on Render turns on the free fallback (8.0a).
+> - **8.7** README, **8.8** demo (Claude scripts, owner records), **8.9**
+>   write-up. They quote eval numbers, so they are best done once the
+>   after-launch fixes settle.
+> - **Owner decision:** do settled facts like MVP awards count as "past season"
+>   under D6? They are refused as historical today, which limits the demo.
+> - Not urgent: the engine's import name is the generic `engine` (8.4).
 >
 > **What the running app is**, for a session that was not here: `apps/web`
-> (Next.js 16) has five pages — `/` chat, `/answer` a permalinked answer
-> (7.7), `/cap` and `/cap/[team]` the cap sheet, `/trade` the trade builder. `apps/api` (FastAPI) serves `/health`,
+> (Next.js 16, on Vercel) has five pages — `/` chat, `/answer` a permalinked
+> answer (7.7), `/cap` and `/cap/[team]` the cap sheet, `/trade` the trade
+> builder. `apps/api` (FastAPI, a Docker image on Render) serves `/health`,
 > `/ask`, `/ask/stream`, `/quotes`, `/teams`, `/teams/{key}/sheet`, `/players`
 > and `/trade`. Only the two ask routes call a model; the cap sheet, trade
-> builder and quote re-fetch are deterministic. **The chat calls the rules
-> engine for trades** (since 2026-10-05): the agent's `validate_trade` tool runs
-> the trade builder's own check, so the two cannot disagree; the answer quotes
-> each violation's provision and links to the builder.
+> builder and quote re-fetch are deterministic. The chat's tools reach the
+> engine directly where it decides: **`validate_trade`** runs the trade
+> builder's own check, and **`team_cap_position`** returns the cap sheet's own
+> totals (A1), so neither surface can disagree with the chat. Off-topic
+> questions are declined at the router (D24). When Anthropic cannot be used —
+> spend cap, rate limit, overload — a free OpenRouter model answers if
+> `OPENROUTER_API_KEY` is set (8.0a, D23), and the card says so. Traces go to
+> Langfuse (US region) with environment `production`.
 >
-> ### Before starting Phase 8
+> ### How it is deployed — facts worth knowing before changing it
 >
-> Measured or checked on 2026-10-03; each bears on a task below.
->
-> - **The artifacts are built in CI (8.1, done).** `python -m rag.fetch`
->   downloads the CBA PDF and refuses any copy that does not match the pinned
->   sha256 (D20); the `artifacts` job builds `nbacba.db` and `cba-index.db` and
->   uploads them as `nbacba-artifacts`. The deployed API needs only the index,
->   never the PDF. The index build is deterministic — same rows, same search
->   ranks — which D19's permalink quote hashes depend on; it is byte-identical
->   only on the same SQLite version (see 8.1).
-> - **The API deploys as a Docker image (8.3).** The `Dockerfile` repeats the
->   fetch and both builds inside the image, so Render needs no CI artifact; the
->   runtime stage keeps the virtualenv, the package sources and the two
->   databases (83.5 MB), runs as a non-root user and cannot write to `build/`.
->   `render.yaml` deploys `main` only once CI passes, and CI's `image` job
->   builds it on every pull request.
+> - **The API is a Docker image (8.3).** The `Dockerfile` fetches the CBA PDF
+>   by pinned hash (D20) and builds both read-only artifacts inside the image,
+>   so Render needs no CI artifact. `render.yaml` (a Render Blueprint) deploys
+>   `main` only once CI passes; CI's `image` job builds the image on every PR.
+>   Run it locally with the `docker` line in `CLAUDE.md`. Values in `.env` are
+>   quoted, and `docker --env-file` keeps the quotes: strip them for a local
+>   container, or Langfuse answers 401.
+> - **The index is deterministic but byte-identical only on one SQLite
+>   version** (8.1): the image's 3.46 and macOS's 3.50 lay out FTS5
+>   differently; every row and every search rank match.
 > - **The in-app spend cap is not a monthly cap on Render (8.5).** `Budget`
->   counts in process memory, and the free tier restarts after every idle
->   spell, so the count resets many times a day. It still stops a runaway
->   burst. The monthly backstop is a spend limit on a dedicated Anthropic
->   Console workspace, whose key is the one Render gets.
-> - **The artifacts are small and fast.** `nbacba.db` 532 KB in 0.3 s;
->   `cba-index.db` 4.5 MB in 2 s. Building them at deploy time costs nothing.
-> - **Configuration is already environment-driven** (`.env.example` lists
->   all of it): `NBACBA_LEAGUE_DB`, `NBACBA_CBA_INDEX`, `NBACBA_ALLOWED_ORIGINS`
->   (CORS — unset outside development means *no* browser origin is allowed, so
->   the deploy fails closed until it is set to the Vercel URL),
->   `NBACBA_ENVIRONMENT`, the Anthropic key (**required at startup** — the API
->   refuses to start without it, by design, even though only chat uses it),
->   Langfuse keys. The web app reads
->   `NEXT_PUBLIC_API_URL` **at build time**, so changing the API's URL means
->   rebuilding the web app, not restarting it.
-> - **Closed: the chat could get a trade verdict wrong.** After 8.0 one of nine
->   runs called Murray for Irving and Washington "legal in principle", where the
->   engine says illegal. The chat now runs `validate_trade` (see 7.4).
-> - **The cold-start message is already written**: the web app tells the reader
->   a free-tier server can take about 30 seconds to wake (8.6).
-> - Locally, `mypy` reports one error in `langfuse_export` that CI on `main`
->   does not; it is an environment difference, not a regression.
+>   counts in process memory and the free tier restarts after every idle spell.
+>   The monthly backstop is the Anthropic Console workspace's spend limit.
+> - **Install the `langfuse` extra** — `uv sync --all-packages --dev --extra
+>   langfuse`. Without it traces are dropped (that shipped once, fixed in #56)
+>   and the API now refuses to start if Langfuse keys are set. With it, mypy is
+>   clean locally; the old "environment-only" mypy error was this.
+> - **Configuration is environment-driven** (`.env.example` lists all of it).
+>   `NBACBA_ALLOWED_ORIGINS` is `https://nbacbaanalyzer.vercel.app` on Render —
+>   the domain, not a per-deploy URL, so Vercel preview deploys cannot reach
+>   the API. The web app reads `NEXT_PUBLIC_API_URL` **at build time**.
+> - **Cost per question**, measured live and locally: rules ~$0.04, data
+>   ~$0.03–0.05, a trade ~$0.06–0.07; the first question on a freshly woken
+>   server costs about double, because it writes the cache instead of reading it.
 >
 > Two items in Phase 3 are deliberately left open and say why inline: **3.14**
 > (non-simultaneous TPE creation) and **3.16** (Art. VII §2(f), the Second Apron
@@ -624,8 +652,8 @@ platform-agnostic; only `apps/` knows where it runs.
   - **Corrected in 8.3: byte-identical only on the same SQLite version.** All three builds above were on one Mac (SQLite 3.50.4). The Docker image (Debian, SQLite 3.46.1) builds an index with a different sha256. Every table — chunks, citation map, definitions, cross-references, vocabulary — dumps identically, and full-text search returns the same rows with the same bm25 scores; only the FTS5 index's internal layout differs. The permalinks hash quote text, which is unchanged, so they are unaffected.
 - [x] **8.2** Deploy `apps/web` to Vercel *— https://nbacbaanalyzer.vercel.app. Root directory `apps/web`; `NEXT_PUBLIC_API_URL` is the Render URL, read at build time. Pull-request preview deploys get their own URLs, which the API's CORS list does not name, so previews cannot reach the API; only production can.*
 - [x] **8.3** Deploy `apps/api` to Render, with the artifacts from 8.1 bundled *— https://nbacba-api.onrender.com, from `render.yaml` (2026-10-05). `NBACBA_ALLOWED_ORIGINS` is the Vercel domain, not a deployment URL, which changes every deploy; preflight from it returns 200, from any other origin 400. The key is from a dedicated Anthropic workspace with its own spend limit (8.5). Live: the second-apron question answered and verified with 21 citations in 18s for $0.087 — about twice the local figure, because the first question on a fresh process writes the cache rather than reading it; an off-topic question was declined in 1.7s. A `Dockerfile` rather than Render's Python runtime, so the exact image can be built and run locally first; it builds the artifacts itself rather than downloading CI's, which would need a GitHub token on Render. Tested locally (`linux/amd64`): `/health` serves the dataset dates, CORS admits the configured origin and rejects another (400), and "What does the second apron restrict?" came back answered and verified with 22 citations in 17s.*
-- [ ] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app. *GitHub only for now, not PyPI (D22); name to settle — the owner suggested `nba-cba-agent`, but the engine imports no model, so `nba-cba-engine` may describe it better.*
-- [ ] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live *— the 6.13 cap is per process and Render's free tier restarts after each idle spell, so it resets constantly: the monthly limit has to be set on a dedicated Anthropic Console workspace, and Render given that workspace's key.*
+- [x] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app. *`nba-cba-engine` (D22), GitHub only: `pip install "nba-cba-engine @ git+https://github.com/ankurbhatia28/nbacbaanalyzer#subdirectory=packages/engine"`. No dependencies; import name `engine`; MIT, with a `LICENSE` at the root (the repository had none). `packages/engine/README.md` carries a worked example that was run, not written. CI's `engine-package` job builds the wheel, installs it into an empty environment and runs the engine's 197 tests there, outside the workspace, so a dependency on the rest of the repository cannot hide. Not done: a generic top-level import name, `engine`, could collide with another package's; renaming it would touch every import in the repository, so it waits for a reason.*
+- [ ] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live *— the 6.13 cap is per process and Render's free tier restarts after each idle spell, so it resets constantly: the monthly limit has to be set on a dedicated Anthropic Console workspace, and Render given that workspace's key. Done: the workspace and its key (expiring around 2026-11-04 — replace before then). **Traces never reached Langfuse until #56:** the image lacked the SDK (an optional extra), so every trace was dropped in silence, and `render.yaml` pointed at the EU host while the project is in the US region. Since #56, the API refuses to start with keys but no SDK; verified 2026-10-06, a production question's trace arrived within ~10s. Left: the owner confirming the workspace's monthly limit, and, to turn on the fallback (8.0a), a separate low-limit `OPENROUTER_API_KEY` on Render.*
 - [ ] **8.6** Cold-start note: Render's free tier spins down after inactivity. *Settled (D21): the free tier, and a slow first load is accepted. **Found on deploy: the ~30s wake message never showed.** It was written for a failed request, but Render holds a request while the server wakes rather than failing it, so the page just waited ("Working… 35s — this usually takes 10 to 20 seconds"). `WakeNote` now explains the wait after 8 seconds with no response — in chat, only when not even the `started` event has arrived, which a warm server sends at once — and on the team list, cap sheet and trade check. What remains: timing a real wake.*
 - [ ] **8.7** README leading with the architecture thesis and the eval numbers *— its four-kinds table, which says validation is handled by the rules engine, is now true in chat as well (7.4).*
 - [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason *— both surfaces adjudicate with the engine now: the chat runs `validate_trade` and quotes the violated provision, and the trade builder (7.4) shows the same verdict with the numbers.*

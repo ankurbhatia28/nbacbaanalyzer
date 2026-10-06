@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "The agent layer: tools the model may call, and nothing it may decide alone."
 requires-python = ">=3.12"
 dependencies = [
-    "nbacba-engine",
+    "nba-cba-engine",
     "nbacba-data",
     "nbacba-rag",
     "anthropic>=0.40",
@@ -25,6 +25,6 @@ build-backend = "hatchling.build"
 packages = ["src/agent"]
 
 [tool.uv.sources]
-nbacba-engine = { workspace = true }
+nba-cba-engine = { workspace = true }
 nbacba-data = { workspace = true }
 nbacba-rag = { workspace = true }

@@ -66,9 +66,11 @@ docs/              Build plan, division of labor, ADRs.
 
 ## Status
 
-Built and running locally: rules engine, league database and query layer, CBA
-retrieval, agent, API, and a web app with chat, a cap sheet per team and a
-trade builder. Not yet deployed (Phase 8). See [docs/build-plan.md](docs/build-plan.md).
+**Live at https://nbacbaanalyzer.vercel.app** (the API sleeps when idle and
+takes about 30 seconds to wake). Rules engine, league database and query layer,
+CBA retrieval, agent, API, and a web app with chat, a cap sheet per team and a
+trade builder. The rest of Phase 8 — README, demo, write-up — is in
+[docs/build-plan.md](docs/build-plan.md).
 
 ## Development
 
@@ -92,3 +94,19 @@ docker build -t nbacba-api . && docker run --rm -p 8000:8000 --env-file .env nba
 Python 3.12+, Node 22. The API will not start without an Anthropic key in
 `.env` (see `.env.example`), though only chat spends it: the cap sheet and
 trade builder make no model call.
+
+## The engine on its own
+
+The rules engine is published separately as
+[`nba-cba-engine`](packages/engine/README.md): no dependencies, no model, every
+verdict cited.
+
+```bash
+pip install "nba-cba-engine @ git+https://github.com/ankurbhatia28/nbacbaanalyzer#subdirectory=packages/engine"
+```
+
+## License
+
+[MIT](LICENSE) for the code. The Collective Bargaining Agreement is not
+included, and the scraped data under `scraper/out/` comes from the sources
+named in [`scraper/README.md`](scraper/README.md), under their own terms.
