@@ -108,6 +108,24 @@ jobs:
       - name: Build the API image
         run: docker build -t nbacba-api .
 
+  # The engine as published on its own (8.4): built as a wheel, installed into
+  # an empty environment, and tested there -- outside the workspace, so a
+  # dependency on the rest of the repository cannot hide behind it.
+  engine-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv python install 3.12
+      - name: Build the wheel
+        run: uv build --package nba-cba-engine --out-dir dist
+      - name: Install it alone and run its tests
+        run: |
+          uv venv /tmp/engine -p 3.12
+          VIRTUAL_ENV=/tmp/engine uv pip install dist/*.whl pytest hypothesis
+          cp -r packages/engine/tests /tmp/engine-tests
+          cd /tmp && /tmp/engine/bin/pytest -q -p no:cacheprovider /tmp/engine-tests
+
   # Blocking as of Phase 4: the suite reports a real pass rate, so a regression
   # in it is a regression in the engine.
   evals:

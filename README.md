@@ -92,3 +92,19 @@ docker build -t nbacba-api . && docker run --rm -p 8000:8000 --env-file .env nba
 Python 3.12+, Node 22. The API will not start without an Anthropic key in
 `.env` (see `.env.example`), though only chat spends it: the cap sheet and
 trade builder make no model call.
+
+## The engine on its own
+
+The rules engine is published separately as
+[`nba-cba-engine`](packages/engine/README.md): no dependencies, no model, every
+verdict cited.
+
+```bash
+pip install "nba-cba-engine @ git+https://github.com/ankurbhatia28/nbacbaanalyzer#subdirectory=packages/engine"
+```
+
+## License
+
+[MIT](LICENSE) for the code. The Collective Bargaining Agreement is not
+included, and the scraped data under `scraper/out/` comes from the sources
+named in [`scraper/README.md`](scraper/README.md), under their own terms.

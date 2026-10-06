@@ -1,9 +1,24 @@
 [project]
-name = "nbacba-engine"
+name = "nba-cba-engine"
 version = "0.1.0"
-description = "Deterministic NBA CBA rules engine. No LLM calls, ever."
+description = "A deterministic rules engine for the 2023 NBA Collective Bargaining Agreement: salary matching, aprons, hard caps and trade validation, every verdict cited. No LLM calls, ever."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.12"
 dependencies = []
+keywords = ["nba", "salary cap", "collective bargaining agreement", "trade", "rules engine"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Repository = "https://github.com/ankurbhatia28/nbacbaanalyzer"
+Source = "https://github.com/ankurbhatia28/nbacbaanalyzer/tree/main/packages/engine"
 
 [build-system]
 requires = ["hatchling"]

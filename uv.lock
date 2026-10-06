@@ -8,10 +8,10 @@ resolution-markers = [
 
 [manifest]
 members = [
+    "nba-cba-engine",
     "nbacba-agent",
     "nbacba-api",
     "nbacba-data",
-    "nbacba-engine",
     "nbacba-rag",
     "nbacbaanalyzer",
 ]
@@ -752,14 +752,19 @@ wheels = [
 ]
 
 [[package]]
+name = "nba-cba-engine"
+version = "0.1.0"
+source = { editable = "packages/engine" }
+
+[[package]]
 name = "nbacba-agent"
 version = "0.1.0"
 source = { editable = "packages/agent" }
 dependencies = [
     { name = "anthropic" },
     { name = "httpx2" },
+    { name = "nba-cba-engine" },
     { name = "nbacba-data" },
-    { name = "nbacba-engine" },
     { name = "nbacba-rag" },
 ]
 
@@ -773,8 +778,8 @@ requires-dist = [
     { name = "anthropic", specifier = ">=0.40" },
     { name = "httpx2", specifier = ">=2.0" },
     { name = "langfuse", marker = "extra == 'langfuse'", specifier = ">=3.0" },
+    { name = "nba-cba-engine", editable = "packages/engine" },
     { name = "nbacba-data", editable = "packages/data" },
-    { name = "nbacba-engine", editable = "packages/engine" },
     { name = "nbacba-rag", editable = "packages/rag" },
 ]
 provides-extras = ["langfuse"]
@@ -802,11 +807,6 @@ requires-dist = [
 name = "nbacba-data"
 version = "0.1.0"
 source = { editable = "packages/data" }
-
-[[package]]
-name = "nbacba-engine"
-version = "0.1.0"
-source = { editable = "packages/engine" }
 
 [[package]]
 name = "nbacba-rag"
