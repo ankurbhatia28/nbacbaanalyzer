@@ -31,6 +31,8 @@ import {
   stateFromSeed,
 } from "@/lib/trade";
 
+import { WakeNote } from "./WakeNote";
+
 type Verdict =
   | { kind: "idle" }
   | { kind: "checking" }
@@ -294,7 +296,14 @@ function VerdictView({ verdict, hasTeams }: { verdict: Verdict; hasTeams: boolea
       </p>
     );
   }
-  if (verdict.kind === "checking") return <p className="muted">Checking the trade…</p>;
+  if (verdict.kind === "checking") {
+    return (
+      <>
+        <p className="muted">Checking the trade…</p>
+        <WakeNote />
+      </>
+    );
+  }
   if (verdict.kind === "error") {
     return (
       <div className="error" role="alert">
