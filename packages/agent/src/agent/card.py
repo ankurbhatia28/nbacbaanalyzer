@@ -65,6 +65,7 @@ class WarningKind(StrEnum):
     EXHAUSTED_ROUNDS = "exhausted_rounds"
     UNKNOWN_VALUES = "unknown_values"
     UNDATED_ROWS = "undated_rows"
+    FALLBACK_MODEL = "fallback_model"
 
 
 @dataclass(frozen=True, slots=True)
@@ -305,6 +306,16 @@ def _warnings(verdict: Verdict, figures: list[Figure]) -> list[Warning]:
                 WarningKind.EXHAUSTED_ROUNDS,
                 f"The {MAX_TOOL_ROUNDS}-tool-call budget ran out; this answer was "
                 "written from what had been gathered by then.",
+            )
+        )
+    if verdict.fallback:
+        out.append(
+            Warning(
+                WarningKind.FALLBACK_MODEL,
+                f"Answered by a free fallback model because {verdict.fallback}. It is "
+                "slower and somewhat less accurate than the default; the rules and figures "
+                "still come from the same tools.",
+                [verdict.fallback_model] if verdict.fallback_model else [],
             )
         )
 

@@ -8,6 +8,8 @@ dependencies = [
     "nbacba-data",
     "nbacba-rag",
     "anthropic>=0.40",
+    # The OpenRouter fallback's client (D23); already installed by anthropic.
+    "httpx2>=2.0",
 ]
 
 [project.optional-dependencies]

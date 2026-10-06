@@ -16,7 +16,8 @@ export type WarningKind =
   | "unsupported"
   | "exhausted_rounds"
   | "unknown_values"
-  | "undated_rows";
+  | "undated_rows"
+  | "fallback_model";
 
 export interface Quote {
   citation: string;
