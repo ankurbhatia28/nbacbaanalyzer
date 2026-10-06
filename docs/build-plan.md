@@ -641,6 +641,12 @@ Not in v1. Listed so they stay out of scope rather than drifting in.
 - **12. Protected pick simulation** — lottery Monte Carlo over protection predicates
 - **13. Live statistics** — show on-court comparison alongside a trade. **Presents, never concludes.** No "who wins this trade."
 
+## After launch — debugging and improvements
+
+Found by using the deployed app. Each records the question, what it cost before and after, and the eval that checked nothing else moved.
+
+- [x] **A1** **"What team has the most cap space available?" ran out of tool calls with no answer.** The chat had no tool for a team's position, so the model rebuilt it from rows: five definition fetches, then contract sums by season, picking 2031-32 (four teams with data) before 2026-27. Measured locally: **6 rounds, 12 tool calls, 58s, $0.10, budget exhausted.** `team_cap_position` returns the cap sheet's own totals (7.5) for every team in one call — cap salary with holds, apron salary, distance below the cap, tax line and both aprons, status, hard cap — sorted by room; prompt rule 7 sends cap-space questions to it and asks for one citation in the same turn. After, two runs: **2 rounds, 4 tool calls (one turn), 8–16s, $0.028–0.038**, Chicago at $2,999,133 below the cap, no unsourced figures. Adversarial (6.11): **30/30 held, 0 over-refused**, 2.9 tool calls per question.
+
 ---
 
 ## Three ways this goes wrong
