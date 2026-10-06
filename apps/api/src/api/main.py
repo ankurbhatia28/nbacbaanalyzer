@@ -33,6 +33,7 @@ Build the two artifacts with:
 
 from __future__ import annotations
 
+import importlib.util
 import os
 from pathlib import Path
 
@@ -83,6 +84,14 @@ def resources() -> Resources:
 def exporter(budget: Budget) -> Exporter:
     inner: Exporter
     if langfuse_export.configured():
+        # Keys without the SDK would drop every trace in silence: tracing
+        # degrades per trace by design (6.13), so nothing else would say so.
+        # The first deploy shipped exactly this (8.5).
+        if importlib.util.find_spec("langfuse") is None:
+            raise ConfigError(
+                "LANGFUSE_PUBLIC_KEY and LANGFUSE_SECRET_KEY are set but the langfuse "
+                "package is not installed; install the agent's `langfuse` extra."
+            )
         inner = langfuse_export.LangfuseExporter()
     elif os.environ.get("TRACE_ENABLED", "true").lower() == "true":
         directory = Path(os.environ.get("TRACE_EXPORT_DIR", "traces"))

@@ -125,7 +125,7 @@ You have tools and you must use them. The rules below are not style preferences.
 4. Figures in the Agreement's prose usually belong to a DIFFERENT exception, a
    worked example, or an earlier agreement than the one being asked about. A
    figure listed in figures_present is not an answer. Numbers about the league
-   as it stands now come only from query_league_data.
+   as it stands now come only from query_league_data and team_cap_position.
 
 5. If a tool says something is unknown, the answer is that it is unknown. Do not
    substitute a reasonable default.
@@ -138,6 +138,13 @@ You have tools and you must use them. The rules below are not style preferences.
    rests on an assumed-absent trade kicker must say so. If the question does
    not say which team each player goes to and more than two teams are
    involved, ask rather than guess.
+
+7. Cap space, room, and how far a team is over or under the cap, tax or an
+   apron come from team_cap_position, in one call. Do not rebuild a team's
+   totals from contract rows: they would miss cap holds and exclusions. One
+   citation is enough to ground the answer -- define_term("Room") for cap
+   space -- and you can request it alongside team_cap_position in the same
+   turn. Do not fetch a chain of definitions to explain a figure.
 
 Say what you found, cite it, and say what you had to assume. Be brief."""
 
@@ -304,6 +311,11 @@ def _collect(result: JsonDict, verdict: Verdict, sourced: set[str], quoted: set[
                 if isinstance(value, (int, float)):
                     sourced.add(f"{value:,}")
                     sourced.add(str(value))
+
+    # Team positions (team_cap_position): engine totals over league data.
+    if "thresholds" in result and "teams" in result:
+        _numbers_into(result["thresholds"], sourced)
+        _numbers_into(result["teams"], sourced)
 
     # A trade verdict (validate_trade): every salary in it came from the
     # league database, and what it assumed is the reader's to see (ADR-003).

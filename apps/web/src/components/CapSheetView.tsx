@@ -29,6 +29,8 @@ import {
   scaleMax,
 } from "@/lib/sheet";
 
+import { WakeNote } from "./WakeNote";
+
 type View = { kind: "loading" } | { kind: "error"; message: string } | { kind: "ready"; sheet: CapSheet };
 
 export function CapSheetView({ team }: { team: string }) {
@@ -51,7 +53,14 @@ export function CapSheetView({ team }: { team: string }) {
     };
   }, [team]);
 
-  if (view.kind === "loading") return <p className="muted">Loading the cap sheet…</p>;
+  if (view.kind === "loading") {
+    return (
+      <>
+        <p className="muted">Loading the cap sheet…</p>
+        <WakeNote />
+      </>
+    );
+  }
   if (view.kind === "error") {
     return (
       <div className="error" role="alert">
