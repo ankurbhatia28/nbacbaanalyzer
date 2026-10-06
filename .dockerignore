@@ -1,0 +1,23 @@
+# Secrets never enter the image; the platform supplies them at runtime.
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+
+.git
+.venv
+build
+traces
+**/__pycache__
+.mypy_cache
+.ruff_cache
+.pytest_cache
+.claude
+
+# The API image does not contain the web app (that is Vercel, 8.2).
+apps/web
+
+# Fetched and verified inside the build instead (D20).
+data/cba/*.pdf
+scraper/out/raw

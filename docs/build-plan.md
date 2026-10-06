@@ -2,7 +2,7 @@
 
 > ## Where this stands
 >
-> **Phases 0–7 are complete (last merge: PR #46, the trade builder, 2026-10-03). Phase 8 is under way: 8.0 and 8.1 are done (2026-10-05); the deploys, 8.2 and 8.3, are next.** The empty chat answer found in 7.4 is fixed — see 8.0 for the fix and the re-measured cost.
+> **Phases 0–7 are complete (last merge: PR #46, the trade builder, 2026-10-03). Phase 8 is under way: 8.0 and 8.1 are done (2026-10-05); the deploys, 8.2 and 8.3, are next — the API's image and Render Blueprint are written and tested, waiting on the owner's Render account.** The empty chat answer found in 7.4 is fixed — see 8.0 for the fix and the re-measured cost.
 >
 > | phase | state |
 > |---|---|
@@ -29,9 +29,21 @@
 > - **The artifacts are built in CI (8.1, done).** `python -m rag.fetch`
 >   downloads the CBA PDF and refuses any copy that does not match the pinned
 >   sha256 (D20); the `artifacts` job builds `nbacba.db` and `cba-index.db` and
->   uploads them as `nbacba-artifacts` for 8.3 to bundle. The deployed API needs
->   only the index, never the PDF. The index build is **byte-identical** run to
->   run, which D19's permalink quote hashes depend on.
+>   uploads them as `nbacba-artifacts`. The deployed API needs only the index,
+>   never the PDF. The index build is deterministic — same rows, same search
+>   ranks — which D19's permalink quote hashes depend on; it is byte-identical
+>   only on the same SQLite version (see 8.1).
+> - **The API deploys as a Docker image (8.3).** The `Dockerfile` repeats the
+>   fetch and both builds inside the image, so Render needs no CI artifact; the
+>   runtime stage keeps the virtualenv, the package sources and the two
+>   databases (83.5 MB), runs as a non-root user and cannot write to `build/`.
+>   `render.yaml` deploys `main` only once CI passes, and CI's `image` job
+>   builds it on every pull request.
+> - **The in-app spend cap is not a monthly cap on Render (8.5).** `Budget`
+>   counts in process memory, and the free tier restarts after every idle
+>   spell, so the count resets many times a day. It still stops a runaway
+>   burst. The monthly backstop is a spend limit on a dedicated Anthropic
+>   Console workspace, whose key is the one Render gets.
 > - **The artifacts are small and fast.** `nbacba.db` 532 KB in 0.3 s;
 >   `cba-index.db` 4.5 MB in 2 s. Building them at deploy time costs nothing.
 > - **Configuration is already environment-driven** (`.env.example` lists
@@ -609,10 +621,11 @@ platform-agnostic; only `apps/` knows where it runs.
 - [x] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source. *`python -m rag.fetch` (standard library only) tries NBA.com's copy, then the NBPA's, and writes the PDF only if it matches the sha256 pinned in `rag/fetch.py` (D20); a copy that downloads but differs is refused, because a silently revised PDF would move every page number and citation under the evals. CI caches the PDF under that file's hash. A new `artifacts` job, after the tests pass, builds both artifacts and uploads them as `nbacba-artifacts` (30 days).*
   - **CI now runs the tests that read the Agreement.** Every test needing the PDF had skipped in CI since Phase 5 (`test_tools.py`, the `rag` suite and others carry a `skipif`); with the file fetched they run, and the whole suite takes ~26s locally.
   - **The index is reproducible to the byte**: two fresh builds from the fetched PDF, and the local build every measurement here was taken against, have the same sha256. Not a given — D19's permalinks hash each dropped quote, and a non-deterministic build would trip their "the words have changed" warning on every deploy.
+  - **Corrected in 8.3: byte-identical only on the same SQLite version.** All three builds above were on one Mac (SQLite 3.50.4). The Docker image (Debian, SQLite 3.46.1) builds an index with a different sha256. Every table — chunks, citation map, definitions, cross-references, vocabulary — dumps identically, and full-text search returns the same rows with the same bm25 scores; only the FTS5 index's internal layout differs. The permalinks hash quote text, which is unchanged, so they are unaffected.
 - [ ] **8.2** Deploy `apps/web` to Vercel
-- [ ] **8.3** Deploy `apps/api` to Render, with the artifacts from 8.1 bundled
+- [ ] **8.3** Deploy `apps/api` to Render, with the artifacts from 8.1 bundled *— image and Blueprint done and tested; the deploy waits on the owner's account. A `Dockerfile` rather than Render's Python runtime, so the exact image can be built and run locally first; it builds the artifacts itself rather than downloading CI's, which would need a GitHub token on Render. Tested locally (`linux/amd64`): `/health` serves the dataset dates, CORS admits the configured origin and rejects another (400), and "What does the second apron restrict?" came back answered and verified with 22 citations in 17s.*
 - [ ] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app. *GitHub only for now, not PyPI (D22); name to settle — the owner suggested `nba-cba-agent`, but the engine imports no model, so `nba-cba-engine` may describe it better.*
-- [ ] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live
+- [ ] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live *— the 6.13 cap is per process and Render's free tier restarts after each idle spell, so it resets constantly: the monthly limit has to be set on a dedicated Anthropic Console workspace, and Render given that workspace's key.*
 - [ ] **8.6** Cold-start note: Render's free tier spins down after inactivity. *Settled (D21): the free tier, and a slow first load is accepted. The web app's ~30s wake message is already written; what remains is checking it against the deployed API.*
 - [ ] **8.7** README leading with the architecture thesis and the eval numbers *— its four-kinds table, which says validation is handled by the rules engine, is now true in chat as well (7.4).*
 - [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason *— both surfaces adjudicate with the engine now: the chat runs `validate_trade` and quotes the violated provision, and the trade builder (7.4) shows the same verdict with the numbers.*
