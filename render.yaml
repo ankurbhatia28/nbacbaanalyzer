@@ -1,0 +1,45 @@
+# Render Blueprint for the API (task 8.3). New -> Blueprint -> this repository.
+#
+# The image is the Dockerfile at the root: it fetches the CBA PDF by pinned
+# hash (D20) and builds both read-only artifacts (8.1, ADR-004) during the
+# build, so a deploy needs nothing from CI but a green check.
+#
+# Free plan (D21): spins down after ~15 minutes idle and takes ~30 seconds to
+# wake, which the web app says while it waits (8.6). A restart also resets the
+# in-process spend cap (6.13), so the monthly limit is set in the Anthropic
+# Console, on the workspace this key belongs to -- see 8.5.
+
+services:
+  - type: web
+    name: nbacba-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    # Deploy main only once CI has passed on it.
+    autoDeployTrigger: checksPass
+    buildFilter:
+      ignoredPaths:
+        - apps/web/**
+        - docs/**
+        - "**/*.md"
+    envVars:
+      - key: NBACBA_ENVIRONMENT
+        value: production
+      # Langfuse holds the traces when its keys are set (D16). A local file in
+      # a container that restarts every idle period would hold nothing.
+      - key: TRACE_ENABLED
+        value: "false"
+      - key: LANGFUSE_BASE_URL
+        value: https://cloud.langfuse.com
+      # Set in the dashboard, never here.
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: LANGFUSE_PUBLIC_KEY
+        sync: false
+      - key: LANGFUSE_SECRET_KEY
+        sync: false
+      # The Vercel URL, once 8.2 exists. Unset in production, no browser may
+      # call the API (api/origins.py).
+      - key: NBACBA_ALLOWED_ORIGINS
+        sync: false

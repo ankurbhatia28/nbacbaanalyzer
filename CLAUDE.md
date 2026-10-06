@@ -55,6 +55,9 @@ uv run python -m rag --out build/cba-index.db
 uv run --env-file .env uvicorn api.main:app --port 8000
 cd apps/web && npm ci && npm run dev                      # http://localhost:3000
 
+# The API as Render runs it (8.3): builds the artifacts inside the image
+docker build -t nbacba-api . && docker run --rm -p 8000:8000 --env-file .env nbacba-api
+
 # Web app checks (apps/web)
 npm run typecheck && npm test && npm run build
 ```

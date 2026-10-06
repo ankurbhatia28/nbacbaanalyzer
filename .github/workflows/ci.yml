@@ -98,6 +98,16 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+  # The image Render deploys (8.3), built but not pushed: a Dockerfile that
+  # breaks should fail here, on the pull request, not on Render after merge.
+  # Render deploys only once these checks pass (render.yaml).
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the API image
+        run: docker build -t nbacba-api .
+
   # Blocking as of Phase 4: the suite reports a real pass rate, so a regression
   # in it is a regression in the engine.
   evals:
