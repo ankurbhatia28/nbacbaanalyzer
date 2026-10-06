@@ -757,6 +757,7 @@ version = "0.1.0"
 source = { editable = "packages/agent" }
 dependencies = [
     { name = "anthropic" },
+    { name = "httpx2" },
     { name = "nbacba-data" },
     { name = "nbacba-engine" },
     { name = "nbacba-rag" },
@@ -770,6 +771,7 @@ langfuse = [
 [package.metadata]
 requires-dist = [
     { name = "anthropic", specifier = ">=0.40" },
+    { name = "httpx2", specifier = ">=2.0" },
     { name = "langfuse", marker = "extra == 'langfuse'", specifier = ">=3.0" },
     { name = "nbacba-data", editable = "packages/data" },
     { name = "nbacba-engine", editable = "packages/engine" },

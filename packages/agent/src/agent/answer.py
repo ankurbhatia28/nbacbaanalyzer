@@ -40,6 +40,7 @@ from .intent import Plan
 from .intent import plan as build_plan
 from .llm import Caller, JsonDict, JsonReplyError, Ledger, Reply, ToolRequest
 from .models import Role, model_for
+from .openrouter import BILLING_COOLDOWN
 from .router import Routing, route
 from .tools import Resources, call, specs
 from .trace import Kind, Span, Trace
@@ -184,6 +185,12 @@ class Verdict:
     A verdict rather than an exception, so a caller gets the same shape back
     whatever happened, and the reason reaches the user instead of a 500.
     """
+    fallback: str | None = None
+    """
+    Why a free fallback model answered some of this, if one did (D23). The
+    reader is told: it is measurably weaker than the default, if not by much.
+    """
+    fallback_model: str | None = None
 
     @property
     def supported(self) -> bool:
@@ -369,14 +376,25 @@ def answer(
 
     # Checked before the first model call, because the point of a spend cap is
     # to not spend.
+    #
+    # The rate limit always refuses. The spend cap refuses only when there is
+    # nothing free to fall back to (D23): a caller that can switch is told to,
+    # and the question goes ahead on the fallback.
     if budget is not None:
         try:
             budget.check_rate()
-            budget.check_spend()
+            try:
+                budget.check_spend()
+            except BudgetError as exc:
+                engage = getattr(caller, "engage", None)
+                if engage is None:
+                    raise
+                engage(f"this server's spend cap has been reached ({exc})", BILLING_COOLDOWN)
         except BudgetError as exc:
             verdict.over_budget = str(exc)
             verdict.text = f"I cannot take that request right now: {exc}"
             return verdict
+    answered_by: dict[Role, str] = {}
 
     def tracked(
         *,
@@ -422,6 +440,14 @@ def answer(
         )
         span.metadata["requested_tools"] = [r.name for r in reply.tool_requests]
         spent.record(role, reply.usage)
+        # Asked of the caller rather than inferred from reply.model, which a
+        # stub or an eval's pinned model would also change.
+        if getattr(caller, "engaged", False):
+            answered_by[role] = reply.model
+            verdict.fallback_model = reply.model
+            verdict.fallback = (
+                getattr(caller, "reason", None) or "the default model was unavailable"
+            )
         return reply
 
     def finish() -> Verdict:
@@ -450,7 +476,9 @@ def answer(
                 tool_calls=len(verdict.tool_calls),
                 seconds=time.monotonic() - started,
                 trace_units=trace.units,
-                models={role: model_for(role).model for role in Role},
+                # The models that actually answered: a fallback's free tokens
+                # must not be priced as Sonnet's.
+                models={role: answered_by.get(role, model_for(role).model) for role in Role},
             )
         return verdict
 

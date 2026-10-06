@@ -18,6 +18,9 @@ key should stop the process, not produce a 500 for whoever asks first.
                             http://localhost:3000
     NBACBA_ENVIRONMENT      trace environment (default development)
     ANTHROPIC_API_KEY       required
+    OPENROUTER_API_KEY      optional; when set, a free model answers while
+                            Anthropic cannot -- spend cap, rate limit,
+                            overload (D23). OPENROUTER_MODEL overrides which.
     LANGFUSE_*              optional; traces go to Langfuse when set (D16)
     TRACE_ENABLED, TRACE_EXPORT_DIR
                             the local JSONL copy of every trace (6.10a)
@@ -37,7 +40,8 @@ from fastapi import FastAPI
 
 from agent import langfuse_export
 from agent.budget import ANTHROPIC_PRICES, Budget
-from agent.llm import AnthropicCaller
+from agent.llm import AnthropicCaller, Caller
+from agent.openrouter import FallbackCaller, OpenRouterCaller
 from agent.tools import Resources
 from agent.trace import CappedExporter, Exporter, FileExporter, NullExporter
 from nbadata.db import open_readonly
@@ -89,12 +93,20 @@ def exporter(budget: Budget) -> Exporter:
     return CappedExporter(inner, max_units=budget.max_trace_units)
 
 
+def caller() -> Caller:
+    """Anthropic, with the free fallback in front of it when there is a key for one."""
+    primary = AnthropicCaller()
+    if not os.environ.get("OPENROUTER_API_KEY"):
+        return primary
+    return FallbackCaller(primary=primary, fallback=OpenRouterCaller())
+
+
 def build() -> FastAPI:
     budget = Budget(prices=ANTHROPIC_PRICES)
     environment = os.environ.get("NBACBA_ENVIRONMENT", "development")
     service = Service(
         res=resources(),
-        caller=AnthropicCaller(),
+        caller=caller(),
         budget=budget,
         exporter=exporter(budget),
         environment=environment,

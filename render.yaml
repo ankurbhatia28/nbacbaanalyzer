@@ -39,6 +39,10 @@ services:
         sync: false
       - key: LANGFUSE_SECRET_KEY
         sync: false
+      # The free fallback (D23); optional. Unset, the app refuses at the
+      # spend cap instead of switching.
+      - key: OPENROUTER_API_KEY
+        sync: false
       # The Vercel URL, once 8.2 exists. Unset in production, no browser may
       # call the API (api/origins.py).
       - key: NBACBA_ALLOWED_ORIGINS
