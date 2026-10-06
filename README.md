@@ -66,9 +66,11 @@ docs/              Build plan, division of labor, ADRs.
 
 ## Status
 
-Built and running locally: rules engine, league database and query layer, CBA
-retrieval, agent, API, and a web app with chat, a cap sheet per team and a
-trade builder. Not yet deployed (Phase 8). See [docs/build-plan.md](docs/build-plan.md).
+**Live at https://nbacbaanalyzer.vercel.app** (the API sleeps when idle and
+takes about 30 seconds to wake). Rules engine, league database and query layer,
+CBA retrieval, agent, API, and a web app with chat, a cap sheet per team and a
+trade builder. The rest of Phase 8 — README, demo, write-up — is in
+[docs/build-plan.md](docs/build-plan.md).
 
 ## Development
 

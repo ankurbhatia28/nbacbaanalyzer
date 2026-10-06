@@ -2,7 +2,7 @@
 
 Companion to [`build-plan.md`](./build-plan.md). Task numbering matches that file exactly.
 
-> **Status (2026-10-05): Phases 0–7 complete; Phase 8 (Ship) under way — 8.0 and 8.1 done.** Where things stand, and what Phase 8 needs decided first, is in the header of [`build-plan.md`](./build-plan.md). This file's §1 inventory, §2 ownership table and §6 decisions (D1–D24) are current; §4.3, §5 and §7 are kept as the record of how the work was planned in Phase 0 and are not a to-do list. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
+> **Status (2026-10-06): the app is live; Phases 0–7 complete; Phase 8 8.0–8.4 done, 8.5 and 8.6 one check each, 8.7–8.9 to do. Next: time a cold start (8.6).** Where things stand, and the steps for the next session, are in the header of [`build-plan.md`](./build-plan.md). This file's §1 inventory, §2 ownership table and §6 decisions (D1–D24) are current; §4.3, §5 and §7 are kept as the record of how the work was planned in Phase 0 and are not a to-do list. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
 
 **Legend**
 
@@ -116,11 +116,12 @@ Phases renumbered for the rescope — see [`build-plan.md`](./build-plan.md). Ph
 
 | Task | Owner | Notes |
 |---|---|---|
-| 8.0 Empty validation answer | `CLAUDE` | Done. Mean $0.12 a trade question, down from $0.24 (and empty two times in three); figures in build-plan 8.0 |
-| 8.1 CI build pipeline | `CLAUDE` | PDF fetched by URL and checked by hash — D20 |
-| 8.2–8.3 Vercel + Render deploys | `BOTH` | I write config, Dockerfile and CI; **you own the accounts, linking the repo, and the deploy** |
-| 8.5 Secrets and spend cap | `YOU` | Platform env vars and the cap on the model key |
-| 8.6 Always-on vs free tier | `YOU` | Settled: free tier (D21) |
+| 8.0 Empty validation answer | `CLAUDE` | Done. Mean $0.12 a trade question, down from $0.24 (and empty two times in three); figures in build-plan 8.0. Since `validate_trade`, $0.055–0.07 |
+| 8.0a Free fallback (D23) | `CLAUDE` | Done (#57). **You:** a separate low-limit `OPENROUTER_API_KEY` on Render to turn it on |
+| 8.1 CI build pipeline | `CLAUDE` | Done. PDF fetched by URL and checked by hash — D20 |
+| 8.2–8.3 Vercel + Render deploys | `BOTH` | Done 2026-10-05: nbacbaanalyzer.vercel.app, nbacba-api.onrender.com |
+| 8.5 Secrets and spend cap | `YOU` | Keys set; Langfuse verified in production (#56). **Left:** confirm the workspace spend limit; the Anthropic key expires ~2026-11-04 |
+| 8.6 Always-on vs free tier | `BOTH` | Settled: free tier (D21). Wake message fixed (#54); **left: time a real wake** — steps in the build-plan header |
 | 8.4, 8.7 package + README | `CLAUDE` | 8.4 done: `nba-cba-engine`, GitHub-only (D22) |
 | 8.8 Demo video | `YOU` | I can script it and pick the cases |
 | 8.9 Write-up | `BOTH` | I can draft, but **it should sound like you** |
