@@ -19,6 +19,7 @@ import type { AnswerCard as Card } from "@/lib/card";
 
 import { AnswerCard } from "./AnswerCard";
 import { ShareLink } from "./ShareLink";
+import { WakeNote } from "./WakeNote";
 
 const MAX_CHARS = 500;
 
@@ -52,6 +53,8 @@ function Working({ progress, started }: { progress: Progress[]; started: number 
         Working… {Math.round((now - started) / 1000)}s
         {steps.length === 0 && " — this usually takes 10 to 20 seconds"}
       </p>
+      {/* A warm server sends "started" at once; nothing at all means it is waking. */}
+      {progress.length === 0 && <WakeNote />}
       <ol className="steps">
         {steps.map((p, i) => (
           <li key={i} className={i === steps.length - 1 ? "step step-current" : "step"}>
