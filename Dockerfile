@@ -16,7 +16,9 @@ COPY --from=ghcr.io/astral-sh/uv:0.8.15 /uv /bin/uv
 ENV UV_LINK_MODE=copy UV_COMPILE_BYTECODE=1 UV_PYTHON_DOWNLOADS=never
 WORKDIR /app
 COPY . .
-RUN uv sync --frozen --all-packages --no-dev
+# The langfuse extra: without it, keys set on Render select the Langfuse
+# exporter and every trace is dropped on import (found in 8.5).
+RUN uv sync --frozen --all-packages --no-dev --extra langfuse
 RUN uv run --no-sync python -m rag.fetch \
  && uv run --no-sync python -m nbadata.ingest.load --out build/nbacba.db \
  && uv run --no-sync python -m rag --out build/cba-index.db

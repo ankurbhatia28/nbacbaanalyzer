@@ -30,8 +30,10 @@ services:
       # a container that restarts every idle period would hold nothing.
       - key: TRACE_ENABLED
         value: "false"
+      # The project's region: keys from a US project are rejected by the EU
+      # host (cloud.langfuse.com), which is where this first pointed (8.5).
       - key: LANGFUSE_BASE_URL
-        value: https://cloud.langfuse.com
+        value: https://us.cloud.langfuse.com
       # Set in the dashboard, never here.
       - key: ANTHROPIC_API_KEY
         sync: false
