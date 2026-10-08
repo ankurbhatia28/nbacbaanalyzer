@@ -2,7 +2,7 @@
 
 > ## Where this stands
 >
-> **The app is live: https://nbacbaanalyzer.vercel.app, with the API at https://nbacba-api.onrender.com (since 2026-10-05).** Phases 0–7 are complete. Phase 8's engineering is done: 8.0–8.6 are ticked (8.5 and 8.6 closed 2026-10-07). What is left is writing — 8.7 README, 8.8 demo, 8.9 write-up — plus one dated chore and one owner decision below. Last merges: PRs #54–#58 (2026-10-06); run `gh pr list` before branching.
+> **The app is live: https://nbacbaanalyzer.vercel.app, with the API at https://nbacba-api.onrender.com (since 2026-10-05).** Phases 0–7 are complete. Phase 8: 8.0–8.7 done; 8.8's script is written and the owner records it; 8.9, the write-up, is the owner's. **Ready to share with testers**: [`testing.md`](testing.md) is what to send them, and each answer has a "Report a problem" link (A3). Last merges: PRs #54–#59; run `gh pr list` before branching.
 >
 > | phase | state |
 > |---|---|
@@ -10,22 +10,24 @@
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
 > | 6 Agent layer | done |
 > | 7 Interface | done — chat, answer card, permalinks, cap sheet, trade builder |
-> | 8 Ship | **live** — 8.0–8.6 done; 8.7–8.9 (README, demo, write-up) to do |
-> | After launch | debugging from real use — see "After launch" below (A1: cap space) |
+> | 8 Ship | **live** — 8.0–8.7 done; 8.8 owner to record ([script](demo-script.md)); 8.9 owner writing |
+> | After launch | A1 cap space, A2 award questions (D6 amended), A3 tester feedback — see "After launch" below |
 >
 > ### Next session: start here
 >
 > 1. **Dated chore, owner: replace the Anthropic API key on Render in the last
->    week of October 2026.** It expires around 2026-11-04. Render →
->    Environment → `ANTHROPIC_API_KEY`; saving redeploys. Then ask one question
->    on the live site and check its trace reaches Langfuse.
-> 2. **Owner decision, before the demo (8.8):** do settled facts like MVP
->    awards count as "past season" under D6? They are refused as historical
->    today, which limits what the demo can show.
-> 3. **8.7 README**, then **8.8 demo** (Claude scripts, owner records), then
->    **8.9 write-up**. They quote eval numbers; the ones below are current.
+>    week of October 2026.** It expires around 2026-11-04, and an expired key
+>    is **not** covered by the free fallback (8.0a switches on spend limits,
+>    rate limits and outages, not a 401), so chat would fail outright while the
+>    cap sheet and trade builder kept working. Render → Environment →
+>    `ANTHROPIC_API_KEY`; saving redeploys. Then ask one question on the live
+>    site and check its trace reaches Langfuse.
+> 2. **Tester reports** arrive as GitHub issues titled "Answer report: …", each
+>    with a permalink to the exact answer. Treat each like A1: reproduce, fix,
+>    record the before and after, re-run the eval that guards it.
 >
-> Not urgent: the engine's import name is the generic `engine` (8.4).
+> Not urgent: the engine's import name is the generic `engine` (8.4); 3.14 and
+> 3.16 stay partial, for the reasons given there.
 >
 > **Cold start, measured 2026-10-07 (8.6):** a wake takes **~31 s**, against
 > ~0.26 s warm. Twice: `curl /health` after a night idle took 31.5 s; a
@@ -89,8 +91,8 @@
 >
 > Decisions D1–D24 live in [`division-of-labor.md`](division-of-labor.md).
 > The measured results worth knowing before changing anything:
-> **router 88.9%** exact-set (6.1), **provision naming 80%** against a 100%
-> ceiling (6.3), **retrieval recall@1 34%** (5.8), **adversarial 0–4 misleading
+> **router 95–97%** exact-set on 60 questions (6.1, re-run 2026-10-07; 88.9% on
+> the original 45), **provision naming 84%** against a 100% ceiling (6.3), **retrieval recall@1 34%** (5.8), **adversarial 0–4 misleading
 > failures in 30**, variance included (6.11), **97% of the answer role's input
 > served from cache** (6.8).
 
@@ -640,9 +642,9 @@ platform-agnostic; only `apps/` knows where it runs.
 - [x] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app. *`nba-cba-engine` (D22), GitHub only: `pip install "nba-cba-engine @ git+https://github.com/ankurbhatia28/nbacbaanalyzer#subdirectory=packages/engine"`. No dependencies; import name `engine`; MIT, with a `LICENSE` at the root (the repository had none). `packages/engine/README.md` carries a worked example that was run, not written. CI's `engine-package` job builds the wheel, installs it into an empty environment and runs the engine's 197 tests there, outside the workspace, so a dependency on the rest of the repository cannot hide. Not done: a generic top-level import name, `engine`, could collide with another package's; renaming it would touch every import in the repository, so it waits for a reason.*
 - [x] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live *— the 6.13 cap is per process and Render's free tier restarts after each idle spell, so it resets constantly: the monthly limit has to be set on a dedicated Anthropic Console workspace, and Render given that workspace's key. Done: the workspace and its key (expiring around 2026-11-04 — replace before then). **Traces never reached Langfuse until #56:** the image lacked the SDK (an optional extra), so every trace was dropped in silence, and `render.yaml` pointed at the EU host while the project is in the US region. Since #56, the API refuses to start with keys but no SDK; verified 2026-10-06, a production question's trace arrived within ~10s. **Closed 2026-10-07:** the owner confirmed the workspace's monthly spend limit is set, and put a separate `OPENROUTER_API_KEY` ($5 limit) on Render, which turns on the fallback (8.0a). **Still owed, by date: replace the Anthropic key on Render in the last week of October** (it expires around 2026-11-04; Render → Environment, which redeploys itself).*
 - [x] **8.6** Cold-start note: Render's free tier spins down after inactivity. *Settled (D21): the free tier, and a slow first load is accepted. **Found on deploy: the ~30s wake message never showed.** It was written for a failed request, but Render holds a request while the server wakes rather than failing it, so the page just waited ("Working… 35s — this usually takes 10 to 20 seconds"). `WakeNote` now explains the wait after 8 seconds with no response — in chat, only when not even the `started` event has arrived, which a warm server sends at once — and on the team list, cap sheet and trade check. **Timed 2026-10-07: a wake takes ~31 s, a warm request ~0.26 s.** `curl /health` after a night idle: 31.5 s, then 0.25–0.28 s. A headless browser (Playwright) opening `/cap/DEN` after 20 minutes idle: the page rendered at 2.2 s, the `WakeNote` appeared at 10.6 s, and the API answered at 33.6 s, when the note went and the sheet showed. The note's "about 30 seconds" is accurate. Within D21's accepted ~30 s, so no keep-warm ping: it would spend the free hours to save a wait the page already explains.*
-- [ ] **8.7** README leading with the architecture thesis and the eval numbers *— its four-kinds table, which says validation is handled by the rules engine, is now true in chat as well (7.4).*
-- [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason *— both surfaces adjudicate with the engine now: the chat runs `validate_trade` and quotes the violated provision, and the trade builder (7.4) shows the same verdict with the numbers.*
-- [ ] **8.9** Write-up on the eval harness and the deterministic citation path
+- [x] **8.7** README leading with the architecture thesis and the eval numbers *— done 2026-10-07: a "Measured" table (engine against 184 real trades and 633 mutants, routing, provision naming, adversarial, retrieval for contrast, cost), each with the command that produces it; the scope and unknowns stated; and examples the app actually answers — two of the old ones ("Bird rights in the past two seasons", "last season") were questions it refuses under D6.*
+- [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason *— both surfaces adjudicate with the engine now: the chat runs `validate_trade` and quotes the violated provision, and the trade builder (7.4) shows the same verdict with the numbers. **Script written 2026-10-07: [`demo-script.md`](demo-script.md); the owner records.** Every case in it was run that day. Hart for Booker is not legal (NYK, over the first apron, fails the Expanded TPE, Art. VII §6(j)(1)(iv)), and the trade builder agrees to the citation. Two rumour-style trades first tried were refused on their premise — the snapshot has Hachimura on the Clippers and Jaylen Brown on the 76ers — which became a segment of its own: it asks rather than ruling on a trade that cannot happen.*
+- [ ] **8.9** Write-up on the eval harness and the deterministic citation path *— the owner is writing it (2026-10-07).*
 
 ## v2 — deferred
 
@@ -659,6 +661,13 @@ Not in v1. Listed so they stay out of scope rather than drifting in.
 Found by using the deployed app. Each records the question, what it cost before and after, and the eval that checked nothing else moved.
 
 - [x] **A1** **"What team has the most cap space available?" ran out of tool calls with no answer.** The chat had no tool for a team's position, so the model rebuilt it from rows: five definition fetches, then contract sums by season, picking 2031-32 (four teams with data) before 2026-27. Measured locally: **6 rounds, 12 tool calls, 58s, $0.10, budget exhausted.** `team_cap_position` returns the cap sheet's own totals (7.5) for every team in one call — cap salary with holds, apron salary, distance below the cap, tax line and both aprons, status, hard cap — sorted by room; prompt rule 7 sends cap-space questions to it and asks for one citation in the same turn. After, two runs: **2 rounds, 4 tool calls (one turn), 8–16s, $0.028–0.038**, Chicago at $2,999,133 below the cap, no unsourced figures. Adversarial (6.11): **30/30 held, 0 over-refused**, 2.9 tool calls per question.
+
+- [x] **A2** **Award questions were refused as historical** (D6, amended by the owner 2026-10-07). "Which players have won MVP?" was labelled data in the router eval but refused live, although the awards table holds All-NBA, DPOY and MVP for 2020-21 to 2025-26 — they decide Higher Max eligibility. Now answered for those seasons; earlier seasons and other awards are still refused. Three changes, each found by asking the questions end to end, not by the router eval:
+  - **router**: the three awards from 2020-21 are data, past season or not. Five new cases (60 in all). **90.9% → 96.7%, 95.0%, 96.7%**; refusal recall 100% on every run. "Which draft picks have been forfeited?" is still refused on every run, as it was before.
+  - **"Last season" was the wrong season.** Nothing told the answer role which season the data describes, so it took "last season" as 2024-25 and named the wrong DPOY. The system prompt now names `CURRENT_SEASON` (a constant, so the cache is unaffected).
+  - **The wrong provision, and a paragraph rebutting it.** The intent step chose "league honors", which in the Agreement is the In-Season Tournament's own MVP (Art. XX §4); the answer then spent most of its words explaining why that and an All-Star bonus clause did not apply, "as you flagged". Intent now names "generally recognized league honors" (Art. I §1(cc), which lists all three awards) and answer rule 8 cites it and drops provisions that do not bear on the question. After: four award questions, each one citation, $0.012–0.036.
+  - Regression checks: provision naming **84%** (was 80%); adversarial **26/30, then 28/30** on this change against **28/30** on `main` run side by side — 2 misleading each, inside 6.11's 0–4 band; 802 tests.
+- [x] **A3** **Ready for testers.** A "Report a problem with this answer" link opens a GitHub issue pre-filled with the question and the answer's permalink, so a report can be reopened exactly as given (a permalink past GitHub's URL limit is left for the reporter to paste). The footer says questions are logged and that the free fallback's provider may keep what it is sent (D23). [`testing.md`](testing.md) is the page to send testers: what to try, what is declined on purpose, the unknowns, the ~30 s wake.
 
 ---
 
