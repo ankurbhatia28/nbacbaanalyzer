@@ -190,7 +190,7 @@ def test_the_labelled_set_is_balanced_enough_to_measure():
     from collections import Counter
 
     counts = Counter(i for case in CASES for i in case.expected)
-    assert len(CASES) == 55
+    assert len(CASES) == 60
     assert min(counts.values()) >= 7
     assert max(counts.values()) <= len(CASES) // 3
 

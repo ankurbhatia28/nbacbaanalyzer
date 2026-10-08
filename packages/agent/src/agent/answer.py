@@ -33,6 +33,7 @@ import sqlite3
 import time
 from dataclasses import dataclass, field
 
+from nbadata.state import CURRENT_SEASON
 from rag.retrieve import figures_in
 
 from .budget import Budget, BudgetError, RequestCost, measure
@@ -96,7 +97,13 @@ REFUSAL_BASIS = {
     ),
 }
 
-SYSTEM = """You answer questions about the NBA Collective Bargaining Agreement.
+SYSTEM = (
+    """You answer questions about the NBA Collective Bargaining Agreement.
+
+The league data describes the """
+    + CURRENT_SEASON
+    + """ season. "This season" means that one and "last
+season" the one before it; do not work out the season from today's date.
 
 You have tools and you must use them. The rules below are not style preferences.
 
@@ -146,7 +153,15 @@ You have tools and you must use them. The rules below are not style preferences.
    space -- and you can request it alongside team_cap_position in the same
    turn. Do not fetch a chain of definitions to explain a figure.
 
+8. Award winners (All-NBA, Defensive Player of the Year, MVP) come from
+   query_league_data's awards entity, which holds every season from 2020-21.
+   One citation grounds the answer: Art. I §1(cc), Generally Recognized League
+   Honors, which names these awards. Art. XX §4 is the In-Season Tournament's
+   own MVP, a different award. Provisions handed to you that turn out not to
+   bear on the question are simply left out -- do not explain why.
+
 Say what you found, cite it, and say what you had to assume. Be brief."""
+)
 
 
 @dataclass

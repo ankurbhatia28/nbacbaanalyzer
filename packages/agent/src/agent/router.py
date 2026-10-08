@@ -54,7 +54,9 @@ DESCRIPTIONS: dict[Intent, str] = {
     ),
     Intent.DATA: (
         "A fact about the league as it stands now: salaries, contracts, options, cap holds, "
-        "picks, ceilings, awards. Answered by a query. 'How much is Denver committed for?'"
+        "picks, ceilings -- and the All-NBA, Defensive Player of the Year and MVP awards "
+        "from 2020-21 on, past seasons included. Answered by a query. 'How much is Denver "
+        "committed for?' 'Who won MVP in 2023-24?'"
     ),
     Intent.VALIDATION: (
         "Whether a specific proposed transaction is permitted. There is a deal on the table. "
@@ -65,7 +67,8 @@ DESCRIPTIONS: dict[Intent, str] = {
         "what are the limitations the 76ers have?'"
     ),
     Intent.REFUSED: (
-        "Out of scope. Historical questions about past seasons (only current state is held); "
+        "Out of scope. Historical questions about past seasons (only current state is held, "
+        "except the three awards above); "
         "requests for an opinion on whether a team should do something rather than whether "
         "it may; and anything that is not about NBA player contracts, team payrolls, the salary "
         "cap, trades, or the Collective Bargaining Agreement."
@@ -93,6 +96,13 @@ Rules:
   not about NBA player contracts, team payrolls, the salary cap, trades, or the
   Collective Bargaining Agreement -- other topics, and NBA questions about games,
   scores, statistics or news (basis "off_topic"). Nothing else is refused.
+- One exception to "historical": the All-NBA, Defensive Player of the Year
+  and MVP winners are held for every season from 2020-21 on, because they
+  decide who qualifies for a higher maximum salary. A question about those
+  three awards in those seasons is data, past season or not -- "Who won MVP
+  last season?", "Which players have won MVP?". The same awards before
+  2020-21, and any other award (Rookie of the Year, Sixth Man, All-Star), are
+  still historical.
 - A question about a player's or team's contract, salary, cap position or
   trade options is on topic, however casually it is put. "What's Jokic making
   this year?" is data. Do not refuse a cap question because it names a person.
