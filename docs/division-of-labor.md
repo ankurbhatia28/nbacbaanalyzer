@@ -2,7 +2,7 @@
 
 Companion to [`build-plan.md`](./build-plan.md). Task numbering matches that file exactly.
 
-> **Status (2026-10-07): the app is live; Phases 0–7 complete; Phase 8 8.0–8.6 done, 8.7–8.9 (README, demo, write-up) to do. Owner: replace the Anthropic key on Render in the last week of October.** Where things stand, and the steps for the next session, are in the header of [`build-plan.md`](./build-plan.md). This file's §1 inventory, §2 ownership table and §6 decisions (D1–D24) are current; §4.3, §5 and §7 are kept as the record of how the work was planned in Phase 0 and are not a to-do list. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
+> **Status (2026-10-07): the app is live and ready for testers; Phases 0–7 complete; Phase 8 8.0–8.7 done, 8.8 scripted (owner records), 8.9 the owner's. Owner: replace the Anthropic key on Render in the last week of October.** Where things stand, and the steps for the next session, are in the header of [`build-plan.md`](./build-plan.md). This file's §1 inventory, §2 ownership table and §6 decisions (D1–D24) are current; §4.3, §5 and §7 are kept as the record of how the work was planned in Phase 0 and are not a to-do list. Scrapers and caveats: [`scraper/README.md`](../scraper/README.md).
 
 **Legend**
 
@@ -122,9 +122,9 @@ Phases renumbered for the rescope — see [`build-plan.md`](./build-plan.md). Ph
 | 8.2–8.3 Vercel + Render deploys | `BOTH` | Done 2026-10-05: nbacbaanalyzer.vercel.app, nbacba-api.onrender.com |
 | 8.5 Secrets and spend cap | `YOU` | Done 2026-10-07: workspace spend limit confirmed; Langfuse verified (#56). **You, last week of October:** replace the Anthropic key on Render (expires ~2026-11-04) |
 | 8.6 Always-on vs free tier | `BOTH` | Done 2026-10-07. Free tier (D21); a wake measured ~31 s, warm ~0.26 s; the wake message shows at ~8 s (#54) |
-| 8.4, 8.7 package + README | `CLAUDE` | 8.4 done: `nba-cba-engine`, GitHub-only (D22) |
-| 8.8 Demo video | `YOU` | I can script it and pick the cases |
-| 8.9 Write-up | `BOTH` | I can draft, but **it should sound like you** |
+| 8.4, 8.7 package + README | `CLAUDE` | Both done. 8.4: `nba-cba-engine`, GitHub-only (D22). 8.7: 2026-10-07 |
+| 8.8 Demo video | `YOU` | Script and cases done: `docs/demo-script.md`. **You:** record it |
+| 8.9 Write-up | `YOU` | The owner is writing it (2026-10-07) |
 
 ## 3. The CBA reading question
 
@@ -229,7 +229,7 @@ Suggested order: Phase 0 → Phase 1 → the 4.2 parser (out of build-plan order
 | D3 | Vector store | **Local** — SQLite FTS5 + on-disk embeddings, no hosted service |
 | D4 | Tracing | **Raindrop, one trace per user session**, carrying user input, system prompt, every tool call and result, retrieved context, every intermediate model call, and the final output. Task 6.10. |
 | D5 | Phase ordering | Superseded by the rescope — see `build-plan.md` |
-| D6 | Historical scope | **Out of v1.** Current state only; historical questions are refused with a reason. Deferred to v2 item 11. |
+| D6 | Historical scope | **Out of v1.** Current state only; historical questions are refused with a reason. Deferred to v2 item 11. **Amended 2026-10-07 (owner):** the All-NBA, DPOY and MVP awards are answered for every season held, 2020-21 to 2025-26 — the data holds them for Higher Max eligibility, and refusing them made the app look narrower than it is. Earlier seasons and other awards stay refused. Build plan A2. |
 | D7 | Model the 2017 CBA | **No** |
 | D8 | Budget | **Local and minimal.** No *paid* hosted services in v1; hard spend cap on the model key (8.2). Free tiers on Vercel, Render and Raindrop are in scope — see D11 and D13 |
 | D9 | Incentive compensation | **Out of v1** |

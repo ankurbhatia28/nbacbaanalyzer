@@ -58,6 +58,10 @@ Two jobs.
    provisions costs far less than missing the one that answers the question.
    Name fewer only when you are confident.
 
+   A question about who won the MVP, Defensive Player of the Year or All-NBA
+   awards names "generally recognized league honors", which lists them. "League
+   honors" is the In-Season Tournament's own awards -- a different thing.
+
    Return an empty list only when the question is not about the Agreement's text
    at all. Never invent a name: one that is not in the list reaches nothing.
 

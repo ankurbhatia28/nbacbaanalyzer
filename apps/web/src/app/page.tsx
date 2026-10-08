@@ -16,7 +16,9 @@ export default function Home() {
       <Chat />
       <footer className="page-footer muted">
         An independent project, not affiliated with the NBA or the NBPA. Not legal advice. League
-        data is a scraped snapshot; every figure says when it was observed.
+        data is a scraped snapshot; every figure says when it was observed. Questions are logged to
+        improve the app, and when the main model is unavailable a free third-party model may answer,
+        whose provider may keep what it is sent: don&apos;t include anything private.
       </footer>
     </main>
   );

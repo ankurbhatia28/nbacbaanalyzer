@@ -1,13 +1,14 @@
 # NBA CBA Analyzer
 
 Ask a question about the NBA Collective Bargaining Agreement and get an answer a
-rules engine can defend.
+rules engine can defend. **Live at https://nbacbaanalyzer.vercel.app** —
+testers, start with [docs/testing.md](docs/testing.md).
 
 ```
+"Can the Knicks trade Josh Hart to Phoenix for Devin Booker?"   → Not legal, and the exception it fails, quoted
 "If I wanted to trade Embiid, what are the limitations the 76ers have?"
-"Is trading Jokić for Dončić straight up a valid trade?"
-"How many players re-signed using Bird rights in the past two seasons?"
-"Why can't the Suns aggregate salaries in a trade?"
+"Which team has the most cap space?"
+"Should the Nuggets trade Jamal Murray?"                        → declined: allowed can be checked, wise cannot
 ```
 
 ## The thesis
@@ -37,12 +38,38 @@ Questions fall into four kinds, and each routes to different machinery:
 | Kind | Example | Handled by |
 |---|---|---|
 | **Rules** | "What counts as a hardship exception?" | Retrieval over the CBA, with citations |
-| **Data** | "How many players used Bird rights last season?" | Structured query DSL → SQL |
+| **Data** | "How much are the Nuggets committed for in 2026-27?" | Structured query DSL → SQL |
 | **Validation** | "Is Jokić for Dončić legal?" | Rules engine → verdict + violations |
 | **Constraints** | "What limits the 76ers in trading Embiid?" | Rules engine → applicable restrictions |
 
 The model classifies and composes. Everything load-bearing is deterministic code
 with tests.
+
+Some questions are declined, with the reason: past seasons (only the current
+snapshot is held, apart from the All-NBA, DPOY and MVP awards from 2020-21 that
+decide max-salary eligibility), opinions about what a team *should* do, and
+anything off topic. Contract details no source publishes — guarantees, trade
+kickers, no-trade clauses — are **unknown, never zero**, and a verdict that
+rests on one says so ([ADR-003](docs/adr/0003-unknown-is-not-zero.md)).
+
+## Measured
+
+Each number comes from a command in this repository, and the build plan
+records how it was arrived at — including what was tried and made it worse.
+
+| What | Result | How |
+|---|---|---|
+| Engine against real trades | **184 / 184** trades from four seasons with no failed check — 344 salary-matching checks pass; 75 need state the snapshot lacks and are skipped, not guessed | `python -m nbadata.evals`, blocking in CI (4.4) |
+| Engine against illegal variants | **633 / 633** mutants caught, the reason right every time | the same run; boundary mutants sit $1 past the best lawful structure (4.6) |
+| Question routing | **95–97%** exact-set on 60 questions; refusals 100% | `python -m agent.router_cli` (6.1) |
+| Finding the right provision | **84%** of rules questions reach the text they are about | `python -m agent.intent_cli` (6.3) |
+| Adversarial prompts | 30 attempts to make it compute, recall or skip a lookup: **0–4 misleading answers** across runs (2 on 2026-10-07), almost all a figure it worked out itself; never an uncited rule | `python -m agent.adversarial_cli` (6.11) |
+| Plain retrieval, for contrast | recall@1 **34%**, recall@10 66% | `python -m rag.eval_cli` (5.8) — why the app names provisions rather than searching for them |
+| Cost per question | rules ~$0.04, data ~$0.03–0.05, a trade ~$0.05–0.07 | measured live (8.0, 8.3); 97% of the answer step's input is served from cache (6.8) |
+
+802 Python tests, including the CBA's own worked examples as golden tests and
+property-based invariants over the engine. Five real traced sessions are in
+[docs/traces/](docs/traces/).
 
 ## Layout
 
@@ -69,8 +96,7 @@ docs/              Build plan, division of labor, ADRs.
 **Live at https://nbacbaanalyzer.vercel.app** (the API sleeps when idle and
 takes about 30 seconds to wake). Rules engine, league database and query layer,
 CBA retrieval, agent, API, and a web app with chat, a cap sheet per team and a
-trade builder. The rest of Phase 8 — README, demo, write-up — is in
-[docs/build-plan.md](docs/build-plan.md).
+trade builder. What is left is in [docs/build-plan.md](docs/build-plan.md).
 
 ## Development
 
