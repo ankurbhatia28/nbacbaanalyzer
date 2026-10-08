@@ -2,7 +2,7 @@
 
 > ## Where this stands
 >
-> **The app is live: https://nbacbaanalyzer.vercel.app, with the API at https://nbacba-api.onrender.com (since 2026-10-05).** Phases 0–7 are complete. Phase 8 is nearly done: 8.0–8.4 are done, 8.5 and 8.6 are each waiting on one check, and 8.7–8.9 (README, demo, write-up) are still to do. Last merges: PRs #54–#57 (2026-10-06); #58 (8.4, the engine package) may still be open — run `gh pr list`.
+> **The app is live: https://nbacbaanalyzer.vercel.app, with the API at https://nbacba-api.onrender.com (since 2026-10-05).** Phases 0–7 are complete. Phase 8's engineering is done: 8.0–8.6 are ticked (8.5 and 8.6 closed 2026-10-07). What is left is writing — 8.7 README, 8.8 demo, 8.9 write-up — plus one dated chore and one owner decision below. Last merges: PRs #54–#58 (2026-10-06); run `gh pr list` before branching.
 >
 > | phase | state |
 > |---|---|
@@ -10,45 +10,29 @@
 > | 4 Ground-truth evals · 5 CBA retrieval | done |
 > | 6 Agent layer | done |
 > | 7 Interface | done — chat, answer card, permalinks, cap sheet, trade builder |
-> | 8 Ship | **live** — 8.0–8.4 done; 8.5, 8.6 one check each; 8.7–8.9 to do |
+> | 8 Ship | **live** — 8.0–8.6 done; 8.7–8.9 (README, demo, write-up) to do |
 > | After launch | debugging from real use — see "After launch" below (A1: cap space) |
 >
-> ### Next session: start here — the cold-start check (8.6)
+> ### Next session: start here
 >
-> The one open engineering item. Render's free tier (D21) spins the API down
-> after ~15 minutes with no requests; the first request after that waits while
-> it wakes. **What is done:** `WakeNote` (#54) tells the reader, after 8 seconds
-> with no response, that the server is waking — needed because Render *holds*
-> a request during the wake rather than failing it, so the original "could not
-> reach the API" message never showed. **What is not:** a real wake has never
-> been timed. The first attempt (a background `sleep 960` then `curl`) was
-> spoiled by live traffic keeping the server up — it measured 0.19 s.
+> 1. **Dated chore, owner: replace the Anthropic API key on Render in the last
+>    week of October 2026.** It expires around 2026-11-04. Render →
+>    Environment → `ANTHROPIC_API_KEY`; saving redeploys. Then ask one question
+>    on the live site and check its trace reaches Langfuse.
+> 2. **Owner decision, before the demo (8.8):** do settled facts like MVP
+>    awards count as "past season" under D6? They are refused as historical
+>    today, which limits what the demo can show.
+> 3. **8.7 README**, then **8.8 demo** (Claude scripts, owner records), then
+>    **8.9 write-up**. They quote eval numbers; the ones below are current.
 >
-> 1. Make sure nobody has used the site or API for 15+ minutes. Render's
->    dashboard (service `nbacba-api` → Events/Logs) shows when it spun down.
-> 2. Time the wake, then a warm request for comparison:
->    `curl -s -o /dev/null -w "%{http_code} %{time_total}s\n" https://nbacba-api.onrender.com/health`
-> 3. In a browser after another idle spell, open `/cap/DEN` or ask in chat and
->    check the `WakeNote` text appears after ~8 s and the page then loads.
-> 4. Record the seconds in 8.6 and tick it. If the wake is much worse than
->    ~30 s, the options are the owner's call (D21 accepted a slow first load):
->    a scheduled ping to `/health` every ~10 minutes keeps it warm — one
->    always-on free service fits Render's 750 free instance-hours a month — or a
->    paid instance.
+> Not urgent: the engine's import name is the generic `engine` (8.4).
 >
-> ### Also open, in rough order
->
-> - **8.5** — owner to confirm the Anthropic workspace's monthly spend limit is
->   set. The Render key **expires around 2026-11-04**; replace it before then
->   (Render → Environment; it redeploys itself). Optional: a separate,
->   low-limit `OPENROUTER_API_KEY` on Render turns on the free fallback (8.0a).
-> - **8.7** README, **8.8** demo (Claude scripts, owner records), **8.9**
->   write-up. They quote eval numbers, so they are best done once the
->   after-launch fixes settle.
-> - **Owner decision:** do settled facts like MVP awards count as "past season"
->   under D6? They are refused as historical today, which limits the demo.
-> - Not urgent: the engine's import name is the generic `engine` (8.4).
->
+> **Cold start, measured 2026-10-07 (8.6):** a wake takes **~31 s**, against
+> ~0.26 s warm. Twice: `curl /health` after a night idle took 31.5 s; a
+> headless browser opening `/cap/DEN` after 20 minutes idle showed the
+> `WakeNote` at 10.6 s and the sheet at 33.6 s (~31 s of it the API). D21's
+> "~30 s accepted" holds, so nothing keeps the server warm.
+
 > **What the running app is**, for a session that was not here: `apps/web`
 > (Next.js 16, on Vercel) has five pages — `/` chat, `/answer` a permalinked
 > answer (7.7), `/cap` and `/cap/[team]` the cap sheet, `/trade` the trade
@@ -61,7 +45,8 @@
 > totals (A1), so neither surface can disagree with the chat. Off-topic
 > questions are declined at the router (D24). When Anthropic cannot be used —
 > spend cap, rate limit, overload — a free OpenRouter model answers if
-> `OPENROUTER_API_KEY` is set (8.0a, D23), and the card says so. Traces go to
+> `OPENROUTER_API_KEY` is set — on Render it is, since 2026-10-07 (8.0a,
+> D23) — and the card says so. Traces go to
 > Langfuse (US region) with environment `production`.
 >
 > ### How it is deployed — facts worth knowing before changing it
@@ -636,7 +621,7 @@ platform-agnostic; only `apps/` knows where it runs.
 
   **Uncached input fell from 65–143k tokens a question to ~570.** That was the bill, more than thinking was. The spread that remains is the number of tool rounds (2 to 6). The 6.12 questions now cost **$0.037** (Standard TPE) and **~$0.05** (Nuggets committed salary — $0.125 in 7.0). **Adversarial set at `medium`, two runs: 1 misleading failure each** (cap math once, a "ballpark" MLE once), inside 6.11's 0–4 band; ~$1 a run.
   - **Tried and kept as fallback: 8,000 tokens at the default `high`.** It fixes the empty answer as well, at 27% more per question and 48% more time, and gave less consistent verdicts (one "No", two "not clearly legal") than `medium` (three "No").
-- [ ] **8.0a** *(added 2026-10-05)* **Free models as the over-cap fallback (D23).** Sonnet and Haiku stay the defaults; when the spend cap is reached, Nemotron 3 Ultra via OpenRouter answers instead of the app refusing. Evaluated through a prototype caller against the existing evals:
+- [x] **8.0a** *(added 2026-10-05)* **Free models as the over-cap fallback (D23).** Sonnet and Haiku stay the defaults; when the spend cap is reached, Nemotron 3 Ultra via OpenRouter answers instead of the app refusing. Evaluated through a prototype caller against the existing evals:
 
   | one run each | router | refusal recall | naming | adversarial (misleading / 30) | per question |
   |---|---|---|---|---|---|
@@ -645,7 +630,7 @@ platform-agnostic; only `apps/` knows where it runs.
   | Nemotron 3 Super (free) | 82.2% | **85.7%** | 64% | 1 | ~31s |
 
   - [x] **Found by it, fixed: a malformed tool argument failed the whole request.** Ultra sent `query_league_data` a `select` of bare strings; the `TypeError` escaped `tools.call`. Wrong-shaped arguments now come back to the model as an error it can correct, like an unknown tool name.
-  - [x] The OpenRouter caller in `packages/agent` (reasoning headroom on `max_tokens`, tool-call translation, retries on 503/429), and the fallback wired to the spend cap. *`agent.openrouter`: `OpenRouterCaller` translates Anthropic's message shape to OpenAI's and back, so the loop runs unchanged even when the switch happens mid-question; it accepts only `:free` model ids, so the key's credit is never spent. `FallbackCaller` switches on the in-process spend cap, on the Console's workspace limit (a 400 naming usage limits or credit), on 429 and on 5xx — not on a malformed request, which would hide a bug — and stays switched for an hour (billing) or a minute (capacity). The rate limit still refuses. The card warns when the fallback answered, and its tokens are priced at $0 rather than as Sonnet's. Off unless `OPENROUTER_API_KEY` is set. Live, forced: the Standard TPE question answered and verified with one citation in 22s, $0.00.*
+  - [x] The OpenRouter caller in `packages/agent` (reasoning headroom on `max_tokens`, tool-call translation, retries on 503/429), and the fallback wired to the spend cap. *`agent.openrouter`: `OpenRouterCaller` translates Anthropic's message shape to OpenAI's and back, so the loop runs unchanged even when the switch happens mid-question; it accepts only `:free` model ids, so the key's credit is never spent. `FallbackCaller` switches on the in-process spend cap, on the Console's workspace limit (a 400 naming usage limits or credit), on 429 and on 5xx — not on a malformed request, which would hide a bug — and stays switched for an hour (billing) or a minute (capacity). The rate limit still refuses. The card warns when the fallback answered, and its tokens are priced at $0 rather than as Sonnet's. Off unless `OPENROUTER_API_KEY` is set. Live, forced: the Standard TPE question answered and verified with one citation in 22s, $0.00. **On in production since 2026-10-07:** the owner set `OPENROUTER_API_KEY` on Render, a new key with a $5 credit limit as a backstop (only `:free` ids are accepted, so it should never be spent). Not yet seen to switch in production: it only does when Anthropic fails, and a card that says the fallback answered, or a Langfuse trace with the OpenRouter model, is the first sign.*
 - [x] **8.1** **Build pipeline in CI** — run ingest and indexing, emit `nbacba.db` and the retrieval index as deployment artifacts ([ADR-004](adr/0004-read-only-at-runtime.md)). Keeps them out of git and makes the whole dataset reproducible from source. *`python -m rag.fetch` (standard library only) tries NBA.com's copy, then the NBPA's, and writes the PDF only if it matches the sha256 pinned in `rag/fetch.py` (D20); a copy that downloads but differs is refused, because a silently revised PDF would move every page number and citation under the evals. CI caches the PDF under that file's hash. A new `artifacts` job, after the tests pass, builds both artifacts and uploads them as `nbacba-artifacts` (30 days).*
   - **CI now runs the tests that read the Agreement.** Every test needing the PDF had skipped in CI since Phase 5 (`test_tools.py`, the `rag` suite and others carry a `skipif`); with the file fetched they run, and the whole suite takes ~26s locally.
   - **The index is reproducible to the byte**: two fresh builds from the fetched PDF, and the local build every measurement here was taken against, have the same sha256. Not a given — D19's permalinks hash each dropped quote, and a non-deterministic build would trip their "the words have changed" warning on every deploy.
@@ -653,8 +638,8 @@ platform-agnostic; only `apps/` knows where it runs.
 - [x] **8.2** Deploy `apps/web` to Vercel *— https://nbacbaanalyzer.vercel.app. Root directory `apps/web`; `NEXT_PUBLIC_API_URL` is the Render URL, read at build time. Pull-request preview deploys get their own URLs, which the API's CORS list does not name, so previews cannot reach the API; only production can.*
 - [x] **8.3** Deploy `apps/api` to Render, with the artifacts from 8.1 bundled *— https://nbacba-api.onrender.com, from `render.yaml` (2026-10-05). `NBACBA_ALLOWED_ORIGINS` is the Vercel domain, not a deployment URL, which changes every deploy; preflight from it returns 200, from any other origin 400. The key is from a dedicated Anthropic workspace with its own spend limit (8.5). Live: the second-apron question answered and verified with 21 citations in 18s for $0.087 — about twice the local figure, because the first question on a fresh process writes the cache rather than reading it; an off-topic question was declined in 1.7s. A `Dockerfile` rather than Render's Python runtime, so the exact image can be built and run locally first; it builds the artifacts itself rather than downloading CI's, which would need a GitHub token on Render. Tested locally (`linux/amd64`): `/health` serves the dataset dates, CORS admits the configured origin and rejects another (400), and "What does the second apron restrict?" came back answered and verified with 22 citations in 17s.*
 - [x] **8.4** Publish `packages/engine` as a standalone installable package — a tested CBA rules engine is a portfolio artifact independent of the app. *`nba-cba-engine` (D22), GitHub only: `pip install "nba-cba-engine @ git+https://github.com/ankurbhatia28/nbacbaanalyzer#subdirectory=packages/engine"`. No dependencies; import name `engine`; MIT, with a `LICENSE` at the root (the repository had none). `packages/engine/README.md` carries a worked example that was run, not written. CI's `engine-package` job builds the wheel, installs it into an empty environment and runs the engine's 197 tests there, outside the workspace, so a dependency on the rest of the repository cannot hide. Not done: a generic top-level import name, `engine`, could collide with another package's; renaming it would touch every import in the repository, so it waits for a reason.*
-- [ ] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live *— the 6.13 cap is per process and Render's free tier restarts after each idle spell, so it resets constantly: the monthly limit has to be set on a dedicated Anthropic Console workspace, and Render given that workspace's key. Done: the workspace and its key (expiring around 2026-11-04 — replace before then). **Traces never reached Langfuse until #56:** the image lacked the SDK (an optional extra), so every trace was dropped in silence, and `render.yaml` pointed at the EU host while the project is in the US region. Since #56, the API refuses to start with keys but no SDK; verified 2026-10-06, a production question's trace arrived within ~10s. Left: the owner confirming the workspace's monthly limit, and, to turn on the fallback (8.0a), a separate low-limit `OPENROUTER_API_KEY` on Render.*
-- [ ] **8.6** Cold-start note: Render's free tier spins down after inactivity. *Settled (D21): the free tier, and a slow first load is accepted. **Found on deploy: the ~30s wake message never showed.** It was written for a failed request, but Render holds a request while the server wakes rather than failing it, so the page just waited ("Working… 35s — this usually takes 10 to 20 seconds"). `WakeNote` now explains the wait after 8 seconds with no response — in chat, only when not even the `started` event has arrived, which a warm server sends at once — and on the team list, cap sheet and trade check. What remains: timing a real wake.*
+- [x] **8.5** Environment and secrets per platform; confirm the spend cap from 6.13 is live *— the 6.13 cap is per process and Render's free tier restarts after each idle spell, so it resets constantly: the monthly limit has to be set on a dedicated Anthropic Console workspace, and Render given that workspace's key. Done: the workspace and its key (expiring around 2026-11-04 — replace before then). **Traces never reached Langfuse until #56:** the image lacked the SDK (an optional extra), so every trace was dropped in silence, and `render.yaml` pointed at the EU host while the project is in the US region. Since #56, the API refuses to start with keys but no SDK; verified 2026-10-06, a production question's trace arrived within ~10s. **Closed 2026-10-07:** the owner confirmed the workspace's monthly spend limit is set, and put a separate `OPENROUTER_API_KEY` ($5 limit) on Render, which turns on the fallback (8.0a). **Still owed, by date: replace the Anthropic key on Render in the last week of October** (it expires around 2026-11-04; Render → Environment, which redeploys itself).*
+- [x] **8.6** Cold-start note: Render's free tier spins down after inactivity. *Settled (D21): the free tier, and a slow first load is accepted. **Found on deploy: the ~30s wake message never showed.** It was written for a failed request, but Render holds a request while the server wakes rather than failing it, so the page just waited ("Working… 35s — this usually takes 10 to 20 seconds"). `WakeNote` now explains the wait after 8 seconds with no response — in chat, only when not even the `started` event has arrived, which a warm server sends at once — and on the team list, cap sheet and trade check. **Timed 2026-10-07: a wake takes ~31 s, a warm request ~0.26 s.** `curl /health` after a night idle: 31.5 s, then 0.25–0.28 s. A headless browser (Playwright) opening `/cap/DEN` after 20 minutes idle: the page rendered at 2.2 s, the `WakeNote` appeared at 10.6 s, and the API answered at 33.6 s, when the note went and the sheet showed. The note's "about 30 seconds" is accurate. Within D21's accepted ~30 s, so no keep-warm ping: it would spend the free hours to save a wait the page already explains.*
 - [ ] **8.7** README leading with the architecture thesis and the eval numbers *— its four-kinds table, which says validation is handled by the rules engine, is now true in chat as well (7.4).*
 - [ ] **8.8** Three-minute demo: a rumoured trade adjudicated with a citation, and a question refused with a reason *— both surfaces adjudicate with the engine now: the chat runs `validate_trade` and quotes the violated provision, and the trade builder (7.4) shows the same verdict with the numbers.*
 - [ ] **8.9** Write-up on the eval harness and the deterministic citation path
